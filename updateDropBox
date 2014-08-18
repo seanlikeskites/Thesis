@@ -1,0 +1,3 @@
+git push Dropbox master
+make
+cp Sean_Enderby_Thesis.pdf ~/Dropbox/Thesis
