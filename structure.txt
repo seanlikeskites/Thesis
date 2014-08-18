@@ -1,0 +1,9 @@
+Review of existing harmonic excitation.
+
+Review of timbral control research.
+
+Review of which audio features can be controlled by harmonic excitation.
+
+Meta study (SAFE, SocialEQ, Zacharakis') of several timbral studies.
+
+Propose timbral manipulations which can be achieved through harmonic excitation.
