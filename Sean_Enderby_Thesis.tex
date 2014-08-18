@@ -12,6 +12,24 @@
 \definecolor{noteColour}{RGB}{255, 0, 0}
 \newcommand{\note}[1]{{\color{noteColour}#1}}
 
+\usepackage[backref=page]{hyperref}
+\hypersetup
+{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=black
+}
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]
+{
+	\ifcase #1 (Not Cited.)
+	\or (Cited on Page #2.)
+	\else (Cited on Pages #2.)
+	\fi
+}
+
 \renewcommand{\familydefault}{\sfdefault}
 
 \author{Sean Enderby}
@@ -24,5 +42,9 @@
 \tableofcontents
 
 \input{Chapter1/chapter1.tex}
+
+\newpage
+\bibliographystyle{SeansHarvard}
+\bibliography{bibl}
 
 \end{document}
