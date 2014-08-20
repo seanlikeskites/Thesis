@@ -24,9 +24,9 @@
 \renewcommand*{\backref}[1]{}
 \renewcommand*{\backrefalt}[4]
 {
-	\ifcase #1 (Not Cited.)
-	\or (Cited on Page #2.)
-	\else (Cited on Pages #2.)
+	\ifcase #1 [Not Cited.]
+	\or [Cited on Page #2.]
+	\else [Cited on Pages #2.]
 	\fi
 }
 
@@ -38,18 +38,9 @@
 
 \begin{document}
 
-\maketitle
-
-\input{Welcome.tex}
-
-\tableofcontents
-
-\input{Chapter1/chapter1.tex}
-
-\input{Chapter2/chapter2.tex}
-
-\newpage
-\bibliographystyle{SeansHarvard}
-\bibliography{bibl}
+\include{Preamble}
+\include{Chapter1/chapter1}
+\include{Chapter2/chapter2}
+\include{Bibliography}
 
 \end{document}
