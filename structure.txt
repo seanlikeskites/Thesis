@@ -1,9 +1,21 @@
 Review of existing harmonic excitation.
+	Uses of Harmonic Excitation
+	Harmonic Generation Methods
+		Static Nonlinearities
+		Bandwidth Extension
+		Individual Harmonic Generation
+		Psychoacoustic Enhancers
 
 Review of timbral control research.
+	Audio Features
+	Perceptual Control of Synthesis
 
 Review of which audio features can be controlled by harmonic excitation.
+	Parameterise feature changes in terms of harmonic excitation.
+	Most suitable methods for given feature manipulations.
+	Easiest features to control in isolation.
+	Good features of a timbral control algorithm (uniform behaviour across dynamic range etc.)
 
-Meta study (SAFE, SocialEQ, Zacharakis') of several timbral studies.
-
-Propose timbral manipulations which can be achieved through harmonic excitation.
+Discuss timbral control possibilities from feature manipulations.
+	SAFE data.
+	Social EQ data (weighting functions can give a good judge of feature manipulation).
