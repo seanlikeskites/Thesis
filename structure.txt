@@ -1,20 +1,31 @@
-Review of existing harmonic excitation.
-	Uses of Harmonic Excitation
-	Harmonic Generation Methods
-		Static Nonlinearities
-		Bandwidth Extension
-		Individual Harmonic Generation
-		Psychoacoustic Enhancers
+Some Intro Bollocks
 
 Review of timbral control research.
+	Timbre Definition
+	Timbre Spaces (MDS and shit)
 	Audio Features
 	Perceptual Control of Synthesis
 
-Review of which audio features can be controlled by harmonic excitation.
+Review of existing harmonic excitation.
+	Nonlinear Systems
+		Traditional Metrics (THD, IMD)
+		Minimisation of Nonlinear Distortion
+		Advent of "Nonlinear Niceness"
+	Timbre of nonlinear distortions (Martens and Marui type shit)
+	Uses of Harmonic Excitation
+	Harmonic Generation Methods
+		Static Nonlinearities
+		Bandwidth Extension (high frequency reconstruction)
+		Individual Harmonic Generation (SMC paper)
+		Psychoacoustic Enhancers
+
+Suitability of Exciters for Perceptual Control
+	Good features of a timbral control algorithm.
+		Consistent effect across amplitudes (DAFx paper)
+		Flexibility of single harmonic control (SMC paper)
 	Parameterise feature changes in terms of harmonic excitation.
 	Most suitable methods for given feature manipulations.
 	Easiest features to control in isolation.
-	Good features of a timbral control algorithm (uniform behaviour across dynamic range etc.)
 
 Discuss timbral control possibilities from feature manipulations.
 	SAFE data.
