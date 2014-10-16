@@ -1,11 +1,14 @@
+Chapter 1
 Some Intro Bollocks
 
+Chapter 2
 Review of timbral control research.
 	Timbre Definition
 	Timbre Spaces (MDS and shit)
 	Audio Features
 	Perceptual Control of Synthesis
 
+Chapter 3
 Review of existing harmonic excitation.
 	Nonlinear Systems
 		Traditional Metrics (THD, IMD)
@@ -19,6 +22,7 @@ Review of existing harmonic excitation.
 		Individual Harmonic Generation (SMC paper)
 		Psychoacoustic Enhancers
 
+Chapter 4
 Suitability of Exciters for Perceptual Control
 	Good features of a timbral control algorithm.
 		Consistent effect across amplitudes (DAFx paper)
@@ -27,6 +31,7 @@ Suitability of Exciters for Perceptual Control
 	Most suitable methods for given feature manipulations.
 	Easiest features to control in isolation.
 
+Chapter 5
 Discuss timbral control possibilities from feature manipulations.
 	SAFE data.
 	Social EQ data (weighting functions can give a good judge of feature manipulation).
