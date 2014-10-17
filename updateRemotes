@@ -1,3 +1,5 @@
 git push Dropbox master
+git push origin master
+git push bitbucket master
 make
 cp *.pdf ~/Dropbox/Thesis
