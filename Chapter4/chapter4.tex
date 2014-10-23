@@ -7,13 +7,25 @@
 %	Easiest features to control in isolation.
 
 \chapter{Suitability of Exciters for Perceptual Control}
+\label{chap:FeatureControl}
+
+	In order to aid in the intuitiveness of an audio effect it should produce a similar perceptual effect across a wide range of input signals. This is not the case with traditional audio signal processing methods. Take the EQ for example. We can set up an EQ to boost some frequencies in a desired range. A problem arises where we process signals which have no energy in this frequency range. For some signals there will be a noticeable change in the spectral characteristics, but other signals will remain unchanged.
+
+	This problem is compounded when the audio processing in nonlinear. As well as different signals producing different perceptual effect, now the same signal at different levels might produce different perceptual effects. A simple example of this is a peak clipping effect. If a signal's amplitude is above the clipping threshold there will be a noticeable effect. This signal will be unaffected however, if its amplitude falls below the threshold.
+
+	The field of adaptive audio effects looks to solve some of these issues by producing effect which analyses the input signal and adjust their parameters accordingly \note{[site some stuff up]}.
+
+	As discussed in Chapter \ref{chap:Timbre} previous studies have attempted to control perceptual features by controlling specific audio features.
 
 \section{Desirable Features for Perceptual Control}
+\label{sec:FeatureControl-MethodFeatures}
 	\note{Consistent effects across amplitudes a la DAFx paper.
 	      Flexibility introduced by allowing single harmonic control a la SMC paper}
 
 \section{Parameterisation of Feature Changes}
+\label{sec:FeatureControl-Parameterisation}
 	\todo{This needs doing}
 
 \section{Controlling features with Exciters}
+\label{sec:FeatureControl-Control}
 	\todo{Should fall out of the previous section}
