@@ -25,6 +25,21 @@
 
 	Several harmonic excitation methods were discussed in Section \ref{sec:Excitation-Methods}. When applied to the task of controlling specific audio features each of these methods has its own advantages and disadvantages.
 
+	\subsection{Invariance to Amplitude}
+	\label{sec:FeatureControl-AmplitudeInvariance}
+
+		\subsubsection*{Static Nonlinearities}		
+			As previously mentioned simple static nonlinearities are very susceptible to change in input amplitude. \citet{deman2014adaptive} counteract this issue by having the clipping threshold adapt to changes in the RMS amplitude of the input. The user is then provided with a `relative threshold' parameter on which the same setting should give similar perceptual results no matter what the input amplitude.
+
+		\subsubsection*{Bandwidth Extension}
+			These methods are all independent of the amplitude of the input signal.
+			
+		\subsubsection*{Single Harmonic Generation}
+			Using single sideband automodulation the proportion of new frequency components in the output signal increases as the input amplitude increases. The instantaneous amplitude and phase and phase vocoder techniques are more robust in this respect.
+
+	\subsection{Flexibility}
+	\label{sec:FeatureControl-Flexibility}
+
 \section{Parameterisation of Feature Changes}
 \label{sec:FeatureControl-Parameterisation}
 	\todo{This needs doing}
