@@ -77,7 +77,7 @@ chapter5.pdf: Chapter5/chapter5.tex $(shell find Chapter5/Images -type f)
 
 combined: Sean_Enderby_Thesis.pdf
 
-Sean_Enderby_Thesis.pdf: Sean_Enderby_Thesis.tex Preamble.tex Bibliography.tex Chapter1/chapter1.tex Chapter2/chapter2.tex Chapter3/chapter3.tex Chapter4/chapter4.tex Chapter5/chapter5.tex
+Sean_Enderby_Thesis.pdf: Sean_Enderby_Thesis.tex Preamble.tex Bibliography.tex Chapter1/chapter1.tex Chapter2/chapter2.tex Chapter3/chapter3.tex Chapter4/chapter4.tex Chapter5/chapter5.tex bibl.bib
 	@pdflatex Sean_Enderby_Thesis.tex
 	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 	@echo \*\* Sorting References \*\*

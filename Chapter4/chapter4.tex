@@ -31,6 +31,8 @@
 		\subsubsection*{Static Nonlinearities}		
 			As previously mentioned simple static nonlinearities are very susceptible to change in input amplitude. \citet{deman2014adaptive} counteract this issue by having the clipping threshold adapt to changes in the RMS amplitude of the input. The user is then provided with a `relative threshold' parameter on which the same setting should give similar perceptual results no matter what the input amplitude.
 
+			\note{Talk about the issues with static nonlinearities raise in \citet{enderby2012harmonic}}
+
 		\subsubsection*{Bandwidth Extension}
 			These methods are all independent of the amplitude of the input signal.
 			
@@ -39,6 +41,18 @@
 
 	\subsection{Flexibility}
 	\label{sec:FeatureControl-Flexibility}
+
+		\note{Flexibility is provided by individual harmonic generation \citep{enderby2013methods}}	
+
+	\subsection{Complexity}
+	\label{sec:FeatureControl-Complexity}
+		
+		\note{It is advantageous to use an algorithm that will create accurate harmonics with little analysis.
+		      Most methods don't rely on knowing the fundamental in order to generate harmonics. Spectral
+		      shifting on the other hand does.}
+
+		\note{Most of the algorithms can be easily improved through the use of a low pass filter, increasing
+	             complexity.}
 
 \section{Parameterisation of Feature Changes}
 \label{sec:FeatureControl-Parameterisation}
