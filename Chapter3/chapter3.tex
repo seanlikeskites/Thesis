@@ -22,7 +22,7 @@
 \label{sec:Excitation-NonlinearSystems}
 	\note
 	{
-		THD and IMD are rubbish but served some purpose in the olden days. Some more metrics were made but they were still only concerned with minimising distortion \citep{lee2003auditory, geddes2003auditory, tan2004predicting}. Then some bloke decided distortion was cool.
+		THD and IMD are rubbish but served some purpose in the olden days. Some more metrics were made but they were still only concerned with minimising distortion \citep{lee2003auditory, geddes2003auditory, tan2004predicting}. \citet{voishvillo2006assessment} summarises a lot of metrics nicely. Then some bloke decided distortion was cool.
 	}
 
 \section{Timbre of Nonlinear Distortion}
@@ -51,11 +51,20 @@
 
 	\subsection{Bandwidth Extension}
 	\label{sec:Excitation-BWE}
-		\note{Look at Figure \ref{fig:SpectralFolding} 'aint it fancy.}
+		\note
+		{
+			A nice summary in \citet{larsen2004audio}.
+
+			Look at Figure \ref{fig:SpectralFolding} 'aint it fancy.
+		}
+
 		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=0.5\textwidth]{Chapter3/Images/SpectralFolding.eps}
-			\caption{Spectral Folding}
+			\subfloat[Spectral Folding]{\includegraphics[width=0.4\textwidth]{Chapter3/Images/SpectralFolding.png}}
+			\subfloat[Spectral Replication]{\includegraphics[width=0.4\textwidth]{Chapter3/Images/SpectralReplication.png}}
+			\\
+			\subfloat[Spectral Stretching]{\includegraphics[width=0.4\textwidth]{Chapter3/Images/SpectralStretching.png}}
+			\caption{Spectral characteristics of different band width extension methods. In each graph the blue section represents the original spectra and the red section the new spectral content.}
 			\label{fig:SpectralFolding}
 		\end{figure}
 
