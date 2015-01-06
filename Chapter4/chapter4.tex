@@ -13,7 +13,9 @@
 
 	This problem is compounded when the audio processing in nonlinear. As well as different signals producing different perceptual effect, now the same signal at different levels might produce different perceptual effects. A simple example of this is a peak clipping effect. If a signal's amplitude is above the clipping threshold there will be a noticeable effect. This signal will be unaffected however, if its amplitude falls below the threshold.
 
-	The field of adaptive audio effects looks to solve some of these issues by producing effect which analyses the input signal and adjust their parameters accordingly \note{[site some stuff up]}.
+	\note{Mention of homogeneous nonlinear systems \citep{larsen2004audio}.}
+
+	The field of adaptive audio effects looks to solve some of these issues by producing effects which analyses the input signal and adjust their parameters accordingly \note{[cite some stuff up]}.
 
 	As discussed in Chapter \ref{chap:Timbre} previous studies have attempted to control perceptual features by controlling specific audio features. This chapter will identify the audio features which can be controlled through harmonic excitation and which excitation algorithms are the most suitable for given feature changes.
 
@@ -31,10 +33,10 @@
 		\subsubsection*{Static Nonlinearities}		
 			As previously mentioned simple static nonlinearities are very susceptible to change in input amplitude. \citet{deman2014adaptive} counteract this issue by having the clipping threshold adapt to changes in the RMS amplitude of the input. The user is then provided with a `relative threshold' parameter on which the same setting should give similar perceptual results no matter what the input amplitude.
 
-			\note{Talk about the issues with static nonlinearities raise in \citet{enderby2012harmonic}}
+			\note{Talk about the issues with static nonlinearities raised in \citet{enderby2012harmonic}}
 
 		\subsubsection*{Bandwidth Extension}
-			These methods are all independent of the amplitude of the input signal.
+			These methods are all homogeneous.
 			
 		\subsubsection*{Single Harmonic Generation}
 			Using single sideband automodulation the proportion of new frequency components in the output signal increases as the input amplitude increases. The instantaneous amplitude and phase and phase vocoder techniques are more robust in this respect.
