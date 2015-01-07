@@ -1,6 +1,6 @@
 %Suitability of Exciters for Perceptual Control
 %	Good features of a timbral control algorithm.
-%		Consistent effect across amplitudes (DAFx paper)
+%		Homogeneity (DAFx paper)
 %		Flexibility of single harmonic control (SMC paper)
 %	Parameterise feature changes in terms of harmonic excitation.
 %	Most suitable methods for given feature manipulations.
@@ -22,13 +22,13 @@
 \section{Evaluating Excitation Methods}
 \label{sec:FeatureControl-MethodEvaluation}
 
-	\note{Consistent effects across amplitudes a la DAFx paper.
+	\note{Homogeneity a la DAFx paper.
 	      Flexibility introduced by allowing single harmonic control a la SMC paper}
 
 	Several harmonic excitation methods were discussed in Section \ref{sec:Excitation-Methods}. When applied to the task of controlling specific audio features each of these methods has its own advantages and disadvantages.
 
-	\subsection{Invariance to Amplitude}
-	\label{sec:FeatureControl-AmplitudeInvariance}
+	\subsection{Homogeneity}
+	\label{sec:FeatureControl-Homogeneity}
 
 		\subsubsection*{Static Nonlinearities}		
 			As previously mentioned simple static nonlinearities are very susceptible to change in input amplitude. \citet{deman2014adaptive} counteract this issue by having the clipping threshold adapt to changes in the RMS amplitude of the input. The user is then provided with a `relative threshold' parameter on which the same setting should give similar perceptual results no matter what the input amplitude.
