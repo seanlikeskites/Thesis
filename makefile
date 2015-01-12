@@ -92,6 +92,11 @@ Sean_Enderby_Thesis.pdf: Sean_Enderby_Thesis.tex Preamble.tex Bibliography.tex C
 	@pdflatex Sean_Enderby_Thesis.tex
 	@pdflatex Sean_Enderby_Thesis.tex
 
+story: story.pdf
+
+story.pdf: story.tex
+	@pdflatex story.tex
+
 clean:
 	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 	@echo \*\* Cleaning Up \*\*
