@@ -97,6 +97,11 @@ story: story.pdf
 story.pdf: story.tex
 	@pdflatex story.tex
 
+contributions: contributions.pdf
+
+contributions.pdf: contributions.tex
+	@pdflatex contributions.tex
+
 clean:
 	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 	@echo \*\* Cleaning Up \*\*
