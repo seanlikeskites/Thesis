@@ -56,6 +56,72 @@
 	\label{sec:Excitation-Statics}
 		\note{DAFx Paper}
 
+	\subsection{Rectification}
+	\label{sec:Excitation-Rectification}
+		\begin{equation}
+			y(n) = \begin{cases}
+				0 & \text{if $x < 0$} \\
+				x(n) & \text{otherwise}
+			\end{cases}
+			\label{eq:Half-Wave-Rectification}
+		\end{equation}
+
+		\begin{equation}
+			y(n) = |x(n)|
+			\label{eq:Full-Wave-Rectification}
+		\end{equation}
+
+	\subsection{Integrator}
+	\label{sec:Excitation-Integrator}
+		\begin{equation}
+			y(n) = \begin{cases}
+				0 & \text{if $x(n) > 0$ and $x(n - 1) \leq 0$} \\
+				y(n - 1) + c|x(n)| & \text{otherwise}
+			\end{cases}
+			\label{eq:Integrator}
+		\end{equation}
+
+	\subsection{Multiplier}
+	\label{sec:Excitation-Multiplier}
+		\begin{equation}
+			y(n) = x(n)^{h}
+			\label{eq:Multiplier}
+		\end{equation}
+
+	\subsection{Single Side Band Automodulation}
+	\label{sec:Excitation-SSB}
+		\begin{equation}
+			y(n) = \Re \left( x_{a}(n)^{h} \right)
+			\label{eq:SSB}
+		\end{equation}
+
+	\subsection{Instantaneous Amplitude and Phase}
+	\label{sec:Excitation-IAP}
+		\begin{equation}
+			y(n) = |x_{a}(n)| \cos \left( h\arg(x_{a}(n)) \right)
+			\label{eq:IAP}
+		\end{equation}
+
+	\subsection{Spectral Replication}
+	\label{sec:Excitation-SpectralReplication}
+		\begin{equation}
+			y = \Re \left( x_{a} e^{2\pi fi} \right)
+			\label{eq:SectralReplication}
+		\end{equation}
+
+	\subsection{Spectral Mirroring}
+	\label{sec:Excitation-SpectralMirroring}
+		\begin{equation}
+			y(n) = \begin{cases}
+				-x(n) & \text{if $n$ is odd} \\
+				x(n) & \text{otherwise}
+			\end{cases}
+			\label{eq:SpectralMirror}
+		\end{equation}
+
+	\subsection{Spectral Stretching}
+	\label{sec:Excitation-SpectralStretching}
+
 	\subsection{Bandwidth Extension}
 	\label{sec:Excitation-BWE}
 		\note
@@ -101,3 +167,34 @@
 			We can talk all about fundamental / pitch tracking here \citep{cuadra2001efficient, 
 			gerhard2003pitch, prukkanon2009vt-amdf, larsen2004audio}.
 		}
+
+\begin{landscape}
+\section{Methods Comparison}
+\label{sec:Excitation-Comparison}
+
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\bf{Method} & \bf{Complexity} & \bf{Homogeneity} & \bf{Spectral Properties} & \bf{Temporal Properties} & \bf{IMD}
+		\bf{Flexibility} & \bf{Naturalness} \\
+		\hline
+		Static Nonlinearity & $\mathcal{O}(n)$ & & & & & \\
+		\hline
+		Rectifier & $\mathcal{O}(n)$ & & & & & \\
+		\hline
+		Integrator & $\mathcal{O}(n)$ & & & & & \\
+		\hline
+		Multiplier & $\mathcal{O}(n)$ & & & & & \\
+		\hline
+		SSB & $\mathcal{O}(n)$ & & & & & \\
+		\hline
+		IAP & $\mathcal{O}(n)$ & & & & & \\
+		\hline
+		Spectral Replicator & $\mathcal{O}(n)$ & & & & & \\
+		\hline
+		Spectral Mirror & $\mathcal{O}(n)$ & & & & & \\
+		\hline
+		Spectral Stretch & $\mathcal{O}(n\log{n})$ Assuming FFT used & & & & & \\
+		\hline
+	\end{tabular}
+
+\end{landscape}
