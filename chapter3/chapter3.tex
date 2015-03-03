@@ -84,66 +84,110 @@
 	\subsection{Multiplier}
 	\label{sec:Excitation-Multiplier}
 		\begin{equation}
-			y(n) = x(n)^{h}
+			y(n) = x(n)^{h}, \quad h \in \mathbb{N}
 			\label{eq:Multiplier}
 		\end{equation}
 
 	\subsection{Single Side Band Automodulation}
 	\label{sec:Excitation-SSB}
+		Single sideband automodulation utilises the concept of single sideband modulation
+		\citep{corinthios2009signals}. This allows you to apply amplitude modulation to a signal and only produce
+		either the sum or difference sideband.
+
+		A simple way to apply single sideband modulation to a signal is through construction of an analytic signal.
+		An analytic signal is a complex valued signal, the real part of which is the original signal and the
+		imaginary part its Hilbert transform. The analytic signal is often denoted with a subscript letter
+		$a$, such that the analytic representation of the signal $x(n)$ would be denoted $x_{a}(n)$.
+
+		In single sideband automodulation the analytical representation of the input signal is multiplied with
+		itself in order to generate harmonics. Equation \ref{eq:SSB} shows the $h^{\text{th}}$ order single side
+		band auto modulation of a signal.
+
 		\begin{equation}
-			y(n) = \Re \left( x_{a}(n)^{h} \right)
+			y(n) = \Re \left( x_{a}(n)^{h} \right), \quad h \in \mathbb{N}
 			\label{eq:SSB}
 		\end{equation}
 
 	\subsection{Instantaneous Amplitude and Phase}
 	\label{sec:Excitation-IAP}
 		\begin{equation}
-			y(n) = |x_{a}(n)| \cos \left( h\arg(x_{a}(n)) \right)
+			y(n) = |x_{a}(n)| \cos \left( h\arg(x_{a}(n)) \right), \quad h \in \mathbb{N}
 			\label{eq:IAP}
 		\end{equation}
 
 	\subsection{Spectral Replication}
 	\label{sec:Excitation-SpectralReplication}
+		The principle behind spectral replication is to reproduce the spectral structure of a signal at higher
+		frequencies.
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter3/Images/SpectralReplication.eps}
+			\caption{The spectral characteristics of spectral replication.}
+			\label{fig:SpectralReplication}
+		\end{figure}
+
+		This spectral shift is easily implemented through the use of single side band modulation as shown in
+		equation \ref{eq:SpectralReplication}.
+
 		\begin{equation}
-			y = \Re \left( x_{a} e^{2\pi fi} \right)
-			\label{eq:SectralReplication}
+			y(n) = \Re \left( x_{a}(n) e^{i\omega  n/ f_{s}} \right)
+			\label{eq:SpectralReplication}
 		\end{equation}
 
-	\subsection{Spectral Mirroring}
-	\label{sec:Excitation-SpectralMirroring}
+		Where $\omega$ is the angular frequency the signal should be shifted by and $f_{s}$ is the sampling
+		frequency of the signal.
+
+	\subsection{Spectral Folding}
+	\label{sec:Excitation-SpectralFolding}
+	
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter3/Images/SpectralFolding.eps}
+			\caption{The spectral characteristics of spectral folding.}
+			\label{fig:SpectralFolding}
+		\end{figure}
+
 		\begin{equation}
 			y(n) = \begin{cases}
 				-x(n) & \text{if $n$ is odd} \\
 				x(n) & \text{otherwise}
 			\end{cases}
-			\label{eq:SpectralMirror}
+			\label{eq:SpectralFolding}
 		\end{equation}
 
 	\subsection{Spectral Stretching}
 	\label{sec:Excitation-SpectralStretching}
 
-	\subsection{Bandwidth Extension}
-	\label{sec:Excitation-BWE}
-		\note
-		{
-			A nice summary in \citet{larsen2004audio}.
-
-			Look at Figure \ref{fig:SpectralFolding} 'aint it fancy.
-		}
-
 		\begin{figure}[h!]
 			\centering
-			\subfloat[Spectral Folding]
-			{\includegraphics[width=0.4\textwidth]{chapter3/Images/SpectralFolding.png}}
-			\subfloat[Spectral Replication]
-			{\includegraphics[width=0.4\textwidth]{chapter3/Images/SpectralReplication.png}}
-			\\
-			\subfloat[Spectral Stretching]
-			{\includegraphics[width=0.4\textwidth]{chapter3/Images/SpectralStretching.png}}
-			\caption{Spectral characteristics of different band width extension methods. In each graph the blue 
-			section represents the original spectra and the red section the new spectral content.}
-			\label{fig:SpectralFolding}
+			\includegraphics[width=0.6\textwidth]{chapter3/Images/SpectralStretching.eps}
+			\caption{The spectral characteristics of spectral stretching.}
+			\label{fig:SpectralStretching}
 		\end{figure}
+
+	%\subsection{Bandwidth Extension}
+	%\label{sec:Excitation-BWE}
+	%	\note
+	%	{
+	%		A nice summary in \citet{larsen2004audio}.
+
+	%		Look at Figure \ref{fig:SpectralFolding} 'aint it fancy.
+	%	}
+
+	%	\begin{figure}[h!]
+	%		\centering
+	%		\subfloat[Spectral Folding]
+	%		{\includegraphics[width=0.4\textwidth]{chapter3/Images/SpectralFolding.png}}
+	%		\subfloat[Spectral Replication]
+	%		{\includegraphics[width=0.4\textwidth]{chapter3/Images/SpectralReplication.png}}
+	%		\\
+	%		\subfloat[Spectral Stretching]
+	%		{\includegraphics[width=0.4\textwidth]{chapter3/Images/SpectralStretching.png}}
+	%		\caption{Spectral characteristics of different band width extension methods. In each graph the blue 
+	%		section represents the original spectra and the red section the new spectral content.}
+	%		\label{fig:SpectralFolding}
+	%	\end{figure}
 
 	\subsection{Individual Harmonic Generation}
 	\label{sec:Excitation-Individuals}
