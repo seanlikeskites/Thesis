@@ -66,10 +66,29 @@
 
 	\subsection{Static Nonlinearities}
 	\label{sec:Excitation-Statics}
-		\note{DAFx Paper}
+		Static nonlinearities are simple mappings between input value and output value. A very basic static
+		nonlinearity is a symmetric hard clipping system as shown in Equation \ref{eq:SymmetricHardClipping}.
+
+		\begin{equation}
+			y(n) = \begin{cases}
+				t & \text{if $x(n) > t$} \\
+				x(n) & \text{if $|x(n)| \leq t$} \\
+				-t & \text{if $x(n) < -t$}
+			\end{cases}
+			\label{eq:SymmetricHardClipping}
+		\end{equation}
 
 		\subsubsection*{Complexity}
+
 		\subsubsection*{Homogeneity}
+			\note{DAFx Paper}
+
+			The inhomogeneity of simple clipping systems can be counteracted by introducing gain stages either
+			side of the clipping stage. The first gain stage scales the signal so that the clipping stage will
+			always clip the same proportion of the signal. The second gain stage scales the signal back to the
+			original input amplitude. Analogously the clipping function can be scaled so as to always clip the
+			same proportion of the signal, as done by \citet{deman2014adaptive}.
+
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Preservation of Harmonicity}
@@ -188,7 +207,7 @@
 		\end{figure}
 
 		This spectral shift is easily implemented through the use of single side band modulation as shown in
-		equation \ref{eq:SpectralReplication}.
+		Equation \ref{eq:SpectralReplication}.
 
 		\begin{equation}
 			y(n) = \Re \left( x_{a}(n) e^{i\omega  n/ f_{s}} \right)
