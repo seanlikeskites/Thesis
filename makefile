@@ -5,48 +5,40 @@ chapters: combined $(CHAPTERS)
 combined: Sean_Enderby_Thesis.pdf
 
 Sean_Enderby_Thesis.pdf: Sean_Enderby_Thesis.tex Preamble.tex Bibliography.tex $(wildcard Images/*) $(wildcard chapter*/Images/*) $(wildcard chapter*/chapter*.tex) bibl.bib
-	@pdflatex Sean_Enderby_Thesis.tex
-	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-	@echo \*\* Sorting References \*\*
-	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-	@bibtex Sean_Enderby_Thesis.aux 
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@echo \*\* Building $@
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@pdflatex -interaction=nonstopmode -file-line-error Sean_Enderby_Thesis.tex | grep -A 2 ".*:[0-9]*:.*" | cat
+	@bibtex Sean_Enderby_Thesis.aux > /dev/null
+	@pdflatex -interaction=nonstopmode Sean_Enderby_Thesis.tex > /dev/null
+	@pdflatex -interaction=nonstopmode Sean_Enderby_Thesis.tex > /dev/null
+	@pdflatex -interaction=nonstopmode Sean_Enderby_Thesis.tex > /dev/null
 	@echo
-	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-	@echo \*\* Bunging it all Together \*\*
-	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-	@echo
-	@pdflatex Sean_Enderby_Thesis.tex
-	@pdflatex Sean_Enderby_Thesis.tex
-	@pdflatex Sean_Enderby_Thesis.tex
 
 story: story.pdf
 
 story.pdf: story.tex
-	@pdflatex story.tex
+	@pdflatex -interaction=batchmode story.tex
 
 contributions: contributions.pdf
 
 contributions.pdf: contributions.tex
-	@pdflatex contributions.tex
+	@pdflatex -interaction=batchmode contributions.tex
 
 .SECONDEXPANSION:
 %.pdf: chapter*/%.tex $$(wildcard $$*/Images/*)
-	@pdflatex --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}"
-	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-	@echo \*\* Sorting References \*\*
-	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-	@bibtex $* 
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@echo \*\* Building $@
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@pdflatex -interaction=nonstopmode --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}" > /dev/null
+	@bibtex $* > /dev/null
+	@pdflatex -interaction=nonstopmode --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}" > /dev/null
+	@pdflatex -interaction=nonstopmode --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}" > /dev/null
+	@pdflatex -interaction=nonstopmode --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}" > /dev/null
 	@echo
-	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-	@echo \*\* Bunging it all Together \*\*
-	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-	@echo
-	@pdflatex --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}"
-	@pdflatex --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}"
-	@pdflatex --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}"
 
 clean:
-	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-	@echo \*\* Cleaning Up \*\*
-	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@echo \*\* Cleaning Up
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 	@rm -rf *.pdf *.aux *.bbl *.blg *.brf *.log *.out *.Pages *.toc Chapter*/*.aux
