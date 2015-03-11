@@ -179,6 +179,12 @@
 		imaginary part its Hilbert transform. The analytic signal is often denoted with a subscript letter
 		$a$, such that the analytic representation of the signal $x(n)$ would be denoted $x_{a}(n)$.
 
+		\note
+		{
+			We probably need some place to talk about hilbert transforms \citet{oppenheim2014discrete} are
+			pretty good at that shiz.
+		}
+
 		In single sideband automodulation the analytical representation of the input signal is multiplied with
 		itself in order to generate harmonics. Equation \ref{eq:SSB} shows the $h^{\text{th}}$ order single side
 		band automodulation of a signal.
@@ -234,7 +240,7 @@
 		Equation \ref{eq:SpectralReplication}.
 
 		\begin{equation}
-			y(n) = \Re \left( x_{a}(n) e^{i\omega  n/ f_{s}} \right)
+			y(n) = \Re \left( x_{a}(n) e^{j\omega  n/ f_{s}} \right)
 			\label{eq:SpectralReplication}
 		\end{equation}
 
