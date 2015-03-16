@@ -70,21 +70,51 @@
 	\subsection{Static Nonlinearities}
 	\label{sec:Excitation-Statics}
 		Static nonlinearities are simple mappings between input value and output value. A nonlinear function is
-		applied individually to each sample of a signal. A very basic static nonlinearity is a symmetric hard
-		clipper as shown in Equation \ref{eq:SymmetricHardClipping}.
+		applied individually to each sample of a signal. 
+		
+		A very simple class of static nonlinearities is the peak clipper. Peak clippers are typically piecewise
+		functions comprising of three sections:
+
+		\begin{enumerate}
+			\item A linear section.
+			\item A transition section, often called the `knee'.
+			\item A clipping section.
+		\end{enumerate}
 
 		\begin{equation}
 			y(n) = \begin{cases}
-				t & \text{if $x(n) > t$} \\
-				x(n) & \text{if $|x(n)| \leq t$} \\
-				-t & \text{if $x(n) < -t$}
+				t\sgn(x(n)) & \text{if $|x(n)| > t$} \\
+				x(n) & \text{if $|x(n)| \leq t$}
 			\end{cases}
 			\label{eq:SymmetricHardClipping}
 		\end{equation}
 
 		Where $t$ is the threshold value at which to clip the signal.
 
+		\begin{equation}
+			y(n) = \begin{cases}
+				t\sgn(x(n)) & \text{if $|x(n)| > t$} \\
+				t\sgn(x(n))\frac{3 - \left(2 - \left|\frac{2}{t}x(n) \right| \right)^{2}}{3} & \text{if
+					$\frac{t}{2} \leq |x(n)| \leq t$} \\
+				\frac{4x(n)}{3} & \text{if $|x(n)| < \frac{t}{2}$}
+			\end{cases}
+			\label{eq:SymmetricSoftClipping}
+		\end{equation}
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter3/Images/Clipping.eps}
+			\caption{Hard and Soft clipping characteristics}
+			\label{fig:Clipping}
+		\end{figure}
+
 		\subsubsection*{Complexity}
+			Most static nonlinearities only involve a few simple operations for each sample of the input
+			signal. The hard clipper from Equation \ref{eq:SymmetricHardClipping} involves only comparisons and
+			assignments. A soft clipper \note{Refer to equation} could also involve some multiplication and
+			addition.
+			
+			As each sample is processed individually these algorithms have linear complexity.
 
 		\subsubsection*{Homogeneity}
 			The homogeneity of a static nonlinearity depends on the nonlinear function used. 
