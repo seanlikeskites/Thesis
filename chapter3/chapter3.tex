@@ -72,14 +72,19 @@
 		Static nonlinearities are simple mappings between input value and output value. A nonlinear function is
 		applied individually to each sample of a signal. 
 		
-		A very simple class of static nonlinearities is the peak clipper. Peak clippers are typically piecewise
-		functions comprising of three sections:
+		A very simple class of static nonlinearities is the peak clipper. This class of effects limits the
+		magnitude of samples to being at or below a given clipping threshold value. Peak clippers are typically
+		piecewise functions comprising of three sections:
 
 		\begin{enumerate}
-			\item A linear section.
-			\item A transition section, often called the `knee'.
-			\item A clipping section.
+			\item A linear section. Applied to low magnitude samples.
+			\item A transition section, often called the `knee'. This refers to the nonlinear part of the
+				function for samples with magnitude below the clipping threshold.
+			\item A clipping section. Limiting the magnitude of samples above the clipping threshold.
 		\end{enumerate}
+
+		One of the simplest peak clippers is the symmetric hard clipper shown in Equation
+		\ref{eq:SymmetricHardClipping}.
 
 		\begin{equation}
 			y(n) = \begin{cases}
@@ -89,7 +94,13 @@
 			\label{eq:SymmetricHardClipping}
 		\end{equation}
 
-		Where $t$ is the threshold value at which to clip the signal.
+		Where $t$ is the threshold value at which to clip the signal. Peak clippers are described as symmetric if
+		the underlying function is odd.
+
+		Equation \ref{eq:SymmetricHardClipping} is also know as a hard clipper. This is due to the lack of a
+		transition section. Soft clippers apply a nonlinear function to medium magnitude samples in order to smooth
+		the transition between linear and clipping sections. Equation \ref{eq:SymmetricSoftClipping} shows a soft
+		clipper adapted from one given by \citet{dutilleux2002nonlinear}.
 
 		\begin{equation}
 			\large
@@ -105,7 +116,8 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=0.6\textwidth]{chapter3/Images/Clipping.eps}
-			\caption{Hard and Soft clipping characteristics}
+			\caption{Equations \ref{eq:SymmetricHardClipping} and \ref{eq:SymmetricSoftClipping} with a
+				 threshold of 0.7.}
 			\label{fig:Clipping}
 		\end{figure}
 
