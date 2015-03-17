@@ -70,7 +70,8 @@
 	\subsection{Static Nonlinearities}
 	\label{sec:Excitation-Statics}
 		Static nonlinearities are simple mappings between input value and output value. A nonlinear function is
-		applied individually to each sample of a signal. 
+		applied individually to each sample of a signal. They can be described by a characteristic curves which
+		shows the relationship between input and output values.
 		
 		A very simple class of static nonlinearities is the peak clipper. This class of effects limits the
 		magnitude of samples to being at or below a given clipping threshold value. Peak clippers are typically
@@ -95,12 +96,13 @@
 		\end{equation}
 
 		Where $t$ is the threshold value at which to clip the signal. Peak clippers are described as symmetric if
-		the underlying function is odd.
+		the underlying function is odd. Clippers which use non odd functions are referred to as asymmetric.
 
-		Equation \ref{eq:SymmetricHardClipping} is also know as a hard clipper. This is due to the lack of a
-		transition section. Soft clippers apply a nonlinear function to medium magnitude samples in order to smooth
-		the transition between linear and clipping sections. Equation \ref{eq:SymmetricSoftClipping} shows a soft
-		clipper adapted from one given by \citet{dutilleux2002nonlinear}.
+		Equation \ref{eq:SymmetricHardClipping} describes a hard clipper due to the lack of a transition section.
+		Soft clippers apply a nonlinear function to medium magnitude samples in order to smooth the transition
+		between linear and clipping sections. Equation \ref{eq:SymmetricSoftClipping} shows a soft clipper adapted
+		from one given by \citet{dutilleux2002nonlinear}. Figure \ref{fig:Clipping} shows the characteristic curves
+		for the clippers given in Equations \ref{eq:SymmetrichardClipping} and \ref{eq:SymmetricSoftClipping}.
 
 		\begin{equation}
 			\large
@@ -116,16 +118,15 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=0.6\textwidth]{chapter3/Images/Clipping.eps}
-			\caption{Equations \ref{eq:SymmetricHardClipping} and \ref{eq:SymmetricSoftClipping} with a
-				 threshold of 0.7.}
+			\caption{Characteristic curves for \ref{eq:SymmetricHardClipping} and
+				 \ref{eq:SymmetricSoftClipping} with a threshold of 0.7.}
 			\label{fig:Clipping}
 		\end{figure}
 
 		\subsubsection*{Complexity}
 			Most static nonlinearities only involve a few simple operations for each sample of the input
 			signal. The hard clipper from Equation \ref{eq:SymmetricHardClipping} involves only comparisons and
-			assignments. A soft clipper \note{Refer to equation} could also involve some multiplication and
-			addition.
+			assignments. A soft clipper could also involve some multiplication and addition.
 			
 			As each sample is processed individually these algorithms have linear complexity.
 
@@ -142,8 +143,7 @@
 		\subsubsection*{Spectral Characteristics}
 			The spectral characteristics depend on the function applied to the signal. If an odd function is
 			used only odd order intermodulation components will be produced. Using an even function only even
-			order components are generated. If the function is neither odd nor even both odd and even order
-			intermodulation components will be produced.
+			order components are generated. 
 
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Preservation of Harmonicity}
