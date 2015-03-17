@@ -102,7 +102,7 @@
 		Soft clippers apply a nonlinear function to medium magnitude samples in order to smooth the transition
 		between linear and clipping sections. Equation \ref{eq:SymmetricSoftClipping} shows a soft clipper adapted
 		from one given by \citet{dutilleux2002nonlinear}. Figure \ref{fig:Clipping} shows the characteristic curves
-		for the clippers given in Equations \ref{eq:SymmetrichardClipping} and \ref{eq:SymmetricSoftClipping}.
+		for the clippers given in Equations \ref{eq:SymmetricHardClipping} and \ref{eq:SymmetricSoftClipping}.
 
 		\begin{equation}
 			\large
@@ -133,6 +133,20 @@
 		\subsubsection*{Homogeneity}
 			The homogeneity of a static nonlinearity depends on the nonlinear function used. 
 			\note{DAFx Paper}
+
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/HardClippingHarmonics.eps}
+				\caption{}
+				\label{fig:HardClippingHarmonics}
+			\end{figure}
+
+			\begin{figure}
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/SoftClippingHarmonics.eps}
+				\caption{}
+				\label{fig:HardClippingHarmonics}
+			\end{figure}
 
 			The inhomogeneity of simple clipping systems can be counteracted by introducing gain stages either
 			side of the clipping stage. The first gain stage scales the signal so that the clipping stage will
