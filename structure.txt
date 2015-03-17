@@ -36,13 +36,15 @@ Suitability of Exciters for Perceptual Control
 
 	// Derive some salient audio features from the methods. Features which can separate excited audio from otherwise processed audio.
 
-// New chapter in here, SAFE was made to test this salience with real world data. Because VAME and Mushra are too limited.
-
 Chapter 5
+Perceptual listening tests to discover mappings between audio features and perceptual descriptors.
+SAFE was made to test this salience with real world data. Because VAME and Mushra are too limited.
+
+Chapter 6
 Discuss timbral control possibilities from feature manipulations.
 	SAFE data.
 	Social EQ data (weighting functions can give a good judge of feature manipulation).
+	What semantic terms can be controlled by the features given in chapter 4.
 
-	// What semantic terms can be controlled by the features given in chapter 4.
-
-// Another chapter on the end to confirm the success of the research. Make a new effect which will do the control through harmonic excitation and do some evaluation tests with people.
+Chapter 7
+Another chapter on the end to confirm the success of the research. Make a new effect which will do the control through harmonic excitation and do some evaluation tests with people.
