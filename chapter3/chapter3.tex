@@ -156,7 +156,35 @@
 				\label{fig:SoftClippingHarmonics}
 			\end{figure}
 
-						
+			The first thing to note is that new harmonic components are only introduced once the input
+			amplitude extends out of the linear section of the characteristic curve. Once input amplitude
+			reaches a sufficient level harmonics are introduced but their amplitudes all vary independently.
+
+			This behaviour can be improved on through the use of a different clipping function. Equation
+			\ref{eq:SymmetricExponentialClipping} shows a function used to apply exponential clipping to a
+			signal.
+			
+			\begin{equation}
+				y(n) = \begin{cases}
+					t\sgn(x(n)) & \text{if $|x(n)| > t$} \\
+					t\sgn(x(n)) \left(1 - \left|\frac{x(n)}{t} - \sgn(x(n)) \right|^{E} \right) & \text{otherwise}
+				\end{cases}
+				\label{eq:SymmetricExponentialClipping}
+			\end{equation}
+
+			Where $E$ is a second parameter called the exponent. One advantage of this clipper is that it has
+			no linear section. This means that harmonics are generated for input signals of any amplitude.
+			Another advantage is that the levels of the generated harmonics vary more uniformly with input
+			amplitude as shown in Figure \ref{fig:ExponentialClippingHarmonics}.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/ExponentialClippingHarmonics.eps}
+				\caption{Individual harmonic distortion levels for Equation
+					 \ref{eq:SymmetricExponentialClipping} with a threshold of 0.5 and an 
+				         exponent of 5.}
+				\label{fig:ExponentialClippingHarmonics}
+			\end{figure}
 
 			The inhomogeneity of simple clipping systems can be counteracted by introducing gain stages either
 			side of the clipping stage. The first gain stage scales the signal so that the clipping stage will
