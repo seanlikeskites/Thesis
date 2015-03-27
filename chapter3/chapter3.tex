@@ -91,7 +91,7 @@
 			y(n) = \begin{cases}
 				t\sgn(x(n)) & \text{if $|x(n)| > t$} \\
 				x(n) & \text{otherwise}
-			\end{cases}
+			\end{cases}, \quad t \geq 0
 			\label{eq:SymmetricHardClipping}
 		\end{equation}
 
@@ -111,7 +111,7 @@
 				t\sgn(x(n))\frac{3 - \left(2 - \left|\frac{2}{t}x(n) \right| \right)^{2}}{3} & \text{if
 					$\frac{t}{2} \leq |x(n)| \leq t$} \\
 				\frac{4x(n)}{3} & \text{otherwise}
-			\end{cases}
+			\end{cases}, \quad t \geq 0
 			\label{eq:SymmetricSoftClipping}
 		\end{equation}
 
@@ -168,7 +168,7 @@
 				y(n) = \begin{cases}
 					t\sgn(x(n)) & \text{if $|x(n)| > t$} \\
 					t\sgn(x(n)) \left(1 - \left|\frac{x(n)}{t} - \sgn(x(n)) \right|^{E} \right) & \text{otherwise}
-				\end{cases}
+				\end{cases}, \quad t \geq 0 \ \text{and} \ E > 1
 				\label{eq:SymmetricExponentialClipping}
 			\end{equation}
 
@@ -196,6 +196,36 @@
 			The spectral characteristics depend on the function applied to the signal. If an odd function is
 			used only odd order intermodulation components will be produced. Using an even function only even
 			order components are generated. 
+
+			The symmetric clippers discussed previously all use odd functions. It is evident from the harmonic
+			amplitude plots that only odd order harmonics have been introduced to the signal. In order to
+			generate even order harmonics these clipping function needs to be made asymmetric. This is easily
+			done by clipping negative and positive portions of the input signal at different thresholds.
+			Equation \ref{eq:SymmetricHardClipping} can be modified to allow for asymmetric clipping giving
+			Equation \ref{eq:AsymmetricHardClipping}.
+			
+			\begin{equation}
+				y(n) = \begin{cases}
+					t_{+} & \text{if $x(n) > t_{+}$} \\
+					t_{-} & \text{if $x(n) < t_{-}$} \\
+					x(n) & \text{otherwise}
+				\end{cases}, \quad t_{-} < t_{+}
+				\label{eq:AsymmetricHardClipping}
+			\end{equation}
+
+			Where $t_{+}$ and $t_{-}$ are the clipping thresholds for positive and negative portions of the
+			signal respectively.	
+
+			The amplitudes of the generated harmonics will roll off at differing rates depending on the
+			properties of the output signal. The spectrum will roll off at $6(n+1)$dB per octave when the
+			$n^{\text{th}}$ derivative of the output signal is discontinuous \citep{kraght2000aliasing}.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/ClippingSpectra.eps}
+				\caption{Spectra of hard and soft clipped sinusoids.}
+				\label{fig:ClippingSpectra}
+			\end{figure}
 
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Preservation of Harmonicity}
@@ -326,7 +356,7 @@
 
 		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=0.6\textwidth]{chapter3/Images/SpectralReplication.eps}
+			\includegraphics[width=0.6\textwidth]{chapter3/Images/SpectralReplicationSpectrum.eps}
 			\caption{The spectral characteristics of spectral replication.}
 			\label{fig:SpectralReplication}
 		\end{figure}
@@ -355,7 +385,7 @@
 	
 		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=0.6\textwidth]{chapter3/Images/SpectralFolding.eps}
+			\includegraphics[width=0.6\textwidth]{chapter3/Images/SpectralFoldingSpectrum.eps}
 			\caption{The spectral characteristics of spectral folding.}
 			\label{fig:SpectralFolding}
 		\end{figure}
@@ -381,7 +411,7 @@
 
 		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=0.6\textwidth]{chapter3/Images/SpectralStretching.eps}
+			\includegraphics[width=0.6\textwidth]{chapter3/Images/SpectralStretchingSpectrum.eps}
 			\caption{The spectral characteristics of spectral stretching.}
 			\label{fig:SpectralStretching}
 		\end{figure}
