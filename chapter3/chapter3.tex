@@ -167,7 +167,8 @@
 			\begin{equation}
 				y(n) = \begin{cases}
 					t\sgn(x(n)) & \text{if $|x(n)| > t$} \\
-					t\sgn(x(n)) \left(1 - \left|\frac{x(n)}{t} - \sgn(x(n)) \right|^{E} \right) & \text{otherwise}
+					t\sgn(x(n)) \left(1 - \left|\frac{x(n)}{t} - \sgn(x(n)) \right|^{E} \right) &
+						\text{otherwise}
 				\end{cases}, \quad t \geq 0 \ \text{and} \ E > 1
 				\label{eq:SymmetricExponentialClipping}
 			\end{equation}
@@ -233,6 +234,9 @@
 			                 \ref{eq:SymmetricSoftClipping}.}
 				\label{fig:ClippingSpectra}
 			\end{figure}
+
+			The steeper roll off produced by soft clippers reduces the number of aliased frequencies produced.
+			This is advantageous as aliased frequencies tend to be inharmonic.
 
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Preservation of Harmonicity}
