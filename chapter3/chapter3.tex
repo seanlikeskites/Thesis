@@ -220,10 +220,17 @@
 			properties of the output signal. The spectrum will roll off at $6(n+1)$dB per octave when the
 			$n^{\text{th}}$ derivative of the output signal is discontinuous \citep{kraght2000aliasing}.
 
+			Hard clippers introduce discontinuities to the first derivative of a signal and so will introduce
+			harmonics whose amplitudes will roll off at 12dB per octave. Signals clipped by Equation
+			\ref{eq:SymmetricSoftClipping} are continuous in the first derivative \todo{(check this)} and so
+			produce harmonics which roll off at a faster rate. This can be seen in Figure
+			\ref{fig:ClippingSpectra}.
+
 			\begin{figure}[h!]
 				\centering
 				\includegraphics[width=0.6\textwidth]{chapter3/Images/ClippingSpectra.eps}
-				\caption{Spectra of hard and soft clipped sinusoids.}
+				\caption{Spectra of sinusoids clipped using Equations \ref{eq:SymmetricHardClipping} and
+			                 \ref{eq:SymmetricSoftClipping}.}
 				\label{fig:ClippingSpectra}
 			\end{figure}
 
