@@ -50,18 +50,77 @@
 
 \section{Evaluation Methodology}
 \label{sec:Excitation-Evaluation}
-	\note
-	{
-		\begin{itemize}
-			\item Low Complexity.
-			\item Predictable, consistent behaviour (homogeneity).
-			\item Spectral Characteristics.
-			\item Temporal Characteristics.
-			\item Preservation of harmonicity (low IMD).
-			\item Control over order of harmonics generated.
-			\item Naturalness of generated harmonics.
-		\end{itemize}
-	}
+	There are many different classes of nonlinear system which are used in audio processing. Each of these has its own
+	characteristics. There are several properties to look at when evaluating a nonlinear system for use in real time
+	timbral control. These are:
+
+	\begin{itemize}
+		\item Low Complexity.
+		\item Homogeneity
+		\item Spectral Characteristics.
+		\item Temporal Characteristics.
+		\item Inharmonic Distortion.
+		\item Flexibility.
+		\item Naturalness.
+	\end{itemize}
+
+	The following sections will discuss what behaviour is desirable in these areas.
+
+	\subsection{Complexity}
+	\label{sec:Excitation-Evaluation-Complexity}
+		\note
+		{
+			Some guff about real time stuff. Could probably also mention how much latency in introduced due to
+			filter buffers and such.
+		}
+	
+	\subsection{Homogeneity}
+	\label{sec:Excitation-Evaluation-Homogeneity}
+		A homogeneous system is one whose behaviour does not depend on the input amplitude of the input.  Where $f$
+		is a homogeneous system we have:
+
+		\[ f(ax) = af(x) \]
+
+		Where $a$ is some scaling factor of the input $x$.
+		
+		Nonlinear systems are typically non-homogeneous. This is undesirable when using them to achieve timbral
+		control as it means the effects are less easy to predict. Different timbral transformations could be applied
+		to the same signal if its amplitude is changed slightly. From a user point of view this makes control of the
+		system less intuitive as control parameters can change function depending on signal level.
+
+		There do exist homogeneous nonlinear systems. These are a minority however and lack some of the desirable
+		features that some non-homogeneous systems have. In some cases steps can be taken to make non-homogeneous
+		systems homogeneous. These will be discussed where appropriate in Section \ref{sec:Excitation-Methods}
+
+	\subsection{Spectral Characteristics}
+	\label{sec:Excitation-Evaluation-SpectralCharacteristics}
+		All the systems discussed in this chapter introduce new spectral content to a signal. 
+
+		\note
+		{
+			Some introduce large blocks of harmonics, some single harmonics. Does this overlap with the
+			flexibility section?
+		}
+
+	\subsection{Temporal Characteristics}
+	\label{sec:Excitation-Evaluation-TemporalCharacteristics}
+		One of the properties of a signal which contributes to its timbre is how it evolves over time. \note{Some
+		bloke has probably said something about how attack time correlates with softness or some bullshit, cite him}
+
+		How a system affects these temporal characteristics is necessary to know in order to describe the timbral
+		transformation it applies. As discussed in Section \ref{sec:Excitation-Evaluation-Homogeneity} control
+		parameters will be more intuitive if the alteration to a signals temporal characteristics are not dependant
+		on the input amplitude.
+
+	\subsection{Inharmonic Distortion}
+	\label{sec:Excitation-Evaluation-InharmonicDistortion}
+		\note{IMD}
+
+	\subsection{Flexibility}
+	\label{sec:Excitation-Evaluation-Flexibility}
+
+	\subsection{Naturalness}
+	\label{sec:Excitation-Evaluation-Naturalness}
 
 \section{Harmonic Generation Methods}
 \label{sec:Excitation-Methods}
@@ -187,7 +246,7 @@
 				\label{fig:ExponentialClippingHarmonics}
 			\end{figure}
 
-			The inhomogeneity of simple clipping systems can be counteracted by introducing gain stages either
+			The non-homogeneity of simple clipping systems can be counteracted by introducing gain stages either
 			side of the clipping stage. The first gain stage scales the signal so that the clipping stage will
 			always clip the same proportion of the signal. The second gain stage scales the signal back to the
 			original input amplitude. Analogously the clipping function can be scaled so as to always clip the
