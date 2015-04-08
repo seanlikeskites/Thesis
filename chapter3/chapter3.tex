@@ -76,8 +76,15 @@
 	
 	\subsection{Homogeneity}
 	\label{sec:Excitation-Evaluation-Homogeneity}
-		A homogeneous system is one whose behaviour does not depend on the input amplitude of the input.  Where $f$
-		is a homogeneous system we have:
+		In order to aid in the intuitiveness of an audio effect it should produce a similar perceptual effect
+		across a wide range of input signals. This is not the case with traditional audio signal processing
+		methods. Take the EQ for example. We can set up an EQ to boost some frequencies in a desired range. A
+		problem arises where we process signals which have no energy in this frequency range. For some signals
+		there will be a noticeable change in the spectral characteristics, but other signals will remain unchanged.
+
+		This problem is compounded when the effect being applied is non homogeneous. A homogeneous system is one
+		whose behaviour does not depend on the input amplitude of the input.  Where $f$ is a homogeneous system we
+		have:
 
 		\[ f(ax) = af(x) \]
 
@@ -87,6 +94,8 @@
 		control as it means the effects are less easy to predict. Different timbral transformations could be applied
 		to the same signal if its amplitude is changed slightly. From a user point of view this makes control of the
 		system less intuitive as control parameters can change function depending on signal level.
+
+		\note{Mention of homogeneous nonlinear systems \citep{larsen2004audio}.}
 
 		There do exist homogeneous nonlinear systems. These are a minority however and lack some of the desirable
 		features that some non-homogeneous systems have. In some cases steps can be taken to make non-homogeneous
@@ -570,3 +579,47 @@
 	\end{tabular}
 
 \end{landscape}
+
+%\section{Evaluating Excitation Methods}
+%\label{sec:FeatureControl-MethodEvaluation}
+%
+%	\note{Homogeneity a la DAFx paper.
+%	      Flexibility introduced by allowing single harmonic control a la SMC paper}
+%
+%	Several harmonic excitation methods were discussed in Section \ref{sec:Excitation-Methods}. When applied to the 
+%	task of controlling specific audio features each of these methods has its own advantages and disadvantages.
+%
+%	\subsection{Homogeneity}
+%	\label{sec:FeatureControl-Homogeneity}
+%
+%		\subsubsection*{Static Nonlinearities}		
+%			As previously mentioned simple static nonlinearities are very susceptible to change in input 
+%			amplitude. \citet{deman2014adaptive} counteract this issue by having the clipping threshold adapt 
+%			to changes in the RMS amplitude of the input. The user is then provided with a `relative threshold' 
+%			parameter on which the same setting should give similar perceptual results no matter what the input 
+%			amplitude.
+%
+%			\note{Talk about the issues with static nonlinearities raised in \citet{enderby2012harmonic}}
+%
+%		\subsubsection*{Bandwidth Extension}
+%			\note{Spectral mirroring, stretching and replication are all homogeneous.}
+%			
+%		\subsubsection*{Single Harmonic Generation}
+%			Using single sideband automodulation the proportion of new frequency components in the output 
+%			signal increases as the input amplitude increases. The instantaneous amplitude and phase and phase 
+%			vocoder techniques are more robust in this respect.
+%
+%	\subsection{Flexibility}
+%	\label{sec:FeatureControl-Flexibility}
+%
+%		\note{Flexibility is provided by individual harmonic generation \citep{enderby2013methods}}	
+%
+%	\subsection{Complexity}
+%	\label{sec:FeatureControl-Complexity}
+%		
+%		\note{It is advantageous to use an algorithm that will create accurate harmonics with little analysis.
+%		      Most methods don't rely on knowing the fundamental in order to generate harmonics. Spectral
+%		      shifting on the other hand does.}
+%
+%		\note{Most of the algorithms can be easily improved through the use of a low pass filter, increasing
+%	             complexity.}
