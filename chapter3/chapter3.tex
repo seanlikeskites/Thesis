@@ -173,11 +173,10 @@
 		for the clippers given in Equations \ref{eq:SymmetricHardClipping} and \ref{eq:SymmetricSoftClipping}.
 
 		\begin{equation}
-			\large
 			y(n) = \begin{cases}
 				t\sgn(x(n)) & \text{if $|x(n)| > t$} \\
-				t\sgn(x(n))\frac{3 - \left(2 - \left|\frac{2}{t}x(n) \right| \right)^{2}}{3} & \text{if
-					$\frac{t}{2} \leq |x(n)| \leq t$} \\
+				t\sgn(x(n)) \left( 1 - \frac{4}{3} \left( 1 - \left| \frac{x(n)}{t} \right| \right)^{2}
+					\right) & \text{if $\frac{t}{2} \leq |x(n)| \leq t$} \\
 				\frac{4x(n)}{3} & \text{otherwise}
 			\end{cases}, \quad t \geq 0
 			\label{eq:SymmetricSoftClipping}
