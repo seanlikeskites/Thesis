@@ -46,20 +46,62 @@
 	(THD) and Intermodulation Distortion (IMD) are the traditional objective measures of distortion
 	\citep{czerwinski2001multitone1}.
 
+	THD measures the level of new frequency components introduced by a system which are harmonically related to the original signal.
 	There are two different ways in which THD is calculated. These have been denoted $THD_{F}$ and $THD_{R}$ by
 	\citet{shmilovitz2005on} and are calculated using Equations \ref{eq:thdf} and \ref{eq:thdr} respectively.
 
 	\begin{equation}
 		THD_{F} = \frac{\sqrt{\sum_{n = 2}^{\infty} A_{n}^{2}}}{A_{1}}
-	\label{eq:thdf}
+		\label{eq:thdf}
 	\end{equation}
 
 	\begin{equation}
 		THD_{R} = \sqrt{\frac{\sum_{n = 2}^{\infty} A_{n}^{2}}{\sum_{n = 1}^{\infty} A_{n}^{2}}}
-	\label{eq:thdr}
+		\label{eq:thdr}
 	\end{equation}
 
-	Where $A_n$ is the amplitude of the $n_{th}$ harmonic.
+	Where $A_n$ is the amplitude of the $n_{th}$ harmonic. 
+
+	Both these methods been used in recent work published in the audio field ($THD_{F}$ by \citet{fleischmann2014a} and
+	$THD_{R}$ by \citet{dutilleux2011nonlinear}). The lack of standardisation for this metric makes it difficult to
+	compare experiment results reported by different sources.
+
+	IMD is a measure of the new spectral content introduced by a system as a result of intermodulation between the
+	frequency components of the original signal. There are several different standards for the calculation of IMD some
+	of which are listed by \citet{voishvillo2006assessment}.
+
+	THD and IMD give very limited information about the response of nonlinear systems. They are typically measured using
+	simple input signals which are not representative of the signals a system would process in actual use. Given that
+	nonlinear systems my not satisfy the condition of superposition a system may process simple and complex signals in
+	vastly differing manners. 
+
+	These metrics also give no indication of the perceived degradation in audio quality a system introduces. A signal
+	with a high THD values may sound less distorted that one with a small THD. Several researchers have developed new
+	distortion metrics which indicate the perceived amount of distortion.
+
+	\citet{geddes2003auditory} suggest some psychoacoustic principles which may be applicable to the analysis of
+	nonlinear distortion:
+
+	\begin{itemize}
+		\item New frequency components introduced, with lower frequencies that the original components, will be more
+			perceptible.
+		\item Higher order nonlinearity artefacts will be more perceptible.
+		\item Nonlinearities which affect lower amplitude signals will be more perceptible.
+	\end{itemize}
+
+	\citet{voishvillo2006assessment} adds that the perception of distortion is decreased at the very high and low ends
+	of the frequency spectrum.
+
+	The GedLee metric, proposed by \citet{geddes2003auditory}, measures how much a nonlinearity will be perceived
+	through analysis of its characteristic curve. It is calculated using Equation \ref{eq:gedlee}.
+
+	\begin{equation}
+		G_{m} = \sqrt{\int_{-1}^{1} \left( \cos \left( \frac{x\pi}{2} \right) \right)^{2}
+		              \left( \frac{d^{2}}{dx^{2}} T(x) \right)^{2} dx}
+	        \label{eq:gedlee}
+	\end{equation}
+
+	Where $T(x)$ is the characteristic curve of the nonlinearity in question.
 
 \section{Timbre of Nonlinear Distortion}
 \label{sec:Excitation-Timbre}
