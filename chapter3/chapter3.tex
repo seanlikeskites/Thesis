@@ -18,15 +18,48 @@
 \label{sec:Excitation-Introduction}
 	\note{Harmonic excitation is of the chain. Look I wrote a paper about it \citep{enderby2013methods}.}
 
-\section{Nonlinear Systems}
-\label{sec:Excitation-NonlinearSystems}
+	Nonlinear distortion is an inherent part of an analogue signal path. It alters the dynamic variation of signals and
+	introduces new spectral components. Its use as a creative effect is best know by guitar players
+	\citep{dutilleux2011nonlinear}. This was due to the use of values in early guitar amplifiers imparting nonlinear
+	transforms onto the audio signal. This distorted sound became desirable and several electronic circuits were
+	developed with the purpose of inducing nonlinear distortion. 
+
+	More recently research into modelling these distortion circuits in the digital domain has been carried out, such as
+	that done by \citet{pakarinen2009a}. Several researchers have also worked on creating novel digital distortion
+	techniques \citep{pekonen2008coefficient, puckette2007patch}.
+
+	\note{What will this chapter discuss Sean?}
+
+\section{Nonlinear Distortion Metrics}
+\label{sec:Excitation-NonlinearDistortionMetrics}
 	\note
 	{
 		THD and IMD are rubbish but served some purpose in the olden days. Some more metrics were made but they 
 		were still only concerned with minimising distortion \citep{lee2003auditory, geddes2003auditory, 
-		tan2004predicting}. \citet{voishvillo2006assessment} summarises a lot of metrics nicely. Then some bloke 
+		tan2004predicting}. \citet{voishvillo2006assessment} summarises a lot of metrics nicely and
+		\citet{czerwinski2001multitone1} talks a load of shite about it. Then some bloke 
 		decided distortion was cool.
 	}
+
+	Historically nonlinear distortion has been seen as an undesirable property of audio systems. Several metrics exist
+	with the purposes of measuring the extent to which audio quality is degraded by a system. Total Harmonic Distortion
+	(THD) and Intermodulation Distortion (IMD) are the traditional objective measures of distortion
+	\citep{czerwinski2001multitone1}.
+
+	There are two different ways in which THD is calculated. These have been denoted $THD_{F}$ and $THD_{R}$ by
+	\citet{shmilovitz2005on} and are calculated using Equations \ref{eq:thdf} and \ref{eq:thdr} respectively.
+
+	\begin{equation}
+		THD_{F} = \frac{\sqrt{\sum_{n = 2}^{\infty} A_{n}^{2}}}{A_{1}}
+	\label{eq:thdf}
+	\end{equation}
+
+	\begin{equation}
+		THD_{R} = \sqrt{\frac{\sum_{n = 2}^{\infty} A_{n}^{2}}{\sum_{n = 1}^{\infty} A_{n}^{2}}}
+	\label{eq:thdr}
+	\end{equation}
+
+	Where $A_n$ is the amplitude of the $n_{th}$ harmonic.
 
 \section{Timbre of Nonlinear Distortion}
 \label{sec:Excitation-Timbre}
@@ -169,7 +202,7 @@
 		Equation \ref{eq:SymmetricHardClipping} describes a hard clipper due to the lack of a transition section.
 		Soft clippers apply a nonlinear function to medium magnitude samples in order to smooth the transition
 		between linear and clipping sections. Equation \ref{eq:SymmetricSoftClipping} shows a soft clipper adapted
-		from one given by \citet{dutilleux2002nonlinear}. Figure \ref{fig:Clipping} shows the characteristic curves
+		from one given by \citet{dutilleux2011nonlinear}. Figure \ref{fig:Clipping} shows the characteristic curves
 		for the clippers given in Equations \ref{eq:SymmetricHardClipping} and \ref{eq:SymmetricSoftClipping}.
 
 		\begin{equation}
