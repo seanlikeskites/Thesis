@@ -26,7 +26,7 @@
 
 	More recently research into modelling these distortion circuits in the digital domain has been carried out, such as
 	that done by \citet{pakarinen2009a}. Several researchers have also worked on creating novel digital distortion
-	techniques \citep{pekonen2008coefficient, puckette2007patch}.
+	techniques \citep{fernandez2001distortion, pekonen2008coefficient, puckette2007patch}.
 
 	\note{What will this chapter discuss Sean?}
 
@@ -102,6 +102,32 @@
 	\end{equation}
 
 	Where $T(x)$ is the characteristic curve of the nonlinearity in question.
+
+	A considerable advantage of the GedLee metric is that it directly measures the system in question rather than
+	signals processed by it. This should allow measurements taken using the metric to describe the audible degradation
+	of any signal processed by a system. \citet{lee2003auditory} provide results of an experiment in which their metric
+	was tested against THD and IMD as a rating of audio quality. They show that for low levels of distortion the GedLee
+	metric correlates with subjective audio quality ratings. THD and IMD are both found to not correlate well with
+	perceived quality.
+
+	In Equation \ref{eq:gedlee} the system being analysed is assumed to be a simple static nonlinearity. Many nonlinear
+	systems are more complex than this and may exhibit frequency dependant or time varying behaviour. While the GedLee
+	metric may provide a good, signal independent, measure of distortion, it is only applicable to a subset of nonlinear
+	systems.
+
+	\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score (DS), which they then
+	improved upon to create the $R_{nonlin}$ metric \citep{tan2004predicting}. Both these metrics rely on analysing
+	signals which have been processed so they may not give results which can be applied as generally as those using the
+	GedLee metric. Where these metrics have an advantage is that they use models of the human hearing system to better
+	approximate the perceived level of distortion.
+
+	To calculate the DS the audio is split into frequency bands which model the auditory filters of the cochlear. These
+	auditory filters represent bands in which two tones will interfere with the perception of each other
+	\citep{fastl2007psychoacoustics}. Tones can be masked (made inaudible) by other tones within the same audotiry
+	filter band. By processing the audio in this manner the DS metric can take account of elements of the distortion
+	which may not be perceptible because of masking.
+	
+	$R_{nonlin}$ improves on this
 
 \section{Timbre of Nonlinear Distortion}
 \label{sec:Excitation-Timbre}
