@@ -187,40 +187,55 @@
 			\begin{figure}[h!]
 				\centering
 				\begin{tikzpicture}
-					\node (Sig2) [draw] {$x^{2}(t)$};
-					\node (Sig3) [draw, below of=Sig2] {$x^{3}(t)$};
-					\node (SigN) [draw, below of=Sig3, yshift=-0.5cm] {$x^{N}(t)$};
+					\node (Sig2) [draw] at (1, 3) {$x^{2}(t)$};
+					\node (Sig3) [draw] at (1, 2) {$x^{3}(t)$};
+					\node (SigN) [draw] at (1, 0.5) {$x^{N}(t)$};
 
-					\node (Filter2) [draw, right of=Sig2, xshift=2cm] {$A_{2}(f)$};
-					\node (Filter1) [draw, above of=Filter2] {$A_{1}(f)$};
-					\node (Filter3) [draw, below of=Filter2] {$A_{3}(f)$};
-					\node (FilterN) [draw, right of=SigN, xshift=2cm] {$A_{N}(f)$};
+					\node (Filter1) [draw] at (3, 4) {$A_{1}(f)$};
+					\node (Filter2) [draw] at (3, 3) {$A_{2}(f)$};
+					\node (Filter3) [draw] at (3, 2) {$A_{3}(f)$};
+					\node (FilterN) [draw] at (3, 0.5) {$A_{N}(f)$};
 
-					\draw [arrow] (Sig2) -- (Filter2);
-					\draw [arrow] (Sig3) -- (Filter3);
-					\draw [arrow] (SigN) -- (FilterN);
+					\draw (Sig2) -- (Filter2);
+					\draw (Sig3) -- (Filter3);
+					\draw (SigN) -- (FilterN);
 
 					\draw [dots] (Sig3) -- (SigN);
 					\draw [dots] (Filter3) -- (FilterN);
 
-					\node (Plus) [operator, right of=Filter3, xshift=2cm] {+};
-					\node (In) [left of=Sig3, xshift=-2cm] {$x(t)$};
-					\node (Out) [right of=Plus] {$y(t)$};
-
-					\node (Out1) [right of=Filter1, xshift=1.5cm] {};
-					\node (Out2) [right of=Filter2, xshift=1.5cm] {};
-					\node (Out3) [right of=Filter3, xshift=1.5cm] {};
-					\node (OutN) [right of=FilterN, xshift=1.5cm] {};
+					\coordinate (Out1) at (4.5, 4);
+					\coordinate (Out2) at (4.5, 3);
+					\coordinate (Out3) at (4.5, 2);
+					\coordinate (OutN) at (4.5, 0.5);
 
 					\draw (Filter1) -- (Out1);
 					\draw (Filter2) -- (Out2);
 					\draw (Filter3) -- (Out3);
 					\draw (FilterN) -- (OutN);
 
-					\draw [arrow] (Out1) -- (Plus);
-					\draw [arrow] (Out2) -- (Plus);
-					\draw [arrow] (Out3) -- (Plus);
-					\draw [arrow] (OutN) -- (Plus);
+					\node (Add) [operator] at (5, 2) {+};
+					\draw (Out1) -- (Add);
+					\draw (Out2) -- (Add);
+					\draw (Out3) -- (Add);
+					\draw (OutN) -- (Add);
+
+					\coordinate (In1) at (-0.5, 4);
+					\coordinate (In2) at (-0.5, 3);
+					\coordinate (In3) at (-0.5, 2);
+					\coordinate (InN) at (-0.5, 0.5);
+
+					\draw (In1) -- (Filter1);
+					\draw (In2) -- (Sig2);
+					\draw (In3) -- (Sig3);
+					\draw (InN) -- (SigN);
+					\draw (InN) -- (In1);
+
+					\node (In) at (-1.5, 2) {$x(n)$};
+					\draw (In) -- (In3);
+
+					\node (Out) at (7, 2) {$y(n)$};
+					\draw (Add) -- (Out);
+
 				\end{tikzpicture}
 				\caption{Generalised Polynomial Hammerstein Model}
 				\label{fig:hammerstein}
