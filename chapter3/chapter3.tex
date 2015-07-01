@@ -16,132 +16,226 @@
 
 \section{Introduction}
 \label{sec:Excitation-Introduction}
-	\note{Harmonic excitation is of the chain. Look I wrote a paper about it \citep{enderby2013methods}.}
-
 	Nonlinear distortion is an inherent part of an analogue signal path. It alters the dynamic variation of signals and
 	introduces new spectral components. Its use as a creative effect is best know by guitar players
 	\citep{dutilleux2011nonlinear}. This was due to the use of values in early guitar amplifiers imparting nonlinear
 	transforms onto the audio signal. This distorted sound became desirable and several electronic circuits were
-	developed with the purpose of inducing nonlinear distortion. 
+	developed with the purpose of inducing nonlinear distortion. More recently research into modelling these distortion
+	circuits in the digital domain has been carried out, such as that done by \citet{pakarinen2009a}. Several
+	researchers have also worked on creating novel digital distortion techniques \citep{fernandez2001distortion,
+	pekonen2008coefficient, puckette2007patch}.
 
-	More recently research into modelling these distortion circuits in the digital domain has been carried out, such as
-	that done by \citet{pakarinen2009a}. Several researchers have also worked on creating novel digital distortion
-	techniques \citep{fernandez2001distortion, pekonen2008coefficient, puckette2007patch}.
+	Distortion is a very broad term which is typically used to describe unwanted effects. For this work a better defined
+	term, harmonic excitation, will be used to refer to the deliberate and controlled application of nonlinear systems
+	in order to introduce new frequency components to a signal. \citet{dutilleux2011nonlinear} defines excitation as
+	the process of controlling timbre through the emphasis of certain frequencies. While this is possible with linear
+	systems, such as equalisers, nonlinear systems provide more flexibility as they can add energy in areas of the
+	spectrum where the original signal had none.
 
-	\note{What will this chapter discuss Sean?}
+	This chapter will review how nonlinear systems have been analysed in previous audio research, how their effects are
+	quantified and the timbral transformations they impart. The current uses of harmonic excitation in audio engineering
+	are then discussed in Section \ref{sec:Excitation-Uses}. A list of criteria with which to evaluate harmonic
+	excitation methods for use in real time timbral control is developed in Section \ref{sec:Excitation-Evaluation}.
+	Section \ref{sec:Excitation-Methods} then describes several methods for harmonic excitation and how they perform in
+	these areas.  Issues with certain methods are identified and ways to overcome them suggested.
 
-\section{Nonlinear Distortion Metrics}
-\label{sec:Excitation-NonlinearDistortionMetrics}
-	\note
-	{
-		THD and IMD are rubbish but served some purpose in the olden days. Some more metrics were made but they 
-		were still only concerned with minimising distortion \citep{lee2003auditory, geddes2003auditory, 
-		tan2004predicting}. \citet{voishvillo2006assessment} summarises a lot of metrics nicely and
-		\citet{czerwinski2001multitone1} talks a load of shite about it. Then some bloke 
-		decided distortion was cool.
-	}
+\section{Analysis of Nonlinear Systems}
+\label{sec:Excitation-AnalysisOfNonlinearSystems}
+	The analysis of nonlinear system is more complicated that that of linear systems. This is due to more features of
+	the input signal affecting how the system responds. In the field of audio engineering much of the literature
+	concerning nonlinearities has to do with minimising distortion or measuring the maximum allowable levels of
+	distortion. Several distortion metrics have been developed each with there own uses. A review of many of these
+	metrics is given by \cite{voishvillo2006assessment}, some of which will be discussed in this section.
 
-	Historically nonlinear distortion has been seen as an undesirable property of audio systems. Several metrics exist
-	with the purposes of measuring the extent to which audio quality is degraded by a system. Total Harmonic Distortion
-	(THD) and Intermodulation Distortion (IMD) are the traditional objective measures of distortion
-	\citep{czerwinski2001multitone1}.
+	\subsection{Objective Distortion Metrics}
+	\label{sec:Excitation-Analysis-Metrics}
+		Total Harmonic Distortion (THD) and Intermodulation Distortion (IMD) are the traditional objective measures
+		of distortion \citep{czerwinski2001multitone1}. THD measures the level of new frequency components
+		introduced by a system which are harmonically related to the original signal.  There are two different ways
+		in which THD is calculated. These have been denoted $THD_{F}$ and $THD_{R}$ by \citet{shmilovitz2005on} and
+		are calculated using Equations \ref{eq:thdf} and \ref{eq:thdr} respectively.
 
-	THD measures the level of new frequency components introduced by a system which are harmonically related to the original signal.
-	There are two different ways in which THD is calculated. These have been denoted $THD_{F}$ and $THD_{R}$ by
-	\citet{shmilovitz2005on} and are calculated using Equations \ref{eq:thdf} and \ref{eq:thdr} respectively.
+		\begin{equation}
+			THD_{F} = \frac{\sqrt{\sum_{n = 2}^{\infty} A_{n}^{2}}}{A_{1}}
+			\label{eq:thdf}
+		\end{equation}
 
-	\begin{equation}
-		THD_{F} = \frac{\sqrt{\sum_{n = 2}^{\infty} A_{n}^{2}}}{A_{1}}
-		\label{eq:thdf}
-	\end{equation}
+		\begin{equation}
+			THD_{R} = \sqrt{\frac{\sum_{n = 2}^{\infty} A_{n}^{2}}{\sum_{n = 1}^{\infty} A_{n}^{2}}}
+			\label{eq:thdr}
+		\end{equation}
 
-	\begin{equation}
-		THD_{R} = \sqrt{\frac{\sum_{n = 2}^{\infty} A_{n}^{2}}{\sum_{n = 1}^{\infty} A_{n}^{2}}}
-		\label{eq:thdr}
-	\end{equation}
+		Where $A_n$ is the amplitude of the $n_{th}$ harmonic. 
 
-	Where $A_n$ is the amplitude of the $n_{th}$ harmonic. 
+		Both these methods been used in recent work published in the audio field ($THD_{F}$ by
+		\citet{fleischmann2014a} and $THD_{R}$ by \citet{dutilleux2011nonlinear}). The lack of standardisation for
+		this metric makes it difficult to compare experiment results reported by different sources.
 
-	Both these methods been used in recent work published in the audio field ($THD_{F}$ by \citet{fleischmann2014a} and
-	$THD_{R}$ by \citet{dutilleux2011nonlinear}). The lack of standardisation for this metric makes it difficult to
-	compare experiment results reported by different sources.
+		IMD is a measure of the new spectral content introduced by a system as a result of intermodulation between
+		the frequency components of the original signal. There are several different standards for the calculation
+		of IMD some of which are listed by \citet{voishvillo2006assessment}.
 
-	IMD is a measure of the new spectral content introduced by a system as a result of intermodulation between the
-	frequency components of the original signal. There are several different standards for the calculation of IMD some
-	of which are listed by \citet{voishvillo2006assessment}.
+		THD and IMD give very limited information about the response of nonlinear systems. They are typically
+		measured using simple input signals which are not representative of the signals a system would process in
+		actual use. Given that nonlinear systems my not satisfy the condition of superposition a system may process
+		simple and complex signals in vastly differing manners. 
 
-	THD and IMD give very limited information about the response of nonlinear systems. They are typically measured using
-	simple input signals which are not representative of the signals a system would process in actual use. Given that
-	nonlinear systems my not satisfy the condition of superposition a system may process simple and complex signals in
-	vastly differing manners. 
+		These metrics also give no indication of the perceived degradation in audio quality a system introduces. A
+		signal with a high THD values may sound less distorted that one with a small THD. Several researchers have
+		developed new distortion metrics which indicate the perceived amount of distortion.
 
-	These metrics also give no indication of the perceived degradation in audio quality a system introduces. A signal
-	with a high THD values may sound less distorted that one with a small THD. Several researchers have developed new
-	distortion metrics which indicate the perceived amount of distortion.
+		\citet{geddes2003auditory} suggest some psychoacoustic principles which may be applicable to the analysis of
+		nonlinear distortion:
 
-	\citet{geddes2003auditory} suggest some psychoacoustic principles which may be applicable to the analysis of
-	nonlinear distortion:
+		\begin{itemize}
+			\item New frequency components introduced, with lower frequencies that the original components, will
+			      be more perceptible.
+			\item Higher order nonlinearity artefacts will be more perceptible.
+			\item Nonlinearities which affect lower amplitude signals will be more perceptible.
+		\end{itemize}
 
-	\begin{itemize}
-		\item New frequency components introduced, with lower frequencies that the original components, will be more
-			perceptible.
-		\item Higher order nonlinearity artefacts will be more perceptible.
-		\item Nonlinearities which affect lower amplitude signals will be more perceptible.
-	\end{itemize}
+		\citet{voishvillo2006assessment} adds that the perception of distortion is decreased at the very high and
+		low ends of the frequency spectrum.
 
-	\citet{voishvillo2006assessment} adds that the perception of distortion is decreased at the very high and low ends
-	of the frequency spectrum.
+		The GedLee metric, proposed by \citet{geddes2003auditory}, measures how much a nonlinearity will be
+		perceived through analysis of its characteristic curve. It is calculated using Equation \ref{eq:gedlee}.
 
-	The GedLee metric, proposed by \citet{geddes2003auditory}, measures how much a nonlinearity will be perceived
-	through analysis of its characteristic curve. It is calculated using Equation \ref{eq:gedlee}.
+		\begin{equation}
+			G_{m} = \sqrt{\int_{-1}^{1} \left( \cos \left( \frac{x\pi}{2} \right) \right)^{2}
+				      \left( \frac{d^{2}}{dx^{2}} T(x) \right)^{2} dx}
+			\label{eq:gedlee}
+		\end{equation}
 
-	\begin{equation}
-		G_{m} = \sqrt{\int_{-1}^{1} \left( \cos \left( \frac{x\pi}{2} \right) \right)^{2}
-		              \left( \frac{d^{2}}{dx^{2}} T(x) \right)^{2} dx}
-	        \label{eq:gedlee}
-	\end{equation}
+		Where $T(x)$ is the characteristic curve of the nonlinearity in question.
 
-	Where $T(x)$ is the characteristic curve of the nonlinearity in question.
+		A considerable advantage of the GedLee metric is that it directly measures the system in question rather
+		than signals processed by it. This should allow measurements taken using the metric to describe the audible
+		degradation of any signal processed by a system. \citet{lee2003auditory} provide results of an experiment in
+		which their metric was tested against THD and IMD as a rating of audio quality. They show that for low
+		levels of distortion the GedLee metric correlates with subjective audio quality ratings. THD and IMD are
+		both found to not correlate well with perceived quality.
 
-	A considerable advantage of the GedLee metric is that it directly measures the system in question rather than
-	signals processed by it. This should allow measurements taken using the metric to describe the audible degradation
-	of any signal processed by a system. \citet{lee2003auditory} provide results of an experiment in which their metric
-	was tested against THD and IMD as a rating of audio quality. They show that for low levels of distortion the GedLee
-	metric correlates with subjective audio quality ratings. THD and IMD are both found to not correlate well with
-	perceived quality.
+		In Equation \ref{eq:gedlee} the system being analysed is assumed to be a simple static nonlinearity. Many
+		nonlinear systems are more complex than this and may exhibit frequency dependant or time varying behaviour.
+		While the GedLee metric may provide a good, signal independent, measure of distortion, it is only applicable
+		to a subset of nonlinear systems.
 
-	In Equation \ref{eq:gedlee} the system being analysed is assumed to be a simple static nonlinearity. Many nonlinear
-	systems are more complex than this and may exhibit frequency dependant or time varying behaviour. While the GedLee
-	metric may provide a good, signal independent, measure of distortion, it is only applicable to a subset of nonlinear
-	systems.
+		\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score (DS), which they then
+		improved upon to create the $R_{nonlin}$ metric \citep{tan2004predicting}. Both these metrics rely on
+		analysing signals which have been processed so they may not give results which can be applied as generally
+		as those using the GedLee metric. Where these metrics have an advantage is that they use models of the human
+		hearing system to better approximate the perceived level of distortion.
 
-	\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score (DS), which they then
-	improved upon to create the $R_{nonlin}$ metric \citep{tan2004predicting}. Both these metrics rely on analysing
-	signals which have been processed so they may not give results which can be applied as generally as those using the
-	GedLee metric. Where these metrics have an advantage is that they use models of the human hearing system to better
-	approximate the perceived level of distortion.
+		To calculate the DS the audio is split into frequency bands which model the auditory filters of the
+		cochlear. These auditory filters represent bands in which two tones will interfere with the perception of
+		each other \citep{fastl2007psychoacoustics}. Tones can be masked (made inaudible) by other tones within the
+		same auditory filter band. By processing the audio in this manner the DS metric can take account of elements
+		of the distortion which may not be perceptible because of masking.
+		
+		The $R_{nonlin}$ metric improves on this model of the hearing system by including a filter with a frequency
+		response similar to that of the outer and middle ear. The filter used is as described by
+		\citet{glasberg2002a}, it attenuates frequencies at either end of the audible spectrum. This models the
+		decreased perception of distortion at these frequencies discussed earlier.
 
-	To calculate the DS the audio is split into frequency bands which model the auditory filters of the cochlear. These
-	auditory filters represent bands in which two tones will interfere with the perception of each other
-	\citep{fastl2007psychoacoustics}. Tones can be masked (made inaudible) by other tones within the same auditory
-	filter band. By processing the audio in this manner the DS metric can take account of elements of the distortion
-	which may not be perceptible because of masking.
-	
-	The $R_{nonlin}$ metric improves on this model of the hearing system by including a filter with a frequency response
-	similar to that of the outer and middle ear. The filter used is as described by \citet{glasberg2002a}, it attenuates
-	frequencies at either end of the audible spectrum. This models the decreased perception of distortion at these
-	frequencies discussed earlier.
+		\citet{tan2004predicting} report greater correlation between $R_{nonlin}$ and perceived audio quality then
+		\citet{lee2003auditory} do for the GedLee metric. They also demonstrate how accurate the $R_{nonlin}$ metric
+		is in predicting the perceived distortion level introduced to music and speech signals.
 
-	\citet{tan2004predicting} report greater correlation between $R_{nonlin}$ and perceived audio quality then
-	\citet{lee2003auditory} do for the GedLee metric. They also demonstrate how accurate the $R_{nonlin}$ metric is
-	in predicting the perceived distortion level introduced to music and speech signals.
+		The research discussed in this section has focused on measuring the extent to which unwanted distortion can
+		be perceived. This does not provide enough information for the description of timbre. The listening test
+		performed to verify the developed metrics asked subjects to rate the quality of audio samples. Nonlinear
+		distortion could alter the timbre of audio without deteriorating its perceived quality. It may also be
+		possible to describe the timbre of different nonlinear distortions further rather than ranking them on the
+		same distortion scale. Research has been carried out into the timbre of distortion as discussed in Section
+		\ref{sec:Excitation-Timbre}.
 
-	The research discussed in this section has focused on measuring the extent to which unwanted distortion can be
-	perceived. This does not provide enough information for the description of timbre. The listening test performed to
-	verify the developed metrics asked subjects to rate the quality of audio samples. Nonlinear distortion could alter
-	the timbre of audio without deteriorating its perceived quality. It may also be possible to describe the tmbre of
-	different nonlinear distortions further rather than ranking them on the same distortion scale. Research has been
-	carried out in the the timbre of distortion as discussed in Section \ref{sec:Excitation-Timbre}.
+		\subsection{Nonlinear Modelling}
+		Various techniques for modelling nonlinear systems have been developed in the mathematics and engineering
+		literature. These models allow for more in depth analysis of a system as well as replicating its effects in
+		the digital domain. Summaries of some of these modelling techniques can be found in the work by
+		\citet{janczak2005identification} and \citet{ogunfunmi2007adaptive}.
+
+		Two nonlinear modelling techniques have found use in audio processing:
+
+		\begin{itemize}
+			\item Wave Digital Filters as discussed by \citet{fettweis1986wave}.
+			\item The Synchronised Swept Sine Method as described by \citet{novak2010nonlinear}.
+		\end{itemize}
+
+		These techniques are summarised here.
+
+		\subsubsection{Wave Digital Filters}
+			Wave digital filters are a class of filter which can be used to emulate analogue circuits. The
+			process of creating a digital of a circuit involves constructing a `tree' of blocks. These blocks
+			represent either electronic components, or connections between components in a circuit. Each block
+			obeys a certain set of rules when presented with a signal. Blocks have been developed for modelling
+			nonlinear circuit elements such as operational amplifiers and diodes \citep{paiva2012emulation}.
+
+			While wave digital filters can accurately represent a nonlinear system there are some disadvantages.
+			As systems get more complex traversing the `tree' of blocks in order to calculate the output signal
+			takes more computation. This presents problems when real time system response is needed. There are
+			also certain circuit topologies which cannot be represented in the wave digital domain
+			\citep{valimaki2011virtual}. Another consideration is that knowledge of the circuitry inside a
+			system being modelled is needed. This might not always be available.
+
+		\subsubsection{The Synchronised Swept Sine Method}
+			The synchronised swept sine method is a technique for identifying nonlinear systems without prior
+			knowledge of their operation. The details of its operation are describe by
+			\citet{novak2010nonlinear}. The result of the testing is a series of filter kernels to be used in
+			the model shown in Figure \ref{fig:hammerstein}.
+
+			\begin{figure}[h!]
+				\centering
+				\begin{tikzpicture}
+					\node (Sig2) [draw] {$x^{2}(t)$};
+					\node (Sig3) [draw, below of=Sig2] {$x^{3}(t)$};
+					\node (SigN) [draw, below of=Sig3, yshift=-0.5cm] {$x^{N}(t)$};
+
+					\node (Filter2) [draw, right of=Sig2, xshift=2cm] {$A_{2}(f)$};
+					\node (Filter1) [draw, above of=Filter2] {$A_{1}(f)$};
+					\node (Filter3) [draw, below of=Filter2] {$A_{3}(f)$};
+					\node (FilterN) [draw, right of=SigN, xshift=2cm] {$A_{N}(f)$};
+
+					\draw [arrow] (Sig2) -- (Filter2);
+					\draw [arrow] (Sig3) -- (Filter3);
+					\draw [arrow] (SigN) -- (FilterN);
+
+					\draw [dots] (Sig3) -- (SigN);
+					\draw [dots] (Filter3) -- (FilterN);
+
+					\node (Plus) [operator, right of=Filter3, xshift=2cm] {+};
+					\node (In) [left of=Sig3, xshift=-2cm] {$x(t)$};
+					\node (Out) [right of=Plus] {$y(t)$};
+
+					\node (Out1) [right of=Filter1, xshift=1.5cm] {};
+					\node (Out2) [right of=Filter2, xshift=1.5cm] {};
+					\node (Out3) [right of=Filter3, xshift=1.5cm] {};
+					\node (OutN) [right of=FilterN, xshift=1.5cm] {};
+
+					\draw (Filter1) -- (Out1);
+					\draw (Filter2) -- (Out2);
+					\draw (Filter3) -- (Out3);
+					\draw (FilterN) -- (OutN);
+
+					\draw [arrow] (Out1) -- (Plus);
+					\draw [arrow] (Out2) -- (Plus);
+					\draw [arrow] (Out3) -- (Plus);
+					\draw [arrow] (OutN) -- (Plus);
+				\end{tikzpicture}
+				\caption{Generalised Polynomial Hammerstein Model}
+				\label{fig:hammerstein}
+			\end{figure}
+
+			The model is, in effect, an extension of a Taylor Series of order $N$. The input is raised to each
+			individual power, 1 through $N$, and each of these signals is filtered by an individual kernel,
+			$A_{N}(f)$. The resultant signals are then summed to produce the output.
+
+			This method is easier to implement that a wave digital filter as no prior knowledge of the system is
+			needed. The amount of computation time needed to process a signal is also considerably less. There
+			are however some disadvantages. There is no account for the dependence of the system on the
+			amplitude of the input signal. This is shown by \citet{novak2010analysis} who demonstrate how two
+			different circuits are emulated with different degrees of accuracy. The is also no definite way of
+			deciding what order Hammerstein model to use prior to testing.
 
 \section{Timbre of Nonlinear Distortion}
 \label{sec:Excitation-Timbre}
@@ -152,6 +246,7 @@
 
 \section{Uses of Harmonic Excitation}
 \label{sec:Excitation-Uses}
+	
 	\note
 	{
 		Psychoacoustic reproduction of low frequency signals on small loudspeakers as done by 
