@@ -123,11 +123,25 @@
 
 	To calculate the DS the audio is split into frequency bands which model the auditory filters of the cochlear. These
 	auditory filters represent bands in which two tones will interfere with the perception of each other
-	\citep{fastl2007psychoacoustics}. Tones can be masked (made inaudible) by other tones within the same audotiry
+	\citep{fastl2007psychoacoustics}. Tones can be masked (made inaudible) by other tones within the same auditory
 	filter band. By processing the audio in this manner the DS metric can take account of elements of the distortion
 	which may not be perceptible because of masking.
 	
-	$R_{nonlin}$ improves on this
+	The $R_{nonlin}$ metric improves on this model of the hearing system by including a filter with a frequency response
+	similar to that of the outer and middle ear. The filter used is as described by \citet{glasberg2002a}, it attenuates
+	frequencies at either end of the audible spectrum. This models the decreased perception of distortion at these
+	frequencies discussed earlier.
+
+	\citet{tan2004predicting} report greater correlation between $R_{nonlin}$ and perceived audio quality then
+	\citet{lee2003auditory} do for the GedLee metric. They also demonstrate how accurate the $R_{nonlin}$ metric is
+	in predicting the perceived distortion level introduced to music and speech signals.
+
+	The research discussed in this section has focused on measuring the extent to which unwanted distortion can be
+	perceived. This does not provide enough information for the description of timbre. The listening test performed to
+	verify the developed metrics asked subjects to rate the quality of audio samples. Nonlinear distortion could alter
+	the timbre of audio without deteriorating its perceived quality. It may also be possible to describe the tmbre of
+	different nonlinear distortions further rather than ranking them on the same distortion scale. Research has been
+	carried out in the the timbre of distortion as discussed in Section \ref{sec:Excitation-Timbre}.
 
 \section{Timbre of Nonlinear Distortion}
 \label{sec:Excitation-Timbre}
