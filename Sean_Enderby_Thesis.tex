@@ -1,26 +1,32 @@
 \documentclass[a4paper]{report}
 
+% some page formatting packages
 \usepackage{parskip}
 \usepackage[cm]{fullpage} % probably change this to meet uni standards
 \usepackage{lscape}
 
+% packages for figures
 \usepackage{graphicx}
 \usepackage{subfig}
 \usepackage[justification=centering]{caption}
 \usepackage{epstopdf}
 
+% oh yes we have to use Harvard referencing or Peter will kill us
 \usepackage{natbib}
 
+% packages for the formatting of equations
 \usepackage{amsmath}
 \DeclareMathOperator{\sgn}{sgn}
 \usepackage{amsfonts}
 
+% make some colours and commands so we can put in notes to ourself
 \usepackage{color}
 \definecolor{noteColour}{RGB}{0, 0, 255}
 \definecolor{todoColour}{RGB}{255, 0, 0}
 \newcommand{\note}[1]{{\color{noteColour}#1}}
 \newcommand{\todo}[1]{{\color{todoColour}#1}}
 
+% clickable links for references in the document also put page cited on info in the bibliography
 \usepackage[backref=page]{hyperref}
 \hypersetup
 {
@@ -39,12 +45,18 @@
 	\fi
 }
 
+% gotta draw them diagrams in tikz, otherwise you fail at life
 \usepackage{tikz}
 \usetikzlibrary{fit, arrows}
 \tikzstyle{dots} = [dotted]
 \tikzstyle{operator} = [circle, draw=black]
 
+% fuck serifs
 \renewcommand{\familydefault}{\sfdefault}
+
+% make those tables pretty
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering}p{#1}}
 
 \author{Sean Enderby}
 \title{Perceptual Control of Audio Through Harmonic Excitation}

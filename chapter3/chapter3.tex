@@ -213,7 +213,7 @@
 					\draw (Filter3) -- (Out3);
 					\draw (FilterN) -- (OutN);
 
-					\node (Add) [operator] at (5, 2) {+};
+					\node (Add) [operator] at (5, 2.25) {+};
 					\draw (Out1) -- (Add);
 					\draw (Out2) -- (Add);
 					\draw (Out3) -- (Add);
@@ -230,10 +230,11 @@
 					\draw (InN) -- (SigN);
 					\draw (InN) -- (In1);
 
-					\node (In) at (-1.5, 2) {$x(n)$};
-					\draw (In) -- (In3);
+					\node (In) at (-1.25, 2.25) {$x(n)$};
+					\coordinate (InMid) at (-0.5, 2.25);
+					\draw (In) -- (InMid);
 
-					\node (Out) at (7, 2) {$y(n)$};
+					\node (Out) at (6, 2.25) {$y(n)$};
 					\draw (Add) -- (Out);
 
 				\end{tikzpicture}
@@ -254,14 +255,70 @@
 
 \section{Timbre of Nonlinear Distortion}
 \label{sec:Excitation-Timbre}
-	\note
-	{
-		Marui and Martens did some of this \citep{marui2005timbre, marui2005constructing, marui2005predicting}.
-	}
+	There is a wealth of research into how low level audio features influence timbre \note{(probably refer to stuff in
+	the timbre chapter here)}. The mappings between low level features and semantic features from the literature can be
+	applied to harmonic excitation effects provided the excitation method used can influence the required low level
+	features. There may be semantic terms used to describe the timbre of nonlinear distortion which are seldom used to
+	describe other timbres. The majority of timbral research does not focus on nonlinear distortion and as such does not
+	highlight these semantic terms. There have been some publications specifically discussing the timbral effects of
+	nonlinear distortion. Their findings are discussed in this section.
+
+	\citet{marui2005predicting} suggest that one of the primary outcomes of nonlinear distortion is the moving
+	of spectral energy between low and high frequencies. An effect they propose correlates with the descriptors
+	sharpness and brightness. In order to discover other timbral properties of nonlinear distortion they performed
+	listening tests in which distorted guitar samples were assessed. The samples were each processed with different
+	nonlinear systems and then further processed so that they had matching Zwicker Sharpnesses (an objective measure of
+	sharpness \cite{fastl2007psychoacoustics}). This sharpness matching was does so that difference in timbre not
+	related to sharpness could be more easily observed. During the listening tests subjects were asked to rate the
+	dissimilarity of samples presented in pairs. They were also asked to grade each individual sample on the bipolar
+	adjective scales shown in Table \ref{tab:distortiondescriptors}.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|c|C{3cm}cC{3cm}|}
+			\hline
+			\bf{No.} & \multicolumn{3}{|c|}{\bf{Adjectives}} \tabularnewline
+			\hline
+			\hline
+			1 & dark & $\Longleftrightarrow$ & bright \tabularnewline
+			\hline
+			2 & rough & $\Longleftrightarrow$ & smooth \tabularnewline
+			\hline
+			3 & diffuse & $\Longleftrightarrow$ & compact \tabularnewline
+			\hline
+			4 & thin & $\Longleftrightarrow$ & thick \tabularnewline
+			\hline
+			5 & sharp & $\Longleftrightarrow$ & dull \tabularnewline
+			\hline
+			6 & light & $\Longleftrightarrow$ & heavy \tabularnewline
+			\hline
+			7 & hard & $\Longleftrightarrow$ & soft \tabularnewline
+			\hline
+			8 & clear & $\Longleftrightarrow$ & muddy \tabularnewline
+			\hline
+			9 & clamorous & $\Longleftrightarrow$ & calm \tabularnewline
+			\hline
+			10 & string & $\Longleftrightarrow$ & weak \tabularnewline
+			\hline
+			11 & uncomfortably loud & $\Longleftrightarrow$ & comfortable \tabularnewline
+			\hline
+		\end{tabular}
+		\caption{Bipolar adjectives scales used by \citet{marui2005predicting} to assess the perception of
+		         distortion.}
+		\label{tab:distortiondescriptors}
+	\end{table}
+
+	Their results suggest that the differences between different nonlinearities can be described by `thickness' and, to
+	a lesser extent, `diffuseness'. These results are also met by a second experiment in which a triadic comparison
+	method is used to assess the dissimilarities between samples \citep{marui2005constructing}.
+
+	Both these experiments were conducted in Japanese and the descriptors were translated to English for publication.
+	The descriptors were initially chosen during an experiment by \citet{martens2002relating}. From this experiment it
+	was shown that speakers of Japanese and speakers of Sinhalese disagree on the how these terms are used to describe
+	timbre. It is expected that there will be similar differences in presenting the descriptors to English speakers.
 
 \section{Uses of Harmonic Excitation}
 \label{sec:Excitation-Uses}
-	
 	\note
 	{
 		Psychoacoustic reproduction of low frequency signals on small loudspeakers as done by 
@@ -272,6 +329,65 @@
 
 		Applications in increasing the intelligibility of speech.
 	}
+
+	Harmonic excitation is used for several tasks in audio engineering:
+
+	\begin{itemize}
+		\item As a creative audio effect used to manipulate the timbre of sounds for music production.
+		\item To reconstruct high frequency information in perceptual audio compression codecs. In these codecs the
+		      bandwidth of an audio signal is reduced to minimise the amount of data. When the signal is
+		      reconstructed harmonic excitation is used to extend the bandwidth again.
+		\item To extend the perceived bandwidth of loudspeakers. Small loudspeakers cannot physically reproduce low
+		      frequencies signals. Harmonic excitation can be used to allow listeners to perceive low frequencies
+		      from small loudspeakers.
+		\item To enhance the intelligibility of speech. 
+	\end{itemize}
+
+	\subsection{High Frequency Reconstruction}
+	\label{sec:Excitation-Uses-Reconstruction}
+		In digital systems it can be beneficial to reduce the amount of data needed to represent an audio signal.
+		This is done either to reduce the storage space needed or reduce the data rate required to transmit a
+		signal. As a higher data rate is needed to represent high frequencies these frequencies are removed during
+		the compression process. A lot of research has been carried out to develop methods by which these high
+		frequencies can be estimated during the decoding process. This allows for the bandwidth to be constricted
+		for storage or transmission but the full bandwidth to be restored when required.
+
+		When using audio codecs the original signal, along with is high frequency components, is available before
+		compression is applied. This means that some parameters relating to the high frequency content can be
+		recorded and used to aid in the reconstruction of the high frequencies later \citep{friedrich2007spectral}.
+		The high frequencies content is estimated from the low frequency information and then further shaped using
+		these parameters. This lead to a distinction between `blind' and `non blind' methods for reconstructing the
+		high frequencies. A `blind' method uses only the information present in the low frequency signal, whereas
+		`non blind' methods make use of recorded parameters to increase the accuracy of the reconstruction.
+
+		In the literature several different methods for reconstruction of the higher frequencies are suggested:
+
+		\begin{itemize}
+			\item Through the use of a nonlinear device \citep{larsen2002efficient, sha2010high}.
+			\item Spectral replication as done by \citet{dietz2002spectral} and \citet{nagel2010a}. This
+			      essential frequency shift the spectrum into a higher band.
+			\item Spectral folding as used by \citet{friedrich2007spectral}. This creates a mirror image of the
+			      existing spectrum around the highest frequency.
+			\item Spectral stretching a use by \citet{nagel2009a}. This stretches the existing spectrum to the
+		              desired bandwidth.
+		\end{itemize}
+
+		These methods could be utilised in creative audio effects. They all introduce new harmonic spectral
+		components which may enhance perceptual attributes of a sound. In this situation there is not any
+		information about how the higher harmonics might behave so the system will have to operate `blindly'. It is
+		worth considering that when using these methods as an audio effect the objective is not to try and replicate
+		high frequency content which is missing. The generation of new, high order, harmonics does not require the
+		same degree of accuracy. The accuracy lost through using `blind' bandwidth extension methods is not a great
+		concern for creative timbral manipulation work.
+
+		Information on how these methods can be implemented as simple harmonic exciters is given in Section
+		\ref{sec:Excitation-Methods}.
+
+	\subsection{Perceptual Low Frequency Reinforcement}
+	\label{sec:Excitation-Uses-Reinforcement}
+
+	\subsection{Audio Enhancers}
+	\label{sec:Excitation-Uses-Enhancers}
 
 \section{Evaluation Methodology} % section name not very clear
 \label{sec:Excitation-Evaluation}
