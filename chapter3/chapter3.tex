@@ -319,27 +319,12 @@
 
 \section{Uses of Harmonic Excitation}
 \label{sec:Excitation-Uses}
-	\note
-	{
-		Psychoacoustic reproduction of low frequency signals on small loudspeakers as done by 
-		\citet{larsen2002reproducing} and \citet{gan2001virtual}.
-
-		Reconstruction of high frequency components after lossy data compression \citep{friedrich2007spectral, 
-		nagel2009a, nagel2010a, valin2000bandwidth, dietz2002spectral, larsen2002efficient, sha2010high}.
-
-		Applications in increasing the intelligibility of speech.
-	}
-
 	Harmonic excitation is used for several tasks in audio engineering:
 
 	\begin{itemize}
 		\item As a creative audio effect used to manipulate the timbre of sounds for music production.
-		\item To reconstruct high frequency information in perceptual audio compression codecs. In these codecs the
-		      bandwidth of an audio signal is reduced to minimise the amount of data. When the signal is
-		      reconstructed harmonic excitation is used to extend the bandwidth again.
-		\item To extend the perceived bandwidth of loudspeakers. Small loudspeakers cannot physically reproduce low
-		      frequencies signals. Harmonic excitation can be used to allow listeners to perceive low frequencies
-		      from small loudspeakers.
+		\item To reconstruct high frequency information in perceptual audio compression codecs.
+		\item To extend the perceived bandwidth of loudspeakers.
 		\item To enhance the intelligibility of speech. 
 	\end{itemize}
 
@@ -385,9 +370,38 @@
 
 	\subsection{Perceptual Low Frequency Reinforcement}
 	\label{sec:Excitation-Uses-Reinforcement}
+		Small loudspeakers are incapable of reproducing low frequency signals at sufficient amplitudes. Harmonic
+		excitation can be used to psychoacoustically extend the bandwidth of loudspeakers into the lower end of the
+		spectrum. Harmonic content is added to the signal in order to evoke the perception of lower pitch sounds.
 
-	\subsection{Audio Enhancers}
-	\label{sec:Excitation-Uses-Enhancers}
+		The pitch of harmonically structured sounds is the same as that of it's fundamental frequency. No energy
+		need be present at the fundamental for its pitch to be perceived however. So long as a sufficient proportion
+		of the harmonic structure remains the original pitch can still be perceived. This phenomenon is commonly
+		referred to as the missing fundamental \citep{plack2005the}.
+
+		This technique is implemented in effects such as Waves' MaxxBass \citep{ben-tzur1999the}. Implementation
+		techniques have been discussed by \citet{larsen2002reproducing} and \citet{gan2001virtual}.
+
+	\subsection{Audio Enhancement}
+	\label{sec:Excitation-Uses-Enhancement}
+		One of the most commonly used enhancement effects is the Aphex Aural Exciter.  \citet{shekar2013modeling}
+		states that this effect enhances brightness and clarity of a sound through the application of nonlinear
+		distortion.
+
+		\citet{chalupper2000aural} ran several tests to determine the effects the Aural Exciter has on different
+		audio samples, concluding that it operates as a `sharpness' maximiser. The analysis of the device is very
+		basic, comprising of a frequency response and an analysis of the spectral alterations made to a 2kHz sine
+		wave. The frequency response shows the liner processing undertaken by the device, showing that it amplifies
+		high frequency content. The sine wave response analysis is used to demonstrate the nonlinear elements of the
+		device. 
+
+		\citet{dutilleux2011nonlinear} provides a slightly more in depth analysis of the Aural Exciter showing the
+		spectral alterations make to a chirp signal. This gives information about how the nonlinear section of the
+		device responds to different input frequencies. It is seen that a hight level of second harmonic distortion
+		is produced. It is not mentioned however, what the exciter's parameters were set to during these tests. For
+		this reason it is difficult to compare these results with those collected by \citet{chalupper2000aural}
+		which see to disagree as they show a larger amount of new spectral content being introduced. Neither work
+		accounts for differences in processing depending on the input amplitude.
 
 \section{Evaluation Methodology} % section name not very clear
 \label{sec:Excitation-Evaluation}
