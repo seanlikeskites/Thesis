@@ -423,10 +423,16 @@
 
 	\subsection{Complexity}
 	\label{sec:Excitation-Evaluation-Complexity}
+		Audio effects are typically required to operate in real time. This speeds up music production as effect
+		parameters can be adjusted while audio is playing and the results heard immediately. In order to achieve
+		this effects must process audio with minimal latency. 
+
 		\note
 		{
 			Some guff about real time stuff. Could probably also mention how much latency in introduced due to
 			filter buffers and such.
+
+			Talk about block based processing.
 		}
 	
 	\subsection{Homogeneity}
@@ -437,7 +443,7 @@
 		problem arises where we process signals which have no energy in this frequency range. For some signals
 		there will be a noticeable change in the spectral characteristics, but other signals will remain unchanged.
 
-		This problem is compounded when the effect being applied is non homogeneous. A homogeneous system is one
+		This problem is compounded when the effect being applied is non-homogeneous. A homogeneous system is one
 		whose behaviour does not depend on the input amplitude of the input.  Where $f$ is a homogeneous system we
 		have:
 
