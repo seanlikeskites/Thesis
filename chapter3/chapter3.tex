@@ -414,7 +414,6 @@
 		\item Homogeneity
 		\item Spectral Characteristics.
 		\item Temporal Characteristics.
-		\item Inharmonic Distortion.
 		\item Flexibility.
 		\item Naturalness.
 	\end{itemize}
@@ -425,16 +424,20 @@
 	\label{sec:Excitation-Evaluation-Complexity}
 		Audio effects are typically required to operate in real time. This speeds up music production as effect
 		parameters can be adjusted while audio is playing and the results heard immediately. In order to achieve
-		this effects must process audio with minimal latency. 
+		this, effects must process audio with minimal latency. 
 
-		\note
-		{
-			Some guff about real time stuff. Could probably also mention how much latency in introduced due to
-			filter buffers and such.
+		In order to ease the computational load on the processor, audio processing if often done in blocks. A
+		certain number of samples are recorded into a buffer and then all processed at once. This introduces some
+		latency into the system, one buffers worth of samples must be collected from the input before an output can
+		be produced. The larger the processing buffer size the more latency but the less the computational load. Any
+		processing applied to the block of audio must be completed within the allowed latency time. If not there
+		will be gaps between blocks during playback causing audible anomalies.
 
-			Talk about block based processing.
-		}
-	
+		For real time audio effects it is crucial to keep throughput latency to a minimum. \citet{lester2007the}
+		suggest that, depending on the scenario, latencies as small as 1.4ms could be deemed unacceptable. In order
+		to keep latency to a minimum, processing algorithms should be able to run in real time when using a small
+		buffer size.
+
 	\subsection{Homogeneity}
 	\label{sec:Excitation-Evaluation-Homogeneity}
 		In order to aid in the intuitiveness of an audio effect it should produce a similar perceptual effect
@@ -444,7 +447,7 @@
 		there will be a noticeable change in the spectral characteristics, but other signals will remain unchanged.
 
 		This problem is compounded when the effect being applied is non-homogeneous. A homogeneous system is one
-		whose behaviour does not depend on the input amplitude of the input.  Where $f$ is a homogeneous system we
+		whose behaviour does not depend on the input amplitude of the input. Where $f$ is a homogeneous system we
 		have:
 
 		\[ f(ax) = af(x) \]
@@ -464,7 +467,37 @@
 
 	\subsection{Spectral Characteristics}
 	\label{sec:Excitation-Evaluation-SpectralCharacteristics}
-		All the systems discussed in this chapter introduce new spectral content to a signal. 
+		All the systems discussed in this chapter introduce new spectral content to a signal. This content can be
+		ascribed to three different groups:
+
+		\begin{itemize}
+			\item Harmonic Distortion
+			\item Intermodulation Distortion
+			\item Aliasing
+		\end{itemize}
+
+		These groups are all produced via different mechanisms. Their origins and impact are discussed in this
+		section.
+
+		\subsubsection*{Harmonic Distortion}
+			
+
+		\subsubsection*{Intermodulation Distortion}
+
+		\subsubsection*{Aliasing}
+			Aliasing arises due to the discrete nature of digital audio signals. The sampling frequency of a
+			discrete signal imposes a restriction on the highest frequency which can be represented. This
+			frequency is known as the Nyquist Frequency ($f_{N}$) and can be calculated using Equation
+			\ref{eq:nyquist}.
+
+			\begin{equation}
+				f_{N} = \frac{f_{s}}{2}
+				\label{eq:nyquist}
+			\end{equation}
+
+			Where $f_{s}$ is the sampling rate of the signal.
+
+
 
 		\note
 		{
@@ -481,10 +514,6 @@
 		transformation it applies. As discussed in Section \ref{sec:Excitation-Evaluation-Homogeneity} control
 		parameters will be more intuitive if the alteration to a signals temporal characteristics are not dependant
 		on the input amplitude.
-
-	\subsection{Inharmonic Distortion}
-	\label{sec:Excitation-Evaluation-InharmonicDistortion}
-		\note{IMD}
 
 	\subsection{Flexibility}
 	\label{sec:Excitation-Evaluation-Flexibility}
@@ -667,7 +696,6 @@
 			This is advantageous as aliased frequencies tend to be inharmonic.
 
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Preservation of Harmonicity}
 		\subsubsection*{Flexibility}
 		\subsubsection*{Naturalness}
 
@@ -693,7 +721,6 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Preservation of Harmonicity}
 		\subsubsection*{Flexibility}
 		\subsubsection*{Naturalness}
 
@@ -713,7 +740,6 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Preservation of Harmonicity}
 		\subsubsection*{Flexibility}
 		\subsubsection*{Naturalness}
 
@@ -728,7 +754,6 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Preservation of Harmonicity}
 		\subsubsection*{Flexibility}
 		\subsubsection*{Naturalness}
 
@@ -762,7 +787,6 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Preservation of Harmonicity}
 		\subsubsection*{Flexibility}
 		\subsubsection*{Naturalness}
 
@@ -784,7 +808,6 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Preservation of Harmonicity}
 		\subsubsection*{Flexibility}
 		\subsubsection*{Naturalness}
 
@@ -815,7 +838,6 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Preservation of Harmonicity}
 		\subsubsection*{Flexibility}
 		\subsubsection*{Naturalness}
 
@@ -841,7 +863,6 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Preservation of Harmonicity}
 		\subsubsection*{Flexibility}
 		\subsubsection*{Naturalness}
 
@@ -859,7 +880,6 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Preservation of Harmonicity}
 		\subsubsection*{Flexibility}
 		\subsubsection*{Naturalness}
 
