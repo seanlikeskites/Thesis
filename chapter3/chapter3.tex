@@ -22,7 +22,7 @@
 	transforms onto the audio signal. This distorted sound became desirable and several electronic circuits were
 	developed with the purpose of inducing nonlinear distortion. More recently research into modelling these distortion
 	circuits in the digital domain has been carried out, such as that done by \citet{pakarinen2009a}. Several
-	researchers have also worked on creating novel digital distortion techniques \citep{fernandez2001distortion,
+	researchers have also worked on creating novel digital distortion techniques \citep{fernandez-cid2001distortion,
 	pekonen2008coefficient, puckette2007patch}.
 
 	Distortion is a very broad term which is typically used to describe unwanted effects. For this work a better defined
@@ -487,7 +487,7 @@
 		\subsubsection*{Aliasing}
 			Aliasing arises due to the discrete nature of digital audio signals. The sampling frequency of a
 			discrete signal imposes a restriction on the highest frequency which can be represented. This
-			frequency is known as the Nyquist Frequency ($f_{N}$) and can be calculated using Equation
+			frequency is known as the Nyquist frequency ($f_{N}$) and can be calculated using Equation
 			\ref{eq:nyquist}.
 
 			\begin{equation}
@@ -497,13 +497,36 @@
 
 			Where $f_{s}$ is the sampling rate of the signal.
 
+			When sampling a signal frequency content above the Nyquist is represented as alias frequencies
+			within the bandwidth allowed by the sampling frequency. The alias frequency can be calculated using
+			Equation \ref{eq:aliasing}.
 
+			\begin{equation}
+				f_{alias} = |f - Nf_{s}|
+				\label{eq:aliasing}
+			\end{equation}
 
-		\note
-		{
-			Some introduce large blocks of harmonics, some single harmonics. Does this overlap with the
-			flexibility section?
-		}
+			Where $f$ is the original frequency and $Nf_{s}$ is the integer multiple of the sampling
+			frequency closest to it.
+
+			The new frequency content introduced to a discrete signal via nonlinear processing is also subject
+			to aliasing. This can cause problems in the uniformity of behaviour of a system in different
+			scenarios as the spectral content introduced will depend on the sampling frequency of the signal
+			being processed. Thus the perceived timbral transformation may also depend on the sampling
+			frequency.
+
+			There are two common methods to avoid unwanted aliasing distortion in nonlinear effects:
+
+			\begin{itemize}
+				\item Upsampling before the nonlinear stage and downsampling afterwards
+			              \citep{vetter2013estimation}.
+				\item Ensuring no frequencies above the Nyquist are introduced by the nonlinear stage
+				      \citep{fernandez-cid2001distortion}.
+			\end{itemize}
+
+			These techniques have both have applications depending on the harmonic excitation method used.
+			Details of these applications will be discussed where appropriate in Section
+			\ref{sec:Excitation-Methods}.
 
 	\subsection{Temporal Characteristics}
 	\label{sec:Excitation-Evaluation-TemporalCharacteristics}
