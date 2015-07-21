@@ -403,7 +403,7 @@
 		which see to disagree as they show a larger amount of new spectral content being introduced. Neither work
 		accounts for differences in processing depending on the input amplitude.
 
-\section{Evaluation Methodology} % section name not very clear
+\section{Evaluation Criteria for Harmonic Excitation Methods} % section name not very clear
 \label{sec:Excitation-Evaluation}
 	There are many different classes of nonlinear system which are used in audio processing. Each of these has its own
 	characteristics. There are several properties to look at when evaluating a nonlinear system for use in real time
@@ -415,7 +415,7 @@
 		\item Spectral Characteristics.
 		\item Temporal Characteristics.
 		\item Flexibility.
-		\item Naturalness.
+%		\item Naturalness.
 	\end{itemize}
 
 	The following sections will discuss what behaviour is desirable in these areas.
@@ -467,8 +467,11 @@
 
 	\subsection{Spectral Characteristics}
 	\label{sec:Excitation-Evaluation-SpectralCharacteristics}
-		All the systems discussed in this chapter introduce new spectral content to a signal. This content can be
-		ascribed to three different groups:
+		All the systems discussed in this chapter introduce new spectral content to a signal. For timbral control
+		it is desirable to have precise control over which frequencies are introduced. Some algorithms introduce
+		large bands of frequencies whereas others can be used to excite single harmonics. 
+		
+		This content can be ascribed to three different groups:
 
 		\begin{itemize}
 			\item Harmonic Distortion
@@ -488,7 +491,8 @@
 		\subsubsection*{Intermodulation Distortion}
 			Intermodulation distortion occurs when signals with two or more frequency components undergo
 			nonlinear processing. New frequency components are generated equivalent to the cross modulation
-			components of each pair of frequency components modulating each other.
+			components of each pair of frequency components modulating each other. The more complex the
+			spectrum of a signal the more intermodulation components will be introduced. 
 
 		\subsubsection*{Aliasing}
 			Aliasing arises due to the discrete nature of digital audio signals. The sampling frequency of a
@@ -525,6 +529,7 @@
 
 			\begin{itemize}
 				\item Upsampling before the nonlinear stage and downsampling afterwards
+	\note{I like to generate harmonics, basically a nonlinear process}
 			              \citep{vetter2013estimation}.
 				\item Ensuring no frequencies above the Nyquist are introduced by the nonlinear stage
 				      \citep{fernandez-cid2001distortion}.
@@ -536,23 +541,28 @@
 
 	\subsection{Temporal Characteristics}
 	\label{sec:Excitation-Evaluation-TemporalCharacteristics}
-		As discussed in Section \ref{sec:Timbre-Features} one of the properties of a signal which
-		contributes to its timbre is how it evolves over time.
-
-		How a system affects these temporal characteristics is necessary to know in order to describe the timbral
-		transformation it applies. As discussed in Section \ref{sec:Excitation-Evaluation-Homogeneity} control
-		parameters will be more intuitive if the alteration to a signals temporal characteristics are not dependant
-		on the input amplitude.
+		\citep{larsen2004audio} discuss the temporal effects of several bandwidth extension algorithms. Their
+		primary concern however is insuring that as little alteration is made to the temporal envelope of a signal
+		as possible. For timbral manipulation it is not necessary to be this restrictive. As discussed in Section
+		\ref{sec:Timbre-Features} one of the properties of a signal which contributes to its timbre is how it
+		evolves over time. As with other aspects of excitation algorithms it is more important that the temporal
+		characteristics are predictable and consistent across a wide range of signals.
 
 	\subsection{Flexibility}
 	\label{sec:Excitation-Evaluation-Flexibility}
+		Each excitation method allows for different amounts of control over the spectral content introduced. Finer
+		control of this allows a method to be used in a wider range of situations. The flexibility of a method
+		describes how well it can be adapted for different processing needs and how applicable it is across a wide
+		range of input signals.
 
-	\subsection{Naturalness}
-	\label{sec:Excitation-Evaluation-Naturalness}
+%	\subsection{Naturalness}
+%	\label{sec:Excitation-Evaluation-Naturalness}
 
 \section{Harmonic Generation Methods}
 \label{sec:Excitation-Methods}
-	\note{I like to generate harmonics, basically a nonlinear process}
+	Several harmonic excitation algorithms have been proposed in the literature. In the section these algorithms are
+	evaluated against the criteria given in Section \ref{sec:Excitation-Evaluation}. Techniques for improving
+	performance with regard to particular criteria are suggested and discussed. 
 
 	\subsection{Static Nonlinearities}
 	\label{sec:Excitation-Statics}
@@ -726,7 +736,7 @@
 
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Flexibility}
-		\subsubsection*{Naturalness}
+%		\subsubsection*{Naturalness}
 
 	\subsection{Rectification}
 	\label{sec:Excitation-Rectification}
@@ -751,7 +761,7 @@
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Flexibility}
-		\subsubsection*{Naturalness}
+%		\subsubsection*{Naturalness}
 
 	\subsection{Integrator}
 	\label{sec:Excitation-Integrator}
@@ -770,7 +780,7 @@
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Flexibility}
-		\subsubsection*{Naturalness}
+%		\subsubsection*{Naturalness}
 
 	\subsection{Multiplier}
 	\label{sec:Excitation-Multiplier}
@@ -784,7 +794,7 @@
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Flexibility}
-		\subsubsection*{Naturalness}
+%		\subsubsection*{Naturalness}
 
 	\subsection{Single Side Band Automodulation}
 	\label{sec:Excitation-SSB}
@@ -817,7 +827,7 @@
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Flexibility}
-		\subsubsection*{Naturalness}
+%		\subsubsection*{Naturalness}
 
 	\subsection{Instantaneous Amplitude and Phase}
 	\label{sec:Excitation-IAP}
@@ -838,7 +848,7 @@
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Flexibility}
-		\subsubsection*{Naturalness}
+%		\subsubsection*{Naturalness}
 
 	\subsection{Spectral Replication}
 	\label{sec:Excitation-SpectralReplication}
@@ -868,7 +878,7 @@
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Flexibility}
-		\subsubsection*{Naturalness}
+%		\subsubsection*{Naturalness}
 
 	\subsection{Spectral Folding}
 	\label{sec:Excitation-SpectralFolding}
@@ -893,7 +903,7 @@
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Flexibility}
-		\subsubsection*{Naturalness}
+%		\subsubsection*{Naturalness}
 
 	\subsection{Spectral Stretching}
 	\label{sec:Excitation-SpectralStretching}
@@ -910,7 +920,7 @@
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Flexibility}
-		\subsubsection*{Naturalness}
+%		\subsubsection*{Naturalness}
 
 	%\subsection{Bandwidth Extension}
 	%\label{sec:Excitation-BWE}
@@ -964,8 +974,8 @@
 
 	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline
-		\bf{Method} & \bf{Complexity} & \bf{Homogeneity} & \bf{Spectral Properties} & \bf{Temporal Properties} & \bf{IMD}
-		\bf{Flexibility} & \bf{Naturalness} \\
+		\bf{Method} & \bf{Complexity} & \bf{Homogeneity} & \bf{Spectral Properties} & \bf{Temporal Properties} &
+		\bf{IMD} & \bf{Flexibility} \\ % & \bf{Naturalness} \\
 		\hline
 		Static Nonlinearity & $\mathcal{O}(n)$ & & & & & \\
 		\hline
