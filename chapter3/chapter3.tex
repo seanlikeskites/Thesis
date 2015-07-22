@@ -529,7 +529,6 @@
 
 			\begin{itemize}
 				\item Upsampling before the nonlinear stage and downsampling afterwards
-	\note{I like to generate harmonics, basically a nonlinear process}
 			              \citep{vetter2013estimation}.
 				\item Ensuring no frequencies above the Nyquist are introduced by the nonlinear stage
 				      \citep{fernandez-cid2001distortion}.
@@ -743,12 +742,54 @@
 				\label{fig:ClippingSpectra}
 			\end{figure}
 
-			The steeper roll off produced by soft clippers reduces the number of aliased frequencies produced.
-			This is advantageous as aliased frequencies tend to be inharmonic.
+		\subsubsection*{Aliasing}
+			The large amount of spectral content introduced by static nonlinearities means they are
+			particularly susceptible to aliasing. The steeper roll off produced by soft clippers reduces the
+			number of aliased frequencies produced. Other than using a `softer' characteristic curve, there are
+			some other techniques to reduce aliasing in static nonlinearities.
+
+			\citep{vetter2013estimation} upsample signals by a factor of 32 prior to applying
+			the nonlinearity. Afterwards the signal is downsampled to the original sampling frequency. This
+			successfully mitigates aliasing as any aliased frequencies which appear in the audible spectrum
+			will most likely be inaudible due to having very low amplitudes. It does however increase the
+			computational complexity of the system. Along with the extra overhead of upsampling and
+			downsampling the signal, there is also 32 times the amount of samples to process.
+
+			\cite{fernandez-cid2001distortion} construct characteristic curves from Chebyshev polynomials. In
+			this fashion the maximum order of polynomial used can be set thus setting the maximum order of the
+			distortion components. A conceptually similar approach to this is to create an approximation of the
+			characteristic curve by linear regression as shown in Figure \ref{fig:ClippingApproximation}. The
+			order of the polynomial controls the maximum order of the distortion components.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/ClippingApproximation.eps}
+				\caption{A $7^{th}$ order approximation of hard clipping using linear regression.}
+				\label{fig:ClippingApproximation}
+			\end{figure}
+
+			Generating characteristic curves in this way reduces the number of aliased frequencies at the cost
+			of having to evaluate a more complex polynomial to calculate the output value for each sample.
 
 		\subsubsection*{Temporal Characteristics}
-		
+			As static nonlinearities are memoryless they can not influence the temporal evolution of signals at
+			a large scale. There is a possibility to affect the attack time of signals slightly through
+			increasing the gradient of the low amplitude section characteristic curve. As an extreme example
+			consider the infinite peak clipper shown in Equation \ref{eq:InfinitePeakClipper}.
+
+			\begin{equation}
+				y(n) = \begin{cases}
+					-1 & \text{if $x(n) < 0$} \\
+					0 & \text{if $x(n) = 0$} \\
+					1 & \text{if $x(n) > 1$}
+				\end{cases}
+				\label{eq:InfinitePeakClipper}
+			\end{equation}
+			
+			\note{This can make the attack and release instantaneous. Perhaps a plot showing this.}
+
 		\subsubsection*{Flexibility}
+			
 %		\subsubsection*{Naturalness}
 
 	\subsection{Rectification}
