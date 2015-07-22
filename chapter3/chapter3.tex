@@ -683,16 +683,16 @@
 				\label{fig:ExponentialClippingHarmonics}
 			\end{figure}
 
-			The non-homogeneity of simple clipping systems can be counteracted by introducing gain stages either
-			side of the clipping stage. The first gain stage scales the signal so that the clipping stage will
-			always clip the same proportion of the signal. The second gain stage scales the signal back to the
-			original input amplitude. Analogously the clipping function can be scaled so as to always clip the
-			same proportion of the signal, as done by \citet{deman2014adaptive}.
+			The non-homogeneity of simple clipping systems can be counteracted by introducing gain stages
+			either side of the clipping stage. The first gain stage scales the signal so that the clipping
+			stage will always clip the same proportion of the signal. The second gain stage scales the signal
+			back to the original input amplitude. Analogously the clipping function can be scaled so as to
+			always clip the same proportion of the signal, as done by \citet{deman2014adaptive}.
 
 		\subsubsection*{Spectral Characteristics}
 			The spectral characteristics depend on the function applied to the signal. If an odd function is
-			used only odd order intermodulation components will be produced. Using an even function only even
-			order components are generated. 
+			used only odd order components will be produced. Using an even function only even order components
+			are generated. 
 
 			The symmetric clippers discussed previously all use odd functions. It is evident from the harmonic
 			amplitude plots (Figures \ref{fig:HardClippingHarmonics}, \ref{fig:SoftClippingHarmonics} and
@@ -714,15 +714,26 @@
 			Where $t_{+}$ and $t_{-}$ are the clipping thresholds for positive and negative portions of the
 			signal respectively.	
 
+			Figure \ref{fig:AsymmetricHardClippingHarmonics} show the harmonic amplitude plot for Equation
+			\ref{eq:AsymmetricHardClipping} with $t_{+} = 0.5$ and $t_{-} = 0.3$. While the system is still
+			non-homogeneous there is a greater amount of new harmonic content.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/AsymmetricHardClippingHarmonics.eps}
+				\caption{Individual harmonic distortion levels for Equation
+					 \ref{eq:AsymmetricHardClipping} with thresholds of -0.3 and 0.5.}
+				\label{fig:AsymmetricHardClippingHarmonics}
+			\end{figure}
+
 			The amplitudes of the generated harmonics will roll off at differing rates depending on the
 			properties of the output signal. The spectrum will roll off at $6(n+1)$dB per octave when the
 			$n^{\text{th}}$ derivative of the output signal is discontinuous \citep{kraght2000aliasing}.
 
 			Hard clippers introduce discontinuities to the first derivative of a signal and so will introduce
 			harmonics whose amplitudes will roll off at 12dB per octave. Signals clipped by Equation
-			\ref{eq:SymmetricSoftClipping} are continuous in the first derivative \todo{(check this)} and so
-			produce harmonics which roll off at a faster rate. This can be seen in Figure
-			\ref{fig:ClippingSpectra}.
+			\ref{eq:SymmetricSoftClipping} are continuous in the first derivative and so produce harmonics
+			which roll off at a faster rate. This can be seen in Figure \ref{fig:ClippingSpectra}.
 
 			\begin{figure}[h!]
 				\centering
