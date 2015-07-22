@@ -695,11 +695,12 @@
 			order components are generated. 
 
 			The symmetric clippers discussed previously all use odd functions. It is evident from the harmonic
-			amplitude plots that only odd order harmonics have been introduced to the signal. In order to
-			generate even order harmonics these clipping function needs to be made asymmetric. This is easily
-			done by clipping negative and positive portions of the input signal at different thresholds.
-			Equation \ref{eq:SymmetricHardClipping} can be modified to allow for asymmetric clipping giving
-			Equation \ref{eq:AsymmetricHardClipping}.
+			amplitude plots (Figures \ref{fig:HardClippingHarmonics}, \ref{fig:SoftClippingHarmonics} and
+			\ref{fig:ExponentialClippingHarmonics}) that only odd order harmonics have been introduced to the
+			signal. In order to generate even order harmonics these clipping function need to be made
+			asymmetric. This is easily done by clipping negative and positive portions of the input signal at
+			different thresholds. For example, equation \ref{eq:SymmetricHardClipping} can be modified to allow
+			for asymmetric clipping giving Equation \ref{eq:AsymmetricHardClipping}.
 			
 			\begin{equation}
 				y(n) = \begin{cases}
@@ -735,6 +736,7 @@
 			This is advantageous as aliased frequencies tend to be inharmonic.
 
 		\subsubsection*{Temporal Characteristics}
+		
 		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
