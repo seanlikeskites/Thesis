@@ -773,9 +773,9 @@
 
 		\subsubsection*{Temporal Characteristics}
 			As static nonlinearities are memoryless they can not influence the temporal evolution of signals at
-			a large scale. There is a possibility to affect the attack time of signals slightly through
-			increasing the gradient of the low amplitude section characteristic curve. As an extreme example
-			consider the infinite peak clipper shown in Equation \ref{eq:InfinitePeakClipper}.
+			a large scale. There is a possibility to affect the attack and release times of signals slightly
+			through increasing the gradient of the low amplitude section characteristic curve. As an extreme
+			example consider the infinite peak clipper shown in Equation \ref{eq:InfinitePeakClipper}.
 
 			\begin{equation}
 				y(n) = \begin{cases}
@@ -786,7 +786,17 @@
 				\label{eq:InfinitePeakClipper}
 			\end{equation}
 			
-			\note{This can make the attack and release instantaneous. Perhaps a plot showing this.}
+			Figure \ref{fig:InfinitePeakClipping} shows a signal, with attack and release sections, before and
+			after infinite peak clipping. The original signal rises to it's full amplitude over two cycles and
+			falls back to silence over the same time. After infinite peak clipping the attack and release have
+			become instantaneous.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/InfinitePeakClipping.eps}
+				\caption{A graph showing a signal before and after infinite peak clipping.}
+				\label{fig:InfinitePeakClipping}
+			\end{figure}
 
 		\subsubsection*{Flexibility}
 			
