@@ -830,9 +830,45 @@
 		\end{equation}
 
 		\subsubsection*{Complexity}
+			As with other static nonlinearities, rectifiers are very efficient. For full wave rectification
+			only a single absolute value operation need be performed on each sample. Half wave rectification
+			requires a comparison operation to detect negative samples before an assignment operation is
+			applied.
+
 		\subsubsection*{Homogeneity}
+			One of the main advantages of rectifiers is that they are homogeneous systems. In half wave
+			rectification the magnitude of negative samples is eliminated irrespective of any gain which may
+			have been applied to them. In full wave rectification the absolute value of every sample is taken
+			preserving their magnitude and thus any gain which has been applied.
+
 		\subsubsection*{Spectral Characteristics}
+			Full wave rectification can be considered as a static nonlinearity with an even characteristics
+			curve. As such it only introduces even order distortion components. The output from a half wave
+			rectifier has the same spectrum as that of a full wave rectifier but with the content of the
+			original signal included. This can easily be shown by considering how a half wave rectified signal
+			can be constructed from the original signal and a full wave rectified signal. Where $x(n)$,
+			$x_{f}(n)$ and $x_{h}(n)$ represent the original signal, full wave rectified and half waves
+			rectified signals respectively, their relationship can be seen in Equation
+			\ref{eq:RectificationRelationship}.
+
+			\begin{equation}
+				x_{h}(n) = \frac{1}{2} \left( x_{f}(n) + x(n) \right)
+				\label{eq:RectificationRelationship}
+			\end{equation}
+
+			\note{may as well put in the Fourier coefficients of a rectified sine wave}
+
+		\subsubsection*{Aliasing}
+			As with other static nonlinearities rectifiers are susceptible to aliasing. Both upsampling and
+			approximation with low order polynomials are valid techniques to reduce the amount of aliasing.
+
 		\subsubsection*{Temporal Characteristics}
+			Full wave rectifiers have no effect on the temporal characteristics of signals as all the magnitude
+			of each sample is preserved. It is possible that a half wave rectifier could change the position of
+			the onset of a signal by a small amount. Considering a signal which starts with a negative
+			displacement. This first section of the signal would be removed, moving the onset to wherever the
+			first positive displacement occurs.
+			
 		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
