@@ -843,20 +843,35 @@
 
 		\subsubsection*{Spectral Characteristics}
 			Full wave rectification can be considered as a static nonlinearity with an even characteristics
-			curve. As such it only introduces even order distortion components. The output from a half wave
-			rectifier has the same spectrum as that of a full wave rectifier but with the content of the
-			original signal included. This can easily be shown by considering how a half wave rectified signal
-			can be constructed from the original signal and a full wave rectified signal. Where $x(n)$,
-			$x_{f}(n)$ and $x_{h}(n)$ represent the original signal, full wave rectified and half waves
-			rectified signals respectively, their relationship can be seen in Equation
+			curve. As such it only introduces even order distortion components. The Fourier coefficients of a
+			rectified sine wave are shown in Equation \ref{eq:RectificationFourier}.
+
+
+			\[ a_{0} = \frac{1}{2\pi} \int_{-pi}^{\pi} |sin(x)| dx \]
+			\[ a_{0} = \frac{2}{\pi} \]
+
+			\[ a_{n} = \frac{1}{\pi} \int_{-\pi}^{\pi} |sin(x)|cos(nx) dx \]
+			\begin{equation}
+				a_{n} = \begin{cases}
+					\frac{4}{\pi(1 - n^{2})} & \text{when $n$ is even} \\
+					0 & \text{when $n$ is odd}
+				\end{cases}
+				\label{eq:RectificationFourier}
+			\end{equation}
+
+			This represents all even order harmonics rolling off at approximately 12dB per octave.
+
+			The output from a half wave rectifier has the same spectrum as that of a full wave rectifier
+			but with the content of the original signal included. This can easily be shown by considering how a
+			half wave rectified signal can be constructed from the original signal and a full wave rectified
+			signal. Where $x(n)$, $x_{f}(n)$ and $x_{h}(n)$ represent the original signal, full wave rectified
+			and half waves rectified signals respectively, their relationship can be seen in Equation
 			\ref{eq:RectificationRelationship}.
 
 			\begin{equation}
 				x_{h}(n) = \frac{1}{2} \left( x_{f}(n) + x(n) \right)
 				\label{eq:RectificationRelationship}
 			\end{equation}
-
-			\note{may as well put in the Fourier coefficients of a rectified sine wave}
 
 		\subsubsection*{Aliasing}
 			As with other static nonlinearities rectifiers are susceptible to aliasing. Both upsampling and
@@ -870,6 +885,12 @@
 			first positive displacement occurs.
 			
 		\subsubsection*{Flexibility}
+			Rectifiers are useful when large amounts of even order distortion components are required. As with
+			other static nonlinearities the bandwidth of the newly introduced set of frequencies can be
+			controlled through filtering to provide more flexibility. Rectifiers also exhibit the same high
+			levels of intermodulation distortion as other static nonlinearities when processing musical
+			signals. Where only harmonic components are desired other techniques should be used.
+			
 %		\subsubsection*{Naturalness}
 
 	\subsection{Integrator}
