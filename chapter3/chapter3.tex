@@ -847,7 +847,7 @@
 			rectified sine wave are shown in Equation \ref{eq:RectificationFourier}.
 
 
-			\[ a_{0} = \frac{1}{2\pi} \int_{-pi}^{\pi} |sin(x)| dx \]
+			\[ a_{0} = \frac{1}{2\pi} \int_{-\pi}^{\pi} |sin(x)| dx \]
 			\[ a_{0} = \frac{2}{\pi} \]
 
 			\[ a_{n} = \frac{1}{\pi} \int_{-\pi}^{\pi} |sin(x)|cos(nx) dx \]
@@ -905,9 +905,52 @@
 			\label{eq:Integrator}
 		\end{equation}
 
+		Where $c$ is the integration constant, effectively setting the output gain of the system. The output signal
+		is reset to 0 ofter every negative to positive zero crossing in order to prevent the sample amplitudes from
+		rising indefinitely.
+
 		\subsubsection*{Complexity}
+			For each sample two comparison operations are required to detect zero crossings. This is followed
+			by some simple arithmetic operations in order to integrate the signal. While this may total more
+			operations than a very basic static nonlinearity it still requires very little processing power.
+
+			Unlike static nonlinearities the integrator shown in Equation \ref{eq:Integrator} requires memory
+			to store the previous output sample. 
+
 		\subsubsection*{Homogeneity}
+			Integration is a homogeneous operation. This is an advantage over certain static nonlinearities as
+			though more operations are needed per sample no further work is needed to make the system
+			homogeneous. If a homogeneous system is required it may be more efficient to use an integrator over
+			a static nonlinearity.
+		
 		\subsubsection*{Spectral Characteristics}
+			Applying Equation \ref{eq:Integrator} to a sine wave produces a signal with Fourier coefficients as
+			shown in Equation \ref{eq:IntegratorFourier}.
+
+			\[ A_{n} = \frac{cf_{s}}{2\pi} \left( \int_{0}^{\pi} (1 - cos(x))e^{-inx} dx +
+							       \int_{\pi}^{2\pi} (3 + cos(x))e^{-inx} dx \right) \]
+
+			\[ A_{0} = 2cf_{s} \]
+			\[ A_{1} = \frac{2icf_{s}}{\pi} \]
+			\begin{equation}
+				A_{n} = \frac{icf_{s}}{2\pi} \left( \frac{4n^{2} + 2e^{-i\pi n} - 2}{n^{3} - n} \right)
+				\label{eq:IntegratorFourier}
+			\end{equation}
+
+			This produces all harmonics with amplitudes rolling off at approximately 6dB per octave. This
+			shallow roll of make integrators very useful when a large amount of new frequency content is
+			desired. 
+
+			While integrators are homogeneous they are frequency dependant. They act as low pass filters. Using
+			the same integration constant a high frequency inputs signals will produce a lower amplitude output
+			that a low frequency input. This does not affect the relatives amplitudes of frequencies in the
+			output just the overall amplitude of the signal.
+
+		\subsubsection*{Aliasing}
+			Due to the shallow roll of of the distortion components amplitudes integrators are very prone to
+			aliasing. The levels of aliasing can be reduced using the upsampling / downsampling technique
+			described in Section \ref{sec:Excitation-Statics}.
+
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
