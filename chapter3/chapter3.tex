@@ -755,22 +755,6 @@
 			computational complexity of the system. Along with the extra overhead of upsampling and
 			downsampling the signal, there is also 32 times the amount of samples to process.
 
-			\cite{fernandez-cid2001distortion} construct characteristic curves from Chebyshev polynomials. In
-			this fashion the maximum order of polynomial used can be set thus setting the maximum order of the
-			distortion components. A conceptually similar approach to this is to create an approximation of the
-			characteristic curve by linear regression as shown in Figure \ref{fig:ClippingApproximation}. The
-			order of the polynomial controls the maximum order of the distortion components.
-
-			\begin{figure}[h!]
-				\centering
-				\includegraphics[width=0.6\textwidth]{chapter3/Images/ClippingApproximation.eps}
-				\caption{A $7^{th}$ order approximation of hard clipping using linear regression.}
-				\label{fig:ClippingApproximation}
-			\end{figure}
-
-			Generating characteristic curves in this way reduces the number of aliased frequencies at the cost
-			of having to evaluate a more complex polynomial to calculate the output value for each sample.
-
 		\subsubsection*{Temporal Characteristics}
 			As static nonlinearities are memoryless they can not influence the temporal evolution of signals at
 			a large scale. There is a possibility to affect the attack and release times of signals slightly
@@ -798,16 +782,12 @@
 				\label{fig:InfinitePeakClipping}
 			\end{figure}
 
-		\subsubsection*{Flexibility}
-			For musical signals static nonlinearities introduce a spectrally rich band of audio. The spectral
-			content of which is highly dependent on that of the input signal. The bandwidth of the new set of
-			frequencies can be easily controlled through filtering or through the techniques discussed for
-			reducing aliasing. This allows for good performance in situations where energy needs to be added to
-			a specific area of the spectrum. 
-			
-			It is likely that there be inharmonic frequency components among those introduced due to high
-			levels of intermodulation distortion and possible aliasing. This excludes these techniques from
-			being used in situations were only harmonic distortion is desired.
+%		\subsubsection*{Flexibility}
+%			For musical signals static nonlinearities introduce a spectrally rich band of audio. The spectral
+%			content of which is highly dependent on that of the input signal. The bandwidth of the new set of
+%			frequencies can be easily controlled through filtering or through the techniques discussed for
+%			reducing aliasing. This allows for good performance in situations where energy needs to be added to
+%			a specific area of the spectrum. 
 			
 %		\subsubsection*{Naturalness}
 
@@ -846,14 +826,12 @@
 			curve. As such it only introduces even order distortion components. The Fourier coefficients of a
 			rectified sine wave are shown in Equation \ref{eq:RectificationFourier}.
 
+			\[ c_{n} = \frac{1}{\pi} \int_{-\pi}^{\pi} |sin(x)|e^{-inx} dx \]
 
-			\[ a_{0} = \frac{1}{2\pi} \int_{-\pi}^{\pi} |sin(x)| dx \]
-			\[ a_{0} = \frac{2}{\pi} \]
-
-			\[ a_{n} = \frac{1}{\pi} \int_{-\pi}^{\pi} |sin(x)|cos(nx) dx \]
+			\[ c_{0} = \frac{2}{\pi} \]
 			\begin{equation}
-				a_{n} = \begin{cases}
-					\frac{4}{\pi(1 - n^{2})} & \text{when $n$ is even} \\
+				c_{n} = \begin{cases}
+					\frac{2}{\pi(1 - n^{2})} & \text{when $n$ is even} \\
 					0 & \text{when $n$ is odd}
 				\end{cases}
 				\label{eq:RectificationFourier}
@@ -884,13 +862,11 @@
 			displacement. This first section of the signal would be removed, moving the onset to wherever the
 			first positive displacement occurs.
 			
-		\subsubsection*{Flexibility}
-			Rectifiers are useful when large amounts of even order distortion components are required. As with
-			other static nonlinearities the bandwidth of the newly introduced set of frequencies can be
-			controlled through filtering to provide more flexibility. Rectifiers also exhibit the same high
-			levels of intermodulation distortion as other static nonlinearities when processing musical
-			signals. Where only harmonic components are desired other techniques should be used.
-			
+%		\subsubsection*{Flexibility}
+%			Rectifiers are useful when large amounts of even order distortion components are required. As with
+%			other static nonlinearities the bandwidth of the newly introduced set of frequencies can be
+%			controlled through filtering to provide more flexibility. 
+
 %		\subsubsection*{Naturalness}
 
 	\subsection{Integrator}
@@ -900,12 +876,12 @@
 		\begin{equation}
 			y(n) = \begin{cases}
 				0 & \text{if $x(n) > 0$ and $x(n - 1) \leq 0$} \\
-				y(n - 1) + c|x(n)| & \text{otherwise}
+				y(n - 1) + k|x(n)| & \text{otherwise}
 			\end{cases}
 			\label{eq:Integrator}
 		\end{equation}
 
-		Where $c$ is the integration constant, effectively setting the output gain of the system. The output signal
+		Where $k$ is the integration constant, effectively setting the output gain of the system. The output signal
 		is reset to 0 ofter every negative to positive zero crossing in order to prevent the sample amplitudes from
 		rising indefinitely.
 
@@ -927,13 +903,14 @@
 			Applying Equation \ref{eq:Integrator} to a sine wave produces a signal with Fourier coefficients as
 			shown in Equation \ref{eq:IntegratorFourier}.
 
-			\[ A_{n} = \frac{cf_{s}}{2\pi} \left( \int_{0}^{\pi} (1 - cos(x))e^{-inx} dx +
+			\[ c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1 - cos(x))e^{-inx} dx +
 							       \int_{\pi}^{2\pi} (3 + cos(x))e^{-inx} dx \right) \]
 
-			\[ A_{0} = 2cf_{s} \]
-			\[ A_{1} = \frac{2icf_{s}}{\pi} \]
+			\[ c_{-1} = - \frac{2ikf_{s}}{\pi} \]
+			\[ c_{0} = 2kf_{s} \]
+			\[ c_{1} = \frac{2ikf_{s}}{\pi} \]
 			\begin{equation}
-				A_{n} = \frac{icf_{s}}{2\pi} \left( \frac{4n^{2} + 2e^{-i\pi n} - 2}{n^{3} - n} \right)
+				A_{n} = \frac{ikf_{s}}{2\pi} \left( \frac{4n^{2} + 2e^{-i\pi n} - 2}{n^{3} - n} \right)
 				\label{eq:IntegratorFourier}
 			\end{equation}
 
@@ -941,8 +918,8 @@
 			shallow roll of make integrators very useful when a large amount of new frequency content is
 			desired. 
 
-			While integrators are homogeneous they are frequency dependant. They act as low pass filters. Using
-			the same integration constant a high frequency inputs signals will produce a lower amplitude output
+			While integrators are homogeneous they are frequency dependant acting as low pass filters. Using
+			the same integration constant a high frequency input signal will produce a lower amplitude output
 			that a low frequency input. This does not affect the relatives amplitudes of frequencies in the
 			output just the overall amplitude of the signal.
 
@@ -952,21 +929,99 @@
 			described in Section \ref{sec:Excitation-Statics}.
 
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Flexibility}
+			Due to the inherent low pass filtering behaviour of integrators the temporal properties of
+			transient signals will be altered. Attacks times will be lengthened by the attenuation of their
+			high frequency components. This prevents these methods being used where it is essential that
+			transients are preserved. 
+			
+%		\subsubsection*{Flexibility}
+%			Integrators provide an efficient means to add wideband energy to the spectrum of a signal. All
+%			orders of distortion are generated making this new signal spectrally dense. The bandwidth of the
+%			new signal can easily be controlled through filtering improving the flexibility.
+
 %		\subsubsection*{Naturalness}
 
 	\subsection{Multiplier}
 	\label{sec:Excitation-Multiplier}
+		Multipliers are a subset of static nonlinearities in which input samples are raised to a positive integer
+		power as shown in Equation \ref{eq:Multiplier}.
+
 		\begin{equation}
 			y(n) = x(n)^{h}, \quad h \in \mathbb{N}
 			\label{eq:Multiplier}
 		\end{equation}
 
+		Exponential distortion extends this method by relaxing the restriction on the exponent ($h$). Allowing to
+		to take any positive value. The advantages and disadvantages of this will be discussed in this section.
+
 		\subsubsection*{Complexity}
+			Being a static nonlinearity the complexity of a multiplier is very low. A single exponentiation
+			operation is applied to each sample. 
+
 		\subsubsection*{Homogeneity}
+			Exponentiation is a non-homogeneous operation. Any amplitude applied to a signal before processing
+			is also raised to the exponent, as shown in Equation \ref{eq:MultiplierHomogeneity}.
+
+			\begin{equation}
+				(ax(n))^{h} = a^{h}x(n)^{h}
+				\label{eq:MultiplierHomogeneity}
+			\end{equation}
+
+			Unlike clippers there is no threshold parameter to change in response to the amplitude of the input
+			signal. Gain stages can be added before and after the nonlinearity in order to make the systems
+			response to different input amplitudes more uniform.
+			
 		\subsubsection*{Spectral Characteristics}
+			Nonlinear processing using Equation \ref{eq:Multiplier}, in which the exponent is a positive
+			integer, allows for control over the maximum order of distortion generated. The highest frequency
+			present among those generated will be equal to the highest frequency in the input signal multiplied
+			by the exponent. This facilitates more control over the bandwidth of the generated signal providing
+			greater flexibility and minimisation of aliasing.
+
+			If the exponent is allowed to take any positive value, control over the bandwidth of the output
+			signal is lost. Non integer exponents cause higher orders of distortion to be generated. Figures
+			\ref{fig:CubedSpectra} and \ref{fig:TwoAndAHalfSpectra} show the spectral effects of exponential
+			distortion with integer and non integer exponents. The input signal has a fundamental frequency of
+			1kHz and has energy in the first four harmonics.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/CubedSpectra.eps}
+				\caption{The spectral effects of cubing a signal with energy in its first four harmonics.}
+				\label{fig:CubedSpectra}
+			\end{figure}
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/RaisedToTwoAndAHalfSpectra.eps}
+				\caption{The spectral effects of raising a signal with energy in its first four harmonics
+					 to the power 2.5.}
+				\label{fig:TwoAndAHalfSpectra}
+			\end{figure}
+
+			The highest frequency component in the original signal is 4kHz. After cubing the signal the highest
+			frequency is three times this (12kHz) as seen in Figure \ref{fig:CubedSpectra}. Figure
+			\ref{fig:TwoAndAHalfSpectra} shows that when the exponent is 2.5 higher frequency components are
+			introduced. 
+
 		\subsubsection*{Temporal Characteristics}
 		\subsubsection*{Flexibility}
+			\cite{fernandez-cid2001distortion} construct characteristic curves from Chebyshev polynomials. In
+			this fashion the maximum order of polynomial used can be set thus setting the maximum order of the
+			distortion components. A conceptually similar approach to this is to create an approximation of the
+			characteristic curve by linear regression as shown in Figure \ref{fig:ClippingApproximation}. The
+			order of the polynomial controls the maximum order of the distortion components.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/ClippingApproximation.eps}
+				\caption{A $7^{th}$ order approximation of hard clipping using linear regression.}
+				\label{fig:ClippingApproximation}
+			\end{figure}
+
+			Generating characteristic curves in this way reduces the number of aliased frequencies at the cost
+			of having to evaluate a more complex polynomial to calculate the output value for each sample.
+
 %		\subsubsection*{Naturalness}
 
 	\subsection{Single Side Band Automodulation}
@@ -999,7 +1054,7 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Flexibility}
+%		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
 	\subsection{Instantaneous Amplitude and Phase}
@@ -1020,7 +1075,7 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Flexibility}
+%		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
 	\subsection{Spectral Replication}
@@ -1050,7 +1105,7 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Flexibility}
+%		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
 	\subsection{Spectral Folding}
@@ -1075,7 +1130,7 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Flexibility}
+%		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
 	\subsection{Spectral Stretching}
@@ -1092,7 +1147,7 @@
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
-		\subsubsection*{Flexibility}
+%		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
 	%\subsection{Bandwidth Extension}
