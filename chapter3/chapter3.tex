@@ -525,17 +525,16 @@
 			being processed. Thus the perceived timbral transformation may also depend on the sampling
 			frequency.
 
+			\citep{vetter2013estimation} upsample signals by a factor of 32 prior to applying
+			the nonlinearity. Afterwards the signal is downsampled to the original sampling frequency. This
+			successfully mitigates aliasing as any aliased frequencies which appear in the audible spectrum
+			will most likely be inaudible due to having very low amplitudes. It does however increase the
+			computational complexity of the system. Along with the extra overhead of upsampling and
+			downsampling the signal, there is also 32 times the amount of samples to process.
 			There are two common methods to avoid unwanted aliasing distortion in nonlinear effects:
 
-			\begin{itemize}
-				\item Upsampling before the nonlinear stage and downsampling afterwards
-			              \citep{vetter2013estimation}.
-				\item Ensuring no frequencies above the Nyquist are introduced by the nonlinear stage
-				      \citep{fernandez-cid2001distortion}.
-			\end{itemize}
-
-			These techniques have both have applications depending on the harmonic excitation method used.
-			Details of these applications will be discussed where appropriate in Section
+			For certain excitation methods it may be possible to reduce aliasing by changing properties of the
+			processing algorithm. Details of these techniques will be discussed where appropriate in Section
 			\ref{sec:Excitation-Methods}.
 
 	\subsection{Temporal Characteristics}
@@ -742,18 +741,11 @@
 				\label{fig:ClippingSpectra}
 			\end{figure}
 
-		\subsubsection*{Aliasing}
 			The large amount of spectral content introduced by static nonlinearities means they are
-			particularly susceptible to aliasing. The steeper roll off produced by soft clippers reduces the
-			number of aliased frequencies produced. Other than using a `softer' characteristic curve, there are
-			some other techniques to reduce aliasing in static nonlinearities.
-
-			\citep{vetter2013estimation} upsample signals by a factor of 32 prior to applying
-			the nonlinearity. Afterwards the signal is downsampled to the original sampling frequency. This
-			successfully mitigates aliasing as any aliased frequencies which appear in the audible spectrum
-			will most likely be inaudible due to having very low amplitudes. It does however increase the
-			computational complexity of the system. Along with the extra overhead of upsampling and
-			downsampling the signal, there is also 32 times the amount of samples to process.
+			particularly susceptible to aliasing. Through smoothing the characteristic curve of the
+			nonlinearity (making the clipper `softer') the amplitudes of generated frequencies will roll of
+			more quickly. With lower levels of high order distortion the amplitudes of any aliased components
+			will be reduced.
 
 		\subsubsection*{Temporal Characteristics}
 			As static nonlinearities are memoryless they can not influence the temporal evolution of signals at
@@ -837,7 +829,10 @@
 				\label{eq:RectificationFourier}
 			\end{equation}
 
-			This represents all even order harmonics rolling off at approximately 12dB per octave.
+			This represents all even order harmonics rolling off at approximately 12dB per octave.  As with
+			other static nonlinearities rectifiers are susceptible to aliasing. The relatively shallow roll off
+			of the distortion components can lead to a considerable amount of energy present in the aliased
+			components of the output signal. 
 
 			The output from a half wave rectifier has the same spectrum as that of a full wave rectifier
 			but with the content of the original signal included. This can easily be shown by considering how a
@@ -850,10 +845,6 @@
 				x_{h}(n) = \frac{1}{2} \left( x_{f}(n) + x(n) \right)
 				\label{eq:RectificationRelationship}
 			\end{equation}
-
-		\subsubsection*{Aliasing}
-			As with other static nonlinearities rectifiers are susceptible to aliasing. Both upsampling and
-			approximation with low order polynomials are valid techniques to reduce the amount of aliasing.
 
 		\subsubsection*{Temporal Characteristics}
 			Full wave rectifiers have no effect on the temporal characteristics of signals as all the magnitude
@@ -916,17 +907,13 @@
 
 			This produces all harmonics with amplitudes rolling off at approximately 6dB per octave. This
 			shallow roll of make integrators very useful when a large amount of new frequency content is
-			desired. 
+			desired. Due to the shallow roll of of the distortion component's amplitudes integrators are very
+			prone to aliasing.
 
 			While integrators are homogeneous they are frequency dependant acting as low pass filters. Using
 			the same integration constant a high frequency input signal will produce a lower amplitude output
 			that a low frequency input. This does not affect the relatives amplitudes of frequencies in the
 			output just the overall amplitude of the signal.
-
-		\subsubsection*{Aliasing}
-			Due to the shallow roll of of the distortion components amplitudes integrators are very prone to
-			aliasing. The levels of aliasing can be reduced using the upsampling / downsampling technique
-			described in Section \ref{sec:Excitation-Statics}.
 
 		\subsubsection*{Temporal Characteristics}
 			Due to the inherent low pass filtering behaviour of integrators the temporal properties of
@@ -1005,19 +992,37 @@
 			introduced. 
 
 		\subsubsection*{Temporal Characteristics}
+			Exponential distortion has a dynamic compression/expansion effect. For exponents greater than 1 the
+			dynamics of a signal are expanded, the amplitude difference between low and high amplitude portions
+			of the signal is increased. For exponents less that 1 the opposite occurs, compressing the dynamics
+			of the signal. Figure \ref{fig:ExponentiationTemporalEffects} show the effects this can have on the
+			attack and release portions of signals.
+
 			\begin{figure}[h!]
 				\centering
 				\includegraphics[width=0.6\textwidth]{chapter3/Images/ExponentiationTemporalEffects.eps}
 				\caption{The temporal effects of exponential distortion.}
 				\label{fig:ExponentiationTemporalEffects}
 			\end{figure}
-				
+
+			While the time taken for the signal to rise to or decay from maximum amplitude is not changed, the
+			shape of the amplitude envelope during the attack and release portions is. 
+
+			\note
+			{ 
+				Probably mention the timbral effects of this in the timbre section
+				\citep{patterson1994the}.
+			}
 
 		\subsubsection*{Flexibility}
-			\cite{fernandez-cid2001distortion} construct characteristic curves from Chebyshev polynomials. In
-			this fashion the maximum order of polynomial used can be set thus setting the maximum order of the
-			distortion components. A conceptually similar approach to this is to create an approximation of the
-			characteristic curve by linear regression as shown in Figure \ref{fig:ClippingApproximation}. The
+			Multipliers offer greater flexibility than the previously discussed excitation methods. Control
+			over the orders of distortion introduced allows for finer shaping of a signals spectrum. The output
+			of several multipliers with different exponents can be summed in order to include multiple orders
+			of distortion.
+
+			Summing multiplier outputs in this way allows for approximation of other static
+			nonlinearities. A low order polynomial expression approximating the desired characteristic curve
+			is calculated by linear regression as shown in Figure \ref{fig:ClippingApproximation}. The
 			order of the polynomial controls the maximum order of the distortion components.
 
 			\begin{figure}[h!]
@@ -1028,7 +1033,9 @@
 			\end{figure}
 
 			Generating characteristic curves in this way reduces the number of aliased frequencies at the cost
-			of having to evaluate a more complex polynomial to calculate the output value for each sample.
+			of having to evaluate a more complex polynomial to calculate the output value for each sample. A
+			similar approach is undertaken by \cite{fernandez-cid2001distortion} who construct characteristic
+			curves from Chebyshev polynomials in order to control the highest frequencies introduced.
 
 %		\subsubsection*{Naturalness}
 
