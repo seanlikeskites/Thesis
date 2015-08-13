@@ -230,11 +230,11 @@
 					\draw (InN) -- (SigN);
 					\draw (InN) -- (In1);
 
-					\node (In) at (-1.25, 2.25) {$x(n)$};
+					\node (In) at (-1.25, 2.25) {$x[n]$};
 					\coordinate (InMid) at (-0.5, 2.25);
 					\draw (In) -- (InMid);
 
-					\node (Out) at (6, 2.25) {$y(n)$};
+					\node (Out) at (6, 2.25) {$y[n]$};
 					\draw (Add) -- (Out);
 
 				\end{tikzpicture}
@@ -583,9 +583,9 @@
 		\ref{eq:SymmetricHardClipping}.
 
 		\begin{equation}
-			y(n) = \begin{cases}
-				t\sgn(x(n)) & \text{if $|x(n)| > t$} \\
-				x(n) & \text{otherwise}
+			y[n] = \begin{cases}
+				t\sgn(x[n]) & \text{if $|x[n]| > t$} \\
+				x[n] & \text{otherwise}
 			\end{cases}, \quad t \geq 0
 			\label{eq:SymmetricHardClipping}
 		\end{equation}
@@ -600,11 +600,11 @@
 		for the clippers given in Equations \ref{eq:SymmetricHardClipping} and \ref{eq:SymmetricSoftClipping}.
 
 		\begin{equation}
-			y(n) = \begin{cases}
-				t\sgn(x(n)) & \text{if $|x(n)| > t$} \\
-				t\sgn(x(n)) \left( 1 - \frac{4}{3} \left( 1 - \left| \frac{x(n)}{t} \right| \right)^{2}
-					\right) & \text{if $\frac{t}{2} \leq |x(n)| \leq t$} \\
-				\frac{4x(n)}{3} & \text{otherwise}
+			y[n] = \begin{cases}
+				t\sgn(x[n]) & \text{if $|x[n]| > t$} \\
+				t\sgn(x[n]) \left( 1 - \frac{4}{3} \left( 1 - \left| \frac{x[n]}{t} \right| \right)^{2}
+					\right) & \text{if $\frac{t}{2} \leq |x[n]| \leq t$} \\
+				\frac{4x[n]}{3} & \text{otherwise}
 			\end{cases}, \quad t \geq 0
 			\label{eq:SymmetricSoftClipping}
 		\end{equation}
@@ -659,9 +659,9 @@
 			signal.
 			
 			\begin{equation}
-				y(n) = \begin{cases}
-					t\sgn(x(n)) & \text{if $|x(n)| > t$} \\
-					t\sgn(x(n)) \left(1 - \left|\frac{x(n)}{t} - \sgn(x(n)) \right|^{E} \right) &
+				y[n] = \begin{cases}
+					t\sgn(x[n]) & \text{if $|x[n]| > t$} \\
+					t\sgn(x[n]) \left(1 - \left|\frac{x[n]}{t} - \sgn(x[n]) \right|^{E} \right) &
 						\text{otherwise}
 				\end{cases}, \quad t \geq 0 \ \text{and} \ E > 1
 				\label{eq:SymmetricExponentialClipping}
@@ -701,10 +701,10 @@
 			for asymmetric clipping giving Equation \ref{eq:AsymmetricHardClipping}.
 			
 			\begin{equation}
-				y(n) = \begin{cases}
-					t_{+} & \text{if $x(n) > t_{+}$} \\
-					t_{-} & \text{if $x(n) < t_{-}$} \\
-					x(n) & \text{otherwise}
+				y[n] = \begin{cases}
+					t_{+} & \text{if $x[n] > t_{+}$} \\
+					t_{-} & \text{if $x[n] < t_{-}$} \\
+					x[n] & \text{otherwise}
 				\end{cases}, \quad t_{-} < t_{+}
 				\label{eq:AsymmetricHardClipping}
 			\end{equation}
@@ -754,10 +754,10 @@
 			example consider the infinite peak clipper shown in Equation \ref{eq:InfinitePeakClipper}.
 
 			\begin{equation}
-				y(n) = \begin{cases}
-					-1 & \text{if $x(n) < 0$} \\
-					0 & \text{if $x(n) = 0$} \\
-					1 & \text{if $x(n) > 1$}
+				y[n] = \begin{cases}
+					-1 & \text{if $x[n] < 0$} \\
+					0 & \text{if $x[n] = 0$} \\
+					1 & \text{if $x[n] > 1$}
 				\end{cases}
 				\label{eq:InfinitePeakClipper}
 			\end{equation}
@@ -789,15 +789,15 @@
 		as shown in Equations \ref{eq:HalfWaveRectification} and \ref{eq:FullWaveRectification} respectively.
 
 		\begin{equation}
-			y(n) = \begin{cases}
-				0 & \text{if $x(n) < 0$} \\
-				x(n) & \text{otherwise}
+			y[n] = \begin{cases}
+				0 & \text{if $x[n] < 0$} \\
+				x[n] & \text{otherwise}
 			\end{cases}
 			\label{eq:HalfWaveRectification}
 		\end{equation}
 
 		\begin{equation}
-			y(n) = |x(n)|
+			y[n] = |x[n]|
 			\label{eq:FullWaveRectification}
 		\end{equation}
 
@@ -842,7 +842,7 @@
 			\ref{eq:RectificationRelationship}.
 
 			\begin{equation}
-				x_{h}(n) = \frac{1}{2} \left( x_{f}(n) + x(n) \right)
+				x_{h}[n] = \frac{1}{2} \left( x_{f}[n] + x[n] \right)
 				\label{eq:RectificationRelationship}
 			\end{equation}
 
@@ -865,9 +865,9 @@
 		Equation \ref{eq:Integrator} shows an Integrator adapted from the one described by \citet{larsen2004audio}.
 
 		\begin{equation}
-			y(n) = \begin{cases}
-				0 & \text{if $x(n) > 0$ and $x(n - 1) \leq 0$} \\
-				y(n - 1) + k|x(n)| & \text{otherwise}
+			y[n] = \begin{cases}
+				0 & \text{if $x[n] > 0$ and $x[n - 1] \leq 0$} \\
+				y[n - 1] + k|x[n]| & \text{otherwise}
 			\end{cases}
 			\label{eq:Integrator}
 		\end{equation}
@@ -934,7 +934,7 @@
 		power as shown in Equation \ref{eq:Multiplier}.
 
 		\begin{equation}
-			y(n) = x(n)^{h}, \quad h \in \mathbb{N}
+			y[n] = x[n]^{h}, \quad h \in \mathbb{N}
 			\label{eq:Multiplier}
 		\end{equation}
 
@@ -950,7 +950,7 @@
 			is also raised to the exponent, as shown in Equation \ref{eq:MultiplierHomogeneity}.
 
 			\begin{equation}
-				(ax(n))^{h} = a^{h}x(n)^{h}
+				(ax[n])^{h} = a^{h}x[n]^{h}
 				\label{eq:MultiplierHomogeneity}
 			\end{equation}
 
@@ -1050,18 +1050,57 @@
 		imaginary part its Hilbert transform. The analytic signal is often denoted with a subscript letter
 		$a$, such that the analytic representation of the signal $x(n)$ would be denoted $x_{a}(n)$.
 
-		\note
-		{
-			We probably need some place to talk about hilbert transforms \citet{oppenheim2014discrete} are
-			pretty good at that shiz.
-		}
+		\note{This Hilbert transform stuff should probably be moved elsewhere.}
+
+		An ideal Hilbert transform alters the phase information of a signal while leaving the magnitude information
+		unchanged. Any negative frequencies in the signal have their phase shifted by $\frac{\pi}{2}$ radians.  The
+		phase of positive frequencies is shifted by $-\frac{\pi}{2}$ radians. The transfer function for an FIR
+		implementation of a Hilbert transform is shown in Equation \ref{eq:FirHilbertTransform}.
+
+		\begin{equation}
+			H(z) = \sum_{m = -M}^{M} \frac{2}{m\pi} sin^{2} \left( \frac{m\pi}{2} \right) z^{-m}
+			\label{eq:FirHilbertTransform}
+		\end{equation}
+
+		For an ideal Hilbert transform the impulse response should be infinitely long ($M = \infty$). Practicable
+		approximations of an ideal Hilbert transform can be created by using a finite value for $M$. A delay of $M$
+		samples must also be introduced in order to make the filter causal. As the value of $M$ is decreased this
+		delay is reduced while the magnitude response of the filter deviates further from the ideal. Figure
+		\ref{fig:HilbertMagnitude} shows the magnitude responses for FIR Hilbert transform filters with $M = 11$
+		and $M = 101$. The filters have a bandpass response with some ripple in the pass band. As $M$ is increased
+		the bandwidth of the passband is increased and the ripple reduced. The phase response of these filters
+		remains ideal no matter the value of $M$, as evidenced by Figure \ref{fig:HilbertPhase}.
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter3/Images/HilbertMagnitudeResponses.eps}
+			\caption{Magnitude responses of FIR Hilbert transform filter with different orders.}
+			\label{fig:HilbertMagnitude}
+		\end{figure}
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter3/Images/HilbertPhaseResponses.eps}
+			\caption{Phase responses of FIR Hilbert transform filters with different orders.}
+			\label{fig:HilbertPhase}
+		\end{figure}
+
+		When using Equation \ref{eq:FirHilbertTransform} a compromise needs to be made between the tolerable amount
+		of delay and the accuracy of the filter's magnitude response. Increasing $M$ will give a more accurate
+		filter but introduce more delay and increase the complexity of the filter. More efficient implementations
+		can be build using IIR filters if some of the properties of an ideal Hilbert transform are disregarded.
+
+		\citet{oppenheim2014discrete} suggest processing audio with two parallel allpass IIR filters the phase
+		responses of which differ from each other by $\frac{\pi}{2}$ radians for a large proportion of the
+		spectrum. The outputs of these two filters can then be used as the real and imaginary parts of the analytic
+		signal. \citet{niemitalo2003hilbert} suggests such a set of filters.
 
 		In single sideband automodulation the analytical representation of the input signal is multiplied with
 		itself in order to generate harmonics. Equation \ref{eq:SSB} shows the $h^{\text{th}}$ order single side
 		band automodulation of a signal.
 
 		\begin{equation}
-			y(n) = \Re \left( x_{a}(n)^{h} \right), \quad h \in \mathbb{N}
+			y[n] = \Re \left( x_{a}[n]^{h} \right), \quad h \in \mathbb{N}
 			\label{eq:SSB}
 		\end{equation}
 
@@ -1082,13 +1121,13 @@
 	\label{sec:Excitation-IAP}
 		In this method, the instantaneous amplitude and phase of the analytic signal are calculated. These values
 		are then used to aid in the construction of harmonics. The instantaneous amplitude of the analytic signal
-		is found by taking its absolute value, $|x_{a}(n)|$. The instantaneous phase is found by taking the complex
-		argument of the analytic signal, $\arg(x_{a}(n))$. The instantaneous phase can then be scaled in order to
+		is found by taking its absolute value, $|x_{a}[n]|$. The instantaneous phase is found by taking the complex
+		argument of the analytic signal, $\arg(x_{a}[n])$. The instantaneous phase can then be scaled in order to
 		scale the frequency content of the signal independent of its amplitude. Equation \ref{eq:IAP} shows the
 		$h^{\text{th}}$ order instantaneous amplitude and phase modulation of a signal.
 
 		\begin{equation}
-			y(n) = |x_{a}(n)| \cos \left( h\arg(x_{a}(n)) \right), \quad h \in \mathbb{N}
+			y[n] = |x_{a}[n]| \cos \left( h\arg(x_{a}[n]) \right), \quad h \in \mathbb{N}
 			\label{eq:IAP}
 		\end{equation}
 
@@ -1115,7 +1154,7 @@
 		Equation \ref{eq:SpectralReplication}.
 
 		\begin{equation}
-			y(n) = \Re \left( x_{a}(n) e^{j\omega  n/ f_{s}} \right)
+			y[n] = \Re \left( x_{a}[n] e^{j\omega  n/ f_{s}} \right)
 			\label{eq:SpectralReplication}
 		\end{equation}
 
@@ -1140,9 +1179,9 @@
 		\end{figure}
 
 		\begin{equation}
-			y(n) = \begin{cases}
-				-x(n) & \text{if $n$ is odd} \\
-				x(n) & \text{otherwise}
+			y[n] = \begin{cases}
+				-x[n] & \text{if $n$ is odd} \\
+				x[n] & \text{otherwise}
 			\end{cases}
 			\label{eq:SpectralFolding}
 		\end{equation}
