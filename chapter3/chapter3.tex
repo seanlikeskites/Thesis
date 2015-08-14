@@ -1090,10 +1090,10 @@
 		filter but introduce more delay and increase the complexity of the filter. More efficient implementations
 		can be build using IIR filters if some of the properties of an ideal Hilbert transform are disregarded.
 
-		\citet{oppenheim2014discrete} suggest processing audio with two parallel allpass IIR filters the phase
-		responses of which differ from each other by $\frac{\pi}{2}$ radians for a large proportion of the
-		spectrum. The outputs of these two filters can then be used as the real and imaginary parts of the analytic
-		signal. \citet{niemitalo2003hilbert} suggests such a set of filters.
+		\citet{oppenheim2014discrete} suggest constructing a phase splitter. Processing audio with two parallel
+		allpass IIR filters the phase responses of which differ from each other by $\frac{\pi}{2}$ radians for a
+		large proportion of the spectrum. While this is not strictly a Hilbert transform it creates two signals
+		which can be used as the real and imaginary part of an analytic signal. 
 
 		In single sideband automodulation the analytical representation of the input signal is multiplied with
 		itself in order to generate harmonics. Equation \ref{eq:SSB} shows the $h^{\text{th}}$ order single side
@@ -1105,13 +1105,32 @@
 		\end{equation}
 
 		\subsubsection*{Complexity}
+			Compared with the harmonic excitation methods discussed previously, single side band automodulation
+			has greater complexity. A Hilbert transform must be applied before a complex exponentiation
+			operation for each sample. The Hilbert transform filter used must give similar response for a wide
+			range of frequencies so the resulting harmonic excitation gives similar results at different
+			frequencies.
+			
+			A high order FIR Hilbert transform filter is required to give a suitably flat magnitude response.
+			A lower complexity IIR phase splitter can be used in order to reduce the computational load.
+			\citet{niemitalo2003hilbert} suggests an implementation consisting of eight biquad filters and a
+			one sample delay.
+			
 		\subsubsection*{Homogeneity}
+			As with multipliers, SSBA is a non-homogeneous process. The amplitude envelope of the $h^{th}$
+			order automodulation is the amplitude envelope of the original signal raised to the power $h$. 
+
 		\subsubsection*{Spectral Characteristics}
-			\note
-			{
-				SSBA extends the control of multipliers as it constrains the minimum frequency introduced
-				as well as the highest.
-			}
+			SSBA extends the control provided by multipliers as it constrains the minimum frequency introduced
+			as well as the highest.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/SSBA3Spectra.eps}
+				\caption{The spectral effects of applying third order SSBA to a signal with energy in its 
+				         first four harmonics.}
+				\label{fig:SSBA3Spectra}
+			\end{figure}
 
 		\subsubsection*{Temporal Characteristics}
 %		\subsubsection*{Flexibility}
