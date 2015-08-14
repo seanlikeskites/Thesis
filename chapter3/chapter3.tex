@@ -1093,7 +1093,17 @@
 		\citet{oppenheim2014discrete} suggest constructing a phase splitter. Processing audio with two parallel
 		allpass IIR filters the phase responses of which differ from each other by $\frac{\pi}{2}$ radians for a
 		large proportion of the spectrum. While this is not strictly a Hilbert transform it creates two signals
-		which can be used as the real and imaginary part of an analytic signal. 
+		which can be used as the real and imaginary part of an analytic signal. \citet{niemitalo2003hilbert}
+		provides an implementation of such a pair of filters. The phase difference between these two filters is
+		seen in Figure \ref{fig:IIRHilbertPhase}.
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter3/Images/IIRHilbertPhaseResponses.eps}
+			\caption{The phase difference between the two allpass filters proposed by
+			         \citet{niemitalo2003hilbert}.}
+			\label{fig:IIRHilbertPhase}
+		\end{figure}
 
 		In single sideband automodulation the analytical representation of the input signal is multiplied with
 		itself in order to generate harmonics. Equation \ref{eq:SSB} shows the $h^{\text{th}}$ order single side
@@ -1113,7 +1123,7 @@
 			
 			A high order FIR Hilbert transform filter is required to give a suitably flat magnitude response.
 			A lower complexity IIR phase splitter can be used in order to reduce the computational load.
-			\citet{niemitalo2003hilbert} suggests an implementation consisting of eight biquad filters and a
+			The implementations given by \citet{niemitalo2003hilbert} consists of eight biquad filters and a
 			one sample delay.
 			
 		\subsubsection*{Homogeneity}
