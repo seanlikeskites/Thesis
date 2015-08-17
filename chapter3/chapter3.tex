@@ -1132,8 +1132,13 @@
 
 		\subsubsection*{Spectral Characteristics}
 			SSBA extends the control provided by multipliers as it constrains the minimum frequency introduced
-			as well as the highest.
-
+			as well as the highest. Using Equation \ref{eq:SSB} only the upper side band (the sum frequencies)
+			of the modulation is produced. The highest and lowest frequency components of the output are that
+			of the input signal multiplied by the exponent. Between these two frequencies lie all the other
+			harmonic and intermodulation components created. This can be seen in figure \ref{fig:SSBA3Spectra},
+			which shows the results of applying $3^{rd}$ order SSBA to the signal used in Figures
+			\ref{fig:CubedSpectra} and \ref{fig:TwoAndAHalfSpectra}. 			
+			
 			\begin{figure}[h!]
 				\centering
 				\includegraphics[width=0.6\textwidth]{chapter3/Images/SSBA3Spectra.eps}
@@ -1142,7 +1147,29 @@
 				\label{fig:SSBA3Spectra}
 			\end{figure}
 
+			If aliasing does occur it is possible for the aliased frequency to lie outside of this bandwidth.
+			The amplitude of aliased frequencies can be greatly reduced through filtering. Applying a low pass
+			filter with a cutoff frequency of $\frac{f_{s}}{2h}$ prior to processing will reduce the amplitude
+			of any frequency content in the input which will cause aliasing when processed.
+
 		\subsubsection*{Temporal Characteristics}
+			SSBA has similar temporal effects to a multiplier using an exponent greater that 1. The signal
+			undergoes dynamic expansion changing the shape of its attack and release envelopes as shown in
+			Figure \ref{fig:SSBATemporalEffects}.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/SSBATemporalEffects.eps}
+				\caption{The temporal effects of SSBA.}
+				\label{fig:SSBATemporalEffects}
+			\end{figure}
+
+			The restricted bandwidth of the SSBA technique's output is also apparent from this graph. The input
+			is a sinusoid with a simple amplitude envelope. The output is a sinusoid with 3 times the frequency
+			and an amplitude envelope equal to that of the input cubed. This is in contrast to the effect of
+			the multiplier shown in Figure \ref{fig:ExponentialTemporalEffects} where the output signal is no
+			longer sinusoidal.
+
 %		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
