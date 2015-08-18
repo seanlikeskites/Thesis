@@ -1040,7 +1040,7 @@
 %		\subsubsection*{Naturalness}
 
 	\subsection{Single Side Band Automodulation}
-	\label{sec:Excitation-SSB}
+	\label{sec:Excitation-SSBA}
 		Single sideband automodulation (SSBA) utilises the concept of single sideband modulation
 		\citep{corinthios2009signals}. This allows you to apply amplitude modulation to a signal and only produce
 		either the sum or difference sideband.
@@ -1175,12 +1175,12 @@
 
 	\subsection{Instantaneous Amplitude and Phase}
 	\label{sec:Excitation-IAP}
-		In this method, the instantaneous amplitude and phase of the analytic signal are calculated. These values
-		are then used to aid in the construction of harmonics. The instantaneous amplitude of the analytic signal
-		is found by taking its absolute value, $|x_{a}[n]|$. The instantaneous phase is found by taking the complex
-		argument of the analytic signal, $\arg(x_{a}[n])$. The instantaneous phase can then be scaled in order to
-		scale the frequency content of the signal independent of its amplitude. Equation \ref{eq:IAP} shows the
-		$h^{\text{th}}$ order instantaneous amplitude and phase modulation of a signal.
+		In this method, the instantaneous amplitude and phase (IAP) of the analytic signal are calculated. These
+		values are then used to aid in the construction of harmonics. The instantaneous amplitude of the analytic
+		signal is found by taking its absolute value, $|x_{a}[n]|$. The instantaneous phase is found by taking the
+		complex argument of the analytic signal, $\arg(x_{a}[n])$. The instantaneous phase can then be scaled in
+		order to scale the frequency content of the signal independent of its amplitude. Equation \ref{eq:IAP}
+		shows the $h^{\text{th}}$ order instantaneous amplitude and phase modulation of a signal.
 
 		\begin{equation}
 			y[n] = |x_{a}[n]| \cos \left( h\arg(x_{a}[n]) \right), \quad h \in \mathbb{N}
@@ -1188,9 +1188,44 @@
 		\end{equation}
 
 		\subsubsection*{Complexity}
+			The IAP technique requires a Hilbert transform to be performed before the harmonic generation. The
+			computational load of this is the same as that for the SSBA technique, an IIR phase splitter
+			implementation providing a good compromise between accuracy, complexity and delay. Once an analytic
+			signal has been constructed the remaining processing is applied on a sample by sample basis. 
+			
 		\subsubsection*{Homogeneity}
+			In the IAP method the magnitude and phase information of a signal are separated. The phase
+			information is scaled in order to increase the frequency while the magnitude information is left
+			unaltered. This preservation of magnitude information mean that the IAP method is a homogeneous
+			system.
+			
 		\subsubsection*{Spectral Characteristics}
+			In contrast to the SSBA method, the IAP method is homogeneous but provides little control over the
+			bandwidth of the output when the input has multiple frequency components. Figure
+			\ref{fig:IAP3Spectra} shows the spectral effects of third order IAP processing on the same signal
+			used when discussing previous algorithms.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/IAP3Spectra.eps}
+				\caption{The spectral effects of applying third order IAP to a signal with energy in its 
+				         first four harmonics.}
+				\label{fig:IAP3Spectra}
+			\end{figure}
+
+			When multiple frequency components are present in the input signal IAP processing produces energy
+			at high order distortion components. As with previous algorithms it may be necessary to upsample
+			the signal before precessing to avoid aliasing of these frequencies.
+
 		\subsubsection*{Temporal Characteristics}
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/IAPTemporalEffects.eps}
+				\caption{The temporal effects of IAP.}
+				\label{fig:IAPTemporalEffects}
+			\end{figure}
+				
+			
 %		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
