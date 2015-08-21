@@ -1280,12 +1280,17 @@
 			components.
 
 		\subsubsection*{Temporal Characteristics}
+			Spectral replication does not affect the temporal properties of a signal.
 
 %		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
 	\subsection{Spectral Folding}
 	\label{sec:Excitation-SpectralFolding}
+		Spectral folding uses upsampling in order to create a mirror image of the spectrum at higher frequencies.
+		This effects can be seen in Figure \ref{fig:SpectralFolding}. Typically upsampling systems apply a low pass
+		filter to remove any high frequency content introduced \citep{oppenheim2014discrete}. This is not needed
+		for spectral folding as the production of high frequency energy is the desired result.
 	
 		\begin{figure}[h!]
 			\centering
@@ -1294,16 +1299,25 @@
 			\label{fig:SpectralFolding}
 		\end{figure}
 
+		In order for the output signal to have the same sampling frequency as the input the signal should be
+		downsampled before upsampling. Where the downsampling / upsampling factor is represented by $k$ this is
+		equivalent to only retaining every $k^{th}$ sample and setting all others to a value of zero as shown in
+		Equation \ref{eq:SpectralFolding}.
+
 		\begin{equation}
 			y[n] = \begin{cases}
-				0 & \text{if $n$ is odd} \\
-				x[n] & \text{otherwise}
+				x[n] & \text{if $k \divides n$} \\
+				0 & \text{otherwise}
 			\end{cases}
 			\label{eq:SpectralFolding}
 		\end{equation}
 
 		\subsubsection*{Complexity}
+
 		\subsubsection*{Homogeneity}
+			Both downsampling and upsampling are homogeneous processes making spectral folding also
+			homogeneous.
+			
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
 %		\subsubsection*{Flexibility}
