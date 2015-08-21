@@ -1287,26 +1287,22 @@
 
 	\subsection{Spectral Folding}
 	\label{sec:Excitation-SpectralFolding}
-		Spectral folding uses upsampling in order to create a mirror image of the spectrum at higher frequencies.
-		This effects can be seen in Figure \ref{fig:SpectralFolding}. Typically upsampling systems apply a low pass
-		filter to remove any high frequency content introduced \citep{oppenheim2014discrete}. This is not needed
-		for spectral folding as the production of high frequency energy is the desired result.
-	
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter3/Images/SpectralFoldingSpectrum.eps}
-			\caption{The spectral characteristics of spectral folding.}
-			\label{fig:SpectralFolding}
-		\end{figure}
+		Spectral folding uses upsampling in order to replicate parts of the spectrum at higher frequencies. In
+		order for the output signal to have the same sampling frequency as the input the signal us 
+		downsampled by a factor $k$ before upsampling by the same factor. 
+		
+		To avoid aliasing during the downsampling phase the signal should have a low pass filter applied
+		with a cutoff frequency of $\frac{f_{s}}{2k}$. Typically upsampling systems apply a low pass filter
+		to remove any high frequency content introduced \citep{oppenheim2014discrete}. This is not needed for
+		spectral folding as the production of high frequency energy is the desired result.
 
-		In order for the output signal to have the same sampling frequency as the input the signal should be
-		downsampled before upsampling. Where the downsampling / upsampling factor is represented by $k$ this is
-		equivalent to only retaining every $k^{th}$ sample and setting all others to a value of zero as shown in
-		Equation \ref{eq:SpectralFolding}.
+		After filtering the downsampling and upsampling can be performed at the same time by retaining
+		every $k^{th}$ sample and setting all others to zero. This is shown in Equation
+		\ref{eq:SpectralFolding} where $x_{lf}[n]$ is the filtered input signal.		
 
 		\begin{equation}
 			y[n] = \begin{cases}
-				x[n] & \text{if $k \divides n$} \\
+				x_{lf}[n] & \text{if $k \divides n$} \\
 				0 & \text{otherwise}
 			\end{cases}
 			\label{eq:SpectralFolding}
@@ -1319,6 +1315,21 @@
 			homogeneous.
 			
 		\subsubsection*{Spectral Characteristics}
+			Spectral folding with a factor $k$ results in the lowest $\frac{1}{k}$ of the input spectrum being
+			repeated $k$ times in the output spectrum. Every second repetition is a mirror image of the
+			original. This effect is shown in Figure \ref{fig:SpectralFolding}. 
+			
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/SpectralFoldingSpectrum.eps}
+				\caption{The spectral characteristics of spectral folding.}
+				\label{fig:SpectralFolding}
+			\end{figure}
+
+			The new frequencies introduced in the output depend on the sampling rate of the signal. Unless
+			$\frac{f_{s}}{2k}$ is a harmonic of the input signal there is little chance that the new
+			frequencies will be harmonically related to the input.
+
 		\subsubsection*{Temporal Characteristics}
 %		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
