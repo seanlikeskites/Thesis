@@ -1288,15 +1288,15 @@
 	\subsection{Spectral Folding}
 	\label{sec:Excitation-SpectralFolding}
 		Spectral folding uses upsampling in order to replicate parts of the spectrum at higher frequencies. In
-		order for the output signal to have the same sampling frequency as the input the signal us 
-		downsampled by a factor $k$ before upsampling by the same factor. 
+		order for the output signal to have the same sampling frequency as the input the signal is 
+		downsampled by a factor $k$ before being upsampled by the same factor. 
 		
 		To avoid aliasing during the downsampling phase the signal should have a low pass filter applied
 		with a cutoff frequency of $\frac{f_{s}}{2k}$. Typically upsampling systems apply a low pass filter
 		to remove any high frequency content introduced \citep{oppenheim2014discrete}. This is not needed for
 		spectral folding as the production of high frequency energy is the desired result.
 
-		After filtering the downsampling and upsampling can be performed at the same time by retaining
+		After filtering, the downsampling and upsampling can be performed at the same time by retaining
 		every $k^{th}$ sample and setting all others to zero. This is shown in Equation
 		\ref{eq:SpectralFolding} where $x_{lf}[n]$ is the filtered input signal.		
 
@@ -1309,6 +1309,9 @@
 		\end{equation}
 
 		\subsubsection*{Complexity}
+			Spectral folding using Equation \ref{eq:SpectralFolding} is relatively simple requiring only a low
+			pass filter and some additional assignment operations. The complexity of the system as a whole
+			largely depends on the complexity of the downsampling filter used.
 
 		\subsubsection*{Homogeneity}
 			Both downsampling and upsampling are homogeneous processes making spectral folding also
@@ -1330,8 +1333,20 @@
 			$\frac{f_{s}}{2k}$ is a harmonic of the input signal there is little chance that the new
 			frequencies will be harmonically related to the input.
 
+			Other than changing the downsampling / upsampling factor, the user is given little control over the
+			content of the output spectrum. The bandwidth of the output is not constricted, possibly taking up
+			the entirety of the spectrum. Additional filtering is needed to shape the output spectrum as
+			desired, increasing the overall complexity of the system.
+
 		\subsubsection*{Temporal Characteristics}
-%		\subsubsection*{Flexibility}
+			The low pass filter applied as part of the downsampling phase removes the high frequency content
+			which contributes to transients in the signal. This has the effect of lengthening attack times
+			similar to the effect seen in the Integrator system (Section \ref{sec:Excitation-Integrator}).
+
+		\subsubsection*{Flexibility}
+			Spectral folding is an efficient method by which to create a dense output spectrum but has many
+			downsides.
+
 %		\subsubsection*{Naturalness}
 
 	\subsection{Spectral Stretching}
