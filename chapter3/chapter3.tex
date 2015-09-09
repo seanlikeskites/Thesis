@@ -1351,6 +1351,8 @@
 
 	\subsection{Spectral Stretching}
 	\label{sec:Excitation-SpectralStretching}
+		The principle of spectral stretching is to scale the spectrum of a signal along the frequency axis. This
+		effect is shown in Figure \ref{fig:SpectralStretching}.
 
 		\begin{figure}[h!]
 			\centering
@@ -1359,7 +1361,16 @@
 			\label{fig:SpectralStretching}
 		\end{figure}
 
+		A typical implementation of this effect utilises a phase vocoder. The phase vocoder is an algorithm which
+		allows for time stretching of a signal. It is applied by calculating the short time Fourier transform of a
+		signal with a given frame and hop size. The signal is then resynthesised using a different hop size in
+		order to either lengthen or shorten it. This signal can then be resampled back to the length of the
+		original signal scaling the frequency content in the process. Efficient phase vocoder systems can be
+		implemented using the fast Fourier transform \citep{portnoff1976implementation}.
+
 		\subsubsection*{Complexity}
+			Spectral stretching using a phase vocoder require are large amount of computation.
+			
 		\subsubsection*{Homogeneity}
 		\subsubsection*{Spectral Characteristics}
 		\subsubsection*{Temporal Characteristics}
