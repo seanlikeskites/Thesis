@@ -1365,40 +1365,43 @@
 		allows for time stretching of a signal. It is applied by calculating the short time Fourier transform of a
 		signal with a given frame and hop size. The signal is then resynthesised using a different hop size in
 		order to either lengthen or shorten it. This signal can then be resampled back to the length of the
-		original signal scaling the frequency content in the process. Efficient phase vocoder systems can be
-		implemented using the fast Fourier transform \citep{portnoff1976implementation}.
+		original signal scaling the frequency content in the process. 
+		
+		The spectrum is scaled by a factor given in Equation \ref{eq:PhaseVocoderFactor}.
 
+		\begin{equation}
+			s = \frac{h_{s}}{h_{a}}
+			\label{eq:PhaseVocoderFactor}
+		\end{equation}
+
+		Where $h_{a}$ is the hop size used when calculating the STFT and $h_{s}$ is the hop size used to
+		resynthesise the signal.
+		
 		\subsubsection*{Complexity}
-			Spectral stretching using a phase vocoder require are large amount of computation.
+			Spectral stretching using a phase vocoder require are large amount of computation. Calculating the
+			STFT involves splitting the signal into frames of which the DFT is then computed. The phase
+			correction for each frame must then be computed and applied before the inverse DFT of each frame is
+			taken and the frames summed back together. The resulting signal then needs to be resampled
+			requiring further operations. If the scaling factor is not an integer value the resampling process
+			will require additional interpolation calculations.
+		
+			Several steps can be taken to reduce the work needed when using a phase vocoder. The computational
+			complexity of the DFT calculations can be reduced by using the fast Fourier transform
+			\citep{portnoff1976implementation}. When shifting the frequencies upwards the amount of work can be
+			further reduced by resampling the signal before calculating the STFT \citep{laroche1999new}. This
+			way there are less frames for which the DFT need be calculated.
 			
 		\subsubsection*{Homogeneity}
+			The phase vocoder algorithm is a homogeneous system. When processing the signal in the frequency
+			domain only the phase information is altered, leaving magnitude information unchanged. 
+
 		\subsubsection*{Spectral Characteristics}
+			An ideal spectral stretching system would produce the result shown in Figure
+			\ref{fig:SpectralStretching}. All frequency components are scaled by the same factor.
+		
 		\subsubsection*{Temporal Characteristics}
 %		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
-
-	%\subsection{Bandwidth Extension}
-	%\label{sec:Excitation-BWE}
-	%	\note
-	%	{
-	%		A nice summary in \citet{larsen2004audio}.
-
-	%		Look at Figure \ref{fig:SpectralFolding} 'aint it fancy.
-	%	}
-
-	%	\begin{figure}[h!]
-	%		\centering
-	%		\subfloat[Spectral Folding]
-	%		{\includegraphics[width=0.4\textwidth]{chapter3/Images/SpectralFolding.png}}
-	%		\subfloat[Spectral Replication]
-	%		{\includegraphics[width=0.4\textwidth]{chapter3/Images/SpectralReplication.png}}
-	%		\\
-	%		\subfloat[Spectral Stretching]
-	%		{\includegraphics[width=0.4\textwidth]{chapter3/Images/SpectralStretching.png}}
-	%		\caption{Spectral characteristics of different band width extension methods. In each graph the blue 
-	%		section represents the original spectra and the red section the new spectral content.}
-	%		\label{fig:SpectralFolding}
-	%	\end{figure}
 
 	\subsection{Individual Harmonic Generation}
 	\label{sec:Excitation-Individuals}
