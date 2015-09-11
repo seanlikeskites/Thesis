@@ -376,9 +376,9 @@
 		spectrum. Harmonic content is added to the signal in order to evoke the perception of lower pitch sounds.
 
 		The pitch of harmonically structured sounds is the same as that of it's fundamental frequency. No energy
-		need be present at the fundamental for its pitch to be perceived however. So long as a sufficient proportion
-		of the harmonic structure remains the original pitch can still be perceived. This phenomenon is commonly
-		referred to as the missing fundamental \citep{plack2005the}.
+		need be present at the fundamental for its pitch to be perceived however. So long as a sufficient
+		proportion of the harmonic structure remains the original pitch can still be perceived. This phenomenon is
+		commonly referred to as the missing fundamental \citep{plack2005the}.
 
 		This technique is implemented in effects such as Waves' MaxxBass \citep{ben-tzur1999the}. Implementation
 		techniques have been discussed by \citet{larsen2002reproducing} and \citet{gan2001virtual}.
@@ -456,9 +456,9 @@
 		Where $a$ is some scaling factor of the input $x$.
 		
 		Nonlinear systems are typically non-homogeneous. This is undesirable when using them to achieve timbral
-		control as it means the effects are less easy to predict. Different timbral transformations could be applied
-		to the same signal if its amplitude is changed slightly. From a user point of view this makes control of the
-		system less intuitive as control parameters can change function depending on signal level.
+		control as it means the effects are less easy to predict. Different timbral transformations could be
+		applied to the same signal if its amplitude is changed slightly. From a user point of view this makes
+		control of the system less intuitive as control parameters can change function depending on signal level.
 
 		\note{Mention of homogeneous nonlinear systems \citep{larsen2004audio}.}
 
@@ -1397,9 +1397,29 @@
 
 		\subsubsection*{Spectral Characteristics}
 			An ideal spectral stretching system would produce the result shown in Figure
-			\ref{fig:SpectralStretching}. All frequency components are scaled by the same factor.
+			\ref{fig:SpectralStretching}. All frequency components are scaled by the same factor. For
+			harmonically structured signals this has the effect of scaling the fundamental frequency.
+
+			The phase vocoder introduces some artefacts during its operation. The process of splitting the
+			signal into frames causes spectral leakage. Energy at a given frequency is spread across the nearby
+			frequencies. In a signal which only has energy at harmonic frequencies, spectral stretching by an
+			integer factor will produce some inharmonic content due to this effect. Spectral leakage can be
+			minimised through the use of windowing functions such as the Hamming or Blackman-Harris windows. 
+
+			Ignoring the effect of spectral leakage, the bandwidth of the output signal will be that of the
+			input multiplied by the stretching factor. This allows for effective minimisation of aliasing as
+			the signal can be low pass filtered before processing as done with single side band automodulation
+			(Section \ref{sec:Excitation-SSBA}).
 		
 		\subsubsection*{Temporal Characteristics}
+			A simple phase vocoder implementation produces artefacts when processing transients in a signal.
+			The phase correction stage before resynthesis can have the effect of softening the attack portion.
+			The exact effect had on the transient is not able to be controlled as it depends on where the
+			transient lies in the STFT frame. \citet{robel2003a} proposes a method to better process transients
+			with a phase vocoder. An algorithm is used to detect the presence of transients in an STFT frame.
+			The phase information is then processed differently depending on the position of the transient
+			within the frame.
+
 %		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
