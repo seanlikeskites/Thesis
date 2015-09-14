@@ -489,11 +489,17 @@
 			signals. Each individual frequency component being modulated by itself and generating its own set
 			of harmonics.
 
+			The spectral effects of harmonic distortion are easy to predict. The response of a system to a
+			sinusoidal input can be measured. Then, taking into account any frequency dependence the system may
+			have, a general model of how the system will respond to a sinusoid of any frequency can be
+			constructed.
+
 		\subsubsection*{Intermodulation Distortion}
 			Intermodulation distortion occurs when signals with two or more frequency components undergo
 			nonlinear processing. New frequency components are generated equivalent to the cross modulation
-			components of each pair of frequency components modulating each other. The more complex the
-			spectrum of a signal the more intermodulation components will be introduced. 
+			components of each combination of frequency components modulating each other. The more complex the
+			spectrum of a signal the more intermodulation components will be introduced. Unlike with harmonic
+			distortion it is difficult to generalise the intermodulation components produced by a system. 
 
 		\subsubsection*{Aliasing}
 			Aliasing arises due to the discrete nature of digital audio signals. The sampling frequency of a
@@ -1423,29 +1429,6 @@
 %		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
-	\subsection{Individual Harmonic Generation}
-	\label{sec:Excitation-Individuals}
-		\note{SMC paper}
-
-	\subsection{Psychoacoustic Enhancers}
-	\label{sec:Excitation-Enhancers}
-		\note
-		{
-			Probably the most well known perceptual control effects out there. The Aural Exciter has been 
-			covered by both \citet{chalupper2000aural} and \citet{shekar2013modeling}.
-		}
-
-	\subsection{Fundamental Frequency Tracking}
-	\label{sec:Excitation-Fundamental}
-		\note
-		{
-			Several generation methods can be improved through tracking the fundamental frequency of the input 
-			signal.
-
-			We can talk all about fundamental / pitch tracking here \citep{cuadra2001efficient, 
-			gerhard2003pitch, prukkanon2009vt-amdf, larsen2004audio}.
-		}
-
 \begin{landscape}
 \section{Methods Comparison}
 \label{sec:Excitation-Comparison}
@@ -1463,7 +1446,7 @@
 		\hline
 		Multiplier & $\mathcal{O}(n)$ & & & & & \\
 		\hline
-		SSB & $\mathcal{O}(n)$ & & & & & \\
+		SSBA & $\mathcal{O}(n)$ & & & & & \\
 		\hline
 		IAP & $\mathcal{O}(n)$ & & & & & \\
 		\hline
@@ -1476,6 +1459,110 @@
 	\end{tabular}
 
 \end{landscape}
+
+\section{Harmonic Excitation Systems}
+\label{sec:Excitation-Systems}
+	Section \ref{sec:Excitation-Methods} covered several different methods of introducing new frequency content to a
+	signal. This section will introduce techniques which can be used in conjunction with those methods to build
+	harmonic excitation systems. These techniques aim to give the user more control over the new content added to the
+	spectrum producing a system with can be applied to as many use cases as possible.
+
+	\subsection{Fundamental Frequency Tracking}
+	\label{sec:Excitation-Fundamental}
+		The majority of the methods discussed in Section \ref{sec:Excitation-Methods} will cause intermodulation
+		distortion when used on signals with multiple frequency components. As the effects of this intermodulation
+		distortion can be difficult to predict it can be useful to eliminate it altogether. This should make the
+		effects of a system more predictable allowing it to be used in more situations.
+
+		An simple way to achieve this is to process only the fundamental frequency of a signal. The fundamental of
+		a signal can be isolated with a filter to produce a sinusoidal signal. A harmonic excitation method is then
+		used to introduce harmonics to the fundamental. As the input is sinusoidal no intermodulation components
+		will be produced. This `excited' signal is then summed with the original signal to produce the output. A
+		diagram of this system is shown in Figure \ref{fig:F0Tracking}.
+
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}
+				\node (In) at (0, 1) {$x[n]$};
+				\coordinate (InMid) at (1, 1);
+				\draw (In) -- (InMid);
+
+				\coordinate (Through) at (1, 0);
+				\draw (InMid) -- (Through);
+				\coordinate (ThroughOut) at (9.5, 0);
+				\draw (Through) -- (ThroughOut);
+
+				\coordinate (Side) at (1, 2);
+				\draw (InMid) -- (Side);
+
+				\node (F0) [draw] at (3, 2) {Fundamental Tracker};
+				\node (Filter) [draw] at (3, 1) {LPF};
+				\draw (InMid) -- (Filter);
+				\draw (F0) -- (Filter);
+
+				\node (Exciter) [draw] at (5.5, 1) {Harmonic Exciter};
+				\draw (Filter) -- (Exciter);
+				\draw (Side) -- (F0);
+
+				\node (Add) [operator] at (9.5, 1) {+};
+				\draw (ThroughOut) -- (Add);
+
+				\node (Gain) [gain] at (8, 1) {Gain};
+				\draw (Exciter) -- (Gain);
+				\draw (Gain) -- (Add);
+
+				\node (Out) at (10.5, 1) {$y[n]$};
+				\draw (Add) -- (Out);
+
+			\end{tikzpicture}
+			\caption{Fundamental Frequency Tracking in a Harmonic Excitation System}
+			\label{fig:F0Tracking}
+		\end{figure}
+
+
+		In order to use this method the fundamental frequency of a signal must be known in order to create a filter
+		to isolate it. Fundamental tracking is a widely researched field and several algorithms have been presented
+		in the literature several of which are reviewed by \citet{cuadra2001efficient} and
+		\citet{gerhard2003pitch}.
+
+		Fundamental tracking can be done in both the time and frequency domains. The simplest method being to count
+		the number of instances of a particular event in a given time period. This even could be a zero crossing or
+		a peak or any other easily identifiable feature of the signal. As signals get more complex this method
+		becomes more difficult to apply as higher frequency content will produce more instances of the event being
+		counted. More advanced time domain methods include the Average Magnitude Difference Function (AMDF) and
+		autocorrelation methods. Many modern fundamental tracking systems are based on these, such as the VT-AMDF
+		algorithm proposed by \citet{prukkanon2009vt-amdf}.
+
+		These methods require frame based processing which reduces the time resolution of the system. If analysing
+		real time audio the current estimate of the fundamental frequency will lag behind the audio signal.
+		\citet{larsen2004audio} describe a time domain frequency tracker which uses a simple recursive formula.
+		While this is not a accurate as the more advanced techniques it takes considerably less time to compute.
+
+		Frequency domain methods require the DFT of the signal to be calculated introducing considerable
+		complexity. Widely used frequency domain techniques include the Harmonic Product Spectrum (HPS) and maximum
+		likelihood methods.
+
+		For real time harmonic excitation the accuracy of the fundamental tracking algorithm is not as important as
+		it is in other fields, such as automatic music transcription. The lag between the audio and the estimate of
+		the fundamental frequency is of more concern.
+
+		\note
+		{
+			This wont work where there is little energy at the fundamental!
+		}
+
+	\subsection{Individual Harmonic Generation}
+	\label{sec:Excitation-Individuals}
+		\note{SMC paper}
+
+	\subsection{Psychoacoustic Enhancement}
+	\label{sec:Excitation-Enhancement}
+		
+		\note
+		{
+			Probably the most well known perceptual control effects out there. The Aural Exciter has been 
+			covered by both \citet{chalupper2000aural} and \citet{shekar2013modeling}.
+		}
 
 %\section{Evaluating Excitation Methods}
 %\label{sec:FeatureControl-MethodEvaluation}
