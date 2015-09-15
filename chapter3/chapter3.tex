@@ -1543,13 +1543,24 @@
 		likelihood methods.
 
 		For real time harmonic excitation the accuracy of the fundamental tracking algorithm is not as important as
-		it is in other fields, such as automatic music transcription. The lag between the audio and the estimate of
-		the fundamental frequency is of more concern.
+		it is in other fields such as automatic music transcription. The aim of the system in Figure
+		\ref{fig:F0Tracking} is to reduce the level of higher harmonics compared to the fundamental. Using a low
+		pass filter with a cutoff frequency close to the fundamental will achieve this. The lag between the audio
+		and the estimate of the fundamental frequency is of more concern. The system needs to respond quickly to
+		changes in fundamental frequency in order to better isolate the fundamental for processing.
 
-		\note
-		{
-			This wont work where there is little energy at the fundamental!
-		}
+		A problem is posed by signals with little energy at their fundamental frequency such as those produce in
+		the lower register of a Double Bass \citep{askenfelt2010double}. A fundamental tracking algorithm will
+		still return the frequency of the fundamental despite its low magnitude. The output of the filter may then
+		have to little amplitude to be of any use for harmonic excitation. A frequency domain approach to
+		fundamental tracking may be more robust in this situation as it can easily be check whether there is
+		sufficient energy at the detected fundamental frequency. If there is not the first harmonic which has
+		sufficient magnitude can be isolated and used as the input to the exciter.
+
+		The system shown in Figure \ref{fig:F0Tracking} can provide differing levels of flexibility depending on
+		the harmonic exciter used. Using a simple clipper it will generate a series of harmonics of the
+		fundamental. Using methods which provide more control over the order of distortion allows users to excite
+		single harmonics in the output. This will be covered in the next section.
 
 	\subsection{Individual Harmonic Generation}
 	\label{sec:Excitation-Individuals}
