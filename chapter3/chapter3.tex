@@ -238,7 +238,7 @@
 					\draw (Add) -- (Out);
 
 				\end{tikzpicture}
-				\caption{Generalised Polynomial Hammerstein Model}
+				\caption{Generalised Polynomial Hammerstein Model.}
 				\label{fig:hammerstein}
 			\end{figure}
 
@@ -1515,7 +1515,7 @@
 				\draw (Add) -- (Out);
 
 			\end{tikzpicture}
-			\caption{Fundamental Frequency Tracking in a Harmonic Excitation System}
+			\caption{Fundamental frequency tracking in a harmonic excitation system.}
 			\label{fig:F0Tracking}
 		\end{figure}
 
@@ -1566,13 +1566,61 @@
 	\label{sec:Excitation-Individuals}
 		Control over which harmonics are excited in a signal can be achieved by exciting individual harmonics. The
 		principle behind this is to isolate the fundamental and then shift its frequency to that of the desired
-		harmonic.
+		harmonic. This can be achieved using the SSBA, IAP, Spectral Replication and Spectral Stretching methods.
+		
+		\citet{bregman1994auditory} suggests that when presented with an auditory scene the human hearing system
+		separates out sources by grouping like harmonics together. Whether harmonics are deemed to be similar
+		depends on their frequency and amplitude envelope. When applying harmonic excitation it is necessary to
+		ensure that the newly introduces harmonic content will be judged as similar to the existing content. If not
+		the excited harmonics may be perceived as a new sound source rather than contributing towards changing the
+		timbre of a sound. Any system which generates new harmonic content and then sums it back into the original
+		signal is at risk of this occurring. When generating multiple harmonics individually and summing them all
+		together this risk is increased.
+
+		An experiment was conducted to evaluate which harmonic excitation method is best suited to the generation
+		of individual harmonics. A primary aim of this experiment was to determine whether any of the methods would
+		cause a tone from a single instrument to be perceived as coming from multiple sources. Each method was used
+		to reconstruct signals which from which some harmonic content removed. The quality of the reconstruction
+		was assessed by participants in a multiple stimulus listening test. 
+
+		Four different audio samples were used consisting of:
+		
+		\begin{itemize}
+			\item A bowed cello.
+			\item A clarinet.
+			\item A synthesised harmonic sound.
+			\item A piano.
+		\end{itemize}
+
+		Figures \ref{fig:CelloSpectrogram} and \ref{fig:CelloFilteredSpectrogram}.
 
 		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=0.6\textwidth]{chapter3/Images/CelloSpectrogram.eps}
-			\caption{}
-			\label{fig:CelloSpectrogram}
+			\subfloat[Unprocessed Sample]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloSpectrogram.eps}
+				\label{fig:CelloSpectrogram}
+			}
+			\qquad
+			\subfloat[Filtered Sample]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloFilteredSpectrogram.eps}
+				\label{fig:CelloFilteredSpectrogram}
+			}
+
+			\subfloat[SSBA Reconstructed Sample]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloSSBASpectrogram.eps}
+				\label{fig:CelloSSBASpectrogram}
+			}
+			\qquad
+			\subfloat[IAP Reconstructed Sample]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloIAPSpectrogram.eps}
+				\label{fig:CelloIAPSpectrogram}
+			}
+			\caption{Spectrograms of the cello sample.}
+			\label{fig:CelloSpectrograms}
 		\end{figure}
 
 	\subsection{Psychoacoustic Enhancement}
