@@ -121,10 +121,10 @@
 		applicable to a subset of nonlinear systems.
 
 		\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score (DS), which they
-		then improved upon to create the R$_{\textrm{nonlin}}$ metric \citep{tan2004predicting}. Both these metrics
-		rely on analysing signals which have been processed so they may not give results which can be applied as
-		generally as those using the GedLee metric. Where these metrics have an advantage is that they use models
-		of the human hearing system to better approximate the perceived level of distortion.
+		then improved upon to create the R\sub{nonlin} metric \citep{tan2004predicting}. Both these metrics rely on
+		analysing signals which have been processed so they may not give results which can be applied as generally
+		as those using the GedLee metric. Where these metrics have an advantage is that they use models of the
+		human hearing system to better approximate the perceived level of distortion.
 
 		To calculate the DS the audio is split into frequency bands which model the auditory filters of the
 		cochlear. These auditory filters represent bands in which two tones will interfere with the perception of
@@ -132,15 +132,14 @@
 		same auditory filter band. By processing the audio in this manner the DS metric can take account of
 		elements of the distortion which may not be perceptible because of masking.
 		
-		The R$_{\textrm{nonlin}}$ metric improves on this model of the hearing system by including a filter with a
+		The R\sub{nonlin} metric improves on this model of the hearing system by including a filter with a
 		frequency response similar to that of the outer and middle ear. The filter used is as described by
 		\citet{glasberg2002a}, it attenuates frequencies at either end of the audible spectrum. This models the
 		decreased perception of distortion at these frequencies discussed earlier.
 
-		\citet{tan2004predicting} report greater correlation between R$_{\textrm{nonlin}}$ and perceived audio
-		quality then \citet{lee2003auditory} do for the GedLee metric. They also demonstrate how accurate the
-		R$_{\textrm{nonlin}}$ metric is in predicting the perceived distortion level introduced to music and speech
-		signals.
+		\citet{tan2004predicting} report greater correlation between R\sub{nonlin} and perceived audio quality then
+		\citet{lee2003auditory} do for the GedLee metric. They also demonstrate how accurate the R\sub{nonlin}
+		metric is in predicting the perceived distortion level introduced to music and speech signals.
 
 		The research discussed in this section has focused on measuring the extent to which unwanted distortion can
 		be perceived. This does not provide enough information for the description of timbre. The listening test
@@ -1036,7 +1035,7 @@
 			\begin{figure}[h!]
 				\centering
 				\includegraphics[width=0.6\textwidth]{chapter3/Images/ClippingApproximation.eps}
-				\caption{A $7^{th}$ order approximation of hard clipping using linear regression.}
+				\caption{A 7\super{th} order approximation of hard clipping using linear regression.}
 				\label{fig:ClippingApproximation}
 			\end{figure}
 
@@ -1652,12 +1651,12 @@
 			     samples. \\
 			4. & Sample reconstructed using the synthesis method with an STFT window length of 500
 			     samples. \\
-			5. & Sample Reconstructed using the SSBA method using a 50$^{\textrm{th}}$ order filter.\\
-			6. & Sample Reconstructed using the SSBA method using a 100$^{\textrm{th}}$ order filter.\\
-			7. & Sample Reconstructed using the SSBA method using a 500$^{\textrm{th}}$ order filter.\\
-			8. & Sample Reconstructed using the IAP method using a 50$^{\textrm{th}}$ order filter.\\
-			9. & Sample Reconstructed using the IAP method using a 100$^{\textrm{th}}$ order filter.\\
-			10. & Sample Reconstructed using the IAP method using a 500$^{\textrm{th}}$ order filter.\\
+			5. & Sample Reconstructed using the SSBA method using a 50\super{th} order filter.\\
+			6. & Sample Reconstructed using the SSBA method using a 100\super{th} order filter.\\
+			7. & Sample Reconstructed using the SSBA method using a 500\super{th} order filter.\\
+			8. & Sample Reconstructed using the IAP method using a 50\super{th} order filter.\\
+			9. & Sample Reconstructed using the IAP method using a 100\super{th} order filter.\\
+		     	10. & Sample Reconstructed using the IAP method using a 500\super{th} order filter.\\
 	     		11. & Sample with third through ninth harmonics removed (anchor).\\
 		\end{tabular}
 
@@ -1703,8 +1702,10 @@
 		the other samples. Figure \ref{fig:PianoResults} shows that the piano sample with its harmonics
 		missing received a higher grade on average then any of the reconstructed samples further showing how poor
 		the quality of the reconstructions is.
-		
-		
+
+		The confidence intervals for the grades given to the majority of the stimuli are high. This is most likely
+		due to there being too few participants in the experiment. To supplement these results each of the stimuli
+		was graded with the R\sub{nonlin} metric.
 
 		\begin{figure}[h!]
 			\centering
@@ -1731,7 +1732,7 @@
 				\includegraphics[width=0.45\textwidth]{chapter3/Images/PianoRNonlin.eps}
 				\label{fig:PianoRNonlin}
 			}
-			\caption{R$_{\textrm{nonlin}}$ values for each of the stimuli.}
+			\caption{R\sub{nonlin} values for each of the stimuli.}
 			\label{fig:SMCRNonlin}
 		\end{figure}
 
