@@ -110,36 +110,37 @@
 
 		A considerable advantage of the GedLee metric is that it directly measures the system in question rather
 		than signals processed by it. This should allow measurements taken using the metric to describe the audible
-		degradation of any signal processed by a system. \citet{lee2003auditory} provide results of an experiment in
-		which their metric was tested against THD and IMD as a rating of audio quality. They show that for low
+		degradation of any signal processed by a system. \citet{lee2003auditory} provide results of an experiment
+		in which their metric was tested against THD and IMD as a rating of audio quality. They show that for low
 		levels of distortion the GedLee metric correlates with subjective audio quality ratings. THD and IMD are
 		both found to not correlate well with perceived quality.
 
 		In Equation \ref{eq:gedlee} the system being analysed is assumed to be a simple static nonlinearity. Many
 		nonlinear systems are more complex than this and may exhibit frequency dependant or time varying behaviour.
-		While the GedLee metric may provide a good, signal independent, measure of distortion, it is only applicable
-		to a subset of nonlinear systems.
+		While the GedLee metric may provide a good, signal independent, measure of distortion, it is only
+		applicable to a subset of nonlinear systems.
 
-		\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score (DS), which they then
-		improved upon to create the $R_{nonlin}$ metric \citep{tan2004predicting}. Both these metrics rely on
-		analysing signals which have been processed so they may not give results which can be applied as generally
-		as those using the GedLee metric. Where these metrics have an advantage is that they use models of the human
-		hearing system to better approximate the perceived level of distortion.
+		\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score (DS), which they
+		then improved upon to create the R$_{\textrm{nonlin}}$ metric \citep{tan2004predicting}. Both these metrics
+		rely on analysing signals which have been processed so they may not give results which can be applied as
+		generally as those using the GedLee metric. Where these metrics have an advantage is that they use models
+		of the human hearing system to better approximate the perceived level of distortion.
 
 		To calculate the DS the audio is split into frequency bands which model the auditory filters of the
 		cochlear. These auditory filters represent bands in which two tones will interfere with the perception of
 		each other \citep{fastl2007psychoacoustics}. Tones can be masked (made inaudible) by other tones within the
-		same auditory filter band. By processing the audio in this manner the DS metric can take account of elements
-		of the distortion which may not be perceptible because of masking.
+		same auditory filter band. By processing the audio in this manner the DS metric can take account of
+		elements of the distortion which may not be perceptible because of masking.
 		
-		The $R_{nonlin}$ metric improves on this model of the hearing system by including a filter with a frequency
-		response similar to that of the outer and middle ear. The filter used is as described by
+		The R$_{\textrm{nonlin}}$ metric improves on this model of the hearing system by including a filter with a
+		frequency response similar to that of the outer and middle ear. The filter used is as described by
 		\citet{glasberg2002a}, it attenuates frequencies at either end of the audible spectrum. This models the
 		decreased perception of distortion at these frequencies discussed earlier.
 
-		\citet{tan2004predicting} report greater correlation between $R_{nonlin}$ and perceived audio quality then
-		\citet{lee2003auditory} do for the GedLee metric. They also demonstrate how accurate the $R_{nonlin}$ metric
-		is in predicting the perceived distortion level introduced to music and speech signals.
+		\citet{tan2004predicting} report greater correlation between R$_{\textrm{nonlin}}$ and perceived audio
+		quality then \citet{lee2003auditory} do for the GedLee metric. They also demonstrate how accurate the
+		R$_{\textrm{nonlin}}$ metric is in predicting the perceived distortion level introduced to music and speech
+		signals.
 
 		The research discussed in this section has focused on measuring the extent to which unwanted distortion can
 		be perceived. This does not provide enough information for the description of timbre. The listening test
@@ -1554,8 +1555,10 @@
 		still return the frequency of the fundamental despite its low magnitude. The output of the filter may then
 		have to little amplitude to be of any use for harmonic excitation. A frequency domain approach to
 		fundamental tracking may be more robust in this situation as it can easily be check whether there is
-		sufficient energy at the detected fundamental frequency. If there is not the first harmonic which has
-		sufficient magnitude can be isolated and used as the input to the exciter.
+		sufficient energy at the detected fundamental frequency. If there is not, the first harmonic which has
+		sufficient magnitude can be isolated and used as the input to the exciter. If this action is taken only the
+		spectral replication and spectral shifting methids will allow for the excitation of evey harmonic as the
+		SSBA and IAP methods only allow for integer multiplications of the frequency.
 
 		The system shown in Figure \ref{fig:F0Tracking} can provide differing levels of flexibility depending on
 		the harmonic exciter used. Using a simple clipper it will generate a series of harmonics of the
@@ -1587,17 +1590,17 @@
 		were:
 		
 		\begin{itemize}
-			\item A bowed Cello.
-			\item A Clarinet.
+			\item A bowed cello.
+			\item A clarinet.
 			\item A synthesised harmonic sound.
-			\item A Piano.
+			\item A piano.
 		\end{itemize}
 
-		For each sample the third through ninth harmonics were removed. Spectrograms of the Cello sample before and
+		For each sample the third through ninth harmonics were removed. Spectrograms of the cello sample before and
 		after this process are shown in Figures \ref{fig:CelloSpectrogram} and \ref{fig:CelloFilteredSpectrogram}.
-		These harmonics where then reintroduced using the SSBA, IAP and a synthesis method. The synthesis method
-		consisted of using the STFT to measure the amplitude envelope of the fundamental frequency and applying
-		this to a synthesised sine wave at the frequency of the desired harmonic. 
+		Test stimuli were then created by reintroducing these harmonics using SSBA, IAP and a synthesis method.
+		The synthesis method consisted of using the STFT to measure the amplitude envelope of the fundamental
+		frequency and applying this to a synthesised sine wave at the frequency of the desired harmonic. 
 
 		\begin{figure}[h!]
 			\centering
@@ -1613,20 +1616,50 @@
 				\label{fig:CelloFilteredSpectrogram}
 			}
 
-			\subfloat[SSBA Reconstructed Sample]
-			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloSSBASpectrogram.eps}
-				\label{fig:CelloSSBASpectrogram}
-			}
-			\qquad
-			\subfloat[IAP Reconstructed Sample]
-			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloIAPSpectrogram.eps}
-				\label{fig:CelloIAPSpectrogram}
-			}
-			\caption{Spectrograms of the Cello sample.}
+%			\subfloat[SSBA Reconstructed Sample]
+%			{
+%				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloSSBASpectrogram.eps}
+%				\label{fig:CelloSSBASpectrogram}
+%			}
+%			\qquad
+%			\subfloat[IAP Reconstructed Sample]
+%			{
+%				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloIAPSpectrogram.eps}
+%				\label{fig:CelloIAPSpectrogram}
+%			}
+			\caption{Spectrograms of the cello sample.}
 			\label{fig:CelloSpectrograms}
 		\end{figure}
+
+		Each sample was reconstructed three times using each method, using different parameters each time. For the
+		SSBA and IAP methods a different order FIR filter was used to isolate the fundamental frequency. The
+		filters used had orders of 50, 100 and 500. For the synthesis method the window length of the STFT was
+		changed, taking values of 50, 100 and 500 samples.
+		
+		Test participants were presented with all processed version of a particular sample at once along with a
+		reference stimulus (the unprocessed sample) and an anchor stimulus (the sample with its harmonics removed).
+		Participants were asked to grade how well each processed stimulus recreated the reference stimulus on a
+		scale from 0 to 100.
+
+		The results of this experiment are shown in Figure \ref{fig:SMCResults} with error bars showing the 95\%
+		confidence intervals. The stimuli numbers refer to different processing algorithms as follows.
+
+		\begin{tabular}{>{\bfseries}cl}
+			1. & Reference Stimulus \\
+			2. & Sample reconstructed using the synthesis method with an STFT window length of 50
+			     samples. \\
+			3. & Sample reconstructed using the synthesis method with an STFT window length of 100
+			     samples. \\
+			4. & Sample reconstructed using the synthesis method with an STFT window length of 500
+			     samples. \\
+			5. & Sample Reconstructed using the SSBA method using a 50$^{\textrm{th}}$ order filter.\\
+			6. & Sample Reconstructed using the SSBA method using a 100$^{\textrm{th}}$ order filter.\\
+			7. & Sample Reconstructed using the SSBA method using a 500$^{\textrm{th}}$ order filter.\\
+			8. & Sample Reconstructed using the IAP method using a 50$^{\textrm{th}}$ order filter.\\
+			9. & Sample Reconstructed using the IAP method using a 100$^{\textrm{th}}$ order filter.\\
+			10. & Sample Reconstructed using the IAP method using a 500$^{\textrm{th}}$ order filter.\\
+	     		11. & Sample with third through ninth harmonics removed (anchor).\\
+		\end{tabular}
 
 		\begin{figure}[h!]
 			\centering
@@ -1657,6 +1690,22 @@
 			\label{fig:SMCResults}
 		\end{figure}
 
+		Across all the samples there is a general increase in the perceived quality of the reproduction as the
+		filter order or STFT window length is increased. With the SSBA and IAP methods increasing the filter order
+		increases the level difference between the fundamental and its harmonics, better isolating the fundamental.
+		This is turn reduces the levels of intermodulation distortion in the output producing a `cleaner' harmonic.
+		With the synthesis method increasing the STFT window length increases the frequency resolution allowing for
+		the amplitude envelope of the fundamental frequency to be measured more accurately.
+
+		The piano sample used had very little energy at its fundamental frequency. This illustrates the problem
+		discussed previously, there is not enough information in the amplitude envelope of the fundamental to
+		reproduce the other harmonics. This leads to much lower grades for the reproduced signals than for any of
+		the other samples. Figure \ref{fig:PianoResults} shows that the piano sample with its harmonics
+		missing received a higher grade on average then any of the reconstructed samples further showing how poor
+		the quality of the reconstructions is.
+		
+		
+
 		\begin{figure}[h!]
 			\centering
 			\subfloat[Cello Sample]
@@ -1682,7 +1731,7 @@
 				\includegraphics[width=0.45\textwidth]{chapter3/Images/PianoRNonlin.eps}
 				\label{fig:PianoRNonlin}
 			}
-			\caption{Mean grades and confidence intervals for each of the stimuli.}
+			\caption{R$_{\textrm{nonlin}}$ values for each of the stimuli.}
 			\label{fig:SMCRNonlin}
 		\end{figure}
 
