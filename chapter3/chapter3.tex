@@ -1569,6 +1569,8 @@
 		Control over which harmonics are excited in a signal can be achieved by exciting individual harmonics. The
 		principle behind this is to isolate the fundamental and then shift its frequency to that of the desired
 		harmonic. This can be achieved using the SSBA, IAP, Spectral Replication and Spectral Stretching methods.
+		The output spectrum can be shaped as desired by generating several different harmonics in this manner and
+		summing them together.
 		
 		\citet{bregman1994auditory} suggests that when presented with an auditory scene the human hearing system
 		separates out sources by grouping like harmonics together. Whether harmonics are deemed to be similar
@@ -1614,18 +1616,6 @@
 				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloFilteredSpectrogram.eps}
 				\label{fig:CelloFilteredSpectrogram}
 			}
-
-%			\subfloat[SSBA Reconstructed Sample]
-%			{
-%				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloSSBASpectrogram.eps}
-%				\label{fig:CelloSSBASpectrogram}
-%			}
-%			\qquad
-%			\subfloat[IAP Reconstructed Sample]
-%			{
-%				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloIAPSpectrogram.eps}
-%				\label{fig:CelloIAPSpectrogram}
-%			}
 			\caption{Spectrograms of the cello sample.}
 			\label{fig:CelloSpectrograms}
 		\end{figure}
@@ -1634,6 +1624,29 @@
 		SSBA and IAP methods a different order FIR filter was used to isolate the fundamental frequency. The
 		filters used had orders of 50, 100 and 500. For the synthesis method the window length of the STFT was
 		changed, taking values of 50, 100 and 500 samples.
+
+		\begin{figure}[h!]
+			\centering
+			\subfloat[SSBA with a 50\super{th} order filter.]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloSSBASpectrogram.eps}
+				\label{fig:CelloSSBASpectrogram}
+			}
+			\qquad
+			\subfloat[IAP with a 50\super{th} order filter.]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloIAPSpectrogram.eps}
+				\label{fig:CelloIAPSpectrogram}
+			}
+			
+			\subfloat[Synthesis with an STFT window length of 50 samples.]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloSynthesisSpectrogram.eps}
+				\label{fig:CelloSynthesisSpectrogram}
+			}
+			\caption{Spectrograms of the cello sample reconstructed using the three methods.}
+			\label{fig:ReconstructedCelloSpectrograms}
+		\end{figure}
 		
 		Test participants were presented with all processed version of a particular sample at once along with a
 		reference stimulus (the unprocessed sample) and an anchor stimulus (the sample with its harmonics removed).
@@ -1705,7 +1718,8 @@
 
 		The confidence intervals for the grades given to the majority of the stimuli are high. This is most likely
 		due to there being too few participants in the experiment. To supplement these results each of the stimuli
-		was graded with the R\sub{nonlin} metric.
+		was graded with the R\sub{nonlin} metric. These results were normailised to the same range as the results
+		from the listeneing test and are displayed in Figure \ref{fig:SMCRNonlin}.
 
 		\begin{figure}[h!]
 			\centering
@@ -1735,6 +1749,8 @@
 			\caption{R\sub{nonlin} values for each of the stimuli.}
 			\label{fig:SMCRNonlin}
 		\end{figure}
+
+
 
 	\subsection{Psychoacoustic Enhancement}
 	\label{sec:Excitation-Enhancement}
