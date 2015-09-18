@@ -1660,6 +1660,11 @@
 		times. As the order of the harmonic is increased the decay time gets shorter due to the dynamic expansion
 		shown in Figure \ref{fig:SSBATemporalEffects}.
 
+		The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large amount of
+		ripple. This is due to the amplitude of the fundamental being calculated in blocks. These inaccuracies are
+		not present in the harmonics generated using the IAP method as the amplitude is calculated on a sample by
+		sample basis.
+
 		Test participants were presented with all processed version of a particular sample at once along with a
 		reference stimulus (the unprocessed sample) and an anchor stimulus (the sample with its harmonics removed).
 		Participants were asked to grade how well each processed stimulus recreated the reference stimulus on a
@@ -1761,6 +1766,12 @@
 			\caption{R\sub{nonlin} values for each of the stimuli.}
 			\label{fig:SMCRNonlin}
 		\end{figure}
+
+		The R\sub{nonlin} values support the correlations found in the listening test results. Using a higher order
+		filter to isolate the fundamental improves the quality of the reconstruction. Figure \ref{fig:PianoRNonlin}
+		again illustrates the problems which arise when the input signal has little energy at its fundamental
+		frequency. Several of the reconstructions are objectively less similar to the original than the anchor
+		stimulus is. 
 
 	\subsection{Psychoacoustic Enhancement}
 	\label{sec:Excitation-Enhancement}
