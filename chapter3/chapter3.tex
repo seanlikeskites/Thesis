@@ -1724,7 +1724,7 @@
 		increases the level difference between the fundamental and its harmonics, better isolating the fundamental.
 		This is turn reduces the levels of intermodulation distortion in the output producing a `cleaner' harmonic.
 		With the synthesis method increasing the STFT window length increases the frequency resolution allowing for
-		the amplitude envelope of the fundamental frequency to be measured more accurately.
+		the amplitude envelope of the fundamental frequency to be measured more precisely.
 
 		The piano sample used had very little energy at its fundamental frequency. This illustrates the problem
 		discussed previously, there is not enough information in the amplitude envelope of the fundamental to
@@ -1773,9 +1773,19 @@
 		frequency. Several of the reconstructions are objectively less similar to the original signal than the
 		anchor stimulus.
 
+		Both sets of results show that, using the highest order filter / STFT window lengths, each of the methods
+		produce similar quality reconstructions of the original signal. For shorter filter lengths the IAP method
+		provides more quality at then the SSBA method at the expense of requiring slightly more computation. The
+		synthesis method produces similar quality results but incurs further computational complexity. 
+		
+		For timbral control applications the IAP method provides the greatest flexibility. For the majority of
+		stimuli in this experiment it reproduced signals with the highest perceived quality. It was also shown in
+		section \ref{sec:Excitation-IAP} that it is a homogeneous process allowing it to be applied to a wider
+		range of signals with more predictable effects.
+
 	\subsection{Psychoacoustic Enhancement}
 	\label{sec:Excitation-Enhancement}
-		
+	
 		\note
 		{
 			Probably the most well known perceptual control effects out there. The Aural Exciter has been 
