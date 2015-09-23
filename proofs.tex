@@ -17,6 +17,11 @@
 
 	\[ \Re \left( (a + bi)^{n} \right) \]
 	\[ \Re \left( \sum_{k=0}^{n} \binom{n}{k} a^{k} (bi)^{n-k} \right) \]
+	\[ \Re \left( \sum_{k=0}^{n} \binom{n}{k} a^{k} b^{n-k} \left( \cos\frac{(n-k)\pi}{2}
+								       + i\sin\frac{(n-k)\pi}{2}
+							               \right) \right) \]
+
+	\[ \sum_{k=0}^{n} \binom{n}{k} a^{k} b^{n-k} \cos\frac{(n-k)\pi}{2} \]
 
 	IAP looks like this:
 
@@ -35,7 +40,7 @@
 	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
 		                               \cos^{k} \left( \tan^{-1}\frac{b}{a} \right)
 	                                       \sin^{n-k} \left( \tan^{-1}\frac{b}{a} \right) 
-					       \cos \left( \frac{(n-k)\pi}{2} \right) \]
+					       \cos \frac{(n-k)\pi}{2} \]
 
 	Two further identities:
 
@@ -48,36 +53,36 @@
 				   	       \left( \frac{1}{\sqrt{1 + \left( \frac{b}{a} \right)^{2}}} \right)^{k}
 					       \left( \frac{\frac{b}{a}}{\sqrt{1 + \left( \frac{b}{a} \right)^{2}}}
 					       		\right)^{n-k}
-					       \cos \left( \frac{(n-k)\pi}{2} \right) \]
+					       \cos \frac{(n-k)\pi}{2} \]
 
 	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
 					       \left( 1 + \left( \frac{b}{a} \right) ^{2} \right)^{-\frac{k}{2}}
 					       \left( 1 + \left( \frac{b}{a} \right) ^{2} \right)^{-\frac{n-k}{2}}
 					       \left( \frac{b}{a} \right)^{n-k}
-					       \cos \left( \frac{(n-k)\pi}{2} \right) \]
+					       \cos \frac{(n-k)\pi}{2} \]
 	
 	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
 					       \left( 1 + \left( \frac{b}{a} \right) ^{2} \right)^{-\frac{n}{2}}
 					       b^{n-k} a^{k-n}
-					       \cos \left( \frac{(n-k)\pi}{2} \right) \]
+					       \cos \frac{(n-k)\pi}{2} \]
 
 	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
 					       \left( \frac{a^{2} + b^{2}}{a^{2}} \right)^{-\frac{n}{2}}
 					       b^{n-k} a^{k-n}
-					       \cos \left( \frac{(n-k)\pi}{2} \right) \]
+					       \cos \frac{(n-k)\pi}{2} \]
 
 	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
 					       \left( \frac{\sqrt{a^{2} + b^{2}}}{a} \right)^{-n}
 					       b^{n-k} a^{k-n}
-					       \cos \left( \frac{(n-k)\pi}{2} \right) \]
+					       \cos \frac{(n-k)\pi}{2} \]
 
 	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
 					       \sqrt{a^{2} + b^{2}}^{-n}
 					       a^{n}
 					       b^{n-k} a^{k-n}
-					       \cos \left( \frac{(n-k)\pi}{2} \right) \]
+					       \cos \frac{(n-k)\pi}{2} \]
 
         \[ \sqrt{a^{2} + b^{2}}^{1-n} \sum_{k=0}^{n} \binom{n}{k}
 						     a^{k} b^{n-k}
-					             \cos \left( \frac{(n-k)\pi}{2} \right) \]
+					             \cos \frac{(n-k)\pi}{2} \]
 \end{document}
