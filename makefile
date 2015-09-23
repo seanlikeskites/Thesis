@@ -1,5 +1,7 @@
 CHAPTERS = chapter1.pdf chapter2.pdf chapter3.pdf chapter4.pdf chapter5.pdf chapter6.pdf chapter7.pdf
 
+all: chapters combined $(CHAPTERS) story contributions proofs
+
 chapters: combined $(CHAPTERS)
 
 combined: Sean_Enderby_Thesis.pdf
@@ -18,12 +20,29 @@ Sean_Enderby_Thesis.pdf: Sean_Enderby_Thesis.tex Preamble.tex Bibliography.tex $
 story: story.pdf
 
 story.pdf: story.tex
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@echo \*\* Building $@
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 	@pdflatex -interaction=batchmode story.tex
+	@echo
 
 contributions: contributions.pdf
 
 contributions.pdf: contributions.tex
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@echo \*\* Building $@
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 	@pdflatex -interaction=batchmode contributions.tex
+	@echo
+
+proofs: proofs.pdf
+
+proofs.pdf: proofs.tex
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@echo \*\* Building $@
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@pdflatex -interaction=batchmode proofs.tex
+	@echo
 
 .SECONDEXPANSION:
 %.pdf: chapter*/%.tex $$(wildcard $$*/Images/*)
