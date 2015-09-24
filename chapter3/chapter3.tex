@@ -825,9 +825,8 @@
 			curve. As such it only introduces even order distortion components. The Fourier coefficients of a
 			rectified sine wave are shown in Equation \ref{eq:RectificationFourier}.
 
-			\[ c_{n} = \frac{1}{\pi} \int_{-\pi}^{\pi} |sin(x)|e^{-inx} dx \]
+			\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} |sin(x)|e^{-inx} dx \]
 
-			\[ c_{0} = \frac{2}{\pi} \]
 			\begin{equation}
 				c_{n} = \begin{cases}
 					\frac{2}{\pi(1 - n^{2})} & \text{when $n$ is even} \\
@@ -908,7 +907,7 @@
 			\[ c_{0} = 2kf_{s} \]
 			\[ c_{1} = \frac{2ikf_{s}}{\pi} \]
 			\begin{equation}
-				A_{n} = \frac{ikf_{s}}{2\pi} \left( \frac{4n^{2} + 2e^{-i\pi n} - 2}{n^{3} - n} \right)
+				c_{n} = \frac{ikf_{s}}{2\pi} \left( \frac{4n^{2} + 2e^{-i\pi n} - 2}{n^{3} - n} \right)
 				\label{eq:IntegratorFourier}
 			\end{equation}
 

@@ -12,6 +12,41 @@
 \begin{document}
 \maketitle
 
+\section{Rectification Spectrum}
+	
+	\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} |\sin(x)|e^{-inx} dx \]
+	\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} |\sin(x)|\cos(nx) - i|\sin(x)|\sin(nx) dx \]
+
+	$|\sin(x)|\sin(nx)$ is an odd function so:
+
+	\[ \int_{-\pi}^{\pi} i|\sin(x)|\sin(nx) = 0 \]
+
+	Leaving us with:
+
+	\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} |\sin(x)|\cos(nx) dx \]
+
+	$|\sin(x)|\cos(nx)$ is an even function so we can reduce the range of the integral:
+
+	\[ c_{n} = \frac{1}{\pi} \int_{0}^{\pi} \sin(x)\cos(nx) dx \]
+
+	Using the product to sum identity we get:
+
+	\[ c_{n} = \frac{1}{2\pi} \int_{0}^{\pi} \sin((n+1)x) + \sin((1-n)x) dx \]
+	\[ c_{n} = \frac{1}{2\pi} \left[ -\frac{\cos((n+1)x)}{n+1} - \frac{\cos((1-n)x)}{1-n} \right]_{0}^{\pi} \]
+
+	When $n$ is even:
+
+	\[ c_{n} = \frac{1}{2\pi} \left( \frac{1}{n+1} + \frac{1}{1-n} + \frac{1}{n+1} + \frac{1}{1-n} \right) \]
+	\[ c_{n} = \frac{1}{2\pi} \frac{2(1-n) + 2(n+1)}{1 - n^{2}} \]
+	\[ c_{n} = \frac{2}{\pi(1 - n^{2})} \]
+
+	When $n$ is odd:
+
+	\[ c_{n} = \frac{1}{2\pi} \left( -\frac{1}{n+1} - \frac{1}{1-n} + \frac{1}{n+1} + \frac{1}{1-n} \right) \]
+	\[ c_{n} = 0 \]
+
+\section{Integrator Spectrum}
+
 \section{IAP and SSBA Relationship}
 	SSBA looks like this:
 
