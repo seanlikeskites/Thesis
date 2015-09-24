@@ -15,74 +15,16 @@
 \section{IAP and SSBA Relationship}
 	SSBA looks like this:
 
-	\[ \Re \left( (a + bi)^{n} \right) \]
-	\[ \Re \left( \sum_{k=0}^{n} \binom{n}{k} a^{k} (bi)^{n-k} \right) \]
-	\[ \Re \left( \sum_{k=0}^{n} \binom{n}{k} a^{k} b^{n-k} \left( \cos\frac{(n-k)\pi}{2}
-								       + i\sin\frac{(n-k)\pi}{2}
-							               \right) \right) \]
-
-	\[ \sum_{k=0}^{n} \binom{n}{k} a^{k} b^{n-k} \cos\frac{(n-k)\pi}{2} \]
+	\[ y_{SSBA} = \Re \left( z^{n} \right) \]
+	\[ y_{SSBA} = \Re \left( (|z|e^{i\arg(z)})^{n} \right) \]
+	\[ y_{SSBA} = |z|^{n}\cos(n\arg(z)) \]
 
 	IAP looks like this:
 
-	\[ |a + bi|\cos(n\arg(a + bi)) \]
-	\[ \sqrt{a^{2} + b^{2}} \cos \left( n\tan^{-1}\frac{b}{a} \right) \]
+	\[ y_{IAP} = |z|\cos(n\arg(z)) \]
 
-	Due to this wonderful identity from Vieta:
+	Thus:
 
-	\[ \cos(n\theta) = \sum_{k=0}^{n} \binom{n}{k} 
-		                          \cos^{k}\theta 
-					  \sin^{n-k}\theta 
-					  \cos \left( \frac{(n-k)\pi}{2} \right) \]
+	\[ y_{SSBA} = |z|^{n-1}y_{IAP} \]
 
-	We get:
-
-	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
-		                               \cos^{k} \left( \tan^{-1}\frac{b}{a} \right)
-	                                       \sin^{n-k} \left( \tan^{-1}\frac{b}{a} \right) 
-					       \cos \frac{(n-k)\pi}{2} \]
-
-	Two further identities:
-
-	\[ \cos(\tan^{-1}x) = \frac{1}{\sqrt{1 + x^2}} \]
-	\[ \sin(\tan^{-1}x) = \frac{x}{\sqrt{1 + x^2}} \]
-
-	Allow us to simplify further:
-
-	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
-				   	       \left( \frac{1}{\sqrt{1 + \left( \frac{b}{a} \right)^{2}}} \right)^{k}
-					       \left( \frac{\frac{b}{a}}{\sqrt{1 + \left( \frac{b}{a} \right)^{2}}}
-					       		\right)^{n-k}
-					       \cos \frac{(n-k)\pi}{2} \]
-
-	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
-					       \left( 1 + \left( \frac{b}{a} \right) ^{2} \right)^{-\frac{k}{2}}
-					       \left( 1 + \left( \frac{b}{a} \right) ^{2} \right)^{-\frac{n-k}{2}}
-					       \left( \frac{b}{a} \right)^{n-k}
-					       \cos \frac{(n-k)\pi}{2} \]
-	
-	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
-					       \left( 1 + \left( \frac{b}{a} \right) ^{2} \right)^{-\frac{n}{2}}
-					       b^{n-k} a^{k-n}
-					       \cos \frac{(n-k)\pi}{2} \]
-
-	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
-					       \left( \frac{a^{2} + b^{2}}{a^{2}} \right)^{-\frac{n}{2}}
-					       b^{n-k} a^{k-n}
-					       \cos \frac{(n-k)\pi}{2} \]
-
-	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
-					       \left( \frac{\sqrt{a^{2} + b^{2}}}{a} \right)^{-n}
-					       b^{n-k} a^{k-n}
-					       \cos \frac{(n-k)\pi}{2} \]
-
-	\[ \sqrt{a^{2} + b^{2}} \sum_{k=0}^{n} \binom{n}{k}
-					       \sqrt{a^{2} + b^{2}}^{-n}
-					       a^{n}
-					       b^{n-k} a^{k-n}
-					       \cos \frac{(n-k)\pi}{2} \]
-
-        \[ \sqrt{a^{2} + b^{2}}^{1-n} \sum_{k=0}^{n} \binom{n}{k}
-						     a^{k} b^{n-k}
-					             \cos \frac{(n-k)\pi}{2} \]
 \end{document}
