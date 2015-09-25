@@ -48,12 +48,32 @@
 \section{Integrator Spectrum}
 	
 	\[ c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1-\cos(x))e^{-inx} dx
-				              + \int_{\pi}^{2\pi} (3 - \cos(x))e^{-inx} dx 
+				              + \int_{\pi}^{2\pi} (3 + \cos(x))e^{-inx} dx 
 			                      \right) \]
 
-	Starting with the first portion:
+	Starting with the first integral:
 	
 	\[ \int_{0}^{\pi} (1-\cos(x))e^{-inx} dx = \int_{0}^{\pi} e^{-inx} - \cos(x)e^{-inx} dx \]
+	\[ = \left[ \frac{ie^{-inx}}{n} - \frac{e^{-inx}(\sin(x) - in\cos(x))}{1 - n^{2}} \right]_{0}^{\pi} \]
+	\[ = \frac{ie^{-in\pi}}{n} - \frac{ine^{-in\pi}}{1 - n^{2}}  - \frac{i}{n} - \frac{in}{1 - n^{2}} \]
+	\[ = \frac{i}{n(1-n^{2})} \left( (1 - n^{2})e^{-in\pi} - n^{2}e^{-in\pi} - (1 - n^{2}) - n^2 \right) \]
+	\[ = \frac{i}{n - n^{3}} \left( e^{-in\pi} - 2n^{2}e^{-in\pi} - 1 \right) \]
+
+	Now the second:
+
+	\[ \int_{\pi}^{2\pi} (3+\cos(x))e^{-inx} dx = \int_{\pi}^{2\pi} 3e^{-inx} + \cos(x)e^{-inx} dx \]
+	\[ = \left[ \frac{3ie^{-inx}}{n} + \frac{e^{-inx}(\sin(x) - in\cos(x))}{1 - n^{2}} \right]_{\pi}^{2\pi} \]
+	\[ = \frac{3i}{n} - \frac{in}{1 - n^{2}} - \frac{3ie^{-in\pi}}{n} - \frac{ine^{-in\pi}}{1 - n^{2}} \]
+	\[ = \frac{i}{n(1-n^{2})} \left( 3(1-n^{2}) - n^{2} - 3(1-n^{2})e^{-in\pi} - n^{2}e^{-in\pi} \right) \]
+	\[ = \frac{i}{n - n^{3}} \left( 2n^{2}e^{-in\pi} - 3e^{-in\pi} - 4n^{2} + 3 \right) \]
+
+	Summing those we get:
+
+	\[ \frac{i}{n - n^{3}} \left( 2 - 2e^{-in\pi} - 4n^{2} \right) \]
+
+	Thus:
+
+	\[ c_{n} = \frac{ikf_{s}}{2\pi} \left( \frac{4n^{2} + 2e^{-in\pi} - 2}{n^{3} - n} \right) \]
 
 \section{IAP and SSBA Relationship}
 	SSBA looks like this:
