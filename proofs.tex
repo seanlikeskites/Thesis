@@ -75,6 +75,32 @@
 
 	\[ c_{n} = \frac{ikf_{s}}{2\pi} \left( \frac{4n^{2} + 2e^{-in\pi} - 2}{n^{3} - n} \right) \]
 
+	Some special cases:
+
+	\[ c_{1} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1-\cos(x))e^{-ix} dx
+				              + \int_{\pi}^{2\pi} (3 + \cos(x))e^{-ix} dx 
+			                      \right) \]
+
+	Starting with the first integral:
+	
+	\[ \int_{0}^{\pi} (1-\cos(x))e^{-ix} dx = \int_{0}^{\pi} e^{-ix} - \cos^{2}(x) + i\cos(x)\sin(x) dx \]
+	\[ = \int_{0}^{\pi} e^{-ix} - \frac{1}{2} - \frac{\cos(2x)}{2} + \frac{i\sin(2x)}{2} dx \]
+	\[ = \left[ ie^{-ix} - \frac{x}{2} - \frac{\sin(2x)}{4} - \frac{i\cos(2x)}{4} \right]_{0}^{\pi} \]
+	\[ = -i - \frac{\pi}{2} - \frac{i}{4} - \left( i - \frac{i}{4} \right) \]
+	\[ = -2i - \frac{\pi}{2} \]
+
+	And the second:
+	
+	\[ \int_{\pi}^{2\pi} (3+\cos(x))e^{-ix} dx = \int_{\pi}^{2\pi} 3e^{-ix} + \cos^{2}(x) - i\cos(x)\sin(x) dx \]
+	\[ = \int_{\pi}^{2\pi} 3e^{-ix} + \frac{1}{2} + \frac{\cos(2x)}{2} - \frac{i\sin(2x)}{2} dx \]
+	\[ = \left[ 3ie^{-ix} + \frac{x}{2} + \frac{\sin(2x)}{4} + \frac{i\cos(2x)}{4} \right]_{\pi}^{2\pi} \]
+	\[ = 3i + \pi + \frac{i}{4} - \left( -3i + \frac{\pi}{2} + \frac{i}{4} \right) \]
+	\[ = 6i + \frac{\pi}{2} \]
+
+	Summing gives:
+
+	\[ c_{1} = \frac{2ikf_{s}}{\pi} \]
+
 \section{IAP and SSBA Relationship}
 	SSBA looks like this:
 
