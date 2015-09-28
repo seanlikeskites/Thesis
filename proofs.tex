@@ -38,12 +38,12 @@
 
 	\[ c_{n} = \frac{1}{2\pi} \left( \frac{1}{n+1} + \frac{1}{1-n} + \frac{1}{n+1} + \frac{1}{1-n} \right) \]
 	\[ c_{n} = \frac{1}{2\pi} \frac{2(1-n) + 2(n+1)}{1 - n^{2}} \]
-	\[ c_{n} = \frac{2}{\pi(1 - n^{2})} \]
+	\[ \boxed{c_{n} = \frac{2}{\pi(1 - n^{2})}} \]
 
 	When $n$ is odd:
 
 	\[ c_{n} = \frac{1}{2\pi} \left( -\frac{1}{n+1} - \frac{1}{1-n} + \frac{1}{n+1} + \frac{1}{1-n} \right) \]
-	\[ c_{n} = 0 \]
+	\[ \boxed{c_{n} = 0} \]
 
 \section{Integrator Spectrum}
 	
@@ -73,7 +73,7 @@
 
 	Thus:
 
-	\[ c_{n} = \frac{ikf_{s}}{2\pi} \left( \frac{4n^{2} + 2e^{-in\pi} - 2}{n^{3} - n} \right) \]
+	\[ \boxed{c_{n} = \frac{ikf_{s}}{2\pi} \left( \frac{4n^{2} + 2e^{-in\pi} - 2}{n^{3} - n} \right)} \]
 
 	When $n = 1$:
 
@@ -99,7 +99,54 @@
 
 	Summing gives:
 
-	\[ c_{1} = \frac{2ikf_{s}}{\pi} \]
+	\[ \boxed{c_{1} = \frac{2ikf_{s}}{\pi}} \]
+
+	When $n = -1$:
+
+	\[ c_{-1} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1-\cos(x))e^{ix} dx
+				              + \int_{\pi}^{2\pi} (3 + \cos(x))e^{ix} dx 
+			                      \right) \]
+
+	Starting with the first integral:
+	
+	\[ \int_{0}^{\pi} (1-\cos(x))e^{ix} dx = \int_{0}^{\pi} e^{ix} - \cos^{2}(x) - i\cos(x)\sin(x) dx \]
+	\[ = \int_{0}^{\pi} e^{ix} - \frac{1}{2} - \frac{\cos(2x)}{2} - \frac{i\sin(2x)}{2} dx \]
+	\[ = \left[ -ie^{ix} - \frac{x}{2} - \frac{\sin(2x)}{4} + \frac{i\cos(2x)}{4} \right]_{0}^{\pi} \]
+	\[ = i - \frac{\pi}{2} + \frac{i}{4} - \left( -i + \frac{i}{4} \right) \]
+	\[ = 2i - \frac{\pi}{2} \]
+
+	And the second:
+	
+	\[ \int_{\pi}^{2\pi} (3+\cos(x))e^{ix} dx = \int_{\pi}^{2\pi} 3e^{ix} + \cos^{2}(x) + i\cos(x)\sin(x) dx \]
+	\[ = \int_{\pi}^{2\pi} 3e^{ix} + \frac{1}{2} + \frac{\cos(2x)}{2} + \frac{i\sin(2x)}{2} dx \]
+	\[ = \left[ -3ie^{ix} + \frac{x}{2} + \frac{\sin(2x)}{4} - \frac{i\cos(2x)}{4} \right]_{\pi}^{2\pi} \]
+	\[ = -3i + \pi - \frac{i}{4} - \left( 3i + \frac{\pi}{2} - \frac{i}{4} \right) \]
+	\[ = -6i + \frac{\pi}{2} \]
+
+	Summing gives:
+
+	\[ \boxed{c_{-1} = -\frac{2ikf_{s}}{\pi}} \]
+
+	When $n = 0$:
+
+	\[ c_{0} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} 1-\cos(x) dx
+				              + \int_{\pi}^{2\pi} 3 + \cos(x) dx 
+			                      \right) \]
+
+	Starting with the first integral:
+
+	\[ \int_{0}^{\pi} 1 - \cos(x) dx = \left[ x + \sin(x) \right]_{0}^{\pi}\]
+	\[ = \pi \]
+
+	And the second:
+
+	\[ \int_{\pi}^{2\pi} 3 + \cos(x) dx = \left[ 3x - \sin(x) \right]_{\pi}^{2\pi}\]
+	\[ = 6\pi - 3\pi \]
+	\[ = 3\pi \]
+
+	Summing gives:
+
+	\[ \boxed{c_{0} = 2kf_{s}} \]
 
 \section{IAP and SSBA Relationship}
 	SSBA looks like this:
@@ -114,6 +161,6 @@
 
 	Thus:
 
-	\[ y_{SSBA} = |z|^{n-1}y_{IAP} \]
+	\[ \boxed{y_{SSBA} = |z|^{n-1}y_{IAP}} \]
 
 \end{document}
