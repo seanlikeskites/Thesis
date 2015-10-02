@@ -25,22 +25,28 @@
 	researchers have also worked on creating novel digital distortion techniques \citep{fernandez-cid2001distortion,
 	pekonen2008coefficient, puckette2007patch}.
 
-	Distortion is a very broad term which is typically used to describe unwanted effects. For this work a better defined
-	term, harmonic excitation, will be used to refer to the deliberate and controlled application of nonlinear systems
-	in order to introduce new frequency components to a signal. \citet{dutilleux2011nonlinear} defines excitation as
-	the process of controlling timbre through the emphasis of certain frequencies. While this is possible with linear
-	systems, such as equalisers, nonlinear systems provide more flexibility as they can add energy in areas of the
-	spectrum where the original signal had none.
+	Distortion is a very broad term which is typically used to describe unwanted effects. For this work a better
+	defined term, harmonic excitation, will be used to refer to the deliberate and controlled application of nonlinear
+	systems in order to introduce new frequency components to a signal. \citet{dutilleux2011nonlinear} defines
+	excitation as the process of controlling timbre through the emphasis of certain frequencies. While this is possible
+	with linear systems, such as equalisers, nonlinear systems provide more flexibility as they can add energy in areas
+	of the spectrum where the original signal had none.
 
 	This chapter will review how nonlinear systems have been analysed in previous audio research, how their effects are
-	quantified and the timbral transformations they impart. The current uses of harmonic excitation in audio engineering
-	are then discussed in Section \ref{sec:Excitation-Uses}. A list of criteria with which to evaluate harmonic
-	excitation methods for use in real time timbral control is developed in Section \ref{sec:Excitation-Evaluation}.
-	Section \ref{sec:Excitation-Methods} then describes several methods for harmonic excitation and how they perform in
-	these areas.  Issues with certain methods are identified and ways to overcome them suggested.
+	quantified and the timbral transformations they impart. The current uses of harmonic excitation in audio
+	engineering are then discussed in Section \ref{sec:Excitation-Uses}. A list of criteria with which to evaluate
+	harmonic excitation methods for use in real time timbral control is developed in Section
+	\ref{sec:Excitation-Evaluation}.  Section \ref{sec:Excitation-Methods} then describes several methods for harmonic
+	excitation and how they perform in these areas.  Issues with certain methods are identified and ways to overcome
+	them suggested.
 
 \section{Analysis of Nonlinear Systems}
 \label{sec:Excitation-AnalysisOfNonlinearSystems}
+	\note 
+	{
+		What is a nonlinear system?
+	}
+
 	The analysis of nonlinear system is more complicated that that of linear systems. This is due to more features of
 	the input signal affecting how the system responds. In the field of audio engineering much of the literature
 	concerning nonlinearities has to do with minimising distortion or measuring the maximum allowable levels of
@@ -84,12 +90,12 @@
 		signal with a high THD values may sound less distorted that one with a small THD. Several researchers have
 		developed new distortion metrics which indicate the perceived amount of distortion.
 
-		\citet{geddes2003auditory} suggest some psychoacoustic principles which may be applicable to the analysis of
-		nonlinear distortion:
+		\citet{geddes2003auditory} suggest some psychoacoustic principles which may be applicable to the analysis
+		of nonlinear distortion:
 
 		\begin{itemize}
-			\item New frequency components introduced, with lower frequencies that the original components, will
-			      be more perceptible.
+			\item New frequency components introduced, with lower frequencies that the original components,
+				will be more perceptible.
 			\item Higher order nonlinearity artefacts will be more perceptible.
 			\item Nonlinearities which affect lower amplitude signals will be more perceptible.
 		\end{itemize}
@@ -317,9 +323,20 @@
 	was shown that speakers of Japanese and speakers of Sinhalese disagree on the how these terms are used to describe
 	timbre. It is expected that there will be similar differences in presenting the descriptors to English speakers.
 
+	\note
+	{
+		Smooth this transition here. Uses of nonlinear systems, highlighting focus on excitation for timbral
+		control.
+	}
+
 \section{Uses of Harmonic Excitation}
 \label{sec:Excitation-Uses}
 	Harmonic excitation is used for several tasks in audio engineering:
+
+	\note
+	{
+		Perhaps not bullet points. That implies equal emphasis.
+	}
 
 	\begin{itemize}
 		\item As a creative audio effect used to manipulate the timbre of sounds for music production.
@@ -406,6 +423,11 @@
 
 \section{Evaluation Criteria for Harmonic Excitation Methods} % section name not very clear
 \label{sec:Excitation-Evaluation}
+	\note
+	{
+		Specify that we are only dealing with the use of exciters for perceptual control.
+	}
+	
 	There are many different classes of nonlinear system which are used in audio processing. Each of these has its own
 	characteristics. There are several properties to look at when evaluating a nonlinear system for use in real time
 	timbral control. These are:
@@ -565,6 +587,11 @@
 
 \section{Harmonic Generation Methods}
 \label{sec:Excitation-Methods}
+	\note
+	{
+		Introduce all methods and then compare each under each criteria. 
+	}
+
 	Several harmonic excitation algorithms have been proposed in the literature. In the section these algorithms are
 	evaluated against the criteria given in Section \ref{sec:Excitation-Evaluation}. Techniques for improving
 	performance with regard to particular criteria are suggested and discussed. 
@@ -1459,8 +1486,19 @@
 
 \end{landscape}
 
+\section{Key Findings}
+	\note
+	{
+		Conclude the chapter.
+	}
+
 \section{Harmonic Excitation Systems}
 \label{sec:Excitation-Systems}
+	\note
+	{
+		Bung this in chapter 4.
+	}
+
 	Section \ref{sec:Excitation-Methods} covered several different methods of introducing new frequency content to a
 	signal. This section will introduce techniques which can be used in conjunction with those methods to build
 	harmonic excitation systems. These techniques aim to give the user more control over the new content added to the
@@ -1781,7 +1819,7 @@
 		stimuli in this experiment it reproduced signals with the highest perceived quality. It was also shown in
 		section \ref{sec:Excitation-IAP} that it is a homogeneous process allowing it to be applied to a wider
 		range of signals with more predictable effects.
-	
+
 %\section{Evaluating Excitation Methods}
 %\label{sec:FeatureControl-MethodEvaluation}
 %
