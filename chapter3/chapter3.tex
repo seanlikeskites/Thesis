@@ -721,6 +721,11 @@
 			back to the original input amplitude. Analogously the clipping function can be scaled so as to
 			always clip the same proportion of the signal, as done by \citet{deman2014adaptive}.
 
+			\note
+			{
+				Formal proof?
+			}
+
 		\subsubsection*{Spectral Characteristics}
 			The spectral characteristics depend on the function applied to the signal. If an odd function is
 			used only odd order components will be produced. Using an even function only even order components
@@ -847,6 +852,11 @@
 			have been applied to them. In full wave rectification the absolute value of every sample is taken
 			preserving their magnitude and thus any gain which has been applied.
 
+			\note
+			{
+				Formal proof?
+			}
+
 		\subsubsection*{Spectral Characteristics}
 			Full wave rectification can be considered as a static nonlinearity with an even characteristics
 			curve. As such it only introduces even order distortion components. The Fourier coefficients of a
@@ -923,6 +933,11 @@
 			homogeneous. If a homogeneous system is required it may be more efficient to use an integrator over
 			a static nonlinearity.
 		
+			\note
+			{
+				Formal proof?
+			}
+
 		\subsubsection*{Spectral Characteristics}
 			Applying Equation \ref{eq:Integrator} to a sine wave produces a signal with Fourier coefficients as
 			shown in Equation \ref{eq:IntegratorFourier}.
@@ -1163,6 +1178,11 @@
 			As with multipliers, SSBA is a non-homogeneous process. The amplitude envelope of the $h^{th}$
 			order automodulation is the amplitude envelope of the original signal raised to the power $h$. 
 
+			\note
+			{
+				Formal proof?
+			}
+
 		\subsubsection*{Spectral Characteristics}
 			SSBA extends the control provided by multipliers as it constrains the minimum frequency introduced
 			as well as the highest. Using Equation \ref{eq:SSB} only the upper side band (the sum frequencies)
@@ -1231,6 +1251,11 @@
 			information is scaled in order to increase the frequency while the magnitude information is left
 			unaltered. This preservation of magnitude information mean that the IAP method is a homogeneous
 			system.
+
+			\note
+			{
+				Formal proof?
+			}
 			
 		\subsubsection*{Spectral Characteristics}
 			In contrast to the SSBA method, the IAP method is homogeneous but provides little control over the
@@ -1295,6 +1320,11 @@
 
 		\subsubsection*{Homogeneity}
 			Spectral replication using Equation \ref{eq:SpectralReplication} is a homogeneous process.
+
+			\note
+			{
+				Formal proof?
+			}
 			
 		\subsubsection*{Spectral Characteristics}
 			In spectral replication each frequency component is shifted by the same amount preserving the size
@@ -1348,6 +1378,11 @@
 		\subsubsection*{Homogeneity}
 			Both downsampling and upsampling are homogeneous processes making spectral folding also
 			homogeneous.
+
+			\note
+			{
+				Formal proof?
+			}
 			
 		\subsubsection*{Spectral Characteristics}
 			Spectral folding with a factor $k$ results in the lowest $\frac{1}{k}$ of the input spectrum being
@@ -1426,6 +1461,11 @@
 		\subsubsection*{Homogeneity}
 			The phase vocoder algorithm is a homogeneous system. When processing the signal in the frequency
 			domain only the phase information is altered, leaving magnitude information unchanged. 
+
+			\note
+			{
+				Formal proof?
+			}
 
 		\subsubsection*{Spectral Characteristics}
 			An ideal spectral stretching system would produce the result shown in Figure
