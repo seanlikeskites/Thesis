@@ -24,31 +24,93 @@
 	to these terms \citep{howard2009acoustics}. Sounds can also be ordered in respect to these criteria much like with
 	loudness and pitch. For example one could order a set of sounds by how bright they sound.
 
-	The study of timbre involves work from various fields. Low level features of audio segments can be found using
-	signal analysis techniques. More complicated information about the perception of a signal can be discovered through
-	modelling the behaviour of the human hearing system. Lastly experiments can be undertaken in which participants
-	listen to audio samples and provide responses regarding the timbre of the samples. These responses are then analysed
-	to uncover any correlations between the participants responses and lower level features of the audio samples.
+	Early research into timbre was performed by \citet{helmholtz1875on}. More recent work involves research from various
+	fields. Low level features of audio segments can be found using signal analysis techniques. More complicated
+	information about the perception of a signal can be discovered through modelling the behaviour of the human hearing
+	system. Lastly experiments can be undertaken in which participants listen to audio samples and provide responses
+	regarding the timbre of the samples. These responses are then analysed to uncover any correlations between the
+	participants responses and lower level features of the audio samples.
 
-	This chapter will review the existing body of timbral research. Starting with the analysis of signal features,
-	through the human perception of sound, to the development of experimental methodologies for assessing timbre.
+	This chapter will review the existing body of timbral research. Section \ref{sec:Timbre-LowLevelFeatures} discusses
+	metric which are used to describe the low level features of audio signals. Section
+	\ref{sec:Timbre-PsychoacousticPrinciples} covers various models which describe the perception of various auditory
+	phenomena. \note{Put in what the rest of the sections are about}.
 
 \section{Low Level Audio Features}
-\label{sec:Timbre-Features}
+\label{sec:Timbre-LowLevelFeatures}
+	A widely cited definition of timbre \citep{ASA1960american} suggests that timbre in influenced by various low level
+	features of an audio signal. The spectral content, waveform and temporal characteristics all effect the perceived
+	timbre of a sound. Signal analysis techniques can be used to extract information about these elements of a signal.
+	A large list of such features feature extraction techniques is given by \citep{peeters2004a}. These features can be
+	separated into three categories. Features which describe the properties of a signals waveform and how it evolves
+	with time (temporal features), features which describe the frequency content of a signal (spectral features) and
+	features which describe how the frequency content of a signal evolves with time (spectro-temporal features).
+
+	\subsection{Temporal Features}
+	\label{sec:Timbre-LowLevelFeatures-Temporal}
+		Simple temporal features involve taking statistical measurements, such as mean and variance, of the audio
+		samples in a signal. 
+
+		\note
+		{
+			Envelope Detection (ADSR).
+		}
+
+	\subsection{Spectral Features}
+	\label{sec:Timbre-LowLevelFeatures-Spectral}
+		\note
+		{
+			\begin{itemize}
+				\item Spectral statistics.
+				\item Spectral shape.
+				\item MFCCs.
+			\end{itemize}
+
+			MFCCs originally developed for speech recognition \citep{davis1980comparison} but used for other
+			timbral tasks more recently \citep{depoli1997sonological}.
+		}
+
+	\subsection{Spectro-Temporal Features}
+	\label{sec:Timbre-LowLevelFeatures-Spectrotemporal}
+		\note
+		{
+			Delta MFCC and spectral flux and such and the like.
+		}
+
+	\citet{howard2009acoustics} separates sounds into three separate sections. The steady state section describes the
+	middle portion of a sound during which the timbre does not vary much with time. The onset and offset sections
+	describe how the sound evolves when rising from silence to the steady state and falling back to silence after the
+	steady state. These sections together describe the envelope of the sound. It is proposed that the onset and steady
+	state sections influence timbre to a larger degree than the offset section.
+
 	\note
 	{
-		Bits and bobs about the audio features used in MIR and stuff \citep{peeters2004a}.
-		
 		Stuff like this also \citep{freed1990auditory, lakatos2000a}.
 	}
+	
+\section{Psychoacoustic Principles}
+\label{sec:Timbre-PsychoacousticPrinciples}
+	Psychoacoustics is a field which deals with the perception of sound. The existing literature concerns the study of
+	the human hearing system and how it responds to certain aspects of audio stimuli. Several different areas of audio
+	perception have been researched. Methods have been devised to model the human perception of loudness
+	\citep{moore1997a} and pitch \citep{gerhard2003pitch}. Other research considers the human hearing systems ability to
+	locate sound sources \citep{blauert1997spatial}. This section will summarise the psychoacoustic principles which are
+	useful for investigating the perception of timbre. 
 
-\section{Psychoacoustics}
-\label{sec:Timbre-Psychoacoustics}
 	\note
 	{
+		Critical bands and masking.
+
 		Resolving harmonics in the cochlea. Low order harmonics are generally resolved individually so their
 		individual levels will have a strong effect on perceived timbre. Higher order harmonics are resolved in
 		groups so less manipulation is needed \citep{howard2009acoustics}.
+	}
+
+\section{Timbral Features}
+\label{sec:Timbre-TimbralFeatures}
+	\note
+	{
+		Psychoacoustic principles have been used to develop timbral metrics (sharpness, roughness).
 	}
 
 \section{Parameterisation of Timbre}
