@@ -44,7 +44,7 @@
 	A large list of such features feature extraction techniques is given by \citep{peeters2004a}. These features can be
 	separated into three categories. Features which describe the properties of a signals waveform and how it evolves
 	with time (temporal features), features which describe the frequency content of a signal (spectral features) and
-	features which describe how the frequency content of a signal evolves with time (spectro-temporal features).
+	features which describe how the frequency content of a signal evolves with time (spectro-temporal features). 
 
 	\subsection{Temporal Features}
 	\label{sec:Timbre-LowLevelFeatures-Temporal}
@@ -54,7 +54,9 @@
 		signal over a whole number of cycles is zero. 
 
 		A common technique to extract more meaningful information about a signals level is to use an envelope
-		detector. 
+		detector. An envelope detector extracts the amplitude envelope of a signal. The amplitude envelope provides
+		information about the level of a signal over time. An example amplitude envelope is shown in Figure
+		\ref{fig:AmplitudeEnvelope}.
 
 		\begin{figure}[h!]
 			\centering
@@ -63,10 +65,19 @@
 			\label{fig:AmplitudeEnvelope}
 		\end{figure}
 
-		\note
-		{
-			Envelope Detection (ADSR). Methods reviewed by \citet{chang2007a}.
-		}
+		Various envelope detection methods are reviewed by \citet{chang2007a}. \citet{howard2009acoustics} separates
+		the envelope of a sound into three sections. The steady state section is the middle portion in which the
+		timbre of the sound only varies slightly. The onset and offset sections describe the way the sound rises
+		from silence to the steady state and returns to silence after. Further refinement of the description of
+		amplitude envelopes leads to the ADSR (Attack, Decay, Sustain, Release) model \citep{descrivan2012music}. An
+		example ADSR envelope is shown in Figure \ref{fig:ADSR}.
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter2/Images/ADSR.eps}
+			\caption{An ADSR Envelope.}
+			\label{fig:ADSR}
+		\end{figure}
 
 	\subsection{Spectral Features}
 	\label{sec:Timbre-LowLevelFeatures-Spectral}
