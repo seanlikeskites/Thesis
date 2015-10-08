@@ -49,11 +49,23 @@
 	\subsection{Temporal Features}
 	\label{sec:Timbre-LowLevelFeatures-Temporal}
 		Simple temporal features involve taking statistical measurements, such as mean and variance, of the audio
-		samples in a signal. 
+		samples in a signal. These measures give basic information about the level and variation in a signal but in
+		many cases they do not represent a signals properties very well. For example, the mean value of a sinusoidal
+		signal over a whole number of cycles is zero. 
+
+		A common technique to extract more meaningful information about a signals level is to use an envelope
+		detector. 
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter2/Images/AmplitudeEnvelope.eps}
+			\caption{The Amplitude Envelope of a Signal.}
+			\label{fig:AmplitudeEnvelope}
+		\end{figure}
 
 		\note
 		{
-			Envelope Detection (ADSR).
+			Envelope Detection (ADSR). Methods reviewed by \citet{chang2007a}.
 		}
 
 	\subsection{Spectral Features}
@@ -76,12 +88,6 @@
 		{
 			Delta MFCC and spectral flux and such and the like.
 		}
-
-	\citet{howard2009acoustics} separates sounds into three separate sections. The steady state section describes the
-	middle portion of a sound during which the timbre does not vary much with time. The onset and offset sections
-	describe how the sound evolves when rising from silence to the steady state and falling back to silence after the
-	steady state. These sections together describe the envelope of the sound. It is proposed that the onset and steady
-	state sections influence timbre to a larger degree than the offset section.
 
 	\note
 	{
