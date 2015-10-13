@@ -89,27 +89,35 @@
 	\subsection{Spectral Features}
 	\label{sec:Timbre-LowLevelFeatures-Spectral}
 		In existing timbral research is is widely reported that features of a sounds spectrum produce the largest
-		effects on timbre \citep{hall2010importance}. Simple spectral features can be calculated as statistical
-		measures which describe the shape of the spectrum. For example the spectral centroid of a signal is
-		calculated as the mean frequency weighted by their magnitudes. Spectral centroid is often stated as being
-		one of the most salient audio features in timbre recognition \citep{freed1990auditory, lakatos2000a}.
+		effects on timbre. Simple spectral features can be calculated as statistical measures which describe the
+		shape of the spectrum. For example the spectral centroid of a signal is calculated as the mean frequency
+		weighted by their magnitudes. Spectral centroid is often stated as being one of the most salient audio
+		features in timbre recognition \citep{freed1990auditory, lakatos2000a}. Higher order statistical moments of
+		the spectrum (standard deviation, skewness and kurtosis) can be used to further describe the distribution of
+		energy in the spectrum around the centroid.
 
-		\note
-		{
-			\citet{peeters2011the} do a lot of stuff!!
-		}
+		More detailed metrics in the shape of a spectrum can be calculated in the form of Mel Frequency Cepstral
+		Coefficients (MFCCs). These measurements were originally used in speech recognition systems
+		\citep{davis1980comparison}. More recently they have been applied to the analysis of timbre
+		\citep{depoli1997sonological}. 
 
-		\note
-		{
-			\begin{itemize}
-				\item Spectral statistics.
-				\item Spectral shape.
-				\item MFCCs.
-			\end{itemize}
+		Other spectral metrics consider the harmonic structure of a signal. In order to calculate these features the
+		partials (prominent frequency components) of the signal must me found. The deviation of these partials from
+		perfect harmonic frequencies measures the inharmonicity of the signal. \citet{fletcher1962quality} state
+		that inharmonicity of some partials is necessary for the recognition of the timbre of a piano. The noise
+		energy in a signal describes any energy which is does not contribute to a partial. The noisiness is then
+		measured as the ratio of the noise energy to the total energy in the signal \citep{serra1998sound}.
 
-			MFCCs originally developed for speech recognition \citep{davis1980comparison} but used for other
-			timbral tasks more recently \citep{depoli1997sonological}.
-		}
+		Further analysis can be performed by finding the harmonic partials of the signal. In detecting the harmonic
+		partials it is usual to allow for a slight deviation from perfect harmonic structure, as described by
+		\citet{peeters2011the}. Several metrics have been suggested which constitute the ratio of energy between two
+		different sets of harmonic partials. The tristimulus metrics proposed by \citet{pollard1982a} split the
+		harmonic series in to three sections, the fundamental frequency, the second through fourth harmonics and,
+		the rest of the higher order harmonics. Ratios between each of these sections and the total energy in the
+		harmonics are calculated. Another commonly used metric is the ratio between energy in the odd and even order
+		harmonic partials. This was found to be a salient feature in the judgement of timbre dissimilarity by
+		\citet{hall2010importance}. 
+
 
 \section{Psychoacoustic Principles}
 \label{sec:Timbre-PsychoacousticPrinciples}
