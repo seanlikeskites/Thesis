@@ -118,6 +118,11 @@
 		harmonic partials. This was found to be a salient feature in the judgement of timbre dissimilarity by
 		\citet{hall2010importance}. 
 
+		\note
+		{
+			Spectro-temporal features exist such as spectral flux.
+		}
+
 
 \section{Psychoacoustic Principles}
 \label{sec:Timbre-PsychoacousticPrinciples}
@@ -125,16 +130,37 @@
 	the human hearing system and how it responds to certain aspects of audio stimuli. Several different areas of audio
 	perception have been researched. Methods have been devised to model the human perception of loudness
 	\citep{moore1997a} and pitch \citep{gerhard2003pitch}. Other research considers the human hearing systems ability to
-	locate sound sources \citep{blauert1997spatial}. This section will summarise the psychoacoustic principles which are
-	useful for investigating the perception of timbre. 
+	locate sound sources \citep{blauert1997spatial}. 
 
-	\note
+	As discussed in Section \ref{sec:Timbre-LowLevelFeatures-Spectral} there are several metrics to describe the
+	spectral content of a signal. While it may be possible to measure changes in values of these features, the changes
+	may not be detectable by the human hearing system. Psychoacoustic models allow us to determine how audio signals are
+	interpreted by the human hearing system and how well we will notice such changes.
+
+	One process which is particularly relevant to the study of timbre is that of auditory masking. Maskings describes
+	how a sound can interfere with how another sound is perceived. Several criteria govern whether a sound will mask
+	another. Principally, their proximity, in either frequency or time, determines the level to which they will
+	interfere with each other.
+
+	Models of the inner ear provide details on how close in frequency two sounds need to be for masking to occur. The
+	frequency selectivity of the human hearing system can be modelled as a filter bank comprised of band pass filters.
+	The bandwidth of these auditory filters is known as the critical bandwidth. Portions of signals will interfere with
+	the perception of others which are within one critical bandwidth. \citet{glasberg1990derivation} simplify the
+	auditory filters by modelling them as rectangular filters. The bandwidth of these filters known as the equivalent
+	rectangular bandwidth (ERB) and can be approximated using Equation \ref{eq:ERB}.
+
+	\begin{equation}
+		ERB(f_{c}) = 24.7(4.37f_{c} + 1)
+		\label{eq:ERB}
+	\end{equation}
+
+	Where $f_{c}$ is the center frequency of the auditory filter and $ERB(f_{c})$ is the equivalent rectangular
+	bandwidth at that frequency.
+
+	\citet
 	{
-		Critical bands and masking.
-
-		Resolving harmonics in the cochlea. Low order harmonics are generally resolved individually so their
-		individual levels will have a strong effect on perceived timbre. Higher order harmonics are resolved in
-		groups so less manipulation is needed \citep{howard2009acoustics}.
+		\citet{howard2009acoustics} discusses the fusion and separation of tones based on their proximity. Higher
+		frequencies have wider critical bandwidths so tend to be perceived as single sounds.
 	}
 
 \section{Timbral Features}
