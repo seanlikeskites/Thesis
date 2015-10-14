@@ -157,6 +157,39 @@
 	Where $f_{c}$ is the center frequency of the auditory filter in kHz and $ERB(f_{c})$ is the equivalent rectangular
 	bandwidth, in Hz, at that frequency.
 
+	\citet{howard2009acoustics} discusses the perception of two tones as they get further apart in frequency.
+
+	\begin{figure}[h!]
+		\centering
+		\begin{tikzpicture}
+
+			\draw [thick, ->] (0, 0) -- (10, 0);
+			\draw (0, 1) -- (10, 1);
+			\draw (0, 0) -- (0, 2) -- (10, 2);
+
+			\draw (0, 0) -- (0, -2pt) node [anchor=north] {0};
+			\draw (2, 0) -- (2, -2pt) node [anchor=north] {15};
+			\draw (8, 0) -- (8, -2pt) node [anchor=north] {CB};
+
+			\fill [pattern=north west lines] (1.75, 0) rectangle (2.25, 1);
+			\fill [pattern=north west lines] (7.75, 0) rectangle (8.25, 1);
+			\fill [pattern=north west lines] (5.75, 1) rectangle (6.25, 2);
+
+			\node at (0.875, 0.5) {Beats};
+			\node at (5, 0.5) {Rough};
+			\node at (9.125, 0.5) {Smooth};
+			\node at (2.875, 1.5) {Fused};
+			\node at (8.125, 1.5) {Separate};
+
+			\node at (5, -1) {Frequency Difference (Hz)};
+
+		\end{tikzpicture}
+		\caption{The perceived of two tones as they move further apart in frequency. CB denotes the critical
+		bandwidth.}
+		\label{fig:ToneSeparation}
+	\end{figure}
+
+
 	\note
 	{
 		\citet{howard2009acoustics} discusses the fusion and separation of tones based on their proximity. Higher
