@@ -284,23 +284,136 @@
 
 \section{Parameterisation of Timbre}
 \label{sec:Timbre-Parameterisation}
-	\note{Analysis of timbre spaces and discussion on salience of some features as given in the literature.}
+	As mentioned previously, timbre is a multidimensional property of a sound. One of the aims of timbral research is to
+	identify salient dimensions which can be used for the description of timbre. Various features have already been
+	discussed which might be considered dimensions on which the perceived nature of a sound can be described (loudness,
+	pitch, sharpness, roughness). One disadvantage to these descriptions is that they do not represent orthogonal
+	dimensions. Models of the perception of sharpness and roughness depend on the frequency register of a signal, thus
+	changing the pitch of a signal will also alter its sharpness and roughness.
 
-	\subsection{Dissimilarity Tests}
-	\label{sec:Timbre-Dissimilarity}
+	Previous studies attempting to uncover salient dimensions of timbre all use a similar structure in their approach.
+	First a set of audio samples is selected. These are usually equalised in pitch and loudness so as to negate those
+	attribute effects on the timbre. Listening test are then undertaken in which participants evaluate the samples on a
+	given set of criteria. The results of these experiments are then analysed using dimensionality reduction techniques
+	to produce a timbre space in which the differences between the samples is described by a small set of dimensions.
+
+	This section will discuss the listening test methodologies and dimensionality reduction techniques most commonly
+	used in this types of study.
+
+	\subsection{Auditory Evaluation Methods}
+	\label{sec:Timbre-AuditoryEvaluation}
+		Two different classes of listening test are common in timbral studies. In one participants are asked to
+		judge the dissimilarity of small sets of audio samples. In the other the participants are asked to rate each
+		audio sample on various scales which relate to attributes of the timbre. In this report these methods will
+		be called dissimilarity tests and attribute scale tests respectively.
+
+		\citet{grey1977multidimensional} utilises a pairwise dissimilarity methodology to gather similarity data
+		about audio samples.  Participants are asked to rate the similarity of pairs of audio samples. Pairs of
+		samples are presented one at a time until every possible pair from the set of samples has been rated. This
+		is a popular method as it ensures that the participants rate every sample against every other sample. A
+		downside of this is that the number of possible pairs grows exponentially as the total number of samples
+		increases. This causes the time taken to complete the test to become too large if the experimenter wishes to
+		evaluate a lot of samples.
+
+		\citet{caclin2005acoustic} also use a pairwise dissimilarity method but unlike
+		\citet{grey1977multidimensional} use synthetic samples rather than acoustically recorded ones. This allows
+		them to better control the differences between the samples. All samples in their experiment only differed in
+		three characteristics (attack time, spectral centroid and spectral flux) allowing them to identify what
+		factors these features contribute to the timbre of a sound.
+
+		Another method of capturing similarity data is that of triadic comparisons \citep{wickelmaier2007deriving}.
+		In this method audio samples are presented in triads (three at a time).  Participants are asked to identify
+		the most similar pair of samples in the triad as well as the least similar. This method helps removed
+		inconsistent use of a rating scale. In pairwise dissimilarity tests may reinterpret the range of the scale
+		they are given to rate dissimilarity on during the experiment. Triadic comparisons just asks which pair is
+		most similar and which the least avoiding the elicitation of a value on a scale.
+
+		Attribute scale tests require participants to rate each sample against several scales which each relate to
+		an attribute of their timbre. The verbal attribute magnitude estimation (VAME) methodology proposed by
+		\citet{kendal1993verbal1} falls into this category. Their first experiment was a semantic differential test
+		in which participants are asked to rate each audio sample on eight different bipolar adjective scales, shown
+		in Table \ref{tab:vonBismarcksDescriptors}.
+
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|C{3cm}cC{3cm}|}
+				\hline
+				\bf{No.} & \multicolumn{3}{|c|}{\bf{Adjectives}} \tabularnewline
+				\hline
+				\hline
+				1 & hard & $\Longleftrightarrow$ & soft \tabularnewline
+				\hline
+				2 & sharp & $\Longleftrightarrow$ & dull \tabularnewline
+				\hline
+				3 & loud & $\Longleftrightarrow$ & soft \tabularnewline
+				\hline
+				4 & complex & $\Longleftrightarrow$ & simple \tabularnewline
+				\hline
+				5 & compact & $\Longleftrightarrow$ & scattered \tabularnewline
+				\hline
+				6 & pure & $\Longleftrightarrow$ & mixed \tabularnewline
+				\hline
+				7 & dim & $\Longleftrightarrow$ & brilliant \tabularnewline
+				\hline
+				8 & heavy & $\Longleftrightarrow$ & light \tabularnewline
+				\hline
+			\end{tabular}
+			\caption{Bipolar adjectives scales used by \citet{kendall1993verbal1}.}
+			\label{tab:vonBismarcksDescriptors}
+		\end{table}
+
+		They propose that semantic differential tests have a problem in that the descriptors at each end of the
+		bipolar scales may not be the semantic opposites of each other. The difference between hard and soft, for
+		instance, may not be a simple one dimensional space. In order to determine the effect of this they proposed
+		the VAME method in which the opposites of the adjectives were merely their negation (hard $\Leftrightarrow$
+		not hard, sharp $\Leftrightarrow$ not sharp etc.). This was found to increase the independence between each
+		adjective scale in the ratings given by participants. 
+
+		Attribute scale methods have an advantage over dissimilarity tests as they gather information about which
+		aspects of the samples the participants are judging. A major disadvantage however is that non of the samples
+		are directly compared against one another. The participants have no reference of where they have put other
+		samples on the adjective scales making it difficult to use the scales consistently.
+		\citet{marui2005constructing} uses both a semantic differential test and triadic comparisons in order to
+		avoid the weaknesses of both methodologies. 
+		
+		Another issue apparent with attribute scale methods is that of selecting the adjectives to use. The
+		adjective need to be meaningful for the test participants and also applicable to the audio samples used.
+		\citet{kendall1993verbal2} ran a second set of experiments using a different set of adjectives reporting
+		that this second set of adjectives was more applicable to their set of audio samples than the first.
+
+	\subsection{Dimensionality Reduction}
+	\label{sec:Timbre-DimensionalityReduction}
+		Dimensionality reduction techniques are used to take multidimensional data and reduce the number of
+		dimensions while maintaining the relationships between the data. In timbral research they are used to reduce
+		the number of dimensions needed to describe the timbre of a sound. For example, the results from a VAME
+		experiment where $N$ adjective scales are used consists of an $N$ dimensional space in which each audio
+		sample sits at the point denoted by its gradings on those scales. Dimensionality reduction is applied to
+		reduce the number of dimensions while preserving information relating to the differences between samples
+		(such as the euclidean distances between them).
+
 		\note
 		{
-			A more traditional approach, \citet{grey1977multidimensional} and all the copycat lot 
-			\citep{burgoyne2008a, caclin2005acoustic}.
+			How much depth to to into here? 
+
+			\citet{grey1977multidimensional} uses MDS as people tend to on dissimilarity data.
+			\citet{kendall1993verbal1} use MDS on their VAME data.
+
+			But everybody seems to use a slightly different version of MDS (clascal, indscal, isomap).
+			\citet{mcadams1995perceptual} covers some differences.
+
+			\cite{zacharakis2012analysis} prefer EFA over PCA but also use some clustering.
+
+			\citet{burgoyne2008a} performed a meta analysis of several other researchers results.
 		}
 
-	\subsection{VAME}
-	\label{sec:Timbre-VAME}
-		\note{\citet{kendall1993verbal1, kendall1993verbal2} trying to upset the status quo.}
 
-	\subsection{Parameter Space}
-	\label{sec:Timbre-ParameterSpaces}
-	\note{Research like Social EQ and stuff \citep{cartwright2013socialeq, seetharaman2014crowdsourcing}.}
+	\subsection{Correlation of Dimensions with Audio Features}
+	\label{sec:Timbre-DimentionCorrelations}
+		\note
+		{
+			\citet{alluri2010exploring} perform regression to see the contributions of audio features to
+			dimensions from factor analysis.
+		}
 
 \section{Controlling Timbre}
 \label{sec:Timbre-Control}
@@ -311,3 +424,8 @@
 		Some dudes do morphing (analysis resynthesis from what I remember) like good old 
 		\citet{williams2007perceptually, williams2009perceptually, williams2010perceptually}
 	}
+
+	\subsection{Parameter Space}
+	\label{sec:Timbre-ParameterSpaces}
+	\note{Research like Social EQ and stuff \citep{cartwright2013socialeq, seetharaman2014crowdsourcing}.}
+
