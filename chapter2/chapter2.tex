@@ -427,22 +427,29 @@
 
 	\subsection{Correlation of Dimensions with Audio Features}
 	\label{sec:Timbre-DimentionCorrelations}
-		Once a timbre space has been constructed 
-		\note
-		{
-			Several researchers calculate correlation between audio features and timbre space dimensions.
+		Once a timbre space has been constructed the relationship between the timbre space dimensions and audio
+		features can be investigated. A common way of doing this is take correlation measurements between the audio
+		sample's features and their position in a given dimension of the timbre space.
 
-			\citet{mcadams1995perceptual} find correlations with log attack time and spectral centroid.
+		\citet{mcadams1995perceptual} find that two of their timbre space dimensions correlate well with the log
+		attack time and spectral centroid on the audio samples respectively. Similar results were also found by
+		\citet{caclin2005acoustic} who, as discussed before, used synthetic audio samples which only differed in
+		those features and spectral flux. This suggests that log attack time and spectral centroid are two
+		orthogonal features which contribute a lot to the perception of difference in timbre.
+		\citet{alluri2010exploring} take a more in depth approach, using regression techniques to identify which
+		audio features contribute to which dimensions of their timbre space.
 
-			\citet{caclin2005acoustic} find correlations with the features which they changed (log attack,
-			spectral centroid and spectral flux).
-	
-			\citet{marui2005timbre} find correlations between timbre space dimensions and scores on the semantic
-			differential scales.
+		Where timbral descriptors are available the semantic meanings of the dimensions can be discussed. When PCA
+		or EFA are used on the results from attribute scale tests the results directly show how much each of the
+		graded attributes contribute to each dimension of the timbre space. \citet{marui2005timbre} use the results
+		from their semantic differential test in order to assign semantic descriptors to the dimensions of their
+		timbre space.
 
-			\citet{alluri2010exploring} perform regression to see the contributions of audio features to
-			dimensions from factor analysis.
-		}
+		Further analysis can be carried out in the form of clustering. This identifies groups (clusters) of samples
+		with similar timbres. The clustering applied by \citet{lakatos2000a} identifies clusters which correlate
+		well with the class of instruments played in the audio samples. Clustering can also be applied to attribute
+		scale test results in order to identify the similarities between the different attribute scales used
+		\citep{zacharakis2011an2}.
 
 \section{Controlling Timbre}
 \label{sec:Timbre-Control}
@@ -452,6 +459,8 @@
 	{
 		Some dudes do morphing (analysis resynthesis from what I remember) like good old 
 		\citet{williams2007perceptually, williams2009perceptually, williams2010perceptually}
+
+		\citet{schubert2006does} talks about spectral centroid and brightness.
 	}
 
 	\subsection{Parameter Space}
