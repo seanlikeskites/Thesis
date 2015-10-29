@@ -325,8 +325,8 @@
 		In this method audio samples are presented in triads (three at a time).  Participants are asked to identify
 		the most similar pair of samples in the triad as well as the least similar. This method helps removed
 		inconsistent use of a rating scale. In pairwise dissimilarity tests may reinterpret the range of the scale
-		they are given to rate dissimilarity on during the experiment. Triadic comparisons just asks which pair is
-		most similar and which the least avoiding the elicitation of a value on a scale.
+		they are given to rate dissimilarity on during the experiment. Triadic comparisons asks which pair is most
+		similar and which the least avoiding the elicitation of a value on a scale.
 
 		Attribute scale tests require participants to rate each sample against several scales which each relate to
 		an attribute of their timbre. The verbal attribute magnitude estimation (VAME) methodology proposed by
@@ -389,26 +389,45 @@
 		experiment where $N$ adjective scales are used consists of an $N$ dimensional space in which each audio
 		sample sits at the point denoted by its gradings on those scales. Dimensionality reduction is applied to
 		reduce the number of dimensions while preserving information relating to the differences between samples
-		(such as the euclidean distances between them).
+		(such as the euclidean distances between them). The dimensionality reduction method used depends on the type
+		of data collected in the listening experiment.  Various methods have been used in previous timbral research
+		including multidimensional scaling (MDS), principle component analysis (PCA) and exploratory factor analysis
+		(EFA).
+
+		MDS is typically used in situations where dissimilarity data is being analysed. This type of data can be
+		further grouped in to metric and non-metric data \citep{hair2013multivariate}. Metric dissimilarity data
+		consists of the distances between each pair of samples. This is the type of data collected using pairwise
+		dissimilarity tests. Non-metric data consists of rankings of the samples dissimilarity (e.g. this pair of
+		samples is more similar than this pair of samples). This is the type of data collected using a triadic
+		comparisons experiment.
+
+		The goal of MDS analysis is to take this dissimilarity data and represent it in an $N$ dimensional timbre
+		space.  Each audio sample is placed at a point in this space, the distances between them representing their
+		dissimilarities. For timbral research the data is usually represented in two \citep{giragama2003relating}
+		or three \citep{grey1978perceptual} dimensions and sometimes four \citep{bernays2011verbal}.
+		
+		There are multiple different algorithms for performing MDS several of which are discussed by
+		\citet{mcadams1999perspectives}. Each has slight performance improvements for specific types of input data.
+		\citet{burgoyne2008a} reanalysed the results of various classic timbre studies with an improved MDS
+		algorithm stating that through removing nonlinearities in the input data the timbre space can be better
+		represented.
+
+		The other two methods (PCA and EFA) take multivariate data and try to describe it using a smaller set of
+		variables, called components or factors. This approach is well suited to data obtained from attribute scale
+		tests, the variables being the scales on which each audio sample is graded. \citet{kendall1993verbal1} use
+		PCA to identify three factors which describe the results of their VAME experiment.
+		\citet{zacharakis2012analysis} also performed a VAME test but choose to use EFA over PCA stating that EFA
+		better explains the relationships between the separate attribute scales.
 
 		\note
 		{
-			How much depth to to into here? 
-
-			\citet{grey1977multidimensional} uses MDS as people tend to on dissimilarity data.
-			\citet{kendall1993verbal1} use MDS on their VAME data.
-
-			But everybody seems to use a slightly different version of MDS (clascal, indscal, isomap).
-			\citet{mcadams1995perceptual} covers some differences.
-
-			\cite{zacharakis2012analysis} prefer EFA over PCA but also use some clustering.
-
-			\citet{burgoyne2008a} performed a meta analysis of several other researchers results.
+			Do we need more depth?
 		}
 
 
 	\subsection{Correlation of Dimensions with Audio Features}
 	\label{sec:Timbre-DimentionCorrelations}
+		Once a timbre space has been constructed 
 		\note
 		{
 			Several researchers calculate correlation between audio features and timbre space dimensions.
