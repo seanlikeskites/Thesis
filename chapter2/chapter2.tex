@@ -483,7 +483,30 @@
 	control of perceived brightness and warmth. Although they also find evidence, through listening tests, that the
 	perception of each of these attributes overlaps and that spectral centroid is not the only contributing factor to
 	perceived brightness.
-	
+
 	\subsection{Building Parameter Spaces}
 	\label{sec:Timbre-Control-ParameterSpaces}
-	\note{Research like Social EQ and stuff \citep{cartwright2013socialeq, seetharaman2014crowdsourcing}.}
+		A different approach to controlling is based around analysing the parameter settings of effects used to
+		produce a given semantic effect. One way of doing this is to construct parameter spaces by performing
+		dimensionality reduction on a large set of possible parameter configurations for an audio processing
+		algorithm. This is the approach take by \citet{cartwright2013socialeq} and
+		\citet{seetharaman2014crowdsourcing}. In thee studies the researchers asked listening test participants to
+		attribute semantic descriptors to audio samples processed using an equaliser and a reverb respectively. MDS
+		analysis is then performed on the effects parameter configurations to produce a two dimensional parameter
+		space onto which the descriptors are mapped.
+
+		Similar work was carried out by \citet{sabin2011weighting} who run experiments to determine which parameters
+		of certain audio effects contribute most to particular timbral attributes. This is done by having listening
+		test participants rank how well given semantic descriptors describe an audio sample processed with several
+		different parameter configurations. Weightings for each effect parameter can then be deduced by looking at
+		the correlations of parameter values and these rankings.
+
+		One downside of this approach is that it take no account of the audio being processed by the effect. For
+		example, consider a situation in which it was found that increasing the amplitude of frequencies around
+		2kHz, with an equaliser, increased the brightness of a sound. This would have no effect on signals which
+		have no energy at that frequency.
+
+		\note
+		{
+			And the there is also \citet{huang2014active} who does magic with synthesis parameters.
+		}
