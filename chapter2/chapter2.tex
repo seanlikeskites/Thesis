@@ -233,6 +233,7 @@
 	are those for describing auditory sharpness and roughness.
 	
 	\subsection{Sharpness}
+	\label{sec:Timbre-TimbralFeatures-Sharpness}
 		\citet{fastl2007psychoacoustics} discuss the factors leading to the perception of sharpness. The sharpness
 		of a signal depends on the ratio of high and low frequency content. Increasing the amount of high frequency
 		content increases the sharpness of a signal. The sharpness can also be reduced by adding more low frequency
@@ -253,34 +254,35 @@
 		spectral variance of the specific loudness.
 
 	\subsection{Roughness}
-	A sensation of roughness was discussed in Section \ref{sec:Timbre-PsychoacousticPrinciples-CriticalBands}. Here the
-	roughness was due to the rapid amplitude modulation produces as a result of summing two sinusoids which are close in
-	frequency. A lot of early research into this effect concerns the study of consonance of dissonance of tones. The
-	history of this work is summarised by \citet{plomp1965tonal}. On review of this work and the results of listening
-	experiments they conclude that dissonance is manifested as a sensation of roughness due to amplitude fluctuations.
-	They also suggest a relationship to critical bandwidth, stating that the most dissonant (roughest) interval between
-	tones is one quarter of the critical bandwidth.
+	\label{sec:Timbre-TimbralFeatures-Roughness}
+		A sensation of roughness was discussed in Section \ref{sec:Timbre-PsychoacousticPrinciples-CriticalBands}.
+		Here the roughness was due to the rapid amplitude modulation produces as a result of summing two sinusoids
+		which are close in frequency. A lot of early research into this effect concerns the study of consonance of
+		dissonance of tones. The history of this work is summarised by \citet{plomp1965tonal}. On review of this
+		work and the results of listening experiments they conclude that dissonance is manifested as a sensation of
+		roughness due to amplitude fluctuations.  They also suggest a relationship to critical bandwidth, stating
+		that the most dissonant (roughest) interval between tones is one quarter of the critical bandwidth.
 
-	\citet{vassilakis2010psychoacoustic} suggest that the sensation of roughness depends of more of the
-	attributes of a signal, listing four characteristics:
+		\citet{vassilakis2010psychoacoustic} suggest that the sensation of roughness depends of more of the
+		attributes of a signal, listing four characteristics:
 
-	\begin{itemize}
-		\item The signal intensity.
-		\item The magnitude of the amplitude fluctuation.
-		\item The frequency of the amplitude fluctuation.
-		\item The frequency of the modulated signal.
-	\end{itemize}
+		\begin{itemize}
+			\item The signal intensity.
+			\item The magnitude of the amplitude fluctuation.
+			\item The frequency of the amplitude fluctuation.
+			\item The frequency of the modulated signal.
+		\end{itemize}
 
-	The frequency dependence discussed agrees with that shown in Figure \ref{fig:ToneSeparation}. Amplitude fluctuations
-	above, approximately, 15Hz produce a rough texture to the sound. As this frequency increases the roughness also
-	increases to a maximum before decreasing again. At some point between 75Hz and 150Hz, depending on the frequency
-	contend of the modulated signal, the sensation of roughness ceases to be audible.
+		The frequency dependence discussed agrees with that shown in Figure \ref{fig:ToneSeparation}. Amplitude
+		fluctuations above, approximately, 15Hz produce a rough texture to the sound. As this frequency increases
+		the roughness also increases to a maximum before decreasing again. At some point between 75Hz and 150Hz,
+		depending on the frequency contend of the modulated signal, the sensation of roughness ceases to be audible.
 
-	Using these criteria they propose a method for calculating the roughness of a signal consisting of two sinusoidal
-	tones. The method uses only the frequencies and amplitudes of the two tones in order to calculate the perceived
-	roughness. The roughness of more complex tones can be calculated as the sum of the roughnesses of each pair of tones
-	within the signal. \citet{fastl2007psychoacoustics} use the same four criteria to develop a different model of
-	roughness which take account of the structure of the human hearing system.
+		Using these criteria they propose a method for calculating the roughness of a signal consisting of two
+		sinusoidal tones. The method uses only the frequencies and amplitudes of the two tones in order to calculate
+		the perceived roughness. The roughness of more complex tones can be calculated as the sum of the roughnesses
+		of each pair of tones within the signal. \citet{fastl2007psychoacoustics} use the same four criteria to
+		develop a different model of roughness which take account of the structure of the human hearing system.
 
 \section{Parameterisation of Timbre}
 \label{sec:Timbre-Parameterisation}
@@ -301,7 +303,7 @@
 	used in this types of study.
 
 	\subsection{Auditory Evaluation Methods}
-	\label{sec:Timbre-AuditoryEvaluation}
+	\label{sec:Timbre-Parameterisation-AuditoryEvaluation}
 		Two different classes of listening test are common in timbral studies. In one participants are asked to
 		judge the dissimilarity of small sets of audio samples. In the other the participants are asked to rate each
 		audio sample on various scales which relate to attributes of the timbre. In this report these methods will
@@ -382,7 +384,7 @@
 		that this second set of adjectives was more applicable to their set of audio samples than the first.
 
 	\subsection{Dimensionality Reduction}
-	\label{sec:Timbre-DimensionalityReduction}
+	\label{sec:Timbre-Parameterisation-DimensionalityReduction}
 		Dimensionality reduction techniques are used to take multidimensional data and reduce the number of
 		dimensions while maintaining the relationships between the data. In timbral research they are used to reduce
 		the number of dimensions needed to describe the timbre of a sound. For example, the results from a VAME
@@ -426,7 +428,7 @@
 
 
 	\subsection{Correlation of Dimensions with Audio Features}
-	\label{sec:Timbre-DimentionCorrelations}
+	\label{sec:Timbre-DimensionCorrelations}
 		Once a timbre space has been constructed the relationship between the timbre space dimensions and audio
 		features can be investigated. A common way of doing this is take correlation measurements between the audio
 		sample's features and their position in a given dimension of the timbre space.
@@ -453,17 +455,35 @@
 
 \section{Controlling Timbre}
 \label{sec:Timbre-Control}
-	\note{Lots of them synthesis dudes have tried to control the beast. \citet{zacharakis2011an} did some stuff.}
+	Correlations of audio features to timbre space dimensions provides methods of moving sounds around within the timbre
+	space. Correlations of semantic descriptors with the timbre space dimensions allows the space to be partitioned into
+	regions which correspond to particular descriptors. With this information systems can be created to synthesise
+	sounds at particular positions within a timbre space or manipulate existing sounds to alter their location in the
+	timbre space.
+
+	Early work in this area was performed by \citet{wessel1979timbre} who suggests that a timbre space can be used as an
+	intuitive control system for audio. \citet{vertegaal1994isee} use this concept to produce a system which provides
+	control over a synthesis engine using four parameters, an overtones parameter which controls the harmonic content of
+	the signal, a brightness parameter which controls the magnitude distribution of the spectrum and articulation and
+	envelope parameters which control the temporal properties of the signals amplitude envelope. They state that this
+	system assists novice users but proves too limited for experienced users who desire a finer degree of control.
+
+	A commonly stated timbral mapping is that between a sounds spectral centroid and its perceived brightness
+	\citep{schubert2006does}. This has been used in order to produce systems providing control over the brightness of a
+	sound. \citet{williams2007perceptually} propose a system for manipulation the brightness of recorded sounds. The
+	system follows an analysis resynthesis structure. Firstly the short time Fourier transform of the signal is
+	calculated. The magnitudes of the frequency bins are then altered in order to alter the spectral centroid to achieve
+	the desired change in brightness. Lastly the signal is resynthesised using the new magnitude data.  Two further
+	studies by the same researchers propose systems which control perceived softness by manipulating attack time
+	\citep{williams2009perceptually} and perceived warmth through altering the relative amplitude of the first three
+	harmonics and the rest of the signal \citep{williams2010perceptually}.
+
+	\citet{zacharakis2011an} propose an additive synthesis system which can independently control the spectral centroid
+	and the relative energy of the first three harmonics. They report that this is somewhat successful in independent
+	control of perceived brightness and warmth. Although they also find evidence, through listening tests, that the
+	perception of each of these attributes overlaps and that spectral centroid is not the only contributing factor to
+	perceived brightness.
 	
-	\note
-	{
-		Some dudes do morphing (analysis resynthesis from what I remember) like good old 
-		\citet{williams2007perceptually, williams2009perceptually, williams2010perceptually}
-
-		\citet{schubert2006does} talks about spectral centroid and brightness.
-	}
-
-	\subsection{Parameter Space}
-	\label{sec:Timbre-ParameterSpaces}
+	\subsection{Building Parameter Spaces}
+	\label{sec:Timbre-Control-ParameterSpaces}
 	\note{Research like Social EQ and stuff \citep{cartwright2013socialeq, seetharaman2014crowdsourcing}.}
-
