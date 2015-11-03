@@ -7,20 +7,59 @@
 \label{chap:FeatureControl}
 
 \section{Introduction}
-\label{sec:ExcitationSystems-Introduction}
-	As discussed in Chapter \ref{chap:Timbre} previous studies have attempted to control perceptual features by 
+\label{sec:FeatureControl-Introduction}
+	As discussed in Section \ref{sec:Timbre-Control}, previous studies have attempted to control perceptual features by 
 	controlling specific audio features. This chapter will identify the audio features which can be controlled through 
-	harmonic excitation and which excitation algorithms are the most suitable for given feature changes.
+	harmonic excitation and which excitation algorithms are the most suitable for given feature changes. 
+
+\section{Parameterisation of Feature Changes}
+\label{sec:FeatureControl-Parameterisation}
+	\subsection{Spectral Centroid}
+	\label{sec:FeatureControl-Parameterisation-SpectralCentroid}
+		The spectral centroid, $f_{\mu}$, of an $N$ sample signal, $x$, is calculated from the $N$ point DFT of the
+		signal, $X$, using Equation \ref{eq:SpectralCentroid}.
+
+		\begin{equation}
+			f_{\mu} = \frac{f_{s}\sum_{n = 0}^{N-1} |X[n]|(N - |2n - N|)}{2N\sum_{n = 0}^{N-1} |X[n]|}
+			\label{eq:SpectralCentroid}
+		\end{equation}
+
+		Where $f_{s}$ is the sampling frequency of the signal.
+
+		Any manipulation of a signal's spectrum which is not symmetrical about its spectral centroid will cause the
+		spectral centroid to change. A crude method of causing $f_{\mu}$ to move towards a particular frequency is
+		the increase the energy at that frequency. While this works conceptually it is destructive to the original
+		structure of the spectrum. As $f_{\mu}$ moves towards the desired frequency the spectrum is dominated by a
+		sinusoid at that frequency.
+
+		Less destructive methods include that used by \citet{zacharakis2011an} who split the signal into two bands,
+		one above and one below the spectral centroid. The relative amplitudes of these bands can then be altered to
+		adjust the spectral centroid. This preserves more of the original signals structure, the relative levels of
+		partials within each band remaining the same. Using this method the new spectral centroid will lie somewhere
+		between the respective centroids of the two bands. 
+
+	\subsection{Tristimulus}
+	\label{sec:FeatureControl-Parameterisation-Tristimulus}
 
 \section{Harmonic Excitation Systems}
-\label{sec:Excitation-Systems}
+\label{sec:FeatureControl-Systems}
+	\todo
+	{
+		Probably link this up better.
+
+		The discussion in Chapter \ref{chap:Excitation} shows that harmonic excitation methods introduce new
+		frequency content to a signal. Combined with filtering this gives a good way to manipulate the shape of a
+		signals spectrum.
+
+	}
+
 	Section \ref{sec:Excitation-Methods} covered several different methods of introducing new frequency content to a
 	signal. This section will introduce techniques which can be used in conjunction with those methods to build
 	harmonic excitation systems. These techniques aim to give the user more control over the new content added to the
 	spectrum producing a system with can be applied to as many use cases as possible.
 
 	\subsection{Fundamental Frequency Tracking}
-	\label{sec:Excitation-Fundamental}
+	\label{sec:FeatureControl-Fundamental}
 		The majority of the methods discussed in Section \ref{sec:Excitation-Methods} will cause intermodulation
 		distortion when used on signals with multiple frequency components. As the effects of this intermodulation
 		distortion can be difficult to predict it can be useful to eliminate it altogether. This should make the
@@ -117,7 +156,7 @@
 		single harmonics in the output. This will be covered in the next section.
 
 	\subsection{Individual Harmonic Generation}
-	\label{sec:Excitation-Individuals}
+	\label{sec:FeatureControl-Individuals}
 		Control over which harmonics are excited in a signal can be achieved by exciting individual harmonics. The
 		principle behind this is to isolate the fundamental and then shift its frequency to that of the desired
 		harmonic. This can be achieved using the SSBA, IAP, Spectral Replication and Spectral Stretching methods.
@@ -332,13 +371,8 @@
 		
 		For timbral control applications the IAP method provides the greatest flexibility. For the majority of
 		stimuli in this experiment it reproduced signals with the highest perceived quality. It was also shown in
-		section \ref{sec:Excitation-IAP} that it is a homogeneous process allowing it to be applied to a wider
+		section \ref{sec:FeatureControl-IAP} that it is a homogeneous process allowing it to be applied to a wider
 		range of signals with more predictable effects.
-
-\section{Parameterisation of Feature Changes}
-\label{sec:FeatureControl-Parameterisation}
-	\todo{This needs doing}
 
 \section{Controlling features with Exciters}
 \label{sec:FeatureControl-Control}
-	\todo{Should fall out of the previous section}

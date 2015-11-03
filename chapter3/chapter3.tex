@@ -71,7 +71,7 @@
 			\label{eq:thdr}
 		\end{equation}
 
-		Where $A_n$ is the amplitude of the $n_{th}$ harmonic. 
+		Where $A_n$ is the amplitude of the $n$\super{th} harmonic. 
 
 		Both these methods been used in recent work published in the audio field ($THD_{F}$ by
 		\citet{fleischmann2014a} and $THD_{R}$ by \citet{dutilleux2011nonlinear}). The lack of standardisation for
@@ -777,7 +777,7 @@
 
 			The amplitudes of the generated harmonics will roll off at differing rates depending on the
 			properties of the output signal. The spectrum will roll off at $6(n+1)$dB per octave when the
-			$n^{\text{th}}$ derivative of the output signal is discontinuous \citep{kraght2000aliasing}.
+			$n$\super{th} derivative of the output signal is discontinuous \citep{kraght2000aliasing}.
 
 			Hard clippers introduce discontinuities to the first derivative of a signal and so will introduce
 			harmonics whose amplitudes will roll off at 12dB per octave. Signals clipped by Equation
@@ -1166,7 +1166,7 @@
 		\end{figure}
 
 		In single sideband automodulation the analytical representation of the input signal is multiplied with
-		itself in order to generate harmonics. Equation \ref{eq:SSB} shows the $h^{\text{th}}$ order single side
+		itself in order to generate harmonics. Equation \ref{eq:SSB} shows the $h$\super{th} order single side
 		band automodulation of a signal.
 
 		\begin{equation}
@@ -1187,7 +1187,7 @@
 			one sample delay.
 			
 		\subsubsection*{Homogeneity}
-			As with multipliers, SSBA is a non-homogeneous process. The amplitude envelope of the $h^{th}$
+			As with multipliers, SSBA is a non-homogeneous process. The amplitude envelope of the $h$\super{th}
 			order automodulation is the amplitude envelope of the original signal raised to the power $h$. 
 
 			\note
@@ -1245,7 +1245,7 @@
 		signal is found by taking its absolute value, $|x_{a}[n]|$. The instantaneous phase is found by taking the
 		complex argument of the analytic signal, $\arg(x_{a}[n])$. The instantaneous phase can then be scaled in
 		order to scale the frequency content of the signal independent of its amplitude. Equation \ref{eq:IAP}
-		shows the $h^{\text{th}}$ order instantaneous amplitude and phase modulation of a signal.
+		shows the $h$\super{th} order instantaneous amplitude and phase modulation of a signal.
 
 		\begin{equation}
 			y[n] = |x_{a}[n]| \cos \left( h\arg(x_{a}[n]) \right), \quad h \in \mathbb{N}
@@ -1371,7 +1371,7 @@
 		spectral folding as the production of high frequency energy is the desired result.
 
 		After filtering, the downsampling and upsampling can be performed at the same time by retaining
-		every $k^{th}$ sample and setting all others to zero. This is shown in Equation
+		every $k$\super{th} sample and setting all others to zero. This is shown in Equation
 		\ref{eq:SpectralFolding} where $x_{lf}[n]$ is the filtered input signal.		
 
 		\begin{equation}
