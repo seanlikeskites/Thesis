@@ -16,20 +16,20 @@
 \label{sec:FeatureControl-Parameterisation}
 	\subsection{Spectral Centroid}
 	\label{sec:FeatureControl-Parameterisation-SpectralCentroid}
-		The spectral centroid, $f_{\mu}$, of an $N$ sample signal, $x$, is calculated from the $N$ point DFT of the
+		The spectral centroid, $\mu$, of an $N$ sample signal, $x$, is calculated from the $N$ point DFT of the
 		signal, $X$, using Equation \ref{eq:SpectralCentroid}.
 
 		\begin{equation}
-			f_{\mu} = \frac{f_{s}\sum_{n = 0}^{N-1} |X[n]|(N - |2n - N|)}{2N\sum_{n = 0}^{N-1} |X[n]|}
+			\mu = \frac{f_{s}\sum_{n = 0}^{N-1} |X[n]|(N - |2n - N|)}{2N\sum_{n = 0}^{N-1} |X[n]|}
 			\label{eq:SpectralCentroid}
 		\end{equation}
 
 		Where $f_{s}$ is the sampling frequency of the signal.
 
 		Any manipulation of a signal's spectrum which is not symmetrical about its spectral centroid will cause the
-		spectral centroid to change. A crude method of causing $f_{\mu}$ to move towards a particular frequency is
+		spectral centroid to change. A crude method of causing $\mu$ to move towards a particular frequency is
 		the increase the energy at that frequency. While this works conceptually it is destructive to the original
-		structure of the spectrum. As $f_{\mu}$ moves towards the desired frequency the spectrum is dominated by a
+		structure of the spectrum. As $\mu$ moves towards the desired frequency the spectrum is dominated by a
 		sinusoid at that frequency.
 
 		Less destructive methods include that used by \citet{zacharakis2011an} who split the signal into two bands,
@@ -37,6 +37,24 @@
 		adjust the spectral centroid. This preserves more of the original signals structure, the relative levels of
 		partials within each band remaining the same. Using this method the new spectral centroid will lie somewhere
 		between the respective centroids of the two bands. 
+
+		Another way to move the spectral centroid is by introducing a new band of energy into the spectrum. This is
+		conceptually similar to the two band method discussed previously but allows the second band to contain
+		frequency content which was not in the original signal. As before the overall spectral centroid can be moved
+		by adjusting the relative amplitudes of the original signal and the new band of energy.
+
+		When adjusting the relative amplitudes of two bands the new spectral centroid is the weighted average of the
+		two band's centroids. For two signals, $x$ and $y$, the spectral centroid of their sum is given in Equation
+		\ref{eq:SpectralCentroidSum}.
+
+		\begin{equation}
+			\mu = \frac{\mu_{x}\sum_{n = 0}^{N-1} |X[n]| + \mu_{y}\sum_{n = 0}^{N-1} |Y[n]|}
+				   {\sum_{n = 0}^{N-1}|X[n]| + |Y[n]|}
+			\label{eq:SpectralCentroidSum}
+		\end{equation}
+
+		Where $\mu_{x}$ and $\mu_{y}$ are the spectral centroids of $x$ and $y$, $X$ and $Y$ the DFTs of $x$ and
+		$x$, and $N$ the signal length.
 
 	\subsection{Tristimulus}
 	\label{sec:FeatureControl-Parameterisation-Tristimulus}
