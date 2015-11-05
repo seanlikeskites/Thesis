@@ -26,8 +26,7 @@
 
 		Where $f_{s}$ is the sampling frequency of the signal.
 
-		Any manipulation of a signal's spectrum which is not symmetrical about its spectral centroid will cause the
-		spectral centroid to change. A crude method of causing $\mu$ to move towards a particular frequency is
+		A crude method of causing $\mu$ to move towards a particular frequency is
 		the increase the energy at that frequency. While this works conceptually it is destructive to the original
 		structure of the spectrum. As $\mu$ moves towards the desired frequency the spectrum is dominated by a
 		sinusoid at that frequency.
@@ -56,8 +55,48 @@
 		Where $\mu_{x}$ and $\mu_{y}$ are the spectral centroids of $x$ and $y$, $X$ and $Y$ the DFTs of $x$ and
 		$x$, and $N$ the signal length.
 
+		The relative amplitudes of the two bands can then be calculated using Equation
+		\ref{eq:SpectralCentroidManipulation}.
+
+		\begin{equation}
+			\frac{\sum_{n = 0}^{n-1} |Y[n]|}{\sum_{n = 0}^{n-1} |X[n]|} = 
+			\frac{\mu_{x} - \mu}{\mu - \mu_{y}}, 
+			\quad \mu_{x} \leq \mu \leq \mu_{y} \quad \textrm{or} \quad \mu_{y} \leq \mu \leq \mu_{x}
+			\label{eq:SpectralCentroidManipulation}
+		\end{equation}
+
+		Note the restriction that the new spectral centroid must lie between the centroids of the two signals.
+
+		Another method of moving the spectral centroid is that employed by \citet{williams2007perceptually}. A
+		spectral tilt is applied to the signal, applying gain to the partials of a signal as a linear function of
+		their frequency. This allows the spectral centroid to be moved up or down in frequency while still
+		retaining the frequency content of the signal. A disadvantage of this method is that the change in centroid
+		cannot be parameterised as it depends on the content of the signal being processed.
+
 	\subsection{Tristimulus}
 	\label{sec:FeatureControl-Parameterisation-Tristimulus}
+		The three tristimulus metrics can be calculated using Equations \ref{eq:Tristimulus1}, \ref{eq:Tristimulus2}
+		and \ref{eq:Tristimulus3}.
+		
+		\begin{equation}
+			T_{1} = \frac{h_{1}}{\sum_{n = 1}^{N} h_{n}}
+			\label{eq:Tristimulus1}
+		\end{equation}
+
+		\begin{equation}
+			T_{2} = \frac{h_{2} + h_{3} + h_{4}}{\sum_{n = 1}^{N} h_{n}}
+			\label{eq:Tristimulus2}
+		\end{equation}
+
+		\begin{equation}
+			T_{3} = \frac{\sum_{n = 5}^{N} h_{n}}{\sum_{n = 1}^{N} h_{n}}
+			\label{eq:Tristimulus3}
+		\end{equation}
+
+		\begin{equation}
+			m = \frac{T_{k} \left( b - \sum_{n = 1}^{N} h_{n} \right)}{b(T_{x} - 1)}
+			\label{eq:HarmonicRatioManipulation}
+		\end{equation}
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
