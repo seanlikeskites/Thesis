@@ -93,9 +93,80 @@
 			\label{eq:Tristimulus3}
 		\end{equation}
 
+		Where $h_{n}$ is the amplitude of the $n$\super{th} harmonic in the signal and $N$ the total number of
+		harmonics.
+
+		As mentioned in Section \ref{sec:Timbre-LowLevelFeatures-Spectral} each tristimulus metric measures the
+		amplitude ratio of a specific set of harmonics and all the harmonics. In each of these equations the
+		denominator is always greater than or equal to the numerator. For this reason the tristimulus takes values
+		from 0 to 1. 0 meaning there is no energy in that set of harmonics, 1 meaning the signal is entirely
+		composed of those harmonics.
+
+		A generalised from of these metrics measures the amplitude ratio, $R$, of a specific set of frequencies,
+		$S$, and a set which includes that set, $F$. This is shown in Equation \ref{eq:GeneralTristimulus}.
+
+		\[ A = \sum_{n \in F} a_{n} \]
+		\[ B = \sum_{n \in S} a_{n}, \quad S \subseteq F \]
 		\begin{equation}
-			m = \frac{T_{k} \left( b - \sum_{n = 1}^{N} h_{n} \right)}{b(T_{x} - 1)}
-			\label{eq:HarmonicRatioManipulation}
+			R = \frac{B}{A}
+			\label{eq:GeneralTristimulus}
+		\end{equation}
+
+		Where $a_{n}$ is the amplitude of frequency $n$ in the signal.
+
+		This ratio can be adjusted by applying gain to the frequencies in $S$. To attain a particular value of $R$
+		the required gain, $m$, can be calculated using Equation \ref{eq:GeneralTristimulusManipulation}.
+
+		\begin{equation}
+			m = \frac{R(B - A)}{B(R - 1)}, \quad 0 \leq R < 1
+			\label{eq:GeneralTristimulusManipulation}
+		\end{equation}
+
+	\subsection{Odd to Even Harmonic Ratio}
+	\label{sec:FetureControl-Parameterisation-HarmonicParityRatio}
+		The odd to even order harmonics ratio is calculated using Equation \ref{eq:HarmonicParityRatio}.
+		
+		\begin{equation}
+			R_{OE} = \frac{\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}
+			              {\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
+			\label{eq:HarmonicParityRatio}
+		\end{equation}
+
+		\begin{equation}
+			m = \sqrt{\frac{R_{OE}\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
+			               {\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}}
+		       \label{eq:HarmonixParityRatioManipulation}
+		\end{equation}
+
+		\note
+		{
+			This is really a crappy metric with a range of 0 to infinity.
+
+			\citet{lukasik2005towards} maybe does something better.
+		}
+
+		\begin{equation}
+			O = \sqrt{\frac{\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}
+			               {\sum_{n = 1}^{N} h_{n}^{2}}}
+			\label{eq:Oddness}
+		\end{equation}
+
+		\begin{equation}
+			E = \sqrt{\frac{\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
+			               {\sum_{n = 1}^{N} h_{n}^{2}}}
+			\label{eq:Eveness}
+		\end{equation}
+
+		\[ A = \sum_{n \in F} a_{n}^{2} \]
+		\[ B = \sum_{n \in S} a_{n}^{2}, \quad S \subseteq F \]
+		\begin{equation}
+			R = \sqrt{\frac{B}{A}}
+			\label{eq:GeneralOddness}
+		\end{equation}
+
+		\begin{equation}
+			m = \sqrt{\frac{R^{2}(B - A)}{B(R^{2} - 1)}}, \quad 0 \leq R < 1
+			\label{eq:GeneralOddnessManipulation}
 		\end{equation}
 
 \section{Harmonic Excitation Systems}
