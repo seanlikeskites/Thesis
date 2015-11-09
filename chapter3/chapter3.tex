@@ -553,12 +553,11 @@
 			Equation \ref{eq:aliasing}.
 
 			\begin{equation}
-				f_{alias} = |f - Nf_{s}|
+				f_{alias} = \abs{f - f_{s}\floor{\frac{f}{f_{s}} + \frac{1}{2}}}
 				\label{eq:aliasing}
 			\end{equation}
 
-			Where $f$ is the original frequency and $Nf_{s}$ is the integer multiple of the sampling
-			frequency closest to it.
+			Where $f$ is the original frequency.
 
 			The new frequency content introduced to a discrete signal via nonlinear processing is also subject
 			to aliasing. This can cause problems in the uniformity of behaviour of a system in different
@@ -630,7 +629,7 @@
 
 		\begin{equation}
 			y[n] = \begin{cases}
-				t\sgn(x[n]) & \text{if $|x[n]| > t$} \\
+				t\sgn(x[n]) & \text{if $\abs{x[n]} > t$} \\
 				x[n] & \text{otherwise}
 			\end{cases}, \quad t \geq 0
 			\label{eq:SymmetricHardClipping}
@@ -647,9 +646,9 @@
 
 		\begin{equation}
 			y[n] = \begin{cases}
-				t\sgn(x[n]) & \text{if $|x[n]| > t$} \\
-				t\sgn(x[n]) \left( 1 - \frac{4}{3} \left( 1 - \left| \frac{x[n]}{t} \right| \right)^{2}
-					\right) & \text{if $\frac{t}{2} \leq |x[n]| \leq t$} \\
+				t\sgn(x[n]) & \text{if $\abs{x[n]} > t$} \\
+				t\sgn(x[n]) \left( 1 - \frac{4}{3} \left( 1 - \abs{\frac{x[n]}{t}} \right)^{2}
+				           \right) & \text{if $\frac{t}{2} \leq \abs{x[n]} \leq t$} \\
 				\frac{4x[n]}{3} & \text{otherwise}
 			\end{cases}, \quad t \geq 0
 			\label{eq:SymmetricSoftClipping}
@@ -706,8 +705,8 @@
 			
 			\begin{equation}
 				y[n] = \begin{cases}
-					t\sgn(x[n]) & \text{if $|x[n]| > t$} \\
-					t\sgn(x[n]) \left(1 - \left|\frac{x[n]}{t} - \sgn(x[n]) \right|^{E} \right) &
+					t\sgn(x[n]) & \text{if $\abs{x[n]} > t$} \\
+					t\sgn(x[n]) \left(1 - \abs{\frac{x[n]}{t} - \sgn(x[n])}^{E} \right) &
 						\text{otherwise}
 				\end{cases}, \quad t \geq 0 \ \text{and} \ E > 1
 				\label{eq:SymmetricExponentialClipping}
@@ -848,7 +847,7 @@
 		\end{equation}
 
 		\begin{equation}
-			y[n] = |x[n]|
+			y[n] = \abs{x[n]}
 			\label{eq:FullWaveRectification}
 		\end{equation}
 
@@ -874,7 +873,7 @@
 			curve. As such it only introduces even order distortion components. The Fourier coefficients of a
 			rectified sine wave are shown in Equation \ref{eq:RectificationFourier}.
 
-			\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} |sin(x)|e^{-inx} dx \]
+			\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \abs{sin(x)}e^{-inx} dx \]
 
 			\begin{equation}
 				c_{n} = \begin{cases}
@@ -922,7 +921,7 @@
 		\begin{equation}
 			y[n] = \begin{cases}
 				0 & \text{if $x[n] > 0$ and $x[n - 1] \leq 0$} \\
-				y[n - 1] + k|x[n]| & \text{otherwise}
+				y[n - 1] + k\abs{x[n]} & \text{otherwise}
 			\end{cases}
 			\label{eq:Integrator}
 		\end{equation}
@@ -1242,13 +1241,13 @@
 	\label{sec:Excitation-IAP}
 		In this method, the instantaneous amplitude and phase (IAP) of the analytic signal are calculated. These
 		values are then used to aid in the construction of harmonics. The instantaneous amplitude of the analytic
-		signal is found by taking its absolute value, $|x_{a}[n]|$. The instantaneous phase is found by taking the
-		complex argument of the analytic signal, $\arg(x_{a}[n])$. The instantaneous phase can then be scaled in
-		order to scale the frequency content of the signal independent of its amplitude. Equation \ref{eq:IAP}
+		signal is found by taking its absolute value, $\abs{x_{a}[n]}$. The instantaneous phase is found by taking
+		the complex argument of the analytic signal, $\arg(x_{a}[n])$. The instantaneous phase can then be scaled
+		in order to scale the frequency content of the signal independent of its amplitude. Equation \ref{eq:IAP}
 		shows the $h$\super{th} order instantaneous amplitude and phase modulation of a signal.
 
 		\begin{equation}
-			y[n] = |x_{a}[n]| \cos \left( h\arg(x_{a}[n]) \right), \quad h \in \mathbb{N}
+			y[n] = \abs{x_{a}[n]} \cos \left( h\arg(x_{a}[n]) \right), \quad h \in \mathbb{N}
 			\label{eq:IAP}
 		\end{equation}
 
