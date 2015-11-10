@@ -16,8 +16,6 @@
 \label{sec:FeatureControl-Parameterisation}
 	\subsection{Spectral Centroid}
 	\label{sec:FeatureControl-Parameterisation-SpectralCentroid}
-	\todo
-	{
 		The spectral centroid, $\mu$, of an $N$ sample signal, $x$, is calculated from the $N$ point DFT of the
 		signal, $X$, using Equation \ref{eq:SpectralCentroid}.
 
@@ -38,44 +36,31 @@
 		one above and one below the spectral centroid. The relative amplitudes of these bands can then be altered to
 		adjust the spectral centroid. This preserves more of the original signals structure, the relative levels of
 		partials within each band remaining the same. Using this method the new spectral centroid will lie somewhere
-		between the respective centroids of the two bands. 
+		between the respective centroids of the two bands. The relative amplitudes of the two bands required to give
+		a certain spectral centroid, $\mu$, can be calculated using Equation \ref{eq:SpectralCentroidManipulation}.
+
+		\begin{equation}
+			\frac{\sum_{n = c + 1}^{N-1} \abs{X[n]}}{\sum_{n = 0}^{c} \abs{X[n]}} = 
+			\frac{\mu_{l} - \mu}{\mu - \mu_{u}}, 
+			\quad \mu_{l} \leq \mu < \mu_{u} \quad \textrm{or} \quad \mu_{u} < \mu \leq \mu_{l}
+			\label{eq:SpectralCentroidManipulation}
+		\end{equation}
+
+		Where $\mu_{l}$ and $\mu_{r}$ are the spectral centroid of the upper and lower band, and $c$ is the cutoff
+		bin between the two bands in the DFT.
+
+		\citet{williams2007perceptually} employ a spectral tilt to manipulate spectral centroid, applying gain to
+		the partials of a signal as a linear function of their frequency. This allows the spectral centroid to be
+		moved up or down in frequency while still retaining the frequency content of the signal. A disadvantage of
+		this method is that the change in centroid cannot be parameterised as it depends on the content of the
+		signal being processed.
 
 		Another way to move the spectral centroid is by introducing a new band of energy into the spectrum. This is
 		conceptually similar to the two band method discussed previously but allows the second band to contain
 		frequency content which was not in the original signal. As before the overall spectral centroid can be moved
-		by adjusting the relative amplitudes of the original signal and the new band of energy.
-
-		When adjusting the relative amplitudes of two bands the new spectral centroid is the weighted average of the
-		two band's centroids. For two signals, $x$ and $y$, the spectral centroid of their sum is given in Equation
-		\ref{eq:SpectralCentroidSum}.
-
-		\begin{equation}
-			\mu = \frac{\mu_{x}\sum_{n = 0}^{N-1} \abs{X[n]} + \mu_{y}\sum_{n = 0}^{N-1} \abs{Y[n]}}
-			           {\sum_{n = 0}^{N-1}\abs{X[n]} + \abs{Y[n]}}
-			\label{eq:SpectralCentroidSum}
-		\end{equation}
-
-		Where $\mu_{x}$ and $\mu_{y}$ are the spectral centroids of $x$ and $y$, $X$ and $Y$ the DFTs of $x$ and
-		$x$, and $N$ the signal length.
-
-		The relative amplitudes of the two bands can then be calculated using Equation
-		\ref{eq:SpectralCentroidManipulation}.
-
-		\begin{equation}
-			\frac{\sum_{n = 0}^{n-1} \abs{Y[n]}}{\sum_{n = 0}^{n-1} \abs{X[n]}} = 
-			\frac{\mu_{x} - \mu}{\mu - \mu_{y}}, 
-			\quad \mu_{x} \leq \mu < \mu_{y} \quad \textrm{or} \quad \mu_{y} < \mu \leq \mu_{x}
-			\label{eq:SpectralCentroidManipulation}
-		\end{equation}
-
-		Note the restriction that the new spectral centroid must lie between the centroids of the two signals.
-
-		Another method of moving the spectral centroid is that employed by \citet{williams2007perceptually}. A
-		spectral tilt is applied to the signal, applying gain to the partials of a signal as a linear function of
-		their frequency. This allows the spectral centroid to be moved up or down in frequency while still
-		retaining the frequency content of the signal. A disadvantage of this method is that the change in centroid
-		cannot be parameterised as it depends on the content of the signal being processed.
-	}
+		by adjusting the relative amplitudes of the original signal and the new band of energy. This method also
+		proved difficult to parameterise as destructive superposition could occur between the partials of the two
+		signals being summed.
 
 	\subsection{Tristimulus}
 	\label{sec:FeatureControl-Parameterisation-Tristimulus}
