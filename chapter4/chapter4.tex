@@ -207,6 +207,33 @@
 		the fundamental and one describing a signal where all partials have frequencies lying $\frac{f_{0}}{2}$Hz
 		from harmonic frequencies.
 
+		Controlling the inharmonicity can prove difficult unless certain criteria are met. The inharmonicity of the
+		sum of two signals, $x$ and $y$, with the same fundamental frequency can be calculated using Equation
+		\ref{eq:InharmonicitySum}.
+
+		\begin{equation}
+			I = \frac{I_{x}\sum_{\nu \in X} a_{\nu,x} + I_{y}\sum_{\nu \in Y} a_{\nu,y}
+			    + \frac{4\sum_{\nu \in S} a_{\nu,x}a_{\nu,y}
+			            \abs{\nu - f_{0}\floor{\frac{\nu}{f_{0}} + \frac{1}{2}}}}
+			           {f_{0}}}
+				 {\sum_{\nu \in X} a_{\nu,x} + \sum_{\nu \in Y} a_{\nu,y}
+				  + 2\sum_{\nu \in S} a_{\nu,x}a_{\nu,y}}
+			\label{eq:InharmonicitySum}
+		\end{equation}
+
+		Where $a_{\nu,x}$ and $a_{\nu,y}$ are the amplitudes of frequency $\nu$ in signals $x$ and $y$, $I_{x}$ and
+		$I_{y}$ are the inharmonicity of signals $x$ and $y$, $X$ and $Y$ are sets of all frequencies present within
+		signals $x$ and $y$, and $S = X \medcap Y$ (all frequencies which are in both signals $x$ and $y$).
+
+		When $X \medcap Y = \emptyset$ (i.e. signals $x$ and $y$ have no frequency components in common) Equation
+		\ref{eq:InharmonicitySum} simplifies to give Equation \ref{eq:InharmonicitySumSimple}.
+
+		\begin{equation}
+			I = \frac{I_{x}\sum_{\nu \in X} a_{\nu,x} + I_{y}\sum_{\nu \in Y} a_{\nu,y}}
+			         {\sum_{\nu \in X} a_{\nu,x} + \sum_{\nu \in Y} a_{\nu,y}}
+			\label{eq:InharmonicitySumSimple}
+		\end{equation}
+
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
 	\todo
