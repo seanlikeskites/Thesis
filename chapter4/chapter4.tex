@@ -39,15 +39,17 @@
 		between the respective centroids of the two bands. The relative amplitudes of the two bands required to give
 		a certain spectral centroid, $\mu$, can be calculated using Equation \ref{eq:SpectralCentroidManipulation}.
 
+		\[ c = \frac{f_{c}N}{f_{s}}\]
 		\begin{equation}
-			\frac{\sum_{n = c + 1}^{N-1} \abs{X[n]}}{\sum_{n = 0}^{c} \abs{X[n]}} = 
+			\frac{\sum_{n = c + 1}^{N-c-1} \abs{X[n]}}
+			     {\sum_{n = 0}^{c} \abs{X[n]} + \sum_{n = N-c}^{N-1}\abs{X[n]}} = 
 			\frac{\mu_{l} - \mu}{\mu - \mu_{u}}, 
 			\quad \mu_{l} \leq \mu < \mu_{u} \quad \textrm{or} \quad \mu_{u} < \mu \leq \mu_{l}
 			\label{eq:SpectralCentroidManipulation}
 		\end{equation}
 
-		Where $\mu_{l}$ and $\mu_{r}$ are the spectral centroid of the upper and lower band, and $c$ is the cutoff
-		bin between the two bands in the DFT.
+		Where $\mu_{l}$ and $\mu_{r}$ are the spectral centroid of the upper and lower band, and $f_{c}$ is the
+		cutoff frequency between the two bands.
 
 		\citet{williams2007perceptually} employ a spectral tilt to manipulate spectral centroid, applying gain to
 		the partials of a signal as a linear function of their frequency. This allows the spectral centroid to be
@@ -256,22 +258,62 @@
 			\label{eq:Flatness}
 		\end{equation}
 
-		The arithmetic and geometric means of any set of non-negative numbers, $S$, satisfy the inequality in
+		The arithmetic and geometric means of any list of $N$ non-negative numbers, $L$, satisfy the inequality in
 		Equation \ref{eq:MeanInequality}.
 
 		\begin{equation}
-			\sqrt[|S|]{\prod_{i \in S} i} <= \frac{1}{|S|} \sum_{i \in S} i
+			\sqrt[N]{\prod_{n = 1}^{N} L_{n}} <= \frac{1}{N} \sum_{n = 1}^{N} L_{n}
 			\label{eq:MeanInequality}
 		\end{equation}
 
+		Where $L_{n}$ is the $n$\super{th} element of list $L$. The two means are only equal if all elements of $L$
+		have the same value.
+
+		Due to this the spectral flatness of a signal takes a value between zero and one. Low values describe
+		signals whose energy lies in narrow bands of the spectrum (tones). High values describe signals whose
+		energy is more spread out, a value of one describing a signal where all bins of the power spectrum have the
+		same amplitude (white noise). This means the spectral flatness also gives a description of the tonality /
+		noisiness of a signal.
+
+		Any signal which have zero energy at any frequency will produce a spectral flatness of zero using Equation
+		\ref{eq:Flatness}. Musical signals which are composed of a set of frequency partials may have areas of the
+		spectrum with zero energy. Several different sounds with radically different spectral envelopes can then all
+		exhibit a spectral flatness of zero. This is particularly problematic for digitally synthesised signals as
+		they do not have the inherent noise present in recorded sounds.
+
+		The method used by \citet{peeters2004a} mitigates this by splitting the signal into bands. Calculating the
+		spectral flatness as the ratio of the geometric and arithmetic means of the total energy in each band.
+
+		Another measurement which avoids this is to use only the energies in a signal's partials rather than every
+		bin of the power spectrum, giving rise to Equation \ref{eq:PartialFlatness}.
+
+		\begin{equation}
+			\textrm{SF} = \frac{N\sqrt[N]{\prod_{n = 1}^{N} a_{n}^{2}}}
+				           {\sum_{n = 1}^{N} a_{n}^{2}}
+			\label{eq:PartialFlatness}
+		\end{equation}
+
+		This no longer measure the tonality / noisiness of a signal but rather the flatness of its spectral
+		envelope.
+
 		\note
 		{
-			The geometric mean can be changed while preserving the arithmetic mean by redistributing the energy
-			in the spectrum.
-
 			The arithmetic mean can be changed by adjusting the relative gains of two bands in a
 			particular fashion. Take two bands and apply gain to one and the reciprocal of the gain to the
 			other.
+
+			Two sets comprising the lowest and highest amplitude partials.
+
+			\[ A_{L} = \sum_{n \in L} a_{n}^{2} \]
+			\[ A_{U} = \sum_{n \in U} a_{n}^{2} \]
+			\begin{equation}
+				\textrm{SF} = \frac{N\sqrt[N]{\prod_{n = 1}^{N} a_{n}^{2}}}
+				                   {\frac{A_{L}}{m} + mA_{U}}
+			\end{equation}
+			
+			If $\frac{A_{L}}{A_{U}} < m < 1$ the spectral flatness will increase, reaching a maximum
+			when $m = \frac{A_{L} + A_{U}}{2A_{U}}$. When $0 < m < \frac{A_{L}}{A_{U}}$ or $m > 1$ the spectral
+			flatness will decrease.
 		}
 
 \section{Harmonic Excitation Systems}
