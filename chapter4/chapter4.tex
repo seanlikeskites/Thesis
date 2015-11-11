@@ -225,18 +225,54 @@
 		Note that the target inharmonicity must lie between the inharmonicities of the two signals being summed.
 
 	\subsection{Spectral Irregularity}
-	\label{sec:FetureControl-Parameterisation-Inharmonicity}
+	\label{sec:FetureControl-Parameterisation-Irregularity}
 		Spectral irregularity measures the smoothness of a spectrum. \citet{jensen1999timbre} gives one method of
 		calculating this, shown in Equation \ref{eq:Irregularity}.
 
 		\begin{equation}
-			\frac{a_{N}^{2} + \sum_{n = 1}^{N-1} (a_{n} - a_{n+1})^{2}}
-			     {\sum_{n = 1}^{N} a_{n}^{2}}
+			\textrm{SI} = \frac{\sum_{n = 1}^{N} (a_{n} - a_{n+1})^{2}}
+			                   {\sum_{n = 1}^{N} a_{n}^{2}},
+			              \quad a_{N+1} = 0
 			\label{eq:Irregularity}
 		\end{equation}
 
 		Where $a_{n}$ is amplitude of the $n$\super{th} partial in the signal and $N$ the total number of partials
 		of which the signal is composed.
+
+		\note
+		{
+			Possibly put in a yucky messy equation here which doesn't help much with anything.
+		}
+
+	\subsection{Spectral Flatness}
+	\label{sec:FetureControl-Parameterisation-Flatness}
+		Spectral flatness measures how uniformly distributed the energy is in the spectrum.
+		\citet{johnston1988transform} measures the spectral flatness as the ratio of the geometric and arithmetic
+		means of the power spectrum of a signal (Equation \ref{eq:Flatness}).
+
+		\begin{equation}
+			\textrm{SF} = \frac{N\sqrt[N]{\prod_{n = 0}^{N - 1} |X[n]|^{2}}}
+			                   {\sum_{n = 0}^{N - 1} |X[n]|^{2}}
+			\label{eq:Flatness}
+		\end{equation}
+
+		The arithmetic and geometric means of any set of non-negative numbers, $S$, satisfy the inequality in
+		Equation \ref{eq:MeanInequality}.
+
+		\begin{equation}
+			\sqrt[|S|]{\prod_{i \in S} i} <= \frac{1}{|S|} \sum_{i \in S} i
+			\label{eq:MeanInequality}
+		\end{equation}
+
+		\note
+		{
+			The geometric mean can be changed while preserving the arithmetic mean by redistributing the energy
+			in the spectrum.
+
+			The arithmetic mean can be changed by adjusting the relative gains of two bands in a
+			particular fashion. Take two bands and apply gain to one and the reciprocal of the gain to the
+			other.
+		}
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
