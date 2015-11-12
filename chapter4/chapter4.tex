@@ -93,7 +93,7 @@
 		from zero to one. Zero meaning there is no energy in that set of harmonics, one meaning the signal is
 		entirely composed of those harmonics.
 
-		A generalised from of these metrics measures the amplitude ratio, $R$, of a specific set of frequencies,
+		A generalised from of these metrics measures the amplitude ratio, $R$, of a specific set of partials,
 		$S$, and a set which includes that set, $F$. This is shown in Equation \ref{eq:GeneralTristimulus}.
 
 		\[ A = \sum_{n \in F} a_{n} \]
@@ -103,9 +103,9 @@
 			\label{eq:GeneralTristimulus}
 		\end{equation}
 
-		Where $a_{n}$ is the amplitude of frequency $n$ in the signal.
+		Where $a_{n}$ is the amplitude of the $n$\super{th} partial in the signal.
 
-		This ratio can be adjusted by applying gain to the frequencies in $S$. To attain a particular value of $R$
+		This ratio can be adjusted by applying gain to the partials in $S$. To attain a particular value of $R$
 		the required gain, $m$, can be calculated using Equation \ref{eq:GeneralTristimulusManipulation}.
 
 		\begin{equation}
@@ -171,7 +171,7 @@
 
 		Like Equation \ref{eq:GeneralTristimulus} this measure the ratio of amplitudes of a set of frequencies and
 		a larger set of frequencies. This time using the squares of the amplitudes and taking the square root
-		afterwards. The value of the ratio can be altered by applying gain to the frequencies in the set $S$. The
+		afterwards. The value of the ratio can be altered by applying gain to the partials in the set $S$. The
 		required gain factor, $m$, is calculated using Equation \ref{eq:GeneralOddnessManipulation}.
 
 		\begin{equation}
@@ -187,12 +187,12 @@
 		\begin{equation}
 			I = \frac{2\sum_{n = 1}^{N}a_{n}^{2}
 			           \abs{\nu_{n} - f_{0}\floor{\frac{\nu_{n}}{f_{0}} + \frac{1}{2}}}}
-			         {f_{0}\sum_{n = 1}^{N} a_{n}^{2}}
+				   {f_{0}\sum_{n = 1}^{N} a_{n}^{2}}
 			\label{eq:Inharmonicity}
 		\end{equation}
 
 		Where $a_{n}$ and $\nu_{n}$ are the amplitude and frequency of the $n$\super{th} partial in the signal
-		respectively and $N$ the total number of partials of which the signal is composed.
+		respectively and $N$ the total number of partials in the signal.
 
 		This produces values between zero and one. Zero describing a signal in which all partials are harmonics of
 		the fundamental and one describing a signal where all partials have frequencies lying $\frac{f_{0}}{2}$Hz
@@ -296,25 +296,37 @@
 		This no longer measure the tonality / noisiness of a signal but rather the flatness of its spectral
 		envelope.
 
-		\note
-		{
-			The arithmetic mean can be changed by adjusting the relative gains of two bands in a
-			particular fashion. Take two bands and apply gain to one and the reciprocal of the gain to the
-			other.
+		The spectral flatness can be controlled by altering the power spectrum such that one of the means changes
+		while the other remains the same. The method discussed here changes the arithmetic mean but preserves the
+		geometric mean. Depending on the method used to calculate the spectral flatness the term spectral component
+		will refer to either a DTF bin, a spectral band or a partial.
 
-			Two sets comprising the lowest and highest amplitude partials.
+		Firstly two sets, $L$ and $H$, are constructed which consist of the indices of the $k$ lowest and highest
+		amplitude spectral components in a signal respectively. Then a gain $m$ is applied to the spectral
+		components denoted by set $L$ and the reciprocal gain $\frac{1}{m}$ applied to the spectral components
+		denoted by set $H$. Provided that $L \medcap H = \emptyset$ the resulting spectral flatness is calculated
+		using Equation \ref{eq:FlatnessManipulation}.
 
-			\[ A_{L} = \sum_{n \in L} a_{n}^{2} \]
-			\[ A_{U} = \sum_{n \in U} a_{n}^{2} \]
-			\begin{equation}
-				\textrm{SF} = \frac{N\sqrt[N]{\prod_{n = 1}^{N} a_{n}^{2}}}
-				                   {\frac{A_{L}}{m} + mA_{U}}
-			\end{equation}
-			
-			If $\frac{A_{L}}{A_{U}} < m < 1$ the spectral flatness will increase, reaching a maximum
-			when $m = \frac{A_{L} + A_{U}}{2A_{U}}$. When $0 < m < \frac{A_{L}}{A_{U}}$ or $m > 1$ the spectral
-			flatness will decrease.
-		}
+		\[ P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \]
+		\[ E = P \setminus (L \medcup H) \]
+		\[ A_{L} = \sum_{n \in L} a_{n}^{2} \]
+		\[ A_{H} = \sum_{n \in H} a_{n}^{2} \]
+		\[ A_{E} = \sum_{n \in E} a_{n}^{2} \]
+		\begin{equation}
+			\textrm{SF} = \frac{N\sqrt[N]{\prod_{n \in P} a_{n}^{2}}}
+			                   {\frac{A_{L}}{m^{2}} + m^{2}A_{H} + A_{E}}
+		  	\label{eq:FlatnessManipulation}
+		\end{equation}
+
+		Where $a_{n}$ is the amplitude of the $n$\super{th} spectral component and $N$ the total number of spectral
+		components.
+		
+		The spectral flatness can be increased by using a value of $m$ such that $\sqrt{\frac{A_{L}}{A_{H}}} < m <
+		1$. The maximum possible flatness which can be achieved with the selected spectral components occurs when $m
+		= \sqrt{\frac{A_{L} + A_{H}}{2A_{H}}}$. To decrease the spectral flatness a value of $m$ satisfying $0 < m <
+		\sqrt{\frac{A_{L}}{A_{H}}}$ or $m > 1$ should be used. When $m = \sqrt{\frac{A_{L}}{A_{H}}}$ the arithmetic
+		mean is unchanged, this provides a point at which the energy has been redistributed in the spectrum but the
+		spectral flatness remains the same.
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
