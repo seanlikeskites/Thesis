@@ -309,9 +309,8 @@
 
 		\[ P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \]
 		\[ E = P \setminus (L \medcup H) \]
-		\[ A_{L} = \sum_{n \in L} a_{n}^{2} \]
-		\[ A_{H} = \sum_{n \in H} a_{n}^{2} \]
-		\[ A_{E} = \sum_{n \in E} a_{n}^{2} \]
+		\[ A_{L} = \sum_{n \in L} a_{n}^{2} \quad A_{H} = \sum_{n \in H} a_{n}^{2}
+		   \quad A_{E} = \sum_{n \in E} a_{n}^{2} \]
 		\begin{equation}
 			\textrm{SF} = \frac{N\sqrt[N]{\prod_{n \in P} a_{n}^{2}}}
 			                   {\frac{A_{L}}{m^{2}} + m^{2}A_{H} + A_{E}}
@@ -327,6 +326,32 @@
 		\sqrt{\frac{A_{L}}{A_{H}}}$ or $m > 1$ should be used. When $m = \sqrt{\frac{A_{L}}{A_{H}}}$ the arithmetic
 		mean is unchanged, this provides a point at which the energy has been redistributed in the spectrum but the
 		spectral flatness remains the same.
+
+	\subsection{Spectral Slope}
+	\label{sec:FetureControl-Parameterisation-Flatness}
+
+%		Here is the slope of the DFT. Needs some alteration.
+%		\[ c = \floor{\frac{N}{2}} \]
+%		\[ A = \sum_{n = 0}^{N - 1} |X[n]| \]
+%		\[ B = \frac{f_{s} \left(|X[0]| + \sum_{n = 1}^{c} |X[n]| \right)}
+%		            {N} \]
+%		\[ F = \frac{f_{s}c(c + 1)}
+%			    {2N} \]
+%		\[ G = \frac{f_{s}^{2}c(c + 1)(2c + 1)}
+%			    {6N^{2}} \]
+%		\begin{equation}
+%			S = \frac{NB - FA}
+%		                 {A \left( NG - F^{2} \right)}
+%			\label{eq:SpectralSlope}
+%		\end{equation}
+		
+		\[ A = \sum_{n = 1}^{N} a_{n} \quad B = \sum_{n = 1}^{N} a_{n}\nu_{n} \]
+		\[ F = \sum_{n = 1}^{N} \nu_{n} \quad G = \sum_{n = 1}^{N} \nu_{n}^{2} \]
+		\begin{equation}
+			S = \frac{NB - FA}
+		                 {A \left( NG - F^{2} \right)}
+			\label{eq:PartialSlope}
+		\end{equation}
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
