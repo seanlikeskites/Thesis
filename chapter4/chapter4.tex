@@ -379,7 +379,19 @@
 
 		The spectral slope of the partials is easily altered by applying a spectral tilt to the signal. To increase
 		the spectral slope by $k$ each partial in the signal should have its amplitude, $a_{n}$, multiplied by the
-		value $10^{\frac{1}{20}(k\nu_{n} - ka_{1})}$.
+		value $10^{\frac{1}{20}(k\nu_{n} - k\nu_{1})}$.
+
+		It is common to measure how the amplitudes of partials decrease with frequency in dB per octave. Equation
+		\ref{eq:PartialSlope} can be altered to produce values in this unit, resulting in Equation
+		\ref{eq:PartialOctaveSlope}.
+
+		\[ A = \sum_{n = 1}^{N} 20\log (a_{n}) \quad B = \sum_{n = 1}^{N} 20\log_{2} (\nu_{n})\log (a_{n}) \]
+		\[ F = \sum_{n = 1}^{N} \log_{2} (\nu_{n}) \quad G = \sum_{n = 1}^{N} \log_{2} (\nu_{n})^{2} \]
+		\begin{equation}
+			S = \frac{NB - FA}
+		                 {NG - F^{2}}
+			\label{eq:PartialOctaveSlope}
+		\end{equation}
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
