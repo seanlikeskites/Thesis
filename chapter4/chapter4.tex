@@ -253,8 +253,8 @@
 		means of the power spectrum of a signal (Equation \ref{eq:Flatness}).
 
 		\begin{equation}
-			\textrm{SF} = \frac{N\sqrt[N]{\prod_{n = 0}^{N - 1} |X[n]|^{2}}}
-			                   {\sum_{n = 0}^{N - 1} |X[n]|^{2}}
+			\textrm{SF} = \frac{N\sqrt[N]{\prod_{n = 0}^{N - 1} \abs{X[n]}^{2}}}
+			                   {\sum_{n = 0}^{N - 1} \abs{X[n]}^{2}}
 			\label{eq:Flatness}
 		\end{equation}
 
@@ -329,32 +329,45 @@
 
 	\subsection{Spectral Slope}
 	\label{sec:FetureControl-Parameterisation-Flatness}
-		The spectral slope measures the gradient of the spectrum. It is calculated by first order liner regression
-		of the spectrum.
-
 		\note
 		{
-			Here is the slope of the DFT. Needs some alteration.
-			\[ c = \floor{\frac{N}{2}} \]
-			\[ A = \sum_{n = 0}^{N - 1} |X[n]| \]
-			\todo
-			{
-				\[ B = \frac{f_{s} \left(|X[0]| + \sum_{n = 1}^{c} |X[n]| \right)}
-					    {N} \]
-			}
-			\[ F = \frac{f_{s}c(c + 1)}
-				    {2N} \]
-			\[ G = \frac{f_{s}^{2}c(c + 1)(2c + 1)}
-				    {6N^{2}} \]
-			\begin{equation}
-				S = \frac{NB - FA}
-					 {NG - F^{2}}
-				\label{eq:SpectralSlope}
-			\end{equation}
+			Should I mention how everybody seems to quote \citet{peeters2004a} for this. He has some weird
+			scaling factor in his metric which I think makes bugger all sense.
 		}
 
-		For a sound composed of $N$ partials the slope of the partial's amplitudes, $S$, is calculated using
-		Equation \ref{eq:PartialSlope}.
+		The spectral slope measures the gradient of the spectrum. It is calculated by first order liner regression
+		of the spectrum. For $N$ samples of a signal, $x$, the spectral slope can be calculated with Equation
+		\ref{eq:SpectralSlope}.
+
+		\[ c = \floor{\frac{N}{2}} \]
+		\[ F = \frac{f_{s}c(c + 1)}
+			    {2N} \]
+		\[ G = \frac{f_{s}^{2}c(c + 1)(2c + 1)}
+			    {6N^{2}} \]
+		\[ \begin{array}{ccc}
+			\textrm{When N is odd:} & & \textrm{When N is even:}\\
+			& & \\
+			A = 20 \left( \log(\abs{X[0]}) + \sum_{n = 1}^{c} \log(2\abs{X[n]}) \right) & &
+			A = 20 \left( \log(\abs{X[0]}\abs{X[c]}) + \sum_{n = 1}^{c-1} \log(2\abs{X[n]}) \right) \\
+			& & \\
+			B = \frac{20f_{s}}{N} \left(\sum_{n = 1}^{c} n\log(2\abs{X[n]}) \right) & &
+			B = \frac{20f_{s}}{N} \left(c\log(\abs{X[c]}) + \sum_{n = 1}^{c-1} 
+			          n\log(2\abs{X[n]}) \right)
+		   \end{array} \]
+		\begin{equation}
+			S = \frac{NB - FA}
+				 {NG - F^{2}}
+			\label{eq:SpectralSlope}
+		\end{equation}
+
+		Negative values of spectral slope describe a spectrum where the majority of the energy is in the low end of
+		the spectrum. Positive values describe signals with more energy in the high end of the spectrum. A value of
+		zero describes either a signal where the energy is evenly distributed throughout the spectrum or one in
+		which the majority of the energy is in the middle of the spectrum.
+
+		For musical signals which are composed of partials it may be more beneficial to measure the slope of the
+		partial's amplitudes rather than of the whole spectrum. For a sound composed of $N$ partials this can be
+		calculated using Equation \ref{eq:PartialSlope}.
 		
 		\[ A = \sum_{n = 1}^{N} 20\log (a_{n}) \quad B = \sum_{n = 1}^{N} 20\nu_{n}\log (a_{n}) \]
 		\[ F = \sum_{n = 1}^{N} \nu_{n} \quad G = \sum_{n = 1}^{N} \nu_{n}^{2} \]
@@ -364,8 +377,8 @@
 			\label{eq:PartialSlope}
 		\end{equation}
 
-		Spectral slope is easily altered by applying a spectral tilt to the signal. To increase the spectral slope
-		by $k$ each partial in the signal should have its amplitude, $a_{n}$, multiplied by the
+		The spectral slope of the partials is easily altered by applying a spectral tilt to the signal. To increase
+		the spectral slope by $k$ each partial in the signal should have its amplitude, $a_{n}$, multiplied by the
 		value $10^{\frac{1}{20}(k\nu_{n} - ka_{1})}$.
 
 \section{Harmonic Excitation Systems}
