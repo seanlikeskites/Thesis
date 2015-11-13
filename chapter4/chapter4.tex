@@ -382,16 +382,11 @@
 		value $10^{\frac{1}{20}(k\nu_{n} - k\nu_{1})}$.
 
 		It is common to measure how the amplitudes of partials decrease with frequency in dB per octave. Equation
-		\ref{eq:PartialSlope} can be altered to produce values in this unit, resulting in Equation
-		\ref{eq:PartialOctaveSlope}.
+		\ref{eq:PartialSlope} can be altered to produce values in this unit by using the $\log_{2}$ of the
+		frequency. To increase the slope of the partials amplitude by $k$dB per ocatave each partial in the signal
+		should have its amplitude, $a_{n}$, multiplied by the value $10^{\frac{1}{20}(k\log_{2}(\nu_{n}) -
+		k\log_{2}(\nu_{1}))}$.
 
-		\[ A = \sum_{n = 1}^{N} 20\log (a_{n}) \quad B = \sum_{n = 1}^{N} 20\log_{2} (\nu_{n})\log (a_{n}) \]
-		\[ F = \sum_{n = 1}^{N} \log_{2} (\nu_{n}) \quad G = \sum_{n = 1}^{N} \log_{2} (\nu_{n})^{2} \]
-		\begin{equation}
-			S = \frac{NB - FA}
-		                 {NG - F^{2}}
-			\label{eq:PartialOctaveSlope}
-		\end{equation}
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
