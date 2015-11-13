@@ -299,13 +299,13 @@
 		The spectral flatness can be controlled by altering the power spectrum such that one of the means changes
 		while the other remains the same. The method discussed here changes the arithmetic mean but preserves the
 		geometric mean. Depending on the method used to calculate the spectral flatness the term spectral component
-		will refer to either a DTF bin, a spectral band or a partial.
+		will refer to either a DFT bin, a spectral band or a partial.
 
-		Firstly two sets, $L$ and $H$, are constructed which consist of the indices of the $k$ lowest and highest
-		amplitude spectral components in a signal respectively. Then a gain $m$ is applied to the spectral
-		components denoted by set $L$ and the reciprocal gain $\frac{1}{m}$ applied to the spectral components
-		denoted by set $H$. Provided that $L \medcap H = \emptyset$ the resulting spectral flatness is calculated
-		using Equation \ref{eq:FlatnessManipulation}.
+		Consider two disjoint sets, $L$ and $H$, which are each composed of the indices of $k$ spectral components
+		of the signal such that the total energy in the spectral components denoted by $L$ is less than that of the
+		spectral components denoted by $H$. A gain $m$ is applied to the spectral components denoted by set $H$ and
+		the reciprocal gain $\frac{1}{m}$ applied to the spectral components denoted by set $L$. The resulting
+		spectral flatness is calculated using Equation \ref{eq:FlatnessManipulation}.
 
 		\[ P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \]
 		\[ E = P \setminus (L \medcup H) \]
@@ -386,7 +386,6 @@
 		frequency. To increase the slope of the partials amplitude by $k$dB per ocatave each partial in the signal
 		should have its amplitude, $a_{n}$, multiplied by the value $10^{\frac{1}{20}(k\log_{2}(\nu_{n}) -
 		k\log_{2}(\nu_{1}))}$.
-
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
