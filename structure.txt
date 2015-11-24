@@ -47,4 +47,5 @@ Discuss timbral control possibilities from feature manipulations.
 	What semantic terms can be controlled by the features given in chapter 4.
 
 Chapter 7
-Another chapter on the end to confirm the success of the research. Make a new effect which will do the control through harmonic excitation and do some evaluation tests with people.
+Another chapter on the end to confirm the success of the research. Make a new effect which will do the control through
+harmonic excitation and do some evaluation tests with people. Focus group, interview data and such.
