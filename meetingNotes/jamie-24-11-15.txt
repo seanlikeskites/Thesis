@@ -1,0 +1,6 @@
+Put in a diagram of the layers of audio representation (samples, low-level features, high-level features) and what I'm
+contributing to each layer. Probably in chapter 1.
+
+Make something demoable.
+
+Talk about the development of the excitation plug-ins, they sounded crap, and then good.
