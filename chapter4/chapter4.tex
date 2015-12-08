@@ -228,14 +228,25 @@
 
 	\subsection{Spectral Irregularity}
 	\label{sec:FetureControl-Parameterisation-Irregularity}
-		Spectral irregularity measures the smoothness of a spectrum. \citet{jensen1999timbre} gives one method of
-		calculating this, shown in Equation \ref{eq:Irregularity}.
+		Spectral irregularity measures the smoothness of a spectrum. Two different methods of measuring this are
+		often cited in the literature. The first being that proposed by \citet{krimphoff1994caracterisation}, shown
+		in Equation \ref{eq:KrimphoffIrregularity}.
 
 		\begin{equation}
-			\textrm{SI} = \frac{\sum_{n = 1}^{N} (a_{n} - a_{n+1})^{2}}
+			\textrm{SI\sub{K}} = \log \left( \sum_{n = 2}^{N - 1}
+				                         20 \abs{\log(a_{n}) - \frac{\log(a_{n-1}a_{n}a_{n+1})}
+				                                                    {3}}
+					          \right)
+			\label{eq:KrimphoffIrregularity}
+		\end{equation}
+
+		A second method is proposed by \citet{jensen1999timbre}, shown in Equation \ref{eq:JensenIrregularity}.
+
+		\begin{equation}
+			\textrm{SI\sub{J}} = \frac{\sum_{n = 1}^{N} (a_{n} - a_{n+1})^{2}}
 			                   {\sum_{n = 1}^{N} a_{n}^{2}},
 			              \quad a_{N+1} = 0
-			\label{eq:Irregularity}
+			\label{eq:JensenIrregularity}
 		\end{equation}
 
 		Where $a_{n}$ is amplitude of the $n$\super{th} partial in the signal and $N$ the total number of partials
