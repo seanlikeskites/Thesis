@@ -233,17 +233,17 @@
 		in Equation \ref{eq:KrimphoffIrregularity}.
 
 		\begin{equation}
-			\textrm{SI\sub{K}} = \log \left( \sum_{n = 2}^{N - 1}
-				                         20 \abs{\log(a_{n}) - \frac{\log(a_{n-1}a_{n}a_{n+1})}
-				                                                    {3}}
-					          \right)
+			\textrm{KI} = \log \left( \sum_{n = 2}^{N - 1}
+				                  20 \abs{\log(a_{n}) - \frac{\log(a_{n-1}a_{n}a_{n+1})}
+				                                             {3}}
+					   \right)
 			\label{eq:KrimphoffIrregularity}
 		\end{equation}
 
 		A second method is proposed by \citet{jensen1999timbre}, shown in Equation \ref{eq:JensenIrregularity}.
 
 		\begin{equation}
-			\textrm{SI\sub{J}} = \frac{\sum_{n = 1}^{N} (a_{n} - a_{n+1})^{2}}
+			\textrm{JI} = \frac{\sum_{n = 1}^{N} (a_{n} - a_{n+1})^{2}}
 			                   {\sum_{n = 1}^{N} a_{n}^{2}},
 			              \quad a_{N+1} = 0
 			\label{eq:JensenIrregularity}
@@ -251,6 +251,10 @@
 
 		Where $a_{n}$ is amplitude of the $n$\super{th} partial in the signal and $N$ the total number of partials
 		of which the signal is composed.
+
+		Equation \ref{eq:JensenIrregularity} has an advantage over \ref{eq:KrimphoffIrregularity} in that is
+		produces a normalised value between zero and two. This allows measures of irregularity of two different
+		signals to be compared more easily.
 
 		\note
 		{
