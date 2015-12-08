@@ -336,56 +336,36 @@
 		}
 
 		The spectral slope measures the gradient of the spectrum. It is calculated by first order liner regression
-		of the spectrum. For $N$ samples of a signal, $x$, the spectral slope can be calculated with Equation
-		\ref{eq:SpectralSlope}.
+		of the spectrum. For a signal with $N$ spectral components the spectral slope can be calculated with
+		Equation \ref{eq:SpectralSlope}.
 
-		\[ c = \floor{\frac{N}{2}} \]
-		\[ F = \frac{f_{s}c(c + 1)}
-			    {2N} \]
-		\[ G = \frac{f_{s}^{2}c(c + 1)(2c + 1)}
-			    {6N^{2}} \]
-		\[ \begin{array}{ccc}
-			\textrm{When N is odd:} & & \textrm{When N is even:}\\
-			& & \\
-			A = 20 \left( \log(\abs{X[0]}) + \sum_{n = 1}^{c} \log(2\abs{X[n]}) \right) & &
-			A = 20 \left( \log(\abs{X[0]}\abs{X[c]}) + \sum_{n = 1}^{c-1} \log(2\abs{X[n]}) \right) \\
-			& & \\
-			B = \frac{20f_{s}}{N} \left(\sum_{n = 1}^{c} n\log(2\abs{X[n]}) \right) & &
-			B = \frac{20f_{s}}{N} \left(c\log(\abs{X[c]}) + \sum_{n = 1}^{c-1} 
-			          n\log(2\abs{X[n]}) \right)
-		   \end{array} \]
+		\[ A = \sum_{n = 1}^{N} 20\log (a_{n}) \quad B = \sum_{n = 1}^{N} 20\nu_{n}\log (a_{n}) \]
+		\[ F = \sum_{n = 1}^{N} \nu_{n} \quad G = \sum_{n = 1}^{N} \nu_{n}^{2} \]
 		\begin{equation}
 			S = \frac{NB - FA}
-				 {NG - F^{2}}
+		                 {NG - F^{2}}
 			\label{eq:SpectralSlope}
 		\end{equation}
+
+		Where $a_{n}$ and $\nu_{n}$ are the amplitude and frequency of the $n$\super{th} spectral component.
 
 		Negative values of spectral slope describe a spectrum where the majority of the energy is in the low end of
 		the spectrum. Positive values describe signals with more energy in the high end of the spectrum. A value of
 		zero describes either a signal where the energy is evenly distributed throughout the spectrum or one in
 		which the majority of the energy is in the middle of the spectrum.
 
-		For musical signals which are composed of partials it may be more beneficial to measure the slope of the
-		partial's amplitudes rather than of the whole spectrum. For a sound composed of $N$ partials this can be
-		calculated using Equation \ref{eq:PartialSlope}.
+		Traditional measures of spectral centroid take a linear regression of the DFT bins. For musical signals
+		which are composed of partials it may be more beneficial to measure the slope of the partial's amplitudes
+		rather than of the whole spectrum. 
 		
-		\[ A = \sum_{n = 1}^{N} 20\log (a_{n}) \quad B = \sum_{n = 1}^{N} 20\nu_{n}\log (a_{n}) \]
-		\[ F = \sum_{n = 1}^{N} \nu_{n} \quad G = \sum_{n = 1}^{N} \nu_{n}^{2} \]
-		\begin{equation}
-			S = \frac{NB - FA}
-		                 {NG - F^{2}}
-			\label{eq:PartialSlope}
-		\end{equation}
-
-		The spectral slope of the partials is easily altered by applying a spectral tilt to the signal. To increase
-		the spectral slope by $k$ each partial in the signal should have its amplitude, $a_{n}$, multiplied by the
+		The spectral slope is easily altered by applying a spectral tilt to the signal. To increase the spectral
+		slope by $k$ each spectral component in the signal should have its amplitude, $a_{n}$, multiplied by the
 		value $10^{\frac{1}{20}(k\nu_{n} - k\nu_{1})}$.
 
 		It is common to measure how the amplitudes of partials decrease with frequency in dB per octave. Equation
 		\ref{eq:PartialSlope} can be altered to produce values in this unit by using the $\log_{2}$ of the
-		frequency. To increase the slope of the partials amplitude by $k$dB per ocatave each partial in the signal
-		should have its amplitude, $a_{n}$, multiplied by the value $10^{\frac{1}{20}(k\log_{2}(\nu_{n}) -
-		k\log_{2}(\nu_{1}))}$.
+		frequency. To increase the slope by $k$dB per octave each spectral component in the signal should have its
+		amplitude, $a_{n}$, multiplied by the value $10^{\frac{1}{20}(k\log_{2}(\nu_{n}) - k\log_{2}(\nu_{1}))}$.
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
