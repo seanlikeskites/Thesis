@@ -21,88 +21,109 @@
 	features it is useful to introduce the concept of a spectral component. A spectral component describes a part of the
 	signals spectrum, be it a spectral bin obtained from a DFT, a partial of the signal, or a frequency band taken from
 	the spectrum. In the following equations, unless otherwise stated, the symbols $a_{n}$ and $\nu_{n}$ will refer to
-	the amplitude and frequency of the $n$\super{th} spectral component of a signal respectively.
+	the amplitude and frequency of the $n$\super{th} spectral component of a signal respectively. $N$ denotes the total
+	number of spectral components in the signal.
 
 	\subsection{Spectral Moments}
 	\label{sec:FeatureControl-Parameterisation-SpectralMoments}
-		\subsubsection*{Spectral Centroid}
-			The spectral centroid of a signal, $\mu$, is the first raw moment (mean) of the spectrum. It is
-			calculated using Equation \ref{eq:SpectralCentroid}.
+		The spectral moments are the statistical moments of a signals spectrum. They describe how the energy is
+		distributed in a spectrum. The first four spectral moments are the centroid, spread, skewness and kurtosis.
+		
+		The spectral centroid of a signal, $\mu$, is the first raw moment (mean) of the spectrum. It is calculated
+		using Equation \ref{eq:SpectralCentroid}.
 
-			\begin{equation}
-				\mu = \frac{\sum_{n = 1}^{N} \nu_{n}a_{n}}
-				           {\sum_{n = 1}^{N} a_{n}}
-				\label{eq:SpectralCentroid}
-			\end{equation}
+		\begin{equation}
+			\mu = \frac{\sum_{n = 1}^{N} \nu_{n}a_{n}}
+				   {\sum_{n = 1}^{N} a_{n}}
+			\label{eq:SpectralCentroid}
+		\end{equation}
 
-			Where $N$ is the number of spectral components.
+		The spectral spread of a signal, $\sigma^{2}$, is the second central moment (variance) of the
+		spectrum. It is calculated using Equation \ref{eq:SpectralSpread}.
 
-			A crude method of causing $\mu$ to move towards a particular frequency is the increase the energy at
-			that frequency. While this works conceptually it is destructive to the original structure of the
-			spectrum. As $\mu$ moves towards the desired frequency the spectrum is dominated by a sinusoid at
-			that frequency.
+		\begin{equation}
+			\sigma^{2} = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{2}}
+					  {\sum_{n = 1}^{N} a_{n}}
+			\label{eq:SpectralSpread}
+		\end{equation}
 
-			Less destructive methods include that used by \citet{zacharakis2011an} who split the signal into two
-			bands, one above and one below the spectral centroid. The relative amplitudes of these bands can
-			then be altered to adjust the spectral centroid. This preserves more of the original signals
-			structure, the relative levels of partials within each band remaining the same. Using this method
-			the new spectral centroid will lie somewhere between the respective centroids of the two bands. The
-			relative amplitudes of the two bands required to give a certain spectral centroid, $\mu$, can be
-			calculated using Equation \ref{eq:SpectralCentroidManipulation}.
+		Together, the spectral centroid and spread give a description of where the energy in a spectrum is centered
+		and how far from this center the energy is spread.
 
-			\begin{equation}
-				\frac{\sum_{n = c + 1}^{N} a_{n}}
-				     {{\sum_{n = 0}^{c} a_{n}}} = 
-				\frac{\mu_{l} - \mu}{\mu - \mu_{u}}, 
-				\quad \mu_{l} \leq \mu < \mu_{u} \quad \textrm{or} \quad \mu_{u} < \mu \leq \mu_{l}
-				\label{eq:SpectralCentroidManipulation}
-			\end{equation}
+		The spectral skewness of a signal, $\gamma$, is the third standardised moment of the spectrum. It is
+		calculated using Equation \ref{eq:SpectralSkewness}.
 
-			Where $\mu_{l}$ and $\mu_{r}$ are the spectral centroid of the upper and lower band, and $c$ is the
-			order highest frequency spectral component in the lower band.
+		\begin{equation}
+			\gamma = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{3}}
+				      {\sigma^{3}\sum_{n = 1}^{N} a_{n}}
+			\label{eq:SpectralSkewness}
+		\end{equation}
 
-			\citet{williams2007perceptually} employ a spectral tilt to manipulate spectral centroid, applying
-			gain to the partials of a signal as a linear function of their frequency. This allows the spectral
-			centroid to be moved up or down in frequency while still retaining the frequency content of the
-			signal. A disadvantage of this method is that the change in centroid cannot be easily parameterised
-			as it depends on the content of the signal being processed.
+		The spectral skewness measure how symmetrical a spectrum is about its centroid. A negative skewness
+		describes a spectrum with more energy above its centroid while a positive skewness describes the opposite. A
+		skewness of zeros describes a spectrum with equal energy either side of its centroid.
 
-			Another way to move the spectral centroid is by introducing a new band of energy into the spectrum.
-			This is conceptually similar to the two band method discussed previously but allows the second band
-			to contain frequency content which was not in the original signal. As before the overall spectral
-			centroid can be moved by adjusting the relative amplitudes of the original signal and the new band
-			of energy. This method also proved difficult to parameterise as destructive superposition could
-			occur between the partials of the two signals being summed.
+		The spectral kurtosis of a signal, $\kappa$, is the fourth standardised moment of the spectrum. It
+		is calculated using Equation \ref{eq:SpectralKurtosis}.
 
-		\subsubsection*{Spectral Spread}
-			The spectral spread of a signal, $\sigma^{2}$, is the second central moment (variance) of the
-			spectrum. It is calculated using Equation \ref{eq:SpectralSpread}.
+		\begin{equation}
+			\kappa = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{4}}
+				      {\sigma^{4}\sum_{n = 1}^{N} a_{n}}
+			\label{eq:SpectralKurtosis}
+		\end{equation}
 
-			\begin{equation}
-				\sigma^{2} = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{2}}
-				                  {\sum_{n = 1}^{N} a_{n}}
-				\label{eq:SpectralSpread}
-			\end{equation}
+		The kurtosis measures the length of a distributions tails. A low kurtosis describes a spectrum where the
+		energy in evenly distributed in a band around the centroid. A high kurtosis describes a spectrum in which
+		small amounts of energy lies at frequencies far away from the central band.
 
-		\subsubsection*{Spectral Skewness}
-			The spectral skewness of a signal, $\gamma$, is the third standardised moment of the spectrum. It is
-			calculated using Equation \ref{eq:SpectralSkewness}.
+		The kurtosis of a normal distribution is 3. This gives rise to a different measure, the excess kurtosis,
+		which is defined as $\kappa - 3$. The excess kurtosis is often referred to as the kurtosis. This gives rise
+		to some obscurity when reading literature which discusses the kurtosis without providing a definition.
 
-			\begin{equation}
-				\gamma = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{3}}
-					      {\sigma^{3}\sum_{n = 1}^{N} a_{n}}
-				\label{eq:SpectralSkewness}
-			\end{equation}
+		A crude method of causing the spectral centroid to move towards a particular frequency is the increase the
+		energy at that frequency. While this works conceptually it is destructive to the original structure of the
+		spectrum. As the centroid moves towards the desired frequency the spectrum is dominated by a sinusoid at
+		that frequency.
 
-		\subsubsection*{Spectral Kurtosis}
-			The spectral Kurtosis of a signal, $\kappa$, is the fourth standardised moment of the spectrum. It
-			is calculated using Equation \ref{eq:SpectralKurtosis}.
+		Less destructive methods include that used by \citet{zacharakis2011an} who split the signal into two bands,
+		one above and one below the spectral centroid. The relative amplitudes of these bands can then be altered to
+		adjust the spectral centroid. This preserves more of the original signals structure, the relative levels of
+		partials within each band remaining the same. Using this method the new spectral centroid will lie somewhere
+		between the respective centroids of the two bands. The relative amplitudes of the two bands required to give
+		a certain spectral centroid, $\mu$, can be calculated using Equation \ref{eq:SpectralCentroidManipulation}.
 
-			\begin{equation}
-				\kappa = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{4}}
-					      {\sigma^{4}\sum_{n = 1}^{N} a_{n}}
-				\label{eq:SpectralKurtosis}
-			\end{equation}
+		\begin{equation}
+			\frac{\sum_{n = c + 1}^{N} a_{n}}
+			     {{\sum_{n = 1}^{c} a_{n}}} = 
+			\frac{\mu_{l} - \mu}{\mu - \mu_{u}}, 
+			\quad \mu_{l} \leq \mu < \mu_{u} \quad \textrm{or} \quad \mu_{u} < \mu \leq \mu_{l}
+			\label{eq:SpectralCentroidManipulation}
+		\end{equation}
+
+		Where $\mu_{l}$ and $\mu_{r}$ are the spectral centroid of the upper and lower band, and $c$ is the order
+		highest frequency spectral component in the lower band.
+
+		\citet{williams2007perceptually} employ a spectral tilt to manipulate spectral centroid, applying gain to
+		the partials of a signal as a linear function of their frequency. This allows the spectral centroid to be
+		moved up or down in frequency while still retaining the frequency content of the signal. A disadvantage of
+		this method is that the change in centroid cannot be easily parameterised as it depends on the content of
+		the signal being processed.
+
+		Another way to move the spectral centroid is by introducing a new band of energy into the spectrum.  This is
+		conceptually similar to the two band method discussed previously but allows the second band to contain
+		frequency content which was not in the original signal. As before the overall spectral centroid can be moved
+		by adjusting the relative amplitudes of the original signal and the new band of energy. This method also
+		proved difficult to parameterise as destructive superposition could occur between the partials of the two
+		signals being summed.
+
+		\note
+		{
+			The other spectral moments are more difficult to parameterise.
+			\begin{itemize}
+				\item centroid and spread need to remain unchanged.
+				\item Can use intuition about spectral shape to increase decrease them.
+			\end{itemize}
+		}
 
 	\subsection{Tristimulus}
 	\label{sec:FeatureControl-Parameterisation-Tristimulus}
