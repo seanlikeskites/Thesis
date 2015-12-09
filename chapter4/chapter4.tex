@@ -14,55 +14,95 @@
 
 \section{Parameterisation of Feature Changes}
 \label{sec:FeatureControl-Parameterisation}
-	\subsection{Spectral Centroid}
-	\label{sec:FeatureControl-Parameterisation-SpectralCentroid}
-		The spectral centroid, $\mu$, of an $N$ sample signal, $x$, is calculated from the $N$ point DFT of the
-		signal, $X$, using Equation \ref{eq:SpectralCentroid}.
+	This section discusses the parameterisation of various audio features. The measurement of each audio feature is
+	discussed and methods by which a single parameter can be used to adjust them are suggested.
 
-		\begin{equation}
-			\mu = \frac{f_{s}\sum_{n = 0}^{N-1} \abs{X[n]}(N - \abs{2n - N})}
-				   {2N\sum_{n = 0}^{N-1} \abs{X[n]}}
-			\label{eq:SpectralCentroid}
-		\end{equation}
+	Several of the audio features discussed involve analysis of a signals spectrum. To simplify the notation of these
+	features it is useful to introduce the concept of a spectral component. A spectral component describes a part of the
+	signals spectrum, be it a spectral bin obtained from a DFT, a partial of the signal, or a frequency band taken from
+	the spectrum. In the following equations, unless otherwise stated, the symbols $a_{n}$ and $\nu_{n}$ will refer to
+	the amplitude and frequency of the $n$\super{th} spectral component of a signal respectively.
 
-		Where $f_{s}$ is the sampling frequency of the signal.
+	\subsection{Spectral Moments}
+	\label{sec:FeatureControl-Parameterisation-SpectralMoments}
+		\subsubsection*{Spectral Centroid}
+			The spectral centroid of a signal, $\mu$, is the first raw moment (mean) of the spectrum. It is
+			calculated using Equation \ref{eq:SpectralCentroid}.
 
-		A crude method of causing $\mu$ to move towards a particular frequency is
-		the increase the energy at that frequency. While this works conceptually it is destructive to the original
-		structure of the spectrum. As $\mu$ moves towards the desired frequency the spectrum is dominated by a
-		sinusoid at that frequency.
+			\begin{equation}
+				\mu = \frac{\sum_{n = 1}^{N} \nu_{n}a_{n}}
+				           {\sum_{n = 1}^{N} a_{n}}
+				\label{eq:SpectralCentroid}
+			\end{equation}
 
-		Less destructive methods include that used by \citet{zacharakis2011an} who split the signal into two bands,
-		one above and one below the spectral centroid. The relative amplitudes of these bands can then be altered to
-		adjust the spectral centroid. This preserves more of the original signals structure, the relative levels of
-		partials within each band remaining the same. Using this method the new spectral centroid will lie somewhere
-		between the respective centroids of the two bands. The relative amplitudes of the two bands required to give
-		a certain spectral centroid, $\mu$, can be calculated using Equation \ref{eq:SpectralCentroidManipulation}.
+			Where $N$ is the number of spectral components.
 
-		\[ c = \frac{f_{c}N}{f_{s}}\]
-		\begin{equation}
-			\frac{\sum_{n = c + 1}^{N-c-1} \abs{X[n]}}
-			     {\sum_{n = 0}^{c} \abs{X[n]} + \sum_{n = N-c}^{N-1}\abs{X[n]}} = 
-			\frac{\mu_{l} - \mu}{\mu - \mu_{u}}, 
-			\quad \mu_{l} \leq \mu < \mu_{u} \quad \textrm{or} \quad \mu_{u} < \mu \leq \mu_{l}
-			\label{eq:SpectralCentroidManipulation}
-		\end{equation}
+			A crude method of causing $\mu$ to move towards a particular frequency is the increase the energy at
+			that frequency. While this works conceptually it is destructive to the original structure of the
+			spectrum. As $\mu$ moves towards the desired frequency the spectrum is dominated by a sinusoid at
+			that frequency.
 
-		Where $\mu_{l}$ and $\mu_{r}$ are the spectral centroid of the upper and lower band, and $f_{c}$ is the
-		cutoff frequency between the two bands.
+			Less destructive methods include that used by \citet{zacharakis2011an} who split the signal into two
+			bands, one above and one below the spectral centroid. The relative amplitudes of these bands can
+			then be altered to adjust the spectral centroid. This preserves more of the original signals
+			structure, the relative levels of partials within each band remaining the same. Using this method
+			the new spectral centroid will lie somewhere between the respective centroids of the two bands. The
+			relative amplitudes of the two bands required to give a certain spectral centroid, $\mu$, can be
+			calculated using Equation \ref{eq:SpectralCentroidManipulation}.
 
-		\citet{williams2007perceptually} employ a spectral tilt to manipulate spectral centroid, applying gain to
-		the partials of a signal as a linear function of their frequency. This allows the spectral centroid to be
-		moved up or down in frequency while still retaining the frequency content of the signal. A disadvantage of
-		this method is that the change in centroid cannot be parameterised as it depends on the content of the
-		signal being processed.
+			\begin{equation}
+				\frac{\sum_{n = c + 1}^{N} a_{n}}
+				     {{\sum_{n = 0}^{c} a_{n}}} = 
+				\frac{\mu_{l} - \mu}{\mu - \mu_{u}}, 
+				\quad \mu_{l} \leq \mu < \mu_{u} \quad \textrm{or} \quad \mu_{u} < \mu \leq \mu_{l}
+				\label{eq:SpectralCentroidManipulation}
+			\end{equation}
 
-		Another way to move the spectral centroid is by introducing a new band of energy into the spectrum. This is
-		conceptually similar to the two band method discussed previously but allows the second band to contain
-		frequency content which was not in the original signal. As before the overall spectral centroid can be moved
-		by adjusting the relative amplitudes of the original signal and the new band of energy. This method also
-		proved difficult to parameterise as destructive superposition could occur between the partials of the two
-		signals being summed.
+			Where $\mu_{l}$ and $\mu_{r}$ are the spectral centroid of the upper and lower band, and $c$ is the
+			order highest frequency spectral component in the lower band.
+
+			\citet{williams2007perceptually} employ a spectral tilt to manipulate spectral centroid, applying
+			gain to the partials of a signal as a linear function of their frequency. This allows the spectral
+			centroid to be moved up or down in frequency while still retaining the frequency content of the
+			signal. A disadvantage of this method is that the change in centroid cannot be easily parameterised
+			as it depends on the content of the signal being processed.
+
+			Another way to move the spectral centroid is by introducing a new band of energy into the spectrum.
+			This is conceptually similar to the two band method discussed previously but allows the second band
+			to contain frequency content which was not in the original signal. As before the overall spectral
+			centroid can be moved by adjusting the relative amplitudes of the original signal and the new band
+			of energy. This method also proved difficult to parameterise as destructive superposition could
+			occur between the partials of the two signals being summed.
+
+		\subsubsection*{Spectral Spread}
+			The spectral spread of a signal, $\sigma^{2}$, is the second central moment (variance) of the
+			spectrum. It is calculated using Equation \ref{eq:SpectralSpread}.
+
+			\begin{equation}
+				\sigma^{2} = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{2}}
+				                  {\sum_{n = 1}^{N} a_{n}}
+				\label{eq:SpectralSpread}
+			\end{equation}
+
+		\subsubsection*{Spectral Skewness}
+			The spectral skewness of a signal, $\gamma$, is the third standardised moment of the spectrum. It is
+			calculated using Equation \ref{eq:SpectralSkewness}.
+
+			\begin{equation}
+				\gamma = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{3}}
+					      {\sigma^{3}\sum_{n = 1}^{N} a_{n}}
+				\label{eq:SpectralSkewness}
+			\end{equation}
+
+		\subsubsection*{Spectral Kurtosis}
+			The spectral Kurtosis of a signal, $\kappa$, is the fourth standardised moment of the spectrum. It
+			is calculated using Equation \ref{eq:SpectralKurtosis}.
+
+			\begin{equation}
+				\kappa = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{4}}
+					      {\sigma^{4}\sum_{n = 1}^{N} a_{n}}
+				\label{eq:SpectralKurtosis}
+			\end{equation}
 
 	\subsection{Tristimulus}
 	\label{sec:FeatureControl-Parameterisation-Tristimulus}
@@ -93,8 +133,9 @@
 		from zero to one. Zero meaning there is no energy in that set of harmonics, one meaning the signal is
 		entirely composed of those harmonics.
 
-		A generalised from of these metrics measures the amplitude ratio, $R$, of a specific set of partials,
-		$S$, and a set which includes that set, $F$. This is shown in Equation \ref{eq:GeneralTristimulus}.
+		A generalised from of these metrics measures the amplitude ratio, $R$, of a specific set of spectral
+		components, $S$, and a set which includes that set, $F$. This is shown in Equation
+		\ref{eq:GeneralTristimulus}.
 
 		\[ A = \sum_{n \in F} a_{n} \]
 		\[ B = \sum_{n \in S} a_{n}, \quad S \subseteq F \]
@@ -103,10 +144,8 @@
 			\label{eq:GeneralTristimulus}
 		\end{equation}
 
-		Where $a_{n}$ is the amplitude of the $n$\super{th} partial in the signal.
-
-		This ratio can be adjusted by applying gain to the partials in $S$. To attain a particular value of $R$
-		the required gain, $m$, can be calculated using Equation \ref{eq:GeneralTristimulusManipulation}.
+		This ratio can be adjusted by applying gain to the spectral components in $S$. To attain a particular value
+		of $R$ the required gain, $m$, can be calculated using Equation \ref{eq:GeneralTristimulusManipulation}.
 
 		\begin{equation}
 			m = \frac{R(B - A)}{B(R - 1)}, \quad 0 \leq R < 1
@@ -169,10 +208,10 @@
 			\label{eq:GeneralOddness}
 		\end{equation}
 
-		Like Equation \ref{eq:GeneralTristimulus} this measure the ratio of amplitudes of a set of frequencies and
-		a larger set of frequencies. This time using the squares of the amplitudes and taking the square root
-		afterwards. The value of the ratio can be altered by applying gain to the partials in the set $S$. The
-		required gain factor, $m$, is calculated using Equation \ref{eq:GeneralOddnessManipulation}.
+		Like Equation \ref{eq:GeneralTristimulus} this measure the ratio of amplitudes of a set of frequencies and a
+		larger set of frequencies. This time using the squares of the amplitudes and taking the square root
+		afterwards. The value of the ratio can be altered by applying gain to the spectral components in the set
+		$S$. The required gain factor, $m$, is calculated using Equation \ref{eq:GeneralOddnessManipulation}.
 
 		\begin{equation}
 			m = \sqrt{\frac{R^{2}(B - A)}{B(R^{2} - 1)}}, \quad 0 \leq R < 1
@@ -199,9 +238,9 @@
 		$\frac{f_{0}}{2}$Hz from harmonic frequencies.
 
 		Controlling the inharmonicity can prove difficult unless certain criteria are met. Consider two signals, $x$
-		and $y$, which are composed of partials with frequencies in the sets $X$ and $Y$ respectively. Provided that
-		$X \medcap Y = \emptyset$ (i.e. $x$ and $y$ have no frequency component in common) the inharmonicity of $x +
-		y$ is given by Equation \ref{eq:InharmonicitySum}.
+		and $y$, with the same fundamental frequency, which are composed of partials with frequencies in the sets
+		$X$ and $Y$ respectively. Provided that $X \medcap Y = \emptyset$ (i.e. $x$ and $y$ have no frequency
+		component in common) the inharmonicity of $x + y$ is given by Equation \ref{eq:InharmonicitySum}.
 
 		\begin{equation}
 			I = \frac{I_{x}\sum_{\nu \in X} a_{\nu,x}^{2} + I_{y}\sum_{\nu \in Y} a_{\nu,y}^{2}}
@@ -249,9 +288,6 @@
 			\label{eq:JensenIrregularity}
 		\end{equation}
 
-		Where $a_{n}$ is amplitude of the $n$\super{th} partial in the signal and $N$ the total number of partials
-		of which the signal is composed.
-
 		Equation \ref{eq:JensenIrregularity} has an advantage over \ref{eq:KrimphoffIrregularity} in that is
 		produces a normalised value between zero and two. This allows measures of irregularity of two different
 		signals to be compared more easily.
@@ -268,9 +304,9 @@
 		means of the power spectrum of a signal (Equation \ref{eq:Flatness}).
 
 		\begin{equation}
-			\textrm{SF} = \frac{N\sqrt[N]{\prod_{n = 0}^{N - 1} \abs{X[n]}^{2}}}
-			                   {\sum_{n = 0}^{N - 1} \abs{X[n]}^{2}}
-			\label{eq:Flatness}
+			\textrm{SF} = \frac{N\sqrt[N]{\prod_{n = 1}^{N} a_{n}^{2}}}
+				           {\sum_{n = 1}^{N} a_{n}^{2}}
+			\label{eq:PartialFlatness}
 		\end{equation}
 
 		The arithmetic and geometric means of any list of $N$ non-negative numbers, $L$, satisfy the inequality in
@@ -290,31 +326,22 @@
 		same amplitude (white noise). This means the spectral flatness also gives a description of the tonality /
 		noisiness of a signal.
 
-		Any signal which have zero energy at any frequency will produce a spectral flatness of zero using Equation
-		\ref{eq:Flatness}. Musical signals which are composed of a set of frequency partials may have areas of the
-		spectrum with zero energy. Several different sounds with radically different spectral envelopes can then all
-		exhibit a spectral flatness of zero. This is particularly problematic for digitally synthesised signals as
-		they do not have the inherent noise present in recorded sounds.
-
-		The method used by \citet{peeters2004a} mitigates this by splitting the signal into bands. Calculating the
-		spectral flatness as the ratio of the geometric and arithmetic means of the total energy in each band.
-
-		Another measurement which avoids this is to use only the energies in a signal's partials rather than every
-		bin of the power spectrum, giving rise to Equation \ref{eq:PartialFlatness}.
-
-		\begin{equation}
-			\textrm{SF} = \frac{N\sqrt[N]{\prod_{n = 1}^{N} a_{n}^{2}}}
-				           {\sum_{n = 1}^{N} a_{n}^{2}}
-			\label{eq:PartialFlatness}
-		\end{equation}
-
-		This no longer measure the tonality / noisiness of a signal but rather the flatness of its spectral
+		The spectral flatness is traditionally measured using DFT bins as spectral components. This way any signal
+		which has zero energy in any DFT bin will produce a spectral flatness of zero. Musical signals which are
+		composed of a set of frequency partials may have areas of the spectrum with zero energy. Several different
+		sounds with radically different spectral envelopes can then all exhibit a spectral flatness of zero. This is
+		particularly problematic for digitally synthesised signals as they do not have the inherent noise present in
+		recorded sounds. The method used by \citet{peeters2004a} mitigates this by using frequency bands as the
+		spectral components. It is less likely that there will be zero energy in a wider spectral band than a
+		single DFT bin. 
+		
+		Another method to avoid spectral flatnesses of zero is to use the signals partials as spectral components.
+		This no longer measures the tonality / noisiness of a signal but rather the flatness of its spectral
 		envelope.
 
 		The spectral flatness can be controlled by altering the power spectrum such that one of the means changes
 		while the other remains the same. The method discussed here changes the arithmetic mean but preserves the
-		geometric mean. Depending on the method used to calculate the spectral flatness the term spectral component
-		will refer to either a DFT bin, a spectral band or a partial.
+		geometric mean. 
 
 		Consider two disjoint sets, $L$ and $H$, which are each composed of the indices of $k$ spectral components
 		of the signal such that the total energy in the spectral components denoted by $L$ is less than that of the
@@ -332,9 +359,6 @@
 		  	\label{eq:FlatnessManipulation}
 		\end{equation}
 
-		Where $a_{n}$ is the amplitude of the $n$\super{th} spectral component and $N$ the total number of spectral
-		components.
-		
 		The spectral flatness can be increased by using a value of $m$ such that $\sqrt{\frac{A_{L}}{A_{H}}} < m <
 		1$. The maximum possible flatness which can be achieved with the selected spectral components occurs when $m
 		= \sqrt{\frac{A_{L} + A_{H}}{2A_{H}}}$. To decrease the spectral flatness a value of $m$ satisfying $0 < m <
@@ -343,7 +367,7 @@
 		spectral flatness remains the same.
 
 	\subsection{Spectral Slope}
-	\label{sec:FetureControl-Parameterisation-Flatness}
+	\label{sec:FetureControl-Parameterisation-Slope}
 		\note
 		{
 			Should I mention how everybody seems to quote \citet{peeters2004a} for this. He has some weird
