@@ -116,14 +116,27 @@
 		proved difficult to parameterise as destructive superposition could occur between the partials of the two
 		signals being summed.
 
-		\note
-		{
-			The other spectral moments are more difficult to parameterise.
-			\begin{itemize}
-				\item centroid and spread need to remain unchanged.
-				\item Can use intuition about spectral shape to increase decrease them.
-			\end{itemize}
-		}
+		Higher order spectral moments are more difficult to parameterise. The measures depend on the displacement of
+		each spectral component from the centroid, skewness and kurtosis measurements also depend on the spectral
+		spread. To simplify the control of these moments it is necessary to use manipulations which do not alter
+		the moments they depend on. 
+		
+		Controlling the spread while keeping the centroid constant involves adding or removing energy symmetrically
+		about the centroid. Deciding where to add or remove this energy is a complicated process. The frequencies of
+		the spectral components are not likely to be symmetrical about the centroid meaning different gains must be
+		applied to components either side of the centroid. Calculating these gain must be done of a signal by signal
+		basis making if difficult to provide a general solution. These problems are compounded further when trying
+		to control the higher order moments as the spectral spread must be kept constant as well.
+
+		Intuition about what the spectral moments describe can be used to influence them in a simpler manner. These
+		methods do not provide accurate control over a specific moment but allow it to be increased or decreased.
+		Furthermore, they will have an effect on all the spectral moments rather than one in isolation. 
+		
+		Spectral spread can be increased by adding energy at frequencies which are more that one spectral spread
+		from the centroid or reducing the energy at frequencies within one spectral spread of the centroid. Applying
+		the opposite operations will decrease the spectral spread. Spectral skewness can be increased by applying a
+		spectral tilt. A tilt with a positive gradient will decrease the skewness, whereas a negative gradient will
+		increase the skewness. 
 
 	\subsection{Tristimulus}
 	\label{sec:FeatureControl-Parameterisation-Tristimulus}
