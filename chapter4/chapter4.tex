@@ -72,7 +72,6 @@
 			\label{fig:F0Tracking}
 		\end{figure}
 
-
 		In order to use this method the fundamental frequency of a signal must be known in order to create a filter
 		to isolate it. Fundamental tracking is a widely researched field and several algorithms have been presented
 		in the literature several of which are reviewed by \citet{cuadra2001efficient} and
@@ -342,8 +341,108 @@
 			that).
 
 			Bigger system with individual harmonics for low orders and more general nonlinearities for the
-			higher order components.
+			higher order components (over 9\super{th} harmonic), Figure \ref{fig:SpectralShapingSystem}.
+
 		}
+
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}
+				\node (In) at (-1, -1.75) {$x[n]$};
+				\coordinate (InMid) at (0, -1.75);
+				\draw (In) -- (InMid);
+
+				\coordinate (Side) at (0, -0.75);
+				\draw (InMid) -- (Side);
+
+				\node (F0) [draw] at (2, -0.75) {Fundamental Tracker};
+				\node (F0Filter) [draw] at (2, -1.75) {LPF};
+				\draw (InMid) -- (F0Filter);
+				\draw (F0) -- (F0Filter);
+				\draw (Side) -- (F0);
+
+				\node (Add) [operator] at (10.5, -1.75) {+};
+
+				\coordinate (ExciterIn) at (4, -1.75);
+				\draw (F0Filter) -- (ExciterIn);
+
+				% the fundamental
+				\coordinate (F0In) at (4, 1);
+				\node (F0Gain) [gain] at (9, 1) {};
+				\draw (F0In) -- (F0Gain);
+				\coordinate (F0Out) at (9.5, 1);
+				\draw (F0Gain) -- (F0Out);
+				\draw (F0Out) -- (Add);
+
+				% second harmonic
+				\coordinate (F1In) at (4, 0);
+				\draw (F0In) -- (F1In);
+				\node (F1) [draw] at (6.5, 0) {2\super{nd} Harmonic};
+				\draw (F1In) -- (F1);
+
+				\node (F1Gain) [gain] at (9, 0) {};
+				\draw (F1) -- (F1Gain);
+				\coordinate (F1Out) at (9.5, 0);
+				\draw (F1Gain) -- (F1Out);
+				\draw (F1Out) -- (Add);
+
+				% third harmonic
+				\coordinate (F2In) at (4, -1);
+				\draw (F1In) -- (F2In);
+				\node (F2) [draw] at (6.5, -1) {3\super{rd} Harmonic};
+				\draw (F2In) -- (F2);
+
+				\node (F2Gain) [gain] at (9, -1) {};
+				\draw (F2) -- (F2Gain);
+				\coordinate (F2Out) at (9.5, -1);
+				\draw (F2Gain) -- (F2Out);
+				\draw (F2Out) -- (Add);
+
+				% ninth harmonic
+				\coordinate (F8In) at (4, -2.5);
+				\draw (F2In) -- (F8In);
+				\node (F8) [draw] at (6.5, -2.5) {9\super{th} Harmonic};
+				\draw (F8In) -- (F8);
+
+				\node (F8Gain) [gain] at (9, -2.5) {};
+				\draw (F8) -- (F8Gain);
+				\coordinate (F8Out) at (9.5, -2.5);
+				\draw (F8Gain) -- (F8Out);
+				\draw (F8Out) -- (Add);
+
+				\draw [dots] (F2) -- (F8);
+
+				% high order harmonics
+				\coordinate (HighIn) at (4, -3.5);
+				\draw (F8In) -- (HighIn);
+				\node (High) [draw] at (5.7, -3.5) {Nonlinear Device};
+				\draw (HighIn) -- (High);
+
+				\node (HighFilter) [draw] at (8, -3.5) {Filter};
+				\draw (High) -- (HighFilter);
+
+				\node (HighGain) [gain] at (9, -3.5) {};
+				\draw (HighFilter) -- (HighGain);
+				\coordinate (HighOut) at (9.5, -3.5);
+				\draw (HighGain) -- (HighOut);
+				\draw (HighOut) -- (Add);
+
+				% through
+				\coordinate (Through) at (0, -4.5);
+				\draw (InMid) -- (Through);
+				\node (ThroughGain) [gain] at (9, -4.5) {};
+				\draw (Through) -- (ThroughGain);
+				\coordinate (ThroughOut) at (9.5, -4.5);
+				\draw (ThroughGain) -- (ThroughOut);
+				\draw (ThroughOut) -- (Add);
+
+				\node (Out) at (11.5, -1.75) {$y[n]$};
+				\draw (Add) -- (Out);
+
+			\end{tikzpicture}
+			\caption{An Excitation System for Controlling Spectral Structure}
+			\label{fig:SpectralShapingSystem}
+		\end{figure}
 
 \section{Parameterisation of Feature Changes}
 \label{sec:FeatureControl-Parameterisation}
@@ -772,7 +871,7 @@
 		value $10^{\frac{1}{20}(k\nu_{n} - k\nu_{1})}$.
 
 		It is common to measure how the amplitudes of partials decrease with frequency in dB per octave. Equation
-		\ref{eq:PartialSlope} can be altered to produce values in this unit by using the $\log_{2}$ of the
+		\ref{eq:SpectralSlope} can be altered to produce values in this unit by using the $\log_{2}$ of the
 		frequency. To increase the slope by $k$dB per octave each spectral component in the signal should have its
 		amplitude, $a_{n}$, multiplied by the value $10^{\frac{1}{20}(k\log_{2}(\nu_{n}) - k\log_{2}(\nu_{1}))}$.
 
@@ -783,5 +882,18 @@
 		Expand on Section \ref{sec:FeatureControl-Systems} providing functionality to control specific audio
 		features.
 
-		Spectral centroid can be controlled 
+		Spectral moments move depending on where energy is added.
+
+		Tristimulus can be controlled well using individual harmonics generation for the lower bands and a simple
+		nonlinearity for the high band.
+		
+		Odd and Evenness of a signal can be controlled by controlling the parity of a static nonlinearity.
+
+		Inharmonicity is introduced through intermodulation. If partials are isolated their inharmonicity will
+		influence the inharmonicity of harmonics generated from them.
+
+		Irregularity and flatness can be controlled with single harmonics.
+
+		Spectral slope can be controlled by the `smoothness' of a static nonlinearity. Slope can also be defined
+		with individual harmonic amplitudes.
 	}
