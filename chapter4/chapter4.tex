@@ -335,15 +335,39 @@
 		section \ref{sec:FeatureControl-IAP} that it is a homogeneous process allowing it to be applied to a wider
 		range of signals with more predictable effects.
 
-		\note
-		{
-			Using static nonlinearities to create harmonically rich signals (odd, even order distortion and all
-			that).
+	\subsection{Spectral Shaping}
+	\label{sec:FeatureControl-SpectralShaping}
+		While generating individual harmonics allows for full control over the output spectrum it is very
+		inefficient when a large number of new harmonics need to be introduced. For this purpose static
+		nonlinearities prove useful. The characteristic curve of the nonlinearity can be designed to produce a set
+		of harmonics with the desired qualities. The parity of the characteristic curve can be used to control
+		whether odd or even harmonics are generated. The `smoothness' of the curve can also be adjusted to control
+		the roll off of the harmonics amplitudes. The shape of the generated spectrum can then be further shaped by
+		filtering.
 
-			Bigger system with individual harmonics for low orders and more general nonlinearities for the
-			higher order components (over 9\super{th} harmonic), Figure \ref{fig:SpectralShapingSystem}.
+		A spectral shaping system can be constructed in which a static nonlinearity and filter are used to excite a
+		certain set of harmonics and finer control is provided using the individual harmonic generation techniques
+		discussed in Section \ref{sec:FeatureControl-Individuals}. This allows the majority of the harmonics to be
+		excited in an efficient manner only using more complex processing where it is needed.
 
-		}
+		\citet{howard2009acoustics} discusses how low order harmonics sit in separate critical bands whereas high
+		order harmonics are within one critical bandwidth of one another. This means that lower order harmonics are
+		resolved separately by the human hearing system while the high order harmonics are perceived as fused
+		sounds. As the order of harmonics increases their individual amplitudes have less effect on the perceived
+		timbre of the sound. For this reason a harmonic excitation system need only provide control over the
+		individual amplitudes of low order harmonics. 
+
+		\[ f_{0} < 24.7 \left( 4.37n \frac{f_{0}}{1000} + 1 \right) \]
+
+		\begin{equation}
+			n > 1000 \frac{f_{0} - 24.7}{24.7 \times 4.37f_{0}}
+			\label{eq:MaximumIndividualHarmonic}
+		\end{equation}
+
+		\begin{equation}
+			\lim_{f_{0} \to \infty} 1000 \frac{f_{0} - 24.7}{24.7 \times 4.37f_{0}} \approx 9.26
+			\label{eq:IndividualHarmonicLimit}
+		\end{equation}
 
 		\begin{figure}[h!]
 			\centering
