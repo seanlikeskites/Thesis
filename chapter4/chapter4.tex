@@ -357,17 +357,30 @@
 		timbre of the sound. For this reason a harmonic excitation system need only provide control over the
 		individual amplitudes of low order harmonics. 
 
-		\[ f_{0} < 24.7 \left( 4.37n \frac{f_{0}}{1000} + 1 \right) \]
+		Using Equation \ref{eq:ERB} the minimum order for which harmonics lie within one critical bandwidth of one
+		another can be calculated. For a signal with a given fundamental frequency, $f_{0}$, this order, $n$, can be
+		calculated using the inequality in Equation \ref{eq:MinimumFusedHarmonic}.
 
+		\[ f_{0} < 24.7 \left( 4.37n \frac{f_{0}}{1000} + 1 \right) \]
 		\begin{equation}
 			n > 1000 \frac{f_{0} - 24.7}{24.7 \times 4.37f_{0}}
-			\label{eq:MaximumIndividualHarmonic}
+			\label{eq:MinimumFusedHarmonic}
 		\end{equation}
+
+		This value is dependant on the fundamental frequency of the signal. As the frequency rises the minimum value
+		of $n$ asymptotically grows towards 9.26 as shown in Equation \ref{eq:IndividualHarmonicLimit}.
 
 		\begin{equation}
 			\lim_{f_{0} \to \infty} 1000 \frac{f_{0} - 24.7}{24.7 \times 4.37f_{0}} \approx 9.26
 			\label{eq:IndividualHarmonicLimit}
 		\end{equation}
+
+		This leads to the system shown in Figure \ref{fig:SpectralShapingSystem}.
+
+		\note
+		{
+			Details of the system.
+		}
 
 		\begin{figure}[h!]
 			\centering
