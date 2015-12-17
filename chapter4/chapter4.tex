@@ -375,12 +375,9 @@
 			\label{eq:IndividualHarmonicLimit}
 		\end{equation}
 
-		This leads to the system shown in Figure \ref{fig:SpectralShapingSystem}.
-
-		\note
-		{
-			Details of the system.
-		}
+		This leads to the system shown in Figure \ref{fig:SpectralShapingSystem}. This is an expansion of the system
+		shown in Figure \ref{fig:F0Tracking} providing finer control over the amplitudes of the low order harmonics.
+		The fundamental frequency is isolated in the same manner but several exciters are used in parallel.
 
 		\begin{figure}[h!]
 			\centering
@@ -480,6 +477,11 @@
 			\caption{An Excitation System for Controlling Spectral Structure}
 			\label{fig:SpectralShapingSystem}
 		\end{figure}
+
+		Each of the first nine harmonics are generated individually from the isolated fundamental. Higher order
+		harmonics are generated using a static nonlinearity and filter in combination. The filter's primary purpose
+		is to remove any energy present in the first nine harmonics but can also be used to alter the distribution
+		of energy in the higher order harmonics.
 
 \section{Parameterisation of Feature Changes}
 \label{sec:FeatureControl-Parameterisation}
