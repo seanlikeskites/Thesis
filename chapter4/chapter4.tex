@@ -21,7 +21,7 @@
 	as many use cases as possible.
 
 	\subsection{Fundamental Frequency Tracking}
-	\label{sec:FeatureControl-Fundamental}
+	\label{sec:FeatureControl-Systems-Fundamental}
 		The majority of the methods discussed in Section \ref{sec:Excitation-Methods} will cause intermodulation
 		distortion when used on signals with multiple frequency components. As the effects of this intermodulation
 		distortion can be difficult to predict it can be useful to eliminate it altogether. This should make the
@@ -117,7 +117,7 @@
 		single harmonics in the output. This will be covered in the next section.
 
 	\subsection{Individual Harmonic Generation}
-	\label{sec:FeatureControl-Individuals}
+	\label{sec:FeatureControl-Systems-Individuals}
 		Control over which harmonics are excited in a signal can be achieved by exciting individual harmonics. The
 		principle behind this is to isolate the fundamental and then shift its frequency to that of the desired
 		harmonic. This can be achieved using the SSBA, IAP, Spectral Replication and Spectral Stretching methods.
@@ -159,13 +159,13 @@
 			\centering
 			\subfloat[Unprocessed Sample]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloSpectrogram.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/CelloSpectrogram.eps}
 				\label{fig:CelloSpectrogram}
 			}
 			\qquad
 			\subfloat[Filtered Sample]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloFilteredSpectrogram.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/CelloFilteredSpectrogram.eps}
 				\label{fig:CelloFilteredSpectrogram}
 			}
 			\caption{Spectrograms of the cello sample.}
@@ -182,19 +182,19 @@
 			\centering
 			\subfloat[SSBA with a 50\super{th} order filter.]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloSSBASpectrogram.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/CelloSSBASpectrogram.eps}
 				\label{fig:CelloSSBASpectrogram}
 			}
 			\qquad
 			\subfloat[IAP with a 50\super{th} order filter.]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloIAPSpectrogram.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/CelloIAPSpectrogram.eps}
 				\label{fig:CelloIAPSpectrogram}
 			}
 			
 			\subfloat[Synthesis with an STFT window length of 50 samples.]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloSynthesisSpectrogram.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/CelloSynthesisSpectrogram.eps}
 				\label{fig:CelloSynthesisSpectrogram}
 			}
 			\caption{Spectrograms of the cello sample reconstructed using three different methods.}
@@ -246,25 +246,25 @@
 			\centering
 			\subfloat[Cello Sample]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloResults.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/CelloResults.eps}
 				\label{fig:CelloResults}
 			}
 			\qquad
 			\subfloat[Clarinet Sample]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/ClarinetResults.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/ClarinetResults.eps}
 				\label{fig:ClarinetResults}
 			}
 
 			\subfloat[Synthesised Sample]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/SynthResults.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/SynthResults.eps}
 				\label{fig:SynthResults}
 			}
 			\qquad
 			\subfloat[Piano Sample]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/PianoResults.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/PianoResults.eps}
 				\label{fig:PianoResults}
 			}
 			\caption{Mean grades and confidence intervals for each of the stimuli.}
@@ -294,25 +294,25 @@
 			\centering
 			\subfloat[Cello Sample]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/CelloRNonlin.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/CelloRNonlin.eps}
 				\label{fig:CelloRNonlin}
 			}
 			\qquad
 			\subfloat[Clarinet Sample]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/ClarinetRNonlin.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/ClarinetRNonlin.eps}
 				\label{fig:ClarinetRNonlin}
 			}
 
 			\subfloat[Synthesised Sample]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/SynthRNonlin.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/SynthRNonlin.eps}
 				\label{fig:SynthRNonlin}
 			}
 			\qquad
 			\subfloat[Piano Sample]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter3/Images/PianoRNonlin.eps}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/PianoRNonlin.eps}
 				\label{fig:PianoRNonlin}
 			}
 			\caption{R\sub{nonlin} values for each of the stimuli.}
@@ -336,7 +336,7 @@
 		range of signals with more predictable effects.
 
 	\subsection{Spectral Shaping}
-	\label{sec:FeatureControl-SpectralShaping}
+	\label{sec:FeatureControl-Systems-SpectralShaping}
 		While generating individual harmonics allows for full control over the output spectrum it is very
 		inefficient when a large number of new harmonics need to be introduced. For this purpose static
 		nonlinearities prove useful. The characteristic curve of the nonlinearity can be designed to produce a set
@@ -347,8 +347,8 @@
 
 		A spectral shaping system can be constructed in which a static nonlinearity and filter are used to excite a
 		certain set of harmonics and finer control is provided using the individual harmonic generation techniques
-		discussed in Section \ref{sec:FeatureControl-Individuals}. This allows the majority of the harmonics to be
-		excited in an efficient manner only using more complex processing where it is needed.
+		discussed in Section \ref{sec:FeatureControl-Systems-Individuals}. This allows the majority of the harmonics
+		to be excited in an efficient manner only using more complex processing where it is needed.
 
 		\citet{howard2009acoustics} discusses how low order harmonics sit in separate critical bands whereas high
 		order harmonics are within one critical bandwidth of one another. This means that lower order harmonics are
@@ -483,6 +483,34 @@
 		is to remove any energy present in the first nine harmonics but can also be used to alter the distribution
 		of energy in the higher order harmonics.
 
+	\subsection{Superposition}
+	\label{sec:FeatureControl-Systems-Superposition}
+		When processing musical systems additional challenges are met when attempting to shape the spectrum through
+		excitation. One such challenge concerns the superposition of the existing harmonics in a signal and those
+		produced by the excitation. In certain situations these two signals may cause destructive interference.
+		Although the exciter is set to produce energy at a given harmonic when the signals are summed the energy at
+		this harmonic decreases. To calculate the final amplitude of a harmonic after the excited signals have been
+		summed with the original signal the phases and amplitudes of that harmonic in the original and excited
+		signals must be known. This involves performing a full spectral analysis on the input signal. 
+
+		When using a system like that shown in Figure \ref{fig:SpectralShapingSystem} the phases and amplitudes of
+		the excited harmonics depend on the phase and amplitude of the fundamental frequency after the low pass
+		filter. Using the SSBA and IAP techniques, to generate the $n$\super{th} harmonic, the phase of the output
+		is $n$ times that of the input. The phases of the harmonics produced by a static nonlinearity can be
+		determined by calculating the Fourier series of a sinusoid with the nonlinearity applied.
+
+		Calculating this in real time dramatically increases the computational complexity of the system. This
+		complexity can be avoided by avoiding superposition of harmonics. This simplest way to achieve this is by
+		discarding the original signal and constructing the output from only the fundamental and generated
+		harmonics.
+
+	\subsection{Inharmonicity}
+	\label{sec:FeatureControl-Systems-Inharmonicity}
+		\note
+		{
+			Using spectral shifters to adjust the inharmonicity of generated harmonics.
+		}
+
 \section{Parameterisation of Feature Changes}
 \label{sec:FeatureControl-Parameterisation}
 	The systems discussed in Section \ref{sec:FeatureControl-Systems} provide control over where energy is introduced in
@@ -587,7 +615,7 @@
 		conceptually similar to the two band method discussed previously but allows the second band to contain
 		frequency content which was not in the original signal. As before the overall spectral centroid can be moved
 		by adjusting the relative amplitudes of the original signal and the new band of energy. This method also
-		proved difficult to parameterise as destructive superposition could occur between the partials of the two
+		proves difficult to parameterise as destructive superposition could occur between the partials of the two
 		signals being summed.
 
 		Higher order spectral moments are more difficult to parameterise. The measures depend on the displacement of
@@ -916,6 +944,9 @@
 
 \section{Controlling Features with Exciters}
 \label{sec:FeatureControl-Control}
+	This section will take the systems designed in Section \ref{sec:FeatureControl-Systems} and use them to alter audio
+	features using the parametrisation techniques given in Section \ref{sec:FeatureControl-Parameterisation}.
+
 	\note
 	{
 		Expand on Section \ref{sec:FeatureControl-Systems} providing functionality to control specific audio
