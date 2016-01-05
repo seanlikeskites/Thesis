@@ -545,6 +545,16 @@
 
 	\subsection{Inharmonicity}
 	\label{sec:FeatureControl-Systems-Inharmonicity}
+		With a sinusoidal input the SSBA and IAP techniques generate perfectly harmonic partials. As inharmonicity
+		is an important cue for differentiating timbre it is desirable to be able to introduce some inharmonicity
+		to the generated partials.
+
+		Spectral replication allows for generation of partials at any frequency, but in order for their frequency
+		to be accurate the exact fundamental frequency must be known. This causes the system to rely on the
+		accuracy of the fundamental frequency tracking algorithm used meaning a much more complex tracker needs to
+		be used adding to the complexity of the system. A system which provides control over inharmonicity and does
+		not rely on accurate fundamental tracking is shown in Figure \ref{fig:InharmonicitySystem}.
+
 		\begin{figure}[h!]
 			\centering
 			\begin{tikzpicture}
