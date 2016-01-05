@@ -8,8 +8,8 @@
 
 \section{Introduction}
 \label{sec:FeatureControl-Introduction}
-	As discussed in Section \ref{sec:Timbre-Control}, previous studies have attempted to control perceptual features by 
-	controlling specific audio features. This chapter will identify the audio features which can be controlled through 
+	As discussed in Section \ref{sec:Timbre-Control}, previous studies have attempted to control perceptual features by
+	controlling specific audio features. This chapter will identify the audio features which can be controlled through
 	harmonic excitation and which excitation algorithms are the most suitable for given feature changes. 
 
 \section{Harmonic Excitation Systems}
@@ -108,7 +108,7 @@
 		fundamental tracking may be more robust in this situation as it can easily be check whether there is
 		sufficient energy at the detected fundamental frequency. If there is not, the first harmonic which has
 		sufficient magnitude can be isolated and used as the input to the exciter. If this action is taken only the
-		spectral replication and spectral shifting methids will allow for the excitation of evey harmonic as the
+		spectral replication and spectral shifting methods will allow for the excitation of every harmonic as the
 		SSBA and IAP methods only allow for integer multiplications of the frequency.
 
 		The system shown in Figure \ref{fig:F0Tracking} can provide differing levels of flexibility depending on
@@ -347,8 +347,8 @@
 
 		A spectral shaping system can be constructed in which a static nonlinearity and filter are used to excite a
 		certain set of harmonics and finer control is provided using the individual harmonic generation techniques
-		discussed in Section \ref{sec:FeatureControl-Systems-Individuals}. This allows the majority of the harmonics
-		to be excited in an efficient manner only using more complex processing where it is needed.
+		discussed in Section \ref{sec:FeatureControl-Systems-Individuals}. This allows the majority of the
+		harmonics to be excited in an efficient manner only using more complex processing where it is needed.
 
 		\citet{howard2009acoustics} discusses how low order harmonics sit in separate critical bands whereas high
 		order harmonics are within one critical bandwidth of one another. This means that lower order harmonics are
@@ -358,8 +358,8 @@
 		individual amplitudes of low order harmonics. 
 
 		Using Equation \ref{eq:ERB} the minimum order for which harmonics lie within one critical bandwidth of one
-		another can be calculated. For a signal with a given fundamental frequency, $f_{0}$, this order, $n$, can be
-		calculated using the inequality in Equation \ref{eq:MinimumFusedHarmonic}.
+		another can be calculated. For a signal with a given fundamental frequency, $f_{0}$, this order, $n$, can
+		be calculated using the inequality in Equation \ref{eq:MinimumFusedHarmonic}.
 
 		\[ f_{0} < 24.7 \left( 4.37n \frac{f_{0}}{1000} + 1 \right) \]
 		\begin{equation}
@@ -367,17 +367,18 @@
 			\label{eq:MinimumFusedHarmonic}
 		\end{equation}
 
-		This value is dependant on the fundamental frequency of the signal. As the frequency rises the minimum value
-		of $n$ asymptotically grows towards 9.26 as shown in Equation \ref{eq:IndividualHarmonicLimit}.
+		This value is dependant on the fundamental frequency of the signal. As the frequency rises the minimum
+		value of $n$ asymptotically grows towards 9.26 as shown in Equation \ref{eq:IndividualHarmonicLimit}.
 
 		\begin{equation}
 			\lim_{f_{0} \to \infty} 1000 \frac{f_{0} - 24.7}{24.7 \times 4.37f_{0}} \approx 9.26
 			\label{eq:IndividualHarmonicLimit}
 		\end{equation}
 
-		This leads to the system shown in Figure \ref{fig:SpectralShapingSystem}. This is an expansion of the system
-		shown in Figure \ref{fig:F0Tracking} providing finer control over the amplitudes of the low order harmonics.
-		The fundamental frequency is isolated in the same manner but several exciters are used in parallel.
+		This leads to the system shown in Figure \ref{fig:SpectralShapingSystem}. This is an expansion of the
+		system shown in Figure \ref{fig:F0Tracking} providing finer control over the amplitudes of the low order
+		harmonics.  The fundamental frequency is isolated in the same manner but several exciters are used in
+		parallel.
 
 		\begin{figure}[h!]
 			\centering
@@ -474,7 +475,7 @@
 				\draw (Add) -- (Out);
 
 			\end{tikzpicture}
-			\caption{An Excitation System for Controlling Spectral Structure}
+			\caption{An excitation system for controlling spectral structure.}
 			\label{fig:SpectralShapingSystem}
 		\end{figure}
 
@@ -502,9 +503,9 @@
 		Calculating this in real time dramatically increases the computational complexity of the system. This
 		complexity can be avoided by avoiding superposition of harmonics. This simplest way to achieve this is by
 		discarding the original signal and constructing the output from only the fundamental and generated
-		harmonics. This destroys most of the timbral characteristics of a signal completely reconstructing its
-		spectrum. For situations where a dramatic alteration of timbre is desired this can be a useful technique but
-		for more subtle timbral manipulations it is better to preserve more of the original spectral structure.
+		harmonics. This destroys most of the timbral characteristics of a signal, completely reconstructing its
+		spectrum. For situations where a dramatic alteration of timbre is desired this can be a useful technique
+		but for more subtle timbral manipulations it is better to preserve more of the original spectral structure.
 
 		A less intrusive method is to filter energy out of the input signal only at the frequencies which are to be
 		excited. For the system in Figure \ref{fig:SpectralShapingSystem} this can be implemented using a series of
@@ -514,31 +515,160 @@
 
 		Removing harmonics from the original signal looses any phase information that was present for those
 		frequencies. The newly generated harmonics may not have the same phase as those that have been removed
-		potentially causing unwanted timbral effects. \todo{Can we find some literature on the effects of phases of
-		harmonics on timbre.} A system which preserves as much of the information of the original signal as possible
-		would only generate new harmonics where they were not present in the original signal.
+		potentially causing unwanted timbral effects. The phases of a signal's partials influence its temporal
+		features. \citet{plomp1969effect} discuss the audible effects of this for harmonic signals, concluding that
+		the effect is more subtle than, but independent to, that of changing the harmonics' amplitudes. They state
+		that the largest perceptual difference occurs between a signal in which all the harmonics have the same
+		phase and one composed of harmonics with phases alternating between two values $\frac{\pi}{2}$ radians
+		apart.
+
+		For fine control it may be beneficial to separate control of the amplitude and phase of each partial in a
+		signal. This is most easily achieved using the IAP technique as the phase of the input signal is already
+		exposed in the calculation. Introducing a phase parameter, $\theta$, to Equation \ref{eq:IAP} gives rise to
+		Equation \ref{eq:IAPWithPhase}.
+
+		\begin{equation}
+			y[n] = \abs{x_{a}[n]} \cos \left( h\arg(x_{a}[n] + \theta) \right), \quad h \in \textbf{N}
+			\label{eq:IAPWithPhase}
+		\end{equation}
+
+		Assuming a sinusoidal input this new parameter controls the phase of the generated harmonic relative to
+		that of the input. 
+		
+		For introducing new spectral content with a specific amplitude and phase Equation \ref{eq:IAPWithPhase}
+		suffices. Separate control of the phase and amplitudes of existing partials can be achieved in two ways.
+		The first is to use an analysis / resynthesis system in which the amplitudes and phases of the partials are
+		adjusted in the frequency domain. The second approach is to use zero phase filters to amplify or attenuate
+		partials and phase shifting techniques to adjust their phases. Both of these approaches introduce delay
+		into the system be it through the windowing used for spectral analysis or the delay introduced to make
+		filters causal.
 
 	\subsection{Inharmonicity}
 	\label{sec:FeatureControl-Systems-Inharmonicity}
-		\note
-		{
-			Using spectral shifters to adjust the inharmonicity of generated harmonics.
-		}
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}
+				\node (In) at (-1, -1.75) {$x[n]$};
+				\coordinate (InMid) at (0, -1.75);
+				\draw (In) -- (InMid);
+
+				\coordinate (Side) at (0, -0.75);
+				\draw (InMid) -- (Side);
+
+				\node (F0) [draw] at (2, -0.75) {Fundamental Tracker};
+				\node (F0Filter) [draw] at (2, -1.75) {LPF};
+				\draw (InMid) -- (F0Filter);
+				\draw (F0) -- (F0Filter);
+				\draw (Side) -- (F0);
+
+				\node (Add) [operator] at (11.5, -1.75) {+};
+
+				\coordinate (ExciterIn) at (4, -1.75);
+				\draw (F0Filter) -- (ExciterIn);
+
+				% the fundamental
+				\coordinate (F0In) at (4, 1);
+				\node (F0Gain) [gain] at (10, 1) {};
+				\draw (F0In) -- (F0Gain);
+				\coordinate (F0Out) at (10.5, 1);
+				\draw (F0Gain) -- (F0Out);
+				\draw (F0Out) -- (Add);
+
+				% second harmonic
+				\coordinate (F1In) at (4, 0);
+				\draw (F0In) -- (F1In);
+				\node (F1) [draw] at (6, 0) {2\super{nd} Harmonic};
+				\draw (F1In) -- (F1);
+
+				\node (F1Shifter) [draw] at (8.5, 0) {Shifter};
+				\draw (F1) -- (F1Shifter);
+
+				\node (F1Gain) [gain] at (10, 0) {};
+				\draw (F1Shifter) -- (F1Gain);
+				\coordinate (F1Out) at (10.5, 0);
+				\draw (F1Gain) -- (F1Out);
+				\draw (F1Out) -- (Add);
+
+				% third harmonic
+				\coordinate (F2In) at (4, -1);
+				\draw (F1In) -- (F2In);
+				\node (F2) [draw] at (6, -1) {3\super{rd} Harmonic};
+				\draw (F2In) -- (F2);
+
+				\node (F2Shifter) [draw] at (8.5, -1) {Shifter};
+				\draw (F2) -- (F2Shifter);
+
+				\node (F2Gain) [gain] at (10, -1) {};
+				\draw (F2Shifter) -- (F2Gain);
+				\coordinate (F2Out) at (10.5, -1);
+				\draw (F2Gain) -- (F2Out);
+				\draw (F2Out) -- (Add);
+
+				% ninth harmonic
+				\coordinate (F8In) at (4, -2.5);
+				\draw (F2In) -- (F8In);
+				\node (F8) [draw] at (6, -2.5) {9\super{th} Harmonic};
+				\draw (F8In) -- (F8);
+
+				\node (F8Shifter) [draw] at (8.5, -2.5) {Shifter};
+				\draw (F8) -- (F8Shifter);
+
+				\node (F8Gain) [gain] at (10, -2.5) {};
+				\draw (F8Shifter) -- (F8Gain);
+				\coordinate (F8Out) at (10.5, -2.5);
+				\draw (F8Gain) -- (F8Out);
+				\draw (F8Out) -- (Add);
+
+				\draw [dots] (F2) -- (F8);
+
+				% high order harmonics
+				\coordinate (HighIn) at (4, -3.5);
+				\draw (F8In) -- (HighIn);
+				\node (High) [draw] at (6, -3.5) {Nonlinear Device};
+				\draw (HighIn) -- (High);
+
+				\node (HighFilter) [draw] at (8.5, -3.5) {Filter};
+				\draw (High) -- (HighFilter);
+
+				\node (HighGain) [gain] at (10, -3.5) {};
+				\draw (HighFilter) -- (HighGain);
+				\coordinate (HighOut) at (10.5, -3.5);
+				\draw (HighGain) -- (HighOut);
+				\draw (HighOut) -- (Add);
+
+				% through
+				\coordinate (Through) at (0, -4.5);
+				\draw (InMid) -- (Through);
+				\node (ThroughGain) [gain] at (10, -4.5) {};
+				\draw (Through) -- (ThroughGain);
+				\coordinate (ThroughOut) at (10.5, -4.5);
+				\draw (ThroughGain) -- (ThroughOut);
+				\draw (ThroughOut) -- (Add);
+
+				\node (Out) at (12.5, -1.75) {$y[n]$};
+				\draw (Add) -- (Out);
+
+			\end{tikzpicture}
+			\caption{An extension of the system in Figure \ref{fig:SpectralShapingSystem} to allow for control
+			         of inharmonicity.}
+			\label{fig:InharmonicitySystem}
+		\end{figure}
+		
 
 \section{Parameterisation of Feature Changes}
 \label{sec:FeatureControl-Parameterisation}
-	The systems discussed in Section \ref{sec:FeatureControl-Systems} provide control over where energy is introduced in
-	a signal's spectrum. Large bands of energy can be introduced or finer control over specific harmonics can be
+	The systems discussed in Section \ref{sec:FeatureControl-Systems} provide control over where energy is introduced
+	in a signal's spectrum. Large bands of energy can be introduced or finer control over specific harmonics can be
 	provided. This section discusses how the control of low level audio features can be parameterised using these kinds
 	of manipulations. The measurement of each audio feature is discussed and methods by which a single parameter can be
 	used to adjust them are suggested.
 
 	Several of the audio features discussed involve analysis of a signals spectrum. To simplify the notation of these
-	features it is useful to introduce the concept of a spectral component. A spectral component describes a part of the
-	signals spectrum, be it a spectral bin obtained from a DFT, a partial of the signal, or a frequency band taken from
-	the spectrum. In the following equations, unless otherwise stated, the symbols $a_{n}$ and $\nu_{n}$ will refer to
-	the amplitude and frequency of the $n$\super{th} spectral component of a signal respectively. $N$ denotes the total
-	number of spectral components in the signal.
+	features it is useful to introduce the concept of a spectral component. A spectral component describes a part of
+	the signals spectrum, be it a spectral bin obtained from a DFT, a partial of the signal, or a frequency band taken
+	from the spectrum. In the following equations, unless otherwise stated, the symbols $a_{n}$ and $\nu_{n}$ will
+	refer to the amplitude and frequency of the $n$\super{th} spectral component of a signal respectively. $N$ denotes
+	the total number of spectral components in the signal.
 
 	\subsection{Spectral Moments}
 	\label{sec:FeatureControl-Parameterisation-SpectralMoments}
@@ -576,8 +706,8 @@
 		\end{equation}
 
 		The spectral skewness measure how symmetrical a spectrum is about its centroid. A negative skewness
-		describes a spectrum with more energy above its centroid while a positive skewness describes the opposite. A
-		skewness of zeros describes a spectrum with equal energy either side of its centroid.
+		describes a spectrum with more energy above its centroid while a positive skewness describes the opposite.
+		A skewness of zeros describes a spectrum with equal energy either side of its centroid.
 
 		The spectral kurtosis of a signal, $\kappa$, is the fourth standardised moment of the spectrum. It
 		is calculated using Equation \ref{eq:SpectralKurtosis}.
@@ -602,11 +732,12 @@
 		that frequency.
 
 		Less destructive methods include that used by \citet{zacharakis2011an} who split the signal into two bands,
-		one above and one below the spectral centroid. The relative amplitudes of these bands can then be altered to
-		adjust the spectral centroid. This preserves more of the original signals structure, the relative levels of
-		partials within each band remaining the same. Using this method the new spectral centroid will lie somewhere
-		between the respective centroids of the two bands. The relative amplitudes of the two bands required to give
-		a certain spectral centroid, $\mu$, can be calculated using Equation \ref{eq:SpectralCentroidManipulation}.
+		one above and one below the spectral centroid. The relative amplitudes of these bands can then be altered
+		to adjust the spectral centroid. This preserves more of the original signals structure, the relative levels
+		of partials within each band remaining the same. Using this method the new spectral centroid will lie
+		somewhere between the respective centroids of the two bands. The relative amplitudes of the two bands
+		required to give a certain spectral centroid, $\mu$, can be calculated using Equation
+		\ref{eq:SpectralCentroidManipulation}.
 
 		\begin{equation}
 			\frac{\sum_{n = c + 1}^{N} a_{n}}
@@ -625,39 +756,39 @@
 		this method is that the change in centroid cannot be easily parameterised as it depends on the content of
 		the signal being processed.
 
-		Another way to move the spectral centroid is by introducing a new band of energy into the spectrum.  This is
-		conceptually similar to the two band method discussed previously but allows the second band to contain
-		frequency content which was not in the original signal. As before the overall spectral centroid can be moved
-		by adjusting the relative amplitudes of the original signal and the new band of energy. This method also
-		proves difficult to parameterise as destructive superposition could occur between the partials of the two
-		signals being summed.
+		Another way to move the spectral centroid is by introducing a new band of energy into the spectrum.  This
+		is conceptually similar to the two band method discussed previously but allows the second band to contain
+		frequency content which was not in the original signal. As before the overall spectral centroid can be
+		moved by adjusting the relative amplitudes of the original signal and the new band of energy. This method
+		also proves difficult to parameterise as destructive superposition could occur between the partials of the
+		two signals being summed.
 
-		Higher order spectral moments are more difficult to parameterise. The measures depend on the displacement of
-		each spectral component from the centroid, skewness and kurtosis measurements also depend on the spectral
-		spread. To simplify the control of these moments it is necessary to use manipulations which do not alter
-		the moments they depend on. 
+		Higher order spectral moments are more difficult to parameterise. The measures depend on the displacement
+		of each spectral component from the centroid, skewness and kurtosis measurements also depend on the
+		spectral spread. To simplify the control of these moments it is necessary to use manipulations which do not
+		alter the moments they depend on. 
 		
 		Controlling the spread while keeping the centroid constant involves adding or removing energy symmetrically
-		about the centroid. Deciding where to add or remove this energy is a complicated process. The frequencies of
-		the spectral components are not likely to be symmetrical about the centroid meaning different gains must be
-		applied to components either side of the centroid. Calculating these gain must be done of a signal by signal
-		basis making if difficult to provide a general solution. These problems are compounded further when trying
-		to control the higher order moments as the spectral spread must be kept constant as well.
+		about the centroid. Deciding where to add or remove this energy is a complicated process. The frequencies
+		of the spectral components are not likely to be symmetrical about the centroid meaning different gains must
+		be applied to components either side of the centroid. Calculating these gain must be done of a signal by
+		signal basis making if difficult to provide a general solution. These problems are compounded further when
+		trying to control the higher order moments as the spectral spread must be kept constant as well.
 
 		Intuition about what the spectral moments describe can be used to influence them in a simpler manner. These
 		methods do not provide accurate control over a specific moment but allow it to be increased or decreased.
 		Furthermore, they will have an effect on all the spectral moments rather than one in isolation. 
 		
 		Spectral spread can be increased by adding energy at frequencies which are more that one spectral spread
-		from the centroid or reducing the energy at frequencies within one spectral spread of the centroid. Applying
-		the opposite operations will decrease the spectral spread. Spectral skewness can be increased by applying a
-		spectral tilt. A tilt with a positive gradient will decrease the skewness, whereas a negative gradient will
-		increase the skewness. 
+		from the centroid or reducing the energy at frequencies within one spectral spread of the centroid.
+		Applying the opposite operations will decrease the spectral spread. Spectral skewness can be increased by
+		applying a spectral tilt. A tilt with a positive gradient will decrease the skewness, whereas a negative
+		gradient will increase the skewness. 
 
 	\subsection{Tristimulus}
 	\label{sec:FeatureControl-Parameterisation-Tristimulus}
-		The three tristimulus metrics can be calculated using Equations \ref{eq:Tristimulus1}, \ref{eq:Tristimulus2}
-		and \ref{eq:Tristimulus3}.
+		The three tristimulus metrics can be calculated using Equations \ref{eq:Tristimulus1},
+		\ref{eq:Tristimulus2} and \ref{eq:Tristimulus3}.
 		
 		\begin{equation}
 			T_{1} = \frac{h_{1}}{\sum_{n = 1}^{N} h_{n}}
@@ -758,8 +889,8 @@
 			\label{eq:GeneralOddness}
 		\end{equation}
 
-		Like Equation \ref{eq:GeneralTristimulus} this measure the ratio of amplitudes of a set of frequencies and a
-		larger set of frequencies. This time using the squares of the amplitudes and taking the square root
+		Like Equation \ref{eq:GeneralTristimulus} this measure the ratio of amplitudes of a set of frequencies and
+		a larger set of frequencies. This time using the squares of the amplitudes and taking the square root
 		afterwards. The value of the ratio can be altered by applying gain to the spectral components in the set
 		$S$. The required gain factor, $m$, is calculated using Equation \ref{eq:GeneralOddnessManipulation}.
 
@@ -787,9 +918,9 @@
 		the fundamental and one describing a signal where all partials have frequencies lying
 		$\frac{f_{0}}{2}$Hz from harmonic frequencies.
 
-		Controlling the inharmonicity can prove difficult unless certain criteria are met. Consider two signals, $x$
-		and $y$, with the same fundamental frequency, which are composed of partials with frequencies in the sets
-		$X$ and $Y$ respectively. Provided that $X \medcap Y = \emptyset$ (i.e. $x$ and $y$ have no frequency
+		Controlling the inharmonicity can prove difficult unless certain criteria are met. Consider two signals,
+		$x$ and $y$, with the same fundamental frequency, which are composed of partials with frequencies in the
+		sets $X$ and $Y$ respectively. Provided that $X \medcap Y = \emptyset$ (i.e. $x$ and $y$ have no frequency
 		component in common) the inharmonicity of $x + y$ is given by Equation \ref{eq:InharmonicitySum}.
 
 		\begin{equation}
@@ -879,11 +1010,11 @@
 		The spectral flatness is traditionally measured using DFT bins as spectral components. This way any signal
 		which has zero energy in any DFT bin will produce a spectral flatness of zero. Musical signals which are
 		composed of a set of frequency partials may have areas of the spectrum with zero energy. Several different
-		sounds with radically different spectral envelopes can then all exhibit a spectral flatness of zero. This is
-		particularly problematic for digitally synthesised signals as they do not have the inherent noise present in
-		recorded sounds. The method used by \citet{peeters2004a} mitigates this by using frequency bands as the
-		spectral components. It is less likely that there will be zero energy in a wider spectral band than a
-		single DFT bin. 
+		sounds with radically different spectral envelopes can then all exhibit a spectral flatness of zero. This
+		is particularly problematic for digitally synthesised signals as they do not have the inherent noise
+		present in recorded sounds. The method used by \citet{peeters2004a} mitigates this by using frequency bands
+		as the spectral components. It is less likely that there will be zero energy in a wider spectral band than
+		a single DFT bin. 
 		
 		Another method to avoid spectral flatnesses of zero is to use the signals partials as spectral components.
 		This no longer measures the tonality / noisiness of a signal but rather the flatness of its spectral
@@ -910,11 +1041,11 @@
 		\end{equation}
 
 		The spectral flatness can be increased by using a value of $m$ such that $\sqrt{\frac{A_{L}}{A_{H}}} < m <
-		1$. The maximum possible flatness which can be achieved with the selected spectral components occurs when $m
-		= \sqrt{\frac{A_{L} + A_{H}}{2A_{H}}}$. To decrease the spectral flatness a value of $m$ satisfying $0 < m <
-		\sqrt{\frac{A_{L}}{A_{H}}}$ or $m > 1$ should be used. When $m = \sqrt{\frac{A_{L}}{A_{H}}}$ the arithmetic
-		mean is unchanged, this provides a point at which the energy has been redistributed in the spectrum but the
-		spectral flatness remains the same.
+		1$. The maximum possible flatness which can be achieved with the selected spectral components occurs when
+		$m = \sqrt{\frac{A_{L} + A_{H}}{2A_{H}}}$. To decrease the spectral flatness a value of $m$ satisfying $0 <
+		m < \sqrt{\frac{A_{L}}{A_{H}}}$ or $m > 1$ should be used. When $m = \sqrt{\frac{A_{L}}{A_{H}}}$ the
+		arithmetic mean is unchanged, this provides a point at which the energy has been redistributed in the
+		spectrum but the spectral flatness remains the same.
 
 	\subsection{Spectral Slope}
 	\label{sec:FetureControl-Parameterisation-Slope}
