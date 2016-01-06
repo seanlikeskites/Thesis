@@ -155,7 +155,8 @@
 		same distortion scale. Research has been carried out into the timbre of distortion as discussed in Section
 		\ref{sec:Excitation-Timbre}.
 
-		\subsection{Nonlinear Modelling}
+	\subsection{Nonlinear Modelling}
+	\label{sec:Excitation-Analysis-Modelling}
 		Various techniques for modelling nonlinear systems have been developed in the mathematics and engineering
 		literature. These models allow for more in depth analysis of a system as well as replicating its effects in
 		the digital domain. Summaries of some of these modelling techniques can be found in the work by
@@ -608,7 +609,7 @@
 	performance with regard to particular criteria are suggested and discussed. 
 
 	\subsection{Static Nonlinearities}
-	\label{sec:Excitation-Statics}
+	\label{sec:Excitation-Methods-Statics}
 		Static nonlinearities are simple mappings between input value and output value. A nonlinear function is
 		applied individually to each sample of a signal. They can be described by a characteristic curves which
 		shows the relationship between input and output values.
@@ -834,7 +835,7 @@
 %		\subsubsection*{Naturalness}
 
 	\subsection{Rectification}
-	\label{sec:Excitation-Rectification}
+	\label{sec:Excitation-Methods-Rectification}
 		Rectification is a special case of static nonlinearity. Signals can be either half or full wave rectified,
 		as shown in Equations \ref{eq:HalfWaveRectification} and \ref{eq:FullWaveRectification} respectively.
 
@@ -915,7 +916,7 @@
 %		\subsubsection*{Naturalness}
 
 	\subsection{Integrator}
-	\label{sec:Excitation-Integrator}
+	\label{sec:Excitation-Methods-Integrator}
 		Equation \ref{eq:Integrator} shows an Integrator adapted from the one described by \citet{larsen2004audio}.
 
 		\begin{equation}
@@ -988,7 +989,7 @@
 %		\subsubsection*{Naturalness}
 
 	\subsection{Multiplier}
-	\label{sec:Excitation-Multiplier}
+	\label{sec:Excitation-Methods-Multiplier}
 		Multipliers are a subset of static nonlinearities in which input samples are raised to a positive integer
 		power as shown in Equation \ref{eq:Multiplier}.
 
@@ -1099,7 +1100,7 @@
 %		\subsubsection*{Naturalness}
 
 	\subsection{Single Side Band Automodulation}
-	\label{sec:Excitation-SSBA}
+	\label{sec:Excitation-Methods-SSBA}
 		Single sideband automodulation (SSBA) utilises the concept of single sideband modulation
 		\citep{corinthios2009signals}. This allows you to apply amplitude modulation to a signal and only produce
 		either the sum or difference sideband.
@@ -1174,7 +1175,7 @@
 		\end{equation}
 
 		\subsubsection*{Complexity}
-			Compared with the harmonic excitation methods discussed previously, single side band automodulation
+			Compared with the harmonic excitation methods discussed previously, single sideband automodulation
 			has greater complexity. A Hilbert transform must be applied before a complex exponentiation
 			operation for each sample. The Hilbert transform filter used must give similar response for a wide
 			range of frequencies so the resulting harmonic excitation gives similar results at different
@@ -1196,7 +1197,7 @@
 
 		\subsubsection*{Spectral Characteristics}
 			SSBA extends the control provided by multipliers as it constrains the minimum frequency introduced
-			as well as the highest. Using Equation \ref{eq:SSB} only the upper side band (the sum frequencies)
+			as well as the highest. Using Equation \ref{eq:SSB} only the upper sideband (the sum frequencies)
 			of the modulation is produced. The highest and lowest frequency components of the output are that
 			of the input signal multiplied by the exponent. Between these two frequencies lie all the other
 			harmonic and intermodulation components created. This can be seen in figure \ref{fig:SSBA3Spectra},
@@ -1238,7 +1239,7 @@
 %		\subsubsection*{Naturalness}
 
 	\subsection{Instantaneous Amplitude and Phase}
-	\label{sec:Excitation-IAP}
+	\label{sec:Excitation-Methods-IAP}
 		In this method, the instantaneous amplitude and phase (IAP) of the analytic signal are calculated. These
 		values are then used to aid in the construction of harmonics. The instantaneous amplitude of the analytic
 		signal is found by taking its absolute value, $\abs{x_{a}[n]}$. The instantaneous phase is found by taking
@@ -1303,7 +1304,7 @@
 %		\subsubsection*{Naturalness}
 
 	\subsection{Spectral Replication}
-	\label{sec:Excitation-SpectralReplication}
+	\label{sec:Excitation-Methods-SpectralReplication}
 		The principle behind spectral replication is to reproduce the spectral structure of a signal at higher
 		frequencies as shown in Figure \ref{fig:SpectralReplication}.
 
@@ -1314,7 +1315,7 @@
 			\label{fig:SpectralReplication}
 		\end{figure}
 
-		This spectral shift is easily implemented through the use of single side band modulation with a complex
+		This spectral shift is easily implemented through the use of single sideband modulation with a complex
 		sinusoid as shown in Equation \ref{eq:SpectralReplication}.
 
 		\begin{equation}
@@ -1359,7 +1360,7 @@
 %		\subsubsection*{Naturalness}
 
 	\subsection{Spectral Folding}
-	\label{sec:Excitation-SpectralFolding}
+	\label{sec:Excitation-Methods-SpectralFolding}
 		Spectral folding uses upsampling in order to replicate parts of the spectrum at higher frequencies. In
 		order for the output signal to have the same sampling frequency as the input the signal is 
 		downsampled by a factor $k$ before being upsampled by the same factor. 
@@ -1428,7 +1429,7 @@
 %		\subsubsection*{Naturalness}
 
 	\subsection{Spectral Stretching}
-	\label{sec:Excitation-SpectralStretching}
+	\label{sec:Excitation-Methods-SpectralStretching}
 		The principle of spectral stretching is to scale the spectrum of a signal along the frequency axis. This
 		effect is shown in Figure \ref{fig:SpectralStretching}.
 
@@ -1491,8 +1492,8 @@
 
 			Ignoring the effect of spectral leakage, the bandwidth of the output signal will be that of the
 			input multiplied by the stretching factor. This allows for effective minimisation of aliasing as
-			the signal can be low pass filtered before processing as done with single side band automodulation
-			(Section \ref{sec:Excitation-SSBA}).
+			the signal can be low pass filtered before processing as done with single sideband automodulation
+			(Section \ref{sec:Excitation-Methods-SSBA}).
 		
 		\subsubsection*{Temporal Characteristics}
 			A simple phase vocoder implementation produces artefacts when processing transients in a signal.
