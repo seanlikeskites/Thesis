@@ -446,6 +446,7 @@
 				\draw (F8Out) -- (Add);
 
 				\draw [dots] (F2) -- (F8);
+				\draw [dots] (F2Gain) -- (F8Gain);
 
 				% high order harmonics
 				\coordinate (HighIn) at (4, -3.5);
@@ -497,8 +498,9 @@
 		When using a system like that shown in Figure \ref{fig:SpectralShapingSystem} the phases and amplitudes of
 		the excited harmonics depend on the phase and amplitude of the fundamental frequency after the low pass
 		filter. Using the SSBA and IAP techniques, to generate the $n$\super{th} harmonic, the phase of the output
-		is $n$ times that of the input. The phases of the harmonics produced by a static nonlinearity can be
-		determined by calculating the Fourier series of a sinusoid with the nonlinearity applied.
+		is $n$ times that of the input after the Hilbert transform filter has been applied. The phases of the
+		harmonics produced by a static nonlinearity can be determined by calculating the Fourier series of a
+		sinusoid with the nonlinearity applied.
 
 		Calculating this in real time dramatically increases the computational complexity of the system. This
 		complexity can be avoided by avoiding superposition of harmonics. This simplest way to achieve this is by
@@ -576,6 +578,8 @@
 				\coordinate (ExciterIn) at (4, -1.75);
 				\draw (F0Filter) -- (ExciterIn);
 
+				\node (LPF) [draw] at (2, -3.5) {LPF};
+
 				% the fundamental
 				\coordinate (F0In) at (4, 1);
 				\node (F0Gain) [gain] at (10, 1) {};
@@ -630,12 +634,14 @@
 				\draw (F8Out) -- (Add);
 
 				\draw [dots] (F2) -- (F8);
+				\draw [dots] (F2Shifter) -- (F8Shifter);
+				\draw [dots] (F2Gain) -- (F8Gain);
 
 				% high order harmonics
-				\coordinate (HighIn) at (4, -3.5);
-				\draw (F8In) -- (HighIn);
+				\coordinate (HighIn) at (0, -3.5);
 				\node (High) [draw] at (6, -3.5) {Nonlinear Device};
-				\draw (HighIn) -- (High);
+				\draw (LPF) -- (High);
+				\draw (HighIn) -- (LPF);
 
 				\node (HighFilter) [draw] at (8.5, -3.5) {Filter};
 				\draw (High) -- (HighFilter);
@@ -665,8 +671,27 @@
 		\end{figure}
 
 		As in Figure \ref{fig:SpectralShapingSystem} the second through ninth harmonics are generated individually.
-		Each harmonic can then be shifted in frequency using the single sideband modulation technique shown in
-		Section \ref{sec:Excitation-Methods-SpectralReplication}.
+		This can be done using any method which generates accurate harmonics. Each harmonic is then shifted to the
+		desired frequency using the single sideband modulation technique shown in Section 
+		\ref{sec:Excitation-Methods-SpectralReplication}. This produces partials which deviate from harmonic
+		frequencies by exactly the amount of shift applied.
+
+		The higher order harmonics are not generated individually and as such their inharmonicity cannot be
+		controlled individually. Spectral replication could be used to shift their frequencies as is done with the
+		lower order harmonics. This restricts the higher harmonics to all having the same degree of inharmonicity.
+		This may sound unnatural as in natural tones the inharmonicity of a harmonic is typically dependant on the
+		order of the harmonic (such as in piano tones \citep{young1952inharmonicity}).
+
+		The system in Figure \ref{fig:InharmonicitySystem} provides an alternative method of introducing
+		inharmonicity in the high order harmonics. A separate low pass filter is used to produce an input for the
+		static nonlinearity. If this filter's cutoff frequency is set to isolate the fundamental frequency the
+		nonlinearity will only produce harmonic distortion components. As the cutoff frequency in increased,
+		allowing more partials of the input signal to pass through, the level of intermodulation distortion
+		produced by the nonlinearity increases. The inharmonicity of these intermodulation components will depend
+		on the inharmonicity of the partials in the input signal. This method of introducing inharmonicity is less
+		controllable than using spectral replication but it will produce a different set of inharmonic partials
+		about each harmonic frequency in the output signal. A considerable disadvantage is that it will only create
+		inharmonicities for inputs which already contain a degree of inharmonicity.
 
 \section{Parameterisation of Feature Changes}
 \label{sec:FeatureControl-Parameterisation}
