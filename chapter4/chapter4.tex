@@ -66,7 +66,6 @@
 
 				\node (Out) at (10.5, 1) {$y[n]$};
 				\draw (Add) -- (Out);
-
 			\end{tikzpicture}
 			\caption{Fundamental frequency tracking in a harmonic excitation system.}
 			\label{fig:F0Tracking}
@@ -474,7 +473,6 @@
 
 				\node (Out) at (11.5, -1.75) {$y[n]$};
 				\draw (Add) -- (Out);
-
 			\end{tikzpicture}
 			\caption{An excitation system for controlling spectral structure.}
 			\label{fig:SpectralShapingSystem}
@@ -544,6 +542,11 @@
 		partials and phase shifting techniques to adjust their phases. Both of these approaches introduce delay
 		into the system be it through the windowing used for spectral analysis or the delay introduced to make
 		filters causal.
+
+		\note
+		{
+			Perhaps add these filters and things to the system diagram.
+		}
 
 	\subsection{Inharmonicity}
 	\label{sec:FeatureControl-Systems-Inharmonicity}
@@ -663,7 +666,6 @@
 
 				\node (Out) at (12.5, -1.75) {$y[n]$};
 				\draw (Add) -- (Out);
-
 			\end{tikzpicture}
 			\caption{An extension of the system in Figure \ref{fig:SpectralShapingSystem} to allow for control
 			         of inharmonicity.}
@@ -1127,14 +1129,14 @@
 
 \section{Controlling Features with Exciters}
 \label{sec:FeatureControl-Control}
-	This section will take the systems designed in Section \ref{sec:FeatureControl-Systems} and use them to alter audio
-	features using the parametrisation techniques given in Section \ref{sec:FeatureControl-Parameterisation}.
+	This section will take the systems discussed in Section \ref{sec:FeatureControl-Systems} and use them to alter
+	audio features using the parametrisation techniques given in Section \ref{sec:FeatureControl-Parameterisation}.
+	The system shown in Figure \ref{fig:InharmonicitySystem} provides sufficient flexibility for implementing the
+	majority of these manipulations. The full extent of this system is not needed for some of the simpler modifications
+	so various subsystems of it are used.
 
 	\note
 	{
-		Expand on Section \ref{sec:FeatureControl-Systems} providing functionality to control specific audio
-		features.
-
 		Spectral moments move depending on where energy is added.
 
 		Tristimulus can be controlled well using individual harmonics generation for the lower bands and a simple
@@ -1150,3 +1152,101 @@
 		Spectral slope can be controlled by the `smoothness' of a static nonlinearity. Slope can also be defined
 		with individual harmonic amplitudes.
 	}
+
+	\subsection{Spectral Moments}
+	\label{sec:FeatureControl-Control-SpectralMoments}
+		\note
+		{
+			Single harmonics are not very good for this because they will dominate the spectrum. Generate two
+			bands and use the summing technique from the Section
+			\ref{sec:FeatureControl-Parameterisation-SpectralMoments}.
+		}
+
+	\subsection{Tristimulus}
+	\label{sec:FeatureControl-Control-Tristimulus}
+		\note
+		{
+			Single harmonic generation reigns supreme. This is better than filters as it allows the features of
+			the three bands to be manipulated as well.
+		}
+
+	\subsection{Odd to Even Harmonic Ratio}
+	\label{sec:FeatureControl-Control-HarmonicParityRatio}
+
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}
+				\node (In) at (-1, -2.25) {$x[n]$};
+				\coordinate (InMid) at (0, -2.25);
+				\draw (In) -- (InMid);
+
+				\coordinate (Side) at (0, -1.25);
+				\draw (InMid) -- (Side);
+
+				\node (F0) [draw] at (2, -1.25) {Fundamental Tracker};
+				\node (F0Filter) [draw] at (2, -2.25) {LPF};
+				\draw (InMid) -- (F0Filter);
+				\draw (F0) -- (F0Filter);
+				\draw (Side) -- (F0);
+
+				\node (Add) [operator] at (11.5, -2.25) {+};
+
+				\coordinate (ExciterIn) at (4, -2.25);
+				\draw (F0Filter) -- (ExciterIn);
+
+				% odd harmonics
+				\coordinate (OddIn) at (4, -1.25);
+				\node (Odd) [draw] at (6, -1.25) {Odd Harmonics};
+				\draw (OddIn) -- (Odd);
+
+				\node (OddFilter) [draw] at (8.5, -1.25) {Filter};
+				\draw (Odd) -- (OddFilter);
+
+				\node (OddGain) [gain] at (10, -1.25) {};
+				\draw (OddFilter) -- (OddGain);
+				\coordinate (OddOut) at (10.5, -1.25);
+				\draw (OddGain) -- (OddOut);
+				\draw (OddOut) -- (Add);
+
+				% even harmonics
+				\coordinate (EvenIn) at (4, -2.25);
+				\draw (OddIn) -- (EvenIn);
+				\node (Even) [draw] at (6, -2.25) {Even Harmonics};
+				\draw (EvenIn) -- (Even);
+
+				\node (EvenFilter) [draw] at (8.5, -2.25) {Filter};
+				\draw (Even) -- (EvenFilter);
+
+				\node (EvenGain) [gain] at (10, -2.25) {};
+				\draw (EvenFilter) -- (EvenGain);
+				\coordinate (EvenOut) at (10.5, -2.25);
+				\draw (EvenGain) -- (EvenOut);
+				\draw (EvenOut) -- (Add);
+
+				% through
+				\coordinate (Through) at (0, -3.25);
+				\draw (InMid) -- (Through);
+				\node (ThroughGain) [gain] at (10, -3.25) {};
+				\draw (Through) -- (ThroughGain);
+				\coordinate (ThroughOut) at (10.5, -3.25);
+				\draw (ThroughGain) -- (ThroughOut);
+				\draw (ThroughOut) -- (Add);
+
+				\node (Out) at (12.5, -2.25) {$y[n]$};
+				\draw (Add) -- (Out);
+			\end{tikzpicture}
+			\caption{A system to control the levels of odd and even order harmonics individually.}
+			\label{fig:HarmonicParitySystem}
+		\end{figure}
+
+	\subsection{Inharmonicity}
+	\label{sec:FeatureControl-Control-Inharmonicity}
+
+	\subsection{Spectral Irregularity}
+	\label{sec:FeatureControl-Control-Irregularity}
+
+	\subsection{Spectral Flatness}
+	\label{sec:FeatureControl-Control-Flatness}
+
+	\subsection{Spectral Slope}
+	\label{sec:FeatureControl-Control-Slope}
