@@ -1317,8 +1317,8 @@
 		Alternatively the properties of the nonlinear device can be altered to change the upper band's centroid.
 		This provides more flexibility allowing the centroid to be changed independently of some other features.
 		For example, changing the gains of two bands will change the spectral slope of the signal. If instead
-		additional partials are introduced to the upper band such that its slope is unchanged the spectral centroid
-		will be moved without altering the overall slope.
+		additional partials are introduced to the upper, with amplitudes which are determined by the signals
+		current slope, the centroid can be move while the slope is unaltered.
 
 		The other spectral moments are more difficult to control using theses systems. The system shown in Figure
 		\ref{fig:InharmonicitySystem} provides the most control over where energy is introduced into a spectrum.
@@ -1327,11 +1327,23 @@
 
 	\subsection{Tristimulus}
 	\label{sec:FeatureControl-Control-Tristimulus}
-		\note
-		{
-			Single harmonic generation reigns supreme. This is better than filters as it allows the features of
-			the three bands to be manipulated as well.
-		}
+		Similar to the method discussed for controlling spectral centroid, control of tristimulus metrics involves
+		altering the energy in specific bands. A reduced version of the system in Figure
+		\ref{fig:InharmonicitySystem} can be used to control this. This system need only have individual control
+		over the levels of the first four harmonics so the exciters for the fifth through ninth harmonics can be
+		removed.
+
+		The first tristimulus measure is easily controlled through applying gain to the filtered fundamental. The
+		other two measures can be controlled in different ways depending on the requirements of the system.
+		Individually controlling the levels of the second through fourth harmonics allows the second tristimulus
+		measure to be manipulated while a more general nonlinear device can be used to generate higher order
+		harmonics. As with the spectral centroid, using excitation to achieve this provides more flexibility as the
+		tristimulus can be changed while preserving other features. 
+
+		In Section \ref{sec:FeatureControl-Control-Tristimulus} the tristimulus measures are controlled by applying
+		gain to the relevant band. Using excitation the equivalent amount of energy can be added to the band but
+		distributed as the user sees fit. If the odd to even harmonic ratio needs to remain the same but the second
+		tristimulus change different amounts of excitation can be applied to the second through fourth harmonics.
 
 	\subsection{Odd to Even Harmonic Ratio}
 	\label{sec:FeatureControl-Control-HarmonicParityRatio}
