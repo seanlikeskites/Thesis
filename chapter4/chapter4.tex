@@ -1443,6 +1443,37 @@
 
 	\subsection{Inharmonicity}
 	\label{sec:FeatureControl-Control-Inharmonicity}
+		While it is reasonably simple to introduce inharmonicity in harmonic excitation systems, controlling the
+		inharmonicity of a signal is a more complicated problem. As with oddness and evenness control one could
+		remove all partials from the signal and construct a new set of partials with the desired inharmonicity.
+		This gives the desired control but as before can be too destructive for some situations.
+		
+		Equation \ref{eq:InharmonicitySum} allows the inharmonicity of the sum of two signals to be calculated,
+		provided the signals have the same fundamental and share no frequency content. This allows us to adjust the
+		relative gains of two signals to control the resulting inharmonicity. The problematic task is how to
+		construct these two signals.
+
+		The system shown in Figure \ref{fig:InharmonicitySystem} can be use to apply a band based approach to
+		this problem. One band can be filtered from the input signal and the other constructed using excitation.
+		A simple two band system leaves the lower partials of the system unaltered and generates a high band using
+		a static nonlinearity and filtering. The inharmonicities in this high band will be amplified versions of
+		those in the original signal. This approach is not applicable in a number of situations such as when the
+		input only contains perfectly harmonic partials or when the desired result is a signal with reduced
+		inharmonicity.
+
+		The inverse system, in which the high frequencies are left unaltered and the low frequency partials are
+		generated individually, provides a greater amount of control over the inharmonicity of the resulting
+		signal. The newly generated partials can be put at frequencies closer to harmonics than the originals
+		reducing the overall inharmonicity. It also allows for generation of inharmonic partials in a signal with
+		zero inharmonicity. 
+
+		This system is more complicate both in computation and use. Because the inharmonicity metric (Equation
+		\ref{eq:Inharmonicity}) depends on the frequencies of every partial there are numerous ways a signal can be
+		manipulated resulting in the same value for the inharmonicity. When manipulating the inharmonicity which
+		partials are to be made inharmonic and by how much needs to be decided. One method of deciding this is to
+		model it on the vibrational modes of an acoustic instrument ensuring a natural set of inharmonic partials.
+		To gradually increase the inharmonicity the frequencies of the partials their frequencies can be moved from
+		being harmonic to those indicated by the model.
 
 	\subsection{Spectral Irregularity}
 	\label{sec:FeatureControl-Control-Irregularity}
