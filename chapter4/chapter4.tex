@@ -1093,9 +1093,9 @@
 
 	\subsection{Spectral Irregularity}
 	\label{sec:FetureControl-Parameterisation-Irregularity}
-		Spectral irregularity measures the smoothness of a spectrum. Two different methods of measuring this are
-		often cited in the literature. The first being that proposed by \citet{krimphoff1994caracterisation}, shown
-		in Equation \ref{eq:KrimphoffIrregularity}.
+		Spectral irregularity measures the smoothness of a spectrum. Various different methods of measuring this
+		are often cited in the literature. The first being that proposed by \citet{krimphoff1994caracterisation},
+		shown in Equation \ref{eq:KrimphoffIrregularity}.
 
 		\begin{equation}
 			\textrm{KI} = \log \left( \sum_{n = 2}^{N - 1}
@@ -1114,14 +1114,26 @@
 			\label{eq:JensenIrregularity}
 		\end{equation}
 
-		Equation \ref{eq:JensenIrregularity} has an advantage over \ref{eq:KrimphoffIrregularity} in that is
-		produces a normalised value between zero and two. This allows measures of irregularity of two different
-		signals to be compared more easily.
+		A third method is given by \citet{beauchamp2007analysis}, shown in Equation \ref{eq:BeauchampIrregularity}.
 
-		\note
-		{
-			Possibly put in a yucky messy equation here which doesn't help much with anything.
-		}
+		\[ \bar{a}_{n} = \frac{a_{n-1} + a_{n} + a_{n+1}}{3} \]
+		\begin{equation}
+			\textrm{BI} = \frac{\sum_{n = 2}^{N - 1} \bar{a}_{n} \abs{a_{n} - \bar{a}_{n}}}
+					   {\sum_{n = 2}^{N - 1} \bar{a}_{n} \sqrt{\sum_{n = 1}^{N} a_{n}^{2}}}
+			\label{eq:BeauchampIrregularity}
+		\end{equation}
+
+		Equation \ref{eq:JensenIrregularity} and \ref{eq:BeauchampIrregularity} have an advantage over
+		\ref{eq:KrimphoffIrregularity} in that they produce normalised values. Equation \ref{eq:JensenIrregularity}
+		produces values between zero and two while Equation \ref{eq:BeauchampIrregularity} produces values between
+		zero and one. This allows measures of irregularity of two different signals to be compared more easily.
+
+		\citet{beauchamp2007analysis} also proposes methods for manipulating the spectral irregularity in additive
+		synthesis systems. In effect these involve filtering of the frequency domain representation of a signal,
+		applying a filter to the amplitudes of the signals partials. This does not allow the irregularity to be set
+		to a precise value but gives control over the direction in which the irregularity will change. Low pass
+		filtering the partials' amplitudes will decrease the irregularity while a high pass filter will do the
+		opposite.
 
 	\subsection{Spectral Flatness}
 	\label{sec:FetureControl-Parameterisation-Flatness}
