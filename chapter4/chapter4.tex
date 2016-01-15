@@ -1474,15 +1474,16 @@
 		Controlling the spectral irregularity requires knowledge of the amplitudes of a signal's spectral
 		components. These amplitudes can then be manipulated using the filtering techniques discussed in Section
 		\ref{sec:FeatureControl-Parameterisation-Irregularity}. Achieving this using excitation requires an
-		analysis and resynthesis approach, replacing the existing partials with excited ones and chaining the
-		amplitudes to give the desired irregularity. 
+		analysis and resynthesis approach, replacing the existing spectral components with excited ones and
+		chaining the amplitudes to give the desired irregularity. 
 
 		If the analysis stage is removed the complexity of the system can be greatly reduced. The amplitudes of the
-		newly excited partials can be predetermined and the irregularity manipulated through filtering as before.
-		A different number of partials can be replaced with excited ones depending on how large a timbral variation
-		is desired. Replacing only a few partials will provide a small amount of control over irregularity while
-		preserving most of the spectrum of the input signal. Replacing more partials provides more control over the
-		overall irregularity at the cost of losing spectral information from the original.
+		newly excited spectral components can be predetermined and the irregularity manipulated through filtering
+		as before.  A different number of spectral components can be replaced with excited ones depending on how
+		large a timbral variation is desired. Replacing only a few spectral components will provide a small amount
+		of control over irregularity while preserving most of the spectrum of the input signal. Replacing more
+		spectral components provides more control over the overall irregularity at the cost of losing spectral
+		information from the original.
 
 		An alternative way to influence the irregularity of a signal is through control of the oddness and evenness
 		as discussed in Section \ref{sec:FeatureControl-Control-HarmonicParityRatio}. A signal with a high oddness
@@ -1499,11 +1500,25 @@
 		\ref{sec:FeatureControl-Control-Irregularity}, using a low pass filter on the amplitudes of the spectral
 		components will increase the flatness of the spectrum.
 
-		\note
-		{
-			Using Equation \ref{eq:FlatnessManipulation}. Selecting which spectral components / only altering
-			the flatness of one portion of the signal.
-		}
+		Equation \ref{eq:FlatnessManipulation} provides control over the spectral flatness in a signal where the
+		amplitudes of the spectral components are known. As with control of spectral irregularity an analysis /
+		synthesis technique could be utilised to implement this using harmonic excitation. Again it is desirable to
+		remove the analysis step in order to reduce the complexity of the system. This can be done by replacing a
+		band of spectral components with excited ones.
+
+		Once a band has been replaced with excited components, the levels of these components can then be
+		manipulated to change the flatness of the entire signal. Altering the flatness of the excited band using
+		the method in Section \ref{sec:FeatureControl-Parameterisation-Flatness} changes the arithmetic mean of the
+		components' amplitudes in the excited band while keeping their geometric mean the same. This causes the
+		arithmetic mean of the amplitudes in the entire signal to change in the same direction while the geometric
+		mean is unchanged. In short, increasing the flatness of the excited band will also increase the flatness of
+		the entire signal and decreasing the flatness of the band decreases the flatness of the signal.
+
+		As the spectral flatness measure doesn't depend on the frequencies of the spectral components deciding what
+		two groups of components to apply reciprocal gains to will depend on the desired effect on other spectral
+		features. For instance, to have a maximal effect on the odd to even harmonic ratio one could select two
+		groups which consist of odd and even harmonics respectively. To have a minimal effect on this feature the
+		two groups can both consist of one parity of harmonic.
 
 	\subsection{Spectral Slope}
 	\label{sec:FeatureControl-Control-Slope}
