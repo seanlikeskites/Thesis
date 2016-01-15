@@ -1522,11 +1522,20 @@
 
 	\subsection{Spectral Slope}
 	\label{sec:FeatureControl-Control-Slope}
-		\note
-		{
-			Can control the amplitudes of individually excited harmonics using the methods discussed in Section
-			\ref{sec:FeatureControl-Parameterisation-Slope}.
+		As discussed in Section \ref{sec:Excitation-Methods-Statics} the spectral slope of the band of distortion
+		components generated using a static nonlinearity depends on the continuity of the nonlinearity's
+		characteristic curve and its derivatives. Using a simple system, similar to that in Figure
+		\ref{fig:F0Tracking}, the characteristic curve of the nonlinearity can be changed to influence the spectral
+		slope of the output signal.
 
-			Can also just use different smoothnesses of static nonlinearities to control the roll off of the
-			output band.
-		}
+		The system shown in Figure \ref{fig:InharmonicitySystem} provides more control, allowing for slopes other
+		than multiples of 6dB per octave. As with the discussions on spectral irregularity and flatness the best
+		way to control spectral slope in a signal is through analysis and resynthesis. This way the slope of the
+		signal can be adjusted from the value it is in the input using the method discussed in
+		\ref{sec:FeatureControl-Parameterisation-Slope}.
+		
+		If the analysis section is removed the excited spectral components can have their amplitudes set to give
+		the desired slope. This is achievable for the lower order harmonics which are generated individually.
+		The static nonlinearity used to generate the higher order harmonics should be chosen to produce a band with
+		a roll off as close to that of the desired slope. Generating the high order harmonics in this manner
+		reduces complexity at the cost of accurate control of the spectral slope.
