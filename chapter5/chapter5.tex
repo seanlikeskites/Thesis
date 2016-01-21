@@ -3,25 +3,41 @@
 
 \section{Laboratory Listening Tests}
 \label{sec:ListeningTests-LaboratoryListeningTests}
+	Undertaking subjective listening tests in a laboratory allows the experimenter to control the conditions under which
+	the tests are carried out. It can be ensured that the material is presented to each participant via the same
+	reproduction equipment, in the same environment, at the same level. This removes any variability in these areas such
+	than any perceived differences in the audio samples noted by the participants are due to their perception rather
+	than the testing procedure.
+
+	Several different listening test methodologies exist for different studies. Those used in timbral studies are
+	discussed briefly in Chapter \ref{chap:Timbre}. In this section the applicability of these methodologies for
+	collecting timbral information is discussed.
 
 	\subsection{Multiple Stimuli Tests}
-        \label{sec:ListeningTests-MultipleStimuliTests} 
-		In a multiple stimuli test participants are presented with several stimuli at ones and asked to rate each
-		again a given criteria. A multiple stimuli methodology often used in perceptual audio tests is MUSHRA
-		(Multiple Stimuli with Hidden Reference and Anchor) \citep{mushra2014}.
+        \label{sec:ListeningTests-LaboratoryListeningTests-MultipleStimuliTests} 
+		In a multiple stimuli test participants are presented with several stimuli at once and asked to rate each
+		against a given criteria. A multiple stimuli methodology often used in perceptual audio tests is MUSHRA
+		(Multiple Stimuli with Hidden Reference and Anchor) \citep{mushra2014}. 
 
-		\note
-		{
-			MUSHRA initially developed for lossy compression codecs, use in a lot of bandwidth extension papers.
-			Also used in some timbral papers \citep{arthi2015influence}.
-		}
+		MUSHRA was developed for grading the quality of lossy audio data compression algorithms. Participants are
+		asked to judge how well different systems reconstructed the original signal after lossy data compression.
+		These tests are often used to assess the performance of bandwidth extension methods such as those discussed
+		in Section \ref{sec:HarmonicExcitation-Methods}. The listening tests performed in Section
+		\ref{FeatureControl-Systems-Individuals} used a similar methodology to that of MUSHRA.
+
+		Other multiple stimulus tests, while not adhering strictly to the MUSHRA guidelines, follow a similar
+		structure. \citet{arthi2015influence} uses a multiple stimulus test to determine the perceptual differences
+		between samples.
 
 	\subsection{Verbal Attribute Magnitude Estimation}
-	\label{sec:ListeningTests-VAME}
+	\label{sec:ListeningTests-LaboratoryListeningTests-VAME}
 		\note
 		{
 			VAME tests have been used by a number of timbral studies. \citet{kendall1993verbal1,
 			kendall1993verbal2, darke2005assessment, zacharakis2014an}.
+
+			Downside is participants only have a sample at a time making it difficult to use the scales
+			correctly. Typically they are given a range of the samples to listen to prior to the test.
 		}
 
 \section{Distributed Listening Tests}
@@ -30,12 +46,12 @@
 	loss of control over listening environment.
 
 	\subsection{Social EQ and Reverb}
-	\label{sec:ListeningTests-SocialEQandReverb}
+	\label{sec:ListeningTests-DistributedListeningTests-SocialEQandReverb}
 		\citet{cartwright2013socialeq} and \citet{seetharaman2014crowdsourcing} used online applications in order to
 		collect information about the semantic descriptors of equalisation and reverb.
 
 	\subsection{DAW Based Timbre Evaluation} % this name will probably change
-	\label{sec:ListeningTests-DAWBasedTimbreEvaluation}
+	\label{sec:ListeningTests-DistributedListeningTests-DAWBasedTimbreEvaluation}
 		The previously discussed testing methodologies all rely on the participants performing a certain set of
 		tasks. While this structure helps to reduce the number of variables in an experiment it does not necessarily
 		reflect the way audio is treated in a production environment.
@@ -72,8 +88,8 @@
 			
 		\subsubsection{Analysis of Timbre Inside the DAW}
 			An ideal way to collect timbral information during music production would be to have the DAW analyse
-			the audio tracks used and production techniques applied. Information which could be gathered directly
-			from the DAW, with no extra input from the user, includes:
+			the audio tracks used and production techniques applied. Information which could be gathered
+			directly from the DAW, with no extra input from the user, includes:
 
 			\begin{itemize}
 				\item Information about the audio processing chain:
