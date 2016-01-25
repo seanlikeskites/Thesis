@@ -1,5 +1,12 @@
 \chapter{Perceptual Listening Test Methodologies}
 \label{chap:ListeningTests}
+	The systems proposed in Chapter \ref{chap:FeatureControl} provide control over low level features of audio signals.
+	As discussed in Chapter \ref{chap:Timbre} these low level features, or combinations of them, contribute to the
+	perception of particular semantic features. For this work it is necessary to discover semantic features which are
+	identified by the low level features controllable by the systems in Section \ref{sec:FeatureControl-Control}.
+
+	Chapter \ref{chap:Timbre} covered methods used to approach this in the literature. In this section a selection
+	of those methods are reviewed for their applicability to this work and a new method is proposed.
 
 \section{Laboratory Listening Tests}
 \label{sec:ListeningTests-LaboratoryListeningTests}
@@ -9,9 +16,10 @@
 	than any perceived differences in the audio samples noted by the participants are due to their perception rather
 	than the testing procedure.
 
-	Several different listening test methodologies exist for different studies. Those used in timbral studies are
-	discussed briefly in Chapter \ref{chap:Timbre}. In this section the applicability of these methodologies for
-	collecting timbral information is discussed.
+	Another advantage of laboratory testing is the ability to screen participants prior to testing. It may be a
+	requirement of the experiment that none of the participants have hearing problems. Hearing tests can be carried out
+	before the main testing and participants screened accordingly. It is also beneficial that the experimenter is
+	typically on hand if a participant is having trouble completing some section of the test.
 
 	\subsection{Multiple Stimuli Tests}
         \label{sec:ListeningTests-LaboratoryListeningTests-MultipleStimuliTests} 
@@ -22,28 +30,56 @@
 		MUSHRA was developed for grading the quality of lossy audio data compression algorithms. Participants are
 		asked to judge how well different systems reconstructed the original signal after lossy data compression.
 		These tests are often used to assess the performance of bandwidth extension methods such as those discussed
-		in Section \ref{sec:HarmonicExcitation-Methods}. The listening tests performed in Section
-		\ref{FeatureControl-Systems-Individuals} used a similar methodology to that of MUSHRA.
+		in Section \ref{sec:Excitation-Methods}. The listening tests performed in Section
+		\ref{sec:FeatureControl-Systems-Individuals} used a similar methodology to that of MUSHRA.
 
 		Other multiple stimulus tests, while not adhering strictly to the MUSHRA guidelines, follow a similar
 		structure. \citet{arthi2015influence} uses a multiple stimulus test to determine the perceptual differences
-		between samples.
+		between samples. This method collects information on the perceptual distances between samples but none on
+		how those particular differences are described by the participants.
 
 	\subsection{Verbal Attribute Magnitude Estimation}
 	\label{sec:ListeningTests-LaboratoryListeningTests-VAME}
-		\note
-		{
-			VAME tests have been used by a number of timbral studies. \citet{kendall1993verbal1,
-			kendall1993verbal2, darke2005assessment, zacharakis2014an}.
+		An overview of VAME methodology was given in Section \ref{sec:Timbre-Parameterisation-AuditoryEvaluation}.
+		It is a popular methodology for timbral research as it provides rankings of audio samples against timbral
+		descriptors. This not only allows timbre spaces to be constructed but also descriptors to be applied to
+		their dimensions as done by \citet{zacharakis2014an}.
 
-			Downside is participants only have a sample at a time making it difficult to use the scales
-			correctly. Typically they are given a range of the samples to listen to prior to the test.
-		}
+		A difficulty encountered when designing a VAME test is the selection of descriptors to use in the tests. As
+		discussed by \citet{darke2005assessment} results are not usable if the test participants find it difficult
+		to associate a particular descriptor with the audio samples presented.
+
+		In a VAME test the samples are presented to the participants one at a time and rated against several
+		criteria. This is in direct opposition to a multiple stimulus test in which the samples are all presented at
+		once and rated against a single criteria. VAME tests pose a problem here as there is no reference provided
+		against which to rate the samples. Participants must keep several scales (one for each descriptor) in mind
+		throughout the duration of the test. This may cause them to use the extremes of the scales too early in the
+		test so when presented with a sample they wish to rate closer the extremes they cannot. In a multiple
+		stimulus test all the samples are available at once allowing participants to find the samples which lie at
+		the extremes and rate the rest accordingly, better utilising the range of the scale.
 
 \section{Distributed Listening Tests}
 \label{sec:ListeningTests-DistributedListeningTests}
+	While laboratory experiments afford the experimenter the greatest amount of control over the conditions of the
+	experiment they can be too restrictive. Typically the experimenter will have limited equipment with which to carry
+	out the tests meaning that very few can be run concurrently. For long tests it can be very time consuming to gather
+	sufficient data.
+	
 	More recent timbral research has attempted to gather information from a much larger group of participants at the
-	loss of control over listening environment.
+	loss of control over listening environment. Using a web interface for testing allows subjects to participate from
+	wherever they can access the internet. This makes it far easier to collect data from a large sample of people as
+	participants to take the test at a time which suits them. For laboratory tests the participants, experimenter and
+	testing equipment all need to be available at the same time to carry out the tests.
+
+	There are several downsides to this type of testing but for certain experiments these may not be as detrimental as
+	they first appear.
+
+	\note
+	{
+		Nobody to help people struggling but just design your interface well.
+
+		Different equipment but who gives a shite, producers all use different equipment.
+	}
 
 	\subsection{Social EQ and Reverb}
 	\label{sec:ListeningTests-DistributedListeningTests-SocialEQandReverb}
