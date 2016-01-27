@@ -63,17 +63,19 @@
 	While laboratory experiments afford the experimenter the greatest amount of control over the conditions of the
 	experiment they can be too restrictive. Typically the experimenter will have limited equipment with which to carry
 	out the tests meaning that very few can be run concurrently. For long tests it can be very time consuming to gather
-	sufficient data.
-	
-	More recent timbral research has attempted to gather information from a much larger group of participants at the
-	loss of control over listening environment. Using a web interface for testing allows subjects to participate from
-	wherever they can access the internet. This makes it far easier to collect data from a large sample of people as
-	participants are able to take the test at a time which suits them. For laboratory tests the participants,
-	experimenter and testing equipment all need to be available at the same time to carry out the tests.
+	sufficient data. More recent timbral research has attempted to gather information from a much larger group of
+	participants at the loss of control over listening environment. In this section, previous studies methods of doing
+	this are discussed and a new method proposed.
+
+	The basic principle underlying all these methods is to distribute the testing software to a wide audience and have
+	them carry out the test using their own equipment and return the results. This makes it far easier to collect data
+	from a large sample of people as participants are able to take the test at a time which suits them. For laboratory
+	tests the participants, experimenter and testing equipment all need to be available at the same time to carry out
+	the tests.
 
 	There are several downsides to this type of testing but for certain experiments these may not be as detrimental as
 	they first appear. In a laboratory environment the experimenter is present to supervise the tests and ensure that
-	participants are able to complete the tasks they are given. With web based testing no such supervision is given so
+	participants are able to complete the tasks they are given. With distributed testing no such supervision is given so
 	participants which have trouble may produce anomalous results or fail to complete the entire test. These problems
 	can be minimised by using a clear testing interface and provision of sufficient documentation / instruction.
 
@@ -96,15 +98,30 @@
 	will be those which are not affected as much by the reproduction system used. These correlations will then be easier
 	to reproduce on other systems leading to a more robust timbral manipulation.
 
-	\note
-	{
-		\citet{wilmering2013audio} have users specify their listening conditions to further segment the data.
-	}
+	If the confidence of correlations found in the entire dataset are not high enough the data could be partitioned into
+	groups depending on the listening environment the tests were taken in. This allows for the removal of results which
+	are causing anomalous results. Perhaps a certain effect in more audible when listening on speakers rather than
+	headphones. In order to segment the data in this way additional data should be collected from the test participants.
+	\citet{wilmering2013audio} have participants select an option from a drop down list which best describes their
+	listening environment prior to beginning the test. They find that there was not much variance between the results
+	across the different groups although the majority of the participants assigned themselves to the same group.
 
-	\subsection{Social EQ and Reverb}
-	\label{sec:ListeningTests-DistributedListeningTests-SocialEQandReverb}
-		\citet{cartwright2013socialeq} and \citet{seetharaman2014crowdsourcing} used online applications in order to
-		collect information about the semantic descriptors of equalisation and reverb.
+	\citet{seetharaman2014crowdsourcing} prompt participants for information about their listing environment but also
+	include an extra testing section to ensure a participants reproduction system is suitable for the tests. This extra
+	section assesses the range of frequencies a participants system can reproduce and excludes those which do not meet
+	the required criteria.
+	
+	\subsection{Web Based Testing}
+	\label{sec:ListeningTests-DistributedListeningTests-Web}
+		A popular method of distributing listening tests is to build a web interface in which the testing is carried
+		out \citep{wilmering2013audio, cartwright2013socialeq, seetharaman2014crowdsourcing}. Using a web interface
+		for testing allows subjects to participate from wherever they can access the internet. An advantage of using
+		a web interface is that participants do not need to download any software specific to the test. This may see
+		the participation of people who otherwise would have been dissuaded due to not wanting to download untrusted
+		software.
+
+		A disadvantage of a web implementation is the limitations of audio processing in web browsers. This is
+		becoming more possible due to development of the web audio API \citep{adenot2015web}.
 
 	\subsection{DAW Based Timbre Evaluation} % this name will probably change
 	\label{sec:ListeningTests-DistributedListeningTests-DAWBasedTimbreEvaluation}
