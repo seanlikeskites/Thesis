@@ -42,16 +42,39 @@
 
 \section{Analysis of Nonlinear Systems}
 \label{sec:Excitation-AnalysisOfNonlinearSystems}
-	\note 
-	{
-		What is a nonlinear system?
-	}
+	A system is nonlinear if it does not satisfy the conditions met by the superposition principle. These conditions
+	are that of additivity (Equation \ref{eq:additivity}) and homogeneity (Equation \ref{eq:homogeneity}).
 
-	The analysis of nonlinear system is more complicated that that of linear systems. This is due to more features of
-	the input signal affecting how the system responds. In the field of audio engineering much of the literature
-	concerning nonlinearities has to do with minimising distortion or measuring the maximum allowable levels of
-	distortion. Several distortion metrics have been developed each with there own uses. A review of many of these
-	metrics is given by \cite{voishvillo2006assessment}, some of which will be discussed in this section.
+	\begin{equation}
+		f(x + y) = f(x) + f(y) 
+		\label{eq:additivity}
+	\end{equation}
+
+	\begin{equation}
+		f(ax) = af(x)
+		\label{eq:homogeneity}
+	\end{equation}
+
+	Where $f$ is the system, $x$ and $y$ two inputs and $a$ some scaling factor.
+
+	The behaviour of a system which meets these criteria, and who's output does not depend on time (time invariance),
+	can be entirely summarised by its response to an impulse signal \citep{phillips2007signals}. Once the impulse
+	response of a linear time invariant (LTI) system has been measured the systems response to any arbitrary input is
+	known. 
+
+	Analysis of nonlinear systems is more complicated. Unlike LTI systems the properties of the system cannot be
+	summarised by the systems response to a single input signal. Depending on the field in which a nonlinear system is
+	being studied different approaches are taken in an attempt to summarise the behaviour of nonlinear systems.
+
+	In the field of audio engineering much of the literature concerning nonlinearities has to do with minimising
+	distortion or measuring the maximum allowable levels of distortion. Several distortion metrics have been developed
+	each with there own uses. A review of many of these metrics is given by \cite{voishvillo2006assessment}, some of
+	which will be discussed in Section \ref{sec:Excitation-Analysis-Metrics}.
+
+	Where more information is needed nonlinear modelling techniques are used. These revolve around setting the
+	parameters of a generalised nonlinear system such that its behaviour matches that of the system being analysed. The
+	nonlinear modelling techniques utilised in the audio processing literature are discussed in Section
+	\ref{sec:Excitation-Analysis-Modelling}.
 
 	\subsection{Objective Distortion Metrics}
 	\label{sec:Excitation-Analysis-Metrics}
@@ -500,19 +523,11 @@
 
 	\subsection{Homogeneity}
 	\label{sec:Excitation-Evaluation-Homogeneity}
-		In order to be intuitive an audio effect it should produce a similar perceptual effect
-		across a wide range of input signals. Often this is not the case with traditional audio signal processing
-		methods. Take the EQ for example. We can set up an EQ to boost some frequencies in a desired range. The
-		spectra of signals with energy in this frequency range will be altered while those of signals with no
-		energy in that band will be unaffected.
-
-		This problem is compounded when the effect being applied is non-homogeneous. A homogeneous system is one
-		whose behaviour does not depend on the input amplitude of the input. Where $f$ is a homogeneous system we
-		have:
-
-		\[ f(ax) = af(x) \]
-
-		Where $a$ is some scaling factor of the input $x$.
+		In order to be intuitive an audio effect it should produce a similar perceptual effect across a wide range
+		of input signals. Often this is not the case with traditional audio signal processing methods. Take the EQ
+		for example. We can set up an EQ to boost some frequencies in a desired range. The spectra of signals with
+		energy in this frequency range will be altered while those of signals with no energy in that band will be
+		unaffected. This problem is compounded when the effect being applied is non-homogeneous.
 		
 		Nonlinear systems are typically non-homogeneous. This is undesirable when using them to achieve timbral
 		control as it means the effects are less easy to predict. Different timbral transformations could be
