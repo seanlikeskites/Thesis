@@ -79,30 +79,32 @@
 	\subsection{Objective Distortion Metrics}
 	\label{sec:Excitation-Analysis-Metrics}
 		Total Harmonic Distortion (THD) and Intermodulation Distortion (IMD) are the traditional objective measures
-		of distortion \citep{czerwinski2001multitone1}. THD measures the level of new frequency components
-		introduced by a system which are harmonically related to the original signal.  There are two different ways
-		in which THD is calculated. These have been denoted $THD_{F}$ and $THD_{R}$ by \citet{shmilovitz2005on} and
-		are calculated using Equations \ref{eq:thdf} and \ref{eq:thdr} respectively.
+		of distortion \citep{czerwinski2001multitone1}. THD measures the level of new harmonic components
+		introduced to a sinusoidal signal. There are two different ways in which THD is calculated. These have been
+		denoted THD\sub{F} and THD\sub{R} by \citet{shmilovitz2005on} and are calculated using Equations
+		\ref{eq:thdf} and \ref{eq:thdr} respectively.
 
 		\begin{equation}
-			THD_{F} = \frac{\sqrt{\sum_{n = 2}^{\infty} A_{n}^{2}}}{A_{1}}
+			\textrm{THD}_{\textrm{F}} = \frac{\sqrt{\sum_{n = 2}^{\infty} A_{n}^{2}}}{A_{1}}
 			\label{eq:thdf}
 		\end{equation}
 
 		\begin{equation}
-			THD_{R} = \sqrt{\frac{\sum_{n = 2}^{\infty} A_{n}^{2}}{\sum_{n = 1}^{\infty} A_{n}^{2}}}
+			\textrm{THD}_{\textrm{R}} = \sqrt{\frac{\sum_{n = 2}^{\infty} A_{n}^{2}}
+			                                       {\sum_{n = 1}^{\infty} A_{n}^{2}}}
 			\label{eq:thdr}
 		\end{equation}
 
 		Where $A_n$ is the amplitude of the $n$\super{th} harmonic. 
 
-		\note
-		{
-			Clarify the differences in results taken with both measurements.
-		}
+		Each of these measures has slightly different properties. THD\sub{R} measure the proportion of the output
+		signal which consists of new harmonic components, producing a value between zero and one. THD\sub{F}
+		measures the relative levels of new harmonic content and the energy at the frequency of the original
+		sinusoid producing a positive value. \citet{shmilvoltiz2005on} suggests that THD\sub{F} provides a better
+		measure for signals with high distortion as there is no upper bound on the value which is produced.
 
-		Both these methods been used in recent work published in the audio field ($THD_{F}$ by
-		\citet{fleischmann2014a} and $THD_{R}$ by \citet{dutilleux2011nonlinear}). The lack of standardisation for
+		Both these methods been used in recent work published in the audio field (THD\sub{F} by
+		\citet{fleischmann2014a} and THD\sub{R} by \citet{dutilleux2011nonlinear}). The lack of standardisation for
 		this metric makes it difficult to compare experimental results reported by different sources.
 
 		IMD is a measure of the new spectral content introduced by a system as a result of intermodulation between
@@ -131,7 +133,12 @@
 		\citet{voishvillo2006assessment} adds that the perception of distortion is decreased at the very high and
 		low ends of the frequency spectrum.
 
-		The GedLee metric, proposed by \citet{geddes2003auditory}, measures how much a nonlinearity will be
+		A subset of nonlinear systems can be described by a characteristic curve (a function mapping the
+		instantaneous amplitude of the input signal to the input amplitude of the output signal). These systems are
+		referred to as static nonlinearities and are memoryless systems (their behaviour is only governed by the
+		instantaneous amplitude of the input, not any of its previous states).
+
+		The GedLee metric, proposed by \citet{geddes2003auditory}, measures how much a static nonlinearity will be
 		perceived through analysis of its characteristic curve. It is calculated using Equation \ref{eq:gedlee}.
 
 		\begin{equation}
@@ -140,12 +147,7 @@
 			\label{eq:gedlee}
 		\end{equation}
 
-		Where $T(x)$ is the characteristic curve of the nonlinearity in question.
-
-		\note
-		{
-			What is a characteristic curve?
-		}
+		Where $T(x)$ is the characteristic curve of the static nonlinearity in question.
 
 		A considerable advantage of the GedLee metric is that it directly measures the system in question rather
 		than signals processed by it. This should allow measurements taken using the metric to describe the audible
@@ -154,10 +156,10 @@
 		levels of distortion the GedLee metric correlates with subjective audio quality ratings. THD and IMD are
 		both found to not correlate well with perceived quality.
 
-		In Equation \ref{eq:gedlee} the system being analysed is assumed to be a simple static nonlinearity. Many
-		nonlinear systems are more complex than this and may exhibit frequency dependant or time varying behaviour.
-		While the GedLee metric may provide a good, signal independent, measure of distortion, it is only
-		applicable to a subset of nonlinear systems.
+		The GedLee metric is only applicable to the analysis of static nonlinearities. Many nonlinear systems are
+		more complex than this and may exhibit frequency dependant or time varying behaviour.  While the GedLee
+		metric may provide a good, signal independent, measure of distortion, it is only applicable to a subset of
+		nonlinear systems.
 
 		\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score (DS), which they
 		then improved upon to create the R\sub{nonlin} metric \citep{tan2004predicting}. Both these metrics rely on
@@ -221,14 +223,10 @@
 
 		\subsubsection{The Synchronised Swept Sine Method}
 			The synchronised swept sine method is a technique for identifying nonlinear systems without prior
-			knowledge of their operation. The details of its operation are describe by
-			\citet{novak2010nonlinear}. The result of the testing is a series of filter kernels to be used in
+			knowledge of their operation. A nonlinear impulse response is generated by analysing the systems
+			response to an signal with exponentially increasing frequency as described by
+			\citet{novak2010nonlinear}. The result of the analysis is a series of filter kernels to be used in
 			the model shown in Figure \ref{fig:hammerstein}.
-
-			\note
-			{
-				Better describe the testing procedure.
-			}
 
 			\begin{figure}[h!]
 				\centering
@@ -654,13 +652,10 @@
 
 	\subsection{Static Nonlinearities}
 	\label{sec:Excitation-Methods-Statics}
-		Static nonlinearities are simple mappings between input value and output value. A nonlinear function is
-		applied individually to each sample of a signal. They can be described by a characteristic curve which
-		shows the relationship between input and output values.
-		
-		A very simple class of static nonlinearities is the peak clipper. This class of effects limits the
-		magnitude of samples to being at or below a given clipping threshold value. Peak clippers are typically
-		piecewise functions comprising of three sections:
+		Static nonlinearities are simple mappings between input value and output value. A very simple class of
+		static nonlinearities is the peak clipper. This class of effects limits the magnitude of samples to being
+		at or below a given clipping threshold value. Peak clippers are typically piecewise functions comprising of
+		three sections:
 
 		\begin{enumerate}
 			\item A linear section. Applied to low magnitude samples.
