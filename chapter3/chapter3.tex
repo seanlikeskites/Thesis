@@ -389,28 +389,23 @@
 	classifier to only discriminate samples in these two dimensions removes any information about where the samples lie
 	on these additional dimensions.
 
-	\note
-	{
-		Smooth this transition here. Uses of nonlinear systems, highlighting focus on excitation for timbral
-		control.
-	}
+	From discussion of the previous literature it is apparent that the use of nonlinear systems contribute to a variety
+	of aspects of timbre. Distortion effects are widely used as a creative tool in popular music production but the
+	language used to describe their application differs across groups of people. The term `distorted' is used to
+	describe the timbre of signals which have undergone distortion but does not allow for discrimination between the
+	timbres of two distorted signals.
+
+	The other descriptor used in the literature are correlated with features of a systems output signal rather than
+	features of the nonlinearity itself. This warrant a need to harmonic excitation systems which give control over
+	specific features of the output rather than just the parameters of the underlying nonlinearity. 
 
 \section{Uses of Harmonic Excitation}
 \label{sec:Excitation-Uses}
-	Harmonic excitation is used for several tasks in audio engineering:
-
-	\note
-	{
-		Perhaps not bullet points. That implies equal emphasis. Also the following sections should follow from the
-		techniques mentioned here.
-	}
-
-	\begin{itemize}
-		\item As a creative audio effect used to manipulate the timbre of sounds for music production.
-		\item To reconstruct high frequency information in perceptual audio compression codecs.
-		\item To extend the perceived bandwidth of loudspeakers.
-		\item To enhance the intelligibility of speech. 
-	\end{itemize}
+	While harmonic excitation algorithms are best know as a creative effect used by guitarist, they find used is
+	several other areas of audio processing. These areas are summarised in Sections
+	\ref{sec:Excitation-Uses-Reconstruction} through \ref{sec:Excitation-Uses-Enhancement}. While popular creative
+	distortion algorithms are based on simple analogue electronic circuits, algorithms designed for these applications
+	provide more control over the output signal in order to achieve their respective tasks.
 
 	\subsection{High Frequency Reconstruction}
 	\label{sec:Excitation-Uses-Reconstruction}
