@@ -299,13 +299,13 @@
 
 \section{Timbre of Nonlinear Distortion}
 \label{sec:Excitation-Timbre}
-	There is a wealth of research into how low level audio features influence timbre \note{(probably refer to stuff in
-	the timbre chapter here)}. The mappings between low level features and semantic features from the literature can be
-	applied to harmonic excitation effects provided the excitation method used can influence the required low level
-	features. There may be semantic terms used to describe the timbre of nonlinear distortion which are seldom used to
-	describe other timbres. The majority of timbral research does not focus on nonlinear distortion and as such does
-	not highlight these semantic terms. There have been some publications specifically discussing the timbral effects
-	of nonlinear distortion. Their findings are discussed in this section.
+	There is a wealth of research into how low level audio features influence timbre as discussed in Chapter
+	\ref{chap:Timbre}. The mappings between low level features and semantic features from the literature can be applied
+	to harmonic excitation effects provided the excitation method used can influence the required low level features.
+	There may be semantic terms used to describe the timbre of nonlinear distortion which are seldom used to describe
+	other timbres. The majority of timbral research does not focus on nonlinear distortion and as such does not
+	highlight these semantic terms. There have been some publications specifically discussing the timbral effects of
+	nonlinear distortion. Their findings are discussed in this section.
 
 	\citet{marui2005predicting} suggest that one of the primary outcomes of nonlinear distortion is the moving of
 	spectral energy between low and high frequencies. They propose that aspects of this effect correlate with the
@@ -546,8 +546,6 @@
 		control as it means the effects are less easy to predict. Different timbral transformations could be
 		applied to the same signal if its amplitude is changed slightly. From a user point of view this makes
 		control of the system less intuitive as control parameters can change function depending on signal level.
-
-		\note{Mention of homogeneous nonlinear systems \citep{larsen2004audio}.}
 
 		In section \ref{sec:Excitation-Methods} the homogeneity of various nonlinear systems is discussed. For
 		those which are non-homogeneous methods by which they can be made homogeneous are suggested.
@@ -1157,8 +1155,6 @@
 		imaginary part its Hilbert transform. The analytic signal is often denoted with a subscript letter
 		$a$, such that the analytic representation of the signal $x(n)$ would be denoted $x_{a}(n)$.
 
-		\note{This Hilbert transform stuff should probably be moved elsewhere.}
-
 		An ideal Hilbert transform alters the phase information of a signal while leaving the magnitude information
 		unchanged. Any negative frequencies in the signal have their phase shifted by $\frac{\pi}{2}$ radians.  The
 		phase of positive frequencies is shifted by $-\frac{\pi}{2}$ radians. The transfer function for an FIR
@@ -1489,7 +1485,7 @@
 		\end{figure}
 
 		A typical implementation of this effect utilises a phase vocoder. The phase vocoder is an algorithm which
-		allows for time stretching of a signal. It is applied by calculating the short time Fourier transform of a
+		allows for time stretching of a signal. It is applied by calculating the short-time Fourier transform of a
 		signal with a given frame and hop size. The signal is then resynthesised using a different hop size in
 		order to either lengthen or shorten it. This signal can then be resampled back to the length of the
 		original signal scaling the frequency content in the process. 
@@ -1555,10 +1551,55 @@
 %		\subsubsection*{Flexibility}
 %		\subsubsection*{Naturalness}
 
-	\note
-	{
-		Short time time reversal as done by \citet{kim2014shorttime}.
-	}
+	\subsection{Short-Time Time Reversal}
+	\label{sec:Excitation-Methods-STTR}
+		Short-Time time reversal is an audio effect proposed by \citet{kim2014shorttime}. The output signal is
+		constructed from overlapping frames of the input signal which have been reversed in time using Equation
+		\ref{eq:STTR}.
+
+		\begin{equation}
+			y[n] = \sum_{m = -\infty}^{\infty} w[n - mR]x[2mR - n]
+			\label{eq:STTR}
+		\end{equation}
+
+		Where $R$ is the step size in samples and $w$ is some window function with constant overlap add (i.e. the
+		sum of the window function translated in time by all integer multiples $R$ is one for all values of $n$
+		(Equation \ref{eq:ConstantOverlapAdd})).
+
+		\begin{equation}
+			\sum_{m = -\infty}^{\infty} w[n - mR] = 1
+			\label{eq:ConstantOverlapAdd}
+		\end{equation}
+
+		Constant overlap add ensures that no unwanted amplitude modulation is applied to the signal.
+
+		\subsubsection*{Complexity}
+			The computational complexity of short-time time reversal depends on the ratio of the step size,
+			$R$, and the length of the window function $L$ in samples. As $\frac{R}{L}$ decreases the number of
+			overlapping frames needed to calculate an output sample increases, increasing the computational
+			load.
+
+			Time reversal of the frames introduces an $L$ sample delay to the signal as the samples at the end
+			of the first frame are needed to form the start of the signal.
+			
+		\subsubsection*{Homogeneity}
+			Short-Time time reversal is a homogeneous process. As the samples in each frame are only multiplied
+			by a constant window and reversed in time non of the amplitude information in the signal is lost. 
+
+			\note
+			{
+				Formal proof?
+			}
+
+		\subsubsection*{Spectral Characteristics}
+			\note
+			{
+				All those fun Fourier transform stuffs from Kim's paper.
+			}
+		
+		\subsubsection*{Temporal Characteristics}
+
+		\subsubsection*{Flexibility}
 
 \begin{landscape}
 \section{Methods Comparison}
@@ -1596,7 +1637,6 @@
 	{
 		Conclude the chapter.
 	}
-
 
 %\section{Evaluating Excitation Methods}
 %\label{sec:FeatureControl-MethodEvaluation}
