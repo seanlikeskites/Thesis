@@ -461,16 +461,20 @@
 		commonly referred to as the missing fundamental \citep{plack2005the}.
 
 		This technique is implemented in effects such as Waves' MaxxBass \citep{ben-tzur1999the}. Implementation
-		techniques have been discussed by \citet{larsen2002reproducing} and \citet{gan2001virtual}.
+		techniques typically involve various filtering stages around a nonlinear stage. Firstly a filter is
+		used to isolate the frequencies which need psychoacoustic reinforcement (those below the cutoff
+		frequency of the reproduction system). A nonlinearity is then used to produce harmonics of these low
+		frequencies which are then possibly shaped by further filtering. 
+		
+		The largest differences between proposed implementations lie in the nonlinear stage. \citet{gan2001virtual}
+		use a psychoacoustically informed amplitude modulation technique to ensure that the harmonics generated
+		produce the desired perceived pitch. \citet{larsen2002reproducing} propose the use of simpler nonlinear
+		stages, relying on further filtering to shape the spectrum such that the desired pitch is achieved.
 
-		\note
-		{
-			Discuss the actual implementations.
-		}
 
 	\subsection{Audio Enhancement}
 	\label{sec:Excitation-Uses-Enhancement}
-		One of the most commonly used enhancement effects is the Aphex Aural Exciter.  \citet{shekar2013modeling}
+		One of the most commonly used enhancement effects is the Aphex Aural Exciter. \citet{shekar2013modeling}
 		states that this effect enhances brightness and clarity of a sound through the application of nonlinear
 		distortion.
 
@@ -491,14 +495,14 @@
 
 \section{Evaluation Criteria for Harmonic Excitation Methods} % section name not very clear
 \label{sec:Excitation-Evaluation}
-	\note
-	{
-		Specify that we are only dealing with the use of exciters for perceptual control.
-	}
-	
-	There are many different classes of nonlinear system which are used in audio processing. Each of these has its own
-	characteristics. There are several properties to look at when evaluating a nonlinear system for use in real time
-	timbral control. These are:
+	Harmonic excitation algorithms developed for the applications discussed in the Section \ref{sec:Excitation-Uses}
+	are specialised to perform a particular task. As this work is concerned with the application of harmonic excitation
+	to real time timbral control some of the algorithms in the literature may not be applicable. In this section a set
+	of criteria for assessing the suitability of a harmonic excitation algorithms for use in this work are suggested.
+	These criteria are then used to asses various algorithms in Section \ref{sec:Exitation-Methods}. 
+
+	To prove useful for real time timbral control a harmonic excitation algorithm should provide efficient, intuitive
+	control over where energy is introduced to a signal. This behaviour can be split into the following areas:
 
 	\begin{itemize}
 		\item Low Complexity.
@@ -615,17 +619,16 @@
 
 			There are two common methods to avoid unwanted aliasing distortion in nonlinear effects:
 
-			\citep{vetter2013estimation} upsample signals by a factor of 32 prior to applying
-			the nonlinearity. Afterwards the signal is downsampled to the original sampling frequency. This
-			successfully mitigates aliasing as any aliased frequencies which appear in the audible spectrum
-			will most likely be inaudible due to having very low amplitudes. It does however increase the
-			computational complexity of the system. Along with the extra overhead of upsampling and
-			downsampling the signal, there is also 32 times the amount of samples to process.
+			\citep{vetter2013estimation} upsample signals by a factor of 32 prior to applying the nonlinearity.
+			Afterwards the signal is downsampled to the original sampling frequency. This method relies on the
+			use of a nonlinearity which produces harmonics whose amplitudes decrease as their frequencies
+			increase. This way upsampling can be applied such that only the low amplitude, high frequency,
+			partials are aliased. The upsampling factor can be chosen such that these aliased partials are
+			rendered inaudible.
 
-			\note
-			{
-				Why do the higher order harmonics have lower amplitudes.
-			}
+			Upsampling does however increase the computational complexity of the system. Along with the extra
+			overhead of upsampling and downsampling the signal, there is also a larger number of samples to
+			process.
 
 			For certain excitation methods it may be possible to reduce aliasing by changing properties of the
 			processing algorithm. Details of these techniques will be discussed where appropriate in Section
@@ -1117,12 +1120,6 @@
 
 			While the time taken for the signal to rise to or decay from maximum amplitude is not changed, the
 			shape of the amplitude envelope during the attack and release portions is. 
-
-			\note
-			{ 
-				Probably mention the timbral effects of this in the timbre section
-				\citep{patterson1994the}.
-			}
 
 		\subsubsection*{Flexibility}
 			Multipliers offer greater flexibility than the previously discussed excitation methods. Control
