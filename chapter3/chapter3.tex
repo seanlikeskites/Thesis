@@ -1553,8 +1553,8 @@
 
 	\subsection{Short-Time Time Reversal}
 	\label{sec:Excitation-Methods-STTR}
-		Short-Time time reversal is an audio effect proposed by \citet{kim2014shorttime}. The output signal is
-		constructed from overlapping frames of the input signal which have been reversed in time using Equation
+		Short-Time time reversal (STTR) is an audio effect proposed by \citet{kim2014shorttime}. The output signal
+		is constructed from overlapping frames of the input signal which have been reversed in time using Equation
 		\ref{eq:STTR}.
 
 		\begin{equation}
@@ -1574,16 +1574,15 @@
 		Constant overlap add ensures that no unwanted amplitude modulation is applied to the signal.
 
 		\subsubsection*{Complexity}
-			The computational complexity of short-time time reversal depends on the ratio of the step size,
-			$R$, and the length of the window function $L$ in samples. As $\frac{R}{L}$ decreases the number of
-			overlapping frames needed to calculate an output sample increases, increasing the computational
-			load.
+			The computational complexity of STTR depends on the ratio of the step size, $R$, and the length of
+			the window function $L$ in samples. As $\frac{R}{L}$ decreases the number of overlapping frames
+			needed to calculate an output sample increases, increasing the computational load.
 
 			Time reversal of the frames introduces an $L$ sample delay to the signal as the samples at the end
 			of the first frame are needed to form the start of the signal.
 			
 		\subsubsection*{Homogeneity}
-			Short-Time time reversal is a homogeneous process. As the samples in each frame are only multiplied
+			STTR is a homogeneous process. As the samples in each frame are only multiplied
 			by a constant window and reversed in time non of the amplitude information in the signal is lost. 
 
 			\note
@@ -1592,14 +1591,53 @@
 			}
 
 		\subsubsection*{Spectral Characteristics}
+			The spectral effects of STTR depend on factors of the input signal and the window function and
+			step size used. For simple sinusoidal inputs complex output spectra can be generated. For example
+			consider the spectral effects of STTR using the window function defined in Equation
+			\ref{eq:STTRWindow} (shown in Figure \ref{fig:STTRWindow}).
+
+			\begin{equation}
+				w[n] = \begin{cases}
+					\cos \left( \frac{4\pi n}{3L} \right) & \text{if $\abs{n} \leq \frac{L}{4} $} \\
+					1 - \cos \left( 2\pi \frac{2n - \sgn(n)L}{3L} \right) &
+						\text{if $\frac{L}{4} < \abs{n} \leq \frac{L}{2}$} \\
+					0 & \text{otherwise}
+				\end{cases}
+				\label{eq:STTRWindow}
+			\end{equation}
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/STTRWindow.eps}
+				\caption{The window function defined in Equation \ref{eq:STTRWindow}.}
+				\label{fig:STTRWindow}
+			\end{figure}
+
+			This window function exhibits constant overlap add for a step size of $\frac{L}{2}$.
+
+			Figure \ref{fig:STTRSpectra} shows the output spectra of STTR, using window lengths of 1ms and
+			1.5ms, on a 1kHz sinusoid.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter3/Images/STTRSpectra.eps}
+				\caption{The spectral effects of STTR using the window function defined in Equation
+				         \ref{eq:STTRWindow}.}
+				\label{fig:STTRSpectra}
+			\end{figure}
+
 			\note
 			{
-				All those fun Fourier transform stuffs from Kim's paper.
+				talk about the effects of this
 			}
-		
+
 		\subsubsection*{Temporal Characteristics}
 
 		\subsubsection*{Flexibility}
+			\note
+			{
+				It can be used as a harmonising effect \citep{kim2015harmonizing}.
+			}
 
 \begin{landscape}
 \section{Methods Comparison}
