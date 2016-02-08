@@ -1615,8 +1615,8 @@
 
 			This window function exhibits constant overlap add for a step size of $\frac{L}{2}$.
 
-			Figure \ref{fig:STTRSpectra} shows the output spectra of STTR, using window lengths of 1ms and
-			1.5ms, on a 1kHz sinusoid.
+			Figure \ref{fig:STTRSpectra} shows the output spectra of STTR, using this window with lengths of
+			1ms and 1.5ms, on a 1kHz sinusoid.
 
 			\begin{figure}[h!]
 				\centering
@@ -1626,18 +1626,42 @@
 				\label{fig:STTRSpectra}
 			\end{figure}
 
-			\note
-			{
-				talk about the effects of this
-			}
+			The complexity of the output spectrum depends on the relationship of the input frequency and the
+			step size used for processing. If the period of the input signal is an integer multiple of the step
+			size it will remain unchanged by the processing. This is evidenced by the output spectrum for 1ms
+			window shown in Figure \ref{fig:STTRSpectra}, only odd order harmonics are generated retaining the
+			original period of the signal.
+
+			The period of the output signal is the least common multiple of the period of the input signal and
+			the step size. This causes the period of a signal to be increased when the period of the input is
+			not an integer multiple of the step size. The output spectrum for a 1.5ms window shows this. The
+			period of the output becomes 3ms. The lowest frequency in this output is then approximately 333Hz.
+
+			The exact frequencies of the partials in the output are discussed by \citet{kim2014shorttime}. In
+			effect they are the intermodulation frequencies of the input frequency and the step frequency (1
+			over the step size in seconds). The amplitudes of these partials are influenced by the Fourier
+			transform of the window function used. This allows the spectral characteristics of the output to be
+			loosely controlled through manipulation of the window function and step size.
+
+			There is no upper bound on the frequency of the output so upsampling may need to be use to minimise
+			aliasing.
 
 		\subsubsection*{Temporal Characteristics}
+			Due to the time reversal STTR can have complicated effects on a signals amplitude envelope.
+			For instance, the attack and release portion of a sound may be switched. While possible, this is
+			highly dependent on the window length, step size and content of the input frequency. Controlling
+			these aspect for general input signals proves a very difficult task.
 
 		\subsubsection*{Flexibility}
-			\note
-			{
-				It can be used as a harmonising effect \citep{kim2015harmonizing}.
-			}
+			STTR can be used, much like a static nonlinearity, as a method of generating wide bands of
+			high order harmonics. Unlike static nonlinearities however it is possible to generate inharmonic
+			partials for a sinusoidal input. The generation of theses is dependant on properties of the input
+			signal adding further complexity to predicting the effects for arbitrary input signals.
+
+			\citet{kim2015harmonizing} suggest methods through which the output of STTR can be controlled in
+			the implementation of a harmonising effect. This effect introduces new tones, at different
+			musical intervals, depending on the input frequency. While this is useful as a compositional tool
+			it does not provide the uniform response across input signals required for timbral control.
 
 \begin{landscape}
 \section{Methods Comparison}
