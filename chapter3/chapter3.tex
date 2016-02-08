@@ -499,7 +499,7 @@
 	are specialised to perform a particular task. As this work is concerned with the application of harmonic excitation
 	to real time timbral control some of the algorithms in the literature may not be applicable. In this section a set
 	of criteria for assessing the suitability of a harmonic excitation algorithms for use in this work are suggested.
-	These criteria are then used to asses various algorithms in Section \ref{sec:Exitation-Methods}. 
+	These criteria are then used to asses various algorithms in Section \ref{sec:Excitation-Methods}. 
 
 	To prove useful for real time timbral control a harmonic excitation algorithm should provide efficient, intuitive
 	control over where energy is introduced to a signal. This behaviour can be split into the following areas:
@@ -784,11 +784,6 @@
 			back to the original input amplitude. Analogously the clipping function can be scaled so as to
 			always clip the same proportion of the signal, as done by \citet{deman2014adaptive}.
 
-			\note
-			{
-				Formal proof?
-			}
-
 		\subsubsection*{Spectral Characteristics}
 			The spectral characteristics depend on the function applied to the signal. If an odd function is
 			used only odd order components will be produced. Using an even function only even order components
@@ -910,15 +905,18 @@
 			applied.
 
 		\subsubsection*{Homogeneity}
-			One of the main advantages of rectifiers is that they are homogeneous systems. In half wave
-			rectification the magnitude of negative samples is eliminated irrespective of any gain which may
-			have been applied to them. In full wave rectification the absolute value of every sample is taken
-			preserving their magnitude and thus any gain which has been applied.
+			One of the main advantages of rectifiers is that they are exhibit positive homogeneity (they
+			satisfy Equation \ref{eq:homogeneity} only for non-negative values of $a$). For full wave
+			rectification this can be summarised using Equation \ref{eq:FullWaveRectificationHomogeneity}.
 
-			\note
-			{
-				Formal proof?
-			}
+			\begin{equation}
+				\abs{ax[n]} = a\abs{x[n]}, \quad \forall a \in \textbf{R}_{\geq 0}
+				\label{eq:FullWaveRectificationHomogeneity}
+			\end{equation}
+
+			Half wave rectification is not homogeneous for negative values of $a$ as the negative portions of
+			the input signal are zeroed. If a negative gain is applied prior to this process, what were the
+			positive portions of the input signal will be zeroed.
 
 		\subsubsection*{Spectral Characteristics}
 			Full wave rectification can be considered as a static nonlinearity with an even characteristics
