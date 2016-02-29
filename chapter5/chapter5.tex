@@ -16,6 +16,8 @@
 
 \section{Evaluation Criteria for Harmonic Excitation Methods} % section name not very clear
 \label{sec:ExcitationEvaluation-Evaluation}
+	\todo{Needs a rewrite, moved some stuff out!}
+
 	Harmonic excitation algorithms developed for the applications discussed in the Section
 	\ref{sec:ExcitationEvaluation-Uses} are specialised to perform a particular task. As this work is concerned with
 	the application of harmonic excitation to real time timbral control some of the algorithms in the literature may
@@ -77,82 +79,6 @@
 		All the systems discussed in this chapter introduce new spectral content to a signal. For timbral control
 		it is desirable to have precise control over which frequencies are introduced. Depending on the algorithm
 		wide bands of energy or individual harmonics can be excited.
-		
-		This content can be ascribed to three different groups:
-
-		\begin{itemize}
-			\item Harmonic Distortion
-			\item Intermodulation Distortion
-			\item Aliasing
-		\end{itemize}
-
-		These groups are all produced via different mechanisms. 
-
-		\subsubsection*{Harmonic Distortion}
-			Harmonic distortion typically refers to the harmonic frequency content generated when a sinusoidal
-			signal undergoes nonlinear processing. This content is equivalent to the cross modulation
-			components introduced by modulating the signal with itself. This mechanism also operates on more
-			complex signals: each individual frequency component being modulated by itself and generating its
-			own set of harmonics.
-
-%			The spectral effects of harmonic distortion are easy to predict. The response of a system to a
-%			sinusoidal input can be measured. Then, taking into account any frequency dependence the system may
-%			have, a general model of how the system will respond to a sinusoid of any frequency can be
-%			constructed.
-
-		\subsubsection*{Intermodulation Distortion}
-			Intermodulation distortion occurs when signals with two or more frequency components undergo
-			nonlinear processing. New frequency components are generated equivalent to the cross modulation
-			components of each combination of frequency components modulating each other. The more complex the
-			spectrum of a signal the more intermodulation components will be introduced. Unlike with harmonic
-			distortion it is difficult to generalise the intermodulation components produced by a system. 
-
-		\subsubsection*{Aliasing}
-			Aliasing arises due to the discrete nature of digital audio signals. The sampling frequency of a
-			discrete signal imposes a restriction on the highest frequency which can be represented. This
-			frequency is known as the Nyquist frequency ($f_{N}$) and can be calculated using Equation
-			\ref{eq:nyquist}.
-
-			\begin{equation}
-				f_{N} = \frac{f_{s}}{2}
-				\label{eq:nyquist}
-			\end{equation}
-
-			Where $f_{s}$ is the sampling rate of the signal.
-
-			When sampling a signal, frequency content above the Nyquist is represented as alias frequencies
-			within the bandwidth allowed by the sampling frequency. The alias frequency can be calculated using
-			Equation \ref{eq:aliasing}.
-
-			\begin{equation}
-				f_{alias} = \abs{f - f_{s}\floor{\frac{f}{f_{s}} + \frac{1}{2}}}
-				\label{eq:aliasing}
-			\end{equation}
-
-			Where $f$ is the original frequency.
-
-			The new frequency content introduced to a discrete signal via nonlinear processing is also subject
-			to aliasing. This can cause problems in the uniformity of behaviour of a system in different
-			scenarios as the spectral content introduced will depend on the sampling frequency of the signal
-			being processed. Thus the perceived timbral transformation may also depend on the sampling
-			frequency.
-
-			There are two common methods to avoid unwanted aliasing distortion in nonlinear effects:
-
-			\citep{vetter2013estimation} upsample signals by a factor of 32 prior to applying the nonlinearity.
-			Afterwards the signal is downsampled to the original sampling frequency. This method relies on the
-			use of a nonlinearity which produces harmonics whose amplitudes decrease as their frequencies
-			increase. This way upsampling can be applied such that only the low amplitude, high frequency,
-			partials are aliased. The upsampling factor can be chosen such that these aliased partials are
-			rendered inaudible.
-
-			Upsampling does however increase the computational complexity of the system. Along with the extra
-			overhead of upsampling and downsampling the signal, there is also a larger number of samples to
-			process.
-
-			For certain excitation methods it may be possible to reduce aliasing by changing properties of the
-			processing algorithm. Details of these techniques will be discussed where appropriate in Section
-			\ref{sec:ExcitationEvaluation-Methods}.
 
 	\subsection{Temporal Characteristics}
 	\label{sec:ExcitationEvaluation-Evaluation-TemporalCharacteristics}
