@@ -314,132 +314,237 @@
 		of each pair of tones within the signal. \citet{fastl2007psychoacoustics} use the same four criteria to
 		develop a different model of roughness which take account of the structure of the human hearing system.
 
-\section{Laboratory Listening Tests}
-\label{sec:Timbre-LaboratoryListeningTests}
-	Undertaking subjective listening tests in a laboratory allows the experimenter to control the conditions under which
-	the tests are carried out. It can be ensured that the material is presented to each participant via the same
-	reproduction equipment, in the same environment, at the same level. This removes any variability in these areas such
-	than any perceived differences in the audio samples noted by the participants are due to their perception rather
-	than the testing procedure.
+\section{Listening Tests}
+\label{sec:Timbre-ListeningTests}
+	In order to collect information about the perception of sound subjective listening test need to be carried out.
+	Depending on the nature of the experiment there are several different testing methodologies which have been proposed
+	\citep{bech2006perceptual}. Those most prevalent in timbral research will be discussed here.
 
-	Another advantage of laboratory testing is the ability to screen participants prior to testing. It may be a
-	requirement of the experiment that none of the participants have hearing problems. Hearing tests can be carried out
-	before the main testing and participants screened accordingly. It is also beneficial that the experimenter is
-	typically on hand if a participant is having trouble completing some section of the test.
+	\subsection{Testing Methodologies}
+	\label{sec:Timbre-ListeningTests-Methods}
+		Two different classes of listening test are common in timbral studies. In one participants are asked to
+		judge the dissimilarity of small sets of audio samples. In the other the participants are asked to rate each
+		audio sample on various scales which relate to attributes of the timbre. In this report these methods will
+		be called dissimilarity tests and attribute scale tests respectively.
 
-	\subsection{Multiple Stimuli Tests}
-        \label{sec:Timbre-LaboratoryListeningTests-MultipleStimuliTests} 
-		In a multiple stimuli test participants are presented with several stimuli at once and asked to rate each
-		against a given criteria. A multiple stimuli methodology often used in perceptual audio tests is MUSHRA
-		(Multiple Stimuli with Hidden Reference and Anchor) \citep{mushra2014}. 
+		\subsubsection*{Dissimilarity Tests}
+			\citet{grey1977multidimensional} utilises a pairwise dissimilarity methodology to gather similarity
+			data about audio samples.  Participants are asked to rate the similarity of pairs of audio samples.
+			Pairs of samples are presented one at a time until every possible pair from the set of samples has
+			been rated. This is a popular method as it ensures that the participants rate every sample against
+			every other sample. A downside of this is that the number of possible pairs grows exponentially as
+			the total number of samples increases. This causes the time taken to complete the test to become too
+			large if the experimenter wishes to evaluate a lot of samples.
 
-		MUSHRA was developed for grading the quality of lossy audio data compression algorithms. Participants are
-		asked to judge how well different systems reconstructed the original signal after lossy data compression.
-		These tests are often used to assess the performance of bandwidth extension methods such as those discussed
-		in Section \ref{sec:ExcitationEvaluation-Methods}. The listening tests performed in Section
-		\ref{sec:FeatureControl-Systems-Individuals} used a similar methodology to that of MUSHRA.
+			\citet{caclin2005acoustic} also use a pairwise dissimilarity method but unlike
+			\citet{grey1977multidimensional} use synthetic samples rather than acoustically recorded ones. This
+			allows them to better control the differences between the samples. All samples in their experiment
+			only differed in three characteristics (attack time, spectral centroid and spectral flux) allowing
+			them to identify what factors these features contribute to the timbre of a sound.
 
-		Other multiple stimulus tests, while not adhering strictly to the MUSHRA guidelines, follow a similar
-		structure. \citet{arthi2015influence} uses a multiple stimulus test to determine the perceptual differences
-		between samples. This method collects information on the perceptual distances between samples but none on
-		how those particular differences are described by the participants.
+			Another method of capturing similarity data is that of triadic comparisons
+			\citep{wickelmaier2007deriving}.  In this method audio samples are presented in triads (three at a
+			time).  Participants are asked to identify the most similar pair of samples in the triad as well as
+			the least similar. This method helps removed inconsistent use of a rating scale. In pairwise
+			dissimilarity tests may reinterpret the range of the scale they are given to rate dissimilarity on
+			during the experiment. Triadic comparisons asks which pair is most similar and which the least
+			avoiding the elicitation of a value on a scale.
 
-	\subsection{Verbal Attribute Magnitude Estimation}
-	\label{sec:Timbre-LaboratoryListeningTests-VAME}
-		Verbal Attribute Magnitude Estimation (VAME) is a popular methodology for timbral research as it provides
-		rankings of audio samples against timbral descriptors. This not only allows timbre spaces to be constructed
-		but also descriptors to be applied to their dimensions as done by \citet{zacharakis2014an}.
+			Another popular testing technique is to carry out multiple stimulus tests. In a multiple stimuli
+			test participants are presented with several stimuli at once and asked to rate each against a given
+			criteria. A multiple stimuli methodology often used in perceptual audio tests is MUSHRA (Multiple
+			Stimuli with Hidden Reference and Anchor) \citep{mushra2014}. 
 
-		A difficulty encountered when designing a VAME test is the selection of descriptors to use in the tests. As
-		discussed by \citet{darke2005assessment} results are not usable if the test participants find it difficult
-		to associate a particular descriptor with the audio samples presented.
+			MUSHRA was developed for grading the quality of lossy audio data compression algorithms.
+			Participants are asked to judge how well different systems reconstructed the original signal after
+			lossy data compression.  These tests are often used to assess the performance of bandwidth extension
+			methods such as those discussed in Section \ref{sec:Excitation-Methods}. The listening tests
+			performed in Section \ref{sec:FeatureControl-Systems-Individuals} used a similar methodology to that
+			of MUSHRA.
 
-		In a VAME test the samples are presented to the participants one at a time and rated against several
-		criteria. This is in direct opposition to a multiple stimulus test in which the samples are all presented at
-		once and rated against a single criteria. VAME tests pose a problem here as there is no reference provided
-		against which to rate the samples. Participants must keep several scales (one for each descriptor) in mind
-		throughout the duration of the test. This may cause them to use the extremes of the scales too early in the
-		test so when presented with a sample they wish to rate closer the extremes they cannot. In a multiple
-		stimulus test all the samples are available at once allowing participants to find the samples which lie at
-		the extremes and rate the rest accordingly, better utilising the range of the scale.
+			Other multiple stimulus tests, while not adhering strictly to the MUSHRA guidelines, follow a
+			similar structure. \citet{arthi2015influence} uses a multiple stimulus test to determine the
+			perceptual differences between samples. This method collects information on the perceptual distances
+			between samples but none on how those particular differences are described by the participants.
 
-\section{Distributed Listening Tests}
-\label{sec:Timbre-DistributedListeningTests}
-	While laboratory experiments afford the experimenter the greatest amount of control over the conditions of the
-	experiment they can be too restrictive. Typically the experimenter will have limited equipment with which to carry
-	out the tests meaning that very few can be run concurrently. For long tests it can be very time consuming to gather
-	sufficient data. More recent timbral research has attempted to gather information from a much larger group of
-	participants at the loss of control over listening environment. In this section, previous studies methods of doing
-	this are discussed and a new method proposed.
+		\subsubsection*{Attribute Scale Tests}
+			Attribute scale tests require participants to rate each sample against several scales which each
+			relate to an attribute of their timbre. This is often done using a set of semantic differentials
+			(scale with opposing descriptors on each end). They are popular for timbral research as it provides
+			rankings of audio samples against timbral descriptors. This not only allows timbre spaces to be
+			constructed but also descriptors to be applied to their dimensions as done by
+			\citet{zacharakis2014an}.
 
-	The basic principle underlying all these methods is to distribute the testing software to a wide audience and have
-	them carry out the test using their own equipment and return the results. This makes it far easier to collect data
-	from a large sample of people as participants are able to take the test at a time which suits them. For laboratory
-	tests the participants, experimenter and testing equipment all need to be available at the same time to carry out
-	the tests.
+			A difficulty encountered when designing an attribute scale test is the selection of descriptors to
+			use in the tests. As discussed by \citet{darke2005assessment} results are not usable if the test
+			participants find it difficult to associate a particular descriptor with the audio samples
+			presented.
 
-	There are several downsides to this type of testing but for certain experiments these may not be as detrimental as
-	they first appear. In a laboratory environment the experimenter is present to supervise the tests and ensure that
-	participants are able to complete the tasks they are given. With distributed testing no such supervision is given so
-	participants which have trouble may produce anomalous results or fail to complete the entire test. These problems
-	can be minimised by using a clear testing interface and provision of sufficient documentation / instruction.
+			In an attribute scale test the samples are presented to the participants one at a time and rated
+			against several criteria. This is in direct opposition to a multiple stimulus test in which the
+			samples are all presented at once and rated against a single criteria. Attribute scale tests pose a
+			problem here as there is no reference provided against which to rate the samples. Participants must
+			keep several scales (one for each descriptor) in mind throughout the duration of the test. This may
+			cause them to use the extremes of the scales too early in the test so when presented with a sample
+			they wish to rate closer the extremes they cannot. In a multiple stimulus test all the samples are
+			available at once allowing participants to find the samples which lie at the extremes and rate the
+			rest accordingly, better utilising the range of the scale. 
+			
+			Issues with the use of semantic differentials were shown by \citet{kendall1993verbal1}. Their first
+			experiment was an attribute scale test in which participants are asked to rate each audio
+			sample on eight different bipolar adjective scales, shown in Table
+			\ref{tab:vonBismarcksDescriptors}.
 
-	The additional time required for interface design and documentation increases the time taken before testing can
-	commence. After this initial investment of time the tests can be run without supervision allowing the experimenter
-	to work on other tasks. Once enough data has been collected it can be analysed while additional participants are
-	still undertaking the tests. With a well designed experiment researchers can draw conclusions from the first results
-	collected while the tests continue to build a larger dataset for further study.
+			\begin{table}[h!]
+				\centering
+				\begin{tabular}{|c|C{3cm}cC{3cm}|}
+					\hline
+					\bf{No.} & \multicolumn{3}{|c|}{\bf{Adjectives}} \tabularnewline
+					\hline
+					\hline
+					1 & hard & $\Longleftrightarrow$ & soft \tabularnewline
+					\hline
+					2 & sharp & $\Longleftrightarrow$ & dull \tabularnewline
+					\hline
+					3 & loud & $\Longleftrightarrow$ & soft \tabularnewline
+					\hline
+					4 & complex & $\Longleftrightarrow$ & simple \tabularnewline
+					\hline
+					5 & compact & $\Longleftrightarrow$ & scattered \tabularnewline
+					\hline
+					6 & pure & $\Longleftrightarrow$ & mixed \tabularnewline
+					\hline
+					7 & dim & $\Longleftrightarrow$ & brilliant \tabularnewline
+					\hline
+					8 & heavy & $\Longleftrightarrow$ & light \tabularnewline
+					\hline
+				\end{tabular}
+				\caption{Bipolar adjectives scales used by \citet{kendall1993verbal1}.}
+				\label{tab:vonBismarcksDescriptors}
+			\end{table}
 
-	Lack of control over the listening environment can be a considerable downside for certain listening tests. For
-	timbral research this is not so critical if the test can be designed in such a way that effects of the participants
-	reproduction equipment have little influence on the results. This influence can never be completely removed but
-	steps can be taken to minimise it. One way to reduce the influence is to have participants rate the relative timbral
-	difference between samples rather than give absolute ratings on a timbral scale. For this reason multiple stimulus
-	style tests are more favorable than VAME tests.
+			They propose that semantic differential tests have a problem in that the descriptors at each end of
+			the bipolar scales may not be the semantic opposites of each other. The difference between hard and
+			soft, for instance, may not be a simple one dimensional space. In order to determine the effect of
+			this they proposed the Verbal Attribute Magnitude Estimation (VAME) method in which the opposites of
+			the adjectives were merely their negation (hard $\Leftrightarrow$ not hard, sharp $\Leftrightarrow$
+			not sharp etc.). This was found to increase the independence between each adjective scale in the
+			ratings given by participants. 
 
-	While the results of the tests will have been influenced by the differences in listening conditions it may lead to
-	more easily producible results. The difference in listening conditions will cause higher variance in the data
-	reducing the confidence of any correlations found. Any correlations found with sufficiently high confidence however
-	will be those which are not affected as much by the reproduction system used. These correlations will then be easier
-	to reproduce on other systems leading to a more robust timbral manipulation.
+			Attribute scale methods have an advantage over dissimilarity tests as they gather information about
+			which aspects of the samples the participants are judging. A major disadvantage however is that non
+			of the samples are directly compared against one another. The participants have no reference of
+			where they have put other samples on the adjective scales making it difficult to use the scales
+			consistently. \citet{marui2005constructing} uses both a semantic differential test and triadic
+			comparisons in order to avoid the weaknesses of both methodologies. 
+			
+			Another issue apparent with attribute scale methods is that of selecting the adjectives to use. The
+			adjective need to be meaningful for the test participants and also applicable to the audio samples
+			used. \citet{kendall1993verbal2} ran a second set of experiments using a different set of
+			adjectives reporting that this second set of adjectives was more applicable to their set of audio
+			samples than the first.
 
-	If the confidence of correlations found in the entire dataset are not high enough the data could be partitioned into
-	groups depending on the listening environment the tests were taken in. This allows for the removal of results which
-	are causing anomalous results. Perhaps a certain effect in more audible when listening on speakers rather than
-	headphones. In order to segment the data in this way additional data should be collected from the test participants.
-	\citet{wilmering2013audio} have participants select an option from a drop down list which best describes their
-	listening environment prior to beginning the test. They find that there was not much variance between the results
-	across the different groups although the majority of the participants assigned themselves to the same group.
+	\subsection{Testing Environments}
+	\label{sec:Timbre-ListeningTests-Environments}
 
-	\citet{seetharaman2014crowdsourcing} prompt participants for information about their listing environment but also
-	include an extra testing section to ensure a participants reproduction system is suitable for the tests. This extra
-	section assesses the range of frequencies a participants system can reproduce and excludes those which do not meet
-	the required criteria.
-	
-	\subsection{Web Based Testing}
-	\label{sec:Timbre-DistributedListeningTests-Web}
-		A popular method of distributing listening tests is to build a web interface in which the testing is carried
-		out \citep{wilmering2013audio, cartwright2013socialeq, seetharaman2014crowdsourcing}. Using a web interface
-		for testing allows subjects to participate from wherever they can access the internet. An advantage of using
-		a web interface is that participants do not need to download any software specific to the test. This may see
-		the participation of people who otherwise would have been dissuaded due to not wanting to download untrusted
-		software.
+		\subsubsection*{Laboratory Listening Tests}
+			Undertaking subjective listening tests in a laboratory allows the experimenter to control the
+			conditions under which the tests are carried out. It can be ensured that the material is presented
+			to each participant via the same reproduction equipment, in the same environment, at the same level.
+			This removes any variability in these areas such than any perceived differences in the audio samples
+			noted by the participants are due to their perception rather than the testing procedure.
 
-		A disadvantage of a web implementation is the limitations of audio processing in web browsers. Simple
-		interfaces which involve playback of audio samples are easily implemented but more complex audio processing
-		and multiple channel audio playback are still difficult. This is becoming more possible due to development
-		of the web audio API \citep{adenot2015web}, although not all the features of this are currently supported by
-		all web browsers reducing the potential audience for the test.
+			Another advantage of laboratory testing is the ability to screen participants prior to testing. It
+			may be a requirement of the experiment that none of the participants have hearing problems. Hearing
+			tests can be carried out before the main testing and participants screened accordingly. It is also
+			beneficial that the experimenter is typically on hand if a participant is having trouble completing
+			some section of the test.
 
-		When distributing a listening test over the internet the issue of recruiting participants arises. Firstly,
-		potential participant need to be made aware of the test and be able to participate in it. Providing multiple
-		interfaces to the test increases its potential audience. A common approach is to provide a web browser
-		interface as well as an application for mobile platforms as done by \citet{huq2010crowdsourcing}.
+		\subsubsection*{Distributed Listening Tests}
+			While laboratory experiments afford the experimenter the greatest amount of control over the
+			conditions of the experiment they can be too restrictive. Typically the experimenter will have
+			limited equipment with which to carry out the tests meaning that very few can be run concurrently.
+			For long tests it can be very time consuming to gather sufficient data. More recent timbral research
+			has attempted to gather information from a much larger group of participants at the loss of control
+			over listening environment. In this section, previous studies methods of doing this are discussed
+			and a new method proposed.
 
-		Secondly, the participants need to be motivated to complete the test. \citet{cartwright2013socialeq} provide
-		a small monetary reward for completing the test to motivate people to participate. Other researchers
-		motivate participants by designing their interfaces as a ``game with a purpose'' \citep{law2007tagatune,
-		huq2010crowdsourcing, burgoyne2013hooked} making the testing procedure more enjoyable.
+			The basic principle underlying all these methods is to distribute the testing software to a wide
+			audience and have them carry out the test using their own equipment and return the results. This
+			makes it far easier to collect data from a large sample of people as participants are able to take
+			the test at a time which suits them. For laboratory tests the participants, experimenter and testing
+			equipment all need to be available at the same time to carry out the tests.
+
+			There are several downsides to this type of testing but for certain experiments these may not be as
+			detrimental as they first appear. In a laboratory environment the experimenter is present to
+			supervise the tests and ensure that participants are able to complete the tasks they are given. With
+			distributed testing no such supervision is given so participants which have trouble may produce
+			anomalous results or fail to complete the entire test. These problems can be minimised by using a
+			clear testing interface and provision of sufficient documentation / instruction.
+
+			The additional time required for interface design and documentation increases the time taken before
+			testing can commence. After this initial investment of time the tests can be run without supervision
+			allowing the experimenter to work on other tasks. Once enough data has been collected it can be
+			analysed while additional participants are still undertaking the tests. With a well designed
+			experiment researchers can draw conclusions from the first results collected while the tests
+			continue to build a larger dataset for further study.
+
+			Lack of control over the listening environment can be a considerable downside for certain listening
+			tests.  For timbral research this is not so critical if the test can be designed in such a way that
+			effects of the participants reproduction equipment have little influence on the results. This
+			influence can never be completely removed but steps can be taken to minimise it. One way to reduce
+			the influence is to have participants rate the relative timbral difference between samples rather
+			than give absolute ratings on a timbral scale. For this reason multiple stimulus style tests are
+			more favorable than VAME tests.
+
+			While the results of the tests will have been influenced by the differences in listening conditions
+			it may lead to more easily producible results. The difference in listening conditions will cause
+			higher variance in the data reducing the confidence of any correlations found. Any correlations
+			found with sufficiently high confidence however will be those which are not affected as much by the
+			reproduction system used. These correlations will then be easier to reproduce on other systems
+			leading to a more robust timbral manipulation.
+
+			If the confidence of correlations found in the entire dataset are not high enough the data could be
+			partitioned into groups depending on the listening environment the tests were taken in. This allows
+			for the removal of results which are causing anomalous results. Perhaps a certain effect in more
+			audible when listening on speakers rather than headphones. In order to segment the data in this way
+			additional data should be collected from the test participants.  \citet{wilmering2013audio} have
+			participants select an option from a drop down list which best describes their listening environment
+			prior to beginning the test.  They find that there was not much variance between the results across
+			the different groups although the majority of the participants assigned themselves to the same
+			group.
+
+			\citet{seetharaman2014crowdsourcing} prompt participants for information about their listing
+			environment but also include an extra testing section to ensure a participants reproduction system
+			is suitable for the tests. This extra section assesses the range of frequencies a participants
+			system can reproduce and excludes those which do not meet the required criteria.
+			
+			A popular method of distributing listening tests is to build a web interface in which the
+			testing is carried out \citep{wilmering2013audio, cartwright2013socialeq,
+			seetharaman2014crowdsourcing}. Using a web interface for testing allows subjects to
+			participate from wherever they can access the internet. An advantage of using a web
+			interface is that participants do not need to download any software specific to the test.
+			This may see the participation of people who otherwise would have been dissuaded due to not
+			wanting to download untrusted software.
+
+			A disadvantage of a web implementation is the limitations of audio processing in web
+			browsers.  Simple interfaces which involve playback of audio samples are easily implemented
+			but more complex audio processing and multiple channel audio playback are still difficult.
+			This is becoming more possible due to development of the web audio API
+			\citep{adenot2015web}, although not all the features of this are currently supported by all
+			web browsers reducing the potential audience for the test.
+
+			When distributing a listening test over the internet the issue of recruiting participants
+			arises.  Firstly, potential participant need to be made aware of the test and be able to
+			participate in it.  Providing multiple interfaces to the test increases its potential
+			audience. A common approach is to provide a web browser interface as well as an application
+			for mobile platforms as done by \citet{huq2010crowdsourcing}.
+
+			Secondly, the participants need to be motivated to complete the test.
+			\citet{cartwright2013socialeq} provide a small monetary reward for completing the test to
+			motivate people to participate. Other researchers motivate participants by designing their
+			interfaces as a ``game with a purpose'' \citep{law2007tagatune, huq2010crowdsourcing,
+			burgoyne2013hooked} making the testing procedure more enjoyable.
 
 \section{Parameterisation of Timbre}
 \label{sec:Timbre-Parameterisation}
@@ -452,95 +557,11 @@
 
 	Previous studies attempting to uncover salient dimensions of timbre all use a similar structure in their approach.
 	First a set of audio samples is selected. These are usually equalised in pitch and loudness so as to negate those
-	attribute effects on the timbre. Listening test are then undertaken in which participants evaluate the samples on a
+	attribute effects on the timbre. Listening tests are then undertaken in which participants evaluate the samples on a
 	given set of criteria. The results of these experiments are then analysed using dimensionality reduction techniques
 	to produce a timbre space in which the differences between the samples is described by a small set of dimensions.
 
-	This section will discuss the listening test methodologies and dimensionality reduction techniques most commonly
-	used in this types of study.
-
-	\subsection{Auditory Evaluation Methods}
-	\label{sec:Timbre-Parameterisation-AuditoryEvaluation}
-		Two different classes of listening test are common in timbral studies. In one participants are asked to
-		judge the dissimilarity of small sets of audio samples. In the other the participants are asked to rate each
-		audio sample on various scales which relate to attributes of the timbre. In this report these methods will
-		be called dissimilarity tests and attribute scale tests respectively.
-
-		\citet{grey1977multidimensional} utilises a pairwise dissimilarity methodology to gather similarity data
-		about audio samples.  Participants are asked to rate the similarity of pairs of audio samples. Pairs of
-		samples are presented one at a time until every possible pair from the set of samples has been rated. This
-		is a popular method as it ensures that the participants rate every sample against every other sample. A
-		downside of this is that the number of possible pairs grows exponentially as the total number of samples
-		increases. This causes the time taken to complete the test to become too large if the experimenter wishes to
-		evaluate a lot of samples.
-
-		\citet{caclin2005acoustic} also use a pairwise dissimilarity method but unlike
-		\citet{grey1977multidimensional} use synthetic samples rather than acoustically recorded ones. This allows
-		them to better control the differences between the samples. All samples in their experiment only differed in
-		three characteristics (attack time, spectral centroid and spectral flux) allowing them to identify what
-		factors these features contribute to the timbre of a sound.
-
-		Another method of capturing similarity data is that of triadic comparisons \citep{wickelmaier2007deriving}.
-		In this method audio samples are presented in triads (three at a time).  Participants are asked to identify
-		the most similar pair of samples in the triad as well as the least similar. This method helps removed
-		inconsistent use of a rating scale. In pairwise dissimilarity tests may reinterpret the range of the scale
-		they are given to rate dissimilarity on during the experiment. Triadic comparisons asks which pair is most
-		similar and which the least avoiding the elicitation of a value on a scale.
-
-		Attribute scale tests require participants to rate each sample against several scales which each relate to
-		an attribute of their timbre. The verbal attribute magnitude estimation (VAME) methodology proposed by
-		\citet{kendall1993verbal1} falls into this category. Their first experiment was a semantic differential test
-		in which participants are asked to rate each audio sample on eight different bipolar adjective scales, shown
-		in Table \ref{tab:vonBismarcksDescriptors}.
-
-		\begin{table}[h!]
-			\centering
-			\begin{tabular}{|c|C{3cm}cC{3cm}|}
-				\hline
-				\bf{No.} & \multicolumn{3}{|c|}{\bf{Adjectives}} \tabularnewline
-				\hline
-				\hline
-				1 & hard & $\Longleftrightarrow$ & soft \tabularnewline
-				\hline
-				2 & sharp & $\Longleftrightarrow$ & dull \tabularnewline
-				\hline
-				3 & loud & $\Longleftrightarrow$ & soft \tabularnewline
-				\hline
-				4 & complex & $\Longleftrightarrow$ & simple \tabularnewline
-				\hline
-				5 & compact & $\Longleftrightarrow$ & scattered \tabularnewline
-				\hline
-				6 & pure & $\Longleftrightarrow$ & mixed \tabularnewline
-				\hline
-				7 & dim & $\Longleftrightarrow$ & brilliant \tabularnewline
-				\hline
-				8 & heavy & $\Longleftrightarrow$ & light \tabularnewline
-				\hline
-			\end{tabular}
-			\caption{Bipolar adjectives scales used by \citet{kendall1993verbal1}.}
-			\label{tab:vonBismarcksDescriptors}
-		\end{table}
-
-		They propose that semantic differential tests have a problem in that the descriptors at each end of the
-		bipolar scales may not be the semantic opposites of each other. The difference between hard and soft, for
-		instance, may not be a simple one dimensional space. In order to determine the effect of this they proposed
-		the VAME method in which the opposites of the adjectives were merely their negation (hard $\Leftrightarrow$
-		not hard, sharp $\Leftrightarrow$ not sharp etc.). This was found to increase the independence between each
-		adjective scale in the ratings given by participants. 
-
-		Attribute scale methods have an advantage over dissimilarity tests as they gather information about which
-		aspects of the samples the participants are judging. A major disadvantage however is that non of the samples
-		are directly compared against one another. The participants have no reference of where they have put other
-		samples on the adjective scales making it difficult to use the scales consistently.
-		\citet{marui2005constructing} uses both a semantic differential test and triadic comparisons in order to
-		avoid the weaknesses of both methodologies. 
-		
-		Another issue apparent with attribute scale methods is that of selecting the adjectives to use. The
-		adjective need to be meaningful for the test participants and also applicable to the audio samples used.
-		\citet{kendall1993verbal2} ran a second set of experiments using a different set of adjectives reporting
-		that this second set of adjectives was more applicable to their set of audio samples than the first.
-
-	\subsection{Dimensionality Reduction}
+	\section{Dimensionality Reduction}
 	\label{sec:Timbre-Parameterisation-DimensionalityReduction}
 		Dimensionality reduction techniques are used to take multidimensional data and reduce the number of
 		dimensions while maintaining the relationships between the data. In timbral research they are used to reduce
@@ -585,7 +606,7 @@
 
 
 	\subsection{Correlation of Dimensions with Audio Features}
-	\label{sec:Timbre-DimensionCorrelations}
+	\label{sec:Timbre-DimensionalityReduction-DimensionCorrelations}
 		Once a timbre space has been constructed the relationship between the timbre space dimensions and audio
 		features can be investigated. A common way of doing this is take correlation measurements between the audio
 		sample's features and their position in a given dimension of the timbre space.
