@@ -14,13 +14,11 @@
 \chapter{Evaluation of Harmonic Excitation Algorithms}
 \label{chap:ExcitationEvaluation}
 
-\section{Evaluation Criteria for Harmonic Excitation Methods} % section name not very clear
+\section{Evaluation Criteria for Assessing Harmonic Excitation Methods} % section name not very clear
 \label{sec:ExcitationEvaluation-Evaluation}
-	\todo{Needs a rewrite, moved some stuff out!}
-
 	Harmonic excitation algorithms developed for the applications discussed in the Section
 	\ref{sec:Excitation-Uses} are specialised to perform a particular task. As this work is concerned with
-	the application of harmonic excitation to real time timbral control some of the algorithms in the literature may
+	the application of harmonic excitation to real time timbral control some algorithms in the literature may
 	not be applicable. In this section a set of criteria for assessing the suitability of a harmonic excitation
 	algorithms for use in this work are suggested.  These criteria are then used to asses various algorithms in Section
 	\ref{sec:ExcitationEvaluation-Comparison}. 
@@ -50,7 +48,7 @@
 		latency into the system, the processing buffer must be filled with samples from the input before an output
 		can be produced. The larger the processing buffer size the more latency but the less the computational load
 		as the cost of constructing and moving buffers is amortised across a greater number of samples. Any
-		processing applied to the block of audio must be completed within the allowed latency time. If not there
+		processing applied to the block of audio must be completed within the allowed latency time, if not there
 		will be gaps between blocks during playback causing audible anomalies.
 
 		For real time audio effects it is crucial to keep throughput latency to a minimum. \citet{lester2007the}
@@ -149,7 +147,7 @@
 	\label{sec:ExcitationEvaluation-Methods-Statics}
 		Static nonlinearities are simple mappings between input value and output value. A very simple class of
 		static nonlinearities is the peak clipper. This class of effects limits the magnitude of samples to being
-		at or below a given clipping threshold value. Peak clippers are typically piecewise functions comprising of
+		at or below a given clipping threshold value. Peak clippers are typically piecewise functions comprising
 		three sections:
 
 		\begin{enumerate}
@@ -202,7 +200,7 @@
 			signal. The hard clipper from Equation \ref{eq:SymmetricHardClipping} involves only comparisons and
 			assignments. A soft clipper could also involve some multiplication and addition.
 			
-			As each sample is processed individually these algorithms have linear complexity.
+			As each sample is processed individually, these algorithms have linear complexity.
 
 		\subsubsection*{Homogeneity}
 			The homogeneity of a static nonlinearity depends on the nonlinear function used. For different
@@ -264,12 +262,12 @@
 			The non-homogeneity of simple clipping systems can be counteracted by introducing gain stages
 			either side of the clipping stage. The first gain stage scales the signal so that the clipping
 			stage will always clip the same proportion of the signal. The second gain stage scales the signal
-			back to the original input amplitude. Analogously the clipping function can be scaled so as to
-			always clip the same proportion of the signal, as done by \citet{deman2014adaptive}.
+			back to the original input amplitude. Analogously the clipping function can be scaled so it
+			always clips the same proportion of the signal, as done by \citet{deman2014adaptive}.
 
 		\subsubsection*{Spectral Characteristics}
 			The spectral characteristics depend on the function applied to the signal. If an odd function is
-			used only odd order components will be produced. Using an even function only even order components
+			used only odd order components will be produced, using an even function only even order components
 			are generated. 
 
 			The symmetric clippers discussed previously all use odd functions. It is evident from the harmonic
@@ -294,7 +292,7 @@
 
 			Figure \ref{fig:AsymmetricHardClippingHarmonics} show the harmonic amplitude plot for Equation
 			\ref{eq:AsymmetricHardClipping} with $t_{+} = 0.5$ and $t_{-} = -0.3$. While the system is still
-			non-homogeneous there is a greater amount of new harmonic content.
+			non-homogeneous, there is a greater amount of new harmonic content.
 
 			\begin{figure}[h!]
 				\centering
@@ -403,7 +401,7 @@
 
 		\subsubsection*{Spectral Characteristics}
 			Full wave rectification can be considered as a static nonlinearity with an even characteristics
-			curve. As such it only introduces even order distortion components. The Fourier coefficients of a
+			curve, as such it only introduces even order distortion components. The Fourier coefficients of a
 			rectified sine wave are shown in Equation \ref{eq:RectificationFourier}.
 
 			\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \abs{sin(x)}e^{-inx} dx \]
@@ -417,8 +415,8 @@
 			\end{equation}
 
 			This represents all even order harmonics rolling off at approximately 12dB per octave.  As with
-			other static nonlinearities rectifiers are susceptible to aliasing. The relatively shallow roll off
-			of the distortion components can lead to a considerable amount of energy present in the aliased
+			other static nonlinearities, rectifiers are susceptible to aliasing. The relatively shallow roll
+			off of the distortion components can lead to a considerable amount of energy present in the aliased
 			components of the output signal. 
 
 			The output from a half wave rectifier has the same spectrum as that of a full wave rectifier
@@ -442,7 +440,7 @@
 			
 %		\subsubsection*{Flexibility}
 %			Rectifiers are useful when large amounts of even order distortion components are required. As with
-%			other static nonlinearities the bandwidth of the newly introduced set of frequencies can be
+%			other static nonlinearities, the bandwidth of the newly introduced set of frequencies can be
 %			controlled through filtering to provide more flexibility. 
 
 %		\subsubsection*{Naturalness}
@@ -466,7 +464,7 @@
 		\subsubsection*{Complexity}
 			For each sample two comparison operations are required to detect zero crossings. This is followed
 			by some simple arithmetic operations in order to integrate the signal. While this may total more
-			operations than a very basic static nonlinearity it still requires very little processing power.
+			operations than a very basic static nonlinearity, it still requires very little processing power.
 
 			Unlike static nonlinearities the integrator shown in Equation \ref{eq:Integrator} requires memory
 			to store the previous output sample. 
@@ -474,8 +472,8 @@
 		\subsubsection*{Homogeneity}
 			Integration is a homogeneous operation. This is an advantage over certain static nonlinearities as
 			though more operations are needed per sample no further work is needed to make the system
-			homogeneous. If a homogeneous system is required it may be more efficient to use an integrator over
-			a static nonlinearity.
+			homogeneous. If a homogeneous system is required, it may be more efficient to use an integrator
+			over a static nonlinearity.
 		
 			\note
 			{
@@ -499,10 +497,10 @@
 
 			This produces all harmonics with amplitudes rolling off at approximately 6dB per octave. This
 			shallow roll of make integrators very useful when a large amount of new frequency content is
-			desired. Due to the shallow roll of of the distortion component's amplitudes integrators are very
+			desired. Due to the shallow roll off of the distortion component's amplitudes integrators are very
 			prone to aliasing.
 
-			While integrators are homogeneous they are frequency dependant acting as low pass filters. Using
+			While integrators are homogeneous, they are frequency dependant acting as low pass filters. Using
 			the same integration constant a high frequency input signal will produce a lower amplitude output
 			than a low frequency input. This does not affect the relatives amplitudes of frequencies in the
 			output just the overall amplitude of the signal.
@@ -547,7 +545,7 @@
 			\end{equation}
 
 			Unlike clippers there is no threshold parameter to change in response to the amplitude of the input
-			signal. Gain stages can be added before and after the nonlinearity in order to make the systems
+			signal. Gain stages can be added before and after the nonlinearity in order to make the system's
 			response to different input amplitudes more uniform.
 			
 		\subsubsection*{Spectral Characteristics}
@@ -602,9 +600,9 @@
 
 		\subsubsection*{Flexibility}
 			Multipliers offer greater flexibility than the previously discussed excitation methods. Control
-			over the orders of distortion introduced allows for finer shaping of a signals spectrum. The output
-			of several multipliers with different exponents can be summed in order to include multiple orders
-			of distortion.
+			over the orders of distortion introduced allows for finer shaping of a signal's spectrum. The
+			output of several multipliers with different exponents can be summed in order to include multiple
+			orders of distortion.
 
 			Summing multiplier outputs in this way allows for approximation of other static
 			nonlinearities. A low order polynomial expression approximating the desired characteristic curve
@@ -648,7 +646,7 @@
 
 		For an ideal Hilbert transform the impulse response should be infinitely long ($M = \infty$). Practicable
 		approximations of an ideal Hilbert transform can be created by using a finite value for $M$. A delay of $M$
-		samples must also be introduced in order to make the filter causal. As the value of $M$ is decreased this
+		samples must also be introduced in order to make the filter causal. As the value of $M$ is decreased, this
 		delay is reduced while the magnitude response of the filter deviates further from the ideal. Figure
 		\ref{fig:HilbertMagnitude} shows the magnitude responses for FIR Hilbert transform filters with $M = 11$
 		and $M = 101$. The filters have a bandpass response with some ripple in the pass band. As $M$ is increased
@@ -672,7 +670,7 @@
 		When using Equation \ref{eq:FirHilbertTransform} a compromise needs to be made between the tolerable amount
 		of delay and the accuracy of the filter's magnitude response. Increasing $M$ will give a more accurate
 		filter but introduce more delay and increase the complexity of the filter. More efficient implementations
-		can be build using IIR filters if some of the properties of an ideal Hilbert transform are disregarded.
+		can be build using IIR filters if some properties of an ideal Hilbert transform are disregarded.
 
 		\citet{oppenheim2014discrete} suggest constructing a phase splitter: processing audio with two parallel
 		allpass IIR filters the phase responses of which differ from each other by $\frac{\pi}{2}$ radians for a
@@ -780,7 +778,7 @@
 			The IAP technique requires a Hilbert transform to be performed before the harmonic generation. The
 			computational load of this is the same as that for the SSBA technique, an IIR phase splitter
 			implementation providing a good compromise between accuracy, complexity and delay. Once an analytic
-			signal has been constructed the remaining processing is applied on a sample by sample basis. 
+			signal has been constructed, the remaining processing is applied on a sample by sample basis. 
 			
 		\subsubsection*{Homogeneity}
 			In the IAP method the magnitude and phase information of a signal are separated. The phase
@@ -807,9 +805,9 @@
 				\label{fig:IAP3Spectra}
 			\end{figure}
 
-			When multiple frequency components are present in the input signal IAP processing produces energy
-			at high order distortion components. As with previous algorithms it may be necessary to upsample
-			the signal before precessing to avoid aliasing of these frequencies.
+			When multiple frequency components are present in the input signal, IAP processing produces energy
+			at high order distortion components. As with previous algorithms, it may be necessary to upsample
+			the signal before processing to avoid aliasing of these frequencies.
 
 		\subsubsection*{Temporal Characteristics}
 			The homogeneity of the system preserves the input signals amplitude envelope. Due to this the
@@ -847,11 +845,11 @@
 			\label{eq:SpectralReplication}
 		\end{equation}
 
-		Where $f$ is the amount by which the signals spectrum should be shifted.
+		Where $f$ is the amount by which the signal's spectrum should be shifted.
 
 		\subsubsection*{Complexity}
 			Again, this method requires a Hilbert transform of the signal to be taken adding to the overall
-			complexity of the system. After this the synthesis of a complex sinusoid needs to be carried out
+			complexity of the system. After this, the synthesis of a complex sinusoid needs to be carried out
 			followed by the multiplication of the two complex signals on a sample by sample basis.
 
 		\subsubsection*{Homogeneity}
@@ -873,7 +871,7 @@
 			Due to every frequency component being shifted by an equal amount the bandwidth of the output is
 			equal to that of the input. This predictability allows for easier control of the output spectrum.
 			It also provides a simple method for reduction of aliasing. The highest frequency in the output
-			will be that of the input plus the sift frequency $f$. Applying a low pass filter, with a cutoff
+			will be that of the input plus the shift frequency $f$. Applying a low pass filter, with a cutoff
 			frequency of $f_{s} - f$Hz to the input will help minimise the amplitude of any aliased
 			frequency components.
 
@@ -890,7 +888,7 @@
 		downsampled by a factor $k$ before being upsampled by the same factor. 
 		
 		To avoid aliasing during the downsampling phase the signal should have a low pass filter applied
-		with a cutoff frequency of $\frac{f_{s}}{2k}$. Typically upsampling systems apply a low pass filter
+		with a cutoff frequency of $\frac{f_{s}}{2k}$. Typically, upsampling systems apply a low pass filter
 		to remove any high frequency content introduced \citep{oppenheim2014discrete}. This is not needed for
 		spectral folding as the production of high frequency energy is the desired result.
 
@@ -933,7 +931,7 @@
 			\end{figure}
 
 			The new frequencies introduced in the output depend on the sampling rate of the signal. Unless
-			$\frac{f_{s}}{2k}$ is a harmonic of the input signal there is little chance that the new
+			$\frac{f_{s}}{2k}$ is a harmonic of the input signal, there is little chance that the new
 			frequencies will be harmonically related to the input.
 
 			Other than changing the downsampling / upsampling factor, the user is given little control over the
@@ -986,14 +984,14 @@
 			STFT involves splitting the signal into frames of which the DFT is then computed. The phase
 			correction for each frame must then be computed and applied before the inverse DFT of each frame is
 			taken and the frames summed back together. The resulting signal then needs to be resampled
-			requiring further operations. If the scaling factor is not an integer value the resampling process
+			requiring further operations. If the scaling factor is not an integer value, the resampling process
 			will require additional interpolation calculations.
 		
 			Several steps can be taken to reduce the work needed when using a phase vocoder. The computational
 			complexity of the DFT calculations can be reduced by using the fast Fourier transform
-			\citep{portnoff1976implementation}. When shifting the frequencies upwards the amount of work can be
-			further reduced by resampling the signal before calculating the STFT \citep{laroche1999new}. This
-			way there are less frames for which the DFT need be calculated.
+			\citep{portnoff1976implementation}. When shifting the frequencies upwards, the amount of work can
+			be further reduced by resampling the signal before calculating the STFT \citep{laroche1999new}.
+			This way there are fewer frames for which the DFT need be calculated.
 			
 		\subsubsection*{Homogeneity}
 			The phase vocoder algorithm is a homogeneous system. When processing the signal in the frequency
@@ -1109,7 +1107,7 @@
 
 			The complexity of the output spectrum depends on the relationship of the input frequency and the
 			step size used for processing. If the period of the input signal is an integer multiple of the step
-			size it will remain unchanged by the processing. This is evidenced by the output spectrum for 1ms
+			size, it will remain unchanged by the processing. This is evidenced by the output spectrum for 1ms
 			window shown in Figure \ref{fig:STTRSpectra}, only odd order harmonics are generated retaining the
 			original period of the signal.
 
@@ -1124,19 +1122,19 @@
 			transform of the window function used. This allows the spectral characteristics of the output to be
 			loosely controlled through manipulation of the window function and step size.
 
-			There is no upper bound on the frequency of the output so upsampling may need to be use to minimise
-			aliasing.
+			There is no upper bound on the frequency of the output so upsampling may need to be used to
+			minimise aliasing.
 
 		\subsubsection*{Temporal Characteristics}
-			Due to the time reversal STTR can have complicated effects on a signals amplitude envelope.
+			Due to the time reversal STTR can have complicated effects on a signal's amplitude envelope.
 			For instance, the attack and release portion of a sound may be switched. While possible, this is
 			highly dependent on the window length, step size and content of the input frequency. Controlling
-			these aspect for general input signals proves a very difficult task.
+			these aspects for general input signals proves a very difficult task.
 
 		\subsubsection*{Flexibility}
 			STTR can be used, much like a static nonlinearity, as a method of generating wide bands of
 			high order harmonics. Unlike static nonlinearities however it is possible to generate inharmonic
-			partials for a sinusoidal input. The generation of theses is dependant on properties of the input
+			partials for a sinusoidal input. The generation of these is dependent on properties of the input
 			signal adding further complexity to predicting the effects for arbitrary input signals.
 
 			\citet{kim2015harmonizing} suggest methods through which the output of STTR can be controlled in
