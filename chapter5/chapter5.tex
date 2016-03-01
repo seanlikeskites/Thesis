@@ -145,56 +145,6 @@
 
 	\subsection{Static Nonlinearities}
 	\label{sec:ExcitationEvaluation-Methods-Statics}
-		Static nonlinearities are simple mappings between input value and output value. A very simple class of
-		static nonlinearities is the peak clipper. This class of effects limits the magnitude of samples to being
-		at or below a given clipping threshold value. Peak clippers are typically piecewise functions comprising
-		three sections:
-
-		\begin{enumerate}
-			\item A linear section. Applied to low magnitude samples.
-			\item A transition section, often called the `knee'. This refers to the nonlinear part of the
-				function for samples with magnitude below the clipping threshold.
-			\item A clipping section. Limiting the magnitude of samples above the clipping threshold.
-		\end{enumerate}
-
-		One of the simplest peak clippers is the symmetric hard clipper shown in Equation
-		\ref{eq:SymmetricHardClipping}.
-
-		\begin{equation}
-			y[n] = \begin{cases}
-				t\sgn(x[n]) & \text{if $\abs{x[n]} > t$} \\
-				x[n] & \text{otherwise}
-			\end{cases}, \quad t \geq 0
-			\label{eq:SymmetricHardClipping}
-		\end{equation}
-
-		Where $t$ is the threshold value at which to clip the signal. Peak clippers are described as symmetric if
-		the underlying function is odd. Clippers which use non odd functions are referred to as asymmetric.
-
-		Equation \ref{eq:SymmetricHardClipping} describes a hard clipper due to the lack of a transition section.
-		Soft clippers apply a nonlinear function to medium magnitude samples in order to smooth the transition
-		between linear and clipping sections. Equation \ref{eq:SymmetricSoftClipping} shows a soft clipper adapted
-		from one given by \citet{dutilleux2011nonlinear}. Figure \ref{fig:Clipping} shows the characteristic curves
-		for the clippers given in Equations \ref{eq:SymmetricHardClipping} and \ref{eq:SymmetricSoftClipping}.
-
-		\begin{equation}
-			y[n] = \begin{cases}
-				t\sgn(x[n]) & \text{if $\abs{x[n]} > t$} \\
-				t\sgn(x[n]) \left( 1 - \frac{4}{3} \left( 1 - \abs{\frac{x[n]}{t}} \right)^{2}
-				           \right) & \text{if $\frac{t}{2} \leq \abs{x[n]} \leq t$} \\
-				\frac{4x[n]}{3} & \text{otherwise}
-			\end{cases}, \quad t \geq 0
-			\label{eq:SymmetricSoftClipping}
-		\end{equation}
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter5/Images/Clipping.eps}
-			\caption{Characteristic curves for \ref{eq:SymmetricHardClipping} and
-				 \ref{eq:SymmetricSoftClipping} with a threshold of 0.5.}
-			\label{fig:Clipping}
-		\end{figure}
-
 		\subsubsection*{Complexity}
 			Most static nonlinearities only involve a few simple operations for each sample of the input
 			signal. The hard clipper from Equation \ref{eq:SymmetricHardClipping} involves only comparisons and
@@ -363,22 +313,6 @@
 
 	\subsection{Rectification}
 	\label{sec:ExcitationEvaluation-Methods-Rectification}
-		Rectification is a special case of static nonlinearity. Signals can be either half or full wave rectified,
-		as shown in Equations \ref{eq:HalfWaveRectification} and \ref{eq:FullWaveRectification} respectively.
-
-		\begin{equation}
-			y[n] = \begin{cases}
-				0 & \text{if $x[n] < 0$} \\
-				x[n] & \text{otherwise}
-			\end{cases}
-			\label{eq:HalfWaveRectification}
-		\end{equation}
-
-		\begin{equation}
-			y[n] = \abs{x[n]}
-			\label{eq:FullWaveRectification}
-		\end{equation}
-
 		\subsubsection*{Complexity}
 			As with other static nonlinearities, rectifiers are very efficient. For full wave rectification
 			only a single absolute value operation need be performed on each sample. Half wave rectification
@@ -447,20 +381,6 @@
 
 	\subsection{Integrator}
 	\label{sec:ExcitationEvaluation-Methods-Integrator}
-		Equation \ref{eq:Integrator} shows an Integrator adapted from the one described by \citet{larsen2004audio}.
-
-		\begin{equation}
-			y[n] = \begin{cases}
-				0 & \text{if $x[n] > 0$ and $x[n - 1] \leq 0$} \\
-				y[n - 1] + k\abs{x[n]} & \text{otherwise}
-			\end{cases}
-			\label{eq:Integrator}
-		\end{equation}
-
-		Where $k$ is the integration constant, effectively setting the output gain of the system. The output signal
-		is reset to 0 ofter every negative to positive zero crossing in order to prevent the sample amplitudes from
-		rising indefinitely.
-
 		\subsubsection*{Complexity}
 			For each sample two comparison operations are required to detect zero crossings. This is followed
 			by some simple arithmetic operations in order to integrate the signal. While this may total more
@@ -520,17 +440,6 @@
 
 	\subsection{Multiplier}
 	\label{sec:ExcitationEvaluation-Methods-Multiplier}
-		Multipliers are a subset of static nonlinearities in which input samples are raised to a positive integer
-		power as shown in Equation \ref{eq:Multiplier}.
-
-		\begin{equation}
-			y[n] = x[n]^{h}, \quad h \in \textbf{N}
-			\label{eq:Multiplier}
-		\end{equation}
-
-		Exponential distortion extends this method by relaxing the restriction on the exponent ($h$), allowing it
-		to take any positive value. The advantages and disadvantages of this will be discussed in this section.
-
 		\subsubsection*{Complexity}
 			Being a static nonlinearity the complexity of a multiplier is very low. A single exponentiation
 			operation is applied to each sample. 
@@ -625,77 +534,6 @@
 
 	\subsection{Single Side Band Automodulation}
 	\label{sec:ExcitationEvaluation-Methods-SSBA}
-		Single sideband automodulation (SSBA) utilises the concept of single sideband modulation
-		\citep{corinthios2009signals}. This allows you to apply amplitude modulation to a signal and only produce
-		either the sum or difference sideband.
-
-		A simple way to apply single sideband modulation to a signal is through construction of an analytic signal.
-		An analytic signal is a complex valued signal, the real part of which is the original signal and the
-		imaginary part its Hilbert transform. The analytic signal is often denoted with a subscript letter
-		$a$, such that the analytic representation of the signal $x(n)$ would be denoted $x_{a}(n)$.
-
-		An ideal Hilbert transform alters the phase information of a signal while leaving the magnitude information
-		unchanged. Any negative frequencies in the signal have their phase shifted by $\frac{\pi}{2}$ radians.  The
-		phase of positive frequencies is shifted by $-\frac{\pi}{2}$ radians. The transfer function for an FIR
-		implementation of a Hilbert transform is shown in Equation \ref{eq:FirHilbertTransform}.
-
-		\begin{equation}
-			H(z) = \sum_{m = -M}^{M} \frac{2}{m\pi} sin^{2} \left( \frac{m\pi}{2} \right) z^{-m}
-			\label{eq:FirHilbertTransform}
-		\end{equation}
-
-		For an ideal Hilbert transform the impulse response should be infinitely long ($M = \infty$). Practicable
-		approximations of an ideal Hilbert transform can be created by using a finite value for $M$. A delay of $M$
-		samples must also be introduced in order to make the filter causal. As the value of $M$ is decreased, this
-		delay is reduced while the magnitude response of the filter deviates further from the ideal. Figure
-		\ref{fig:HilbertMagnitude} shows the magnitude responses for FIR Hilbert transform filters with $M = 11$
-		and $M = 101$. The filters have a bandpass response with some ripple in the pass band. As $M$ is increased
-		the bandwidth of the passband is increased and the ripple reduced. The phase response of these filters
-		remains ideal no matter the value of $M$, as evidenced by Figure \ref{fig:HilbertPhase}.
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter5/Images/HilbertMagnitudeResponses.eps}
-			\caption{Magnitude responses of FIR Hilbert transform filter with different orders.}
-			\label{fig:HilbertMagnitude}
-		\end{figure}
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter5/Images/HilbertPhaseResponses.eps}
-			\caption{Phase responses of FIR Hilbert transform filters with different orders.}
-			\label{fig:HilbertPhase}
-		\end{figure}
-
-		When using Equation \ref{eq:FirHilbertTransform} a compromise needs to be made between the tolerable amount
-		of delay and the accuracy of the filter's magnitude response. Increasing $M$ will give a more accurate
-		filter but introduce more delay and increase the complexity of the filter. More efficient implementations
-		can be build using IIR filters if some properties of an ideal Hilbert transform are disregarded.
-
-		\citet{oppenheim2014discrete} suggest constructing a phase splitter: processing audio with two parallel
-		allpass IIR filters the phase responses of which differ from each other by $\frac{\pi}{2}$ radians for a
-		large proportion of the spectrum. While this is not strictly a Hilbert transform it creates two signals
-		which can be used as the real and imaginary part of an analytic signal. \citet{niemitalo2003hilbert}
-		provides an implementation of such a pair of filters. The phase difference between these two filters is
-		seen in Figure \ref{fig:IIRHilbertPhase}.
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter5/Images/IIRHilbertPhaseResponses.eps}
-			\caption{The phase difference between the two allpass filters proposed by
-			         \citet{niemitalo2003hilbert}.}
-			\label{fig:IIRHilbertPhase}
-		\end{figure}
-
-		In single sideband automodulation the analytical representation of the input signal is multiplied with
-		itself in order to generate harmonics. Equation \ref{eq:SSB} shows the $h$\super{th} order single side
-		band automodulation of a signal.
-
-		\begin{equation}
-			y[n] = \Re \left( x_{a}[n]^{h} \right), \quad h \in \textbf{N}
-			\label{eq:SSB}
-		\end{equation}
-
 		\subsubsection*{Complexity}
 			Compared with the harmonic excitation methods discussed previously, single sideband automodulation
 			has greater complexity. A Hilbert transform must be applied before a complex exponentiation
@@ -762,18 +600,6 @@
 
 	\subsection{Instantaneous Amplitude and Phase}
 	\label{sec:ExcitationEvaluation-Methods-IAP}
-		In this method, the instantaneous amplitude and phase (IAP) of the analytic signal are calculated. These
-		values are then used to aid in the construction of harmonics. The instantaneous amplitude of the analytic
-		signal is found by taking its absolute value, $\abs{x_{a}[n]}$. The instantaneous phase is found by taking
-		the complex argument of the analytic signal, $\arg(x_{a}[n])$. The instantaneous phase can then be scaled
-		in order to scale the frequency content of the signal independent of its amplitude. Equation \ref{eq:IAP}
-		shows the $h$\super{th} order instantaneous amplitude and phase modulation of a signal.
-
-		\begin{equation}
-			y[n] = \abs{x_{a}[n]} \cos \left( h\arg(x_{a}[n]) \right), \quad h \in \textbf{N}
-			\label{eq:IAP}
-		\end{equation}
-
 		\subsubsection*{Complexity}
 			The IAP technique requires a Hilbert transform to be performed before the harmonic generation. The
 			computational load of this is the same as that for the SSBA technique, an IIR phase splitter
@@ -827,26 +653,6 @@
 
 	\subsection{Spectral Replication}
 	\label{sec:ExcitationEvaluation-Methods-SpectralReplication}
-		The principle behind spectral replication is to reproduce the spectral structure of a signal at higher
-		frequencies as shown in Figure \ref{fig:SpectralReplication}.
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter5/Images/SpectralReplicationSpectrum.eps}
-			\caption{Reproduction of a signal at higher frequencies.}
-			\label{fig:SpectralReplication}
-		\end{figure}
-
-		This spectral shift is easily implemented through the use of single sideband modulation with a complex
-		sinusoid as shown in Equation \ref{eq:SpectralReplication}.
-
-		\begin{equation}
-			y[n] = \Re \left( x_{a}[n] e^{2i\pi fn/ f_{s}} \right)
-			\label{eq:SpectralReplication}
-		\end{equation}
-
-		Where $f$ is the amount by which the signal's spectrum should be shifted.
-
 		\subsubsection*{Complexity}
 			Again, this method requires a Hilbert transform of the signal to be taken adding to the overall
 			complexity of the system. After this, the synthesis of a complex sinusoid needs to be carried out
@@ -883,27 +689,6 @@
 
 	\subsection{Spectral Folding}
 	\label{sec:ExcitationEvaluation-Methods-SpectralFolding}
-		Spectral folding uses upsampling in order to replicate parts of the spectrum at higher frequencies. In
-		order for the output signal to have the same sampling frequency as the input the signal is 
-		downsampled by a factor $k$ before being upsampled by the same factor. 
-		
-		To avoid aliasing during the downsampling phase the signal should have a low pass filter applied
-		with a cutoff frequency of $\frac{f_{s}}{2k}$. Typically, upsampling systems apply a low pass filter
-		to remove any high frequency content introduced \citep{oppenheim2014discrete}. This is not needed for
-		spectral folding as the production of high frequency energy is the desired result.
-
-		After filtering, the downsampling and upsampling can be performed at the same time by retaining
-		every $k$\super{th} sample and setting all others to zero. This is shown in Equation
-		\ref{eq:SpectralFolding} where $x_{lf}[n]$ is the filtered input signal.		
-
-		\begin{equation}
-			y[n] = \begin{cases}
-				x_{lf}[n] & \text{if $k \divides n$} \\
-				0 & \text{otherwise}
-			\end{cases}
-			\label{eq:SpectralFolding}
-		\end{equation}
-
 		\subsubsection*{Complexity}
 			Spectral folding using Equation \ref{eq:SpectralFolding} is relatively simple requiring only a low
 			pass filter and some additional assignment operations. The complexity of the system as a whole
@@ -953,32 +738,6 @@
 
 	\subsection{Spectral Stretching}
 	\label{sec:ExcitationEvaluation-Methods-SpectralStretching}
-		The principle of spectral stretching is to scale the spectrum of a signal along the frequency axis. This
-		effect is shown in Figure \ref{fig:SpectralStretching}.
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter5/Images/SpectralStretchingSpectrum.eps}
-			\caption{The spectral characteristics of spectral stretching.}
-			\label{fig:SpectralStretching}
-		\end{figure}
-
-		A typical implementation of this effect utilises a phase vocoder. The phase vocoder is an algorithm which
-		allows for time stretching of a signal. It is applied by calculating the short-time Fourier transform of a
-		signal with a given frame and hop size. The signal is then resynthesised using a different hop size in
-		order to either lengthen or shorten it. This signal can then be resampled back to the length of the
-		original signal scaling the frequency content in the process. 
-		
-		The spectrum is scaled by a factor given in Equation \ref{eq:PhaseVocoderFactor}.
-
-		\begin{equation}
-			s = \frac{h_{s}}{h_{a}}
-			\label{eq:PhaseVocoderFactor}
-		\end{equation}
-
-		Where $h_{a}$ is the hop size used when calculating the STFT and $h_{s}$ is the hop size used to
-		resynthesise the signal.
-		
 		\subsubsection*{Complexity}
 			Spectral stretching using a phase vocoder require are large amount of computation. Calculating the
 			STFT involves splitting the signal into frames of which the DFT is then computed. The phase
@@ -1032,26 +791,6 @@
 
 	\subsection{Short-Time Time Reversal}
 	\label{sec:ExcitationEvaluation-Methods-STTR}
-		Short-Time time reversal (STTR) is an audio effect proposed by \citet{kim2014shorttime}. The output signal
-		is constructed from overlapping frames of the input signal which have been reversed in time using Equation
-		\ref{eq:STTR}.
-
-		\begin{equation}
-			y[n] = \sum_{m = -\infty}^{\infty} w[n - mR]x[2mR - n]
-			\label{eq:STTR}
-		\end{equation}
-
-		Where $R$ is the step size in samples and $w$ is some window function with constant overlap add (i.e. the
-		sum of the window function translated in time by all integer multiples $R$ is one for all values of $n$
-		(Equation \ref{eq:ConstantOverlapAdd})).
-
-		\begin{equation}
-			\sum_{m = -\infty}^{\infty} w[n - mR] = 1
-			\label{eq:ConstantOverlapAdd}
-		\end{equation}
-
-		Constant overlap add ensures that no unwanted amplitude modulation is applied to the signal.
-
 		\subsubsection*{Complexity}
 			The computational complexity of STTR depends on the ratio of the step size, $R$, and the length of
 			the window function $L$ in samples. As $\frac{R}{L}$ decreases the number of overlapping frames
