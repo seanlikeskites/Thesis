@@ -157,7 +157,7 @@
 
 			For certain excitation methods it may be possible to reduce aliasing by changing properties of the
 			processing algorithm. Details of these techniques will be discussed where appropriate in Section
-			\ref{sec:ExcitationEvaluation-Methods}.
+			\ref{sec:ExcitationEvaluation-Comparison}.
 
 	\subsection{Objective Distortion Metrics}
 	\label{sec:Excitation-Analysis-Metrics}
@@ -544,9 +544,6 @@
 		manipulation work as the generation of new, high order, harmonics does not require the same degree of
 		accuracy.
 
-		Information on how these methods can be implemented as simple harmonic exciters is given in Section
-		\ref{sec:ExcitationEvaluation-Methods}.
-
 	\subsection{Perceptual Low Frequency Reinforcement}
 	\label{sec:Excitation-Uses-Reinforcement}
 		Small loudspeakers are incapable of reproducing low frequency signals at sufficient amplitudes. Harmonic
@@ -592,12 +589,12 @@
 		accounts for differences in processing depending on the input amplitude.
 
 \section{Harmonic Generation Methods}
-\label{sec:ExcitationEvaluation-Methods}
+\label{sec:Excitation-Methods}
 	In this section several harmonic excitation algorithms are described. The performance of these algorithms is
 	assessed in Chapter \ref{chap:ExcitationEvaluation}.
 
 	\subsection{Static Nonlinearities}
-	\label{sec:ExcitationEvaluation-Methods-Statics}
+	\label{sec:Excitation-Methods-Statics}
 		Static nonlinearities are simple mappings between input value and output value. A very simple class of
 		static nonlinearities is the peak clipper. This class of effects limits the magnitude of samples to being
 		at or below a given clipping threshold value. Peak clippers are typically piecewise functions comprising of
@@ -649,7 +646,7 @@
 		\end{figure}
 
 	\subsection{Rectification}
-	\label{sec:ExcitationEvaluation-Methods-Rectification}
+	\label{sec:Excitation-Methods-Rectification}
 		Rectification is a special case of static nonlinearity. Signals can be either half or full wave rectified,
 		as shown in Equations \ref{eq:HalfWaveRectification} and \ref{eq:FullWaveRectification} respectively.
 
@@ -667,7 +664,7 @@
 		\end{equation}
 
 	\subsection{Integrator}
-	\label{sec:ExcitationEvaluation-Methods-Integrator}
+	\label{sec:Excitation-Methods-Integrator}
 		Equation \ref{eq:Integrator} shows an Integrator adapted from the one described by \citet{larsen2004audio}.
 
 		\begin{equation}
@@ -683,7 +680,7 @@
 		rising indefinitely.
 
 	\subsection{Multiplier}
-	\label{sec:ExcitationEvaluation-Methods-Multiplier}
+	\label{sec:Excitation-Methods-Multiplier}
 		Multipliers are a subset of static nonlinearities in which input samples are raised to a positive integer
 		power as shown in Equation \ref{eq:Multiplier}.
 
@@ -696,7 +693,7 @@
 		to take any positive value. The advantages and disadvantages of this will be discussed in this section.
 
 	\subsection{Single Side Band Automodulation}
-	\label{sec:ExcitationEvaluation-Methods-SSBA}
+	\label{sec:Excitation-Methods-SSBA}
 		Single sideband automodulation (SSBA) utilises the concept of single sideband modulation
 		\citep{corinthios2009signals}. This allows you to apply amplitude modulation to a signal and only produce
 		either the sum or difference sideband.
@@ -769,7 +766,7 @@
 		\end{equation}
 
 	\subsection{Instantaneous Amplitude and Phase}
-	\label{sec:ExcitationEvaluation-Methods-IAP}
+	\label{sec:Excitation-Methods-IAP}
 		In this method, the instantaneous amplitude and phase (IAP) of the analytic signal are calculated. These
 		values are then used to aid in the construction of harmonics. The instantaneous amplitude of the analytic
 		signal is found by taking its absolute value, $\abs{x_{a}[n]}$. The instantaneous phase is found by taking
@@ -783,7 +780,7 @@
 		\end{equation}
 
 	\subsection{Spectral Replication}
-	\label{sec:ExcitationEvaluation-Methods-SpectralReplication}
+	\label{sec:Excitation-Methods-SpectralReplication}
 		The principle behind spectral replication is to reproduce the spectral structure of a signal at higher
 		frequencies as shown in Figure \ref{fig:SpectralReplication}.
 
@@ -805,7 +802,7 @@
 		Where $f$ is the amount by which the signals spectrum should be shifted.
 
 	\subsection{Spectral Folding}
-	\label{sec:ExcitationEvaluation-Methods-SpectralFolding}
+	\label{sec:Excitation-Methods-SpectralFolding}
 		Spectral folding uses upsampling in order to replicate parts of the spectrum at higher frequencies. In
 		order for the output signal to have the same sampling frequency as the input the signal is 
 		downsampled by a factor $k$ before being upsampled by the same factor. 
@@ -828,7 +825,7 @@
 		\end{equation}
 
 	\subsection{Spectral Stretching}
-	\label{sec:ExcitationEvaluation-Methods-SpectralStretching}
+	\label{sec:Excitation-Methods-SpectralStretching}
 		The principle of spectral stretching is to scale the spectrum of a signal along the frequency axis. This
 		effect is shown in Figure \ref{fig:SpectralStretching}.
 
@@ -856,7 +853,7 @@
 		resynthesise the signal.
 
 	\subsection{Short-Time Time Reversal}
-	\label{sec:ExcitationEvaluation-Methods-STTR}
+	\label{sec:Excitation-Methods-STTR}
 		Short-Time time reversal (STTR) is an audio effect proposed by \citet{kim2014shorttime}. The output signal
 		is constructed from overlapping frames of the input signal which have been reversed in time using Equation
 		\ref{eq:STTR}.
