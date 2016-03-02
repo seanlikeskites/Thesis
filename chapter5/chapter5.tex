@@ -157,49 +157,44 @@
 		the previous output sample is needed to apply the integration. The amount computation performed for this
 		system is comparable to that of a simple static nonlinearity, giving a very low computational load.
 
-%			Compared with the harmonic excitation methods discussed previously, single sideband automodulation
-%			has greater complexity. A Hilbert transform must be applied before a complex exponentiation
-%			operation for each sample. The Hilbert transform filter used must give similar response for a wide
-%			range of frequencies so the resulting harmonic excitation gives similar results at different
-%			frequencies.
-%			
-%			A high order FIR Hilbert transform filter is required to give a suitably flat magnitude response.
-%			A lower complexity IIR phase splitter can be used in order to reduce the computational load.
-%			The implementations given by \citet{niemitalo2003hilbert} consists of eight biquad filters and a
-%			one sample delay.
+		Spectral folding using Equation \ref{eq:SpectralFolding} require a low pass filter in order to reduce
+		aliasing. This filter comprises the majority of the complexity of the system leading to a trade off between
+		computational complexity and the level of aliasing. Increasing the order of the filter will better reduce
+		aliasing while increasing the overall complexity.
 
-%			The IAP technique requires a Hilbert transform to be performed before the harmonic generation. The
-%			computational load of this is the same as that for the SSBA technique, an IIR phase splitter
-%			implementation providing a good compromise between accuracy, complexity and delay. Once an analytic
-%			signal has been constructed, the remaining processing is applied on a sample by sample basis. 
+		More complex filtering is required by those algorithms which operate on an analytic signal. The Hilbert
+		transform of the input signal must be computed in order to construct the analytic signal. The Hilbert
+		transform filter used must have a suitably consistent response for a wide range of frequencies so the
+		resulting harmonic excitation gives similar results at different frequencies.
 
-%			Again, this method requires a Hilbert transform of the signal to be taken adding to the overall
-%			complexity of the system. After this, the synthesis of a complex sinusoid needs to be carried out
-%			followed by the multiplication of the two complex signals on a sample by sample basis.
+		A high order FIR Hilbert transform filter is required to give a suitably flat magnitude response. As the
+		order of this filter is increased the computation time rises along with the amount of delay needed to make
+		the filter causal. A lower complexity IIR phase splitter can be used in order to reduce the computational
+		load. The implementation given by \citet{niemitalo2003hilbert} consists of eight biquad filters and a one
+		sample delay. This provides a reasonable compromise between accuracy, complexity and introduced delay.
 
-%			Spectral folding using Equation \ref{eq:SpectralFolding} is relatively simple requiring only a low
-%			pass filter and some additional assignment operations. The complexity of the system as a whole
-%			largely depends on the complexity of the downsampling filter used.
+		Once an analytic signal has been constructed, little additional computation is required. SSBA requires the
+		evaluation of a complex exponential for each sample. IAP and spectral replication, however, require the
+		computation of trigonometric functions, be it to calculate the complex argument of the analytic signal or to
+		synthesis a modulating signal.
 
-%			Spectral stretching using a phase vocoder require are large amount of computation. Calculating the
-%			STFT involves splitting the signal into frames of which the DFT is then computed. The phase
-%			correction for each frame must then be computed and applied before the inverse DFT of each frame is
-%			taken and the frames summed back together. The resulting signal then needs to be resampled
-%			requiring further operations. If the scaling factor is not an integer value, the resampling process
-%			will require additional interpolation calculations.
-%		
-%			Several steps can be taken to reduce the work needed when using a phase vocoder. The computational
-%			complexity of the DFT calculations can be reduced by using the fast Fourier transform
-%			\citep{portnoff1976implementation}. When shifting the frequencies upwards, the amount of work can
-%			be further reduced by resampling the signal before calculating the STFT \citep{laroche1999new}.
-%			This way there are fewer frames for which the DFT need be calculated.
+		Spectral stretching using a phase vocoder requires a large amount of computation. Calculating the STFT
+		involves splitting the signal into frames on which the DFT is then computed. The phase correction for each
+		frame must then be computed and applied before the inverse DFT of each frame is taken and the frames summed
+		back together. The resulting signal then needs to be resampled requiring further operations. If the scaling
+		factor is not an integer value, the resampling process will require additional interpolation calculations.
+	
+		Several steps can be taken to reduce the work needed when using a phase vocoder. The computational
+		complexity of the DFT calculations can be reduced by using the fast Fourier transform
+		\citep{portnoff1976implementation}. When shifting the frequencies upwards, the amount of work can be further
+		reduced by resampling the signal before calculating the STFT \citep{laroche1999new}. This way there are
+		fewer frames for which the DFT need be calculated.
 
-%			The computational complexity of STTR depends on the ratio of the step size, $R$, and the length of
-%			the window function $L$ in samples. As $\frac{R}{L}$ decreases the number of overlapping frames
-%			needed to calculate an output sample increases, increasing the computational load.
-%
-%			Time reversal of the frames introduces an $L$ sample delay to the signal as the samples at the end
-%			of the first frame are needed to form the start of the signal.
+		The computational complexity of STTR depends on the ratio of the step size, $R$, and the length of the
+		window function $L$ in samples. As $\frac{R}{L}$ decreases the number of overlapping frames needed to
+		calculate an output sample increases, increasing the computational load. Time reversal of the frames
+		introduces an $L$ sample delay to the signal as the samples at the end of the first frame are needed to form
+		the start of the signal.
 
 	\subsection{Homogeneity}
 	\label{sec:ExcitationEvaluation-Comparison-Homogeneity}
