@@ -62,5 +62,7 @@ text(xs, ys, descriptors, cex=sizes, col=colourPalette)
 
 dev.off()
 
+# let's play with some correlations shit
+
 # disconnect from the database
 dbDisconnect(con)
