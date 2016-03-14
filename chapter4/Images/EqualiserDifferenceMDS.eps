@@ -1,0 +1,3048 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%DocumentNeededResources: font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Helvetica-Oblique
+%%+ font Helvetica-BoldOblique
+%%+ font Symbol
+%%Title: R Graphics Output
+%%Creator: R Software
+%%Pages: (atend)
+%%BoundingBox: 0 0 504 504
+%%EndComments
+%%BeginProlog
+/bp  { gs sRGB gs } def
+% begin .ps.prolog
+/gs  { gsave } bind def
+/gr  { grestore } bind def
+/ep  { showpage gr gr } bind def
+/m   { moveto } bind def
+/l  { rlineto } bind def
+/np  { newpath } bind def
+/cp  { closepath } bind def
+/f   { fill } bind def
+/o   { stroke } bind def
+/c   { newpath 0 360 arc } bind def
+/r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } bind def
+/p1  { stroke } bind def
+/p2  { gsave bg fill grestore newpath } bind def
+/p3  { gsave bg fill grestore stroke } bind def
+/p6  { gsave bg eofill grestore newpath } bind def
+/p7  { gsave bg eofill grestore stroke } bind def
+/t   { 5 -2 roll moveto gsave rotate
+       1 index stringwidth pop
+       mul neg 0 rmoveto show grestore } bind def
+/ta  { 4 -2 roll moveto gsave rotate show } bind def
+/tb  { 2 -1 roll 0 rmoveto show } bind def
+/cl  { grestore gsave newpath 3 index 3 index moveto 1 index
+       4 -1 roll lineto  exch 1 index lineto lineto
+       closepath clip newpath } bind def
+/rgb { setrgbcolor } bind def
+/s   { scalefont setfont } bind def
+% end   .ps.prolog
+/sRGB { [ /CIEBasedABC
+          << /DecodeLMN
+               [ { dup 0.03928 le
+                        {12.92321 div}
+                        {0.055 add 1.055 div 2.4 exp }
+                     ifelse
+                 } bind dup dup
+               ]
+             /MatrixLMN [0.412457 0.212673 0.019334
+                         0.357576 0.715152 0.119192
+                         0.180437 0.072175 0.950301]
+             /WhitePoint [0.9505 1.0 1.0890]
+           >>
+         ] setcolorspace } bind def
+/srgb { setcolor } bind def
+%%IncludeResource: font Helvetica
+/Helvetica findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font1 exch definefont pop
+%%IncludeResource: font Helvetica-Bold
+/Helvetica-Bold findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font2 exch definefont pop
+%%IncludeResource: font Helvetica-Oblique
+/Helvetica-Oblique findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font3 exch definefont pop
+%%IncludeResource: font Helvetica-BoldOblique
+/Helvetica-BoldOblique findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font4 exch definefont pop
+%%IncludeResource: font Symbol
+/Symbol findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  currentdict
+  end
+/Font5 exch definefont pop
+%%EndProlog
+%%Page: 1 1
+bp
+0.00 0.00 504.00 504.00 cl
+0 0 0 srgb
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+100.48 73.44 m
+361.01 0 l
+o
+np
+100.48 73.44 m
+0 -7.20 l
+o
+np
+190.73 73.44 m
+0 -7.20 l
+o
+np
+280.99 73.44 m
+0 -7.20 l
+o
+np
+371.24 73.44 m
+0 -7.20 l
+o
+np
+461.49 73.44 m
+0 -7.20 l
+o
+/Font1 findfont 12 s
+100.48 47.52 (-1.0) .5 0 t
+190.73 47.52 (-0.5) .5 0 t
+280.99 47.52 (0.0) .5 0 t
+371.24 47.52 (0.5) .5 0 t
+461.49 47.52 (1.0) .5 0 t
+np
+59.04 117.63 m
+0 265.40 l
+o
+np
+59.04 117.63 m
+-7.20 0 l
+o
+np
+59.04 183.98 m
+-7.20 0 l
+o
+np
+59.04 250.33 m
+-7.20 0 l
+o
+np
+59.04 316.68 m
+-7.20 0 l
+o
+np
+59.04 383.03 m
+-7.20 0 l
+o
+41.76 117.63 (-1.0) .5 90 t
+41.76 183.98 (-0.5) .5 90 t
+41.76 250.33 (0.0) .5 90 t
+41.76 316.68 (0.5) .5 90 t
+41.76 383.03 (1.0) .5 90 t
+np
+59.04 73.44 m
+414.72 0 l
+0 371.52 l
+-414.72 0 l
+0 -371.52 l
+o
+0.00 0.00 504.00 504.00 cl
+/Font1 findfont 12 s
+0 0 0 srgb
+266.40 18.72 (First Dimension) .5 0 t
+12.96 259.20 (Second Dimension) .5 90 t
+59.04 73.44 473.76 444.96 cl
+/Font1 findfont 12 s
+1 0 0 srgb
+239.31 223.84 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+265.22 260.89 (br) 0 ta
+0.180 (ight) tb gr
+0.5020 1 0 srgb
+273.80 251.18 (harsh) .5 0 t
+1 0 0 srgb
+260.07 245.23 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+0 1 0.2510 srgb
+257.89 250.25 (air) 0 ta
+0.360 (y) tb gr
+1 0.7490 0 srgb
+251.39 245.56 (br) 0 ta
+0.180 (ight) tb gr
+0 1 1 srgb
+249.46 388.44 (shar) 0 ta
+0.360 (p) tb gr
+0 1 0.2510 srgb
+248.15 199.59 (air) 0 ta
+0.360 (y) tb gr
+0 0.2510 1 srgb
+280.13 217.72 (air) .5 0 t
+0.5020 1 0 srgb
+303.26 252.81 (harsh) .5 0 t
+310.00 264.53 (harsh) .5 0 t
+1 0 0 srgb
+254.27 244.54 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+261.94 249.93 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+286.80 261.75 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+264.42 262.19 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+264.86 247.60 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+253.92 255.12 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+248.70 239.15 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+233.13 232.14 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+249.89 238.59 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+260.46 245.10 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+238.75 247.16 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+241.12 243.85 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+243.94 245.97 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+246.26 249.53 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+253.29 240.40 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+235.49 237.88 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+254.41 247.01 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+234.45 231.09 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+228.91 255.00 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+253.93 244.69 (br) 0 ta
+0.180 (ight) tb gr
+0.5020 0 1 srgb
+295.35 231.81 (clear) .5 0 t
+1 0 0 srgb
+180.95 258.78 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+278.98 292.91 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+257.15 262.78 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+269.86 221.70 (br) 0 ta
+0.180 (ight) tb gr
+0 1 0.2510 srgb
+277.20 222.75 (air) 0 ta
+0.360 (y) tb gr
+1 0 0 srgb
+256.27 249.29 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+250.21 278.25 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+223.33 283.03 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+259.11 282.35 (br) 0 ta
+0.180 (ight) tb gr
+0 0.2510 1 srgb
+338.47 248.79 (air) .5 0 t
+0 1 0.2510 srgb
+326.06 216.53 (air) 0 ta
+0.360 (y) tb gr
+1 0.7490 0 srgb
+297.29 249.79 (br) 0 ta
+0.180 (ight) tb gr
+300.46 266.20 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+331.61 251.81 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+0.5020 0 1 srgb
+326.66 247.70 (clear) .5 0 t
+1 0 0 srgb
+225.88 275.62 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+0.5020 0 1 srgb
+320.34 227.63 (clear) .5 0 t
+328.73 224.62 (clear) .5 0 t
+1 0 0 srgb
+239.57 253.63 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+212.31 262.49 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+271.64 239.65 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+217.80 237.71 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+311.68 247.45 (br) 0 ta
+0.180 (ight) tb gr
+345.44 252.56 (br) 0 ta
+0.180 (ight) tb gr
+231.96 259.14 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+333.00 239.20 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+282.86 246.20 (br) 0 ta
+0.180 (ight) tb gr
+229.03 245.10 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+236.35 249.92 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+368.98 250.10 (br) 0 ta
+0.180 (ight) tb gr
+250.83 243.79 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+248.54 242.39 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+288.40 234.87 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+301.64 248.72 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+245.26 242.79 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+285.25 247.75 (br) 0 ta
+0.180 (ight) tb gr
+362.42 255.80 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+326.24 251.20 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+188.93 265.21 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+276.84 254.22 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+249.97 241.02 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+256.71 252.91 (br) 0 ta
+0.180 (ight) tb gr
+283.14 257.36 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+277.26 264.26 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+291.11 250.09 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+323.29 182.11 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+279.90 250.89 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+0.5020 0 1 srgb
+275.52 242.85 (clear) .5 0 t
+1 0 0 srgb
+265.35 255.20 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+0 1 1 srgb
+261.42 241.36 (shar) 0 ta
+0.360 (p) tb gr
+1 0.7490 0 srgb
+247.90 241.37 (br) 0 ta
+0.180 (ight) tb gr
+228.21 226.56 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0.7490 srgb
+294.22 259.85 (full) .5 0 t
+247.46 260.35 (full) .5 0 t
+278.46 249.71 (full) .5 0 t
+0 1 1 srgb
+277.94 230.66 (shar) 0 ta
+0.360 (p) tb gr
+0 1 0.2510 srgb
+356.01 225.54 (air) 0 ta
+0.360 (y) tb gr
+1 0.7490 0 srgb
+305.23 232.22 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+253.84 245.48 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+299.71 227.99 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+299.93 226.38 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+272.13 258.06 (br) 0 ta
+0.180 (ight) tb gr
+335.63 254.53 (br) 0 ta
+0.180 (ight) tb gr
+0 1 0.2510 srgb
+286.86 238.04 (air) 0 ta
+0.360 (y) tb gr
+1 0 0.7490 srgb
+265.30 254.19 (full) .5 0 t
+1 0.7490 0 srgb
+293.85 225.21 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+187.13 237.88 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+288.09 198.82 (br) 0 ta
+0.180 (ight) tb gr
+0.5020 0 1 srgb
+322.94 239.56 (clear) .5 0 t
+1 0 0 srgb
+327.15 254.21 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+0.5020 0 1 srgb
+298.99 240.62 (clear) .5 0 t
+1 0 0 srgb
+293.48 224.54 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+231.63 233.95 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+226.66 229.45 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+220.86 233.62 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+264.89 253.25 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+249.22 247.92 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+210.82 253.40 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+243.20 228.78 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+330.95 239.32 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+322.15 231.56 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+190.19 247.36 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+384.54 242.40 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+138.75 259.53 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+255.92 250.59 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+173.71 230.03 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+305.40 247.18 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+164.54 256.59 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+258.97 248.64 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+256.81 256.13 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+367.52 249.03 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+268.26 249.54 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+347.85 252.66 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+264.12 242.40 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+275.10 229.92 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+251.48 243.34 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+203.66 237.05 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+216.96 245.97 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+240.09 240.62 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+264.90 233.06 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+261.23 218.31 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+237.83 249.97 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+334.01 251.43 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+239.54 249.57 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+264.81 244.70 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+260.70 246.23 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+312.86 232.92 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+242.34 245.89 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+268.63 249.87 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+289.28 257.45 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+360.99 260.78 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+235.41 222.15 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+248.46 243.79 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+235.39 225.83 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+256.51 227.46 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+238.65 231.79 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+230.62 235.79 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+221.68 213.93 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+240.97 233.87 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+272.07 227.15 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+302.22 221.81 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+298.27 232.86 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+195.20 239.40 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+259.62 224.79 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+340.80 226.77 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+238.57 237.41 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+287.05 231.17 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+159.00 235.12 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+387.32 240.13 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+281.13 249.20 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+327.83 252.12 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+264.38 238.50 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+320.70 244.30 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+272.70 262.73 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+236.54 253.89 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+255.67 243.92 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+267.10 251.33 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+265.29 246.63 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+302.59 248.04 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+176.76 247.00 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+338.30 251.76 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+146.53 256.03 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+240.69 245.10 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+236.07 249.41 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+281.21 242.77 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+255.10 248.62 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+270.13 252.29 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+265.24 250.35 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+347.04 255.54 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+295.10 244.21 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+348.51 274.48 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+196.83 242.06 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+266.48 249.67 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+236.68 238.04 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+207.62 260.84 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+252.80 249.92 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+282.70 261.01 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+252.61 244.65 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+340.74 252.62 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+170.13 244.80 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+382.76 261.18 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+174.99 264.33 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+264.08 243.69 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+220.59 229.52 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+238.53 242.96 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+279.04 231.95 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+217.51 239.76 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+372.46 250.47 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+243.92 251.38 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+269.84 238.71 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+299.41 244.11 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+255.36 236.59 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+273.57 244.29 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+228.39 241.84 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+236.25 250.49 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+257.61 263.38 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+297.60 240.50 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+259.88 251.93 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+224.46 226.14 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+152.15 240.58 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+269.62 234.01 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+256.65 246.72 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+315.38 248.94 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+295.35 236.13 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+188.30 251.72 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+276.35 235.55 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+191.79 225.02 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+365.06 252.87 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+301.03 247.93 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+310.62 251.30 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+268.03 243.42 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+208.05 265.85 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+257.00 248.67 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+242.66 253.22 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+256.77 241.47 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+228.52 246.09 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+303.39 251.42 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+279.49 259.69 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+237.99 259.25 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+212.78 255.93 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+235.41 249.33 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+253.48 247.84 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+271.13 248.70 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+271.06 246.85 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+274.65 243.84 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+256.56 249.04 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+280.92 246.50 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+321.71 252.73 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+242.35 235.06 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+276.79 255.32 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+200.39 217.78 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+271.40 252.27 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+237.79 245.08 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+254.01 258.90 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+263.87 237.84 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+257.97 265.86 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+277.69 249.73 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+265.44 239.30 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+278.78 255.16 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+269.13 259.38 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+245.88 256.18 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+257.40 248.58 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+216.55 258.98 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+340.12 250.21 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+267.98 245.13 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+278.03 255.77 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+289.09 258.37 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+398.71 260.81 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+253.80 205.64 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+345.83 275.26 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+217.10 241.68 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+267.56 244.64 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+216.57 228.01 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+321.38 303.98 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+235.05 222.67 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+341.20 288.16 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+257.66 242.10 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+332.52 247.86 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+217.33 225.96 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+257.31 243.62 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+142.97 216.79 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+314.21 261.13 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+109.06 224.48 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+270.46 249.07 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+207.60 244.25 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+393.16 255.81 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+300.38 244.24 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+265.91 249.32 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+236.31 233.48 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+220.77 237.23 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+241.01 250.92 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+238.02 249.10 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+232.17 248.75 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+285.60 242.09 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+287.41 244.15 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+280.72 259.66 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+274.95 235.03 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+378.57 250.83 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+225.85 253.49 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+264.97 249.33 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+220.01 251.16 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+305.93 246.78 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+237.85 248.57 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+266.22 249.27 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+221.35 252.81 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+382.16 259.86 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+288.44 239.48 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+272.28 251.63 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+272.66 241.22 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+300.33 247.37 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+270.73 252.04 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+251.24 252.36 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+209.84 252.70 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+280.65 240.61 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+273.88 243.58 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+272.16 251.71 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+225.56 243.93 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+348.91 251.01 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+227.89 254.17 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+253.74 249.93 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+194.07 244.37 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+353.71 251.01 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+231.36 249.84 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+265.88 248.38 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+302.23 240.85 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+334.16 258.47 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+280.69 243.67 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+229.59 250.12 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+240.23 245.82 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+251.49 240.59 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+213.29 239.07 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+263.56 252.43 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+276.43 240.18 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+271.76 248.68 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+286.29 232.79 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+271.36 244.31 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+198.02 236.30 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+304.10 245.58 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+237.41 253.09 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+259.24 239.73 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+224.29 251.62 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+272.43 241.00 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+246.31 242.20 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+270.92 241.86 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+271.55 242.28 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+294.96 242.04 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+274.87 243.68 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+291.40 244.97 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+214.30 231.92 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+274.45 253.17 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+231.61 240.12 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+230.31 247.60 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+251.38 242.80 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+229.71 251.30 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+252.35 246.41 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+295.02 241.11 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+321.89 221.55 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+318.37 254.77 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+198.20 258.17 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+259.90 246.03 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+171.68 240.88 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+317.99 247.23 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+173.13 235.46 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+264.56 259.28 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+252.75 239.52 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+294.13 254.67 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+288.62 238.77 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+248.77 258.44 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+276.34 233.87 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+252.77 238.45 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+250.98 251.83 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+240.24 257.52 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+212.13 245.38 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+221.21 252.83 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+267.27 237.90 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+264.67 250.53 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+229.96 244.97 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+350.38 253.46 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+263.06 237.83 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+262.45 236.42 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+220.99 235.61 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+324.08 244.55 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+189.93 264.37 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+257.61 236.53 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+219.69 244.59 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+326.47 249.06 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+269.08 240.30 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+277.66 241.68 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+256.75 227.97 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+251.66 240.99 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+239.67 234.41 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+239.51 241.25 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+242.33 226.02 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+237.95 241.47 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+249.32 233.48 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+301.15 243.36 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+205.46 241.61 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+380.06 243.24 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+255.11 242.96 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+265.29 245.52 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+179.11 221.67 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+341.19 243.75 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+229.65 240.39 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+267.68 244.14 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+281.88 237.54 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+319.37 251.30 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+286.09 234.53 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+289.23 248.82 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+270.35 234.48 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+302.72 259.30 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+249.94 236.10 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+277.66 263.11 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+243.35 239.63 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+247.30 258.84 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+269.18 235.79 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+290.77 256.08 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+243.32 248.59 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+337.75 246.94 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+168.78 259.50 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+270.18 245.38 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+209.51 234.08 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+300.42 242.88 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+211.81 241.89 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+260.90 244.25 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+281.99 235.64 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+303.22 249.47 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+312.46 260.96 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+299.33 246.71 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+229.90 236.42 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+242.09 241.27 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+242.26 235.39 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+255.54 244.85 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+192.89 242.40 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+260.10 251.34 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+262.01 240.79 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+280.79 242.27 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+203.27 225.92 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+263.16 245.08 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+257.67 243.02 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+205.86 258.89 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+179.53 235.73 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+264.05 254.21 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+192.64 250.33 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+252.42 255.24 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+239.24 233.53 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+320.68 258.65 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+270.86 229.83 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+310.00 286.48 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+251.61 221.52 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+283.95 241.34 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+198.52 218.64 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+305.64 282.48 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+222.21 233.63 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+280.91 271.29 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+259.46 233.45 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+338.18 266.72 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+200.68 219.83 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+287.08 270.29 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+117.52 250.92 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+262.92 237.53 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+187.34 231.14 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+293.36 242.91 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+167.79 243.49 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+255.73 243.15 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+231.78 226.60 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+356.93 245.21 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+282.01 241.47 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+274.17 258.70 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+229.46 240.12 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+261.74 252.81 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+285.61 206.04 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+278.65 267.13 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+254.37 256.19 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+307.87 123.90 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+333.88 176.64 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+351.03 157.43 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+276.48 245.65 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+315.94 263.51 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+151.02 267.16 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+267.08 250.00 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+154.41 237.46 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+318.79 256.36 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+247.54 256.10 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+248.34 266.85 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+213.06 261.52 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+356.83 267.44 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+250.49 251.67 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+293.95 243.25 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+222.52 229.03 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+283.52 251.89 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+239.11 241.48 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+272.82 281.74 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+226.61 237.88 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+255.86 261.76 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+247.45 242.87 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+318.04 247.34 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+244.89 251.73 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+329.22 244.88 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+194.39 258.40 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+263.80 245.10 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+173.11 234.99 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+316.25 252.96 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+227.73 243.34 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+293.99 240.68 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+248.22 256.43 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+363.10 265.76 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0.7490 srgb
+266.95 228.84 (full) .5 0 t
+1 0 0 srgb
+308.49 248.74 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+296.13 242.31 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+255.98 239.49 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+241.41 242.78 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+241.75 252.35 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+236.70 240.41 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+269.92 247.25 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+274.85 237.14 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+300.23 242.99 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+236.31 241.70 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+222.78 249.19 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+220.06 245.84 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+227.35 250.89 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+247.05 247.15 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+191.37 240.48 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+304.25 244.02 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+228.33 252.12 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+268.35 242.29 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+265.64 241.77 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+325.89 254.46 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+254.20 231.27 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+221.89 233.18 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+260.50 235.12 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+369.33 273.60 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+288.42 250.10 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+188.37 218.95 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+269.69 250.38 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+306.02 233.85 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+258.83 244.84 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+267.40 243.32 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+259.87 267.21 (br) 0 ta
+0.180 (ight) tb gr
+295.00 257.78 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+255.07 243.60 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+258.02 239.36 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+219.98 219.26 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+278.59 232.67 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+311.40 257.92 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+261.10 221.49 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+299.75 256.92 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+294.55 227.82 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+243.76 261.10 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+321.42 277.86 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+209.70 221.13 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+196.44 224.06 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+257.41 236.62 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+257.78 239.61 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+245.85 250.36 (br) 0 ta
+0.180 (ight) tb gr
+231.42 249.16 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+249.46 253.25 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+282.03 264.37 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+238.42 252.53 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+245.61 246.96 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+245.40 225.83 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+245.99 251.17 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+259.22 245.59 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+262.01 247.99 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+282.87 248.24 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+277.30 249.89 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+281.28 235.26 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+273.72 271.87 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+260.60 247.19 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+245.26 227.96 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+352.31 266.85 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+221.56 235.97 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+299.89 252.84 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+271.35 257.23 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+236.56 253.33 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+282.13 252.02 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+311.88 244.94 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+288.42 241.99 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+300.38 247.16 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+190.47 262.99 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+366.11 249.31 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+180.01 262.29 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+271.74 248.84 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+180.81 236.55 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+296.57 245.69 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+174.82 223.86 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+260.01 255.37 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+274.84 266.37 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+326.36 260.87 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+295.99 247.19 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+293.90 242.01 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+162.92 228.69 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+267.63 253.04 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+269.33 264.83 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+282.16 228.19 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+256.63 267.14 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+245.10 261.91 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+238.36 243.25 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+285.81 244.33 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+240.36 246.24 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+226.33 251.58 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+213.24 265.84 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+187.22 229.06 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+309.51 242.21 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+212.95 263.09 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+268.56 253.59 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+310.07 254.24 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+323.86 248.39 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+232.79 248.35 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+278.29 244.08 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+226.93 239.94 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+274.68 242.73 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+248.58 242.13 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+239.66 246.60 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+260.30 246.98 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+257.15 252.18 (br) 0 ta
+0.180 (ight) tb gr
+272.10 250.88 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+265.93 235.26 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+276.25 237.71 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+263.66 245.82 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+304.47 231.77 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+315.08 240.80 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+255.24 246.14 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+257.50 245.48 (br) 0 ta
+0.180 (ight) tb gr
+316.01 237.48 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+209.41 238.45 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+233.85 243.31 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+303.04 239.99 (br) 0 ta
+0.180 (ight) tb gr
+329.81 258.33 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+271.93 242.68 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+286.97 233.79 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+257.70 252.30 (br) 0 ta
+0.180 (ight) tb gr
+287.59 250.13 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+295.49 230.28 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+239.21 236.10 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+275.27 243.09 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+242.44 253.30 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+255.61 243.12 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+226.80 219.26 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+255.88 253.51 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+293.42 249.60 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+312.68 243.24 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+188.67 256.56 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+229.45 232.92 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+274.11 245.01 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+159.81 249.72 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+283.81 252.01 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+258.75 250.05 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+335.08 242.28 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+256.79 238.88 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+270.64 250.59 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+216.06 223.04 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+305.58 245.63 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+250.71 245.65 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+303.68 290.90 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+243.92 225.82 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+221.41 242.35 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+267.69 238.12 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+300.68 247.01 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+141.84 236.76 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+399.09 261.98 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+129.11 249.60 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+150.94 228.57 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+111.37 242.31 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+290.23 244.18 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+225.46 234.63 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+375.52 242.47 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+277.87 215.75 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+257.62 269.49 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+269.04 231.72 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+283.15 262.06 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+268.12 242.22 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+270.67 256.85 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+258.71 244.69 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+254.34 266.81 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+248.89 238.29 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+226.87 247.39 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+212.68 226.14 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+245.83 265.51 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+264.98 232.35 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+236.49 245.57 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+342.35 229.31 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+254.64 261.32 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+266.97 233.71 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+224.64 257.00 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+210.39 207.66 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+341.11 284.09 (br) 0 ta
+0.180 (ight) tb gr
+265.91 244.95 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+263.30 241.60 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+319.45 246.98 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+269.78 235.84 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+251.54 244.03 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+244.66 242.39 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+260.75 250.51 (br) 0 ta
+0.180 (ight) tb gr
+331.76 247.33 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+228.35 233.08 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+239.69 230.34 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+249.56 226.12 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+236.58 226.78 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+278.11 253.34 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+239.30 236.60 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+287.29 245.86 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+251.00 245.56 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+121.12 247.88 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+316.20 251.66 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+183.12 209.69 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+276.11 248.20 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+248.91 249.06 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+395.41 258.01 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+215.17 260.65 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+263.67 241.61 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+262.76 246.23 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+263.90 250.52 (br) 0 ta
+0.180 (ight) tb gr
+327.18 268.47 (br) 0 ta
+0.180 (ight) tb gr
+240.79 254.20 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+250.53 242.81 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+256.12 248.37 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+222.92 238.92 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+241.08 248.34 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+261.36 252.81 (br) 0 ta
+0.180 (ight) tb gr
+266.17 250.76 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+241.82 244.03 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+258.48 248.39 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+264.73 257.72 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+254.05 240.61 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+278.81 258.93 (br) 0 ta
+0.180 (ight) tb gr
+258.31 248.26 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+262.04 250.88 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+251.99 243.93 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+255.39 242.14 (br) 0 ta
+0.180 (ight) tb gr
+249.51 265.02 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+240.84 240.48 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+286.37 265.86 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+242.17 230.40 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+253.63 233.54 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+300.48 254.05 (br) 0 ta
+0.180 (ight) tb gr
+335.61 262.65 (br) 0 ta
+0.180 (ight) tb gr
+232.09 238.39 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+246.79 231.28 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+271.98 251.57 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+209.26 256.60 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+255.23 245.89 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+264.12 254.23 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+204.72 206.26 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+191.54 241.64 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+266.37 247.26 (br) 0 ta
+0.180 (ight) tb gr
+299.37 248.81 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+288.18 268.43 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+259.21 252.18 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+266.34 255.58 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+274.72 261.27 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+308.92 273.52 (br) 0 ta
+0.180 (ight) tb gr
+352.15 258.08 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+272.05 255.03 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+250.95 247.92 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+237.38 246.02 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+257.35 247.84 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+252.40 245.36 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+242.31 253.74 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+278.12 248.74 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+251.99 260.08 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+274.79 252.90 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+264.90 248.10 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+251.15 254.01 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+287.60 265.17 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+231.11 236.55 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+259.34 247.10 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+234.19 247.74 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+268.05 243.11 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+255.90 253.32 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+256.25 243.22 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+246.72 258.08 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+315.25 240.86 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+291.71 249.53 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+237.24 233.65 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+297.19 231.98 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+233.10 232.84 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+235.51 238.70 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+252.20 227.35 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+247.61 252.69 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+221.52 246.10 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+272.95 237.95 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+174.92 236.81 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+325.54 241.51 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+175.03 255.77 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+241.90 251.76 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+211.82 240.36 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+174.14 234.16 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+287.30 228.81 (br) 0 ta
+0.180 (ight) tb gr
+276.02 233.80 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+214.54 232.18 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+272.88 252.60 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+238.76 237.24 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+239.20 254.64 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+193.40 218.39 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+273.09 256.04 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+262.64 234.52 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+320.77 248.84 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+223.42 222.14 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+337.28 253.49 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+237.66 237.65 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+253.42 225.20 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+327.21 256.63 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+198.23 262.26 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+289.90 237.26 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+175.55 241.49 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+299.50 243.99 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+180.56 260.39 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+271.79 246.57 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+182.05 231.69 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+357.03 247.17 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+310.41 239.15 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+272.04 268.37 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+253.64 229.08 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+234.76 272.50 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+217.19 227.70 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+262.70 270.90 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+267.94 232.28 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+240.39 256.56 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+304.18 237.14 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+276.83 248.39 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+123.70 241.86 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+146.74 256.70 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+271.28 255.01 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+208.69 251.32 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+303.92 255.15 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+190.93 268.53 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+241.59 279.39 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+219.87 270.13 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+373.13 265.58 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+253.02 239.90 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+334.86 271.72 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+262.66 235.36 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+289.15 249.64 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+239.61 239.47 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+267.33 266.68 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+245.93 256.26 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+276.08 259.94 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+277.16 250.17 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+269.12 253.16 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+287.62 254.00 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+334.27 264.27 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+155.48 261.55 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+139.44 254.83 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+266.10 252.64 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+104.04 253.24 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+287.94 249.82 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+159.60 248.80 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+238.86 259.87 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+288.72 271.69 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+316.39 278.67 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+295.94 238.07 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+292.44 199.02 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+246.13 267.45 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+1 0.7490 0 srgb
+301.65 279.37 (br) 0 ta
+0.180 (ight) tb gr
+1 0 0 srgb
+275.10 243.69 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+268.80 242.53 (w) 0 ta
+-0.180 (ar) tb
+0.300 (m) tb gr
+0 0.2510 1 srgb
+283.49 237.32 (air) .5 0 t
+0.5020 0 1 srgb
+316.56 233.72 (clear) .5 0 t
+ep
+%%Trailer
+%%Pages: 1
+%%EOF
