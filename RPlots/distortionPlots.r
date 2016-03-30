@@ -1,22 +1,30 @@
 library(SAFER)
 
-descriptorsToPlot <- c("warm", "bright", "fuzz", "fuzzy", "crunch", "crunchy", "raspy", "harsh")
+descriptorsToPlot <- c("warm", "bright", "fuzz", "crunch", "raspy", "harsh", "creamy", "smooth")
 load("distortionData.RData")
 
 setEPS()
 
-postscript("DistortionProcessedMDS.eps")
+postscript("DistortionProcessedCentroidsMDS.eps")
 a <- plotTimbreSpace(processedMDS, descriptorsToPlot, "Pretty", TRUE, FALSE)
 dev.off()
 
-postscript("DistortionProcessedTSNE.eps")
-plotTimbreSpace(processedTSNE, descriptorsToPlot, "Pretty", TRUE, FALSE)
+postscript("DistortionProcessedMDS.eps")
+a <- plotTimbreSpace(processedMDS, descriptorsToPlot, "Pretty", FALSE, FALSE)
 dev.off()
 
-postscript("DistortionDifferenceMDS.eps")
+#postscript("DistortionProcessedTSNE.eps")
+#plotTimbreSpace(processedTSNE, descriptorsToPlot, "Pretty", TRUE, FALSE)
+#dev.off()
+
+postscript("DistortionDifferenceCentroidsMDS.eps")
 plotTimbreSpace(differenceMDS, descriptorsToPlot, "Pretty", TRUE, FALSE)
 dev.off()
 
-postscript("DistortionDifferenceTSNE.eps")
-plotTimbreSpace(differenceTSNE, descriptorsToPlot, "Pretty", TRUE, FALSE)
+postscript("DistortionDifferenceMDS.eps")
+plotTimbreSpace(differenceMDS, descriptorsToPlot, "Pretty", FALSE, FALSE)
 dev.off()
+
+#postscript("DistortionDifferenceTSNE.eps")
+#plotTimbreSpace(differenceTSNE, descriptorsToPlot, "Pretty", TRUE, FALSE)
+#dev.off()
