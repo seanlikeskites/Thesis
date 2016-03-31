@@ -1,30 +1,13 @@
 library(SAFER)
 
-features <- c(SpectralFeatures, 30, 38:42)
-descriptorsToPlot <- c("air", "airy", "warm", "bright", "harsh", "sharp", "clear", "full")
+features <- 1:80
+descriptors <- c("warm", "bright", "clear", "thin", "boomy", "airy", "muddy", "full", "deep", "tinny", "harsh", 
+		       "boxy", "clicky", "hollow", "tight")
 
-processedMDS <- individualEntryFeatureSpace ("SAFEEqualiser", features, "Processed", "MDS")
+processedMDS <- individualEntryFeatureSpace ("SAFEEqualiser", features, "Processed", "MDS", 2, descriptors)
 #processedTSNE <- individualEntryFeatureSpace ("SAFEEqualiser", features, "Processed", "TSNE")
 
-differenceMDS <- individualEntryFeatureSpace ("SAFEEqualiser", features, "Differences", "MDS")
+differenceMDS <- individualEntryFeatureSpace ("SAFEEqualiser", features, "Differences", "MDS", 2, descriptors)
 #differenceTSNE <- individualEntryFeatureSpace ("SAFEEqualiser", features, "Differences", "TSNE")
 
 save(processedMDS, differenceMDS, file="equaliserData.RData")
-
-#setEPS()
-#
-#postscript("EqualiserProcessedMDS.eps")
-#plotTimbreSpace(processedMDS, descriptorsToPlot, "Pretty", FALSE)
-#dev.off()
-#
-#postscript("EqualiserProcessedTSNE.eps")
-#plotTimbreSpace(processedTSNE, descriptorsToPlot, "Pretty", FALSE)
-#dev.off()
-#
-#postscript("EqualiserDifferenceMDS.eps")
-#plotTimbreSpace(differenceMDS, descriptorsToPlot, "Pretty", FALSE)
-#dev.off()
-
-#postscript("EqualiserDifferenceTSNE.eps")
-#plotTimbreSpace(differenceTSNE, descriptorsToPlot, "Pretty", FALSE)
-#dev.off()
