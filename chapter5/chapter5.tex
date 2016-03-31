@@ -97,30 +97,36 @@
 \section{Comparison Summary}
 \label{sec:ExcitationEvaluation-Summary}
 
-	\begin{tabular}{|c|c|c|c|c|c|c|}
-		\hline
-		\bf{Method} & \bf{Complexity} & \bf{Homogeneity} & \bf{Spectral Properties} & \bf{Temporal Properties} &
-		\bf{IMD} & \bf{Flexibility} \\ % & \bf{Naturalness} \\
-		\hline
-		Static Nonlinearity & $\mathcal{O}(n)$ & & & & & \\
-		\hline
-		Rectifier & $\mathcal{O}(n)$ & & & & & \\
-		\hline
-		Integrator & $\mathcal{O}(n)$ & & & & & \\
-		\hline
-		Multiplier & $\mathcal{O}(n)$ & & & & & \\
-		\hline
-		SSBA & $\mathcal{O}(n)$ & & & & & \\
-		\hline
-		IAP & $\mathcal{O}(n)$ & & & & & \\
-		\hline
-		Spectral Replicator & $\mathcal{O}(n)$ & & & & & \\
-		\hline
-		Spectral Mirror & $\mathcal{O}(n)$ & & & & & \\
-		\hline
-		Spectral Stretch & $\mathcal{O}(n\log{n})$ Assuming FFT used & & & & & \\
-		\hline
-	\end{tabular}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			\bf{Method} & \bf{Complexity} & \bf{Homogeneity} & \bf{Spectral Properties} & 
+		 	\bf{Temporal Properties} & \bf{IMD} & \bf{Flexibility} \\ % & \bf{Naturalness} \\
+			\hline
+			\hline
+			Static Nonlinearity & $\mathcal{O}(n)$ & & & & & \\
+			\hline
+			Rectifier & $\mathcal{O}(n)$ & & & & & \\
+			\hline
+			Integrator & $\mathcal{O}(n)$ & & & & & \\
+			\hline
+			Multiplier & $\mathcal{O}(n)$ & & & & & \\
+			\hline
+			SSBA & $\mathcal{O}(n)$ & & & & & \\
+			\hline
+			IAP & $\mathcal{O}(n)$ & & & & & \\
+			\hline
+			Spectral Replicator & $\mathcal{O}(n)$ & & & & & \\
+			\hline
+			Spectral Mirror & $\mathcal{O}(n)$ & & & & & \\
+			\hline
+			Spectral Stretch & $\mathcal{O}(n\log{n})$ Assuming FFT used & & & & & \\
+			\hline
+		\end{tabular}
+		\caption{Excitation Method Comparison Summary}
+		\label{tab:ComparisonSummary}
+	\end{table}
 
 \end{landscape}
 
