@@ -1,0 +1,26 @@
+================================================
+	Distortion Processed
+================================================
+crunch - dim1
+
+
+================================================
+	Distortion Difference
+================================================
+crunch - dim1
+smooth - dim1
+warm and creamy - clustered at 0,0
+
+
+================================================
+	Equaliser Processed
+================================================
+warm and bright - separated on dim1
+full an clear - cluster with warm and bright respectively
+
+
+================================================
+	Equaliser Difference
+================================================
+warm and bright - separated on dim1
+full an clear - cluster with warm and bright respectively
