@@ -2,14 +2,14 @@ load("distortionData.RData")
 
 firstTen <- function(data)
 {
-	if (length(data) > 10)
-	{
-		return(data[1:10])
-	}
-	else
-	{
+	#if (length(data) > 10)
+	#{
+	#	return(data[1:10])
+	#}
+	#else
+	#{
 		return(data)
-	}
+	#}
 }
 
 ###################################################################################################

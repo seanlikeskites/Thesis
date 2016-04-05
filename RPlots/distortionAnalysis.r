@@ -1,7 +1,7 @@
 library(SAFER)
 
 features <- 1:80
-descriptors <- c("warm", "bright", "fuzz", "crunch", "raspy", "harsh", "creamy", "smooth")
+descriptors <- c("warm", "bright", "fuzz", "crunch", "raspy", "harsh", "creamy", "smooth", "crunchy")
 
 processedMDS <- individualEntryFeatureSpace ("SAFEDistortion", features, "Processed", "MDS", 2, descriptors)
 # processedTSNE <- individualEntryFeatureSpace ("SAFEDistortion", features, "Processed", "TSNE")

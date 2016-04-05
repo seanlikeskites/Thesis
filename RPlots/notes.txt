@@ -1,14 +1,13 @@
 ================================================
 	Distortion Processed
 ================================================
-crunch - dim1
+crunch - dim1 (positive skewness, negative kurtosis)
 
 
 ================================================
 	Distortion Difference
 ================================================
-crunch - dim1
-smooth - dim1
+crunch - dim1 (increase in Irregularity K, skewness and kurtosis)
 warm and creamy - clustered at 0,0
 
 
