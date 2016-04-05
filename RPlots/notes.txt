@@ -1,20 +1,36 @@
 ================================================
+	Distortion Counts
+================================================
+crunch, crunchy - 18
+warm - 14
+
+================================================
 	Distortion Processed
 ================================================
 crunch - dim1 (positive skewness, negative kurtosis)
+warm - all over the place
 
 
 ================================================
 	Distortion Difference
 ================================================
 crunch - dim1 (increase in Irregularity K, skewness and kurtosis)
-warm and creamy - clustered at 0,0
+warm - mostly clustered at 0,0 similar dim1 position to crunch but also close on dim2 
+	(a decrease in roll off point, nothing particularly pattern worthy in spectral centroid or variance)
 
+
+================================================
+	Equaliser Counts
+================================================
+warm - 531
+bright - 502
 
 ================================================
 	Equaliser Processed
 ================================================
 warm and bright - separated on dim1
+warm  (increase of tristimulus2, decreasing centroid) ????????
+bright (decrease tristimulus2, increase centroid) ????????
 full an clear - cluster with warm and bright respectively
 
 
