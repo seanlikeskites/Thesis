@@ -1,7 +1,7 @@
 library(SAFER)
 
-descriptorsToPlot <- c("warm", "bright", "fuzz", "crunch", "raspy", "harsh", "creamy", "smooth")
 load("distortionData.RData")
+descriptorsToPlot <- unique(rownames(processedMDS$Features))
 
 setEPS()
 
