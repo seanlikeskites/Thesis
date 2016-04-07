@@ -1,0 +1,6 @@
+Chapter 4 intro, we want to find some descriptors and their salient audio features. Sell SAFE (ontology? :( )
+
+Chapter 6: Take the SMC experiment out and into the next chapter (perceptual evaluation chapter). Put in some empirical
+results showing how well the systems implement the spectral manipulations discussed.
+
+Chapter 7: SMC experiment and the timbral validation experiment
