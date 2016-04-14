@@ -24,6 +24,7 @@
 	This section will detail what the typical production workflow is and how semantic information can be gathered.
 
 	\subsection{Music Production Workflow}
+	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-Workflow}
 		\todo{Find some references for this section. Probably mixing engineers handbook or something.}
 
 		The music production workflow has four main stages:
@@ -46,6 +47,7 @@
 		users to record, edit and mix multiple tracks of audio using a computer. 
 		
 	\subsection{Analysis of Timbre Inside the DAW}
+	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-InDAW}
 		An ideal way to collect timbral information during music production would be to have the DAW analyse the
 		audio tracks used and production techniques applied. Information which could be gathered directly from the
 		DAW, with no extra input from the user, includes:
@@ -85,10 +87,11 @@
 
 		Audio plug-ins provide a good platform to allow producers to provide semantic terms and audio feature
 		information from within their preferred DAW. As part of this research a suite of audio plug-ins which
-		extract this information have been developed. They have been release under the title Semantic Audio Feature
+		extract this information have been developed. They have been released under the title Semantic Audio Feature
 		Extraction (SAFE) Plug-Ins.
 
 	\subsection{SAFE Plug-Ins}
+	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}
 		The SAFE plug-ins consist of four commonly used audio effects: Equaliser, Distortion, Compressor and Reverb.
 		As part of the plug-ins's interface the user has the option to save semantic terms. The interface for the
 		SAFE Distortion is shown in Figure \ref{fig:SAFE-Distortion}. Upon saving terms the plug-in will analyse the
@@ -128,11 +131,124 @@
 		working together. This can be mitigated somewhat by asking users to describe only the effect the plug-in in
 		question is providing.
 
-		The SAFE plug-ins also suffer from the same issues other distributed tests do. The researcher forfeits
-		control over the listening environment in order to gather results from a much larger sample of people. In
-		fact they provide even lest control that methodologies like that used in the Social EQ project
+		The SAFE plug-ins suffer from the same issues other distributed tests do. The researcher forfeits control
+		over the listening environment in order to gather results from a much larger sample of people. In fact they
+		provide even lest control than methodologies like that used in the Social EQ project
 		\citep{cartwright2013socialeq} in that the choice of audio samples being used is decided by the test
 		subject. 
+
+	\subsection{SAFE Ontology}
+	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFEOntology}
+		The data collected using the SAFE plug-ins is stored as RDF triples using the SAFE ontology.  The SAFE
+		Ontology was designed to describe the semantics relating to the application of an audio effect and the
+		statistical audio features of the signals involved. It acts as an extension to the Audio Effects Ontology
+		\citep{wilmering2013the}, introducing additional concepts for the description of semantic data.  This
+		additional data can be separated into three groups:
+
+		\begin{itemize}
+			\item Metadata describing the application of the effect.
+			\item Audio feature data for the input and output signals.
+			\item Provenance of the data.
+		\end{itemize}
+
+		Each entry in the SAFE dataset is described using the \emph{studio:Transform} concept, applying
+		some semantic transformation on a set of input signals to produce a set of output signals. The structure of
+		this data is shown in Figure \ref{fig:TransformGraph}.
+
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}[->,>=stealth',node distance=3cm,every node/.style={scale=0.75}]
+				\tikzstyle{object} = [style=ellipse]
+
+				\node[object, fill=blue] (transform) {studio:Transform};
+				\node[object, fill=green] (signal) [below left of=transform] {mo:Signal};
+				\node[object, fill=orange] (descriptor) [above of=transform] {safe:DescriptorItem};
+				\node[object, fill=orange] (metadata) [below right of=transform] {safe:MetadataItem};
+				\node[object, fill=pink] (device) [above right=1.3cm and 0.6cm of transform] {afx:Device};
+				\node[object, fill=pink] (state) [above left=1.3cm and 0.6cm of transform] {afx:State};
+				\node[object, fill=gray] (harsh) [above=1cm of descriptor] {"Harsh"};
+
+				\path (transform) edge [bend left] node [right, overlay] {prov:used} (signal)
+				      edge [bend right] node [left, overlay] {prov:generated} (signal)
+				      edge node [right, overlay] {safe:descriptor} (descriptor)
+				      edge [bend left] node [right, overlay] {safe:metadata} (metadata)
+				      edge [bend right] node [right, overlay] {studio:effect} (device)
+				      edge [bend left] node [left, overlay] {afx:state} (state)
+				      (signal) edge [bend right] node [below, overlay] {safe:metadata} (metadata)
+				      (descriptor) edge node [right, overlay] {rdfs:comment} (harsh);
+			\end{tikzpicture}
+			\caption{The structure used to describe the application of an audio effect.}
+			\label{fig:TransformGraph}
+		\end{figure}
+
+		Here, users provide a term, or series of terms, to describe the transform applied by the audio effect in its
+		current state. This should describe the perceived difference between the output and input signals. In the
+		SAFE Ontology this is modelled through the \emph{safe:DescriptorItem} concept which provides a semantic
+		description for each transform. Metadata items are used to provide details about the application domain of
+		the effect, where each metadata item describes one property of an object, the property being identified
+		using an \emph{rdfs:label} and the description provided using an \emph{rdfs:comment}. Each object described
+		by a metadata item has its own set of properties, ``genre'' and ``instrument'' metadata tags for example,
+		describe an audio signal, while ``location'' metadata tags describe a transform.
+
+		The analysis of audio signals is described using the concept \emph{safe:FeatureExtractionTransform}, similar
+		to a \emph{studio:Transform} but taking an audio signal as input and producing feature values at the output,
+		as shown in Figure \ref{fig:ExtractionGraph}.
+
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}[->,>=stealth',node distance=3cm,every node/.style={scale=0.75}]
+				\tikzstyle{object} = [style=ellipse]
+
+				\node[object, fill=orange] (extraction) {safe:FeatureExtractionTransform};
+				\node[object, fill=gray] (feature) [above of=extraction] {"Spectral Centroid"};
+				\node[object, fill=gray] (frameSize) [above left of=extraction] {"4096"};
+				\node[object, fill=gray] (stepSize) [above right of=extraction] {"1024"};
+				\node[object, fill=green] (signal) [below left of=extraction] {mo:Signal};
+				\node[object, fill=purple] (event) [below right of=extraction] {event:Event};
+				\node[object, fill=yellow] (interval) [below=1cm of signal] {tl:Interval};
+				\node[object, fill=yellow] (instant) [below=1cm of event] {tl:Instant};
+				\node[object, fill=yellow] (timeline) [below right of=interval] {tl:TimeLine};
+				\node[object, fill=gray] (value) [below right=0.2cm and 0.6cm of event] {"2543.4"};
+				\node[object, fill=gray] (time) [below right=0.2cm and 0.6cm of instant] {"4048"};
+
+				\path (extraction) edge [bend left] node [left, overlay] {safe:frameSize} (frameSize)
+				      edge [bend right] node [right, overlay] {safe:stepSize} (stepSize)
+				      edge node [right, overlay] {rdfs:label} (feature)
+				      edge [bend right] node [left, overlay] {prov:used} (signal)
+				      (signal) edge node [left, overlay] {mo:time} (interval)
+				      (event) edge node [left, overlay] {event:time} (instant)
+				      edge [bend right] node [right, overlay] {prov:wasGeneratedBy} (extraction)
+				      edge node [above right, overlay] {af:feature} (value)
+				      (interval) edge [bend right] node [left, overlay] {tl:onTimeLine} (timeline)
+				      (instant) edge [bend left] node [right, overlay] {tl:onTimeLine} (timeline)
+				      edge node [above right, overlay] {tl:at} (time);
+
+			\end{tikzpicture}
+			\caption{The structure used to describe the features of an audio signal.}
+			\label{fig:ExtractionGraph}
+		\end{figure}
+
+		Here, The SAFE Ontology makes extensive use of the Provenance Ontology to identify the origins of the data.
+		Each element of data constitutes a \emph{prov:Entity} which was generated by a \emph{prov:Activity}. These
+		\emph{prov:Activity} nodes are in turn associated with a \emph{prov:Agent} identifying the way that the data
+		was produced.
+
+		When using the SAFE plug-ins, users are required to provide a descriptor for a transform, meaning that every
+		\emph{safe:DescriptorItem} node in the dataset is attributed to a particular user. Conversely, the metadata
+		fields are not mandatory. In situations where a user has not filled in certain metadata fields their values
+		can be predicted on the server using supervised machine learning. Using the Provenance Ontology, each
+		metadata entity can be attributed to a particular agent, allowing it to understood as human or machine
+		labelled. This allows queries on the dataset to request only the more reliable user-labeled data, or for
+		example, compare data produced using different classification algorithms.
+
+		The Provenance Ontology is also used to describe the algorithms that produce audio feature data. Each
+		\emph{safe:FeatureExtractionTransform} node is a \emph{prov:Activity} which can be associated with a
+		particular implementation of the algorithm it uses (e.g. the LibXtract \citep{bullock2007libxtract} spectral
+		centroid function). Say a discrepancy was found between two implementations of a given feature extraction
+		algorithm, the provenance data allows queries to filter results to remove those generated using an earlier
+		or incompatible implementation. Further use of provenance describes the role of a user in the application of
+		a transform. Storage of this data allows the simple retrieval of all transforms associated with a particular
+		user, allowing users to maintain personal libraries of semantic presets amongst the entire SAFE dataset.
 
 \section{Analysis}
 \label{sec:TimbreEvaluation-Analysis}
