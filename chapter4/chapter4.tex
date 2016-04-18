@@ -139,6 +139,9 @@
 
 	\subsection{SAFE Ontology}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFEOntology}
+		\note{Really not sure how well this fits in here. Do we needs a section explaining RDF and such? Where would
+		that go?}
+
 		The data collected using the SAFE plug-ins is stored as RDF triples using the SAFE ontology.  The SAFE
 		Ontology was designed to describe the semantics relating to the application of an audio effect and the
 		statistical audio features of the signals involved. It acts as an extension to the Audio Effects Ontology
@@ -252,301 +255,383 @@
 
 \section{Analysis}
 \label{sec:TimbreEvaluation-Analysis}
+	In this section the data collected using the SAFE plug-ins is analysed. For the purposes of this study only the data
+	from the distortion and equaliser plug-ins is used.
 
-	\begin{figure}[h!]
-		\centering
-		\subfloat[Individual Transforms]
-		{
-			\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionProcessedMDS.eps}
-			\label{fig:DistortionProcessedMDS}
-		}
-		\qquad
-		\subfloat[Descriptor Centroids]
-		{
-			\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionProcessedCentroidsMDS.eps}
-			\label{fig:DistortionProcessedCentroidsMDS}
-		}
-		\caption{Timbre Space for the Processed Features from the Distortion.}
-		\label{fig:DistortionProcessedMDSs}
-	\end{figure}
+	\subsection{Term Usage}
+	\label{sec:TimbreEvaluation-Analysis-TermUsage}
 
-	\begin{table}[h!]
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			\bf{Feature} & \bf{Correlation} \\
-			\hline
-			\hline
-			Irregularity K & -0.983 \\
-			\hline
-			Peak Irregularity K & -0.963 \\
-			\hline
-			Bark Coefficient 6 & -0.958 \\
-			\hline
-			Peak Spectral Kurtosis & -0.942 \\
-			\hline
-			Bark Coefficient 7 & -0.940 \\
-			\hline
-			Harmonic Irregularity K & -0.935 \\
-			\hline
-			Harmonic Spectral Kurtosis & -0.928 \\
-			\hline
-			Bark Coefficient 5 & -0.925 \\
-			\hline
-			Peak Spectral Skewness & -0.923 \\
-			\hline
-			Bark Coefficient 8 & -0.918 \\
-			\hline
-		\end{tabular}
-		\caption{Significant Features for Dimension 1 of the Timbre Spaces Shown in Figure 
-			 \ref{fig:DistortionProcessedMDSs}.}
-		\label{tab:DistortionProcessedFeaturesDim1}
-	\end{table}
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				\bf{Term} & \bf{Frequency} \\
+				\hline
+				\hline
+				warm & 14 \\
+				\hline
+				crunch & 14 \\
+				\hline
+				fuzz & 8 \\
+				\hline
+				crunchy & 5 \\
+				\hline
+				fuzzy & 5 \\
+				\hline
+				bright & 4 \\
+				\hline
+				raspy & 4 \\
+				\hline
+				creamy & 3 \\
+				\hline
+				harsh & 3 \\
+				\hline
+				smooth & 3 \\
+				\hline
+			\end{tabular}
+			\caption{Most Commonly Used Terms from the Distortion.}
+			\label{tab:DistortionTerms}
+		\end{table}
 
-	\begin{table}[h!]
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			\bf{Feature} & \bf{Correlation} \\
-			\hline
-			\hline
-			Spectral Centroid &  0.936 \\
-			\hline
-			Spectral Roll Off &  0.920 \\
-			\hline
-			MFCC 1 & -0.902 \\
-			\hline
-			Spectral Slope &  0.892 \\
-			\hline
-			Peak Spectral Standard Deviation &  0.865 \\
-			\hline
-			Harmonic Spectral Standard Deviation &  0.864 \\
-			\hline
-			Harmonic Spectral Centroid &  0.848 \\
-			\hline
-			Peak Spectral Centroid &  0.847 \\
-			\hline
-		\end{tabular}
-		\caption{Significant Features for Dimension 2 of the Timbre Spaces Shown in Figure 
-			 \ref{fig:DistortionProcessedMDSs}.}
-		\label{tab:DistortionProcessedFeaturesDim2}
-	\end{table}
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				\bf{Term} & \bf{Frequency} \\
+				\hline
+				\hline
+				warm & 534 \\
+				\hline
+				bright & 504 \\
+				\hline
+				clear & 8 \\
+				\hline
+				thin & 7 \\
+				\hline
+				boomy & 7 \\
+				\hline
+				airy & 6 \\
+				\hline
+				muddy & 5 \\
+				\hline
+				full & 5 \\
+				\hline
+				deep & 5 \\
+				\hline
+				tinny & 5 \\
+				\hline
+				harsh & 4 \\
+				\hline
+				boxy & 4 \\
+				\hline
+				clicky & 4 \\
+				\hline
+				hollow & 3 \\
+				\hline
+				tight & 3 \\
+				\hline
+			\end{tabular}
+			\caption{Most Commonly Used Terms from the Equaliser.}
+			\label{tab:EquaiserTerms}
+		\end{table}
 
-	\begin{figure}[h!]
-		\centering
-		\subfloat[Individual Transforms]
-		{
-			\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionDifferenceMDS.eps}
-			\label{fig:DistortionDifferenceMDS}
-		}
-		\qquad
-		\subfloat[Descriptor Centroids]
-		{
-			\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionDifferenceCentroidsMDS.eps}
-			\label{fig:DistortionDifferenceCentroidsMDS}
-		}
-		\caption{Timbre Space for the Feature Differences from the Distortion.}
-		\label{fig:DistortionDifferenceMDSs}
-	\end{figure}
+	\subsection{Timbre Spaces}
+	\label{sec:TImbreEvaluation-Analysis-TimbreSpaces}
 
-	\begin{table}[h!]
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			\bf{Feature} & \bf{Correlation} \\
-			\hline
-			\hline
-			Irregularity K & 0.987 \\
-			\hline
-			Peak Irregularity K & 0.965 \\
-			\hline
-			Bark Coefficient 6 & 0.959 \\
-			\hline
-			Bark Coefficient 7 & 0.958 \\
-			\hline
-			Bark Coefficient 8 & 0.951 \\
-			\hline
-			Bark Coefficient 15 & 0.950 \\
-			\hline
-			Bark Coefficient 9 & 0.950 \\
-			\hline
-			Harmonic Irregularity K & 0.949 \\
-			\hline
-			Bark Coefficient 10 & 0.937 \\
-			\hline
-			Bark Coefficient 5 & 0.933 \\
-			\hline
-		\end{tabular}
-		\caption{Significant Features for Dimension 1 of the Timbre Spaces Shown in Figure 
-			 \ref{fig:DistortionDifferenceMDSs}.}
-		\label{tab:DistortionDifferenceFeatures}
-	\end{table}
+		\begin{figure}[h!]
+			\centering
+			\subfloat[Individual Transforms]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionProcessedMDS.eps}
+				\label{fig:DistortionProcessedMDS}
+			}
+			\qquad
+			\subfloat[Descriptor Centroids]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionProcessedCentroidsMDS.eps}
+				\label{fig:DistortionProcessedCentroidsMDS}
+			}
+			\caption{Timbre Space for the Processed Features from the Distortion.}
+			\label{fig:DistortionProcessedMDSs}
+		\end{figure}
 
-	\begin{table}[h!]
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			\bf{Feature} & \bf{Correlation} \\
-			\hline
-			\hline
-			Spectral Roll Off & -0.878 \\
-			\hline
-			Spectral Variance & -0.876 \\
-			\hline
-			Harmonic Spectral Centroid & -0.872 \\
-			\hline
-			Harmonic Spectral Standard Deviation & -0.867 \\
-			\hline
-			Peak Spectral Centroid & -0.855 \\
-			\hline
-			Spectral Centroid & -0.850 \\
-			\hline
-			Peak Spectral Standard Deviation & -0.823 \\
-			\hline
-			Peak Spectral Variance & -0.820 \\
-			\hline
-			Harmonic Spectral Variance & -0.815 \\
-			\hline
-		\end{tabular}
-		\caption{Significant Features for Dimension 2 of the Timbre Spaces Shown in Figure 
-			 \ref{fig:DistortionDifferenceMDSs}.}
-		\label{tab:DistortionDifferenceFeatures}
-	\end{table}
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				\bf{Feature} & \bf{Correlation} \\
+				\hline
+				\hline
+				Irregularity K & -0.983 \\
+				\hline
+				Peak Irregularity K & -0.963 \\
+				\hline
+				Bark Coefficient 6 & -0.958 \\
+				\hline
+				Peak Spectral Kurtosis & -0.942 \\
+				\hline
+				Bark Coefficient 7 & -0.940 \\
+				\hline
+				Harmonic Irregularity K & -0.935 \\
+				\hline
+				Harmonic Spectral Kurtosis & -0.928 \\
+				\hline
+				Bark Coefficient 5 & -0.925 \\
+				\hline
+				Peak Spectral Skewness & -0.923 \\
+				\hline
+				Bark Coefficient 8 & -0.918 \\
+				\hline
+			\end{tabular}
+			\caption{Significant Features for Dimension 1 of the Timbre Spaces Shown in Figure 
+				 \ref{fig:DistortionProcessedMDSs}.}
+			\label{tab:DistortionProcessedFeaturesDim1}
+		\end{table}
 
-	\begin{figure}[h!]
-		\centering
-		\subfloat[Individual Transforms]
-		{
-			\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserProcessedMDS.eps}
-			\label{fig:EqualiserProcessedMDS}
-		}
-		\qquad
-		\subfloat[Descriptor Centroids]
-		{
-			\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserProcessedCentroidsMDS.eps}
-			\label{fig:EqualiserProcessedCentroidsMDS}
-		}
-		\caption{Timbre Space for the Processed Features from the Equaliser.}
-		\label{fig:EqualiserProcessedMDSs}
-	\end{figure}
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				\bf{Feature} & \bf{Correlation} \\
+				\hline
+				\hline
+				Spectral Centroid &  0.936 \\
+				\hline
+				Spectral Roll Off &  0.920 \\
+				\hline
+				MFCC 1 & -0.902 \\
+				\hline
+				Spectral Slope &  0.892 \\
+				\hline
+				Peak Spectral Standard Deviation &  0.865 \\
+				\hline
+				Harmonic Spectral Standard Deviation &  0.864 \\
+				\hline
+				Harmonic Spectral Centroid &  0.848 \\
+				\hline
+				Peak Spectral Centroid &  0.847 \\
+				\hline
+			\end{tabular}
+			\caption{Significant Features for Dimension 2 of the Timbre Spaces Shown in Figure 
+				 \ref{fig:DistortionProcessedMDSs}.}
+			\label{tab:DistortionProcessedFeaturesDim2}
+		\end{table}
 
-	\begin{table}[h!]
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			\bf{Feature} & \bf{Correlation} \\
-			\hline
-			\hline
-			Peak Tristimulus 2 &  0.856 \\
-			\hline
-			Spectral Crest &  0.846 \\
-			\hline
-			Harmonic Tristimulus 2 &  0.844 \\
-			\hline
-			Harmonic Spectral Standard Deviation & -0.827 \\
-			\hline
-			Peak Spectral Standard Deviation & -0.825 \\
-			\hline
-			Bark Coefficient 17 & -0.812 \\
-			\hline
-			Bark Coefficient 14 & -0.807 \\
-			\hline
-			Peak Spectral Centroid & -0.807 \\
-			\hline
-			Harmonic Spectral Centroid & -0.803 \\
-			\hline
-		\end{tabular}
-		\caption{Significant Features for Dimension 1 of the Timbre Spaces Shown in Figure 
-			 \ref{fig:EqualiserProcessedMDSs}.}
-		\label{tab:EqualiserProcessedFeaturesDim1}
-	\end{table}
+		\begin{figure}[h!]
+			\centering
+			\subfloat[Individual Transforms]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionDifferenceMDS.eps}
+				\label{fig:DistortionDifferenceMDS}
+			}
+			\qquad
+			\subfloat[Descriptor Centroids]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionDifferenceCentroidsMDS.eps}
+				\label{fig:DistortionDifferenceCentroidsMDS}
+			}
+			\caption{Timbre Space for the Feature Differences from the Distortion.}
+			\label{fig:DistortionDifferenceMDSs}
+		\end{figure}
 
-	\begin{table}[h!]
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			\bf{Feature} & \bf{Correlation} \\
-			\hline
-			\hline
-			Spectral Skewness & 0.819 \\
-			\hline
-			Spectral Kurtosis & 0.801 \\
-			\hline
-		\end{tabular}
-		\caption{Significant Features for Dimension 2 of the Timbre Spaces Shown in Figure 
-			 \ref{fig:EqualiserProcessedMDSs}.}
-		\label{tab:EqualiserProcessedFeaturesDim2}
-	\end{table}
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				\bf{Feature} & \bf{Correlation} \\
+				\hline
+				\hline
+				Irregularity K & 0.987 \\
+				\hline
+				Peak Irregularity K & 0.965 \\
+				\hline
+				Bark Coefficient 6 & 0.959 \\
+				\hline
+				Bark Coefficient 7 & 0.958 \\
+				\hline
+				Bark Coefficient 8 & 0.951 \\
+				\hline
+				Bark Coefficient 15 & 0.950 \\
+				\hline
+				Bark Coefficient 9 & 0.950 \\
+				\hline
+				Harmonic Irregularity K & 0.949 \\
+				\hline
+				Bark Coefficient 10 & 0.937 \\
+				\hline
+				Bark Coefficient 5 & 0.933 \\
+				\hline
+			\end{tabular}
+			\caption{Significant Features for Dimension 1 of the Timbre Spaces Shown in Figure 
+				 \ref{fig:DistortionDifferenceMDSs}.}
+			\label{tab:DistortionDifferenceFeatures}
+		\end{table}
 
-	\begin{figure}[h!]
-		\centering
-		\subfloat[Individual Transforms]
-		{
-			\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserDifferenceMDS.eps}
-			\label{fig:EqualiserDifferenceMDS}
-		}
-		\qquad
-		\subfloat[Descriptor Centroids]
-		{
-			\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserDifferenceCentroidsMDS.eps}
-			\label{fig:EqualiserDifferenceCentroidsMDS}
-		}
-		\caption{Timbre Space for the Feature Differences from the Equaliser.}
-		\label{fig:EqualiserDifferenceMDSs}
-	\end{figure}
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				\bf{Feature} & \bf{Correlation} \\
+				\hline
+				\hline
+				Spectral Roll Off & -0.878 \\
+				\hline
+				Spectral Variance & -0.876 \\
+				\hline
+				Harmonic Spectral Centroid & -0.872 \\
+				\hline
+				Harmonic Spectral Standard Deviation & -0.867 \\
+				\hline
+				Peak Spectral Centroid & -0.855 \\
+				\hline
+				Spectral Centroid & -0.850 \\
+				\hline
+				Peak Spectral Standard Deviation & -0.823 \\
+				\hline
+				Peak Spectral Variance & -0.820 \\
+				\hline
+				Harmonic Spectral Variance & -0.815 \\
+				\hline
+			\end{tabular}
+			\caption{Significant Features for Dimension 2 of the Timbre Spaces Shown in Figure 
+				 \ref{fig:DistortionDifferenceMDSs}.}
+			\label{tab:DistortionDifferenceFeatures}
+		\end{table}
 
-	\begin{table}[h!]
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			\bf{Feature} & \bf{Correlation} \\
-			\hline
-			\hline
-			Peak Tristimulus 2 & -0.890 \\
-			\hline
-			Noisiness & -0.886 \\
-			\hline
-			Harmonic Tristimulus 2 & -0.886 \\
-			\hline
-			Harmonic Tristimulus 1 & -0.853 \\
-			\hline
-			Peak Tristimulus 1 & -0.850 \\
-			\hline
-			Fundamental & -0.817 \\
-			\hline
-		\end{tabular}
-		\caption{Significant Features for Dimension 1 of the Timbre Spaces Shown in Figure 
-			 \ref{fig:EqualiserDifferenceMDSs}.}
-		\label{tab:EqualiserDifferenceFeatures}
-	\end{table}
+		\begin{figure}[h!]
+			\centering
+			\subfloat[Individual Transforms]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserProcessedMDS.eps}
+				\label{fig:EqualiserProcessedMDS}
+			}
+			\qquad
+			\subfloat[Descriptor Centroids]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserProcessedCentroidsMDS.eps}
+				\label{fig:EqualiserProcessedCentroidsMDS}
+			}
+			\caption{Timbre Space for the Processed Features from the Equaliser.}
+			\label{fig:EqualiserProcessedMDSs}
+		\end{figure}
 
-	\begin{table}[h!]
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			\bf{Feature} & \bf{Correlation} \\
-			\hline
-			\hline
-			Irregularity K & 0.966 \\
-			\hline
-			Spectral Skewness & 0.942 \\
-			\hline
-			Spectral Kurtosis & 0.927 \\
-			\hline
-			Peak Irregularity K & 0.924 \\
-			\hline
-			Harmonic Irregularity K & 0.874 \\
-			\hline
-			Harmonic Spectral Kurtosis & 0.864 \\
-			\hline
-			Bark Coefficient 8 & 0.825 \\
-			\hline
-			Bark Coefficient 9 & 0.814 \\
-			\hline
-			Bark Coefficient 7 & 0.803 \\
-			\hline
-		\end{tabular}
-		\caption{Significant Features for Dimension 2 of the Timbre Spaces Shown in Figure 
-			 \ref{fig:EqualiserDifferenceMDSs}.}
-		\label{tab:EqualiserDifferenceFeatures}
-	\end{table}
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				\bf{Feature} & \bf{Correlation} \\
+				\hline
+				\hline
+				Peak Tristimulus 2 &  0.856 \\
+				\hline
+				Spectral Crest &  0.846 \\
+				\hline
+				Harmonic Tristimulus 2 &  0.844 \\
+				\hline
+				Harmonic Spectral Standard Deviation & -0.827 \\
+				\hline
+				Peak Spectral Standard Deviation & -0.825 \\
+				\hline
+				Bark Coefficient 17 & -0.812 \\
+				\hline
+				Bark Coefficient 14 & -0.807 \\
+				\hline
+				Peak Spectral Centroid & -0.807 \\
+				\hline
+				Harmonic Spectral Centroid & -0.803 \\
+				\hline
+			\end{tabular}
+			\caption{Significant Features for Dimension 1 of the Timbre Spaces Shown in Figure 
+				 \ref{fig:EqualiserProcessedMDSs}.}
+			\label{tab:EqualiserProcessedFeaturesDim1}
+		\end{table}
+
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				\bf{Feature} & \bf{Correlation} \\
+				\hline
+				\hline
+				Spectral Skewness & 0.819 \\
+				\hline
+				Spectral Kurtosis & 0.801 \\
+				\hline
+			\end{tabular}
+			\caption{Significant Features for Dimension 2 of the Timbre Spaces Shown in Figure 
+				 \ref{fig:EqualiserProcessedMDSs}.}
+			\label{tab:EqualiserProcessedFeaturesDim2}
+		\end{table}
+
+		\begin{figure}[h!]
+			\centering
+			\subfloat[Individual Transforms]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserDifferenceMDS.eps}
+				\label{fig:EqualiserDifferenceMDS}
+			}
+			\qquad
+			\subfloat[Descriptor Centroids]
+			{
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserDifferenceCentroidsMDS.eps}
+				\label{fig:EqualiserDifferenceCentroidsMDS}
+			}
+			\caption{Timbre Space for the Feature Differences from the Equaliser.}
+			\label{fig:EqualiserDifferenceMDSs}
+		\end{figure}
+
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				\bf{Feature} & \bf{Correlation} \\
+				\hline
+				\hline
+				Peak Tristimulus 2 & -0.890 \\
+				\hline
+				Noisiness & -0.886 \\
+				\hline
+				Harmonic Tristimulus 2 & -0.886 \\
+				\hline
+				Harmonic Tristimulus 1 & -0.853 \\
+				\hline
+				Peak Tristimulus 1 & -0.850 \\
+				\hline
+				Fundamental & -0.817 \\
+				\hline
+			\end{tabular}
+			\caption{Significant Features for Dimension 1 of the Timbre Spaces Shown in Figure 
+				 \ref{fig:EqualiserDifferenceMDSs}.}
+			\label{tab:EqualiserDifferenceFeatures}
+		\end{table}
+
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				\bf{Feature} & \bf{Correlation} \\
+				\hline
+				\hline
+				Irregularity K & 0.966 \\
+				\hline
+				Spectral Skewness & 0.942 \\
+				\hline
+				Spectral Kurtosis & 0.927 \\
+				\hline
+				Peak Irregularity K & 0.924 \\
+				\hline
+				Harmonic Irregularity K & 0.874 \\
+				\hline
+				Harmonic Spectral Kurtosis & 0.864 \\
+				\hline
+				Bark Coefficient 8 & 0.825 \\
+				\hline
+				Bark Coefficient 9 & 0.814 \\
+				\hline
+				Bark Coefficient 7 & 0.803 \\
+				\hline
+			\end{tabular}
+			\caption{Significant Features for Dimension 2 of the Timbre Spaces Shown in Figure 
+				 \ref{fig:EqualiserDifferenceMDSs}.}
+			\label{tab:EqualiserDifferenceFeatures}
+		\end{table}
