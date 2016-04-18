@@ -256,10 +256,22 @@
 \section{Analysis}
 \label{sec:TimbreEvaluation-Analysis}
 	In this section the data collected using the SAFE plug-ins is analysed. For the purposes of this study only the data
-	from the distortion and equaliser plug-ins is used.
+	from the distortion and equaliser plug-ins is used as these effects best represent the timbral transformations which
+	can be applied using harmonic excitation. The distortion showing the effects of introducing new spectral content and
+	the equaliser showing the effects of manipulating the existing spectral content.
+
+	Firstly, the terms used to describe transformations using each plug-in are investigated (Section
+	\ref{sec:TimbreEvaluation-Analysis-TermUsage}). This provides insight into the language used to describe audio in
+	the production environment, also showing what terms are shared across processing techniques and those which are
+	reserved for particular effect. Secondly, clustering techniques are used in order to group these terms into those
+	which describe similar audio signals / transformations, finding terms which are synonymous when used to describe
+	timbre (Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}). Finally, timbre spaces are constructed using
+	MDS in order to find the most salient audio features which contribute to the differences in timbral description.
 
 	\subsection{Term Usage}
 	\label{sec:TimbreEvaluation-Analysis-TermUsage}
+		Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} show the most commonly used terms used to
+		describe transforms applied by the distortion and equaliser respectively.
 
 		\begin{table}[h!]
 			\centering
@@ -334,6 +346,10 @@
 			\caption{Most Commonly Used Terms from the Equaliser.}
 			\label{tab:EquaiserTerms}
 		\end{table}
+
+	\subsection{Term Clustering}
+	\label{sec:TimbreEvaluation-Analysis-TermClustering}
+		\todo{Try and make some better looking dendrograms, the current ones are pretty terrible.}
 
 	\subsection{Timbre Spaces}
 	\label{sec:TImbreEvaluation-Analysis-TimbreSpaces}
