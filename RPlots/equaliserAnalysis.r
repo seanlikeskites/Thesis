@@ -1,8 +1,8 @@
 library(SAFER)
 
 features <- 1:80
-descriptors <- c("warm", "bright", "clear", "thin", "boomy", "airy", "muddy", "full", "deep", "tinny", "harsh", 
-		       "boxy", "clicky", "hollow", "tight")
+descriptors <- c("warm", "bright", "brighter", "clear", "thin", "boomy", "airy", "air","muddy", "full", "deep", "tinny",
+		 "harsh", "boxy", "box")
 
 processedMDS <- individualEntryFeatureSpace ("SAFEEqualiser", features, "Processed", "MDS", 2, descriptors)
 #processedTSNE <- individualEntryFeatureSpace ("SAFEEqualiser", features, "Processed", "TSNE")

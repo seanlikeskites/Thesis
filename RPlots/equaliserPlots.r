@@ -1,8 +1,7 @@
 library(SAFER)
 
-descriptorsToPlot <- c("warm", "bright", "clear", "thin", "boomy", "airy", "muddy", "full", "deep", "tinny", "harsh", 
-		       "boxy", "clicky", "hollow", "tight")
 load("equaliserData.RData")
+descriptorsToPlot <- unique(rownames(processedMDS$Features))
 
 setEPS()
 
