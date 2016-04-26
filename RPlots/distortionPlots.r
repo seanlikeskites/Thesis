@@ -1,6 +1,12 @@
 library(SAFER)
+library(SnowballC)
 
 load("distortionData.RData")
+
+rownames(processedMDS$Features) <- sub("i$", "", wordStem(rownames(processedMDS$Features)))
+rownames(processedMDS$Points) <- sub("i$", "", wordStem(rownames(processedMDS$Points)))
+rownames(differenceMDS$Features) <- sub("i$", "", wordStem(rownames(differenceMDS$Features)))
+rownames(differenceMDS$Points) <- sub("i$", "", wordStem(rownames(differenceMDS$Points)))
 descriptorsToPlot <- unique(rownames(processedMDS$Features))
 
 setEPS()
