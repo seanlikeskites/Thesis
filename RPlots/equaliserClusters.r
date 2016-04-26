@@ -21,7 +21,8 @@ processedClusters <- hclust(dist(normalise(processedAverages)))
 processedDend <- makePrettyDendrogram(processedClusters, 6)
 
 postscript("EqualiserProcessedClusters.eps")
-a <- plot(processedDend, main=NA, sub=NA, xlab=NA, ylab=NA, horiz=TRUE)
+a <- plot(processedDend, main=NA, sub=NA, xlim=c(ceiling(attr(processedDend, "height")), 0),
+	  xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()
 
 differenceFeatures <- differenceMDS$Features
@@ -31,5 +32,6 @@ differenceClusters <- hclust(dist(normalise(differenceAverages)))
 differenceDend <- makePrettyDendrogram(differenceClusters, 5)
 
 postscript("EqualiserDifferenceClusters.eps")
-a <- plot(differenceDend, main=NA, sub=NA, xlab=NA, ylab=NA, horiz=TRUE)
+a <- plot(differenceDend, main=NA, sub=NA, xlim=c(ceiling(attr(differenceDend, "height")), 0),
+	  xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()
