@@ -1,6 +1,7 @@
 library(SnowballC)
 library(SAFER)
 library(dendextend)
+source("stemming.r")
 
 makePrettyDendrogram <- function(clusters, numColours)
 {
@@ -14,7 +15,7 @@ load("distortionData.RData")
 setEPS()
 
 processedFeatures <- processedMDS$Features
-rownames(processedFeatures) <- sub("i$", "", wordStem(rownames(processedFeatures)))
+rownames(processedFeatures) <- safeStem(rownames(processedFeatures))
 processedAverages <- apply(processedFeatures, 2, function(x) tapply(x, rownames(processedFeatures), mean))
 processedClusters <- hclust(dist(normalise(processedAverages)))
 processedDend <- makePrettyDendrogram(processedClusters, 3)
@@ -24,7 +25,7 @@ a <- plot(processedDend, main=NA, sub=NA, xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()
 
 differenceFeatures <- differenceMDS$Features
-rownames(differenceFeatures) <- sub("i$", "", wordStem(rownames(differenceFeatures)))
+rownames(differenceFeatures) <- safeStem(rownames(differenceFeatures))
 differenceAverages <- apply(differenceFeatures, 2, function(x) tapply(x, rownames(differenceFeatures), mean))
 differenceClusters <- hclust(dist(normalise(differenceAverages)))
 differenceDend <- makePrettyDendrogram(differenceClusters, 3)

@@ -1,12 +1,13 @@
 library(SAFER)
 library(SnowballC)
+source("stemming.r")
 
 load("equaliserData.RData")
 
-rownames(processedMDS$Features) <- sub("i$", "", wordStem(rownames(processedMDS$Features)))
-rownames(processedMDS$Points) <- sub("i$", "", wordStem(rownames(processedMDS$Points)))
-rownames(differenceMDS$Features) <- sub("i$", "", wordStem(rownames(differenceMDS$Features)))
-rownames(differenceMDS$Points) <- sub("i$", "", wordStem(rownames(differenceMDS$Points)))
+rownames(processedMDS$Features) <- safeStem(rownames(processedMDS$Features))
+rownames(processedMDS$Points) <- safeStem(rownames(processedMDS$Points))
+rownames(differenceMDS$Features) <- safeStem(rownames(differenceMDS$Features))
+rownames(differenceMDS$Points) <- safeStem(rownames(differenceMDS$Points))
 descriptorsToPlot <- unique(rownames(processedMDS$Features))
 
 setEPS()
