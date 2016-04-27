@@ -409,8 +409,8 @@
 		describe an output signal (e.g. a signal with a spectral centroid between 4 and 8kHz).
 
 		To identify groups of semantically similar descriptors hierarchical clustering is applied to these feature
-		spaces. Prior to clustering each dimension of the feature space is normalised to a range of zero to one to
-		mitigate any effect the range of a particular audio feature might have on the clustering. Clusters are
+		spaces. Prior to clustering, each dimension of the feature space is normalised, to a range of zero to one,
+		to mitigate any effect the range of a particular audio feature might have on the clustering. Clusters are
 		determined using the ward linkage criterion in order to minimise the variance within each cluster.
 
 		\begin{figure}[h!]
@@ -430,6 +430,9 @@
 			\label{fig:DistortionClusters}
 		\end{figure}
 
+		Figure \ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
+		distortion features spaces.
+
 		\begin{figure}[h!]
 			\centering
 			\subfloat[Processed Features]
@@ -446,6 +449,11 @@
 			\caption{Clustering of descriptors from the Equaliser.}
 			\label{fig:EqualiserClusters}
 		\end{figure}
+		
+		Figure \ref{fig:EqualiserClusters} shows dendrograms illustrating the clustering of terms for the
+		equaliser features spaces.
+
+%		This figure is da baddest figure, ask your dyslexic down syndromed mother.
 
 		\begin{figure}[h!]
 			\centering
