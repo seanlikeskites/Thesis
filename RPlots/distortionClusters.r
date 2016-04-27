@@ -17,10 +17,11 @@ setEPS()
 processedFeatures <- processedMDS$Features
 rownames(processedFeatures) <- safeStem(rownames(processedFeatures))
 processedAverages <- apply(processedFeatures, 2, function(x) tapply(x, rownames(processedFeatures), mean))
-processedClusters <- hclust(dist(normalise(processedAverages)))
+processedClusters <- hclust(dist(normalise(processedAverages)), method="ward.D2")
 processedDend <- makePrettyDendrogram(processedClusters, 3)
 
 postscript("DistortionProcessedClusters.eps")
+par(mar=c(3.5, 0, 0, 0))
 a <- plot(processedDend, main=NA, sub=NA, xlim=c(ceiling(attr(processedDend, "height")), 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()
@@ -28,10 +29,11 @@ dev.off()
 differenceFeatures <- differenceMDS$Features
 rownames(differenceFeatures) <- safeStem(rownames(differenceFeatures))
 differenceAverages <- apply(differenceFeatures, 2, function(x) tapply(x, rownames(differenceFeatures), mean))
-differenceClusters <- hclust(dist(normalise(differenceAverages)))
+differenceClusters <- hclust(dist(normalise(differenceAverages)), method="ward.D2")
 differenceDend <- makePrettyDendrogram(differenceClusters, 3)
 
 postscript("DistortionDifferenceClusters.eps")
+par(mar=c(3.5, 0, 0, 0))
 a <- plot(differenceDend, main=NA, sub=NA, xlim=c(ceiling(attr(differenceDend, "height")), 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()

@@ -401,12 +401,17 @@
 		Each of the terms arrived at, after stemming, in Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}
 		can be described by their position in a multi dimensional audio feature space. Each dimension of this space
 		corresponds to one of the audio features extracted by the SAFE plug-ins. The coordinates of each term are
-		calculated as the mean audio features across each transform described by that term. Two separate feature
-		spaces are constructed, one in which the audio features of the processed signal are used and one in which
-		the difference between features of the output and input signal are used. These two spaces can be compared to
-		determine whether certain descriptors are mostly used to describe a transform (e.g. an increase in
-		inharmonicity) or are used to describe an output signal (e.g. a signal with a spectral centroid between 4
-		and 8kHz).
+		calculated as the mean audio features across each transform described by that term. For each audio effect
+		two separate feature spaces are constructed, one in which a terms coordinates are calculated from the audio
+		features of the processed signal and the other in which they are calculated from the difference between
+		features of the output and input signal. These two spaces can be compared to determine whether certain
+		descriptors are mostly used to describe a transform (e.g. an increase in inharmonicity) or are used to
+		describe an output signal (e.g. a signal with a spectral centroid between 4 and 8kHz).
+
+		To identify groups of semantically similar descriptors hierarchical clustering is applied to these feature
+		spaces. Prior to clustering each dimension of the feature space is normalised to a range of zero to one to
+		mitigate any effect the range of a particular audio feature might have on the clustering. Clusters are
+		determined using the ward linkage criterion in order to minimise the variance within each cluster.
 
 		\begin{figure}[h!]
 			\centering

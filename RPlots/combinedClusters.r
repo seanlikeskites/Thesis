@@ -35,18 +35,20 @@ differenceAverages <- rbind(differenceAverages,
 
 setEPS()
 
-processedClusters <- hclust(dist(normalise(processedAverages)))
+processedClusters <- hclust(dist(normalise(processedAverages)), method="ward.D2")
 processedDend <- makePrettyDendrogram(processedClusters, 6)
 
 postscript("CombinedProcessedClusters.eps")
-a <- plot(processedDend, main=NA, sub=NA, xlim=c(ceiling(attr(processedDend, "height")), 0),
+par(mar=c(3.5, 0, 0, 2.5))
+a <- plot(processedDend, main=NA, sub=NA, xlim=c(10, 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()
 
-differenceClusters <- hclust(dist(normalise(differenceAverages)))
+differenceClusters <- hclust(dist(normalise(differenceAverages)), method="ward.D2")
 differenceDend <- makePrettyDendrogram(differenceClusters, 6)
 
 postscript("CombinedDifferenceClusters.eps")
+par(mar=c(3.5, 0, 0, 2.5))
 a <- plot(differenceDend, main=NA, sub=NA, xlim=c(ceiling(attr(differenceDend, "height")), 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()
