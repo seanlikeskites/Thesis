@@ -507,12 +507,35 @@
 		equaliser transformations they are separated by a reasonable distance. These terms are more likely to be
 		synonymous when describing audio processed by a static nonlinearity then they are for equalised audio.
 
-		The finer detail of the additional groups from the separate features space (`crunchiness' and `boominess')
-		are lost in the combine feature spaces. Each of these terms are clustered with terms from their associated
-		plug-in, highlighting the timbral similarity between all signals processed by the sample effect.
+		The finer detail of the additional groups from the separate feature spaces (`crunchiness' and `boominess')
+		are lost in the combined feature spaces. Each of these terms are clustered with terms from their associated
+		plug-in, highlighting the timbral similarity between all signals processed by the same effect.
 
 	\subsection{Timbre Spaces}
-	\label{sec:TImbreEvaluation-Analysis-TimbreSpaces}
+	\label{sec:TimbreEvaluation-Analysis-TimbreSpaces}
+		Clustering provides insight into the similarity of descriptive terms but does not show what properties of
+		the signals / transforms contribute to the differences between descriptor clusters. Reducing the
+		dimensionality of the audio feature space allows for the most salient features to be identified. To preserve
+		as much of the audio feature data as possible a different feature space, to that used for clustering, is
+		constructed. Rather than each descriptor representing one point in the feature space, each individual
+		transform labeled with a certain descriptor represents its own point. In this manner dimensions which have
+		little effect on a certain timbral descriptor are easily determined. The points labeled with a particular
+		term will be more spread out across the dimensions which do not affect them. 
+		
+		Prior to analysis the feature spaces are normalised to remove any bias caused by features with a large
+		range. MDS is then applied in order to create the two dimensional timbre spaces discussed in this section.
+		Salient audio features are identified through taking correlation measures between the original audio feature
+		values and the coordinates of terms in the timbre space.
+
+		\note
+		{
+			Do we really need both of the plots for each space. If so probably put a paragraph here explaining
+			the difference between the two.
+		}
+
+		Figure \ref{fig:DistortionProcessedMDSs} shows the timbre space constructed from the processed signal
+		features for the distortion effect, salient audio features are given in Tables
+		\ref{tab:DistortionProcessedFeaturesDim1} and \ref{tab:DistortionProcessedFeaturesDim2}.
 
 		\begin{figure}[h!]
 			\centering

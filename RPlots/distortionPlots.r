@@ -1,37 +1,27 @@
 library(SAFER)
 library(SnowballC)
 source("stemming.r")
+source("plotMDS.r")
 
 load("distortionData.RData")
 
-rownames(processedMDS$Features) <- safeStem(rownames(processedMDS$Features))
 rownames(processedMDS$Points) <- safeStem(rownames(processedMDS$Points))
-rownames(differenceMDS$Features) <- safeStem(rownames(differenceMDS$Features))
 rownames(differenceMDS$Points) <- safeStem(rownames(differenceMDS$Points))
-descriptorsToPlot <- unique(rownames(processedMDS$Features))
 
 setEPS()
 
 postscript("DistortionProcessedCentroidsMDS.eps")
-a <- plotTimbreSpace(processedMDS, descriptorsToPlot, "Pretty", TRUE, FALSE)
+a <- plotMDS(processedMDS$Points, plotCentroids=TRUE)
 dev.off()
 
 postscript("DistortionProcessedMDS.eps")
-a <- plotTimbreSpace(processedMDS, descriptorsToPlot, "Pretty", FALSE, FALSE)
+a <- plotMDS(processedMDS$Points)
 dev.off()
 
-#postscript("DistortionProcessedTSNE.eps")
-#plotTimbreSpace(processedTSNE, descriptorsToPlot, "Pretty", TRUE, FALSE)
-#dev.off()
-
 postscript("DistortionDifferenceCentroidsMDS.eps")
-plotTimbreSpace(differenceMDS, descriptorsToPlot, "Pretty", TRUE, FALSE)
+a <- plotMDS(differenceMDS$Points, plotCentroids=TRUE)
 dev.off()
 
 postscript("DistortionDifferenceMDS.eps")
-plotTimbreSpace(differenceMDS, descriptorsToPlot, "Pretty", FALSE, FALSE)
+a <- plotMDS(differenceMDS$Points)
 dev.off()
-
-#postscript("DistortionDifferenceTSNE.eps")
-#plotTimbreSpace(differenceTSNE, descriptorsToPlot, "Pretty", TRUE, FALSE)
-#dev.off()
