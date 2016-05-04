@@ -36,7 +36,7 @@ plotMDS <- function(points, legendPos="topleft", plotCentroids=FALSE)
 	}
 	else
 	{
-		points(xs, ys, pch=4, col=colours)
+		points(xs, ys, pch=4, col=colours, cex=2)
 		legend(legendPos, legend=uniqueDescriptors, pch=4, col=colourPalette)
 	}
 }
