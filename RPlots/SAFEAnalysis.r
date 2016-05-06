@@ -109,8 +109,8 @@ postscript("DistortionProcessedPCA.eps")
 a <- plotIndividualPCA(distProcPCA$x, "bottomleft")
 dev.off()
 
-postscript("DistortionProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(distProcPCA, c("Irregularity_K", "MFCC_1", "Spectral_Roll_Off"))
+postscript("DistortionProcessedScree.eps")
+a <- screeplot(distProcPCA, type="l")
 dev.off()
 
 # distortion difference PCA
@@ -120,8 +120,8 @@ postscript("DistortionDifferencePCA.eps")
 a <- plotIndividualPCA(distDiffPCA$x, "bottomleft")
 dev.off()
 
-postscript("DistortionDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(distDiffPCA, c("Irregularity_K", "Spectral_Variance"))
+postscript("DistortionDifferenceScree.eps")
+a <- screeplot(distDiffPCA, type="l")
 dev.off()
 
 # equaliser processed PCA
@@ -131,8 +131,8 @@ postscript("EqualiserProcessedPCA.eps")
 a <- plotIndividualPCA(eqProcPCA$x, "bottomright")
 dev.off()
 
-postscript("EqualiserProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqProcPCA, c("Peak_Tristimulus_2", "Spectral_Skewness"))
+postscript("EqualiserProcessedScree.eps")
+a <- screeplot(eqProcPCA, type="l")
 dev.off()
 
 # equaliser difference PCA
@@ -142,6 +142,46 @@ postscript("EqualiserDifferencePCA.eps")
 a <- plotIndividualPCA(eqDiffPCA$x, "bottomright")
 dev.off()
 
+postscript("EqualiserDifferenceScree.eps")
+a <- screeplot(eqDiffPCA, type="l")
+dev.off()
+
+########################################################
+# feature correlations
+########################################################
+source("correlation.r")
+
+distProcCorr <- matrixCorrelationTest(distProcPCA$x[,1:5], distProc)
+distProcFeatures <- getSalientFeatures(distProcCorr, 0.8)
+makeCorrelationTable(distProcCorr$correlations[,distProcFeatures], "DistortionProcessedCorrelations.txt")
+
+distDiffCorr <- matrixCorrelationTest(distDiffPCA$x[,1:5], distDiff)
+distDiffFeatures <- getSalientFeatures(distDiffCorr, 0.8)
+makeCorrelationTable(distDiffCorr$correlations[,distDiffFeatures], "DistortionDifferenceCorrelations.txt")
+
+eqProcCorr <- matrixCorrelationTest(eqProcPCA$x[,1:5], eqProc)
+eqProcFeatures <- getSalientFeatures(eqProcCorr, 0.8)
+makeCorrelationTable(eqProcCorr$correlations[,eqProcFeatures], "EqualiserProcesedCorrelations.txt")
+
+eqDiffCorr <- matrixCorrelationTest(eqDiffPCA$x[,1:5], eqDiff)
+eqDiffFeatures <- getSalientFeatures(eqDiffCorr, 0.8)
+makeCorrelationTable(eqDiffCorr$correlations[,eqDiffFeatures], "EqualiserDifferenceCorrelations.txt")
+
+########################################################
+# biplots
+########################################################
+postscript("DistortionProcessedCentroidsPCA.eps")
+a <- plotCentroidBiplot(distProcPCA, distProcFeatures)
+dev.off()
+
+postscript("DistortionDifferenceCentroidsPCA.eps")
+a <- plotCentroidBiplot(distDiffPCA, distDiffFeatures)
+dev.off()
+
+postscript("EqualiserProcessedCentroidsPCA.eps")
+a <- plotCentroidBiplot(eqProcPCA, eqProcFeatures)
+dev.off()
+
 postscript("EqualiserDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqDiffPCA, c("Peak_Tristimulus_2", "Irregularity_K"))
+a <- plotCentroidBiplot(eqDiffPCA, eqDiffFeatures)
 dev.off()
