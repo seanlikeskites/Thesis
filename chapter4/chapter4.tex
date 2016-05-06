@@ -268,7 +268,7 @@
 	reserved for particular effect. Secondly, clustering techniques are used in order to group these terms into those
 	which describe similar audio signals / transformations, finding terms which are synonymous when used to describe
 	timbre (Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}). Finally, timbre spaces are constructed using
-	MDS in order to find the most salient audio features which contribute to the differences in timbral description.
+	PCA in order to find the most salient audio features which contribute to the differences in timbral description.
 
 	\subsection{Term Usage}
 	\label{sec:TimbreEvaluation-Analysis-TermUsage}
@@ -523,7 +523,7 @@
 		term will be more spread out across the dimensions which do not affect them. 
 		
 		Prior to analysis the feature spaces are normalised to remove any bias caused by features with a large
-		range. MDS is then applied in order to create the two dimensional timbre spaces discussed in this section.
+		range. PCA is then applied in order to create the two dimensional timbre spaces discussed in this section.
 		Salient audio features are identified through taking correlation measures between the original audio feature
 		values and the coordinates of terms in the timbre space.
 
@@ -533,7 +533,7 @@
 			the difference between the two.
 		}
 
-		Figure \ref{fig:DistortionProcessedMDSs} shows the timbre space constructed from the processed signal
+		Figure \ref{fig:DistortionProcessedPCAs} shows the timbre space constructed from the processed signal
 		features for the distortion effect, salient audio features are given in Table
 		\ref{tab:DistortionProcessedFeatures}. The individual transforms for each term are widely spread out within
 		this space leading to very little conclusions about how the features of the processed signal effects timbre.
@@ -542,21 +542,21 @@
 			\centering
 			\subfloat[Individual Transforms]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionProcessedMDS.eps}
-				\label{fig:DistortionProcessedMDS}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionProcessedPCA.eps}
+				\label{fig:DistortionProcessedPCA}
 			}
 			\qquad
 			\subfloat[Descriptor Centroids]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionProcessedCentroidsMDS.eps}
-				\label{fig:DistortionProcessedCentroidsMDS}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionProcessedCentroidsPCA.eps}
+				\label{fig:DistortionProcessedCentroidsPCA}
 			}
 			\caption{Timbre space for the processed features from the distortion.}
-			\label{fig:DistortionProcessedMDSs}
+			\label{fig:DistortionProcessedPCAs}
 		\end{figure}
 
 		One noticeable pattern is that exhibited by the transforms described with the term `crunch'. In Figure
-		\ref{fig:DistortionProcessedMDS} these points have a small variation in the first dimension and a large
+		\ref{fig:DistortionProcessedPCA} these points have a small variation in the first dimension and a large
 		variation in the second dimension, suggesting that the perception of `crunchiness' is independent of the
 		audio features which correlate with the second dimension (shown in Table
 		\ref{tab:DistortionProcessedFeaturesDim2}). Conversely, `crunchiness' is dependent on the features which
@@ -661,7 +661,7 @@
 				\label{tab:DistortionProcessedFeaturesDim2}
 			}
 			\caption{Significant features for the timbre spaces shown in Figure
-				 \ref{fig:DistortionProcessedMDSs}.}
+				 \ref{fig:DistortionProcessedPCAs}.}
 			\label{tab:DistortionProcessedFeatures}
 		\end{table}
 
@@ -669,17 +669,17 @@
 			\centering
 			\subfloat[Individual Transforms]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionDifferenceMDS.eps}
-				\label{fig:DistortionDifferenceMDS}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionDifferencePCA.eps}
+				\label{fig:DistortionDifferencePCA}
 			}
 			\qquad
 			\subfloat[Descriptor Centroids]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionDifferenceCentroidsMDS.eps}
-				\label{fig:DistortionDifferenceCentroidsMDS}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/DistortionDifferenceCentroidsPCA.eps}
+				\label{fig:DistortionDifferenceCentroidsPCA}
 			}
 			\caption{Timbre space for the feature differences from the distortion.}
-			\label{fig:DistortionDifferenceMDSs}
+			\label{fig:DistortionDifferencePCAs}
 		\end{figure}
 
 		\begin{table}[h!]
@@ -789,7 +789,7 @@
 				\label{tab:DistortionDifferenceFeaturesDim2}
 			}
 			\caption{Significant features for the timbre spaces shown in Figure
-				 \ref{fig:DistortionDifferenceMDSs}.}
+				 \ref{fig:DistortionDifferencePCAs}.}
 			\label{tab:DistortionDifferenceFeatures}
 		\end{table}
 
@@ -797,17 +797,17 @@
 			\centering
 			\subfloat[Individual Transforms]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserProcessedMDS.eps}
-				\label{fig:EqualiserProcessedMDS}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserProcessedPCA.eps}
+				\label{fig:EqualiserProcessedPCA}
 			}
 			\qquad
 			\subfloat[Descriptor Centroids]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserProcessedCentroidsMDS.eps}
-				\label{fig:EqualiserProcessedCentroidsMDS}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserProcessedCentroidsPCA.eps}
+				\label{fig:EqualiserProcessedCentroidsPCA}
 			}
 			\caption{Timbre space for the processed features from the equaliser.}
-			\label{fig:EqualiserProcessedMDSs}
+			\label{fig:EqualiserProcessedPCAs}
 		\end{figure}
 
 		\begin{table}[h!]
@@ -851,7 +851,7 @@
 				\label{tab:EqualiserProcessedFeaturesDim2}
 			}
 			\caption{Significant features for the timbre spaces shown in Figure 
-				 \ref{fig:EqualiserProcessedMDSs}.}
+				 \ref{fig:EqualiserProcessedPCAs}.}
 			\label{tab:EqualiserProcessedFeatures}
 		\end{table}
 
@@ -859,17 +859,17 @@
 			\centering
 			\subfloat[Individual Transforms]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserDifferenceMDS.eps}
-				\label{fig:EqualiserDifferenceMDS}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserDifferencePCA.eps}
+				\label{fig:EqualiserDifferencePCA}
 			}
 			\qquad
 			\subfloat[Descriptor Centroids]
 			{
-				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserDifferenceCentroidsMDS.eps}
-				\label{fig:EqualiserDifferenceCentroidsMDS}
+				\includegraphics[width=0.45\textwidth]{chapter4/Images/EqualiserDifferenceCentroidsPCA.eps}
+				\label{fig:EqualiserDifferenceCentroidsPCA}
 			}
 			\caption{Timbre space for the feature differences from the equaliser.}
-			\label{fig:EqualiserDifferenceMDSs}
+			\label{fig:EqualiserDifferencePCAs}
 		\end{figure}
 
 		\begin{table}[h!]
@@ -925,6 +925,6 @@
 				\label{tab:EqualiserDifferenceFeaturesDim2}
 			}
 			\caption{Significant features for the timbre spaces shown in Figure 
-				 \ref{fig:EqualiserDifferenceMDSs}.}
+				 \ref{fig:EqualiserDifferencePCAs}.}
 			\label{tab:EqualiserDifferenceFeatures}
 		\end{table}

@@ -1,3 +1,5 @@
+library(SnowballC)
+
 safeStem <- function(words)
 {
 	for (i in 1:length(words))
