@@ -170,18 +170,31 @@ makeCorrelationTable(eqDiffCorr$correlations[,eqDiffFeatures], "EqualiserDiffere
 ########################################################
 # biplots
 ########################################################
+distProcPlotFeatures <- c("Irregularity_K", "Spectral_Roll_Off", "MFCC_1", "MFCC_4")
 postscript("DistortionProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(distProcPCA, distProcFeatures)
+a <- plotCentroidBiplot(distProcPCA, distProcPlotFeatures)
 dev.off()
 
+distDiffPlotFeatures <- c("Irregularity_K", "Peak_Spectral_Skewness", "Spectral_Roll_Off")
 postscript("DistortionDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(distDiffPCA, distDiffFeatures)
+a <- plotCentroidBiplot(distDiffPCA, distDiffPlotFeatures, c(0.45, 0.15, 0.15, 0.15))
 dev.off()
 
+eqProcPlotFeatures <- c("Irregularity_K", "MFCC_10", "Harmonic_Spectral_Kurtosis", "Spectral_Flatness")
 postscript("EqualiserProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqProcPCA, eqProcFeatures)
+a <- plotCentroidBiplot(eqProcPCA, eqProcPlotFeatures, c(0.15, 0.4, 0.15, 0.15))
 dev.off()
 
+eqDiffPlotFeatures <- c("Irregularity_K", "MFCC_10", "Peak_Spectral_Centroid", "Spectral_Skewness")
 postscript("EqualiserDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqDiffPCA, eqDiffFeatures)
+a <- plotCentroidBiplot(eqDiffPCA, eqDiffPlotFeatures, c(0.15, 0.2, 0.15, 0.15))
 dev.off()
+
+########################################################
+# confidences
+########################################################
+source("confidence.r")
+distProcConf <- termConfidence(distProcPCA)
+distDiffConf <- termConfidence(distDiffPCA)
+eqProcConf <- termConfidence(eqProcPCA)
+eqDiffConf <- termConfidence(eqDiffPCA)
