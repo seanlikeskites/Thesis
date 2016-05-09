@@ -168,33 +168,34 @@ eqDiffFeatures <- getSalientFeatures(eqDiffCorr, 0.8)
 makeCorrelationTable(eqDiffCorr$correlations[,eqDiffFeatures], "EqualiserDifferenceCorrelations.txt")
 
 ########################################################
+# confidences
+########################################################
+source("confidence.r")
+distProcConf <- apply(termConfidence(distProcPCA), 1, max)
+distDiffConf <- apply(termConfidence(distDiffPCA), 1, max)
+eqProcConf <- apply(termConfidence(eqProcPCA), 1, max)
+eqDiffConf <- apply(termConfidence(eqDiffPCA), 1, max)
+
+########################################################
 # biplots
 ########################################################
 distProcPlotFeatures <- c("Irregularity_K", "Spectral_Roll_Off", "MFCC_1", "MFCC_4")
 postscript("DistortionProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(distProcPCA, distProcPlotFeatures)
+a <- plotCentroidBiplot(distProcPCA, distProcPlotFeatures, distProcConf)
 dev.off()
 
 distDiffPlotFeatures <- c("Irregularity_K", "Peak_Spectral_Skewness", "Spectral_Roll_Off")
 postscript("DistortionDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(distDiffPCA, distDiffPlotFeatures, c(0.45, 0.15, 0.15, 0.15))
+a <- plotCentroidBiplot(distDiffPCA, distDiffPlotFeatures, distDiffConf, c(0.45, 0.15, 0.15, 0.15))
 dev.off()
 
 eqProcPlotFeatures <- c("Irregularity_K", "MFCC_10", "Harmonic_Spectral_Kurtosis", "Spectral_Flatness")
 postscript("EqualiserProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqProcPCA, eqProcPlotFeatures, c(0.15, 0.4, 0.15, 0.15))
+a <- plotCentroidBiplot(eqProcPCA, eqProcPlotFeatures, eqProcConf, c(0.15, 0.4, 0.15, 0.15))
 dev.off()
 
 eqDiffPlotFeatures <- c("Irregularity_K", "MFCC_10", "Peak_Spectral_Centroid", "Spectral_Skewness")
 postscript("EqualiserDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqDiffPCA, eqDiffPlotFeatures, c(0.15, 0.2, 0.15, 0.15))
+a <- plotCentroidBiplot(eqDiffPCA, eqDiffPlotFeatures, eqDiffConf, c(0.15, 0.2, 0.15, 0.15))
 dev.off()
 
-########################################################
-# confidences
-########################################################
-source("confidence.r")
-distProcConf <- termConfidence(distProcPCA)
-distDiffConf <- termConfidence(distDiffPCA)
-eqProcConf <- termConfidence(eqProcPCA)
-eqDiffConf <- termConfidence(eqDiffPCA)

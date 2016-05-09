@@ -22,7 +22,7 @@ plotIndividualPCA <- function(points, legendPos)
 	legend(legendPos, legend=uniqueDescriptors, pch=4, col=colourPalette)
 }
 
-plotCentroidBiplot <- function(PCA, var, border=c(0.15, 0.15, 0.15, 0.15))
+plotCentroidBiplot <- function(PCA, var, conf=0.5, border=c(0.15, 0.15, 0.15, 0.15))
 {
 	points <- apply(PCA$x, 2, function(x) tapply(x, rownames(PCA$x), mean))
 
@@ -58,7 +58,7 @@ plotCentroidBiplot <- function(PCA, var, border=c(0.15, 0.15, 0.15, 0.15))
 
 	par(mar=c(4, 4, 4, 4))
 	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel, xlim=xLimits, ylim=yLimits)
-	text(xs, ys, descriptors, col=colours, cex=1.5)
+	text(xs, ys, descriptors, col=colours, cex=1+conf)
 
 	xLimScale <- max(abs(varXs)) / max(abs(xs)) * 1.3
 	xLimits <- xLimits * xLimScale
