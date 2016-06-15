@@ -163,4 +163,27 @@
 
 	\[ \boxed{y_{SSBA} = |z|^{n-1}y_{IAP}} \]
 
+\section{Spectral Flatness Manipulation}
+	We are concerned with the changes in arithmetic mean. We can simplify by considering the sum of the amplitudes of
+	the two scaled groups of spectral components:
+
+	\[ \frac{A_{L}}{m^{2}} + m^{2}A_{H} \]
+
+	For the spectral flatness to increase this should be less than the unscaled amplitudes:
+
+	\[ \frac{A_{L}}{m^{2}} + m^{2}A_{H} < A_{L} + A_{H} \]
+	\[ A_{L} + m^{4}A_{H} < (A_{L} + A_{H})m^{2} \]
+	\[ A_{H}m^{4} - (A_{L} + A_{H})m^{2} + A_{L} < 0 \]
+	\[ (A_{H}m^{2} - A_{L})(m^{2} - 1) < 0 \]
+	\[ \frac{A_{L}}{A_{H}} < m^{2} < 1 \]
+	\[ \boxed{\sqrt{\frac{A_{L}}{A_{H}}} < m < 1} \]
+
+	The maximum spectral flatness occurs at the minimum arithmetic mean:
+
+	\[ y = \frac{A_{L}}{m^{2}} + m^{2}A_{H} \]
+	\[ \frac{dy}{dx} = -2\frac{A_{L}}{m^{3}} + 2A_{H}m \]
+	\[ 2A_{H}m^{2} = 2A_{L} \]
+	\[ m^{2} = \frac{A_{L}}{A_{H}} \]
+	\[ \boxed{m = \sqrt{\frac{A_{L}}{A_{H}}}} \]
+
 \end{document}
