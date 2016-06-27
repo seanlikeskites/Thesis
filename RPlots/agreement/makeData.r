@@ -47,7 +47,7 @@ diagCovs[2, 3] <- 0
 diagCovs[3, 1] <- 0
 diagCovs[3, 2] <- 0
 diagCovs[3, 3] <- 4
-diag <- mvrnorm(n=85, mu=c(5, -3, 4), Sigma=diagCovs)
+diag <- mvrnorm(n=80, mu=c(5, -3, 4), Sigma=diagCovs)
 
 allX <- c(large[,1], small[,1], tall[,1], diag[,1])
 allY <- c(large[,2], small[,2], tall[,2], diag[,2])
@@ -58,19 +58,19 @@ colours <- rainbow(4)
 setEPS()
 
 postscript("ArtificialData1-2.eps")
-plot(allX, allY, type='n', main="")
+plot(allX, allY, type='n', main="", xlab="Feature 1", ylab="Feature 2")
 points(large[,1], large[,2], col=colours[1], pch=4, cex=2)
 points(small[,1], small[,2], col=colours[2], pch=4, cex=2)
 points(tall[,1], tall[,2], col=colours[3], pch=4, cex=2)
 points(diag[,1], diag[,2], col=colours[4], pch=4, cex=2)
 dev.off()
 
-postscript("ArtificialData2-3.eps")
-plot(allY, allZ, type='n', main="")
-points(large[,2], large[,3], col=colours[1], pch=4, cex=2)
-points(small[,2], small[,3], col=colours[2], pch=4, cex=2)
-points(tall[,2], tall[,3], col=colours[3], pch=4, cex=2)
-points(diag[,2], diag[,3], col=colours[4], pch=4, cex=2)
+postscript("ArtificialData3-2.eps")
+plot(allZ, allY, type='n', main="", xlab="Feature 3", ylab="Feature 2")
+points(large[,3], large[,2], col=colours[1], pch=4, cex=2)
+points(small[,3], small[,2], col=colours[2], pch=4, cex=2)
+points(tall[,3], tall[,2], col=colours[3], pch=4, cex=2)
+points(diag[,3], diag[,2], col=colours[4], pch=4, cex=2)
 dev.off()
 
 agreements <- matrix(0, 4, 3)
