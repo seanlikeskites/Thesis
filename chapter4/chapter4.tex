@@ -807,7 +807,7 @@
 		Equation \ref{eq:SocialEqAgreement}.
 
 		\begin{equation}
-			A(d) = \frac{\log(N_{d})}{\sum_{k = 1}^{K} \sigma_{d,k}^{2}}
+			A(d) = \frac{\ln(N_{d})}{\sum_{k = 1}^{K} \sigma_{d,k}^{2}}
 			\label{eq:SocialEqAgreement}
 		\end{equation}
 
@@ -815,11 +815,31 @@
 		$\sigma_{d,k}^{2}$ is the variance of weighting $k$ across those participants and $K$ is the number of
 		weightings in each set (i.e. the number of equaliser bands).
 
+		\note{Probably talk about why the log of the number of participants is used}
+
 		This can be applied to data from the SAFE plug-ins by using audio feature values in place of parameter
 		weightings. In Equation \ref{eq:SocialEqAgreement} $N_{d}$ is then the number of transforms labelled with
 		descriptor $d$, $\sigma_{d,k}^{2}$ is the variance of feature $k$ across those transforms and $K$ is the
 		number of features. As when clustering, the feature space should be standardised prior to calculating
 		agreement to remove the biasing effects caused by the ranges of each feature.
+
+		Calculating the agreement in this way involves making assumptions which may not reflect the data being
+		analysed:
+
+		\begin{itemize}
+			\item It is assumed that high variance in any feature implies a disagreement. It may be
+			      the case that a particular audio feature has no influence on the perception of a particular
+			      timbre and as such a high variance in that feature should not adversely effect the agreement
+			      score.
+			\item It is assumed that low variance in any feature implies an agreement. It may be the case that
+			      the audio material used for every transform exhibit a small variance in a particular feature.
+			      In this case a small variance does not show an agreement between users, it describes an
+			      underlying pattern in the audio material used
+			\item It assumes that all audio features are independent. It may be the case that users agree that a
+			      particular descriptor describes a particular relationship between several audio features (e.g.
+			      a spectral centroid lying at the 4\super{th} harmonic). Assuming each of the features are
+			      independent ignores these relationships.
+		\end{itemize}
 
 		\begin{figure}[h!]
 			\centering
@@ -839,12 +859,12 @@
 		\end{figure}
 
 		\begin{equation}
-			A(d) = \log(N_{d}) \sum_{k = 1}^{K} \frac{1}{\sigma_{d,k}^{2}}
+			A(d) = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\sigma_{d,k}^{2}}
 			\label{eq:SumOfReciprocalAgreement}
 		\end{equation}
 
 		\begin{equation}
-			A = \log(N_{d}) \sum_{k = 1}^{K} \frac{1}{\lambda_{d,k}}
+			A = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\lambda_{d,k}}
 			\label{eq:EigenvalueAgreement}
 		\end{equation}
 
