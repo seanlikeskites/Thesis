@@ -19,7 +19,7 @@
 
 	A new methodology has been developed in which the analysis of timbre is introduced into a typical music production
 	workflow causing minimal interruption to the producer. This methodology aims to answer the question "What terms do
-	music producers use to describe the timbral transformations they apply to audio during the creation of music?". 
+	music producers use to describe the timbral transforms they apply to audio during the creation of music?". 
 
 	This section will detail what the typical production workflow is and how semantic information can be gathered.
 
@@ -68,7 +68,7 @@
 		\begin{itemize}
 			\item The genre of music being produced.
 			\item The content of the separate audio tracks (what instruments etc.).
-			\item Semantic terms which describe the timbral transformations applied by each audio
+			\item Semantic terms which describe the timbral transforms applied by each audio
 			      effect.
 		\end{itemize}
 
@@ -129,9 +129,9 @@
 		mustard?}
 
 		One disadvantage in using plug-ins is that they cannot gather information about the processing chain they
-		may be a part of. The timbral transformation the user is describing may be the result of several effects
-		working together. This can be mitigated somewhat by asking users to describe only the effect the plug-in in
-		question is providing.
+		may be a part of. The timbral transform the user is describing may be the result of several effects working
+		together. This can be mitigated somewhat by asking users to describe only the effect the plug-in in question
+		is providing.
 
 		The SAFE plug-ins suffer from the same issues other distributed tests do. The researcher forfeits control
 		over the listening environment in order to gather results from a much larger sample of people. In fact they
@@ -156,9 +156,9 @@
 			\item Provenance of the data.
 		\end{itemize}
 
-		Each entry in the SAFE dataset is described using the \emph{studio:Transform} concept, applying
-		some semantic transformation on a set of input signals to produce a set of output signals. The structure of
-		this data is shown in Figure \ref{fig:TransformGraph}.
+		Each entry in the SAFE dataset is described using the \emph{studio:Transform} concept, applying some
+		semantic transform to a set of input signals to produce a set of output signals. The structure of this data
+		is shown in Figure \ref{fig:TransformGraph}.
 
 		\begin{figure}[h!]
 			\centering
@@ -258,15 +258,15 @@
 \section{Analysis}
 \label{sec:TimbreEvaluation-Analysis}
 	In this section the data collected using the SAFE plug-ins is analysed. For the purposes of this study only the data
-	from the distortion and equaliser plug-ins is used as these effects best represent the timbral transformations which
-	can be applied using harmonic excitation. The distortion showing the effects of introducing new spectral content and
-	the equaliser showing the effects of manipulating the existing spectral content.
+	from the distortion and equaliser plug-ins is used as these effects best represent the timbral transforms which can
+	be applied using harmonic excitation. The distortion showing the effects of introducing new spectral content and the
+	equaliser showing the effects of manipulating the existing spectral content.
 
-	Firstly, the terms used to describe transformations using each plug-in are investigated (Section
+	Firstly, the terms used to describe transforms using each plug-in are investigated (Section
 	\ref{sec:TimbreEvaluation-Analysis-TermUsage}). This provides insight into the language used to describe audio in
 	the production environment, also showing what terms are shared across processing techniques and those which are
 	reserved for particular effect. Secondly, clustering techniques are used in order to group these terms into those
-	which describe similar audio signals / transformations, finding terms which are synonymous when used to describe
+	which describe similar audio signals / transforms, finding terms which are synonymous when used to describe
 	timbre (Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}). Finally, timbre spaces are constructed using
 	PCA in order to find the most salient audio features which contribute to the differences in timbral description.
 
@@ -376,11 +376,11 @@
 			of an experiment?
 		}
 
-		The terms `warm' and `bright' have been used to describe transformations applied using both the distortion
-		and the equaliser effects, suggesting that the timbral characteristics these terms describe can be
-		manipulated using either effect. Other descriptors are only used to describe transformations applied using a
-		specific effect, suggesting that a unique property of that effect produces tat timbral result. For example
-		the term `crunch' is only used to in relation to the distortion effect.
+		The terms `warm' and `bright' have been used to describe transforms applied using both the distortion and
+		the equaliser effects, suggesting that the timbral characteristics these terms describe can be manipulated
+		using either effect. Other descriptors are only used to describe transforms applied using a specific effect,
+		suggesting that a unique property of that effect produces tat timbral result. For example the term `crunch'
+		is only used to in relation to the distortion effect.
 
 		Several descriptors in the dataset are derived from the same root word with the addition of suffixes such as
 		`y' or `er' (e.g. `crunch' and `crunchy' or `bright' and `brighter'). It is assumed that the addition of
@@ -409,9 +409,9 @@
 		describe an output signal (e.g. a signal with a spectral centroid between 4 and 8kHz).
 
 		To identify groups of semantically similar descriptors hierarchical clustering is applied to these feature
-		spaces. Prior to clustering, each dimension of the feature space is normalised, to a range of zero to one,
-		to mitigate any effect the range of a particular audio feature might have on the clustering. Clusters are
-		determined using the ward linkage criterion in order to minimise the variance within each cluster.
+		spaces. Prior to clustering, each dimension of the feature space is standardised, to mitigate any effect the
+		range of a particular audio feature might have on the clustering. Clusters are determined using the ward
+		linkage criterion in order to minimise the variance within each cluster.
 
 		Figure \ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
 		distortion features spaces. The clusters identified are similar for both the processed features
@@ -501,11 +501,11 @@
 		Here the `warmth' clusters from each plug-in's features spaces are combined, indicating that each of these
 		descriptors describe similar transforms regardless of the processing method used. In contrast the
 		`brightness' groups remain separated into clusters comprised mostly of descriptors from a single plug-in,
-		suggesting that the use of these terms may differ depending on the nature of the audio transformation.
-		Further evidence of this is found in the similarity of the terms `bright' and `harsh'. When used to describe
-		distortion transformations these terms always sit adjacent to one another in a cluster, whereas for
-		equaliser transformations they are separated by a reasonable distance. These terms are more likely to be
-		synonymous when describing audio processed by a static nonlinearity then they are for equalised audio.
+		suggesting that the use of these terms may differ depending on the nature of the audio transform.  Further
+		evidence of this is found in the similarity of the terms `bright' and `harsh'. When used to describe
+		distortion transforms these terms always sit adjacent to one another in a cluster, whereas for equaliser
+		transforms they are separated by a reasonable distance. These terms are more likely to be synonymous when
+		describing audio processed by a static nonlinearity then they are for equalised audio.
 
 		The finer detail of the additional groups from the separate feature spaces (`crunchiness' and `boominess')
 		are lost in the combined feature spaces. Each of these terms are clustered with terms from their associated
@@ -522,10 +522,10 @@
 		little effect on a certain timbral descriptor are easily determined. The points labeled with a particular
 		term will be more spread out across the dimensions which do not affect them. 
 		
-		Prior to analysis the feature spaces are normalised to remove any bias caused by features with a large
-		range. PCA is then applied in order to create the two dimensional timbre spaces discussed in this section.
-		Salient audio features are identified through taking correlation measures between the original audio feature
-		values and the coordinates of terms in the timbre space.
+		Prior to analysis the feature spaces are to remove any bias caused by features with a large range. PCA is
+		then applied in order to create the two dimensional timbre spaces discussed in this section.  Salient audio
+		features are identified through taking correlation measures between the original audio feature values and
+		the coordinates of terms in the timbre space.
 
 		\note
 		{
@@ -795,6 +795,31 @@
 
 	\subsection{Agreement}
 	\label{sec:TimbreEvaluation-Analysis-Agreement}
+		In order to draw conclusions about the positions of descriptors in a timbre space it is necessary to have a
+		measure of agreement for a descriptor. This measure describes how the level to which different users agree
+		on the semantic meaning of descriptive terms. The closer together the transforms associated with a
+		particular descriptor are grouped in the timbre space, the higher that descriptors agreement score.
+
+		\citet{cartwright2013socialeq} measure how well participants agree on the semantic annotation of graphic
+		equaliser parameter settings. For each participant a set of weightings is produced which describes the
+		influence of each equaliser band on the perception of a particular timbral descriptor. The agreement score
+		for a descriptor, $A(d)$, measures how similar these weightings are across different test participants using
+		Equation \ref{eq:SocialEqAgreement}.
+
+		\begin{equation}
+			A(d) = \frac{\log(N_{d})}{\sum_{k = 1}^{K} \sigma_{d,k}^{2}}
+			\label{eq:SocialEqAgreement}
+		\end{equation}
+
+		Where $N_{d}$ is the number of participants which have provided weightings for descriptor $d$,
+		$\sigma_{d,k}^{2}$ is the variance of weighting $k$ across those participants and $K$ is the number of
+		weightings in each set (i.e. the number of equaliser bands).
+
+		This can be applied to data from the SAFE plug-ins by using audio feature values in place of parameter
+		weightings. In Equation \ref{eq:SocialEqAgreement} $N_{d}$ is then the number of transforms labelled with
+		descriptor $d$, $\sigma_{d,k}^{2}$ is the variance of feature $k$ across those transforms and $K$ is the
+		number of features. As when clustering, the feature space should be standardised prior to calculating
+		agreement to remove the biasing effects caused by the ranges of each feature.
 
 		\begin{figure}[h!]
 			\centering
@@ -813,6 +838,16 @@
 			\label{fig:SynthesisedData}
 		\end{figure}
 
+		\begin{equation}
+			A(d) = \log(N_{d}) \sum_{k = 1}^{K} \frac{1}{\sigma_{d,k}^{2}}
+			\label{eq:SumOfReciprocalAgreement}
+		\end{equation}
+
+		\begin{equation}
+			A = \log(N_{d}) \sum_{k = 1}^{K} \frac{1}{\lambda_{d,k}}
+			\label{eq:EigenvalueAgreement}
+		\end{equation}
+
 		\begin{table}[h!]
 			\centering
 			\begin{tabular}{|c|c|c|c|}
@@ -820,13 +855,13 @@
 				\bf{Cluster} & \bf{1} & \bf{2} & \bf{3} \tabularnewline
 				\hline
 				\hline
-				\bf{1} & 0.29 & 2.67 & 2.74 \tabularnewline
+				\bf{1} & 2.2 & 21.1 & 21.4 \tabularnewline
 				\hline
-				\bf{2} & 7.61 & 69.50 & 71.06 \tabularnewline
+				\bf{2} & 55.8 & 539.3 & 566.6 \tabularnewline
 				\hline
-				\bf{3} & 0.46 & 41.40 & 41.77 \tabularnewline
+				\bf{3} & 3.3 & 378.7 & 382.3 \tabularnewline
 				\hline
-				\bf{4} & 0.40 & 4.28 & 35.45 \tabularnewline
+				\bf{4} & 2.9 & 40.9 & 245.9 \tabularnewline
 				\hline
 			\end{tabular}
 			\caption{Agreement Scores for Synthesised Data}
