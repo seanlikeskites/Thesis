@@ -78,3 +78,4 @@ agreements[1,] <- c(socialEqAgreement(large), sumOfReciprocalsAgreement(large), 
 agreements[2,] <- c(socialEqAgreement(small), sumOfReciprocalsAgreement(small), sumOfReciprocalEigenvaluesAgreement(small))
 agreements[3,] <- c(socialEqAgreement(tall), sumOfReciprocalsAgreement(tall), sumOfReciprocalEigenvaluesAgreement(tall))
 agreements[4,] <- c(socialEqAgreement(diag), sumOfReciprocalsAgreement(diag), sumOfReciprocalEigenvaluesAgreement(diag))
+write.csv(format(agreements, digits=2), file="ArtificialDataAgreements.csv")

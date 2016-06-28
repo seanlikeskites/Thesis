@@ -27,12 +27,12 @@ is also labelled with a semantic descriptor (such as `warm', `crunch' or `fuzz')
 	\end{figure}
 
 What we want to measure is the level to which these semantic descriptors are agreed upon across the set of transforms they
-label. Intuitively, if all the transforms labeled with are particular descriptor are group together in some meaningful way
-in the features space that descriptor should receive a high agreement score. If the transforms labelled by a particular
-descriptor are distributed across the entire feature space the descriptor should receive a low agreement score.
+label. Intuitively, if all the transforms labeled with are particular descriptor are group together in some meaningful way,
+in the features space, that descriptor should receive a high agreement score. If the transforms labelled by a particular
+descriptor are distributed across the entire feature space, the descriptor should receive a low agreement score.
 
-A common approach to this is to sum the variances of each feature for all of the transforms with a particular descriptor.
-The agreement for a descriptor, $d$, is then given by Equation \ref{socialeq}.
+A common approach to this is to sum the variances, in each dimension, for all of the transforms with a particular
+descriptor.  The agreement for a descriptor, $d$, is then given by Equation \ref{socialeq}.
 
 	\begin{equation}
 		A(d) = \frac{\log(N_{d})}{\sum_{k=1}^{K} \sigma_{d,k}^{2}}
@@ -40,8 +40,8 @@ The agreement for a descriptor, $d$, is then given by Equation \ref{socialeq}.
 	\end{equation}
 
 Where $N_{d}$ is the total number of transforms labelled with descriptor $d$, $K$ is the total number of features
-(dimensions in the features space) and $\sigma_{d,k}^{2}$ is the variance, for transforms labelled with descriptor $d$, in
-feature $k$.
+(dimensions in the features space) and $\sigma_{d,k}^{2}$ is the variance, in feature $k$, for transforms labelled with
+descriptor $d$.
 
 I don't think this is a particularly good measure for a variety of reasons:
 
@@ -49,7 +49,7 @@ I don't think this is a particularly good measure for a variety of reasons:
 		\item The scaling by the log of the number of transforms doesn't seem very rigorous to me. Clearly the
 			agreement score should increase if there are more transforms within the same region of the space,
 			but this method doesn't seem statistically sound.
-		\item It assumes that high variance, in any feature, is a bad thing and should reduce the agreement
+		\item It assumes that high variance, in any dimension, is a bad thing and should reduce the agreement
 			score for a descriptor. It may be the case that a particular feature has no influence on the
 			labelling of a transform and as such that feature should have little influence on the agreement
 			score.
@@ -70,7 +70,7 @@ expected distribution of feature values.
 \section*{Sum of Reciprocals}
 Secondly, I think taking the reciprocal of the sum of variances measures the wrong thing. In Equation \ref{socialeq} a high
 variance in any feature will reduce the agreement score, regardless of how many features exhibit a low variance. Summing the
-individual reciprocals for the margin of error in each feature, as shown in Equation \ref{reciprocalmoe} makes more sense to
+individual reciprocals of the margin of error in each feature, as shown in Equation \ref{reciprocalmoe} makes more sense to
 me.
 
 	\begin{equation}
@@ -78,7 +78,7 @@ me.
 		\label{reciprocalmoe}
 	\end{equation}
 
-Where $E_{d,k}$ is the margin of error, for transforms labelled with descriptor $d$, in feature $k$.
+Where $E_{d,k}$ is the margin of error, in feature $k$, for transforms labelled with descriptor $d$.
 
 In this way features with a large margin of error have little effect on the overall agreement score, while features with a
 small margin or error will increase it.
@@ -86,29 +86,29 @@ small margin or error will increase it.
 \section*{Using Principal Components}
 Equation \ref{reciprocalmoe} still suffers from the problem of assuming a small margin of error is due to an agreement
 between labels. We need to discard any features which have a small variance regardless of their descriptor. This can be done
-using principal component analysis (PCA) to the entire feature space (including all transforms), and keeping only the first
+using principal component analysis (PCA) on the entire feature space (including all transforms), and keeping only the first
 $P$ principal components (PCs). If the transforms labelled with a particular descriptor exhibit low variance in one of these
 first $P$ PCs it is likely that it is well agreed upon.
 
 The problem now is that the PCs all describe different proportions of the variance in the original data.  This can be taken
 into consideration by weighting the margin of error in each PC by the proportion of variance described by that PC. In a PC
-which describes a large proportion of variance a low variance is not expected and as such should be given a higher weighting
-in the agreement score. In a PC which describes a low proportion of variance a low variance is expected so the weighting
-should be less. This gives rise to Equation \ref{weighting}.
+which describes a large proportion of variance, a low variance is not expected and as such should be given a higher
+weighting in the agreement score. In a PC which describes a low proportion of variance, a low variance is expected so the
+weighting should be less. This gives rise to Equation \ref{weighting}.
 
 	\begin{equation}
 		A(d) = \sum_{p=1}^{P} \frac{V_{p}}{E_{d,p}}
 		\label{weighting}
 	\end{equation}
 
-Where $V_{p}$ is the proportion of variance described by PC $p$ and $E_{d,p}$ is the margin of error, for transforms
-labelled with descriptor $d$, in PC $p$.
+Where $V_{p}$ is the proportion of variance described by PC $p$ and $E_{d,p}$ is the margin of error, in PC $p$, for
+transforms labelled with descriptor $d$.
 
 \section*{Relationships Between PCs}
 One problem still remains that a certain descriptor might exhibit some relationship between two PCs. The original PCA is
-performed on the entires feature space so only features which are proportional for all transforms will be combined into
+performed on the entire feature space so only features which are proportional for all transforms will be combined into
 single PCs. It is possible that two features are only related for transforms with a particular descriptor, in which case
-they will most likely be split into two separate PCs. This means that for some descriptors there may be relationships that
+they will most likely be split into two separate PCs. This means that, for some descriptors, there may be relationships that
 exist between PCs which we need to capture in our agreement score.
 
 My idea for this is to find the covariance matrix for transforms labelled with a particular descriptor in the first $P$ PCs,
