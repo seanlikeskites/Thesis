@@ -56,17 +56,17 @@ allZ <- c(large[,3], small[,3], tall[,3], diag[,3])
 means <- c(mean(allX), mean(allY), mean(allZ))
 sds <- c(sd(allX), sd(allY), sd(allZ))
 
-large <- scale(large, means, sds)
-small <- scale(small, means, sds)
-tall <- scale(tall, means, sds)
-diag <- scale(diag, means, sds)
+largeScaled <- scale(large, means, sds)
+smallScaled <- scale(small, means, sds)
+tallScaled <- scale(tall, means, sds)
+diagScaled <- scale(diag, means, sds)
 
 colours <- rainbow(4)
 
 setEPS()
 
 postscript("ArtificialData1-2.eps")
-plot(scale(allX), scale(allY), type='n', main="", xlab="Feature 1", ylab="Feature 2")
+plot(allX, allY, type='n', main="", xlab="Feature 1", ylab="Feature 2")
 points(large[,1], large[,2], col=colours[1], pch=4, cex=2)
 points(small[,1], small[,2], col=colours[2], pch=4, cex=2)
 points(tall[,1], tall[,2], col=colours[3], pch=4, cex=2)
@@ -74,7 +74,7 @@ points(diag[,1], diag[,2], col=colours[4], pch=4, cex=2)
 dev.off()
 
 postscript("ArtificialData3-2.eps")
-plot(scale(allZ), scale(allY), type='n', main="", xlab="Feature 3", ylab="Feature 2")
+plot(allZ, allY, type='n', main="", xlab="Feature 3", ylab="Feature 2")
 points(large[,3], large[,2], col=colours[1], pch=4, cex=2)
 points(small[,3], small[,2], col=colours[2], pch=4, cex=2)
 points(tall[,3], tall[,2], col=colours[3], pch=4, cex=2)
@@ -82,8 +82,16 @@ points(diag[,3], diag[,2], col=colours[4], pch=4, cex=2)
 dev.off()
 
 agreements <- matrix(0, 4, 3)
-agreements[1,] <- c(socialEqAgreement(large), sumOfReciprocalsAgreement(large), sumOfReciprocalEigenvaluesAgreement(large))
-agreements[2,] <- c(socialEqAgreement(small), sumOfReciprocalsAgreement(small), sumOfReciprocalEigenvaluesAgreement(small))
-agreements[3,] <- c(socialEqAgreement(tall), sumOfReciprocalsAgreement(tall), sumOfReciprocalEigenvaluesAgreement(tall))
-agreements[4,] <- c(socialEqAgreement(diag), sumOfReciprocalsAgreement(diag), sumOfReciprocalEigenvaluesAgreement(diag))
+agreements[1,] <- c(socialEqAgreement(largeScaled), 
+		    sumOfReciprocalsAgreement(largeScaled), 
+		    sumOfReciprocalEigenvaluesAgreement(largeScaled))
+agreements[2,] <- c(socialEqAgreement(smallScaled),
+		    sumOfReciprocalsAgreement(smallScaled), 
+		    sumOfReciprocalEigenvaluesAgreement(smallScaled))
+agreements[3,] <- c(socialEqAgreement(tallScaled), 
+		    sumOfReciprocalsAgreement(tallScaled), 
+		    sumOfReciprocalEigenvaluesAgreement(tallScaled))
+agreements[4,] <- c(socialEqAgreement(diagScaled), 
+		    sumOfReciprocalsAgreement(diagScaled), 
+		    sumOfReciprocalEigenvaluesAgreement(diagScaled))
 write.csv(format(agreements, digits=2), file="ArtificialDataAgreements.csv")
