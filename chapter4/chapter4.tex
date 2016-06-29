@@ -886,7 +886,13 @@
 			
 			Figure \ref{fig:SynthesisedData} show a synthesised, three dimensional, dataset containing four
 			clusters of points. Each cluster has different properties which need to be taken into account when
-			calculating the agreement score.
+			calculating the agreement score. Cluster 1 represents a set of points whose position in the feature
+			space is not agreed upon, exhibiting a high variance in every feature. Cluster 2 represents a set of
+			points whose position is very well agreed upon, having low variance in every feature. Cluster 3
+			represent a set of points whose position is only defined in one audio feature, having high variance
+			in the other two. Cluster 4 represent a set of points which are defined by a relationship between
+			two features, exhibiting high variance in all features but a strong correlation ($p = 0.9$) between
+			features 1 and 2.
 
 			\begin{figure}[h!]
 				\centering
