@@ -827,63 +827,95 @@
 		analysed:
 
 		\begin{itemize}
-			\item It is assumed that high variance in any feature implies a disagreement. It may be
-			      the case that a particular audio feature has no influence on the perception of a particular
-			      timbre and as such a high variance in that feature should not adversely effect the agreement
-			      score.
-			\item It is assumed that low variance in any feature implies an agreement. It may be the case that
-			      the audio material used for every transform exhibit a small variance in a particular feature.
-			      In this case a small variance does not show an agreement between users, it describes an
-			      underlying pattern in the audio material used.
-			\item It assumes that all audio features are independent. It may be the case that users agree that a
-			      particular descriptor describes a particular relationship between several audio features (e.g.
-			      a spectral centroid lying at the 4\super{th} harmonic). Assuming each of the features are
-			      independent ignores these relationships.
+			\item It is assumed that high variance in any feature implies a disagreement. 
+			\item It is assumed that all audio features are independent. 
+			\item It is assumed that low variance in any feature implies an agreement. 
 		\end{itemize}
 
-		\begin{figure}[h!]
-			\centering
-			\subfloat[]
-			{
-				\includegraphics[width=0.45\textwidth]{chapter4/Images/ArtificialData1-2.eps}
-				\label{fig:EqualiserDifferencePCA}
-			}
-			\qquad
-			\subfloat[]
-			{
-				\includegraphics[width=0.45\textwidth]{chapter4/Images/ArtificialData3-2.eps}
-				\label{fig:EqualiserDifferenceCentroidsPCA}
-			}
-			\caption{Synthesised Data}
-			\label{fig:SynthesisedData}
-		\end{figure}
+		In this section an agreement measure which does not make these assumptions is developed.
 
-		\begin{equation}
-			A(d) = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\sigma_{d,k}^{2}}
-			\label{eq:SumOfReciprocalAgreement}
-		\end{equation}
+		\subsubsection*{High Variance}
+			A term exhibiting high variance in a particular audio feature could imply one of two things. Either
+			that users do not agree on the position of the term in the feature space, or that that feature has
+			no effect on the perception of the term. In the first case the agreement score should be decreased
+			but in the second the agreement score should not be affected. Because of this ambiguity, it is
+			preferable that a high variance has negligible effect on the agreement score. In this way, if a high
+			variance does imply disagreement it does not unduly increase the agreement score and if at does not
+			imply disagreement it does to unduly decrease the agreement score.
+			
+			This can be implemented by changing Equation \ref{eq:SocialEqAgreement} to be a sum of reciprocals
+			rather than the reciprocal on a sum, as shown in Equation \ref{eq:SumOfReciprocalAgreement}.
 
-		\begin{equation}
-			A = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\lambda_{d,k}}
-			\label{eq:EigenvalueAgreement}
-		\end{equation}
+			\begin{equation}
+				A(d) = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\sigma_{d,k}^{2}}
+				\label{eq:SumOfReciprocalAgreement}
+			\end{equation}
 
-		\begin{table}[h!]
-			\centering
-			\begin{tabular}{|c|c|c|c|}
-				\hline
-				\bf{Cluster} & \bf{1} & \bf{2} & \bf{3} \tabularnewline
-				\hline
-				\hline
-				\bf{1} & 2.5 & 23.5 & 24.1 \tabularnewline
-				\hline
-				\bf{2} & 47.0 & 475.0 & 497.0 \tabularnewline
-				\hline
-				\bf{3} & 3.0 & 351.5 & 358.6 \tabularnewline
-				\hline
-				\bf{4} & 2.7 & 34.9 & 274.5 \tabularnewline
-				\hline
-			\end{tabular}
-			\caption{Agreement Scores for Synthesised Data}
-			\label{tab:SynthesisedDataAgreement}
-		\end{table}
+		\subsubsection*{Dependent Features}
+			It may be the case that users agree that a particular term describes a relationship between several
+			audio features (e.g.  a spectral centroid lying at the 4\super{th} harmonic). Equations
+			\ref{eq:SocialEqAgreement} and \ref{eq:SumOfReciprocalAgreement} both ignore any dependence between
+			audio features.
+
+			Relationships between features can be taken into account by calculating the covariance matrix for
+			the transforms associated with a term. The variances in each feature can then be substituted with
+			the eigenvalues of this matrix, as shown in Equation \ref{eq:EigenvalueAgreement}.
+
+			\begin{equation}
+				A(d) = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\lambda_{d,k}}
+				\label{eq:EigenvalueAgreement}
+			\end{equation}
+			
+			Where $\lambda_{d, k}$ is the $k$\super{th} eigenvalue of the covariance matrix for all transforms
+			labelled with descriptor $d$.
+
+			When using Equation \ref{eq:EigenvalueAgreement} the number of eigenvalues used, $K$, needs to be
+			carefully selected. If $N_{d}$ is less than or equal to the total number of audio features the
+			covariance matrix will be singular, meaning it will have one or more eigenvalues equal to zero. At
+			most, only the $N_{d} - 1$ largest eigenvalues should be used in order to avoid the agreement score
+			becoming undefined.
+
+			Any other zero eigenvalues would imply a perfect linear relationship between a combination of audio
+			features. \note{Can I just say we will ignore that for now? It is a very unlikely occurrence,
+			disregarding features which are defined to be linearly related (which will get fixed by PCA).}
+
+		\subsubsection*{Validation with Synthesised Data}
+			\begin{figure}[h!]
+				\centering
+				\subfloat
+				{
+					\includegraphics[width=0.45\textwidth]{chapter4/Images/ArtificialData1-2.eps}
+					\label{fig:EqualiserDifferencePCA}
+				}
+				\qquad
+				\subfloat
+				{
+					\includegraphics[width=0.45\textwidth]{chapter4/Images/ArtificialData3-2.eps}
+					\label{fig:EqualiserDifferenceCentroidsPCA}
+				}
+				\caption{Synthesised Data}
+				\label{fig:SynthesisedData}
+			\end{figure}
+
+
+			\begin{table}[h!]
+				\centering
+				\begin{tabular}{|c|c|c|c|}
+					\hline
+					\bf{Cluster} & \bf{1} & \bf{2} & \bf{3} \tabularnewline
+					\hline
+					\hline
+					\bf{1} & 2.1 & 20.3 & 20.4 \tabularnewline
+					\hline
+					\bf{2} & 47.8 & 485.9 & 489.8 \tabularnewline
+					\hline
+					\bf{3} & 2.9 & 381.9 & 395.8 \tabularnewline
+					\hline
+					\bf{4} & 3.4 & 38.0 & 153.7 \tabularnewline
+					\hline
+				\end{tabular}
+				\caption{Agreement Scores for Synthesised Data}
+				\label{tab:SynthesisedDataAgreement}
+			\end{table}
+
+		\subsubsection*{Low Variance}

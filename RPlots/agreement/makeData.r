@@ -39,9 +39,9 @@ tall <- mvrnorm(n=85, mu=c(-2, 0, 2), Sigma=tallCovs)
 
 diagCovs <- matrix(0, 3, 3)
 diagCovs[1, 1] <- 5
-diagCovs[1, 2] <- 3
+diagCovs[1, 2] <- 0.9 * sqrt(5 * 2)
 diagCovs[1, 3] <- 0
-diagCovs[2, 1] <- 3
+diagCovs[2, 1] <- 0.9 * sqrt(5 * 2)
 diagCovs[2, 2] <- 2
 diagCovs[2, 3] <- 0
 diagCovs[3, 1] <- 0
