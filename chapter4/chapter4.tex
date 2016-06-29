@@ -880,6 +880,14 @@
 			disregarding features which are defined to be linearly related (which will get fixed by PCA).}
 
 		\subsubsection*{Validation with Synthesised Data}
+			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},
+			\ref{eq:SumOfReciprocalAgreement} and \ref{eq:EigenvalueAgreement} artificial data can be
+			synthesised which exhibits some of the issues discussed with Equation \ref{eq:SocialEqAgreement}.
+			
+			Figure \ref{fig:SynthesisedData} show a synthesised, three dimensional, dataset containing four
+			clusters of points. Each cluster has different properties which need to be taken into account when
+			calculating the agreement score.
+
 			\begin{figure}[h!]
 				\centering
 				\subfloat
@@ -897,21 +905,22 @@
 				\label{fig:SynthesisedData}
 			\end{figure}
 
-
 			\begin{table}[h!]
 				\centering
 				\begin{tabular}{|c|c|c|c|}
 					\hline
-					\bf{Cluster} & \bf{1} & \bf{2} & \bf{3} \tabularnewline
+					\bf{Cluster} & \bf{Equation \ref{eq:SocialEqAgreement}} & 
+					\bf{Equation \ref{eq:SumOfReciprocalAgreement}} & 
+					\bf{Equation \ref{eq:EigenvalueAgreement}} \tabularnewline
 					\hline
 					\hline
-					\bf{1} & 2.1 & 20.3 & 20.4 \tabularnewline
+					\bf{1} & 2.6 & 25.0 & 25.2 \tabularnewline
 					\hline
-					\bf{2} & 47.8 & 485.9 & 489.8 \tabularnewline
+					\bf{2} & 59.6 & 571.7 & 584.9 \tabularnewline
 					\hline
-					\bf{3} & 2.9 & 381.9 & 395.8 \tabularnewline
+					\bf{3} & 2.6 & 394.0 & 396.9 \tabularnewline
 					\hline
-					\bf{4} & 3.4 & 38.0 & 153.7 \tabularnewline
+					\bf{4} & 2.6 & 29.2 & 140.7 \tabularnewline
 					\hline
 				\end{tabular}
 				\caption{Agreement Scores for Synthesised Data}

@@ -62,6 +62,7 @@ tallScaled <- scale(tall, means, sds)
 diagScaled <- scale(diag, means, sds)
 
 colours <- rainbow(4)
+clusters <- c("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4")
 
 setEPS()
 
@@ -71,6 +72,7 @@ points(large[,1], large[,2], col=colours[1], pch=4, cex=2)
 points(small[,1], small[,2], col=colours[2], pch=4, cex=2)
 points(tall[,1], tall[,2], col=colours[3], pch=4, cex=2)
 points(diag[,1], diag[,2], col=colours[4], pch=4, cex=2)
+legend("bottomright", legend=clusters, pch=4, col=colours)
 dev.off()
 
 postscript("ArtificialData3-2.eps")
@@ -79,6 +81,7 @@ points(large[,3], large[,2], col=colours[1], pch=4, cex=2)
 points(small[,3], small[,2], col=colours[2], pch=4, cex=2)
 points(tall[,3], tall[,2], col=colours[3], pch=4, cex=2)
 points(diag[,3], diag[,2], col=colours[4], pch=4, cex=2)
+legend("bottomright", legend=clusters, pch=4, col=colours)
 dev.off()
 
 agreements <- matrix(0, 4, 3)
