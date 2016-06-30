@@ -11,7 +11,7 @@ largeCovs[2, 3] <- 0
 largeCovs[3, 1] <- 0
 largeCovs[3, 2] <- 0
 largeCovs[3, 3] <- 5
-large <- mvrnorm(n=110, mu=c(2, 3, 4), Sigma=largeCovs)
+large <- mvrnorm(n=110, mu=c(2, 3, 4), Sigma=largeCovs, empirical=TRUE)
 
 smallCovs <- matrix(0, 3, 3)
 smallCovs[1, 1] <- 0.2
@@ -23,7 +23,7 @@ smallCovs[2, 3] <- 0
 smallCovs[3, 1] <- 0
 smallCovs[3, 2] <- 0
 smallCovs[3, 3] <- 0.2
-small <- mvrnorm(n=90, mu=c(4, -2, 1), Sigma=smallCovs)
+small <- mvrnorm(n=90, mu=c(4, -2, 1), Sigma=smallCovs, empirical=TRUE)
 
 tallCovs <- matrix(0, 3, 3)
 tallCovs[1, 1] <- 0.1
@@ -35,7 +35,7 @@ tallCovs[2, 3] <- 0
 tallCovs[3, 1] <- 0
 tallCovs[3, 2] <- 0
 tallCovs[3, 3] <- 5
-tall <- mvrnorm(n=85, mu=c(-2, 0, 2), Sigma=tallCovs)
+tall <- mvrnorm(n=85, mu=c(-2, 0, 2), Sigma=tallCovs, empirical=TRUE)
 
 diagCovs <- matrix(0, 3, 3)
 diagCovs[1, 1] <- 5
@@ -47,7 +47,7 @@ diagCovs[2, 3] <- 0
 diagCovs[3, 1] <- 0
 diagCovs[3, 2] <- 0
 diagCovs[3, 3] <- 4
-diag <- mvrnorm(n=80, mu=c(5, -3, 4), Sigma=diagCovs)
+diag <- mvrnorm(n=80, mu=c(5, -3, 4), Sigma=diagCovs, empirical=TRUE)
 
 allX <- c(large[,1], small[,1], tall[,1], diag[,1])
 allY <- c(large[,2], small[,2], tall[,2], diag[,2])
