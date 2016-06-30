@@ -832,6 +832,15 @@
 			\item It is assumed that low variance in any feature implies an agreement. 
 		\end{itemize}
 
+		\note
+		{
+			I have also decided that this whole $\ln(N_{d})$ stuff is very broken. Currently a large cluster
+			with loads of points will get a higher score than a small cluster with a reasonable number of
+			points. We want to measure just the size of the cluster. Problem is the that a single point has
+			maximum agreement. I'm pretty sure that calculating the variances using Bessel's correction will
+			account for this.
+		}
+
 		In this section an agreement measure which does not make these assumptions is developed.
 
 		\subsubsection*{High Variance}
@@ -960,5 +969,11 @@
 			assumption that high variance implies disagreement, Equation \ref{eq:SumOfReciprocalAgreement} takes
 			account of the pattern in cluster 3. Equation \ref{eq:EigenvalueAgreement} remove the assumption
 			that all features are independent enabling it to reflect the pattern shown in cluster 4.
+
+			\note
+			{
+				I am also concerned about how unbounded these values are. I was thinking of using $1 +
+				\sigma_{d,k}^{2}$ to bound it.
+			}
 
 		\subsubsection*{Low Variance}
