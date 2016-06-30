@@ -554,7 +554,7 @@
 			\centering
 			\begin{tabular}{|c|c|c|c|c|c|}
 				\cline{2-6}
-				\multicolumn{1}{c}{} & \multicolumn{5}{|c|}{\bf{Correlation}} \tabularnewline
+				\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
 				\hline
 				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
 				\hline
@@ -623,7 +623,7 @@
 			\centering
 			\begin{tabular}{|c|c|c|c|c|c|}
 				\cline{2-6}
-				\multicolumn{1}{c}{} & \multicolumn{5}{|c|}{\bf{Correlation}} \tabularnewline
+				\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
 				\hline
 				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
 				\hline
@@ -692,7 +692,7 @@
 			\centering
 			\begin{tabular}{|c|c|c|c|c|c|}
 				\cline{2-6}
-				\multicolumn{1}{c}{} & \multicolumn{5}{|c|}{\bf{Correlation}} \tabularnewline
+				\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
 				\hline
 				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
 				\hline
@@ -741,7 +741,7 @@
 			\centering
 			\begin{tabular}{|c|c|c|c|c|c|}
 				\cline{2-6}
-				\multicolumn{1}{c}{} & \multicolumn{5}{|c|}{\bf{Correlation}} \tabularnewline
+				\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
 				\hline
 				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
 				\hline
@@ -894,6 +894,14 @@
 			two features, exhibiting high variance in all features but a strong correlation ($p = 0.9$) between
 			features 1 and 2.
 
+			\note
+			{
+				How much detail should be given as to the generation of this data. Do we need to explicitly
+				state each cluster covariances matrix? Do we need to mention the method used to generate the
+				distributions? Reference the R documentation for mvrnorm perhaps, or name drop the algorithm
+				that uses (which I don't know at the moment, come on inter library loan).
+			}
+
 			\begin{figure}[h!]
 				\centering
 				\subfloat
@@ -911,9 +919,16 @@
 				\label{fig:SynthesisedData}
 			\end{figure}
 
+			Visualising the data in Figure \ref{fig:SynthesisedData} provides intuition as to how an agreement
+			score should rate each cluster. Cluster 1 should receive the lowest score as there is no
+			discernible pattern to the data points. Cluster 2 should receive the highest score as it is very
+			tightly clustered in all features.
+
 			\begin{table}[h!]
 				\centering
 				\begin{tabular}{|c|c|c|c|}
+					\cline{2-4}
+					\multicolumn{1}{c|}{} & \multicolumn{3}{c|}{\bf{Agreement Score}} \tabularnewline
 					\hline
 					\bf{Cluster} & \bf{Equation \ref{eq:SocialEqAgreement}} & 
 					\bf{Equation \ref{eq:SumOfReciprocalAgreement}} & 

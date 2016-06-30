@@ -55,9 +55,9 @@ makeCorrelationTable <- function(data, outFile, goodCorr=0.8)
 			   "}\n\t\\cline{2-", numPCs + 1, "}", sep="")
 	lines <- c(lines, firstLine)
 
-	titles <- paste("\t\\multicolumn{1}{c}{} & \\multicolumn{", 
+	titles <- paste("\t\\multicolumn{1}{c|}{} & \\multicolumn{", 
 			numPCs, 
-			"}{|c|}{\\bf{Correlation}} \\tabularnewline\n\t\\hline", 
+			"}{c|}{\\bf{Correlation}} \\tabularnewline\n\t\\hline", 
 			sep="")
 	lines <- c(lines, titles)
 
