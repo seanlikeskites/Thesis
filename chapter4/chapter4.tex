@@ -37,10 +37,10 @@
 		\end{itemize}
 
 		At every stage of this process semantic descriptors are often used to communicate the desired timbral
-		qualities of the audio. For instance one my ask that a certain microphone be used because of the `warmth' it
-		adds to the recorded sound. During the mixing and mastering stages audio processing effects are applied to
-		shape the timbre further.  These stages will be the focus of this section as the aim of this thesis is to
-		improve the intuitiveness of these effects.
+		qualities of the audio. For instance one my ask that a certain microphone be used because of the `warmth'
+		it adds to the recorded sound. During the mixing and mastering stages audio processing effects are applied
+		to shape the timbre further.  These stages will be the focus of this section as the aim of this thesis is
+		to improve the intuitiveness of these effects.
 
 		Historically audio effects were pieces of electronic hardware through which an audio signal is passed.
 		Modern music production techniques utilise Digital Audio Workstation (DAW) software. This software enables
@@ -75,27 +75,28 @@
 		Achieving this would require the creation of a new DAW. This would be impractical for the current research.
 		DAWs are very comprehensive software packages which perform many more tasks than the application of effects
 		to audio (project management, audio editing functionality etc.). A lot of effort would be expended in
-		implementing these features before any timbral data could be collected.  Music producers also tend to have a
-		preferred DAW with which they work most fluidly. Convincing producers to use a new DAW, for the purposes of
-		research, would be a difficult task.
+		implementing these features before any timbral data could be collected.  Music producers also tend to have
+		a preferred DAW with which they work most fluidly. Convincing producers to use a new DAW, for the purposes
+		of research, would be a difficult task.
 
 		Third party developers can produce extensions to DAWs known as plug-ins. Plug-Ins provide additional audio
-		processing functionality to the DAW environment. They can optionally expose their own parameters which users
-		can adjust to achieve their desired effect. There are several different formats in which audio plug-ins can
-		be distributed (VST, AU etc.). Most of the commonly used DAWs support plug-ins in one or more of these
-		formats.
+		processing functionality to the DAW environment. They can optionally expose their own parameters which
+		users can adjust to achieve their desired effect. There are several different formats in which audio
+		plug-ins can be distributed (VST, AU etc.). Most of the commonly used DAWs support plug-ins in one or more
+		of these formats.
 
 		Audio plug-ins provide a good platform to allow producers to provide semantic terms and audio feature
 		information from within their preferred DAW. As part of this research a suite of audio plug-ins which
-		extract this information have been developed. They have been released under the title Semantic Audio Feature
-		Extraction (SAFE) Plug-Ins.
+		extract this information have been developed. They have been released under the title Semantic Audio
+		Feature Extraction (SAFE) Plug-Ins.
 
 	\subsection{SAFE Plug-Ins}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}
-		The SAFE plug-ins consist of four commonly used audio effects: Equaliser, Distortion, Compressor and Reverb.
-		As part of the plug-ins's interface the user has the option to save semantic terms. The interface for the
-		SAFE Distortion is shown in Figure \ref{fig:SAFE-Distortion}. Upon saving terms the plug-in will analyse the
-		audio at its inputs and outputs. When the analysis is completed the results are stored, containing:
+		The SAFE plug-ins consist of four commonly used audio effects: Equaliser, Distortion, Compressor and
+		Reverb.  As part of the plug-ins's interface the user has the option to save semantic terms. The interface
+		for the SAFE Distortion is shown in Figure \ref{fig:SAFE-Distortion}. Upon saving terms the plug-in will
+		analyse the audio at its inputs and outputs. When the analysis is completed the results are stored,
+		containing:
 
 		\begin{itemize}
 			\item The users description of the timbre.
@@ -130,8 +131,8 @@
 
 		One disadvantage in using plug-ins is that they cannot gather information about the processing chain they
 		may be a part of. The timbral transform the user is describing may be the result of several effects working
-		together. This can be mitigated somewhat by asking users to describe only the effect the plug-in in question
-		is providing.
+		together. This can be mitigated somewhat by asking users to describe only the effect the plug-in in
+		question is providing.
 
 		The SAFE plug-ins suffer from the same issues other distributed tests do. The researcher forfeits control
 		over the listening environment in order to gather results from a much larger sample of people. In fact they
@@ -141,8 +142,8 @@
 
 	\subsection{SAFE Ontology}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFEOntology}
-		\note{Really not sure how well this fits in here. Do we needs a section explaining RDF and such? Where would
-		that go?}
+		\note{Really not sure how well this fits in here. Do we needs a section explaining RDF and such? Where
+		would that go?}
 
 		The data collected using the SAFE plug-ins is stored as RDF triples using the SAFE ontology.  The SAFE
 		Ontology was designed to describe the semantics relating to the application of an audio effect and the
@@ -186,18 +187,18 @@
 			\label{fig:TransformGraph}
 		\end{figure}
 
-		Here, users provide a term, or series of terms, to describe the transform applied by the audio effect in its
-		current state. This should describe the perceived difference between the output and input signals. In the
-		SAFE Ontology this is modelled through the \emph{safe:DescriptorItem} concept which provides a semantic
+		Here, users provide a term, or series of terms, to describe the transform applied by the audio effect in
+		its current state. This should describe the perceived difference between the output and input signals. In
+		the SAFE Ontology this is modelled through the \emph{safe:DescriptorItem} concept which provides a semantic
 		description for each transform. Metadata items are used to provide details about the application domain of
 		the effect, where each metadata item describes one property of an object, the property being identified
 		using an \emph{rdfs:label} and the description provided using an \emph{rdfs:comment}. Each object described
 		by a metadata item has its own set of properties, ``genre'' and ``instrument'' metadata tags for example,
 		describe an audio signal, while ``location'' metadata tags describe a transform.
 
-		The analysis of audio signals is described using the concept \emph{safe:FeatureExtractionTransform}, similar
-		to a \emph{studio:Transform} but taking an audio signal as input and producing feature values at the output,
-		as shown in Figure \ref{fig:ExtractionGraph}.
+		The analysis of audio signals is described using the concept \emph{safe:FeatureExtractionTransform},
+		similar to a \emph{studio:Transform} but taking an audio signal as input and producing feature values at
+		the output, as shown in Figure \ref{fig:ExtractionGraph}.
 
 		\begin{figure}[h!]
 			\centering
@@ -235,32 +236,33 @@
 
 		Here, The SAFE Ontology makes extensive use of the Provenance Ontology to identify the origins of the data.
 		Each element of data constitutes a \emph{prov:Entity} which was generated by a \emph{prov:Activity}. These
-		\emph{prov:Activity} nodes are in turn associated with a \emph{prov:Agent} identifying the way that the data
-		was produced.
+		\emph{prov:Activity} nodes are in turn associated with a \emph{prov:Agent} identifying the way that the
+		data was produced.
 
-		When using the SAFE plug-ins, users are required to provide a descriptor for a transform, meaning that every
-		\emph{safe:DescriptorItem} node in the dataset is attributed to a particular user. Conversely, the metadata
-		fields are not mandatory. In situations where a user has not filled in certain metadata fields their values
-		can be predicted on the server using supervised machine learning. Using the Provenance Ontology, each
-		metadata entity can be attributed to a particular agent, allowing it to understood as human or machine
-		labelled. This allows queries on the dataset to request only the more reliable user-labeled data, or for
-		example, compare data produced using different classification algorithms.
+		When using the SAFE plug-ins, users are required to provide a descriptor for a transform, meaning that
+		every \emph{safe:DescriptorItem} node in the dataset is attributed to a particular user. Conversely, the
+		metadata fields are not mandatory. In situations where a user has not filled in certain metadata fields
+		their values can be predicted on the server using supervised machine learning. Using the Provenance
+		Ontology, each metadata entity can be attributed to a particular agent, allowing it to understood as human
+		or machine labelled. This allows queries on the dataset to request only the more reliable user-labeled
+		data, or for example, compare data produced using different classification algorithms.
 
 		The Provenance Ontology is also used to describe the algorithms that produce audio feature data. Each
 		\emph{safe:FeatureExtractionTransform} node is a \emph{prov:Activity} which can be associated with a
-		particular implementation of the algorithm it uses (e.g. the LibXtract \citep{bullock2007libxtract} spectral
-		centroid function). Say a discrepancy was found between two implementations of a given feature extraction
-		algorithm, the provenance data allows queries to filter results to remove those generated using an earlier
-		or incompatible implementation. Further use of provenance describes the role of a user in the application of
-		a transform. Storage of this data allows the simple retrieval of all transforms associated with a particular
-		user, allowing users to maintain personal libraries of semantic presets amongst the entire SAFE dataset.
+		particular implementation of the algorithm it uses (e.g. the LibXtract \citep{bullock2007libxtract}
+		spectral centroid function). Say a discrepancy was found between two implementations of a given feature
+		extraction algorithm, the provenance data allows queries to filter results to remove those generated using
+		an earlier or incompatible implementation. Further use of provenance describes the role of a user in the
+		application of a transform. Storage of this data allows the simple retrieval of all transforms associated
+		with a particular user, allowing users to maintain personal libraries of semantic presets amongst the
+		entire SAFE dataset.
 
 \section{Analysis}
 \label{sec:TimbreEvaluation-Analysis}
-	In this section the data collected using the SAFE plug-ins is analysed. For the purposes of this study only the data
-	from the distortion and equaliser plug-ins is used as these effects best represent the timbral transforms which can
-	be applied using harmonic excitation. The distortion showing the effects of introducing new spectral content and the
-	equaliser showing the effects of manipulating the existing spectral content.
+	In this section the data collected using the SAFE plug-ins is analysed. For the purposes of this study only the
+	data from the distortion and equaliser plug-ins is used as these effects best represent the timbral transforms
+	which can be applied using harmonic excitation. The distortion showing the effects of introducing new spectral
+	content and the equaliser showing the effects of manipulating the existing spectral content.
 
 	Firstly, the terms used to describe transforms using each plug-in are investigated (Section
 	\ref{sec:TimbreEvaluation-Analysis-TermUsage}). This provides insight into the language used to describe audio in
@@ -378,18 +380,18 @@
 
 		The terms `warm' and `bright' have been used to describe transforms applied using both the distortion and
 		the equaliser effects, suggesting that the timbral characteristics these terms describe can be manipulated
-		using either effect. Other descriptors are only used to describe transforms applied using a specific effect,
-		suggesting that a unique property of that effect produces tat timbral result. For example the term `crunch'
-		is only used to in relation to the distortion effect.
+		using either effect. Other descriptors are only used to describe transforms applied using a specific
+		effect, suggesting that a unique property of that effect produces tat timbral result. For example the term
+		`crunch' is only used to in relation to the distortion effect.
 
-		Several descriptors in the dataset are derived from the same root word with the addition of suffixes such as
-		`y' or `er' (e.g. `crunch' and `crunchy' or `bright' and `brighter'). It is assumed that the addition of
+		Several descriptors in the dataset are derived from the same root word with the addition of suffixes such
+		as `y' or `er' (e.g. `crunch' and `crunchy' or `bright' and `brighter'). It is assumed that the addition of
 		such suffixes has no effect over how a term is used to describe timbre. As such a stemming algorithm
 		\citep{porter1980an} is used in order to reduce all descriptors in the dataset to their root words.
-		Additional processing is required after stemming so that all descriptors with the same root can be combined.
-		The Porter stemming algorithm replaces the letter y at the end of a word with the letter i, for this
-		analysis these tailing i's are removed so that terms such as `fuzz' and `fuzzy' are reduced to the same
-		root. In some cases the output after this  must be further reduced, for example the term `muddy' is
+		Additional processing is required after stemming so that all descriptors with the same root can be
+		combined.  The Porter stemming algorithm replaces the letter y at the end of a word with the letter i, for
+		this analysis these tailing i's are removed so that terms such as `fuzz' and `fuzzy' are reduced to the
+		same root. In some cases the output after this  must be further reduced, for example the term `muddy' is
 		reduced to `mudd' which must have the tailing d removed to give the correct root `mud'.
 
 		After stemming we are left with eight descriptors from the distortion (`warm', `crunch', `fuzz', `cream',
@@ -409,17 +411,17 @@
 		describe an output signal (e.g. a signal with a spectral centroid between 4 and 8kHz).
 
 		To identify groups of semantically similar descriptors hierarchical clustering is applied to these feature
-		spaces. Prior to clustering, each dimension of the feature space is standardised, to mitigate any effect the
-		range of a particular audio feature might have on the clustering. Clusters are determined using the ward
-		linkage criterion in order to minimise the variance within each cluster.
+		spaces. Prior to clustering, each dimension of the feature space is standardised, to mitigate any effect
+		the range of a particular audio feature might have on the clustering. Clusters are determined using the
+		ward linkage criterion in order to minimise the variance within each cluster.
 
 		Figure \ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
 		distortion features spaces. The clusters identified are similar for both the processed features
 		(\ref{fig:DistortionProcessedClusters}) and the feature differences
-		(\ref{fig:DistortionDifferenceClusters}), the cluster containing `harsh' and `bright' being the most distant
-		from that containing `warm', `cream' and `fuzz' and the term `crunch' siting in a cluster separate from the
-		majority of the other terms. This leads to the formation of three distinct timbral groups used to describe
-		the application of distortion (`warmth', `brightness' and `crunchiness'). 
+		(\ref{fig:DistortionDifferenceClusters}), the cluster containing `harsh' and `bright' being the most
+		distant from that containing `warm', `cream' and `fuzz' and the term `crunch' siting in a cluster separate
+		from the majority of the other terms. This leads to the formation of three distinct timbral groups used to
+		describe the application of distortion (`warmth', `brightness' and `crunchiness'). 
 
 		\begin{figure}[h!]
 			\centering
@@ -515,12 +517,12 @@
 	\label{sec:TimbreEvaluation-Analysis-TimbreSpaces}
 		Clustering provides insight into the similarity of descriptive terms but does not show what properties of
 		the signals / transforms contribute to the differences between descriptor clusters. Reducing the
-		dimensionality of the audio feature space allows for the most salient features to be identified. To preserve
-		as much of the audio feature data as possible a different feature space, to that used for clustering, is
-		constructed. Rather than each descriptor representing one point in the feature space, each individual
-		transform labeled with a certain descriptor represents its own point. In this manner dimensions which have
-		little effect on a certain timbral descriptor are easily determined. The points labeled with a particular
-		term will be more spread out across the dimensions which do not affect them. 
+		dimensionality of the audio feature space allows for the most salient features to be identified. To
+		preserve as much of the audio feature data as possible a different feature space, to that used for
+		clustering, is constructed. Rather than each descriptor representing one point in the feature space, each
+		individual transform labeled with a certain descriptor represents its own point. In this manner dimensions
+		which have little effect on a certain timbral descriptor are easily determined. The points labeled with a
+		particular term will be more spread out across the dimensions which do not affect them. 
 		
 		Prior to analysis the feature spaces are to remove any bias caused by features with a large range. PCA is
 		then applied in order to create the two dimensional timbre spaces discussed in this section.  Salient audio
@@ -803,8 +805,8 @@
 		\citet{cartwright2013socialeq} measure how well participants agree on the semantic annotation of graphic
 		equaliser parameter settings. For each participant a set of weightings is produced which describes the
 		influence of each equaliser band on the perception of a particular timbral descriptor. The agreement score
-		for a descriptor, $A(d)$, measures how similar these weightings are across different test participants using
-		Equation \ref{eq:SocialEqAgreement}.
+		for a descriptor, $A(d)$, measures how similar these weightings are across different test participants
+		using Equation \ref{eq:SocialEqAgreement}.
 
 		\begin{equation}
 			A(d) = \frac{\ln(N_{d})}{\sum_{k = 1}^{K} \sigma_{d,k}^{2}}
@@ -848,9 +850,9 @@
 			that users do not agree on the position of the term in the feature space, or that that feature has
 			no effect on the perception of the term. In the first case the agreement score should be decreased
 			but in the second the agreement score should not be affected. Because of this ambiguity, it is
-			preferable that a high variance has negligible effect on the agreement score. In this way, if a high
-			variance does imply disagreement it does not unduly increase the agreement score and if at does not
-			imply disagreement it does to unduly decrease the agreement score.
+			preferable that a high variance has negligible effect on the agreement score. In this way, if a
+			high variance does imply disagreement it does not unduly increase the agreement score and if at
+			does not imply disagreement it does to unduly decrease the agreement score.
 			
 			This can be implemented by changing Equation \ref{eq:SocialEqAgreement} to be a sum of reciprocals
 			rather than the reciprocal on a sum, as shown in Equation \ref{eq:SumOfReciprocalAgreement}.
@@ -896,19 +898,19 @@
 			Figure \ref{fig:SynthesisedData} show a synthesised, three dimensional, dataset containing four
 			clusters of points. Each cluster has different properties which need to be taken into account when
 			calculating the agreement score. Cluster 1 represents a set of points whose position in the feature
-			space is not agreed upon, exhibiting a high variance in every feature. Cluster 2 represents a set of
-			points whose position is very well agreed upon, having low variance in every feature. Cluster 3
-			represents a set of points whose position is only defined in one audio feature, having high variance
-			in the other two. Cluster 4 represent a set of points which are defined by a relationship between
-			two features, exhibiting high variance in all features but a strong correlation ($p = 0.9$) between
-			features 1 and 2.
+			space is not agreed upon, exhibiting a high variance in every feature. Cluster 2 represents a set
+			of points whose position is very well agreed upon, having low variance in every feature. Cluster 3
+			represents a set of points whose position is only defined in one audio feature, having high
+			variance in the other two. Cluster 4 represent a set of points which are defined by a relationship
+			between two features, exhibiting high variance in all features but a strong correlation ($p = 0.9$)
+			between features 1 and 2.
 
 			\note
 			{
 				How much detail should be given as to the generation of this data. Do we need to explicitly
-				state each cluster covariances matrix? Do we need to mention the method used to generate the
-				distributions? Reference the R documentation for mvrnorm perhaps, or name drop the algorithm
-				that uses (which I don't know at the moment, come on inter library loan).
+				state each cluster covariances matrix? Do we need to mention the method used to generate
+				the distributions? Reference the R documentation for mvrnorm perhaps, or name drop the
+				algorithm that uses (which I don't know at the moment, come on inter library loan).
 			}
 
 			\begin{figure}[h!]
@@ -965,10 +967,10 @@
 			\end{table}
 
 			The issues with Equation \ref{eq:SocialEqAgreement} are immediately obvious, it ignores readily
-			noticeable patterns in the data giving clusters 1, 3 and 4 similar agreement scores. By removing the
-			assumption that high variance implies disagreement, Equation \ref{eq:SumOfReciprocalAgreement} takes
-			account of the pattern in cluster 3. Equation \ref{eq:EigenvalueAgreement} remove the assumption
-			that all features are independent enabling it to reflect the pattern shown in cluster 4.
+			noticeable patterns in the data giving clusters 1, 3 and 4 similar agreement scores. By removing
+			the assumption that high variance implies disagreement, Equation \ref{eq:SumOfReciprocalAgreement}
+			takes account of the pattern in cluster 3. Equation \ref{eq:EigenvalueAgreement} remove the
+			assumption that all features are independent enabling it to reflect the pattern shown in cluster 4.
 
 			\note
 			{
@@ -977,15 +979,25 @@
 			}
 
 		\subsubsection*{Low Variance}
-			Low variance in a particular audio feature does not necessarily imply an agreement between users. It
-			may indicate a similarity between all of the audio segments processed, regardless of semantic
+			Low variance in a particular audio feature does not necessarily imply an agreement between users.
+			It may indicate a similarity between all of the audio segments processed, regardless of semantic
 			labelling. To account for this features which have low variance across the entire dataset can be
-			disregarded. This can be achieved by calculating the agreement in a reduced dimensionality
-			feature space.
+			disregarded. This can be achieved by calculating the agreement in a reduced dimensionality feature
+			space.
 
 			Using PCA the dimensions with the largest variance in the feature space can be discovered. If the
-			transforms labelled with a particular term exhibit a small variance in one of these dimensions it is
-			likely that that term is well agreed upon. Agreement can be calculate in the PCA timbre space using
-			Equation \ref{eq:EigenvalueAgreement} $\lambda_{d,k}$ is the $k$\super{th} eigenvalue of the
-			covariance matrix for every transform labelled with descriptor $d$ in the first $K$ principal
-			components.
+			transforms labelled with a particular term exhibit a small variance in one of these dimensions it
+			is likely that that term is well agreed upon. Agreement can be calculated in the PCA timbre space
+			using Equation \ref{eq:EigenvalueAgreement} with $\lambda_{d,k}$ being the $k$\super{th} eigenvalue
+			of the covariance matrix for every transform labelled with descriptor $d$ in the first $K$
+			principal components. As when calculating the agreement in the feature space, the coordinates of
+			the transforms in each principal component should be standardised to remove bias introduced by the
+			proportions of total variance each component describes.
+
+			The number of principal components to use in the calculation of agreement will depend on the
+			dataset being analysed. Two considerations help in the selection of this number. Firstly only
+			principal components with eigenvalues greater than a certain value should be retained. Only in
+			these components can a low variance be interpreted as agreement between users. Secondly the number
+			of transforms labelled with a each descriptor should be taken into account. Using a number of
+			principal components which is lower than the smallest group of transforms will avoid some zero
+			valued eigenvalues.
