@@ -977,3 +977,15 @@
 			}
 
 		\subsubsection*{Low Variance}
+			Low variance in a particular audio feature does not necessarily imply an agreement between users. It
+			may indicate a similarity between all of the audio segments processed, regardless of semantic
+			labelling. To account for this features which have low variance across the entire dataset can be
+			disregarded. This can be achieved by calculating the agreement in a reduced dimensionality
+			feature space.
+
+			Using PCA the dimensions with the largest variance in the feature space can be discovered. If the
+			transforms labelled with a particular term exhibit a small variance in one of these dimensions it is
+			likely that that term is well agreed upon. Agreement can be calculate in the PCA timbre space using
+			Equation \ref{eq:EigenvalueAgreement} $\lambda_{d,k}$ is the $k$\super{th} eigenvalue of the
+			covariance matrix for every transform labelled with descriptor $d$ in the first $K$ principal
+			components.
