@@ -995,9 +995,9 @@
 			proportions of total variance each component describes.
 
 			The number of principal components to use in the calculation of agreement will depend on the
-			dataset being analysed. Two considerations help in the selection of this number. Firstly only
+			dataset being analysed. Two considerations help in the selection of this number. Firstly, only
 			principal components with eigenvalues greater than a certain value should be retained. Only in
 			these components can a low variance be interpreted as agreement between users. Secondly the number
 			of transforms labelled with a each descriptor should be taken into account. Using a number of
-			principal components which is lower than the smallest group of transforms will avoid some zero
-			valued eigenvalues.
+			principal components which is less than the size of the smallest group of transforms avoids the
+			occurrence of zero valued eigenvalues caused by insufficient data points.
