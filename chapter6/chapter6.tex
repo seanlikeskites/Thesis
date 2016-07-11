@@ -891,6 +891,13 @@
 			\label{eq:GeneralOddnessManipulation}
 		\end{equation}
 
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveParities.eps}
+			\caption{Manipulating the Odd to Even Harmonic Ratios of the Test Signals.}
+			\label{fig:MoveParities}
+		\end{figure}
+
 	\subsection{Inharmonicity}
 	\label{sec:FeatureControl-Parameterisation-Inharmonicity}
 		Inharmonicity is a measure of how much the frequencies of a signal's partials deviate from harmonic
@@ -938,6 +945,13 @@
 
 		Note that the target inharmonicity must lie between the inharmonicities of the two signals being summed.
 
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveInharmonicities.eps}
+			\caption{Manipulating the Inharmonicities of the Test Signals.}
+			\label{fig:MoveInharmonicities}
+		\end{figure}
+
 	\subsection{Spectral Irregularity}
 	\label{sec:FeatureControl-Parameterisation-Irregularity}
 		Spectral irregularity measures the smoothness of a spectrum. Various different methods of measuring this
@@ -981,6 +995,13 @@
 		irregularity to be set to a precise value but gives control over the direction in which the irregularity
 		will change. Low pass filtering the spectral components' amplitudes will decrease the irregularity while a
 		high pass filter will do the opposite.
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveIrregularities.eps}
+			\caption{Manipulating the Spectral Irregularities of the Test Signals.}
+			\label{fig:MoveIrregularities}
+		\end{figure}
 
 	\subsection{Spectral Flatness}
 	\label{sec:FeatureControl-Parameterisation-Flatness}
@@ -1051,6 +1072,13 @@
 		arithmetic mean is unchanged, this provides a point at which the energy has been redistributed in the
 		spectrum but the spectral flatness remains the same.
 
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveFlatnesses.eps}
+			\caption{Manipulating the Spectral Flatnesses of the Test Signals.}
+			\label{fig:MoveFlatnesses}
+		\end{figure}
+
 	\subsection{Spectral Slope}
 	\label{sec:FeatureControl-Parameterisation-Slope}
 		\note
@@ -1090,6 +1118,13 @@
 		\ref{eq:SpectralSlope} can be altered to produce values in this unit by using the $\log_{2}$ of the
 		frequency. To increase the slope by $k$dB per octave each spectral component in the signal should have its
 		amplitude, $a_{n}$, multiplied by the value $10^{\frac{1}{20}(k\log_{2}(\nu_{n}) - k\log_{2}(\nu_{1}))}$.
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveSlopes.eps}
+			\caption{Manipulating the Spectral Slopes of the Test Signals.}
+			\label{fig:MoveSlopes}
+		\end{figure}
 
 \section{Controlling Features with Exciters}
 \label{sec:FeatureControl-Control}
