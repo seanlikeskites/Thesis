@@ -684,92 +684,164 @@
 		which is defined as $\kappa - 3$. The excess kurtosis is often referred to as the kurtosis. This gives rise
 		to some obscurity when reading literature which discusses the kurtosis without providing a definition.
 
-		A crude method of causing the spectral centroid to move towards a particular frequency is the increase the
-		energy at that frequency. While this works conceptually it is destructive to the original structure of the
-		spectrum. As the centroid moves towards the desired frequency the spectrum is dominated by a sinusoid at
-		that frequency.
+		\subsubsection*{Manipulation of The Spectral Centroid}
+			A crude method of causing the spectral centroid to move towards a particular frequency is the
+			increase the energy at that frequency. While this works conceptually it is destructive to the
+			original structure of the spectrum. As the centroid moves towards the desired frequency the
+			spectrum is dominated by a sinusoid at that frequency.
 
-		Less destructive methods include that used by \citet{zacharakis2011an} who split the signal into two bands,
-		one above and one below the spectral centroid. The relative amplitudes of these bands can then be altered
-		to adjust the spectral centroid. This preserves more of the original signals structure, the relative levels
-		of partials within each band remaining the same. Using this method the new spectral centroid will lie
-		somewhere between the respective centroids of the two bands. The relative amplitudes of the two bands
-		required to give a certain spectral centroid, $\mu$, can be calculated using Equation
-		\ref{eq:SpectralCentroidManipulation}.
+			Less destructive methods include that used by \citet{zacharakis2011an} who split the signal into
+			two bands, one above and one below the spectral centroid. The relative amplitudes of these bands
+			can then be altered to adjust the spectral centroid. This preserves more of the original signals
+			structure, the relative levels of partials within each band remaining the same. Using this method
+			the new spectral centroid will lie somewhere between the respective centroids of the two bands. The
+			relative amplitudes of the two bands required to give a certain spectral centroid, $\mu$, can be
+			calculated using Equation \ref{eq:SpectralCentroidManipulation}.
 
-		\begin{equation}
-			\frac{\sum_{n = c + 1}^{N} a_{n}}
-			     {{\sum_{n = 1}^{c} a_{n}}} = 
-			\frac{\mu_{l} - \mu}{\mu - \mu_{u}}, 
-			\quad \mu_{l} \leq \mu < \mu_{u} \quad \textrm{or} \quad \mu_{u} < \mu \leq \mu_{l}
-			\label{eq:SpectralCentroidManipulation}
-		\end{equation}
+			\begin{equation}
+				\frac{\sum_{n = c + 1}^{N} a_{n}}
+				     {{\sum_{n = 1}^{c} a_{n}}} = 
+				\frac{\mu_{l} - \mu}{\mu - \mu_{u}}, 
+				\quad \mu_{l} \leq \mu < \mu_{u} \quad \textrm{or} \quad \mu_{u} < \mu \leq \mu_{l}
+				\label{eq:SpectralCentroidManipulation}
+			\end{equation}
 
-		Where $\mu_{l}$ and $\mu_{r}$ are the spectral centroid of the upper and lower band, and $c$ is the order
-		highest frequency spectral component in the lower band.
+			Where $\mu_{l}$ and $\mu_{r}$ are the spectral centroid of the upper and lower band, and $c$ is the
+			order highest frequency spectral component in the lower band.
 
-		\citet{williams2007perceptually} employ a spectral tilt to manipulate spectral centroid, applying gain to
-		the partials of a signal as a linear function of their frequency. This allows the spectral centroid to be
-		moved up or down in frequency while still retaining the frequency content of the signal. A disadvantage of
-		this method is that the change in centroid cannot be easily parameterised as it depends on the content of
-		the signal being processed.
+			\citet{williams2007perceptually} employ a spectral tilt to manipulate spectral centroid, applying
+			gain to the partials of a signal as a linear function of their frequency. This allows the spectral
+			centroid to be moved up or down in frequency while still retaining the frequency content of the
+			signal. A disadvantage of this method is that the change in centroid cannot be easily parameterised
+			as it depends on the content of the signal being processed.
 
-		Another way to move the spectral centroid is by introducing a new band of energy into the spectrum.  This
-		is conceptually similar to the two band method discussed previously but allows the second band to contain
-		frequency content which was not in the original signal. As before the overall spectral centroid can be
-		moved by adjusting the relative amplitudes of the original signal and the new band of energy. This method
-		also proves difficult to parameterise as destructive superposition could occur between the partials of the
-		two signals being summed.
+			Another way to move the spectral centroid is by introducing a new band of energy into the spectrum.
+			This is conceptually similar to the two band method discussed previously but allows the second band
+			to contain frequency content which was not in the original signal. As before the overall spectral
+			centroid can be moved by adjusting the relative amplitudes of the original signal and the new band
+			of energy. To facilitate accurate control of the spectral centroid these bands should not share any
+			frequency components. Figure \ref{fig:TwoBandSpectralCentroidSystem} shows a system which
+			separately controls the gains of two bands.
 
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveCentroids.eps}
-			\caption{Manipulating the Spectral Centroids of the Test Signals.}
-			\label{fig:MoveCentroids}
-		\end{figure}
+			\begin{figure}[h!]
+				\centering
+				\begin{tikzpicture}
+					\node (In) at (0, 1) {$x[n]$};
+					\coordinate (InMid) at (1, 1);
+					\draw (In) -- (InMid);
 
-		Higher order spectral moments are more difficult to parameterise. The measures depend on the displacement
-		of each spectral component from the centroid, skewness and kurtosis measurements also depend on the
-		spectral spread. To simplify the control of these moments it is necessary to use manipulations which do not
-		alter the moments they depend on. 
-		
-		Controlling the spread while keeping the centroid constant involves adding or removing energy symmetrically
-		about the centroid. Deciding where to add or remove this energy is a complicated process. The frequencies
-		of the spectral components are not likely to be symmetrical about the centroid meaning different gains must
-		be applied to components either side of the centroid. Calculating these gains must be done on a signal by
-		signal basis making if difficult to provide a general solution. These problems are compounded further when
-		trying to control the higher order moments as the spectral spread must be kept constant as well.
+					\coordinate (Through) at (1, 0);
+					\draw (InMid) -- (Through);
+					\node (ThroughFilter) [draw] at (5.5, 0) {LPF};
+					\draw (Through) -- (ThroughFilter);
+					\node (ThroughGain) [gain] at (9.25, 0) {};
+					\draw (ThroughFilter) -- (ThroughGain);
+					\coordinate (ThroughOut) at (10.5, 0);
+					\draw (ThroughGain) -- (ThroughOut);
 
-		Intuition about what the spectral moments describe can be used to influence them in a simpler manner. These
-		methods do not provide accurate control over a specific moment but allow it to be increased or decreased.
-		Furthermore, they will have an effect on all the spectral moments rather than one in isolation. 
-		
-		Spectral spread can be increased by adding energy at frequencies which are more that one spectral spread
-		from the centroid or reducing the energy at frequencies within one spectral spread of the centroid.
-		Applying the opposite operations will decrease the spectral spread. Spectral skewness can be increased by
-		applying a spectral tilt. A tilt with a positive gradient will decrease the skewness, whereas a negative
-		gradient will increase the skewness. 
+					\coordinate (Side) at (1, 2);
+					\draw (InMid) -- (Side);
 
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveSpreads.eps}
-			\caption{Manipulating the Spectral Spreads of the Test Signals.}
-			\label{fig:MoveSpreads}
-		\end{figure}
+					\node (F0) [draw] at (3, 2) {Fundamental Tracker};
+					\node (Filter) [draw] at (3, 1) {LPF};
+					\draw (InMid) -- (Filter);
+					\draw (F0) -- (Filter);
 
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveSkewnesses.eps}
-			\caption{Manipulating the Spectral Skewnesses of the Test Signals.}
-			\label{fig:MoveSkewnesses}
-		\end{figure}
+					\node (Exciter) [draw] at (5.5, 1) {Nonlinear Device};
+					\draw (Filter) -- (Exciter);
+					\draw (Side) -- (F0);
 
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveKurtoses.eps}
-			\caption{Manipulating the Spectral Kurtoses of the Test Signals.}
-			\label{fig:MoveKurtoses}
-		\end{figure}
+					\node (NldFilter) [draw] at (8, 1) {HPF};
+					\draw (Exciter) -- (NldFilter);
+
+					\node (Add) [operator] at (10.5, 1) {+};
+					\draw (ThroughOut) -- (Add);
+
+					\node (Gain) [gain] at (9.25, 1) {};
+					\draw (NldFilter) -- (Gain);
+					\draw (Gain) -- (Add);
+
+					\node (Out) at (11.5, 1) {$y[n]$};
+					\draw (Add) -- (Out);
+				\end{tikzpicture}
+				\caption{A system for controlling the spectral centroid.}
+				\label{fig:TwoBandSpectralCentroidSystem}
+			\end{figure}
+
+			The lower band is generated via a low pass filter on the input signal while the high band is
+			created using a nonlinear device. The bands are filtered with corresponding low and high pass
+			filters to ensure they share no frequency components. The spectral centroid of the output can be
+			moved between the centroids of these two bands by changing their relative gains according to
+			Equation \ref{eq:SpectralCentroidManipulation}.
+
+			This method has some advantages over manipulating the amplitudes of two bands using only linear
+			filters. The centroid can be manipulated in various manners. The nonlinear device can be used to
+			reconstruct the high frequency portion of the signal and the relative gains adjusted similarly to
+			if two filters were used.  Alternatively the properties of the nonlinear device can be altered to
+			change the upper band's centroid.  This provides more flexibility allowing the centroid to be
+			changed independently of some other features. For example, changing the gains of two bands will
+			change the spectral slope of the signal. If instead additional partials are introduced to the
+			upper, with amplitudes which are determined by the signals current slope, the centroid can be move
+			while the slope is unaltered.
+
+			Figure \ref{fig:MoveCentroids} shows the effect of this system on the test signals. The parameter
+			value corresponds to the gains applied to the two bands. Where the parameter value is $P$, the low
+			band is multiplied by a gain of $1 - P$ and the high band by a gain of $P$.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveCentroids.eps}
+				\caption{Manipulating the Spectral Centroids of the Test Signals.}
+				\label{fig:MoveCentroids}
+			\end{figure}
+
+			\note{Probably discuss that graph}
+
+		\subsubsection*{Manipulation of The Higher Order Spectral Moments}
+			Higher order spectral moments are more difficult to parameterise. The measures depend on the
+			displacement of each spectral component from the centroid, skewness and kurtosis measurements also
+			depend on the spectral spread. To simplify the control of these moments it is necessary to use
+			manipulations which do not alter the moments they depend on. 
+			
+			Controlling the spread while keeping the centroid constant involves adding or removing energy
+			symmetrically about the centroid. Deciding where to add or remove this energy is a complicated
+			process. The frequencies of the spectral components are not likely to be symmetrical about the
+			centroid meaning different gains must be applied to components either side of the centroid.
+			Calculating these gains must be done on a signal by signal basis making if difficult to provide a
+			general solution. These problems are compounded further when trying to control the higher order
+			moments as the spectral spread must be kept constant as well.
+
+			Intuition about what the spectral moments describe can be used to influence them in a simpler
+			manner. These methods do not provide accurate control over a specific moment but allow it to be
+			increased or decreased.  Furthermore, they will have an effect on all the spectral moments rather
+			than one in isolation. 
+			
+			Spectral spread can be increased by adding energy at frequencies which are more that one spectral
+			spread from the centroid or reducing the energy at frequencies within one spectral spread of the
+			centroid.  Applying the opposite operations will decrease the spectral spread. Spectral skewness
+			can be increased by applying a spectral tilt. A tilt with a positive gradient will decrease the
+			skewness, whereas a negative gradient will increase the skewness. 
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveSpreads.eps}
+				\caption{Manipulating the Spectral Spreads of the Test Signals.}
+				\label{fig:MoveSpreads}
+			\end{figure}
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveSkewnesses.eps}
+				\caption{Manipulating the Spectral Skewnesses of the Test Signals.}
+				\label{fig:MoveSkewnesses}
+			\end{figure}
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveKurtoses.eps}
+				\caption{Manipulating the Spectral Kurtoses of the Test Signals.}
+				\label{fig:MoveKurtoses}
+			\end{figure}
 
 	\subsection{Tristimulus}
 	\label{sec:FeatureControl-Parameterisation-Tristimulus}
@@ -1167,66 +1239,6 @@
 
 	\subsection{Spectral Moments}
 	\label{sec:FeatureControl-Control-SpectralMoments}
-		As mentioned in Section \ref{sec:FeatureControl-Parameterisation-SpectralMoments} introducing individual
-		sinusoids is not an effective way to manipulate the spectral centroid. A band based approach is more
-		favorable allowing the centroid to be moved upwards or downwards. Figure
-		\ref{fig:TwoBandSpectralCentroidSystem} shows a system which separately controls the gains of two bands.
-
-		\begin{figure}[h!]
-			\centering
-			\begin{tikzpicture}
-				\node (In) at (0, 1) {$x[n]$};
-				\coordinate (InMid) at (1, 1);
-				\draw (In) -- (InMid);
-
-				\coordinate (Through) at (1, 0);
-				\draw (InMid) -- (Through);
-				\node (ThroughFilter) [draw] at (5.5, 0) {LPF};
-				\draw (Through) -- (ThroughFilter);
-				\node (ThroughGain) [gain] at (8, 0) {};
-				\draw (ThroughFilter) -- (ThroughGain);
-				\coordinate (ThroughOut) at (9.5, 0);
-				\draw (ThroughGain) -- (ThroughOut);
-
-				\coordinate (Side) at (1, 2);
-				\draw (InMid) -- (Side);
-
-				\node (F0) [draw] at (3, 2) {Fundamental Tracker};
-				\node (Filter) [draw] at (3, 1) {LPF};
-				\draw (InMid) -- (Filter);
-				\draw (F0) -- (Filter);
-
-				\node (Exciter) [draw] at (5.5, 1) {Nonlinear Device};
-				\draw (Filter) -- (Exciter);
-				\draw (Side) -- (F0);
-
-				\node (Add) [operator] at (9.5, 1) {+};
-				\draw (ThroughOut) -- (Add);
-
-				\node (Gain) [gain] at (8, 1) {};
-				\draw (Exciter) -- (Gain);
-				\draw (Gain) -- (Add);
-
-				\node (Out) at (10.5, 1) {$y[n]$};
-				\draw (Add) -- (Out);
-			\end{tikzpicture}
-			\caption{A system for controlling the spectral centroid.}
-			\label{fig:TwoBandSpectralCentroidSystem}
-		\end{figure}
-
-		The lower band is generated via a low pass filter on the input signal while the high band is created using
-		a nonlinear device. The spectral centroid of the output can be moved between the centroids of these two
-		bands by changing their relative gains according to Equation \ref{eq:SpectralCentroidManipulation}.
-
-		This method has some advantages over manipulating the amplitudes of two bands using only linear filters.
-		The centroid can be manipulated in various manners. The nonlinear device can be used to reconstruct the
-		high frequency portion of the signal and the relative gains adjusted similarly to if two filters were used.
-		Alternatively the properties of the nonlinear device can be altered to change the upper band's centroid.
-		This provides more flexibility allowing the centroid to be changed independently of some other features.
-		For example, changing the gains of two bands will change the spectral slope of the signal. If instead
-		additional partials are introduced to the upper, with amplitudes which are determined by the signals
-		current slope, the centroid can be move while the slope is unaltered.
-
 		The other spectral moments are more difficult to control using theses systems. The system shown in Figure
 		\ref{fig:InharmonicitySystem} provides the most control over where energy is introduced into a spectrum.
 		This allows for the spectral moments to be increased or decreased by adding energy at specific places
