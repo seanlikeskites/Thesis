@@ -606,6 +606,21 @@
 	of manipulations. The measurement of each audio feature is discussed and methods by which a single parameter can be
 	used to adjust them are suggested.
 
+	Assuming perfect detection of fundamental frequency and perfect filters, the systems shown in Section
+	\ref{sec:FeatureControl-Systems}, along with the methods discussed in this Section, would provide accurate control
+	over the audio features. In a `real world' implementation the properties of the input signal and filters used will
+	affect how the features of manipulated. To examine these effects each method for manipulating a feature is tested
+	on four harmonic audio signals produced by the following instruments:
+
+	\begin{itemize}
+		\item A bowed cello. \note{All harmonics}
+		\item A clarinet. \note{Only Odd Harmonics}
+		\item A synthesised harmonic sound. \note{Zero Inharmonicity}
+		\item A piano. \note{Damped Fundamental}
+	\end{itemize}
+
+	\note{Why these samples?}
+
 	Several of the audio features discussed involve analysis of a signals spectrum. To simplify the notation of these
 	features it is useful to introduce the concept of a spectral component. A spectral component describes a part of
 	the signals spectrum, be it a spectral bin obtained from a DFT, a partial of the signal, or a frequency band taken
