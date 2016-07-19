@@ -931,7 +931,6 @@
 
 		Figure \ref{fig:MoveTristimulus1} shows how the first tristimuli of the test signals change when the gain
 		is applied at their fundamental frequency using the system shown in Figure \ref{fig:InharmonicitySystem}.
-		The parameter represents the gain applied to the isolated fundamental.
 
 		\begin{figure}[h!]
 			\centering
@@ -943,7 +942,7 @@
 		The maximum achievable first tristimulus value is determined by both the content of the input signal and
 		the order of the filters used in the implementation of the excitation system. The system used for the
 		values shown in Figure \ref{fig:MoveTristimulus1} used second order IIR filters. This means that the
-		isolated fundamental signal contains energy in some of the lower order spectral partials. In sounds where
+		isolated fundamental signal contains energy in some of the higher order spectral partials. In sounds where
 		the fundamental has significantly less amplitude than subsequent spectral partials this is particularly
 		problematic. The piano sample used for testing illustrates this. In this case the isolated fundamental
 		signal has more energy in the second harmonic than at the fundamental, severely reducing the maximum value
@@ -956,12 +955,29 @@
 		due to destructive superposition between the isolated fundamental and this remnant. Again, increasing the
 		order of the filters used in the system will reduce these effects.
 
+		Control of the second tristimulus can be achieved with the same system, this time applying gain at to the
+		second third and fourth excited harmonics. Figure \ref{fig:MoveTristimulus2} how the tristimulus value
+		changes with increasing gain.
+
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveTristimulus2.eps}
 			\caption{Manipulating the Second Tristimuli of the Test Signals.}
 			\label{fig:MoveTristimulus2}
 		\end{figure}
+
+		As with control of the first tristimulus, the order of the filters used determines the maximum value the
+		second tristimulus will take. The relationship is a more complex one however, as there is a nonlinear
+		element to the system. The isolated fundamental signal will contain some energy at higher order partials.
+		When this signal is used to generate new harmonics some of the intermodulation components will be higher in
+		frequency than the desired harmonic. This results in more energy being introduced above the fourth
+		harmonic, reducing the maximum possible second tristimulus.
+
+		The third tristimulus is more easily controlled using the same system as used for controlling the spectral
+		centroid (Figure \ref{fig:TwoBandSpectralCentroidSystem}). A band of high order harmonics is generated from
+		the isolated fundamental using a static nonlinearity and a high pass filter. Figure
+		\ref{fig:MoveTristimulus3} shows how changing the gain of this band effects the third tristimulus of the
+		test signals.
 
 		\begin{figure}[h!]
 			\centering
