@@ -918,71 +918,79 @@
 		over the levels of the first four harmonics so the exciters for the fifth through ninth harmonics can be
 		removed.
 
-		The first tristimulus measure is easily controlled through applying gain to the filtered fundamental. The
-		other two measures can be controlled in different ways depending on the requirements of the system.
-		Individually controlling the levels of the second through fourth harmonics allows the second tristimulus
-		measure to be manipulated while a more general nonlinear device can be used to generate higher order
-		harmonics. As with the spectral centroid, using excitation to achieve this provides more flexibility as the
-		tristimulus can be changed while preserving other features. For example, if the odd to even harmonic ratio
-		needs to remain the same, but the second tristimulus change, different amounts of excitation can be applied
-		to the second through fourth harmonics.
+		\subsubsection*{Manipulation of The Tristimulus Measures}
+			The first tristimulus measure is easily controlled through applying gain to the filtered
+			fundamental. The other two measures can be controlled in different ways depending on the
+			requirements of the system.  Individually controlling the levels of the second through fourth
+			harmonics allows the second tristimulus measure to be manipulated while a more general nonlinear
+			device can be used to generate higher order harmonics. As with the spectral centroid, using
+			excitation to achieve this provides more flexibility as the tristimulus can be changed while
+			preserving other features. For example, if the odd to even harmonic ratio needs to remain the same,
+			but the second tristimulus change, different amounts of excitation can be applied to the second
+			through fourth harmonics.
 
-		Figure \ref{fig:MoveTristimulus1} shows how the first tristimuli of the test signals change when the gain
-		is applied at their fundamental frequency using the system shown in Figure \ref{fig:InharmonicitySystem}.
+			Figure \ref{fig:MoveTristimulus1} shows how the first tristimuli of the test signals change when
+			the gain is applied at their fundamental frequency using the system shown in Figure
+			\ref{fig:InharmonicitySystem}.
 
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveTristimulus1.eps}
-			\caption{Manipulating the First Tristimuli of the Test Signals.}
-			\label{fig:MoveTristimulus1}
-		\end{figure}
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveTristimulus1.eps}
+				\caption{Manipulating the First Tristimuli of the Test Signals.}
+				\label{fig:MoveTristimulus1}
+			\end{figure}
 
-		The maximum achievable first tristimulus value is determined by both the content of the input signal and
-		the order of the filters used in the implementation of the excitation system. The system used for the
-		values shown in Figure \ref{fig:MoveTristimulus1} used second order IIR filters. This means that the
-		isolated fundamental signal contains energy in some of the higher order spectral partials. In sounds where
-		the fundamental has significantly less amplitude than subsequent spectral partials this is particularly
-		problematic. The piano sample used for testing illustrates this. In this case the isolated fundamental
-		signal has more energy in the second harmonic than at the fundamental, severely reducing the maximum value
-		which the first tristimulus can be altered to. Using higher order filters will alleviate this problem at
-		the cost of increased processing.
+			The maximum achievable first tristimulus value is determined by both the content of the input
+			signal and the order of the filters used in the implementation of the excitation system. The system
+			used for the values shown in Figure \ref{fig:MoveTristimulus1} used second order IIR filters. This
+			means that the isolated fundamental signal contains energy in some of the higher order spectral
+			partials. In sounds where the fundamental has significantly less amplitude than subsequent spectral
+			partials this is particularly problematic. The piano sample used for testing illustrates this. In
+			this case the isolated fundamental signal has more energy in the second harmonic than at the
+			fundamental, severely reducing the maximum value which the first tristimulus can be altered to.
+			Using higher order filters will alleviate this problem at the cost of increased processing.
 
-		The order of the filters is also responsible for the initial decrease in tristimulus value with increasing
-		gain. The fundamental is removed from the original signal using a high pass filter. The lower order this
-		filter the more of a remnant of the fundamental remains. This initial decrease in the first tristimulus is
-		due to destructive superposition between the isolated fundamental and this remnant. Again, increasing the
-		order of the filters used in the system will reduce these effects.
+			The order of the filters is also responsible for the initial decrease in tristimulus value with
+			increasing gain. The fundamental is removed from the original signal using a high pass filter. The
+			lower order this filter the more of a remnant of the fundamental remains. This initial decrease in
+			the first tristimulus is due to destructive superposition between the isolated fundamental and this
+			remnant. Again, increasing the order of the filters used in the system will reduce these effects.
 
-		Control of the second tristimulus can be achieved with the same system, this time applying gain at to the
-		second third and fourth excited harmonics. Figure \ref{fig:MoveTristimulus2} how the tristimulus value
-		changes with increasing gain.
+			Control of the second tristimulus can be achieved with the same system, this time applying gain at
+			to the second third and fourth excited harmonics. Figure \ref{fig:MoveTristimulus2} how the
+			tristimulus value changes with increasing gain.
 
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveTristimulus2.eps}
-			\caption{Manipulating the Second Tristimuli of the Test Signals.}
-			\label{fig:MoveTristimulus2}
-		\end{figure}
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveTristimulus2.eps}
+				\caption{Manipulating the Second Tristimuli of the Test Signals.}
+				\label{fig:MoveTristimulus2}
+			\end{figure}
 
-		As with control of the first tristimulus, the order of the filters used determines the maximum value the
-		second tristimulus will take. The relationship is a more complex one however, as there is a nonlinear
-		element to the system. The isolated fundamental signal will contain some energy at higher order partials.
-		When this signal is used to generate new harmonics some of the intermodulation components will be higher in
-		frequency than the desired harmonic. This results in more energy being introduced above the fourth
-		harmonic, reducing the maximum possible second tristimulus.
+			As with control of the first tristimulus, the order of the filters used determines the maximum
+			value the second tristimulus will take. The relationship is a more complex one however, as there is
+			a nonlinear element to the system. The isolated fundamental signal will contain some energy at
+			higher order partials.  When this signal is used to generate new harmonics some of the
+			intermodulation components will be higher in frequency than the desired harmonic. This results in
+			more energy being introduced above the fourth harmonic, reducing the maximum possible second
+			tristimulus.
 
-		The third tristimulus is more easily controlled using the same system as used for controlling the spectral
-		centroid (Figure \ref{fig:TwoBandSpectralCentroidSystem}). A band of high order harmonics is generated from
-		the isolated fundamental using a static nonlinearity and a high pass filter. Figure
-		\ref{fig:MoveTristimulus3} shows how changing the gain of this band effects the third tristimulus of the
-		test signals.
+			The third tristimulus is more easily controlled using the same system as used for controlling the
+			spectral centroid (Figure \ref{fig:TwoBandSpectralCentroidSystem}). A band of high order harmonics
+			is generated from the isolated fundamental using a static nonlinearity and a high pass filter.
+			Figure \ref{fig:MoveTristimulus3} shows how changing the gain of this band effects the third
+			tristimulus of the test signals.
 
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveTristimulus3.eps}
-			\caption{Manipulating the Third Tristimuli of the Test Signals.}
-			\label{fig:MoveTristimulus3}
-		\end{figure}
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveTristimulus3.eps}
+				\caption{Manipulating the Third Tristimuli of the Test Signals.}
+				\label{fig:MoveTristimulus3}
+			\end{figure}
+
+			Again, second order IIR filters have been used to filter out the lower order harmonics from the
+			excited signal.	These low order filters do not remove all the energy in the first 4 harmonics
+			thereby limiting how high the third tristimulus can be made.
 
 	\subsection{Odd to Even Harmonic Ratio}
 	\label{sec:FeatureControl-Parameterisation-HarmonicParityRatio}
@@ -1050,12 +1058,108 @@
 			\label{eq:GeneralOddnessManipulation}
 		\end{equation}
 
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveParities.eps}
-			\caption{Manipulating the Odd to Even Harmonic Ratios of the Test Signals.}
-			\label{fig:MoveParities}
-		\end{figure}
+		\subsubsection*{Manipulation of The Odd to Even Harmonic Ratio}
+			For control over the oddness or evenness of a signal a system which provides control over
+			individual harmonics is not necessary. While this level of control allows for more complex
+			manipulations a simpler system can be employed if only the oddness and evenness are to be changed.
+			Such a system is shown in Figure \ref{fig:HarmonicParitySystem}.
+
+			\begin{figure}[h!]
+				\centering
+				\begin{tikzpicture}
+					\node (In) at (-1, -2.25) {$x[n]$};
+					\coordinate (InMid) at (0, -2.25);
+					\draw (In) -- (InMid);
+
+					\coordinate (Side) at (0, -1.25);
+					\draw (InMid) -- (Side);
+
+					\node (F0) [draw] at (2, -1.25) {Fundamental Tracker};
+					\node (F0Filter) [draw] at (2, -2.25) {LPF};
+					\draw (InMid) -- (F0Filter);
+					\draw (F0) -- (F0Filter);
+					\draw (Side) -- (F0);
+
+					\node (Add) [operator] at (11.5, -2.25) {+};
+
+					\coordinate (ExciterIn) at (4, -2.25);
+					\draw (F0Filter) -- (ExciterIn);
+
+					% odd harmonics
+					\coordinate (OddIn) at (4, -1.25);
+					\node (Odd) [draw] at (6, -1.25) {Odd Harmonics};
+					\draw (OddIn) -- (Odd);
+
+					\node (OddFilter) [draw] at (8.5, -1.25) {Filter};
+					\draw (Odd) -- (OddFilter);
+
+					\node (OddGain) [gain] at (10, -1.25) {};
+					\draw (OddFilter) -- (OddGain);
+					\coordinate (OddOut) at (10.5, -1.25);
+					\draw (OddGain) -- (OddOut);
+					\draw (OddOut) -- (Add);
+
+					% even harmonics
+					\coordinate (EvenIn) at (4, -2.25);
+					\draw (OddIn) -- (EvenIn);
+					\node (Even) [draw] at (6, -2.25) {Even Harmonics};
+					\draw (EvenIn) -- (Even);
+
+					\node (EvenFilter) [draw] at (8.5, -2.25) {Filter};
+					\draw (Even) -- (EvenFilter);
+
+					\node (EvenGain) [gain] at (10, -2.25) {};
+					\draw (EvenFilter) -- (EvenGain);
+					\coordinate (EvenOut) at (10.5, -2.25);
+					\draw (EvenGain) -- (EvenOut);
+					\draw (EvenOut) -- (Add);
+
+					% through
+					\coordinate (Through) at (0, -3.25);
+					\draw (InMid) -- (Through);
+					\node (ThroughFilter) [draw] at (8.5, -3.25) {Filter};
+					\draw (Through) -- (ThroughFilter);
+					\node (ThroughGain) [gain] at (10, -3.25) {};
+					\draw (ThroughFilter) -- (ThroughGain);
+					\coordinate (ThroughOut) at (10.5, -3.25);
+					\draw (ThroughGain) -- (ThroughOut);
+					\draw (ThroughOut) -- (Add);
+
+					\node (Out) at (12.5, -2.25) {$y[n]$};
+					\draw (Add) -- (Out);
+				\end{tikzpicture}
+				\caption{A system to control the levels of odd and even order harmonics individually.}
+				\label{fig:HarmonicParitySystem}
+			\end{figure}
+
+			This system uses two parallel static nonlinearities to generate two signals consisting of only odd
+			harmonics and even harmonics respectively. The properties of these nonlinearities can be adjusted
+			to shape the spectra of each of these signals which are further shaped through linear filtering.
+			The gains of these two signals allow control over the oddness and evenness of the signal using
+			Equation \ref{eq:GeneralOddnessManipulation}.
+
+			The odd and even harmonics in a signal could be separated using linear filters. This approach
+			requires in depth analysis of the signal adding complexity and possible delay to the system but has
+			some advantage in preservation of signal characteristics. When using excitation this complexity is
+			reduced but the problems discussed in Section \ref{sec:FeatureControl-Systems-Superposition} become
+			apparent. To elicit full control over the levels of the odd and even harmonics using the system
+			shown in Figure \ref{fig:HarmonicParitySystem} all the harmonic content in the output signal is
+			generated by the nonlinearities. This is likely to cause a dramatic change in timbre as most of the
+			information present in the original signal has been replaced. 
+
+			A method to counteract this is to only excite even or odd harmonics in the signal at any one time.
+			The relative levels of odd and even harmonics can still be adjusted but some more of the original
+			signals spectral shape is preserved. Avoiding superposition still remains difficult in this
+			situation as it would mean filtering out alternate harmonics in the input signal. Allowing
+			superposition to occur sacrifices accurate control in order to maintain some of the input's
+			characteristics.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveParities.eps}
+				\caption{Manipulating the Odd to Even Harmonic Ratios of the Test Signals.}
+				\label{fig:MoveParities}
+			\end{figure}
 
 	\subsection{Inharmonicity}
 	\label{sec:FeatureControl-Parameterisation-Inharmonicity}
@@ -1309,104 +1413,8 @@
 %	majority of these manipulations. The full extent of this system is not needed for some of the simpler modifications
 %	so various subsystems of it are used.
 %
-%	\subsection{Tristimulus}
-%	\label{sec:FeatureControl-Control-Tristimulus}
-%
 %	\subsection{Odd to Even Harmonic Ratio}
 %	\label{sec:FeatureControl-Control-HarmonicParityRatio}
-%		For control over the oddness or evenness of a signal a system which provides control over individual
-%		harmonics is not necessary. While this level of control allows for more complex manipulations a simpler
-%		system can be employed if only the oddness and evenness are to be changed. Such a system is shown in Figure
-%		\ref{fig:HarmonicParitySystem}.
-%
-%		\begin{figure}[h!]
-%			\centering
-%			\begin{tikzpicture}
-%				\node (In) at (-1, -2.25) {$x[n]$};
-%				\coordinate (InMid) at (0, -2.25);
-%				\draw (In) -- (InMid);
-%
-%				\coordinate (Side) at (0, -1.25);
-%				\draw (InMid) -- (Side);
-%
-%				\node (F0) [draw] at (2, -1.25) {Fundamental Tracker};
-%				\node (F0Filter) [draw] at (2, -2.25) {LPF};
-%				\draw (InMid) -- (F0Filter);
-%				\draw (F0) -- (F0Filter);
-%				\draw (Side) -- (F0);
-%
-%				\node (Add) [operator] at (11.5, -2.25) {+};
-%
-%				\coordinate (ExciterIn) at (4, -2.25);
-%				\draw (F0Filter) -- (ExciterIn);
-%
-%				% odd harmonics
-%				\coordinate (OddIn) at (4, -1.25);
-%				\node (Odd) [draw] at (6, -1.25) {Odd Harmonics};
-%				\draw (OddIn) -- (Odd);
-%
-%				\node (OddFilter) [draw] at (8.5, -1.25) {Filter};
-%				\draw (Odd) -- (OddFilter);
-%
-%				\node (OddGain) [gain] at (10, -1.25) {};
-%				\draw (OddFilter) -- (OddGain);
-%				\coordinate (OddOut) at (10.5, -1.25);
-%				\draw (OddGain) -- (OddOut);
-%				\draw (OddOut) -- (Add);
-%
-%				% even harmonics
-%				\coordinate (EvenIn) at (4, -2.25);
-%				\draw (OddIn) -- (EvenIn);
-%				\node (Even) [draw] at (6, -2.25) {Even Harmonics};
-%				\draw (EvenIn) -- (Even);
-%
-%				\node (EvenFilter) [draw] at (8.5, -2.25) {Filter};
-%				\draw (Even) -- (EvenFilter);
-%
-%				\node (EvenGain) [gain] at (10, -2.25) {};
-%				\draw (EvenFilter) -- (EvenGain);
-%				\coordinate (EvenOut) at (10.5, -2.25);
-%				\draw (EvenGain) -- (EvenOut);
-%				\draw (EvenOut) -- (Add);
-%
-%				% through
-%				\coordinate (Through) at (0, -3.25);
-%				\draw (InMid) -- (Through);
-%				\node (ThroughFilter) [draw] at (8.5, -3.25) {Filter};
-%				\draw (Through) -- (ThroughFilter);
-%				\node (ThroughGain) [gain] at (10, -3.25) {};
-%				\draw (ThroughFilter) -- (ThroughGain);
-%				\coordinate (ThroughOut) at (10.5, -3.25);
-%				\draw (ThroughGain) -- (ThroughOut);
-%				\draw (ThroughOut) -- (Add);
-%
-%				\node (Out) at (12.5, -2.25) {$y[n]$};
-%				\draw (Add) -- (Out);
-%			\end{tikzpicture}
-%			\caption{A system to control the levels of odd and even order harmonics individually.}
-%			\label{fig:HarmonicParitySystem}
-%		\end{figure}
-%
-%		This system uses two parallel static nonlinearities to generate two signals consisting of only odd
-%		harmonics and even harmonics respectively. The properties of these nonlinearities can be adjusted to shape
-%		the spectra of each of these signals which are further shaped through linear filtering. The gains of these
-%		two signals allow control over the oddness and evenness of the signal using Equation
-%		\ref{eq:GeneralOddnessManipulation}.
-%
-%		The odd and even harmonics in a signal could be separated using linear filters. This approach requires in
-%		depth analysis of the signal adding complexity and possible delay to the system but has some advantage in
-%		preservation of signal characteristics. When using excitation this complexity is reduced but the problems
-%		discussed in Section \ref{sec:FeatureControl-Systems-Superposition} become apparent. To elicit full control
-%		over the levels of the odd and even harmonics using the system shown in Figure
-%		\ref{fig:HarmonicParitySystem} all the harmonic content in the output signal is generated by the
-%		nonlinearities. This is likely to cause a dramatic change in timbre as most of the information present in
-%		the original signal has been replaced. 
-%
-%		A method to counteract this is to only excite even or odd harmonics in the signal at any one time. The
-%		relative levels of odd and even harmonics can still be adjusted but some more of the original signals
-%		spectral shape is preserved. Avoiding superposition still remains difficult in this situation as it would
-%		mean filtering out alternate harmonics in the input signal. Allowing superposition to occur sacrifices
-%		accurate control in order to maintain some of the input's characteristics.
 %
 %	\subsection{Inharmonicity}
 %	\label{sec:FeatureControl-Control-Inharmonicity}
