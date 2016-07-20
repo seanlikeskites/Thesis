@@ -1154,12 +1154,26 @@
 			superposition to occur sacrifices accurate control in order to maintain some of the input's
 			characteristics.
 
+			En example method of how the system in Figure \ref{fig:HarmonicParitySystem} can be used is as
+			follows. The isolated fundamental of each test signal id processed with both even and odd hard
+			clipping functions to generate separate bands of each parity of harmonic. Each band of harmonics is
+			then low passed filtered with a cutoff at the frequency of the ninth harmonic and the original
+			signal is high pass filtered at the same frequency. The ninth harmonic is chosen due to it being
+			the highest individually resolved harmonic as discussed in Section
+			\ref{sec:FeatureControl-Systems-SpectralShaping}. The three signals are then summed at different
+			ratios to control the evenness or oddness of the output. Figure \ref{fig:MoveParities} shows the
+			effects of manipulating the levels of odd and even order harmonics in this way. The original signal
+			remains at unity gain whereas the gains of the harmonic bands are determined by a parameter, $P$.
+			Odd order harmonics are multiplied by a gain of $P$ and even order harmonics by $1 - P$.
+
 			\begin{figure}[h!]
 				\centering
 				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveParities.eps}
 				\caption{Manipulating the Odd to Even Harmonic Ratios of the Test Signals.}
 				\label{fig:MoveParities}
 			\end{figure}
+
+			Here we see how the spectral content of the input signal influences the effects of the processing. 
 
 	\subsection{Inharmonicity}
 	\label{sec:FeatureControl-Parameterisation-Inharmonicity}
