@@ -1154,7 +1154,7 @@
 			superposition to occur sacrifices accurate control in order to maintain some of the input's
 			characteristics.
 
-			En example method of how the system in Figure \ref{fig:HarmonicParitySystem} can be used is as
+			An example method of how the system in Figure \ref{fig:HarmonicParitySystem} can be used is as
 			follows. The isolated fundamental of each test signal id processed with both even and odd hard
 			clipping functions to generate separate bands of each parity of harmonic. Each band of harmonics is
 			then low passed filtered with a cutoff at the frequency of the ninth harmonic and the original
@@ -1173,7 +1173,26 @@
 				\label{fig:MoveParities}
 			\end{figure}
 
-			Here we see how the spectral content of the input signal influences the effects of the processing. 
+			Here we see how the spectral content of the input signal influences the effects of the processing.
+			The $R_{\textrm{OE}}$ of the clarinet signal seems to be the easiest to control. This can be
+			attributed to the high oddness of the unprocessed clarinet signal, the fundamental easier to
+			isolate because there is very little energy in the second harmonic. With a better isolated
+			fundamental the two bands of excited harmonics will be better separated with respect to the
+			parities of harmonics they contain.
+
+			The bass and synthesised samples both exhibit a limit on how high the $R_{\textrm{OE}}$ can be
+			made. This is due to both bands of excited harmonics containing both parities of harmonic.  The
+			general upward trend for both samples illustrates that the two bands generated do contain the
+			majority of their energy in the correct parity harmonics but higher order filtering of the
+			fundamental is needed to better segregate them. The decrease in $R_{\textrm{OE}}$ seen for the
+			synthesised signal is due to destructive superposition between the harmonics in the three signals
+			being summed.
+
+			The system discussed here provides no control over the $R_{\textrm{OE}}$ of the piano sample. This
+			is again due to the low amplitude fundamental. The isolated fundamental signal contains the
+			majority of its energy in the second harmonic. This causes the two bands of generated harmonics to
+			both contain mostly even order harmonics, meaning the resulting signal will have a high evenness,
+			or low $R_{\textrm{OE}}$.
 
 	\subsection{Inharmonicity}
 	\label{sec:FeatureControl-Parameterisation-Inharmonicity}
