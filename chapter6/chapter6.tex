@@ -1230,7 +1230,8 @@
 		The inharmonicity of the sum of the signals can be altered by changing the relative amplitudes of the
 		signals. To produce a given inharmonicity, $I$, when summing two signals, $x$ and $y$, which have no
 		frequency components in common, a gain factor $m$, calculated using Equation
-		\ref{eq:InharmonicityManipulation}, can be applied to signal $x$.
+		\ref{eq:InharmonicityManipulation}, can be applied to signal $x$.  Note that the target inharmonicity must
+		lie between the inharmonicities of the two signals being summed.
 
 		\begin{equation}
 			m = \sqrt{\frac{(I_{y} - I)\sum_{\nu \in Y} a_{\nu,y}^{2}}
@@ -1239,7 +1240,8 @@
 			\label{eq:InharmonicityManipulation}
 		\end{equation}
 
-		Note that the target inharmonicity must lie between the inharmonicities of the two signals being summed.
+		\note{First 9 harmonics generated perfectly and with increasing inharmonicity (0.1 to 0.5). These two are
+		then summed together at different ratios.}
 
 		\begin{figure}[h!]
 			\centering
@@ -1247,6 +1249,8 @@
 			\caption{Manipulating the Inharmonicities of the Test Signals.}
 			\label{fig:MoveInharmonicities}
 		\end{figure}
+
+		\note{Synth contains a lot of perfectly harmonic high order harmonics.}
 
 	\subsection{Spectral Irregularity}
 	\label{sec:FeatureControl-Parameterisation-Irregularity}
