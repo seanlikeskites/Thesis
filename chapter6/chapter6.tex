@@ -1213,44 +1213,78 @@
 		the fundamental and one describing a signal where all partials have frequencies lying
 		$\frac{f_{0}}{2}$Hz from harmonic frequencies.
 
-		Controlling the inharmonicity can prove difficult unless certain criteria are met. Consider two signals,
-		$x$ and $y$, with the same fundamental frequency, which are composed of partials with frequencies in the
-		sets $X$ and $Y$ respectively. Provided that $X \medcap Y = \emptyset$ (i.e. $x$ and $y$ have no frequency
-		component in common) the inharmonicity of $x + y$ is given by Equation \ref{eq:InharmonicitySum}.
-
-		\begin{equation}
-			I = \frac{I_{x}\sum_{\nu \in X} a_{\nu,x}^{2} + I_{y}\sum_{\nu \in Y} a_{\nu,y}^{2}}
-			         {\sum_{\nu \in X} a_{\nu,x}^{2} + \sum_{\nu \in Y} a_{\nu,y}^{2}}
-			\label{eq:InharmonicitySum}
-		\end{equation}
-
-		Where $a_{\nu,x}$ and $a_{\nu,y}$ are the amplitudes of frequency $\nu$ in signals $x$ and $y$, and $I_{x}$
-		and $I_{y}$ are the inharmonicities of signals $x$ and $y$.
-
-		The inharmonicity of the sum of the signals can be altered by changing the relative amplitudes of the
-		signals. To produce a given inharmonicity, $I$, when summing two signals, $x$ and $y$, which have no
-		frequency components in common, a gain factor $m$, calculated using Equation
-		\ref{eq:InharmonicityManipulation}, can be applied to signal $x$.  Note that the target inharmonicity must
-		lie between the inharmonicities of the two signals being summed.
-
-		\begin{equation}
-			m = \sqrt{\frac{(I_{y} - I)\sum_{\nu \in Y} a_{\nu,y}^{2}}
-			               {(I - I_{x})\sum_{\nu \in X} a_{\nu,x}^{2}}},
-			\quad I_{x} \leq I < I_{y} \quad \textrm{or} \quad I_{y} < I \leq I_{x}
-			\label{eq:InharmonicityManipulation}
-		\end{equation}
+%		Controlling the inharmonicity can prove difficult unless certain criteria are met. Consider two signals,
+%		$x$ and $y$, with the same fundamental frequency, which are composed of partials with frequencies in the
+%		sets $X$ and $Y$ respectively. Provided that $X \medcap Y = \emptyset$ (i.e. $x$ and $y$ have no frequency
+%		component in common) the inharmonicity of $x + y$ is given by Equation \ref{eq:InharmonicitySum}.
+%
+%		\begin{equation}
+%			I = \frac{I_{x}\sum_{\nu \in X} a_{\nu,x}^{2} + I_{y}\sum_{\nu \in Y} a_{\nu,y}^{2}}
+%			         {\sum_{\nu \in X} a_{\nu,x}^{2} + \sum_{\nu \in Y} a_{\nu,y}^{2}}
+%			\label{eq:InharmonicitySum}
+%		\end{equation}
+%
+%		Where $a_{\nu,x}$ and $a_{\nu,y}$ are the amplitudes of frequency $\nu$ in signals $x$ and $y$, and $I_{x}$
+%		and $I_{y}$ are the inharmonicities of signals $x$ and $y$.
+%
+%		The inharmonicity of the sum of the signals can be altered by changing the relative amplitudes of the
+%		signals. To produce a given inharmonicity, $I$, when summing two signals, $x$ and $y$, which have no
+%		frequency components in common, a gain factor $m$, calculated using Equation
+%		\ref{eq:InharmonicityManipulation}, can be applied to signal $x$.  Note that the target inharmonicity must
+%		lie between the inharmonicities of the two signals being summed.
+%
+%		\begin{equation}
+%			m = \sqrt{\frac{(I_{y} - I)\sum_{\nu \in Y} a_{\nu,y}^{2}}
+%			               {(I - I_{x})\sum_{\nu \in X} a_{\nu,x}^{2}}},
+%			\quad I_{x} \leq I < I_{y} \quad \textrm{or} \quad I_{y} < I \leq I_{x}
+%			\label{eq:InharmonicityManipulation}
+%		\end{equation}
 
 		\subsubsection*{Manipulation of Inharmonicity}
-			The system given in Figure \ref{fig:InharmonicitySystem} can be used to generate two signals with
-			different inharmonicities. For the purpose of demonstration the first nine harmonics of the tests
-			signals were filtered out and reconstructed in two different manners. The first reconstruction
-			applied no frequency shift to the excited harmonics, generating a signal with low inharmonicity.
-			The second reconstruction generated harmonics with linearly increasing deviation from harmonic
-			frequencies ($0.1f_{0}$ for the second harmonic up to $0.5f_{0}$ for the ninth harmonic). These two
-			signals were then summed with gains defined by a parameter $P$, the harmonic signal being
-			multiplied by a gain of $1 - P$ and the inharmonic signal by $P$. Figure
-			\ref{fig:MoveInharmonicities} show the result of altering this parameter on the inharmonicity of
-			the resultant signal.
+			While it is reasonably simple to introduce inharmonicity in harmonic excitation systems,
+			controlling the inharmonicity of a signal is a more complicated problem. The system shown in Figure
+			\ref{fig:InharmonicitySystem} can be use to apply multiple approaches approach to this problem. 
+
+%			Equation \ref{eq:InharmonicitySum} allows the inharmonicity of the sum of two signals to be
+%			calculated, provided the signals have the same fundamental and share no frequency content. This
+%			allows us to adjust the relative gains of two signals to control the resulting inharmonicity. The
+%			problematic task is how to construct these two signals.
+			
+			A simple two band system leaves the lower partials of the system unaltered and generates a high
+			band using a static nonlinearity and filtering. The inharmonicities in this high band will be
+			amplified versions of those in the original signal. This approach is not applicable in a number of
+			situations such as when the input only contains perfectly harmonic partials or when the desired
+			result is a signal with reduced inharmonicity.
+			
+			The inverse system, in which the high frequencies are left unaltered and the low frequency partials
+			are generated individually, provides a greater amount of control over the inharmonicity of the
+			resulting signal. The newly generated partials can be put at frequencies closer to harmonics than
+			the originals reducing the overall inharmonicity. It also allows for generation of inharmonic
+			partials in a signal with zero inharmonicity. 
+
+			This system is more complicated both in computation and use. Because the inharmonicity metric
+			(Equation \ref{eq:Inharmonicity}) depends on the frequencies of every partial, there are numerous
+			ways a signal can be manipulated resulting in the same value for the inharmonicity. When
+			manipulating the inharmonicity a decision needs to be made as to which partials are to be made
+			inharmonic and by how much. One method of deciding this is to model it on the vibrational modes of
+			an acoustic instrument, ensuring a natural set of inharmonic partials. To increase the
+			inharmonicity the frequencies of the partials can be moved from being harmonic towards the
+			frequencies indicated by the model.
+
+			One such model is that given by \citet{rossing2002the} for calculating the frequencies of the
+			spectral partials of piano strings. In this model the frequencies of each partial are determined by
+			an inharmonicity factor, $A$, using Equation \ref{eq:PianoInharmonicity}. In the modelling of piano
+			timbre the value of $A$ is calculated from the physical properties of the piano string. For
+			creative purposes the value of $A$ can be arbitrarily set.
+
+			\begin{equation}
+				a_{n} = nf_{0} \left( 1 + \left( n^{2} - 1 \right) A \right);
+				\label{eq:PianoInharmonicity}
+			\end{equation}
+
+			Using the system shown in Figure \ref{fig:InharmonicitySystem} the inharmonicities of the first
+			nine harmonics of a signal can be set according to this model. Figure \ref{fig:MoveInharmonicities}
+			shows how the resulting inharmonicity changes with the inharmonicity factor $A$.
 
 			\begin{figure}[h!]
 				\centering
@@ -1259,7 +1293,18 @@
 				\label{fig:MoveInharmonicities}
 			\end{figure}
 
-			\note{Synth contains a lot of perfectly harmonic high order harmonics.}
+			As only the first nine harmonics are being altered, the degree to which the inharmonicity can be
+			manipulated depends on the spectral content of the input signal. In the synthesised sample all of
+			the spectral partials are at perfectly harmonic frequencies and there is significant energy in the
+			harmonics with higher order than the ninth. The inharmonic signal generated from the synthesised
+			sample then still has a significant amount of energy in perfectly harmonic partials giving it a low
+			inharmonicity. This reduces the range of values which the resulting inharmonicity can take. The
+			other three samples all have higher spectral roll off, such that the influence of their existing
+			high order partials has a smaller effect on the overall inharmonicity.
+
+			The issue of higher order harmonics reducing the maximum inharmonicity could be counteracted by
+			adding an addition frequency shifter to the system. This shifter would operate on the filtered
+			input signal and shift all the higher order partials by the same amount.
 
 	\subsection{Spectral Irregularity}
 	\label{sec:FeatureControl-Parameterisation-Irregularity}
@@ -1305,28 +1350,29 @@
 		will change. Low pass filtering the spectral components' amplitudes will decrease the irregularity while a
 		high pass filter will do the opposite.
 
-		\begin{figure}[h!]
-			\centering
-			\subfloat[Krimphoff Irregularity]
-			{
-				\includegraphics[width=0.45\textwidth]{chapter6/Images/MoveIrregularitiesK.eps}
-				\label{fig:MoveIrregularitiesK}
-			}
-			\qquad
-			\subfloat[Jensen Irregularity]
-			{
-				\includegraphics[width=0.45\textwidth]{chapter6/Images/MoveIrregularitiesJ.eps}
-				\label{fig:MoveIrregularitiesJ}
-			}
-			
-			\subfloat[Beauchamp Irregularity]
-			{
-				\includegraphics[width=0.45\textwidth]{chapter6/Images/MoveIrregularitiesB.eps}
-				\label{fig:MoveIrregularitiesB}
-			}
-			\caption{Manipulating the Spectral Irregularities of the Test Signals.}
-			\label{fig:MoveIrregularities}
-		\end{figure}
+		\subsubsection*{Manipulation of Irregularity}
+			\begin{figure}[h!]
+				\centering
+				\subfloat[Krimphoff Irregularity]
+				{
+					\includegraphics[width=0.45\textwidth]{chapter6/Images/MoveIrregularitiesK.eps}
+					\label{fig:MoveIrregularitiesK}
+				}
+				\qquad
+				\subfloat[Jensen Irregularity]
+				{
+					\includegraphics[width=0.45\textwidth]{chapter6/Images/MoveIrregularitiesJ.eps}
+					\label{fig:MoveIrregularitiesJ}
+				}
+				
+				\subfloat[Beauchamp Irregularity]
+				{
+					\includegraphics[width=0.45\textwidth]{chapter6/Images/MoveIrregularitiesB.eps}
+					\label{fig:MoveIrregularitiesB}
+				}
+				\caption{Manipulating the Spectral Irregularities of the Test Signals.}
+				\label{fig:MoveIrregularities}
+			\end{figure}
 
 	\subsection{Spectral Flatness}
 	\label{sec:FeatureControl-Parameterisation-Flatness}
@@ -1459,42 +1505,8 @@
 %	majority of these manipulations. The full extent of this system is not needed for some of the simpler modifications
 %	so various subsystems of it are used.
 %
-%	\subsection{Odd to Even Harmonic Ratio}
-%	\label{sec:FeatureControl-Control-HarmonicParityRatio}
-%
 %	\subsection{Inharmonicity}
 %	\label{sec:FeatureControl-Control-Inharmonicity}
-%		While it is reasonably simple to introduce inharmonicity in harmonic excitation systems, controlling the
-%		inharmonicity of a signal is a more complicated problem. As with oddness and evenness control one could
-%		remove all partials from the signal and construct a new set of partials with the desired inharmonicity.
-%		This gives the desired control but as before can be too destructive for some situations.
-%		
-%		Equation \ref{eq:InharmonicitySum} allows the inharmonicity of the sum of two signals to be calculated,
-%		provided the signals have the same fundamental and share no frequency content. This allows us to adjust the
-%		relative gains of two signals to control the resulting inharmonicity. The problematic task is how to
-%		construct these two signals.
-%
-%		The system shown in Figure \ref{fig:InharmonicitySystem} can be use to apply a band based approach to
-%		this problem. One band can be filtered from the input signal and the other constructed using excitation.
-%		A simple two band system leaves the lower partials of the system unaltered and generates a high band using
-%		a static nonlinearity and filtering. The inharmonicities in this high band will be amplified versions of
-%		those in the original signal. This approach is not applicable in a number of situations such as when the
-%		input only contains perfectly harmonic partials or when the desired result is a signal with reduced
-%		inharmonicity.
-%
-%		The inverse system, in which the high frequencies are left unaltered and the low frequency partials are
-%		generated individually, provides a greater amount of control over the inharmonicity of the resulting
-%		signal. The newly generated partials can be put at frequencies closer to harmonics than the originals
-%		reducing the overall inharmonicity. It also allows for generation of inharmonic partials in a signal with
-%		zero inharmonicity. 
-%
-%		This system is more complicate both in computation and use. Because the inharmonicity metric (Equation
-%		\ref{eq:Inharmonicity}) depends on the frequencies of every partial there are numerous ways a signal can be
-%		manipulated resulting in the same value for the inharmonicity. When manipulating the inharmonicity which
-%		partials are to be made inharmonic and by how much needs to be decided. One method of deciding this is to
-%		model it on the vibrational modes of an acoustic instrument ensuring a natural set of inharmonic partials.
-%		To gradually increase the inharmonicity the frequencies of the partials their frequencies can be moved from
-%		being harmonic to those indicated by the model.
 %
 %	\subsection{Spectral Irregularity}
 %	\label{sec:FeatureControl-Control-Irregularity}
