@@ -1058,7 +1058,7 @@
 			\label{eq:GeneralOddnessManipulation}
 		\end{equation}
 
-		\subsubsection*{Manipulation of The Odd to Even Harmonic Ratio}
+		\subsubsection*{Manipulation of Odd to Even Harmonic Ratio}
 			For control over the oddness or evenness of a signal a system which provides control over
 			individual harmonics is not necessary. While this level of control allows for more complex
 			manipulations a simpler system can be employed if only the oddness and evenness are to be changed.
@@ -1154,12 +1154,12 @@
 			superposition to occur sacrifices accurate control in order to maintain some of the input's
 			characteristics.
 
-			An example method of how the system in Figure \ref{fig:HarmonicParitySystem} can be used is as
-			follows. The isolated fundamental of each test signal id processed with both even and odd hard
-			clipping functions to generate separate bands of each parity of harmonic. Each band of harmonics is
-			then low passed filtered with a cutoff at the frequency of the ninth harmonic and the original
-			signal is high pass filtered at the same frequency. The ninth harmonic is chosen due to it being
-			the highest individually resolved harmonic as discussed in Section
+			An example of how the system in Figure \ref{fig:HarmonicParitySystem} can be used is as follows.
+			The isolated fundamental of each test signal id processed with both even and odd hard clipping
+			functions to generate separate bands of each parity of harmonic. Each band of harmonics is then low
+			passed filtered with a cutoff at the frequency of the ninth harmonic and the original signal is
+			high pass filtered at the same frequency. The ninth harmonic is chosen due to it being the highest
+			individually resolved harmonic as discussed in Section
 			\ref{sec:FeatureControl-Systems-SpectralShaping}. The three signals are then summed at different
 			ratios to control the evenness or oddness of the output. Figure \ref{fig:MoveParities} shows the
 			effects of manipulating the levels of odd and even order harmonics in this way. The original signal
@@ -1240,17 +1240,26 @@
 			\label{eq:InharmonicityManipulation}
 		\end{equation}
 
-		\note{First 9 harmonics generated perfectly and with increasing inharmonicity (0.1 to 0.5). These two are
-		then summed together at different ratios.}
+		\subsubsection*{Manipulation of Inharmonicity}
+			The system given in Figure \ref{fig:InharmonicitySystem} can be used to generate two signals with
+			different inharmonicities. For the purpose of demonstration the first nine harmonics of the tests
+			signals were filtered out and reconstructed in two different manners. The first reconstruction
+			applied no frequency shift to the excited harmonics, generating a signal with low inharmonicity.
+			The second reconstruction generated harmonics with linearly increasing deviation from harmonic
+			frequencies ($0.1f_{0}$ for the second harmonic up to $0.5f_{0}$ for the ninth harmonic). These two
+			signals were then summed with gains defined by a parameter $P$, the harmonic signal being
+			multiplied by a gain of $1 - P$ and the inharmonic signal by $P$. Figure
+			\ref{fig:MoveInharmonicities} show the result of altering this parameter on the inharmonicity of
+			the resultant signal.
 
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveInharmonicities.eps}
-			\caption{Manipulating the Inharmonicities of the Test Signals.}
-			\label{fig:MoveInharmonicities}
-		\end{figure}
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveInharmonicities.eps}
+				\caption{Manipulating the Inharmonicities of the Test Signals.}
+				\label{fig:MoveInharmonicities}
+			\end{figure}
 
-		\note{Synth contains a lot of perfectly harmonic high order harmonics.}
+			\note{Synth contains a lot of perfectly harmonic high order harmonics.}
 
 	\subsection{Spectral Irregularity}
 	\label{sec:FeatureControl-Parameterisation-Irregularity}
