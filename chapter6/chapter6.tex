@@ -1048,7 +1048,7 @@
 			\label{eq:GeneralOddness}
 		\end{equation}
 
-		Like Equation \ref{eq:GeneralTristimulus} this measure the ratio of amplitudes of a set of frequencies and
+		Like Equation \ref{eq:GeneralTristimulus} this measures the ratio of amplitudes of a set of frequencies and
 		a larger set of frequencies. This time using the squares of the amplitudes and taking the square root
 		afterwards. The value of the ratio can be altered by applying gain to the spectral components in the set
 		$S$. The required gain factor, $m$, is calculated using Equation \ref{eq:GeneralOddnessManipulation}.
@@ -1349,24 +1349,26 @@
 			representation of a signal, applying a filter to the amplitudes of the signals spectral components.
 			This does not allow the irregularity to be set to a precise value but gives control over the
 			direction in which the irregularity will change. Low pass filtering the spectral components'
-			amplitudes will decrease the irregularity while a high pass filter will do the opposite. Achieving
-			this using excitation requires an analysis and resynthesis approach, replacing the existing
-			spectral components with excited ones and chaining the amplitudes to give the desired irregularity.
+			amplitudes will decrease the irregularity while a high pass filter will do the opposite.
+			
+			Both the Krimphoff and Beauchamp irregularities (Equations \ref{eq:KrimphoffIrregularity} and
+			\ref{eq:BeauchampIrregularity}) are based on taking the differences between each partial's
+			amplitude and the mean amplitude of itself and the two partials surrounding it. Intuitively this
+			value can be increased or reduced by moving the amplitudes of the partials away or towards the mean
+			amplitude of all the partials. To implement this using the system shown in Figure
+			\ref{fig:InhamronicictySystem} the new amplitudes of the first nine harmonics can be calculated
+			using Equation \ref{eq:PartialSmoothing}
+			
+			\begin{equation}
+				a'_{n} = a_{n} - P \left(a_{n} - \sum_{k = 1}^{9} a_{k} \right)
+				\label{eq:PartialSmoothing}
+			\end{equation}
 
-			If the analysis stage is removed the complexity of the system can be greatly reduced. The
-			amplitudes of the newly excited spectral components can be predetermined and the irregularity
-			manipulated through filtering as before.  A different number of spectral components can be replaced
-			with excited ones depending on how large a timbral variation is desired. Replacing only a few
-			spectral components will provide a small amount of control over irregularity while preserving most
-			of the spectrum of the input signal. Replacing more spectral components provides more control over
-			the overall irregularity at the cost of losing spectral information from the original.
+			Where $a'_{n}$ is the new amplitude of the $n$\super{th} partial, $a_{n}$ is the amplitude of the
+			$n$\super{th} partial in the input signal and $P$ is a parameter.
 
-			An alternative way to influence the irregularity of a signal is through control of the oddness and
-			evenness as discussed in Section \ref{sec:FeatureControl-Control-HarmonicParityRatio}. A signal
-			with a high oddness and low evenness (or vice versa) will have a high a spectral irregularity
-			whereas a signal with a more even distribution of energy between odd and even harmonics will have a
-			lower irregularity. This allows the irregularity of a signal which contains both parities of
-			harmonics can be changed by altering the signals oddness or evenness.
+			The effects of changing parameter $P$ when processing the test signals are shown in Figure
+			\ref{fig:MoveIrregularities}.
 
 			\begin{figure}[h!]
 				\centering
@@ -1390,6 +1392,24 @@
 				\caption{Manipulating the Spectral Irregularities of the Test Signals.}
 				\label{fig:MoveIrregularities}
 			\end{figure}
+
+
+			Achieving this using excitation requires an analysis and resynthesis approach, replacing the
+			existing spectral components with excited ones and chaining the amplitudes to give the desired
+			irregularity.  If the analysis stage is removed the complexity of the system can be greatly
+			reduced. The amplitudes of the newly excited spectral components can be predetermined and the
+			irregularity manipulated through filtering as before. A different number of spectral components can
+			be replaced with excited ones depending on how large a timbral variation is desired. Replacing only
+			a few spectral components will provide a small amount of control over irregularity while preserving
+			most of the spectrum of the input signal. Replacing more spectral components provides more control
+			over the overall irregularity at the cost of losing spectral information from the original.
+
+			An alternate way to influence the irregularity of a signal is through control of the oddness and
+			evenness as discussed in Section \ref{sec:FeatureControl-Parameterisation-HarmonicParityRatio}. A
+			signal with a high oddness and low evenness (or vice versa) will have a high a spectral
+			irregularity whereas a signal with a more even distribution of energy between odd and even
+			harmonics will have a lower irregularity. This allows the irregularity of a signal which contains
+			both parities of harmonics can be changed by altering the signals oddness or evenness.
 
 	\subsection{Spectral Flatness}
 	\label{sec:FeatureControl-Parameterisation-Flatness}
@@ -1521,12 +1541,6 @@
 %	The system shown in Figure \ref{fig:InharmonicitySystem} provides sufficient flexibility for implementing the
 %	majority of these manipulations. The full extent of this system is not needed for some of the simpler modifications
 %	so various subsystems of it are used.
-%
-%	\subsection{Inharmonicity}
-%	\label{sec:FeatureControl-Control-Inharmonicity}
-%
-%	\subsection{Spectral Irregularity}
-%	\label{sec:FeatureControl-Control-Irregularity}
 %
 %	\subsection{Spectral Flatness}
 %	\label{sec:FeatureControl-Control-Flatness}
