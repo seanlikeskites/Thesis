@@ -1314,11 +1314,21 @@
 
 		\begin{equation}
 			\textrm{KI} = \log \left( 20 \sum_{n = 2}^{N - 1}
-				                  \abs{\log(a_{n}) - \frac{\log(a_{n-1}a_{n}a_{n+1})}
-				                                             {3}}
+				                  \abs{\log(a_{n}) - \frac{\log(a_{n-1}a_{n}a_{n+1})}{3}}
 					   \right)
 			\label{eq:KrimphoffIrregularity}
 		\end{equation}
+
+		This is often implemented using the magnitude of the raw amplitude rather than their dB amplitude yielding
+		equation \ref{eq:LibXtractKrimphoffIrregularity}. This is how the Krimphoff irregularity is implemented
+		in LibXtract \citep{bullock2007libxtract}, and in the SAFE plug-ins.
+
+		\begin{equation}
+			\textrm{KI} = \sum_{n = 2}^{N - 1}
+					  \abs{a_{n} - \frac{a_{n-1} + a_{n} + a_{n+1}}{3}}
+			\label{eq:LibXtractKrimphoffIrregularity}
+		\end{equation}
+		
 
 		A second method is proposed by \citet{jensen1999timbre}, shown in Equation \ref{eq:JensenIrregularity}.
 
@@ -1338,10 +1348,11 @@
 			\label{eq:BeauchampIrregularity}
 		\end{equation}
 
-		Equation \ref{eq:JensenIrregularity} and \ref{eq:BeauchampIrregularity} have an advantage over
-		\ref{eq:KrimphoffIrregularity} in that they produce normalised values. Equation \ref{eq:JensenIrregularity}
-		produces values between zero and two while Equation \ref{eq:BeauchampIrregularity} produces values between
-		zero and one. This allows measures of irregularity of two different signals to be compared more easily.
+		Equation \ref{eq:JensenIrregularity} and \ref{eq:BeauchampIrregularity} have an advantage over Equations
+		\ref{eq:KrimphoffIrregularity} and \ref{eq:LibXtractKrimphoffIrregularity} in that they produce normalised
+		values. Equation \ref{eq:JensenIrregularity} produces values between zero and two while Equation
+		\ref{eq:BeauchampIrregularity} produces values between zero and one. This allows measures of irregularity
+		of two different signals to be compared more easily.
 
 		\subsubsection*{Manipulation of Irregularity}
 			\citet{beauchamp2007analysis} proposes methods for manipulating the spectral irregularity in
@@ -1354,10 +1365,9 @@
 			Both the Krimphoff and Beauchamp irregularities (Equations \ref{eq:KrimphoffIrregularity} and
 			\ref{eq:BeauchampIrregularity}) are based on taking the differences between each partial's
 			amplitude and the mean amplitude of itself and the two partials surrounding it. Intuitively this
-			value can be increased or reduced by moving the amplitudes of the partials away or towards the mean
-			amplitude of all the partials. To implement this using the system shown in Figure
-			\ref{fig:InhamronicictySystem} the new amplitudes of the first nine harmonics can be calculated
-			using Equation \ref{eq:PartialSmoothing}
+			value can be increased or reduced by moving the amplitudes of the partials away or towards their
+			mean. To implement this using the system shown in Figure \ref{fig:InharmonicitySystem} the new
+			amplitudes of the first nine harmonics can be calculated using Equation \ref{eq:PartialSmoothing}
 			
 			\begin{equation}
 				a'_{n} = a_{n} - P \left(a_{n} - \sum_{k = 1}^{9} a_{k} \right)
@@ -1365,10 +1375,9 @@
 			\end{equation}
 
 			Where $a'_{n}$ is the new amplitude of the $n$\super{th} partial, $a_{n}$ is the amplitude of the
-			$n$\super{th} partial in the input signal and $P$ is a parameter.
-
-			The effects of changing parameter $P$ when processing the test signals are shown in Figure
-			\ref{fig:MoveIrregularities}.
+			$n$\super{th} partial in the input signal and $P$ is a parameter. Figure
+			\ref{fig:MoveIrregularities} shows how each of the spectral irregularity measures is affected by
+			changes in the value of $P$.
 
 			\begin{figure}[h!]
 				\centering
@@ -1393,6 +1402,9 @@
 				\label{fig:MoveIrregularities}
 			\end{figure}
 
+			This method provides effective control over both the Jensen and Beauchamp irregularities (Equations
+			\ref{eq:JensenIrregularity} and \ref{eq:BeauchampIrregularity}). The Krimphoff irregularity
+			(Equation \ref{eq:KrimphoffIrregulatiry}) however, is not as 
 
 			Achieving this using excitation requires an analysis and resynthesis approach, replacing the
 			existing spectral components with excited ones and chaining the amplitudes to give the desired
@@ -1489,12 +1501,6 @@
 
 	\subsection{Spectral Slope}
 	\label{sec:FeatureControl-Parameterisation-Slope}
-		\note
-		{
-			Should I mention how everybody seems to quote \citet{peeters2004a} for this. He has some weird
-			scaling factor in his metric which I think makes bugger all sense.
-		}
-
 		The spectral slope measures the gradient of the spectrum. It is calculated by first order liner regression
 		of the spectrum. For a signal with $N$ spectral components the spectral slope can be calculated with
 		Equation \ref{eq:SpectralSlope}.
