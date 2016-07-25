@@ -1371,7 +1371,7 @@
 			
 			\note
 			{
-				This is bad and needs redoing. It will end up with negative amplitudes :(.
+				This is bad and needs redoing. It will end up with negative amplitudes.
 			}
 
 			\begin{equation}
@@ -1573,19 +1573,12 @@
 		zero describes either a signal where the energy is evenly distributed throughout the spectrum or one in
 		which the majority of the energy is in the middle of the spectrum.
 
-		Traditional measures of spectral centroid take a linear regression of the DFT bins. For musical signals
-		which are composed of partials it may be more beneficial to measure the slope of the partial's amplitudes
-		rather than of the whole spectrum. 
+		Traditional measures of spectral slope take a linear regression of the DFT bins. For musical signals which
+		are composed of partials it may be more beneficial to measure the slope of the partial's amplitudes rather
+		than of the whole spectrum. It is also common to measure how the amplitudes of partials decrease with
+		frequency in dB per octave. Equation \ref{eq:SpectralSlope} can be altered to produce values in this unit
+		by using the $\log_{2}$ of the frequency.
 		
-		The spectral slope is easily altered by applying a spectral tilt to the signal. To increase the spectral
-		slope by $k$ each spectral component in the signal should have its amplitude, $a_{n}$, multiplied by the
-		value $10^{\frac{1}{20}(k\nu_{n} - k\nu_{1})}$.
-
-		It is common to measure how the amplitudes of partials decrease with frequency in dB per octave. Equation
-		\ref{eq:SpectralSlope} can be altered to produce values in this unit by using the $\log_{2}$ of the
-		frequency. To increase the slope by $k$dB per octave each spectral component in the signal should have its
-		amplitude, $a_{n}$, multiplied by the value $10^{\frac{1}{20}(k\log_{2}(\nu_{n}) - k\log_{2}(\nu_{1}))}$.
-
 		\subsubsection*{Manipulation of Spectral Slope}
 			As discussed in Section \ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics} the
 			spectral slope of the band of distortion components generated using a static nonlinearity depends
@@ -1596,14 +1589,9 @@
 			The system shown in Figure \ref{fig:InharmonicitySystem} provides more control, allowing for slopes
 			other than multiples of 6dB per octave. As with the discussions on spectral irregularity and
 			flatness the best way to control spectral slope in a signal is through analysis and resynthesis.
-			This way the slope of the signal can be adjusted from the value it is in the input using the method
-			discussed in \ref{sec:FeatureControl-Parameterisation-Slope}.
-			
-			If the analysis section is removed the excited spectral components can have their amplitudes set to
-			give the desired slope. This is achievable for the lower order harmonics which are generated
-			individually.  The static nonlinearity used to generate the higher order harmonics should be chosen
-			to produce a band with a roll off as close to that of the desired slope. Generating the high order
-			harmonics in this manner reduces complexity at the cost of accurate control of the spectral slope.
+			To increase the spectral slope by $k$, each spectral component in the signal should have its
+			amplitude, $a_{n}$, multiplied by the value $10^{\frac{1}{20}(k\nu_{n} - k\nu_{1})}$. Figure
+			\ref{fig:MoveSlopes} shows the manipulation of the spectral slopes of the test signals.
 
 			\begin{figure}[h!]
 				\centering
@@ -1611,6 +1599,21 @@
 				\caption{Manipulating the Spectral Slopes of the Test Signals.}
 				\label{fig:MoveSlopes}
 			\end{figure}
+
+			Ideally each line in Figure \ref{fig:MoveSlopes} would have the same gradient as the signals'
+			spectral slopes are being increased by the same factor. They do not however as only the fist nine
+			harmonics are being individually manipulated. The differences in amplitudes of the higher order
+			harmonics between the signals account for the differences in control of the spectral slope.
+
+			If measuring spectral slope in dB per octave, to increase the slope by $k$dB per octave, each
+			spectral component in the signal should have its amplitude, $a_{n}$, multiplied by the value
+			$10^{\frac{1}{20}(k\log_{2}(\nu_{n}) - k\log_{2}(\nu_{1}))}$.
+
+			If the analysis section is removed the excited spectral components can have their amplitudes set to
+			give the desired slope. This is achievable for the lower order harmonics which are generated
+			individually.  The static nonlinearity used to generate the higher order harmonics should be chosen
+			to produce a band with a roll off as close to that of the desired slope. Generating the high order
+			harmonics in this manner reduces complexity at the cost of accurate control of the spectral slope.
 
 %\section{Controlling Features with Exciters}
 %\label{sec:FeatureControl-Control}
