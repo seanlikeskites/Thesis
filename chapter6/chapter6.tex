@@ -1470,39 +1470,87 @@
 		This no longer measures the tonality / noisiness of a signal but rather the flatness of its spectral
 		envelope.
 
-		The spectral flatness can be controlled by altering the power spectrum such that one of the means changes
-		while the other remains the same. The method discussed here changes the arithmetic mean but preserves the
-		geometric mean. 
+		\subsubsection*{Manipulation Of Spectral Flatness}
+			Spectral flatness is related to spectral irregularity. Many of the techniques to reduce the
+			irregularity will also increase the flatness. More precisely any manipulation which moves the
+			amplitudes of all spectral components closer to each other will increase the spectral flatness. To
+			take an example from Section \ref{sec:FeatureControl-Parameterisation-Irregularity}, using a low
+			pass filter on the amplitudes of the spectral components will increase the flatness of the
+			spectrum.
 
-		Consider two disjoint sets, $L$ and $H$, which are each composed of the indices of $k$ spectral components
-		of the signal such that the total energy in the spectral components denoted by $L$ is less than that of the
-		spectral components denoted by $H$. A gain $m$ is applied to the spectral components denoted by set $H$ and
-		the reciprocal gain $\frac{1}{m}$ applied to the spectral components denoted by set $L$. The resulting
-		spectral flatness is calculated using Equation \ref{eq:FlatnessManipulation}.
+			A greater degree of control can be achieved over the spectral flatness by altering the power
+			spectrum such that one of the means changes while the other remains the same. The method discussed
+			here changes the arithmetic mean but preserves the geometric mean. 
 
-		\[ P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \]
-		\[ E = P \setminus (L \medcup H) \]
-		\[ A_{L} = \sum_{n \in L} a_{n}^{2} \quad A_{H} = \sum_{n \in H} a_{n}^{2}
-		   \quad A_{E} = \sum_{n \in E} a_{n}^{2} \]
-		\begin{equation}
-			\textrm{SF} = \frac{N\sqrt[N]{\prod_{n \in P} a_{n}^{2}}}
-			                   {\frac{A_{L}}{m^{2}} + m^{2}A_{H} + A_{E}}
-		  	\label{eq:FlatnessManipulation}
-		\end{equation}
+			Consider two disjoint sets, $L$ and $H$, which are each composed of the indices of $k$ spectral
+			components of the signal such that the total energy in the spectral components denoted by $L$ is
+			less than that of the spectral components denoted by $H$. A gain $m$ is applied to the spectral
+			components denoted by set $H$ and the reciprocal gain $\frac{1}{m}$ applied to the spectral
+			components denoted by set $L$. The resulting spectral flatness is calculated using Equation
+			\ref{eq:FlatnessManipulation}.
 
-		The spectral flatness can be increased by using a value of $m$ such that $\sqrt{\frac{A_{L}}{A_{H}}} < m <
-		1$. The maximum possible flatness which can be achieved with the selected spectral components occurs when
-		$m = \sqrt[4]{\frac{A_{L}}{A_{H}}}$. To decrease the spectral flatness a value of $m$ satisfying $0 <
-		m < \sqrt{\frac{A_{L}}{A_{H}}}$ or $m > 1$ should be used. When $m = \sqrt{\frac{A_{L}}{A_{H}}}$ the
-		arithmetic mean is unchanged, this provides a point at which the energy has been redistributed in the
-		spectrum but the spectral flatness remains the same.
+			\[ P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \]
+			\[ E = P \setminus (L \medcup H) \]
+			\[ A_{L} = \sum_{n \in L} a_{n}^{2} \quad A_{H} = \sum_{n \in H} a_{n}^{2}
+			   \quad A_{E} = \sum_{n \in E} a_{n}^{2} \]
+			\begin{equation}
+				\textrm{SF} = \frac{N\sqrt[N]{\prod_{n \in P} a_{n}^{2}}}
+						   {\frac{A_{L}}{m^{2}} + m^{2}A_{H} + A_{E}}
+				\label{eq:FlatnessManipulation}
+			\end{equation}
 
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveFlatnesses.eps}
-			\caption{Manipulating the Spectral Flatnesses of the Test Signals.}
-			\label{fig:MoveFlatnesses}
-		\end{figure}
+			The spectral flatness can be increased by using a value of $m$ such that
+			$\sqrt{\frac{A_{L}}{A_{H}}} < m < 1$. The maximum possible flatness which can be achieved with the
+			selected spectral components occurs when $m = \sqrt[4]{\frac{A_{L}}{A_{H}}}$. To decrease the
+			spectral flatness a value of $m$ satisfying $0 < m < \sqrt{\frac{A_{L}}{A_{H}}}$ or $m > 1$ should
+			be used. When $m = \sqrt{\frac{A_{L}}{A_{H}}}$ the arithmetic mean is unchanged, this provides a
+			point at which the energy has been redistributed in the spectrum but the spectral flatness remains
+			the same. 
+
+			The gain value, $m$, can be calculated from a simplified control parameter, $P$, using Equation
+			\ref{eq:FlatnessControlParameter}. When $P$ is equal to 0 or 1 the spectral flatness will be
+			unchanged. Values of $P$ between 0 and 1 will increase the spectral flatness, with the maximum
+			flatness being achieved at $P = 0.5$. Finally, when $P > 1$ the spectral flatness will decrease.
+			Figure \ref{fig:MoveFlatness} shows the effects of altering this parameter on the spectral flatness
+			of the test signals when both sets, $L$ and $H$, are comprised of three partials.
+
+			\begin{equation}
+				M = \sqrt{ \left( \frac{A_L}{A_H} \right) ^{1 - m}}
+				\label{eq:FlatnessControlParameter}
+			\end{equation}
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveFlatnesses.eps}
+				\caption{Manipulating the Spectral Flatnesses of the Test Signals.}
+				\label{fig:MoveFlatnesses}
+			\end{figure}
+
+			The maximum flatness which can be achieved depends on the flatnesses of the two sets $L$ and $H$.
+			If these sets are themselves flat (i.e. all partials in them have similar amplitudes) the maximum
+			possible flatness will be large. If amplitudes of partials within each set have high variance the
+			capacity for increasing the overall flatness is reduced.
+
+			Equation \ref{eq:FlatnessManipulation} provides control over the spectral flatness in a signal
+			where the amplitudes of the spectral components are known. As with control of spectral irregularity
+			an analysis / synthesis technique could be utilised to implement this using harmonic excitation.
+			Again it is desirable to remove the analysis step in order to reduce the complexity of the system.
+			This can be done by replacing a band of spectral components with excited ones.
+
+			Once a band has been replaced with excited components, the levels of these components can then be
+			manipulated to change the flatness of the entire signal. Altering the flatness of the excited band
+			using the method in Section \ref{sec:FeatureControl-Parameterisation-Flatness} changes the
+			arithmetic mean of the components' amplitudes in the excited band while keeping their geometric
+			mean the same. This causes the arithmetic mean of the amplitudes in the entire signal to change in
+			the same direction while the geometric mean is unchanged. In short, increasing the flatness of the
+			excited band will also increase the flatness of the entire signal and decreasing the flatness of
+			the band decreases the flatness of the signal.
+
+			As the spectral flatness measure doesn't depend on the frequencies of the spectral components
+			deciding what two groups of components to apply reciprocal gains to will depend on the desired
+			effect on other spectral features. For instance, to have a maximal effect on the odd to even
+			harmonic ratio one could select two groups which consist of odd and even harmonics respectively. To
+			have a minimal effect on this feature the two groups can both consist of one parity of harmonic.
 
 	\subsection{Spectral Slope}
 	\label{sec:FeatureControl-Parameterisation-Slope}
@@ -1538,12 +1586,31 @@
 		frequency. To increase the slope by $k$dB per octave each spectral component in the signal should have its
 		amplitude, $a_{n}$, multiplied by the value $10^{\frac{1}{20}(k\log_{2}(\nu_{n}) - k\log_{2}(\nu_{1}))}$.
 
-		\begin{figure}[h!]
-			\centering
-			\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveSlopes.eps}
-			\caption{Manipulating the Spectral Slopes of the Test Signals.}
-			\label{fig:MoveSlopes}
-		\end{figure}
+		\subsubsection*{Manipulation of Spectral Slope}
+			As discussed in Section \ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics} the
+			spectral slope of the band of distortion components generated using a static nonlinearity depends
+			on the continuity of the nonlinearity's characteristic curve and its derivatives. Using a simple
+			system, similar to that in Figure \ref{fig:F0Tracking}, the characteristic curve of the
+			nonlinearity can be changed to influence the spectral slope of the output signal.
+
+			The system shown in Figure \ref{fig:InharmonicitySystem} provides more control, allowing for slopes
+			other than multiples of 6dB per octave. As with the discussions on spectral irregularity and
+			flatness the best way to control spectral slope in a signal is through analysis and resynthesis.
+			This way the slope of the signal can be adjusted from the value it is in the input using the method
+			discussed in \ref{sec:FeatureControl-Parameterisation-Slope}.
+			
+			If the analysis section is removed the excited spectral components can have their amplitudes set to
+			give the desired slope. This is achievable for the lower order harmonics which are generated
+			individually.  The static nonlinearity used to generate the higher order harmonics should be chosen
+			to produce a band with a roll off as close to that of the desired slope. Generating the high order
+			harmonics in this manner reduces complexity at the cost of accurate control of the spectral slope.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveSlopes.eps}
+				\caption{Manipulating the Spectral Slopes of the Test Signals.}
+				\label{fig:MoveSlopes}
+			\end{figure}
 
 %\section{Controlling Features with Exciters}
 %\label{sec:FeatureControl-Control}
@@ -1552,51 +1619,3 @@
 %	The system shown in Figure \ref{fig:InharmonicitySystem} provides sufficient flexibility for implementing the
 %	majority of these manipulations. The full extent of this system is not needed for some of the simpler modifications
 %	so various subsystems of it are used.
-%
-%	\subsection{Spectral Flatness}
-%	\label{sec:FeatureControl-Control-Flatness}
-%		Spectral flatness is related to spectral irregularity. Many of the techniques to reduce the irregularity
-%		will also increase the flatness. More precisely any manipulation which moves the amplitudes of all spectral
-%		components closer to each other will increase the spectral flatness. To take an example from Section
-%		\ref{sec:FeatureControl-Control-Irregularity}, using a low pass filter on the amplitudes of the spectral
-%		components will increase the flatness of the spectrum.
-%
-%		Equation \ref{eq:FlatnessManipulation} provides control over the spectral flatness in a signal where the
-%		amplitudes of the spectral components are known. As with control of spectral irregularity an analysis /
-%		synthesis technique could be utilised to implement this using harmonic excitation. Again it is desirable to
-%		remove the analysis step in order to reduce the complexity of the system. This can be done by replacing a
-%		band of spectral components with excited ones.
-%
-%		Once a band has been replaced with excited components, the levels of these components can then be
-%		manipulated to change the flatness of the entire signal. Altering the flatness of the excited band using
-%		the method in Section \ref{sec:FeatureControl-Parameterisation-Flatness} changes the arithmetic mean of the
-%		components' amplitudes in the excited band while keeping their geometric mean the same. This causes the
-%		arithmetic mean of the amplitudes in the entire signal to change in the same direction while the geometric
-%		mean is unchanged. In short, increasing the flatness of the excited band will also increase the flatness of
-%		the entire signal and decreasing the flatness of the band decreases the flatness of the signal.
-%
-%		As the spectral flatness measure doesn't depend on the frequencies of the spectral components deciding what
-%		two groups of components to apply reciprocal gains to will depend on the desired effect on other spectral
-%		features. For instance, to have a maximal effect on the odd to even harmonic ratio one could select two
-%		groups which consist of odd and even harmonics respectively. To have a minimal effect on this feature the
-%		two groups can both consist of one parity of harmonic.
-%
-%	\subsection{Spectral Slope}
-%	\label{sec:FeatureControl-Control-Slope}
-%		As discussed in Section \ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics} the spectral
-%		slope of the band of distortion components generated using a static nonlinearity depends on the continuity
-%		of the nonlinearity's characteristic curve and its derivatives. Using a simple system, similar to that in
-%		Figure \ref{fig:F0Tracking}, the characteristic curve of the nonlinearity can be changed to influence the
-%		spectral slope of the output signal.
-%
-%		The system shown in Figure \ref{fig:InharmonicitySystem} provides more control, allowing for slopes other
-%		than multiples of 6dB per octave. As with the discussions on spectral irregularity and flatness the best
-%		way to control spectral slope in a signal is through analysis and resynthesis. This way the slope of the
-%		signal can be adjusted from the value it is in the input using the method discussed in
-%		\ref{sec:FeatureControl-Parameterisation-Slope}.
-%		
-%		If the analysis section is removed the excited spectral components can have their amplitudes set to give
-%		the desired slope. This is achievable for the lower order harmonics which are generated individually.
-%		The static nonlinearity used to generate the higher order harmonics should be chosen to produce a band with
-%		a roll off as close to that of the desired slope. Generating the high order harmonics in this manner
-%		reduces complexity at the cost of accurate control of the spectral slope.
