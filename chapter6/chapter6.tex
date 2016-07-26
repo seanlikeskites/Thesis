@@ -1319,9 +1319,10 @@
 			\label{eq:KrimphoffIrregularity}
 		\end{equation}
 
-		This is often implemented using the magnitude of the raw amplitude rather than their dB amplitude yielding
+		This is often implemented using the raw amplitudes of the partials rather than their dB amplitudes yielding
 		equation \ref{eq:LibXtractKrimphoffIrregularity}. This is how the Krimphoff irregularity is implemented
-		in LibXtract \citep{bullock2007libxtract}, and in the SAFE plug-ins.
+		in LibXtract \citep{bullock2007libxtract}, and in the SAFE plug-ins. Krimphoff irregularity values used in
+		this work are calculated using this equation.
 
 		\begin{equation}
 			\textrm{KI} = \sum_{n = 2}^{N - 1}
@@ -1368,21 +1369,18 @@
 			value can be increased or reduced by moving the amplitudes of the partials away or towards their
 			mean. To implement this using the system shown in Figure \ref{fig:InharmonicitySystem} the new
 			amplitudes of the first nine harmonics can be calculated using Equation \ref{eq:PartialSmoothing}
-			
-			\note
-			{
-				This is bad and needs redoing. It will end up with negative amplitudes.
-			}
 
 			\begin{equation}
-				a'_{n} = a_{n} - P \left(a_{n} - \sum_{k = 1}^{9} a_{k} \right)
+				a'_{n} = a_{n} \left( \frac{\sum_{k = 1}^{9} a_{k}}{9a_{n}} \right) ^{P}
 				\label{eq:PartialSmoothing}
 			\end{equation}
 
 			Where $a'_{n}$ is the new amplitude of the $n$\super{th} partial, $a_{n}$ is the amplitude of the
-			$n$\super{th} partial in the input signal and $P$ is a parameter. Figure
-			\ref{fig:MoveIrregularities} shows how each of the spectral irregularity measures is affected by
-			changes in the value of $P$.
+			$n$\super{th} partial in the input signal and $P$ is a parameter controlling how the irregularity
+			is affected. Negative values of $P$ will increase the irregularity, while small positive values of
+			$P$ will decrease the irregularity. The minimum possible irregularity is achieved when $P \approx
+			1$, higher values of $P$ will increase the irregularity again. Figure \ref{fig:MoveIrregularities}
+			shows how each of the spectral irregularity measures is affected by changes in the value of $P$.
 
 			\begin{figure}[h!]
 				\centering
@@ -1584,10 +1582,10 @@
 
 			The system shown in Figure \ref{fig:InharmonicitySystem} provides more control, allowing for slopes
 			other than multiples of 6dB per octave. As with the discussions on spectral irregularity and
-			flatness the best way to control spectral slope in a signal is through analysis and resynthesis.
-			To increase the spectral slope by $k$, each spectral component in the signal should have its
-			amplitude, $a_{n}$, multiplied by the value $10^{\frac{1}{20}(k\nu_{n} - k\nu_{1})}$. Figure
-			\ref{fig:MoveSlopes} shows the manipulation of the spectral slopes of the test signals.
+			flatness, an analysis and resynthesis approach provides finer control.  To increase the spectral
+			slope by $k$, each spectral component in the signal should have its amplitude, $a_{n}$, multiplied
+			by the value $10^{\frac{1}{20}(k\nu_{n} - k\nu_{1})}$. Figure \ref{fig:MoveSlopes} shows the
+			manipulation of the spectral slopes of the test signals.
 
 			\begin{figure}[h!]
 				\centering
@@ -1596,10 +1594,10 @@
 				\label{fig:MoveSlopes}
 			\end{figure}
 
-			Ideally each line in Figure \ref{fig:MoveSlopes} would have the same gradient as the signals'
-			spectral slopes are being increased by the same factor. They do not however as only the fist nine
-			harmonics are being individually manipulated. The differences in amplitudes of the higher order
-			harmonics between the signals account for the differences in control of the spectral slope.
+			Ideally each line in Figure \ref{fig:MoveSlopes} would have the same gradient, as the signals'
+			spectral slopes are being increased by the same factor. They do not however, as only the fist nine
+			harmonics are being individually manipulated. The differences, in amplitudes of the higher order
+			harmonics, between the signals account for the differences in control of the spectral slope.
 
 			If measuring spectral slope in dB per octave, to increase the slope by $k$dB per octave, each
 			spectral component in the signal should have its amplitude, $a_{n}$, multiplied by the value
