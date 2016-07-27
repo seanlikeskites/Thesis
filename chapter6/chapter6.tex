@@ -1380,7 +1380,7 @@
 			is affected. Negative values of $P$ will increase the irregularity, while small positive values of
 			$P$ will decrease the irregularity. The minimum possible irregularity is achieved when $P \approx
 			1$, higher values of $P$ will increase the irregularity again. Figure \ref{fig:MoveIrregularities}
-			shows how each of the spectral irregularity measures is affected by changes in the value of $P$.
+			shows how each of the spectral irregularity measures are affected by changes in the value of $P$.
 
 			\begin{figure}[h!]
 				\centering
@@ -1404,6 +1404,16 @@
 				\caption{Manipulating the Spectral Irregularities of the Test Signals.}
 				\label{fig:MoveIrregularities}
 			\end{figure}
+
+			As is most notable in Figure \ref{fig:MoveIrregularitiesJ} the value of $P$ which will give the
+			minimum flatness depends on the input signal. This is because only the first nine harmonics of each
+			signal are being manipulated. The existing irregularity in the higher order harmonics may mean that
+			adjusting the first nine harmonics to have the same level, as happens when $P = 1$, will not
+			produce the minimum irregularity.
+
+			The unbounded nature of the Krimphoff irregularity is also visible in Figure
+			\ref{fig:MoveIrregularities}. While the Jensen and Beauchamp irregularities both asymptotically
+			approach a maximum as $P$ is reduced the Krimphoff irregularity increases exponentially.
 
 			Achieving this using excitation requires an analysis and resynthesis approach, replacing the
 			existing spectral components with excited ones and chaining the amplitudes to give the desired
