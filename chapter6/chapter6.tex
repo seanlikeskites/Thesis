@@ -778,15 +778,16 @@
 			filters. The centroid can be manipulated in various manners. The nonlinear device can be used to
 			reconstruct the high frequency portion of the signal and the relative gains adjusted similarly to
 			if two filters were used.  Alternatively the properties of the nonlinear device can be altered to
-			change the upper band's centroid.  This provides more flexibility allowing the centroid to be
+			change the upper band's centroid. This provides more flexibility allowing the centroid to be
 			changed independently of some other features. For example, changing the gains of two bands will
 			change the spectral slope of the signal. If instead additional partials are introduced to the
 			upper, with amplitudes which are determined by the signals current slope, the centroid can be move
 			while the slope is unaltered.
 
-			Figure \ref{fig:MoveCentroids} shows the effect of this system on the test signals. The parameter
-			value corresponds to the gains applied to the two bands. Where the parameter value is $P$, the low
-			band is multiplied by a gain of $1 - P$ and the high band by a gain of $P$.
+			Figure \ref{fig:MoveCentroids} shows the effect of this system on the test signals. The low and
+			high pass filters used to separate the bands were set to have a cutoff frequency equal to 9.5 times
+			the fundamental of the input signal. The gains applied to the bands are parameterised as $P$, the
+			low band is multiplied by a gain of $1 - P$ and the high band by a gain of $P$.
 
 			\begin{figure}[h!]
 				\centering
@@ -795,7 +796,11 @@
 				\label{fig:MoveCentroids}
 			\end{figure}
 
-			\note{Probably discuss that graph.}
+			When $P$ is set to zero the input signal is effectively processed by only a low pass filter,
+			reducing its spectral centroid. As $P$ is increased a more energy is introduced in the higher
+			harmonics until the maximum spectral centroid is reached at $P = 1$. For each single the range of
+			values the spectral centroid can take covers approximately two octaves. The spectral structure of
+			the two bands determines how the spectral centroid changes within this range.
 
 		\subsubsection*{Manipulation of The Higher Order Spectral Moments}
 			Higher order spectral moments are more difficult to parameterise. The measures depend on the
@@ -832,7 +837,7 @@
 				\label{fig:MoveSpreads}
 			\end{figure}
 
-			\note{Describe that.}
+			\note{Discussion}
 
 			Spectral skewness can be increased by applying a spectral tilt. A tilt with a positive gradient
 			will decrease the skewness, whereas a negative gradient will increase the skewness. While this is
@@ -841,6 +846,8 @@
 			adjusted in order to achieve the desired spectral tilt. Figure \ref{fig:MoveSkewnesses} shows the
 			effect different gradients of spectral tilt on the spectral skewness of the test signals.
 
+			\note{Tilt is applied about the spectral centroid using the equations bleugh and bleugh.}
+
 			\begin{figure}[h!]
 				\centering
 				\includegraphics[width=0.6\textwidth]{chapter6/Images/MoveSkewnesses.eps}
@@ -848,7 +855,13 @@
 				\label{fig:MoveSkewnesses}
 			\end{figure}
 
-			\note{Some discussion. Why doesn't the skewness for the synthesiser change?}
+			\note
+			{
+				Some discussion. This method has a minimum value for the skewness as the centroid typically
+				lies in the high order harmonics over which we don't have the same degree of control.
+				Adding high order filters and using an nld with lots of gain could decrease the skewness
+				further.
+			}
 
 			Spectral kurtosis can be changed using the same method as for spectral spread. Increasing the
 			energy near the centroid reduces the kurtosis, while removing energy near the centroid increases
@@ -1593,9 +1606,9 @@
 			The system shown in Figure \ref{fig:InharmonicitySystem} provides more control, allowing for slopes
 			other than multiples of 6dB per octave. As with the discussions on spectral irregularity and
 			flatness, an analysis and resynthesis approach provides finer control.  To increase the spectral
-			slope by $k$, each spectral component in the signal should have its amplitude, $a_{n}$, multiplied
-			by the value $10^{\frac{1}{20}(k\nu_{n} - k\nu_{1})}$. Figure \ref{fig:MoveSlopes} shows the
-			manipulation of the spectral slopes of the test signals.
+			slope by $k$ dB per Hz, each spectral component in the signal should have its amplitude, $a_{n}$,
+			multiplied by the value $10^{\frac{k}{20}(\nu_{n} - \nu_{1})}$. Figure \ref{fig:MoveSlopes} shows
+			the manipulation of the spectral slopes of the test signals.
 
 			\begin{figure}[h!]
 				\centering
@@ -1611,7 +1624,7 @@
 
 			If measuring spectral slope in dB per octave, to increase the slope by $k$dB per octave, each
 			spectral component in the signal should have its amplitude, $a_{n}$, multiplied by the value
-			$10^{\frac{1}{20}(k\log_{2}(\nu_{n}) - k\log_{2}(\nu_{1}))}$.
+			$10^{\frac{k}{20}\log_{2} \left( \frac{\nu_{n}}{\nu_{1}} \right)}$.
 
 			If the analysis section is removed the excited spectral components can have their amplitudes set to
 			give the desired slope. This is achievable for the lower order harmonics which are generated
