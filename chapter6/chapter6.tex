@@ -839,14 +839,18 @@
 
 			\note{Discussion}
 
-			Spectral skewness can be increased by applying a spectral tilt. A tilt with a positive gradient
-			will decrease the skewness, whereas a negative gradient will increase the skewness. While this is
-			easily implemented using linear filters it can also be applied using the excitation system shown in
-			Figure \ref{fig:InharmonicitySystem}. The levels of the individually generated harmonics can be
-			adjusted in order to achieve the desired spectral tilt. Figure \ref{fig:MoveSkewnesses} shows the
-			effect different gradients of spectral tilt on the spectral skewness of the test signals.
+			Spectral skewness can be increased by applying a spectral tilt about the spectral centroid. A tilt
+			with a positive gradient will decrease the skewness, whereas a negative gradient will increase the
+			skewness. While the simplest system to achieve this would be a linear filter, an excitation based
+			approach can provide a more flexible system in terms of manipulation or preservation of other
+			features.
 
-			\note{Tilt is applied about the spectral centroid using the equations bleugh and bleugh.}
+			Using the system shown in Figure \ref{fig:InharmonicitySystem} a spectral tilt of $k$ dB per octave
+			can be applied to the first nine harmonics. This is done by multiplying each harmonics amplitude by
+			$10^{\frac{k}{20}\log_{2} \left( \frac{\nu_{n}}{\mu} \right)}$, there $\mu$ is the spectral
+			centroid of the signal. Increasing the value of $k$ increases the gradient of the tilt applied and
+			thereby lowers the signal's spectral skewness. Figure \ref{fig:MoveSkewnesses} shows the effects of
+			changing $k$ when processing the test signals.
 
 			\begin{figure}[h!]
 				\centering
@@ -855,13 +859,16 @@
 				\label{fig:MoveSkewnesses}
 			\end{figure}
 
-			\note
-			{
-				Some discussion. This method has a minimum value for the skewness as the centroid typically
-				lies in the high order harmonics over which we don't have the same degree of control.
-				Adding high order filters and using an nld with lots of gain could decrease the skewness
-				further.
-			}
+			Only controlling the amplitudes of the first nine harmonics imposes restriction of how the spectral
+			skewness can be manipulated. The great amount of control over the low end of the signal's spectrum
+			allows for skewness to be easily increased, as evidenced by Figure \ref{fig:MoveSkewnesses}.
+			Decreasing the skewness however, is more difficult. The excitation system does not provide such
+			fine control over the high end of a signal's spectrum. Using the spectral tilt method with a high
+			positive value for $k$ will greatly attenuate the low order harmonics but leave the high order
+			harmonics unprocessed. This means the output skewness will be equal to the skewness of the high
+			order harmonics of the signal. This is seen in Figure \ref{fig:MoveSkewess} where the skewness
+			values all approach some minimum value. Introducing more high frequency energy using a nonlinear
+			device, as done when controlling the spectral centroid, is a possible solution to this.
 
 			Spectral kurtosis can be changed using the same method as for spectral spread. Increasing the
 			energy near the centroid reduces the kurtosis, while removing energy near the centroid increases
