@@ -119,35 +119,309 @@
 
 	\subsection{Spectral Features}
 	\label{sec:Timbre-LowLevelFeatures-Spectral}
-		In existing timbral research is is widely reported that features of a sounds spectrum produce the largest
-		effects on timbre. Simple spectral features can be calculated as statistical measures which describe the
-		shape of the spectrum. For example the spectral centroid of a signal is calculated as the mean frequency
-		weighted by their magnitudes. Spectral centroid is often stated as being one of the most salient audio
-		features in timbre recognition \citep{freed1990auditory, lakatos2000a}. Higher order statistical moments of
-		the spectrum (standard deviation, skewness and kurtosis) can be used to further describe the distribution of
-		energy in the spectrum around the centroid.
+		In existing timbral research is is widely reported that features describing a sound's spectrum produce the
+		largest effects on timbre. To calculate these features the signal is first converted into a frequency
+		domain representation. This is most commonly done using either the Discrete Fourier Transform (DTF) or a
+		filter bank. The calculation of many spectral features is done directly from these spectral representations,
+		for others peak finding is applied to the spectrum in order to determine the spectral partials.
 
-		More detailed metrics in the shape of a spectrum can be calculated in the form of Mel Frequency Cepstral
-		Coefficients (MFCCs). These measurements were originally used in speech recognition systems
-		\citep{davis1980comparison}. More recently they have been applied to the analysis of timbre
-		\citep{depoli1997sonological}. 
+		The spectral partials of a signal are its distinct frequency components. These are analogous to the
+		vibrational modes of a physical body. Determining the spectral partials of a signal allows the tonal content
+		of a signal to be isolated from the noise content. The noise energy in a signal describes any energy which
+		is does not contribute to a spectral partial. The noisiness of a signal can be measured as the ratio of the
+		noise energy to the total energy in the signal \citep{serra1998sound}.
 
-		Other spectral metrics consider the harmonic structure of a signal. In order to calculate these features the
-		partials (prominent frequency components) of the signal must me found. The deviation of these partials from
-		perfect harmonic frequencies measures the inharmonicity of the signal. \citet{fletcher1962quality} state
-		that inharmonicity of some partials is necessary for the recognition of the timbre of a piano. The noise
-		energy in a signal describes any energy which is does not contribute to a partial. The noisiness is then
-		measured as the ratio of the noise energy to the total energy in the signal \citep{serra1998sound}.
+		Further analysis can be performed by finding the harmonic partials of the signal. This requires a
+		calculation of the fundamental frequency ($f_{0}$) of the signal. $f_{0}$ is a property of periodic signals
+		and is equal to the inverse of the signal's period (i.e. its lowest frequency component). Harmonic partials
+		of a signal are the spectral partials with frequencies which are an integer multiple of the $f_{0}$. In
+		detecting the harmonic partials it is usual to allow for a slight deviation from perfect harmonic structure,
+		as described by \citet{peeters2011the}.
 
-		Further analysis can be performed by finding the harmonic partials of the signal. In detecting the harmonic
-		partials it is usual to allow for a slight deviation from perfect harmonic structure, as described by
-		\citet{peeters2011the}. Several metrics have been suggested which constitute the ratio of energy between two
-		different sets of harmonic partials. The tristimulus metrics proposed by \citet{pollard1982a} split the
-		harmonic series in to three sections, the fundamental frequency, the second through fourth harmonics and,
-		the rest of the higher order harmonics. Ratios between each of these sections and the total energy in all
-		the harmonics are calculated. Another commonly used metric is the ratio between energy in the odd and even
-		order harmonic partials. This was found to be a salient feature in the judgement of timbre dissimilarity by
-		\citet{hall2010importance}. 
+		To aid in discussion throughout this work it is useful to define the concept of a spectral component. This
+		is a general concept used to describe individual portions of a signal's spectrum. A signal is composed of
+		$N$ spectral components which are each describe by an amplitude and a frequency. The amplitude and frequency
+		of the $n$\super{th} spectral component are denoted $a_{n}$ and $\nu_{n}$ respectively. Spectral components
+		can describe DFT bins, $a_{n}$ being the bin's magnitude and $\nu_{n}$ its frequency; filter bank bands,
+		$a_{n}$ representing the total energy in the band and $\nu_{n}$ the band's center frequency; or spectral
+		partials, $a_{n}$ and $\nu_{n}$ giving the amplitude and frequency of the partial. Several of the features
+		discussed in this section can be calculated from any type of spectral components so this uniform notation
+		proves very useful. Where the calculation of a feature requires a particular spectral representation this
+		will be noted.
+
+		\subsubsection*{Spectral Moments}
+
+			The spectral moments are the statistical moments of a signals spectrum. They describe how the energy
+			is distributed in a spectrum. The first four spectral moments are the centroid, spread, skewness and
+			kurtosis.
+
+			The spectral centroid of a signal, $\mu$, is the first raw moment (mean) of the spectrum. It is
+			calculated using Equation \ref{eq:SpectralCentroid}. Spectral centroid is often stated as being one
+			of the most salient audio features in timbre recognition \citep{freed1990auditory, lakatos2000a}. 
+
+			\begin{equation}
+				\mu = \frac{\sum_{n = 1}^{N} \nu_{n}a_{n}}
+					   {\sum_{n = 1}^{N} a_{n}}
+				\label{eq:SpectralCentroid}
+			\end{equation}
+
+			The spectral spread of a signal, $\sigma^{2}$, is the second central moment (variance) of the
+			spectrum. It is calculated using Equation \ref{eq:SpectralSpread}.
+
+			\begin{equation}
+				\sigma^{2} = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{2}}
+						  {\sum_{n = 1}^{N} a_{n}}
+				\label{eq:SpectralSpread}
+			\end{equation}
+
+			Together, the spectral centroid and spread give a description of where the energy in a spectrum is
+			centered and how far from this center the energy is spread.
+
+			The spectral skewness of a signal, $\gamma$, is the third standardised moment of the spectrum. It is
+			calculated using Equation \ref{eq:SpectralSkewness}.
+
+			\begin{equation}
+				\gamma = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{3}}
+					      {\sigma^{3}\sum_{n = 1}^{N} a_{n}}
+				\label{eq:SpectralSkewness}
+			\end{equation}
+
+			The spectral skewness measures how symmetrical a spectrum is about its centroid. A negative skewness
+			describes a spectrum with more energy above its centroid while a positive skewness describes the
+			opposite. A skewness of zero describes a spectrum with equal energy either side of its centroid.
+
+			The spectral kurtosis of a signal, $\kappa$, is the fourth standardised moment of the spectrum. It
+			is calculated using Equation \ref{eq:SpectralKurtosis}.
+
+			\begin{equation}
+				\kappa = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{4}}
+					      {\sigma^{4}\sum_{n = 1}^{N} a_{n}}
+				\label{eq:SpectralKurtosis}
+			\end{equation}
+
+			The kurtosis measures the length of a distributions tails. A low kurtosis describes a spectrum where
+			the energy in evenly distributed in a band around the centroid. A high kurtosis describes a spectrum
+			in which small amounts of energy lies at frequencies far away from the central band.
+
+			The kurtosis of a normal distribution is 3. This gives rise to a different measure, the excess
+			kurtosis, which is defined as $\kappa - 3$. The excess kurtosis is often referred to as the
+			kurtosis. This gives rise to some obscurity when reading literature which discusses the kurtosis
+			without providing a definition.
+
+		\subsubsection*{Spectral Irregularity}
+			Spectral irregularity measures the smoothness of a spectrum. Various different methods of measuring
+			this are often cited in the literature. The first being that proposed by
+			\citet{krimphoff1994caracterisation}, shown in Equation \ref{eq:KrimphoffIrregularity}.
+
+			\begin{equation}
+				\textrm{KI} = \log \left( 20 \sum_{n = 2}^{N - 1}
+							  \abs{\log(a_{n}) - \frac{\log(a_{n-1}a_{n}a_{n+1})}{3}}
+						   \right)
+				\label{eq:KrimphoffIrregularity}
+			\end{equation}
+
+			This is often implemented using the raw amplitudes of the partials rather than their dB amplitudes
+			yielding equation \ref{eq:LibXtractKrimphoffIrregularity}. This is how the Krimphoff irregularity is
+			implemented in LibXtract \citep{bullock2007libxtract} (a software library for audio analysis used
+			throughout this work).
+
+			\begin{equation}
+				\textrm{KI} = \sum_{n = 2}^{N - 1}
+						  \abs{a_{n} - \frac{a_{n-1} + a_{n} + a_{n+1}}{3}}
+				\label{eq:LibXtractKrimphoffIrregularity}
+			\end{equation}
+
+			A second method is proposed by \citet{jensen1999timbre}, shown in Equation
+			\ref{eq:JensenIrregularity}.
+
+			\begin{equation}
+				\textrm{JI} = \frac{\sum_{n = 1}^{N} (a_{n} - a_{n+1})^{2}}
+						   {\sum_{n = 1}^{N} a_{n}^{2}},
+					      \quad a_{N+1} = 0
+				\label{eq:JensenIrregularity}
+			\end{equation}
+
+			A third method is given by \citet{beauchamp2007analysis}, shown in Equation
+			\ref{eq:BeauchampIrregularity}.
+
+			\[ \bar{a}_{n} = \frac{a_{n-1} + a_{n} + a_{n+1}}{3} \]
+			\begin{equation}
+				\textrm{BI} = \frac{\sum_{n = 2}^{N - 1} \bar{a}_{n} \abs{a_{n} - \bar{a}_{n}}}
+						   {\sum_{n = 2}^{N - 1} \bar{a}_{n} \sqrt{\sum_{n = 1}^{N} a_{n}^{2}}}
+				\label{eq:BeauchampIrregularity}
+			\end{equation}
+
+			Equation \ref{eq:JensenIrregularity} and \ref{eq:BeauchampIrregularity} have an advantage over
+			Equations \ref{eq:KrimphoffIrregularity} and \ref{eq:LibXtractKrimphoffIrregularity} in that they
+			produce normalised values. Equation \ref{eq:JensenIrregularity} produces values between zero and two
+			while Equation \ref{eq:BeauchampIrregularity} produces values between zero and one. This allows
+			measures of irregularity of two different signals to be compared more easily.
+
+		\subsubsection*{Spectral Flatness}
+			Spectral flatness measures how uniformly distributed the energy is in the spectrum.
+			\citet{johnston1988transform} measures the spectral flatness as the ratio of the geometric and
+			arithmetic means of the power spectrum of a signal (Equation \ref{eq:Flatness}).
+
+			\begin{equation}
+				\textrm{SF} = \frac{N\sqrt[N]{\prod_{n = 1}^{N} a_{n}^{2}}}
+						   {\sum_{n = 1}^{N} a_{n}^{2}}
+				\label{eq:Flatness}
+			\end{equation}
+
+			The arithmetic and geometric means of any list of $N$ non-negative numbers, $L$, satisfy the
+			inequality in Equation \ref{eq:MeanInequality}.
+
+			\begin{equation}
+				\sqrt[N]{\prod_{n = 1}^{N} L_{n}} \leq \frac{1}{N} \sum_{n = 1}^{N} L_{n}
+				\label{eq:MeanInequality}
+			\end{equation}
+
+			Where $L_{n}$ is the $n$\super{th} element of list $L$. The two means are only equal if all elements
+			of $L$ have the same value.
+
+			Due to this the spectral flatness of a signal takes a value between zero and one. Low values
+			describe signals whose energy lies in narrow bands of the spectrum (tones). High values describe
+			signals whose energy is more spread out, a value of one describing a signal where all bins of the
+			power spectrum have the same amplitude (white noise). This means the spectral flatness also gives a
+			description of the tonality / noisiness of a signal.
+
+			The spectral flatness is traditionally measured using DFT bins as spectral components. This way any
+			signal which has zero energy in any DFT bin will produce a spectral flatness of zero. Musical
+			signals which are composed of a set of frequency partials may have areas of the spectrum with zero
+			energy. Several different sounds with radically different spectral envelopes can then all exhibit a
+			spectral flatness of zero. This is particularly problematic for digitally synthesised signals as
+			they do not have the inherent noise present in recorded sounds. The method used by
+			\citet{peeters2004a} mitigates this by using filter bank bands as the spectral components. It is
+			less likely that there will be zero energy in a wider spectral band than a single DFT bin. 
+			
+			Another method to avoid spectral flatnesses of zero is to use the signals partials as spectral
+			components.  This no longer measures the tonality / noisiness of a signal but rather the flatness of
+			its spectral envelope.
+
+		\subsubsection*{Spectral Slope}
+			The spectral slope measures the gradient of the spectrum. It is calculated by first order liner
+			regression of the spectrum. For a signal with $N$ spectral components the spectral slope can be
+			calculated with Equation \ref{eq:SpectralSlope}.
+
+			\[ A = \sum_{n = 1}^{N} 20\log (a_{n}) \quad B = \sum_{n = 1}^{N} 20\nu_{n}\log (a_{n}) \]
+			\[ F = \sum_{n = 1}^{N} \nu_{n} \quad G = \sum_{n = 1}^{N} \nu_{n}^{2} \]
+			\begin{equation}
+				S = \frac{NB - FA}
+					 {NG - F^{2}}
+				\label{eq:SpectralSlope}
+			\end{equation}
+
+			Negative values of spectral slope describe a spectrum where the majority of the energy is in the low
+			end of the spectrum. Positive values describe signals with more energy in the high end of the
+			spectrum. A value of zero describes either a signal where the energy is evenly distributed
+			throughout the spectrum or one in which the majority of the energy is in the middle of the spectrum.
+
+			Traditional measures of spectral slope take a linear regression of the DFT bins. For musical signals
+			which are composed of partials it may be more beneficial to measure the slope of the partial's
+			amplitudes rather than of the whole spectrum. It is also common to measure how the amplitudes of
+			partials decrease with frequency in dB per octave. Equation \ref{eq:SpectralSlope} can be altered to
+			produce values in this unit by using the $\log_{2}$ of the frequency.
+
+		\subsubsection*{Tristimulus}
+			The tristimulus metrics are a set of three metrics proposed by \citet{pollard1982a}. They are
+			calculated using the harmonic partials of a signal by use of Equations \ref{eq:Tristimulus1},
+			\ref{eq:Tristimulus2} and \ref{eq:Tristimulus3}.
+			
+			\begin{equation}
+				T_{1} = \frac{h_{1}}{\sum_{n = 1}^{N} h_{n}}
+				\label{eq:Tristimulus1}
+			\end{equation}
+
+			\begin{equation}
+				T_{2} = \frac{h_{2} + h_{3} + h_{4}}{\sum_{n = 1}^{N} h_{n}}
+				\label{eq:Tristimulus2}
+			\end{equation}
+
+			\begin{equation}
+				T_{3} = \frac{\sum_{n = 5}^{N} h_{n}}{\sum_{n = 1}^{N} h_{n}}
+				\label{eq:Tristimulus3}
+			\end{equation}
+
+			Where $h_{n}$ is the amplitude of the $n$\super{th} harmonic in the signal and $N$ the total number
+			of harmonics.
+
+			Each tristimulus metric measures the amplitude ratio of a specific set of harmonics and all the
+			harmonics. In each of these equations the denominator is always greater than or equal to the
+			numerator. For this reason the tristimulus takes values from zero to one. Zero meaning there is no
+			energy in that set of harmonics, one meaning the signal is entirely composed of those harmonics.
+
+		\subsubsection*{Odd to Even Harmonic Ratio}
+			The odd to even harmonic ratio measures the ratio of energy between odd and even order harmonics in
+			a signal. It was found to be a salient feature in timbral recognition by \citet{hall2010importance}.
+			It is calculated using Equation \ref{eq:HarmonicParityRatio}.
+			
+			\begin{equation}
+				R_{\textrm{OE}} = \frac{\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}
+					      {\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
+				\label{eq:HarmonicParityRatio}
+			\end{equation}
+
+			It describes how much of the signals energy is made up of odd or even order harmonics. This allows
+			for distinction between signal which consist only of odd harmonics or of even harmonics. The ration
+			can easily be altered by applying gain to the odd harmonics. The required gain factor, $m$, is
+			calculated using Equation \ref{eq:HarmonicParityRatioManipulation}.
+
+			\begin{equation}
+				m = \sqrt{\frac{R_{\textrm{OE}}\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
+					       {\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}},
+					       \quad R_{\textrm{OE}} \geq 0;
+			       \label{eq:HarmonicParityRatioManipulation}
+			\end{equation}
+
+			Equation \ref{eq:HarmonicParityRatio} produces an asymmetric scale which may be difficult to
+			interpret.  Signals with most of their energy at even harmonics produce values between zero and one.
+			Signals with more energy at the odd harmonics can produce any value greater then one. Another
+			problem arises for signals with no energy at even harmonics where a division by zero will occur.
+
+			A more robust measure is to have separate measures for the proportion of odd harmonics in a signal
+			and the proportion of even harmonics in a signal. \citet{lukasik2005towards} describes two metrics
+			which measure the oddness, $O$, and the evenness, $E$, of a signal. These are given in Equations
+			\ref{eq:Oddness} and \ref{eq:Evenness}.
+
+			\begin{equation}
+				O = \sqrt{\frac{\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}
+					       {\sum_{n = 1}^{N} h_{n}^{2}}}
+				\label{eq:Oddness}
+			\end{equation}
+
+			\begin{equation}
+				E = \sqrt{\frac{\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
+					       {\sum_{n = 1}^{N} h_{n}^{2}}}
+				\label{eq:Evenness}
+			\end{equation}
+
+			These both produce values in the range zero to one and satisfy the statement $O + E = 1$. 
+
+		\subsubsection*{Inharmonicity}
+			Inharmonicity is a measure of how much the frequencies of a signal's partials deviate from harmonic
+			frequencies. As such it must be calculated from the amplitudes and frequencies of a signals spectral
+			partials. \citet{fletcher1962quality} state that inharmonicity of some partials is necessary for the
+			recognition of the timbre of a piano. The inharmonicity of a signal is measured using Equation
+			\ref{eq:Inharmonicity}.
+			
+			\begin{equation}
+				I = \frac{2\sum_{n = 1}^{N}a_{n}^{2}
+					   \abs{\nu_{n} - f_{0}\floor{\frac{\nu_{n}}{f_{0}} + \frac{1}{2}}}}
+					   {f_{0}\sum_{n = 1}^{N} a_{n}^{2}}
+				\label{eq:Inharmonicity}
+			\end{equation}
+
+			This produces values between zero and one. Zero describing a signal in which all partials are
+			harmonics of the fundamental and one describing a signal where all partials have frequencies lying
+			$\frac{f_{0}}{2}$Hz from harmonic frequencies.
+
+		\note
+		{
+			More detailed metrics in the shape of a spectrum can be calculated in the form of Mel Frequency
+			Cepstral Coefficients (MFCCs). These measurements were originally used in speech recognition systems
+			\citep{davis1980comparison}. More recently they have been applied to the analysis of timbre
+			\citep{depoli1997sonological}. 
+		}
 
 		\note
 		{
