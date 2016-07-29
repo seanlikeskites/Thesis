@@ -149,6 +149,12 @@
 		proves very useful. Where the calculation of a feature requires a particular spectral representation this
 		will be noted.
 
+		Some features are calculated using the energy at harmonic frequencies within a signal. This is different to
+		using the harmonic partials as the energy at harmonics which are not considered partials should still be
+		included. The equations for calculating these features use a slightly different notation. Features
+		are calculated from the amplitudes of the first $N$ harmonics in a signal, denoted $h_{n}$. No additional
+		notation is required for the frequency of the harmonic as it is implicitly equal to $nf_{0}$Hz.
+
 		\subsubsection*{Spectral Moments}
 
 			The spectral moments are the statistical moments of a signals spectrum. They describe how the energy
@@ -341,9 +347,6 @@
 				T_{3} = \frac{\sum_{n = 5}^{N} h_{n}}{\sum_{n = 1}^{N} h_{n}}
 				\label{eq:Tristimulus3}
 			\end{equation}
-
-			Where $h_{n}$ is the amplitude of the $n$\super{th} harmonic in the signal and $N$ the total number
-			of harmonics.
 
 			Each tristimulus metric measures the amplitude ratio of a specific set of harmonics and all the
 			harmonics. In each of these equations the denominator is always greater than or equal to the
