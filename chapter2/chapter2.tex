@@ -72,6 +72,12 @@
 	with time (temporal features), features which describe the frequency content of a signal (spectral features) and
 	features which describe how the frequency content of a signal evolves with time (spectro-temporal features). 
 
+	\note
+	{
+		Should I provide full equations for every feature which the SAFE plug-ins extract? Seems like some might be
+		wasted space seeing as they are never discussed.
+	}
+
 	\subsection{Temporal Features}
 	\label{sec:Timbre-LowLevelFeatures-Temporal}
 		Simple temporal features involve taking statistical measurements, such as mean and variance, of the audio
@@ -414,8 +420,8 @@
 				\label{eq:Inharmonicity}
 			\end{equation}
 
-			This produces values between zero and one. Zero describing a signal in which all partials are
-			harmonics of the fundamental and one describing a signal where all partials have frequencies lying
+			This produces values between zero and one. Zero describing a signal in which all partials have
+			perfectly harmonic frequencies and one describing a signal where all partials have frequencies lying
 			$\frac{f_{0}}{2}$Hz from harmonic frequencies.
 
 		\note
