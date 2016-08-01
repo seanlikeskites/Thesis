@@ -47,29 +47,29 @@
 
 				\coordinate (Through) at (1, 0);
 				\draw (InMid) -- (Through);
-				\coordinate (ThroughOut) at (9.5, 0);
+				\coordinate (ThroughOut) at (9, 0);
 				\draw (Through) -- (ThroughOut);
 
 				\coordinate (Side) at (1, 2);
 				\draw (InMid) -- (Side);
 
-				\node (F0) [draw] at (3, 2) {$f_{0}$ Tracker};
-				\node (Filter) [draw] at (3, 1) {LPF};
+				\node (F0) [draw] at (2.5, 2) {$f_{0}$ Tracker};
+				\node (Filter) [draw] at (2.5, 1) {LPF};
 				\draw (InMid) -- (Filter);
 				\draw (F0) -- (Filter);
 
-				\node (Exciter) [draw] at (5.5, 1) {Harmonic Exciter};
+				\node (Exciter) [draw] at (5, 1) {Harmonic Exciter};
 				\draw (Filter) -- (Exciter);
 				\draw (Side) -- (F0);
 
-				\node (Add) [operator] at (9.5, 1) {+};
+				\node (Add) [operator] at (9, 1) {+};
 				\draw (ThroughOut) -- (Add);
 
-				\node (Gain) [gain] at (8, 1) {Gain};
+				\node (Gain) [gain] at (7.5, 1) {Gain};
 				\draw (Exciter) -- (Gain);
 				\draw (Gain) -- (Add);
 
-				\node (Out) at (10.5, 1) {$y[n]$};
+				\node (Out) at (10.25, 1) {$y[n]$};
 				\draw (Add) -- (Out);
 			\end{tikzpicture}
 			\caption{$f_{0}$ frequency tracking in a harmonic excitation system.}
@@ -98,12 +98,12 @@
 		complexity. Widely used frequency domain techniques include the Harmonic Product Spectrum (HPS) and maximum
 		likelihood methods.
 
-		For real time harmonic excitation the accuracy of the $f_{0}$ tracking algorithm is not as important as
-		it is in other fields such as automatic music transcription. The aim of the system in Figure
-		\ref{fig:F0Tracking} is to reduce the level of higher harmonics compared to the $f_{0}$. Using a low
-		pass filter with a cutoff frequency close to the $f_{0}$ will achieve this. The lag between the audio
-		and the estimate of the $f_{0}$ is of more concern. The system needs to respond quickly to
-		changes in $f_{0}$ in order to better isolate it for processing.
+		For real time harmonic excitation, the accuracy of the $f_{0}$ tracking algorithm is not as important as it
+		is in other fields, such as automatic music transcription. The aim of the system in Figure
+		\ref{fig:F0Tracking} is to reduce the level of higher harmonics compared to the $f_{0}$. Using a low pass
+		filter with a cutoff frequency close to the $f_{0}$ will achieve this. The lag between the audio and the
+		estimate of the $f_{0}$ is of greater concern. The system needs to respond quickly to changes in $f_{0}$ in
+		order to better isolate it for processing.
 
 		A problem is posed by signals with little energy at their $f_{0}$, such as those produced in the lower
 		register of a Double Bass \citep{askenfelt2010double}. A $f_{0}$ tracking algorithm will still return the
@@ -111,8 +111,8 @@
 		to be of any use for harmonic excitation. A frequency domain approach to $f_{0}$ tracking may be more
 		robust in this situation as it is easier to check whether there is sufficient energy at the detected
 		$f_{0}$. If there is not, the first harmonic which has sufficient magnitude can be isolated and used as the
-		input to the exciter. If this action is taken only the spectral replication and spectral shifting methods
-		will allow for the excitation of every harmonic as the SSBA and IAP methods only allow for integer
+		input to the exciter. If this action is taken, only the spectral replication and spectral shifting methods
+		will allow for the excitation of every harmonic. The SSBA and IAP methods only allow for integer
 		multiplications of the input frequency.
 
 		The system shown in Figure \ref{fig:F0Tracking} can provide differing levels of flexibility depending on
@@ -122,25 +122,53 @@
 
 	\subsection{Individual Harmonic Generation}
 	\label{sec:FeatureControl-Systems-Individuals}
-		Control over which harmonics are excited in a signal can be achieved by exciting individual harmonics. The
-		principle behind this is to isolate the $f_{0}$ and then shift its frequency to that of the desired
-		harmonic. This can be achieved using the SSBA, IAP, Spectral Replication and Spectral Stretching methods.
+		Control over which harmonics are excited in a signal can be achieved by generating individual harmonics.
+		The principle behind this is to isolate the $f_{0}$ and then shift its frequency to that of the desired
+		harmonic, as done in the system shown in Figure \ref{fig:HarmonicGenerationSystem}.
+
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}
+				\node (In) at (0, 1) {$x[n]$};
+				\coordinate (InMid) at (1, 1);
+				\draw (In) -- (InMid);
+
+				\coordinate (Side) at (1, 2);
+				\draw (InMid) -- (Side);
+
+				\node (F0) [draw] at (2.5, 2) {$f_{0}$ Tracker};
+				\node (Filter) [draw] at (2.5, 1) {LPF};
+				\draw (InMid) -- (Filter);
+				\draw (F0) -- (Filter);
+
+				\node (Exciter) [draw] at (5, 1) {Frequency Shifter};
+				\draw (Filter) -- (Exciter);
+				\draw (Side) -- (F0);
+
+				\node (Out) at (7.25, 1) {$y[n]$};
+				\draw (Exciter) -- (Out);
+			\end{tikzpicture}
+			\caption{Generating individual harmonics for a signal.}
+			\label{fig:HarmonicGenerationSystem}
+		\end{figure}
+		
+		This can be achieved using the SSBA, IAP, Spectral Replication and Spectral Stretching methods.
 		The output spectrum can be shaped as desired by generating several different harmonics in this manner and
 		summing them together.
 		
 		\citet{bregman1994auditory} suggests that when presented with an auditory scene the human hearing system
 		separates out sources by grouping like harmonics together. Whether harmonics are deemed to be similar
 		depends on their frequency and amplitude envelope. When applying harmonic excitation it is necessary to
-		ensure that the newly introduced harmonic content will be judged as similar to the existing content. If not
-		the excited harmonics may be perceived as a new sound source rather than contributing towards changing the
-		timbre of a sound. Any system which generates new harmonic content and then sums it back into the original
-		signal is at risk of this occurring. When generating multiple harmonics individually and summing them all
-		together this risk is increased.
+		ensure that the newly introduced harmonic content will be judged as similar to the existing content. If
+		not, the excited harmonics may be perceived as a new sound source rather than contributing towards changing
+		the timbre of a sound. Any system which generates new harmonic content and then sums it back into the
+		original signal is at risk of this occurring. When generating multiple harmonics individually and summing
+		them all together this risk is increased.
 
 	\subsection{Spectral Shaping}
 	\label{sec:FeatureControl-Systems-SpectralShaping}
 		While generating individual harmonics allows for full control over the output spectrum it is very
-		inefficient when a large number of new harmonics need to be introduced. For this purpose static
+		inefficient when a large number of new harmonics need to be introduced. For this purpose, static
 		nonlinearities prove useful. The characteristic curve of the nonlinearity can be designed to produce a set
 		of harmonics with the desired qualities. The parity of the characteristic curve can be used to control
 		whether odd or even harmonics are generated. The `smoothness' of the curve can also be adjusted to control
@@ -150,17 +178,17 @@
 		A spectral shaping system can be constructed in which a static nonlinearity and filter are used to excite a
 		certain set of harmonics and finer control is provided using the individual harmonic generation techniques
 		discussed in Section \ref{sec:FeatureControl-Systems-Individuals}. This allows the majority of the
-		harmonics to be excited in an efficient manner only using more complex processing where it is needed.
+		harmonics to be excited in an efficient manner, only using more complex processing where it is needed.
 
 		\citet{howard2009acoustics} discusses how low order harmonics sit in separate critical bands whereas high
 		order harmonics are within one critical bandwidth of one another. This means that lower order harmonics are
 		resolved separately by the human hearing system while the high order harmonics are perceived as fused
 		sounds. As the order of harmonics increases their individual amplitudes have less effect on the perceived
-		timbre of the sound. For this reason a harmonic excitation system need only provide control over the
+		timbre of the sound. For this reason, a harmonic excitation system need only provide control over the
 		individual amplitudes of low order harmonics. 
 
-		Using Equation \ref{eq:ERB} the minimum order for which harmonics lie within one critical bandwidth of one
-		another can be calculated. For a signal with a given $f_{0}$ this order, $n$, can be calculated using the
+		Using Equation \ref{eq:ERB}, the minimum order for which harmonics lie within one critical bandwidth of one
+		another can be calculated. For a signal with a given $f_{0}$, this order, $n$, can be calculated using the
 		inequality in Equation \ref{eq:MinimumFusedHarmonic}.
 
 		\[ f_{0} < 24.7 \left( 4.37n \frac{f_{0}}{1000} + 1 \right) \]
@@ -177,9 +205,12 @@
 			\label{eq:IndividualHarmonicLimit}
 		\end{equation}
 
-		This leads to the system shown in Figure \ref{fig:SpectralShapingSystem}. This is an expansion of the
-		system shown in Figure \ref{fig:F0Tracking}, providing finer control over the amplitudes of the low order
-		harmonics. The $f_{0}$ is isolated in the same manner but several exciters are used in parallel.
+		For any values of $f_{0}$ a maximum of nine harmonics will lie at least one critical bandwidth away from
+		all other harmonics. The individual amplitudes of the tenth, and higher order, harmonics has less effect on
+		the timbre of a signal. This leads to the system shown in Figure \ref{fig:SpectralShapingSystem}. This is
+		an expansion of the system shown in Figure \ref{fig:F0Tracking}, providing finer control over the
+		amplitudes of the first nine harmonics. The $f_{0}$ is isolated in the same manner but several exciters are
+		used in parallel.
 
 		\begin{figure}[h!]
 			\centering
@@ -273,7 +304,7 @@
 				\draw (ThroughGain) -- (ThroughOut);
 				\draw (ThroughOut) -- (Add);
 
-				\node (Out) at (11.5, -1.75) {$y[n]$};
+				\node (Out) at (11.75, -1.75) {$y[n]$};
 				\draw (Add) -- (Out);
 			\end{tikzpicture}
 			\caption{An excitation system for controlling spectral structure.}
@@ -410,7 +441,7 @@
 				\draw (ThroughGain) -- (ThroughOut);
 				\draw (ThroughOut) -- (Add);
 
-				\node (Out) at (11.5, -1.75) {$y[n]$};
+				\node (Out) at (11.75, -1.75) {$y[n]$};
 				\draw (Add) -- (Out);
 			\end{tikzpicture}
 			\caption{The system from Figure \ref{fig:SpectralShapingSystem} extended to allow for filtering of
@@ -571,7 +602,7 @@
 				\draw (ThroughGain) -- (ThroughOut);
 				\draw (ThroughOut) -- (Add);
 
-				\node (Out) at (12.5, -1.75) {$y[n]$};
+				\node (Out) at (12.75, -1.75) {$y[n]$};
 				\draw (Add) -- (Out);
 			\end{tikzpicture}
 			\caption{An extension of the system in Figure \ref{fig:SuperpositionSystem} to allow for control
@@ -676,36 +707,36 @@
 
 					\coordinate (Through) at (1, 0);
 					\draw (InMid) -- (Through);
-					\node (ThroughFilter) [draw] at (5.5, 0) {LPF};
+					\node (ThroughFilter) [draw] at (5, 0) {LPF};
 					\draw (Through) -- (ThroughFilter);
-					\node (ThroughGain) [gain] at (9.25, 0) {};
+					\node (ThroughGain) [gain] at (8.75, 0) {};
 					\draw (ThroughFilter) -- (ThroughGain);
-					\coordinate (ThroughOut) at (10.5, 0);
+					\coordinate (ThroughOut) at (10, 0);
 					\draw (ThroughGain) -- (ThroughOut);
 
 					\coordinate (Side) at (1, 2);
 					\draw (InMid) -- (Side);
 
-					\node (F0) [draw] at (3, 2) {$f_{0}$ Tracker};
-					\node (Filter) [draw] at (3, 1) {LPF};
+					\node (F0) [draw] at (2.5, 2) {$f_{0}$ Tracker};
+					\node (Filter) [draw] at (2.5, 1) {LPF};
 					\draw (InMid) -- (Filter);
 					\draw (F0) -- (Filter);
 
-					\node (Exciter) [draw] at (5.5, 1) {Nonlinear Device};
+					\node (Exciter) [draw] at (5, 1) {Nonlinear Device};
 					\draw (Filter) -- (Exciter);
 					\draw (Side) -- (F0);
 
-					\node (NldFilter) [draw] at (8, 1) {HPF};
+					\node (NldFilter) [draw] at (7.5, 1) {HPF};
 					\draw (Exciter) -- (NldFilter);
 
-					\node (Add) [operator] at (10.5, 1) {+};
+					\node (Add) [operator] at (10, 1) {+};
 					\draw (ThroughOut) -- (Add);
 
-					\node (Gain) [gain] at (9.25, 1) {};
+					\node (Gain) [gain] at (8.75, 1) {};
 					\draw (NldFilter) -- (Gain);
 					\draw (Gain) -- (Add);
 
-					\node (Out) at (11.5, 1) {$y[n]$};
+					\node (Out) at (11.2, 1) {$y[n]$};
 					\draw (Add) -- (Out);
 				\end{tikzpicture}
 				\caption{A system for controlling the spectral centroid.}
@@ -891,7 +922,7 @@
 			\ref{fig:MoveIrregularities}. While the Jensen and Beauchamp irregularities both asymptotically
 			approach a maximum as $P$ is reduced the Krimphoff irregularity increases exponentially.
 
-			Achieving this using excitation requires an analysis and resynthesis approach, replacing the
+			Achieving this using excitation requires an analysis / resynthesis approach, replacing the
 			existing spectral components with excited ones and chaining the amplitudes to give the desired
 			irregularity.  If the analysis stage is removed the complexity of the system can be greatly
 			reduced. The amplitudes of the newly excited spectral components can be predetermined and the
@@ -973,7 +1004,7 @@
 
 			Equation \ref{eq:FlatnessManipulation} provides control over the spectral flatness in a signal
 			where the amplitudes of the spectral components are known. As with control of spectral irregularity
-			an analysis / synthesis technique could be utilised to implement this using harmonic excitation.
+			an analysis / resynthesis technique could be utilised to implement this using harmonic excitation.
 			Again it is desirable to remove the analysis step in order to reduce the complexity of the system.
 			This can be done by replacing a band of spectral components with excited ones.
 
@@ -1003,7 +1034,7 @@
 
 			The system shown in Figure \ref{fig:InharmonicitySystem} provides more control, allowing for slopes
 			other than multiples of 6dB per octave. As with the discussions on spectral irregularity and
-			flatness, an analysis and resynthesis approach provides finer control.  To increase the spectral
+			flatness, an analysis / resynthesis approach provides finer control.  To increase the spectral
 			slope by $k$ dB per Hz, each spectral component in the signal should have its amplitude, $a_{n}$,
 			multiplied by the value $10^{\frac{k}{20}(\nu_{n} - \nu_{1})}$. Figure \ref{fig:MoveSlopes} shows
 			the manipulation of the spectral slopes of the test signals.
@@ -1219,7 +1250,7 @@
 					\draw (ThroughGain) -- (ThroughOut);
 					\draw (ThroughOut) -- (Add);
 
-					\node (Out) at (12.5, -2.25) {$y[n]$};
+					\node (Out) at (12.75, -2.25) {$y[n]$};
 					\draw (Add) -- (Out);
 				\end{tikzpicture}
 				\caption{A system to control the levels of odd and even order harmonics individually.}
