@@ -13,6 +13,15 @@ rownames(eqProc) <- safeStem(rownames(eqProc))
 rownames(eqDiff) <- safeStem(rownames(eqDiff))
 
 ########################################################
+# thesis feature names
+########################################################
+source("featureNames.r")
+colnames(distProc) <- tidyFeatureNames(colnames(distProc))
+colnames(distDiff) <- tidyFeatureNames(colnames(distDiff))
+colnames(eqProc) <- tidyFeatureNames(colnames(eqProc))
+colnames(eqDiff) <- tidyFeatureNames(colnames(eqDiff))
+
+########################################################
 # find centroids of terms
 ########################################################
 termCentroids <- function(data)
@@ -179,23 +188,22 @@ eqDiffConf <- apply(termConfidence(eqDiffPCA), 1, max)
 ########################################################
 # biplots
 ########################################################
-distProcPlotFeatures <- c("Irregularity_K", "Spectral_Roll_Off", "MFCC_1", "MFCC_4")
+distProcPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "MFCC 1", "MFCC 4")
 postscript("DistortionProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(distProcPCA, distProcPlotFeatures, distProcConf)
+a <- plotCentroidBiplot(distProcPCA, distProcPlotFeatures, distProcConf, c(0.4, 0.15, 0.15, 0.15))
 dev.off()
 
-distDiffPlotFeatures <- c("Irregularity_K", "Peak_Spectral_Skewness", "Spectral_Roll_Off")
+distDiffPlotFeatures <- c("Krimphoff Irregularity", "Peak Spectral Skewness", "Spectral Roll Off")
 postscript("DistortionDifferenceCentroidsPCA.eps")
 a <- plotCentroidBiplot(distDiffPCA, distDiffPlotFeatures, distDiffConf, c(0.45, 0.15, 0.15, 0.15))
 dev.off()
 
-eqProcPlotFeatures <- c("Irregularity_K", "MFCC_10", "Harmonic_Spectral_Kurtosis", "Spectral_Flatness")
+eqProcPlotFeatures <- c("Krimphoff Irregularity", "MFCC 10", "Harmonic Spectral Kurtosis", "Spectral Flatness")
 postscript("EqualiserProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqProcPCA, eqProcPlotFeatures, eqProcConf, c(0.15, 0.4, 0.15, 0.15))
+a <- plotCentroidBiplot(eqProcPCA, eqProcPlotFeatures, eqProcConf, c(0.15, 0.45, 0.15, 0.15))
 dev.off()
 
-eqDiffPlotFeatures <- c("Irregularity_K", "MFCC_10", "Peak_Spectral_Centroid", "Spectral_Skewness")
+eqDiffPlotFeatures <- c("Krimphoff Irregularity", "MFCC 10", "Peak Spectral Centroid", "Spectral Skewness")
 postscript("EqualiserDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqDiffPCA, eqDiffPlotFeatures, eqDiffConf, c(0.15, 0.2, 0.15, 0.15))
+a <- plotCentroidBiplot(eqDiffPCA, eqDiffPlotFeatures, eqDiffConf, c(0.15, 0.25, 0.15, 0.15))
 dev.off()
-

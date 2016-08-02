@@ -140,7 +140,7 @@
 			\end{itemize}
 			\item {\bf{Peak Spectral Features:}} Features calculated from the spectral partials of the signal.
 			\begin{itemize}
-				\item Peak Spectral Centroid, Peak Spectral Spread, Peak Spectral Standard Deviation, Speak
+				\item Peak Spectral Centroid, Peak Spectral Spread, Peak Spectral Standard Deviation, Peak
 					Spectral Skewness, Peak Spectral Kurtosis, Peak Jensen Irregularity, Peak Krimphoff
 					Irregularity, Peak Tristimuli and Inharmonicity.
 			\end{itemize}
@@ -588,15 +588,15 @@
 				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
 				\hline
 				\hline
-				\bf{Irregularity K} & \bf{-0.984} & -0.0238 & -0.0969 & 0.0537 & -0.0265 \tabularnewline
+				\bf{Krimphoff Irregularity} & \bf{-0.984} & -0.0238 & -0.0969 & 0.0537 & -0.0265 \tabularnewline
 				\hline
-				\bf{Peak Irregularity K} & \bf{-0.971} & 0.0529 & -0.102 & 0.122 & 0.0252 \tabularnewline
+				\bf{Peak Krimphoff Irregularity} & \bf{-0.971} & 0.0529 & -0.102 & 0.122 & 0.0252 \tabularnewline
 				\hline
 				\bf{Peak Spectral Kurtosis} & \bf{-0.952} & 0.021 & -0.136 & 0.126 & -0.123 \tabularnewline
 				\hline
 				\bf{Peak Spectral Skewness} & \bf{-0.94} & 0.105 & -0.14 & 0.168 & -0.0884 \tabularnewline
 				\hline
-				\bf{Harmonic Irregularity K} & \bf{-0.937} & 0.145 & -0.114 & 0.214 & 0.0292 \tabularnewline
+				\bf{Harmonic Krimphoff Irregularity} & \bf{-0.937} & 0.145 & -0.114 & 0.214 & 0.0292 \tabularnewline
 				\hline
 				\bf{Harmonic Spectral Kurtosis} & \bf{-0.937} & 0.0868 & -0.139 & 0.201 & -0.0787 \tabularnewline
 				\hline
@@ -620,7 +620,7 @@
 				\hline
 				\bf{MFCC 1} & 0.0573 & \bf{0.869} & -0.1 & 0.242 & -0.094 \tabularnewline
 				\hline
-				\bf{Standard Deviation} & \bf{-0.854} & 0.256 & -0.291 & 0.243 & 0.035 \tabularnewline
+				\bf{Signal Standard Deviation} & \bf{-0.854} & 0.256 & -0.291 & 0.243 & 0.035 \tabularnewline
 				\hline
 				\bf{RMS Amplitude} & \bf{-0.854} & 0.256 & -0.291 & 0.243 & 0.0346 \tabularnewline
 				\hline
@@ -629,6 +629,9 @@
 				\bf{Zero Crossing Rate} & 0.145 & \bf{-0.817} & -0.0682 & 0.111 & 0.283 \tabularnewline
 				\hline
 			\end{tabular}
+			\caption{Correlations between audio features and principal components for Figure
+				 \ref{fig:DistortionProcessedPCAs}
+			\label{fig:DistortionProcessedCorrelations}
 		\end{table}
 
 		\begin{figure}[h!]
@@ -657,11 +660,11 @@
 				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
 				\hline
 				\hline
-				\bf{Irregularity K} & \bf{-0.986} & -0.0805 & 0.0147 & -0.0516 & -0.0494 \tabularnewline
+				\bf{Krimphoff Irregularity} & \bf{-0.986} & -0.0805 & 0.0147 & -0.0516 & -0.0494 \tabularnewline
 				\hline
-				\bf{Peak Irregularity K} & \bf{-0.978} & -0.107 & 0.0833 & 0.0504 & 0.0287 \tabularnewline
+				\bf{Peak Krimphoff Irregularity} & \bf{-0.978} & -0.107 & 0.0833 & 0.0504 & 0.0287 \tabularnewline
 				\hline
-				\bf{Harmonic Irregularity K} & \bf{-0.959} & -0.106 & 0.2 & 0.0252 & 0.0557 \tabularnewline
+				\bf{Harmonic Krimphoff Irregularity} & \bf{-0.959} & -0.106 & 0.2 & 0.0252 & 0.0557 \tabularnewline
 				\hline
 				\bf{Peak Spectral Skewness} & \bf{-0.942} & -0.169 & 0.182 & 0.119 & 0.0132 \tabularnewline
 				\hline
@@ -673,11 +676,11 @@
 				\hline
 				\bf{RMS Amplitude} & \bf{-0.907} & -0.157 & 0.197 & 0.22 & 0.107 \tabularnewline
 				\hline
-				\bf{Standard Deviation} & \bf{-0.907} & -0.157 & 0.197 & 0.22 & 0.107 \tabularnewline
+				\bf{Signal Standard Deviation} & \bf{-0.907} & -0.157 & 0.197 & 0.22 & 0.107 \tabularnewline
 				\hline
 				\bf{Spectral Roll Off} & -0.349 & \bf{0.905} & 0.147 & 0.064 & -0.0101 \tabularnewline
 				\hline
-				\bf{Spectral Variance} & -0.249 & \bf{0.893} & 0.0082 & 0.0152 & 0.145 \tabularnewline
+				\bf{Spectral Spread} & -0.249 & \bf{0.893} & 0.0082 & 0.0152 & 0.145 \tabularnewline
 				\hline
 				\bf{Spectral Skewness} & \bf{-0.89} & -0.156 & 0.253 & 0.114 & 0.283 \tabularnewline
 				\hline
@@ -689,15 +692,18 @@
 				\hline
 				\bf{Spectral Centroid} & -0.393 & \bf{0.866} & -0.0119 & -0.15 & 0.0507 \tabularnewline
 				\hline
-				\bf{Peak Spectral Variance} & -0.183 & \bf{0.837} & 0.145 & 0.301 & 0.027 \tabularnewline
+				\bf{Peak Spectral Spread} & -0.183 & \bf{0.837} & 0.145 & 0.301 & 0.027 \tabularnewline
 				\hline
 				\bf{Peak Spectral Standard Deviation} & -0.23 & \bf{0.833} & 0.18 & 0.189 & -0.0729 \tabularnewline
 				\hline
-				\bf{Harmonic Spectral Variance} & -0.182 & \bf{0.833} & 0.142 & 0.3 & 0.029 \tabularnewline
+				\bf{Harmonic Spectral Spread} & -0.182 & \bf{0.833} & 0.142 & 0.3 & 0.029 \tabularnewline
 				\hline
-				\bf{Variance} & \bf{-0.826} & -0.155 & 0.328 & 0.149 & 0.045 \tabularnewline
+				\bf{Signal Variance} & \bf{-0.826} & -0.155 & 0.328 & 0.149 & 0.045 \tabularnewline
 				\hline
 			\end{tabular}
+			\caption{Correlations between audio features and principal components for Figure
+				 \ref{fig:DistortionDifferencePCAs}
+			\label{fig:DistortionDifferenceCorrelations}
 		\end{table}
 
 		\begin{figure}[h!]
@@ -726,11 +732,11 @@
 				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
 				\hline
 				\hline
-				\bf{Irregularity K} & \bf{0.93} & 0.317 & 0.0106 & 0.00983 & 0.127 \tabularnewline
+				\bf{Krimphoff Irregularity} & \bf{0.93} & 0.317 & 0.0106 & 0.00983 & 0.127 \tabularnewline
 				\hline
-				\bf{Peak Irregularity K} & \bf{0.925} & 0.232 & 0.0194 & -0.00918 & 0.175 \tabularnewline
+				\bf{Peak Krimphoff Irregularity} & \bf{0.925} & 0.232 & 0.0194 & -0.00918 & 0.175 \tabularnewline
 				\hline
-				\bf{Harmonic Irregularity K} & \bf{0.919} & 0.126 & 0.0386 & -0.0526 & 0.222 \tabularnewline
+				\bf{Harmonic Krimphoff Irregularity} & \bf{0.919} & 0.126 & 0.0386 & -0.0526 & 0.222 \tabularnewline
 				\hline
 				\bf{MFCC 10} & -0.143 & 0.00804 & \bf{-0.882} & -0.00364 & 0.0446 \tabularnewline
 				\hline
@@ -747,6 +753,9 @@
 				\bf{MFCC 11} & 0.0922 & -0.178 & \bf{-0.819} & -0.116 & 0.248 \tabularnewline
 				\hline
 			\end{tabular}
+			\caption{Correlations between audio features and principal components for Figure
+				 \ref{fig:EqualiserProcessedPCAs}
+			\label{fig:EqualiserProcessedCorrelations}
 		\end{table}
 
 		\begin{figure}[h!]
@@ -775,13 +784,13 @@
 				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
 				\hline
 				\hline
-				\bf{Irregularity K} & \bf{0.968} & -0.182 & 0.0148 & -0.0257 & -0.0661 \tabularnewline
+				\bf{Krimphoff Irregularity} & \bf{0.968} & -0.182 & 0.0148 & -0.0257 & -0.0661 \tabularnewline
 				\hline
 				\bf{Spectral Skewness} & \bf{0.957} & -0.0311 & -0.0624 & -0.0487 & 0.108 \tabularnewline
 				\hline
 				\bf{Spectral Kurtosis} & \bf{0.927} & -0.0675 & -0.0408 & -0.0125 & 0.0914 \tabularnewline
 				\hline
-				\bf{Peak Irregularity K} & \bf{0.892} & -0.299 & 0.0921 & 0.0312 & -0.087 \tabularnewline
+				\bf{Peak Krimphoff Irregularity} & \bf{0.892} & -0.299 & 0.0921 & 0.0312 & -0.087 \tabularnewline
 				\hline
 				\bf{Harmonic Spectral Kurtosis} & \bf{0.88} & -0.0525 & -0.0332 & 0.0435 & -0.0774 \tabularnewline
 				\hline
@@ -799,7 +808,7 @@
 				\hline
 				\bf{Peak Spectral Kurtosis} & \bf{0.845} & 0.114 & -0.136 & -0.0296 & -0.0997 \tabularnewline
 				\hline
-				\bf{Standard Deviation} & \bf{0.844} & 0.102 & -0.15 & -0.309 & 0.114 \tabularnewline
+				\bf{Signal Standard Deviation} & \bf{0.844} & 0.102 & -0.15 & -0.309 & 0.114 \tabularnewline
 				\hline
 				\bf{RMS Amplitude} & \bf{0.844} & 0.102 & -0.15 & -0.309 & 0.114 \tabularnewline
 				\hline
@@ -809,7 +818,7 @@
 				\hline
 				\bf{MFCC 11} & -0.0769 & -0.406 & \bf{-0.838} & 0.223 & -0.0747 \tabularnewline
 				\hline
-				\bf{Harmonic Irregularity K} & \bf{0.818} & -0.392 & 0.159 & 0.0835 & -0.112 \tabularnewline
+				\bf{Harmonic Krimphoff Irregularity} & \bf{0.818} & -0.392 & 0.159 & 0.0835 & -0.112 \tabularnewline
 				\hline
 				\bf{Harmonic Spectral Standard Deviation} & -0.23 & \bf{-0.813} & 0.146 & -0.334 & 0.205 \tabularnewline
 				\hline
@@ -820,6 +829,9 @@
 				\bf{Peak Spectral Standard Deviation} & -0.234 & \bf{-0.803} & 0.14 & -0.337 & 0.208 \tabularnewline
 				\hline
 			\end{tabular}
+			\caption{Correlations between audio features and principal components for Figure
+				 \ref{fig:EqualiserDifferencePCAs}
+			\label{fig:EqualiserDifferenceCorrelations}
 		\end{table}
 
 	\subsection{Agreement}

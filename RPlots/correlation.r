@@ -73,8 +73,7 @@ makeCorrelationTable <- function(data, outFile, goodCorr=0.8)
 
 	for (i in 1:ncol(data))
 	{
-		feature <- gsub("_", " ", features[i])
-		line <- paste("\t\\bf{", feature, "}", sep="")
+		line <- paste("\t\\bf{", features[i], "}", sep="")
 
 		for (k in 1:numPCs)
 		{
