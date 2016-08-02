@@ -15,13 +15,13 @@
 \label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation}
 	The perceptual listening test methodologies discussed in Section \ref{sec:Timbre-ListeningTests} rely on the
 	participants performing a certain set of tasks. While this structure helps to reduce the number of variables in an
-	experiment it does not necessarily reflect the way audio is treated in a production environment.
+	experiment, it does not necessarily reflect the way audio is treated in a production environment.
 
 	A new methodology has been developed in which the analysis of timbre is introduced into a typical music production
-	workflow causing minimal interruption to the producer. This methodology aims to answer the question "What terms do
-	music producers use to describe the timbral transforms they apply to audio during the creation of music?". 
+	workflow, causing minimal interruption to the producer. This methodology aims to answer the question "What terms do
+	music producers use to describe the timbral transforms, they apply to audio, during the creation of music?". 
 
-	This section will detail what the typical production workflow is and how semantic information can be gathered.
+	This section will detail a typical production workflow is and how semantic information can be gathered.
 
 	\subsection{Music Production Workflow}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-Workflow}
@@ -37,14 +37,15 @@
 		\end{itemize}
 
 		At every stage of this process semantic descriptors are often used to communicate the desired timbral
-		qualities of the audio. For instance one my ask that a certain microphone be used because of the `warmth'
+		qualities of the audio. For instance, one my ask that a certain microphone be used because of the `warmth'
 		it adds to the recorded sound. During the mixing and mastering stages audio processing effects are applied
-		to shape the timbre further.  These stages will be the focus of this section as the aim of this thesis is
+		to shape the timbre further. These stages will be the focus of this section as the aim of this thesis is
 		to improve the intuitiveness of these effects.
 
-		Historically audio effects were pieces of electronic hardware through which an audio signal is passed.
-		Modern music production techniques utilise Digital Audio Workstation (DAW) software. This software enables
-		users to record, edit and mix multiple tracks of audio using a computer. 
+		Historically, audio production required the use of several pieces of electronic hardware, including
+		microphones, a mixing console, audio processing effects and a recording device. Modern music production
+		techniques utilise Digital Audio Workstation (DAW) software. This software performs the tasks of many
+		pieces of hardware, enabling users to record, edit and mix multiple tracks of audio using a computer. 
 		
 	\subsection{Analysis of Timbre Inside the DAW}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-InDAW}
@@ -59,7 +60,6 @@
 				\item The order in which these effects are applied.
 				\item The parameter settings of these effects.
 			\end{itemize}
-
 			\item Features of the audio signal at every stage in the processing chain.
 		\end{itemize}
 
@@ -73,9 +73,9 @@
 		\end{itemize}
 
 		Achieving this would require the creation of a new DAW. This would be impractical for the current research.
-		DAWs are very comprehensive software packages which perform many more tasks than the application of effects
-		to audio (project management, audio editing functionality etc.). A lot of effort would be expended in
-		implementing these features before any timbral data could be collected.  Music producers also tend to have
+		DAWs are comprehensive software packages which perform many more tasks than the application of audio
+		effects (project management, audio editing functionality etc.). A lot of effort would be expended in
+		implementing these features before any timbral data could be collected. Music producers also tend to have
 		a preferred DAW with which they work most fluidly. Convincing producers to use a new DAW, for the purposes
 		of research, would be a difficult task.
 
@@ -93,13 +93,13 @@
 	\subsection{SAFE Plug-Ins}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}
 		The SAFE plug-ins consist of four commonly used audio effects: Equaliser, Distortion, Compressor and
-		Reverb.  As part of the plug-ins's interface the user has the option to save semantic terms. The interface
+		Reverb. As part of the plug-ins's interface, the user has the option to save semantic terms. The interface
 		for the SAFE Distortion is shown in Figure \ref{fig:SAFE-Distortion}. Upon saving terms the plug-in will
 		analyse the audio at its inputs and outputs. When the analysis is completed the results are stored,
 		containing:
 
 		\begin{itemize}
-			\item The users description of the timbre.
+			\item The users semantic description of the transform.
 			\item The plug-in's current parameter settings.
 			\item The features of the audio before and after processing.
 			\item Some additional data about the user and the track being worked on.
@@ -120,14 +120,41 @@
 			\label{fig:SAFE-Distortion}
 		\end{figure}
 
-		The LibXtract library \citep{bullock2007libxtract} is used in the analysis of the audio. Every scalar
-		feature available within LibXtract is calculated along with the MFCCs and Bark Band Coefficients. In total
-		five seconds of audio is analysed in frames of 4096 samples each.
+		In total, the SAFE plug-ins analyse five seconds of audio both before and after processing. The audio is
+		analysed in frames of 4096 samples using the LibXtract software library \citep{bullock2007libxtract},
+		calculating 80 different audio features for each frame. These features are split into five groups as
+		follows:
 
-		\note{List the features!}
-
-		\note{Why 4096 samples? The real reason is because LibXtract works better that way. Will that cut the
-		mustard?}
+		\begin{itemize}
+			\item {\bf{Temporal Features:}} Features calculated from the temporal representation of the signal.
+			\begin{itemize}
+				\item Signal Mean, Signal Variance, Signal Standard Deviation, RMS Amplitude and Zero
+					Crossing Rate.
+			\end{itemize}
+			\item {\bf{Spectral Features:}} Features calculated from the DFT of the signal.
+			\begin{itemize}
+				\item Spectral Centroid, Spectral Spread, Spectral Standard Deviation, Spectral Skewness,
+				      Spectral Kurtosis, Jensen Irregularity, Krimphoff Irregularity, $f_{0}$, Spectral
+				      Smoothness, Spectral Roll Off, Spectral Flatness, Tonality, Spectral Crest and
+				      Spectral Slope
+			\end{itemize}
+			\item {\bf{Peak Spectral Features:}} Features calculated from the spectral partials of the signal.
+			\begin{itemize}
+				\item Peak Spectral Centroid, Peak Spectral Spread, Peak Spectral Standard Deviation, Speak
+					Spectral Skewness, Peak Spectral Kurtosis, Peak Jensen Irregularity, Peak Krimphoff
+					Irregularity, Peak Tristimuli and Inharmonicity.
+			\end{itemize}
+			\item {\bf{Harmonic Spectral Features:}} Features calculated from the harmonic partials of the
+			      signal.
+			\begin{itemize}
+				\item Harmonic Spectral Centroid, Harmonic Spectral Spread, Harmonic Spectral Standard
+					Deviation, Harmonic Spectral Skewness, Harmonic Spectral Kurtosis, Harmonic Jensen
+					Irregularity, Harmonic Krimphoff Irregularity, Tristimuli, Noisiness and Odd to
+					Even Harmonic Ratio.
+			\end{itemize}
+			\item {\bf{Bark Coefficient 0-24:}} The 25 bark band coefficients.
+			\item {\bf{MFCC 0-12:}} The 13 MFCCs.
+		\end{itemize}
 
 		One disadvantage in using plug-ins is that they cannot gather information about the processing chain they
 		may be a part of. The timbral transform the user is describing may be the result of several effects working
