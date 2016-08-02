@@ -540,21 +540,233 @@
 		are lost in the combined feature spaces. Each of these terms are clustered with terms from their associated
 		plug-in, highlighting the timbral similarity between all signals processed by the same effect.
 
+	\subsection{Agreement}
+	\label{sec:TimbreEvaluation-Analysis-Agreement}
+		In order to draw conclusions about the region a descriptor in a feature space, it is necessary to have a
+		measure of agreement for a descriptor. This measure describes the level to which different users agree on
+		the semantic meaning of descriptive terms. The closer together the transforms associated with a particular
+		descriptor are grouped in the feature space, the higher that descriptor's agreement score.
+
+		\citet{cartwright2013socialeq} measure how well participants agree on the semantic annotation of graphic
+		equaliser parameter settings. For each participant a set of weightings is produced which describes the
+		influence of each equaliser band on the perception of a particular timbral descriptor. The agreement score
+		for a descriptor, $A(d)$, measures how similar these weightings are across different test participants
+		using Equation \ref{eq:SocialEqAgreement}.
+
+		\begin{equation}
+			A(d) = \frac{\ln(N_{d})}{\sum_{k = 1}^{K} \sigma_{d,k}^{2}}
+			\label{eq:SocialEqAgreement}
+		\end{equation}
+
+		Where $N_{d}$ is the number of participants which have provided weightings for descriptor $d$,
+		$\sigma_{d,k}^{2}$ is the variance of weighting $k$ across those participants and $K$ is the number of
+		weightings in each set (i.e. the number of equaliser bands).
+
+		\note{Probably talk about why the log of the number of participants is used}
+
+		This can be applied to data from the SAFE plug-ins by using audio feature values in place of parameter
+		weightings. In Equation \ref{eq:SocialEqAgreement} $N_{d}$ is then the number of transforms labelled with
+		descriptor $d$, $\sigma_{d,k}^{2}$ is the variance of feature $k$ across those transforms and $K$ is the
+		number of features. As when clustering, the feature space should be standardised prior to calculating
+		agreement to remove the biasing effects caused by the ranges of each feature.
+
+		Calculating the agreement in this way involves making assumptions which may not reflect the data being
+		analysed:
+
+		\begin{itemize}
+			\item It is assumed that high variance in any feature implies a disagreement. 
+			\item It is assumed that all audio features are independent. 
+			\item It is assumed that low variance in any feature implies an agreement. 
+		\end{itemize}
+
+		\note
+		{
+			I have also decided that this whole $\ln(N_{d})$ stuff is very broken. Currently a large cluster
+			with loads of points will get a higher score than a small cluster with a reasonable number of
+			points. We want to measure just the size of the cluster. Problem is the that a single point has
+			maximum agreement. I'm pretty sure that calculating the variances using Bessel's correction will
+			account for this.
+		}
+
+		In this section an agreement measure which does not make these assumptions is developed.
+
+		\subsubsection*{High Variance}
+			A term exhibiting high variance in a particular audio feature could imply one of two things. Either
+			that users do not agree on the position of the term in the feature space, or that that feature has
+			no effect on the perception of the term. In the first case the agreement score should be decreased
+			but in the second the agreement score should not be affected. Because of this ambiguity, it is
+			preferable that a high variance has negligible effect on the agreement score. In this way, if a
+			high variance does imply disagreement it does not unduly increase the agreement score and if at
+			does not imply disagreement it does to unduly decrease the agreement score.
+			
+			This can be implemented by changing Equation \ref{eq:SocialEqAgreement} to be a sum of reciprocals
+			rather than the reciprocal on a sum, as shown in Equation \ref{eq:SumOfReciprocalAgreement}.
+
+			\begin{equation}
+				A(d) = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\sigma_{d,k}^{2}}
+				\label{eq:SumOfReciprocalAgreement}
+			\end{equation}
+
+		\subsubsection*{Dependent Features}
+			It may be the case that users agree that a particular term describes a relationship between several
+			audio features (e.g.  a spectral centroid lying at the 4\super{th} harmonic). Equations
+			\ref{eq:SocialEqAgreement} and \ref{eq:SumOfReciprocalAgreement} both ignore any dependence between
+			audio features.
+
+			Relationships between features can be taken into account by calculating the covariance matrix for
+			the transforms associated with a term. The variances in each feature can then be substituted with
+			the eigenvalues of this matrix, as shown in Equation \ref{eq:EigenvalueAgreement}.
+
+			\begin{equation}
+				A(d) = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\lambda_{d,k}}
+				\label{eq:EigenvalueAgreement}
+			\end{equation}
+			
+			Where $\lambda_{d, k}$ is the $k$\super{th} eigenvalue of the covariance matrix for all transforms
+			labelled with descriptor $d$.
+
+			When using Equation \ref{eq:EigenvalueAgreement} the number of eigenvalues used, $K$, needs to be
+			carefully selected. If $N_{d}$ is less than or equal to the total number of audio features the
+			covariance matrix will be singular, meaning it will have one or more eigenvalues equal to zero. At
+			most, only the $N_{d} - 1$ largest eigenvalues should be used in order to avoid the agreement score
+			becoming undefined.
+
+			Any other zero eigenvalues would imply a perfect linear relationship between a combination of audio
+			features. \note{Can I just say we will ignore that for now? It is a very unlikely occurrence,
+			disregarding features which are defined to be linearly related (which will get fixed by PCA).}
+
+		\subsubsection*{Validation with Synthesised Data}
+			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},
+			\ref{eq:SumOfReciprocalAgreement} and \ref{eq:EigenvalueAgreement} artificial data can be
+			synthesised which exhibits some of the issues discussed with Equation \ref{eq:SocialEqAgreement}.
+			
+			\note
+			{
+				Data synthesised as done by \citet{ripley1987stochastic}.
+			}
+
+			Figure \ref{fig:SynthesisedData} show a synthesised, three dimensional, dataset containing four
+			clusters of points. Each cluster has different properties which need to be taken into account when
+			calculating the agreement score. Cluster 1 represents a set of points whose position in the feature
+			space is not agreed upon, exhibiting a high variance in every feature. Cluster 2 represents a set
+			of points whose position is very well agreed upon, having low variance in every feature. Cluster 3
+			represents a set of points whose position is only defined in one audio feature, having high
+			variance in the other two. Cluster 4 represent a set of points which are defined by a relationship
+			between two features, exhibiting high variance in all features but a strong correlation ($p = 0.9$)
+			between features 1 and 2.
+
+			\note
+			{
+				How much detail should be given as to the generation of this data. Do we need to explicitly
+				state each cluster covariances matrix? Do we need to mention the method used to generate
+				the distributions? Reference the R documentation for mvrnorm perhaps, or name drop the
+				algorithm that uses (which I don't know at the moment, come on inter library loan).
+			}
+
+			\begin{figure}[h!]
+				\centering
+				\subfloat
+				{
+					\includegraphics[width=0.45\textwidth]{chapter4/Images/ArtificialData1-2.eps}
+					\label{fig:EqualiserDifferencePCA}
+				}
+				\qquad
+				\subfloat
+				{
+					\includegraphics[width=0.45\textwidth]{chapter4/Images/ArtificialData3-2.eps}
+					\label{fig:EqualiserDifferenceCentroidsPCA}
+				}
+				\caption{Synthesised Data}
+				\label{fig:SynthesisedData}
+			\end{figure}
+
+			Visualising the data in Figure \ref{fig:SynthesisedData} provides intuition as to how an agreement
+			score should rate each cluster. Cluster 1 should receive the lowest score as there is no
+			discernible pattern to the data points. Cluster 2 should receive the highest score as it is very
+			tightly clustered in all features. Both clusters 3 and 4 show some some patterns in the
+			distribution. Cluster 3 has a well defined position in feature 1 while cluster 4 shows a strong
+			relationship between features 1 and 2. The agreement scores for these clusters should reflect these
+			patterns.
+
+			Table \ref{tab:SynthesisedDataAgreement} shows agreement scores, for the data shown in Figure
+			\ref{fig:SynthesisedData}, calculated using Equations \ref{eq:SocialEqAgreement},
+			\ref{eq:SumOfReciprocalAgreement} and \ref{eq:EigenvalueAgreement}.
+
+			\begin{table}[h!]
+				\centering
+				\begin{tabular}{|c|c|c|c|}
+					\cline{2-4}
+					\multicolumn{1}{c|}{} & \multicolumn{3}{c|}{\bf{Agreement Score}} \tabularnewline
+					\hline
+					\bf{Cluster} & \bf{Equation \ref{eq:SocialEqAgreement}} & 
+					\bf{Equation \ref{eq:SumOfReciprocalAgreement}} & 
+					\bf{Equation \ref{eq:EigenvalueAgreement}} \tabularnewline
+					\hline
+					\hline
+					\bf{1} & 2.3 & 22.2 & 22.2 \tabularnewline
+					\hline
+					\bf{2} & 55.1 & 530.3 & 530.3 \tabularnewline
+					\hline
+					\bf{3} & 2.7 & 424.9 & 424.9 \tabularnewline
+					\hline
+					\bf{4} & 2.9 & 33.6 & 152.4 \tabularnewline
+					\hline
+				\end{tabular}
+				\caption{Agreement Scores for Synthesised Data}
+				\label{tab:SynthesisedDataAgreement}
+			\end{table}
+
+			The issues with Equation \ref{eq:SocialEqAgreement} are immediately obvious, it ignores readily
+			noticeable patterns in the data giving clusters 1, 3 and 4 similar agreement scores. By removing
+			the assumption that high variance implies disagreement, Equation \ref{eq:SumOfReciprocalAgreement}
+			takes account of the pattern in cluster 3. Equation \ref{eq:EigenvalueAgreement} remove the
+			assumption that all features are independent enabling it to reflect the pattern shown in cluster 4.
+
+			\note
+			{
+				I am also concerned about how unbounded these values are. I was thinking of using $1 +
+				\sigma_{d,k}^{2}$ to bound it.
+			}
+
+		\subsubsection*{Low Variance}
+			Low variance in a particular audio feature does not necessarily imply an agreement between users.
+			It may indicate a similarity between all of the audio segments processed, regardless of semantic
+			labelling. To account for this features which have low variance across the entire dataset can be
+			disregarded. This can be achieved by calculating the agreement in a reduced dimensionality feature
+			space.
+
+			Using PCA the dimensions with the largest variance in the feature space can be discovered. If the
+			transforms labelled with a particular term exhibit a small variance in one of these dimensions it
+			is likely that that term is well agreed upon. Agreement can be calculated in the PCA timbre space
+			using Equation \ref{eq:EigenvalueAgreement} with $\lambda_{d,k}$ being the $k$\super{th} eigenvalue
+			of the covariance matrix for every transform labelled with descriptor $d$ in the first $K$
+			principal components. As when calculating the agreement in the feature space, the coordinates of
+			the transforms in each principal component should be standardised to remove bias introduced by the
+			proportions of total variance each component describes.
+
+			The number of principal components to use in the calculation of agreement will depend on the
+			dataset being analysed. Two considerations help in the selection of this number. Firstly, only
+			principal components with eigenvalues greater than a certain value should be retained. Only in
+			these components can a low variance be interpreted as agreement between users. Secondly the number
+			of transforms labelled with a each descriptor should be taken into account. Using a number of
+			principal components which is less than the size of the smallest group of transforms avoids the
+			occurrence of zero valued eigenvalues caused by insufficient data points.
+
 	\subsection{Timbre Spaces}
 	\label{sec:TimbreEvaluation-Analysis-TimbreSpaces}
 		Clustering provides insight into the similarity of descriptive terms but does not show what properties of
 		the signals / transforms contribute to the differences between descriptor clusters. Reducing the
 		dimensionality of the audio feature space allows for the most salient features to be identified. To
-		preserve as much of the audio feature data as possible a different feature space, to that used for
+		preserve as much of the audio feature data as possible, a different feature space, to that used for
 		clustering, is constructed. Rather than each descriptor representing one point in the feature space, each
-		individual transform labeled with a certain descriptor represents its own point. In this manner dimensions
-		which have little effect on a certain timbral descriptor are easily determined. The points labeled with a
-		particular term will be more spread out across the dimensions which do not affect them. 
+		individual transform, labeled with a certain descriptor, represents its own point. In this manner
+		dimensions which have little effect on a certain timbral descriptor are easily determined. The points
+		labeled with a particular term will be more spread out across the dimensions which do not affect them. 
 		
-		Prior to analysis the feature spaces are to remove any bias caused by features with a large range. PCA is
-		then applied in order to create the two dimensional timbre spaces discussed in this section.  Salient audio
-		features are identified through taking correlation measures between the original audio feature values and
-		the coordinates of terms in the timbre space.
+		Prior to analysis, the feature spaces are standardised to remove any bias caused by features with a large
+		range. PCA is then applied in order to create the low dimensionality timbre spaces discussed in this
+		section. Salient audio features are identified through taking correlation measures between the original
+		audio feature values and the coordinates of terms in the timbre space.
 
 		\note
 		{
@@ -833,215 +1045,3 @@
 				 \ref{fig:EqualiserDifferencePCAs}}
 			\label{fig:EqualiserDifferenceCorrelations}
 		\end{table}
-
-	\subsection{Agreement}
-	\label{sec:TimbreEvaluation-Analysis-Agreement}
-		In order to draw conclusions about the positions of descriptors in a timbre space it is necessary to have a
-		measure of agreement for a descriptor. This measure describes how the level to which different users agree
-		on the semantic meaning of descriptive terms. The closer together the transforms associated with a
-		particular descriptor are grouped in the timbre space, the higher that descriptors agreement score.
-
-		\citet{cartwright2013socialeq} measure how well participants agree on the semantic annotation of graphic
-		equaliser parameter settings. For each participant a set of weightings is produced which describes the
-		influence of each equaliser band on the perception of a particular timbral descriptor. The agreement score
-		for a descriptor, $A(d)$, measures how similar these weightings are across different test participants
-		using Equation \ref{eq:SocialEqAgreement}.
-
-		\begin{equation}
-			A(d) = \frac{\ln(N_{d})}{\sum_{k = 1}^{K} \sigma_{d,k}^{2}}
-			\label{eq:SocialEqAgreement}
-		\end{equation}
-
-		Where $N_{d}$ is the number of participants which have provided weightings for descriptor $d$,
-		$\sigma_{d,k}^{2}$ is the variance of weighting $k$ across those participants and $K$ is the number of
-		weightings in each set (i.e. the number of equaliser bands).
-
-		\note{Probably talk about why the log of the number of participants is used}
-
-		This can be applied to data from the SAFE plug-ins by using audio feature values in place of parameter
-		weightings. In Equation \ref{eq:SocialEqAgreement} $N_{d}$ is then the number of transforms labelled with
-		descriptor $d$, $\sigma_{d,k}^{2}$ is the variance of feature $k$ across those transforms and $K$ is the
-		number of features. As when clustering, the feature space should be standardised prior to calculating
-		agreement to remove the biasing effects caused by the ranges of each feature.
-
-		Calculating the agreement in this way involves making assumptions which may not reflect the data being
-		analysed:
-
-		\begin{itemize}
-			\item It is assumed that high variance in any feature implies a disagreement. 
-			\item It is assumed that all audio features are independent. 
-			\item It is assumed that low variance in any feature implies an agreement. 
-		\end{itemize}
-
-		\note
-		{
-			I have also decided that this whole $\ln(N_{d})$ stuff is very broken. Currently a large cluster
-			with loads of points will get a higher score than a small cluster with a reasonable number of
-			points. We want to measure just the size of the cluster. Problem is the that a single point has
-			maximum agreement. I'm pretty sure that calculating the variances using Bessel's correction will
-			account for this.
-		}
-
-		In this section an agreement measure which does not make these assumptions is developed.
-
-		\subsubsection*{High Variance}
-			A term exhibiting high variance in a particular audio feature could imply one of two things. Either
-			that users do not agree on the position of the term in the feature space, or that that feature has
-			no effect on the perception of the term. In the first case the agreement score should be decreased
-			but in the second the agreement score should not be affected. Because of this ambiguity, it is
-			preferable that a high variance has negligible effect on the agreement score. In this way, if a
-			high variance does imply disagreement it does not unduly increase the agreement score and if at
-			does not imply disagreement it does to unduly decrease the agreement score.
-			
-			This can be implemented by changing Equation \ref{eq:SocialEqAgreement} to be a sum of reciprocals
-			rather than the reciprocal on a sum, as shown in Equation \ref{eq:SumOfReciprocalAgreement}.
-
-			\begin{equation}
-				A(d) = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\sigma_{d,k}^{2}}
-				\label{eq:SumOfReciprocalAgreement}
-			\end{equation}
-
-		\subsubsection*{Dependent Features}
-			It may be the case that users agree that a particular term describes a relationship between several
-			audio features (e.g.  a spectral centroid lying at the 4\super{th} harmonic). Equations
-			\ref{eq:SocialEqAgreement} and \ref{eq:SumOfReciprocalAgreement} both ignore any dependence between
-			audio features.
-
-			Relationships between features can be taken into account by calculating the covariance matrix for
-			the transforms associated with a term. The variances in each feature can then be substituted with
-			the eigenvalues of this matrix, as shown in Equation \ref{eq:EigenvalueAgreement}.
-
-			\begin{equation}
-				A(d) = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\lambda_{d,k}}
-				\label{eq:EigenvalueAgreement}
-			\end{equation}
-			
-			Where $\lambda_{d, k}$ is the $k$\super{th} eigenvalue of the covariance matrix for all transforms
-			labelled with descriptor $d$.
-
-			When using Equation \ref{eq:EigenvalueAgreement} the number of eigenvalues used, $K$, needs to be
-			carefully selected. If $N_{d}$ is less than or equal to the total number of audio features the
-			covariance matrix will be singular, meaning it will have one or more eigenvalues equal to zero. At
-			most, only the $N_{d} - 1$ largest eigenvalues should be used in order to avoid the agreement score
-			becoming undefined.
-
-			Any other zero eigenvalues would imply a perfect linear relationship between a combination of audio
-			features. \note{Can I just say we will ignore that for now? It is a very unlikely occurrence,
-			disregarding features which are defined to be linearly related (which will get fixed by PCA).}
-
-		\subsubsection*{Validation with Synthesised Data}
-			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},
-			\ref{eq:SumOfReciprocalAgreement} and \ref{eq:EigenvalueAgreement} artificial data can be
-			synthesised which exhibits some of the issues discussed with Equation \ref{eq:SocialEqAgreement}.
-			
-			\note
-			{
-				Data synthesised as done by \citet{ripley1987stochastic}.
-			}
-
-			Figure \ref{fig:SynthesisedData} show a synthesised, three dimensional, dataset containing four
-			clusters of points. Each cluster has different properties which need to be taken into account when
-			calculating the agreement score. Cluster 1 represents a set of points whose position in the feature
-			space is not agreed upon, exhibiting a high variance in every feature. Cluster 2 represents a set
-			of points whose position is very well agreed upon, having low variance in every feature. Cluster 3
-			represents a set of points whose position is only defined in one audio feature, having high
-			variance in the other two. Cluster 4 represent a set of points which are defined by a relationship
-			between two features, exhibiting high variance in all features but a strong correlation ($p = 0.9$)
-			between features 1 and 2.
-
-			\note
-			{
-				How much detail should be given as to the generation of this data. Do we need to explicitly
-				state each cluster covariances matrix? Do we need to mention the method used to generate
-				the distributions? Reference the R documentation for mvrnorm perhaps, or name drop the
-				algorithm that uses (which I don't know at the moment, come on inter library loan).
-			}
-
-			\begin{figure}[h!]
-				\centering
-				\subfloat
-				{
-					\includegraphics[width=0.45\textwidth]{chapter4/Images/ArtificialData1-2.eps}
-					\label{fig:EqualiserDifferencePCA}
-				}
-				\qquad
-				\subfloat
-				{
-					\includegraphics[width=0.45\textwidth]{chapter4/Images/ArtificialData3-2.eps}
-					\label{fig:EqualiserDifferenceCentroidsPCA}
-				}
-				\caption{Synthesised Data}
-				\label{fig:SynthesisedData}
-			\end{figure}
-
-			Visualising the data in Figure \ref{fig:SynthesisedData} provides intuition as to how an agreement
-			score should rate each cluster. Cluster 1 should receive the lowest score as there is no
-			discernible pattern to the data points. Cluster 2 should receive the highest score as it is very
-			tightly clustered in all features. Both clusters 3 and 4 show some some patterns in the
-			distribution. Cluster 3 has a well defined position in feature 1 while cluster 4 shows a strong
-			relationship between features 1 and 2. The agreement scores for these clusters should reflect these
-			patterns.
-
-			Table \ref{tab:SynthesisedDataAgreement} shows agreement scores, for the data shown in Figure
-			\ref{fig:SynthesisedData}, calculated using Equations \ref{eq:SocialEqAgreement},
-			\ref{eq:SumOfReciprocalAgreement} and \ref{eq:EigenvalueAgreement}.
-
-			\begin{table}[h!]
-				\centering
-				\begin{tabular}{|c|c|c|c|}
-					\cline{2-4}
-					\multicolumn{1}{c|}{} & \multicolumn{3}{c|}{\bf{Agreement Score}} \tabularnewline
-					\hline
-					\bf{Cluster} & \bf{Equation \ref{eq:SocialEqAgreement}} & 
-					\bf{Equation \ref{eq:SumOfReciprocalAgreement}} & 
-					\bf{Equation \ref{eq:EigenvalueAgreement}} \tabularnewline
-					\hline
-					\hline
-					\bf{1} & 2.3 & 22.2 & 22.2 \tabularnewline
-					\hline
-					\bf{2} & 55.1 & 530.3 & 530.3 \tabularnewline
-					\hline
-					\bf{3} & 2.7 & 424.9 & 424.9 \tabularnewline
-					\hline
-					\bf{4} & 2.9 & 33.6 & 152.4 \tabularnewline
-					\hline
-				\end{tabular}
-				\caption{Agreement Scores for Synthesised Data}
-				\label{tab:SynthesisedDataAgreement}
-			\end{table}
-
-			The issues with Equation \ref{eq:SocialEqAgreement} are immediately obvious, it ignores readily
-			noticeable patterns in the data giving clusters 1, 3 and 4 similar agreement scores. By removing
-			the assumption that high variance implies disagreement, Equation \ref{eq:SumOfReciprocalAgreement}
-			takes account of the pattern in cluster 3. Equation \ref{eq:EigenvalueAgreement} remove the
-			assumption that all features are independent enabling it to reflect the pattern shown in cluster 4.
-
-			\note
-			{
-				I am also concerned about how unbounded these values are. I was thinking of using $1 +
-				\sigma_{d,k}^{2}$ to bound it.
-			}
-
-		\subsubsection*{Low Variance}
-			Low variance in a particular audio feature does not necessarily imply an agreement between users.
-			It may indicate a similarity between all of the audio segments processed, regardless of semantic
-			labelling. To account for this features which have low variance across the entire dataset can be
-			disregarded. This can be achieved by calculating the agreement in a reduced dimensionality feature
-			space.
-
-			Using PCA the dimensions with the largest variance in the feature space can be discovered. If the
-			transforms labelled with a particular term exhibit a small variance in one of these dimensions it
-			is likely that that term is well agreed upon. Agreement can be calculated in the PCA timbre space
-			using Equation \ref{eq:EigenvalueAgreement} with $\lambda_{d,k}$ being the $k$\super{th} eigenvalue
-			of the covariance matrix for every transform labelled with descriptor $d$ in the first $K$
-			principal components. As when calculating the agreement in the feature space, the coordinates of
-			the transforms in each principal component should be standardised to remove bias introduced by the
-			proportions of total variance each component describes.
-
-			The number of principal components to use in the calculation of agreement will depend on the
-			dataset being analysed. Two considerations help in the selection of this number. Firstly, only
-			principal components with eigenvalues greater than a certain value should be retained. Only in
-			these components can a low variance be interpreted as agreement between users. Secondly the number
-			of transforms labelled with a each descriptor should be taken into account. Using a number of
-			principal components which is less than the size of the smallest group of transforms avoids the
-			occurrence of zero valued eigenvalues caused by insufficient data points.
