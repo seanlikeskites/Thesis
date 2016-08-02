@@ -542,10 +542,10 @@
 
 	\subsection{Agreement}
 	\label{sec:TimbreEvaluation-Analysis-Agreement}
-		In order to draw conclusions about the region a descriptor in a feature space, it is necessary to have a
-		measure of agreement for a descriptor. This measure describes the level to which different users agree on
-		the semantic meaning of descriptive terms. The closer together the transforms associated with a particular
-		descriptor are grouped in the feature space, the higher that descriptor's agreement score.
+		In order to draw conclusions about the region a descriptor covers in a feature space, it is necessary to
+		have a measure of agreement for a descriptor. This measure describes the level to which different users
+		agree on the semantic meaning of descriptive terms. The closer together the transforms associated with a
+		particular descriptor are grouped in the feature space, the higher that descriptor's agreement score.
 
 		\citet{cartwright2013socialeq} measure how well participants agree on the semantic annotation of graphic
 		equaliser parameter settings. For each participant a set of weightings is produced which describes the
@@ -554,78 +554,104 @@
 		using Equation \ref{eq:SocialEqAgreement}.
 
 		\begin{equation}
-			A(d) = \frac{\ln(N_{d})}{\sum_{k = 1}^{K} \sigma_{d,k}^{2}}
+			A(d) = \frac{\ln(N_{d})}{\sum_{k = 1}^{K} s_{d,k}^{2}}
 			\label{eq:SocialEqAgreement}
 		\end{equation}
 
 		Where $N_{d}$ is the number of participants which have provided weightings for descriptor $d$,
-		$\sigma_{d,k}^{2}$ is the variance of weighting $k$ across those participants and $K$ is the number of
-		weightings in each set (i.e. the number of equaliser bands).
-
-		\note{Probably talk about why the log of the number of participants is used}
+		$s_{d,k}^{2}$ is the variance of weighting $k$ across those participants and $K$ is the number of
+		weightings in each set (i.e. the number of equaliser bands). The logarithm of the number of
+		participants is used to account for Zipf's law, which states that the frequency with which a word is used
+		is inversely proportional to its usage ranking (an integer describing the words popularity; 1 denoting the
+		most commonly used word, 2 the second most common etc.) \citep{manning1999foundations}.
 
 		This can be applied to data from the SAFE plug-ins by using audio feature values in place of parameter
-		weightings. In Equation \ref{eq:SocialEqAgreement} $N_{d}$ is then the number of transforms labelled with
-		descriptor $d$, $\sigma_{d,k}^{2}$ is the variance of feature $k$ across those transforms and $K$ is the
+		weightings. In Equation \ref{eq:SocialEqAgreement}, $N_{d}$ is then the number of transforms labelled with
+		descriptor $d$, $s_{d,k}^{2}$ is the variance of feature $k$ across those transforms and $K$ is the
 		number of features. As when clustering, the feature space should be standardised prior to calculating
 		agreement to remove the biasing effects caused by the ranges of each feature.
 
-		Calculating the agreement in this way involves making assumptions which may not reflect the data being
-		analysed:
+		This agreement measure has several properties which do not necessarily reflect what is being measured:
 
 		\begin{itemize}
+			\item A larger number of transforms, $N_{d}$, produces higher agreement.
 			\item It is assumed that high variance in any feature implies a disagreement. 
 			\item It is assumed that all audio features are independent. 
 			\item It is assumed that low variance in any feature implies an agreement. 
 		\end{itemize}
 
-		\note
-		{
-			I have also decided that this whole $\ln(N_{d})$ stuff is very broken. Currently a large cluster
-			with loads of points will get a higher score than a small cluster with a reasonable number of
-			points. We want to measure just the size of the cluster. Problem is the that a single point has
-			maximum agreement. I'm pretty sure that calculating the variances using Bessel's correction will
-			account for this.
-		}
+		In this section an agreement measure which accounts for these points is developed.
 
-		In this section an agreement measure which does not make these assumptions is developed.
+		\subsubsection*{Number of Transforms}
+			In Equation \ref{eq:SocialEqAgreement} the logarithm of the number of transforms, $N_{d}$, is used
+			to scale the agreement score. This measures a different concept of agreement to what we desire for
+			this work. Rather than measuring the size of the region a descriptor occupies in the feature space,
+			it measure how many individual transforms make up that region. A sufficiently large number of
+			transforms will produce a large agreement score regardless of how spread apart they are. To measure
+			the size of the region a descriptor occupies, the scaling factor should be removed giving Equation
+			\ref{eq:ReciprocalOfSumAgreement}.
+
+			\begin{equation}
+				A(d) = \frac{1}{\sum_{k = 1}^{K} s_{d,k}^{2}}
+				\label{eq:ReciprocalOfSumAgreement}
+			\end{equation}
+
+			To take account of the number of transforms labelled with a particular descriptor, Bessel's
+			correction can be used in the calculation of variance as shown in Equation
+			\ref{eq:UnbiasedVariance}. This uses the data available from a sample and uses it to approximate
+			the variation present in the population.
+
+			\begin{equation}
+				s_{d,k}^{2} = \frac{1}{N_{d} - 1} \sum_{n = 1}^{N_{d}} (x_{d,k,n} - \bar{x}_{d,k})^{2}
+				\label{eq:UnbiasedVariance}
+			\end{equation}
+
+			Where $x_{d,k,n}$ is the value of feature $k$ for the $n$\super{th} transform labelled with
+			descriptor $d$ and $\bar{x}_{d,k}$ is the mean value of feature $k$ across all transforms labelled
+			with descriptor $d$.
+
+			Using this measure of variance in the agreement score provides an approximation of how closely
+			clustered transforms, labeled with a certain descriptor, would be in a feature space which
+			represents the whole population. In all further agreement score calculations it is assumed that the
+			variances, or covariances, are measured using Bessel's correction.
 
 		\subsubsection*{High Variance}
 			A term exhibiting high variance in a particular audio feature could imply one of two things. Either
 			that users do not agree on the position of the term in the feature space, or that that feature has
-			no effect on the perception of the term. In the first case the agreement score should be decreased
+			no effect on the perception of the term. In the first case the agreement score should be decreased,
 			but in the second the agreement score should not be affected. Because of this ambiguity, it is
 			preferable that a high variance has negligible effect on the agreement score. In this way, if a
 			high variance does imply disagreement it does not unduly increase the agreement score and if at
 			does not imply disagreement it does to unduly decrease the agreement score.
 			
-			This can be implemented by changing Equation \ref{eq:SocialEqAgreement} to be a sum of reciprocals
-			rather than the reciprocal on a sum, as shown in Equation \ref{eq:SumOfReciprocalAgreement}.
+			This can be implemented by changing Equation \ref{eq:ReciprocalOfSumAgreement} to be a sum of
+			reciprocals rather than the reciprocal of a sum, as shown in Equation
+			\ref{eq:SumOfReciprocalAgreement}.
 
 			\begin{equation}
-				A(d) = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\sigma_{d,k}^{2}}
+				A(d) = \sum_{k = 1}^{K} \frac{1}{s_{d,k}^{2}}
 				\label{eq:SumOfReciprocalAgreement}
 			\end{equation}
 
 		\subsubsection*{Dependent Features}
 			It may be the case that users agree that a particular term describes a relationship between several
-			audio features (e.g.  a spectral centroid lying at the 4\super{th} harmonic). Equations
-			\ref{eq:SocialEqAgreement} and \ref{eq:SumOfReciprocalAgreement} both ignore any dependence between
-			audio features.
+			audio features (e.g. a spectral centroid lying at the 4\super{th} harmonic). Equations
+			\ref{eq:SocialEqAgreement}, \ref{eq:ReciprocalOfSumAgreement} and \ref{eq:SumOfReciprocalAgreement}
+			all ignore any dependence between audio features.
 
 			Relationships between features can be taken into account by calculating the covariance matrix for
 			the transforms associated with a term. The variances in each feature can then be substituted with
 			the eigenvalues of this matrix, as shown in Equation \ref{eq:EigenvalueAgreement}.
 
 			\begin{equation}
-				A(d) = \ln(N_{d}) \sum_{k = 1}^{K} \frac{1}{\lambda_{d,k}}
+				A(d) = \sum_{k = 1}^{K} \frac{1}{\lambda_{d,k}}
 				\label{eq:EigenvalueAgreement}
 			\end{equation}
 			
 			Where $\lambda_{d, k}$ is the $k$\super{th} eigenvalue of the covariance matrix for all transforms
 			labelled with descriptor $d$.
 
-			When using Equation \ref{eq:EigenvalueAgreement} the number of eigenvalues used, $K$, needs to be
+			When using Equation \ref{eq:EigenvalueAgreement}, the number of eigenvalues used, $K$, needs to be
 			carefully selected. If $N_{d}$ is less than or equal to the total number of audio features the
 			covariance matrix will be singular, meaning it will have one or more eigenvalues equal to zero. At
 			most, only the $N_{d} - 1$ largest eigenvalues should be used in order to avoid the agreement score
@@ -725,7 +751,7 @@
 			\note
 			{
 				I am also concerned about how unbounded these values are. I was thinking of using $1 +
-				\sigma_{d,k}^{2}$ to bound it.
+				s_{d,k}^{2}$ to bound it.
 			}
 
 		\subsubsection*{Low Variance}
