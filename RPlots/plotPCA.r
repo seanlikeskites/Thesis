@@ -40,7 +40,7 @@ plotCentroidBiplot <- function(PCA, var, border=c(0.15, 0.15, 0.15, 0.15))
 	for (i in 1:length(uniqueDescriptors))
 	{
 		colours[descriptors == uniqueDescriptors[i]] <- colourPalette[i]
-		agreements[descriptors == uniqueDescriptors[i]] <- log(termAgreements[i]) / 4
+		agreements[descriptors == uniqueDescriptors[i]] <- log(termAgreements[i]) / 3
 	}
 
 	xs <- points[,1]
