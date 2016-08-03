@@ -1,3 +1,5 @@
+source("agreement.r")
+
 plotIndividualPCA <- function(points, legendPos)
 {
 	descriptors <- rownames(points)
@@ -22,7 +24,7 @@ plotIndividualPCA <- function(points, legendPos)
 	legend(legendPos, legend=uniqueDescriptors, pch=4, col=colourPalette)
 }
 
-plotCentroidBiplot <- function(PCA, var, conf=0.5, border=c(0.15, 0.15, 0.15, 0.15))
+plotCentroidBiplot <- function(PCA, var, border=c(0.15, 0.15, 0.15, 0.15))
 {
 	points <- apply(PCA$x, 2, function(x) tapply(x, rownames(PCA$x), mean))
 
@@ -30,11 +32,15 @@ plotCentroidBiplot <- function(PCA, var, conf=0.5, border=c(0.15, 0.15, 0.15, 0.
 	uniqueDescriptors <- sort(unique(descriptors))
 	colourPalette <- rainbow(length(uniqueDescriptors))
 
+	termAgreements <- termAgreement(PCA$x)
+	agreements <- array(0, length(uniqueDescriptors))
+
 	colours <- "black"
 
 	for (i in 1:length(uniqueDescriptors))
 	{
 		colours[descriptors == uniqueDescriptors[i]] <- colourPalette[i]
+		agreements[descriptors == uniqueDescriptors[i]] <- log(termAgreements[i]) / 4
 	}
 
 	xs <- points[,1]
@@ -58,7 +64,7 @@ plotCentroidBiplot <- function(PCA, var, conf=0.5, border=c(0.15, 0.15, 0.15, 0.
 
 	par(mar=c(4, 4, 4, 4))
 	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel, xlim=xLimits, ylim=yLimits)
-	text(xs, ys, descriptors, col=colours, cex=1.5+conf)
+	text(xs, ys, descriptors, col=colours, cex=1.5+agreements)
 
 	xLimScale <- max(abs(varXs)) / max(abs(xs)) * 1.3
 	xLimits <- xLimits * xLimScale

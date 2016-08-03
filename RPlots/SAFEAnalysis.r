@@ -179,31 +179,31 @@ makeCorrelationTable(eqDiffCorr$correlations[,eqDiffFeatures], "EqualiserDiffere
 ########################################################
 # confidences
 ########################################################
-source("confidence.r")
-distProcConf <- apply(termConfidence(distProcPCA), 1, max)
-distDiffConf <- apply(termConfidence(distDiffPCA), 1, max)
-eqProcConf <- apply(termConfidence(eqProcPCA), 1, max)
-eqDiffConf <- apply(termConfidence(eqDiffPCA), 1, max)
+source("agreement.r")
+distProcAgreement <- termAgreement(distProcPCA$x)
+distDiffAgreement <- termAgreement(distDiffPCA$x)
+eqProcAgreement <- termAgreement(eqProcPCA$x)
+eqDiffAgreement <- termAgreement(eqDiffPCA$x)
 
 ########################################################
 # biplots
 ########################################################
 distProcPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "MFCC 1", "MFCC 4")
 postscript("DistortionProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(distProcPCA, distProcPlotFeatures, distProcConf, c(0.4, 0.15, 0.15, 0.15))
+a <- plotCentroidBiplot(distProcPCA, distProcPlotFeatures, c(0.4, 0.15, 0.15, 0.15))
 dev.off()
 
 distDiffPlotFeatures <- c("Krimphoff Irregularity", "Peak Spectral Skewness", "Spectral Roll Off")
 postscript("DistortionDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(distDiffPCA, distDiffPlotFeatures, distDiffConf, c(0.45, 0.15, 0.15, 0.15))
+a <- plotCentroidBiplot(distDiffPCA, distDiffPlotFeatures, c(0.45, 0.15, 0.15, 0.15))
 dev.off()
 
 eqProcPlotFeatures <- c("Krimphoff Irregularity", "MFCC 10", "Harmonic Spectral Kurtosis", "Spectral Flatness")
 postscript("EqualiserProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqProcPCA, eqProcPlotFeatures, eqProcConf, c(0.15, 0.45, 0.15, 0.15))
+a <- plotCentroidBiplot(eqProcPCA, eqProcPlotFeatures, c(0.25, 0.45, 0.15, 0.15))
 dev.off()
 
 eqDiffPlotFeatures <- c("Krimphoff Irregularity", "MFCC 10", "Peak Spectral Centroid", "Spectral Skewness")
 postscript("EqualiserDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqDiffPCA, eqDiffPlotFeatures, eqDiffConf, c(0.15, 0.25, 0.15, 0.15))
+a <- plotCentroidBiplot(eqDiffPCA, eqDiffPlotFeatures, c(0.15, 0.25, 0.15, 0.15))
 dev.off()
