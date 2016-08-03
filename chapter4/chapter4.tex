@@ -661,6 +661,31 @@
 			features. \note{Can I just say we will ignore that for now? It is a very unlikely occurrence,
 			disregarding features which are defined to be linearly related (which will get fixed by PCA).}
 
+		\subsubsection*{Low Variance}
+			Low variance in a particular audio feature does not necessarily imply an agreement between users.
+			It may indicate a similarity between all of the audio segments processed, regardless of semantic
+			labelling. To account for this features which have low variance across the entire dataset can be
+			disregarded. This can be achieved by calculating the agreement in a reduced dimensionality feature
+			space.
+
+			Using PCA the dimensions with the largest variance in the feature space can be discovered. If the
+			transforms labelled with a particular term exhibit a small variance in one of these dimensions it
+			is likely that that term is well agreed upon. Agreement can be calculated in the PCA timbre space
+			using Equation \ref{eq:EigenvalueAgreement} with $\lambda_{d,k}$ being the $k$\super{th} eigenvalue
+			of the covariance matrix for every transform labelled with descriptor $d$ in the first $K$
+			principal components. As when calculating the agreement in the feature space, the coordinates of
+			the transforms in each principal component should be standardised to remove bias introduced by the
+			proportions of total variance each component describes.
+
+			The number of principal components to use in the calculation of agreement will depend on the
+			dataset being analysed. Two considerations help in the selection of this number. Firstly, only
+			principal components with eigenvalues greater than a certain value should be retained. Only in
+			these components can a low variance be interpreted as agreement between users. Secondly the number
+			of transforms labelled with a each descriptor should be taken into account. Using a number of
+			principal components which is less than the size of the smallest group of transforms avoids the
+			occurrence of zero valued eigenvalues caused by insufficient data points.
+
+
 		\subsubsection*{Validation with Synthesised Data}
 			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},
 			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement} and
@@ -676,53 +701,94 @@
 			variance in the other two. Cluster 4 represent a set of points which are defined by a relationship
 			between two features, exhibiting high variance in all features but a strong correlation ($p = 0.9$)
 			between features 1 and 2. The clusters were generated using the techniques discussed by
-			\citet{ripley1987stochastic}, using the covariance matrices shown in Datum
-			\ref{dat:ClusterMatrices}.
+			\citet{ripley1987stochastic}, using the covariance matrices shown in Datum \ref{dat:ClusterStats}.
 
 			\begin{datum}[h!]
 				\centering
 				\subfloat[Cluster 1]
 				{
-					$\begin{bmatrix}
-						5 & 0 & 0 \\
-						0 & 5 & 0 \\
-						0 & 0 & 5 \\
-					\end{bmatrix}$
-					\label{dat:Cluster1Matrix}
+					\parbox{5cm}
+					{
+						\centering
+						$\mu = \begin{bmatrix}
+							     2 & 3 & 4
+						       \end{bmatrix}$
+
+						\vspace{1em}
+
+						$\Sigma = \begin{bmatrix}
+								5 & 0 & 0 \\
+								0 & 5 & 0 \\
+								0 & 0 & 5
+							  \end{bmatrix}$
+					}
+					\label{dat:Cluster1Stats}
 				}
 				\qquad
 				\subfloat[Cluster 2]
 				{
-					$\begin{bmatrix}
-						0.2 & 0 & 0 \\
-						0 & 0.2 & 0 \\
-						0 & 0 & 0.2 \\
-					\end{bmatrix}$
-					\label{dat:Cluster2Matrix}
+					\parbox{5cm}
+					{
+						\centering
+						$\mu = \begin{bmatrix}
+							     4 & -2 & 1
+						       \end{bmatrix}$
+
+						\vspace{1em}
+
+						$\Sigma = \begin{bmatrix}
+								0.2 & 0 & 0 \\
+								0 & 0.2 & 0 \\
+								0 & 0 & 0.2
+							  \end{bmatrix}$
+					}
+					\label{dat:Cluster2Stats}
 				}
-				\qquad
+
+				\vspace{1.5em}
+
 				\subfloat[Cluster 3]
 				{
-					$\begin{bmatrix}
-						0.1 & 0 & 0 \\
-						0 & 6 & 0 \\
-						0 & 0 & 5 \\
-					\end{bmatrix}$
-					\label{dat:Cluster3Matrix}
+					\parbox{5cm}
+					{
+						\centering
+						$\mu = \begin{bmatrix}
+							     -2 & 0 & 2
+						       \end{bmatrix}$
+
+						\vspace{1em}
+
+						$\Sigma = \begin{bmatrix}
+								0.1 & 0 & 0 \\
+								0 & 6 & 0 \\
+								0 & 0 & 5
+							  \end{bmatrix}$
+					}
+					\label{dat:Cluster3Stats}
 				}
 				\qquad
 				\subfloat[Cluster 4]
 				{
-					$\begin{bmatrix}
-						5 & 0.9\sqrt{10} & 0 \\
-						0.9\sqrt{10} & 2 & 0 \\
-						0 & 0 & 4 \\
-					\end{bmatrix}$
-					\label{dat:Cluster4Matrix}
+					\parbox{5cm}
+					{
+						\centering
+						$\mu = \begin{bmatrix}
+							     5 & -3 & 4
+						       \end{bmatrix}$
+
+						\vspace{1em}
+
+						$\Sigma = \begin{bmatrix}
+								5 & 0.9\sqrt{10} & 0 \\
+								0.9\sqrt{10} & 2 & 0 \\
+								0 & 0 & 4
+							  \end{bmatrix}$
+					}
+					\label{dat:Cluster4Stats}
 				}
-				\caption{The covariance matrices for the clusters shown in Figure
+				\caption{The means and covariance matrices for the clusters shown in Figure
 					 \ref{fig:SynthesisedData}.}
-				\label{dat:ClusterMatrices}
+				\label{dat:ClusterStats}
 			\end{datum}
 
 			\begin{figure}[h!]
@@ -790,30 +856,6 @@
 				I am also concerned about how unbounded these values are. I was thinking of using $1 +
 				s_{d,k}^{2}$ to bound it.
 			}
-
-		\subsubsection*{Low Variance}
-			Low variance in a particular audio feature does not necessarily imply an agreement between users.
-			It may indicate a similarity between all of the audio segments processed, regardless of semantic
-			labelling. To account for this features which have low variance across the entire dataset can be
-			disregarded. This can be achieved by calculating the agreement in a reduced dimensionality feature
-			space.
-
-			Using PCA the dimensions with the largest variance in the feature space can be discovered. If the
-			transforms labelled with a particular term exhibit a small variance in one of these dimensions it
-			is likely that that term is well agreed upon. Agreement can be calculated in the PCA timbre space
-			using Equation \ref{eq:EigenvalueAgreement} with $\lambda_{d,k}$ being the $k$\super{th} eigenvalue
-			of the covariance matrix for every transform labelled with descriptor $d$ in the first $K$
-			principal components. As when calculating the agreement in the feature space, the coordinates of
-			the transforms in each principal component should be standardised to remove bias introduced by the
-			proportions of total variance each component describes.
-
-			The number of principal components to use in the calculation of agreement will depend on the
-			dataset being analysed. Two considerations help in the selection of this number. Firstly, only
-			principal components with eigenvalues greater than a certain value should be retained. Only in
-			these components can a low variance be interpreted as agreement between users. Secondly the number
-			of transforms labelled with a each descriptor should be taken into account. Using a number of
-			principal components which is less than the size of the smallest group of transforms avoids the
-			occurrence of zero valued eigenvalues caused by insufficient data points.
 
 	\subsection{Timbre Spaces}
 	\label{sec:TimbreEvaluation-Analysis-TimbreSpaces}
