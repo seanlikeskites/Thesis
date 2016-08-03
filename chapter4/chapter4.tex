@@ -418,7 +418,7 @@
 		Additional processing is required after stemming so that all descriptors with the same root can be
 		combined.  The Porter stemming algorithm replaces the letter y at the end of a word with the letter i, for
 		this analysis these tailing i's are removed so that terms such as `fuzz' and `fuzzy' are reduced to the
-		same root. In some cases the output after this  must be further reduced, for example the term `muddy' is
+		same root. In some cases the output after this must be further reduced, for example the term `muddy' is
 		reduced to `mudd' which must have the tailing d removed to give the correct root `mud'.
 
 		After stemming we are left with eight descriptors from the distortion (`warm', `crunch', `fuzz', `cream',
@@ -663,14 +663,10 @@
 
 		\subsubsection*{Validation with Synthesised Data}
 			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},
-			\ref{eq:SumOfReciprocalAgreement} and \ref{eq:EigenvalueAgreement} artificial data can be
-			synthesised which exhibits some of the issues discussed with Equation \ref{eq:SocialEqAgreement}.
+			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement} and
+			\ref{eq:EigenvalueAgreement} artificial data can be synthesised which exhibits some of the issues
+			discussed with Equation \ref{eq:SocialEqAgreement}.
 			
-			\note
-			{
-				Data synthesised as done by \citet{ripley1987stochastic}.
-			}
-
 			Figure \ref{fig:SynthesisedData} show a synthesised, three dimensional, dataset containing four
 			clusters of points. Each cluster has different properties which need to be taken into account when
 			calculating the agreement score. Cluster 1 represents a set of points whose position in the feature
@@ -679,15 +675,53 @@
 			represents a set of points whose position is only defined in one audio feature, having high
 			variance in the other two. Cluster 4 represent a set of points which are defined by a relationship
 			between two features, exhibiting high variance in all features but a strong correlation ($p = 0.9$)
-			between features 1 and 2.
+			between features 1 and 2. The clusters were generated using the techniques discussed by
+			\citet{ripley1987stochastic}, using the covariance matrices shown in 
 
-			\note
-			{
-				How much detail should be given as to the generation of this data. Do we need to explicitly
-				state each cluster covariances matrix? Do we need to mention the method used to generate
-				the distributions? Reference the R documentation for mvrnorm perhaps, or name drop the
-				algorithm that uses (which I don't know at the moment, come on inter library loan).
-			}
+			\begin{figure}
+				\centering
+				\subfloat[Cluster 1]
+				{
+					$\begin{bmatrix}
+						5 & 0 & 0 \\
+						0 & 5 & 0 \\
+						0 & 0 & 5 \\
+					\end{bmatrix}$
+					\label{fig:Cluster1Matrix}
+				}
+				\qquad
+				\subfloat[Cluster 2]
+				{
+					$\begin{bmatrix}
+						0.2 & 0 & 0 \\
+						0 & 0.2 & 0 \\
+						0 & 0 & 0.2 \\
+					\end{bmatrix}$
+					\label{fig:Cluster2Matrix}
+				}
+				\qquad
+				\subfloat[Cluster 3]
+				{
+					$\begin{bmatrix}
+						0.1 & 0 & 0 \\
+						0 & 6 & 0 \\
+						0 & 0 & 5 \\
+					\end{bmatrix}$
+					\label{fig:Cluster3Matrix}
+				}
+				\qquad
+				\subfloat[Cluster 4]
+				{
+					$\begin{bmatrix}
+						5 & 0.9\sqrt{10} & 0 \\
+						0.9\sqrt{10} & 2 & 0 \\
+						0 & 0 & 4 \\
+					\end{bmatrix}$
+					\label{fig:Cluster4Matrix}
+				}
+				\caption{The covariance matrices for the clusters shown in \ref{fig:SynthesisedData}.}
+				\label{fig:ClusterMatrices}
+			\end{figure}
 
 			\begin{figure}[h!]
 				\centering
@@ -702,7 +736,7 @@
 					\includegraphics[width=0.45\textwidth]{chapter4/Images/ArtificialData3-2.eps}
 					\label{fig:EqualiserDifferenceCentroidsPCA}
 				}
-				\caption{Synthesised Data}
+				\caption{Synthesised Data.}
 				\label{fig:SynthesisedData}
 			\end{figure}
 
@@ -739,7 +773,7 @@
 					\bf{4} & 2.9 & 0.7 & 7.7 & 34.8 \tabularnewline
 					\hline
 				\end{tabular}
-				\caption{Agreement Scores for Synthesised Data}
+				\caption{Agreement scores for the synthesised data.}
 				\label{tab:SynthesisedDataAgreement}
 			\end{table}
 
@@ -869,7 +903,7 @@
 				\hline
 			\end{tabular}
 			\caption{Correlations between audio features and principal components for Figure
-				 \ref{fig:DistortionProcessedPCAs}}
+				 \ref{fig:DistortionProcessedPCAs}.}
 			\label{fig:DistortionProcessedCorrelations}
 		\end{table}
 
@@ -941,7 +975,7 @@
 				\hline
 			\end{tabular}
 			\caption{Correlations between audio features and principal components for Figure
-				 \ref{fig:DistortionDifferencePCAs}}
+				 \ref{fig:DistortionDifferencePCAs}.}
 			\label{fig:DistortionDifferenceCorrelations}
 		\end{table}
 
@@ -993,7 +1027,7 @@
 				\hline
 			\end{tabular}
 			\caption{Correlations between audio features and principal components for Figure
-				 \ref{fig:EqualiserProcessedPCAs}}
+				 \ref{fig:EqualiserProcessedPCAs}.}
 			\label{fig:EqualiserProcessedCorrelations}
 		\end{table}
 
@@ -1069,6 +1103,6 @@
 				\hline
 			\end{tabular}
 			\caption{Correlations between audio features and principal components for Figure
-				 \ref{fig:EqualiserDifferencePCAs}}
+				 \ref{fig:EqualiserDifferencePCAs}.}
 			\label{fig:EqualiserDifferenceCorrelations}
 		\end{table}
