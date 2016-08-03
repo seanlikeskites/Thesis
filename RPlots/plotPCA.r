@@ -14,8 +14,8 @@ plotIndividualPCA <- function(points, legendPos)
 	xs <- points[,1]
 	ys <- points[,2]
 
-	xLabel <- "PC1"
-	yLabel <- "PC2"
+	xLabel <- "PC 1"
+	yLabel <- "PC 2"
 
 	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel)
 	points(xs, ys, pch=4, col=colours, cex=2)
@@ -40,8 +40,8 @@ plotCentroidBiplot <- function(PCA, var, conf=0.5, border=c(0.15, 0.15, 0.15, 0.
 	xs <- points[,1]
 	ys <- points[,2]
 
-	xLabel <- "PC1"
-	yLabel <- "PC2"
+	xLabel <- "PC 1"
+	yLabel <- "PC 2"
 
 	xRange <- diff(range(xs))
 	xLimits <- c(min(xs) - border[1] * xRange, max(xs) + border[2] * xRange)

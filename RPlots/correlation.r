@@ -64,7 +64,7 @@ makeCorrelationTable <- function(data, outFile, goodCorr=0.8)
 	subtitles <- "\t\\bf{Feature}"
 	for (i in 1:numPCs)
 	{
-		subtitles <- paste(subtitles, " & \\bf{PC", i, "}", sep="")
+		subtitles <- paste(subtitles, " & \\bf{PC ", i, "}", sep="")
 	}
 	subtitles <- paste(subtitles, " \\tabularnewline\n\t\\hline\n\t\\hline", sep="")
 	lines <- c(lines, subtitles)

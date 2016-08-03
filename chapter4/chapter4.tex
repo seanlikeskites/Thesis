@@ -664,26 +664,26 @@
 		\subsubsection*{Low Variance}
 			Low variance in a particular audio feature does not necessarily imply an agreement between users.
 			It may indicate a similarity between all of the audio segments processed, regardless of semantic
-			labelling. To account for this features which have low variance across the entire dataset can be
+			labelling. To account for this, features which have low variance across the entire dataset can be
 			disregarded. This can be achieved by calculating the agreement in a reduced dimensionality feature
 			space.
 
 			Using PCA the dimensions with the largest variance in the feature space can be discovered. If the
 			transforms labelled with a particular term exhibit a small variance in one of these dimensions it
 			is likely that that term is well agreed upon. Agreement can be calculated in the PCA timbre space
-			using Equation \ref{eq:EigenvalueAgreement} with $\lambda_{d,k}$ being the $k$\super{th} eigenvalue
-			of the covariance matrix for every transform labelled with descriptor $d$ in the first $K$
-			principal components. As when calculating the agreement in the feature space, the coordinates of
-			the transforms in each principal component should be standardised to remove bias introduced by the
-			proportions of total variance each component describes.
+			using Equation \ref{eq:EigenvalueAgreement}, with $\lambda_{d,k}$ being the $k$\super{th}
+			eigenvalue of the covariance matrix, of the first $K$ principal components (PCs), for every
+			transform labelled with descriptor $d$.  As when calculating the agreement in the feature space,
+			the coordinates of the transforms in each PC should be standardised to remove bias introduced by
+			the proportions of total variance each PC describes.
 
-			The number of principal components to use in the calculation of agreement will depend on the
-			dataset being analysed. Two considerations help in the selection of this number. Firstly, only
-			principal components with eigenvalues greater than a certain value should be retained. Only in
-			these components can a low variance be interpreted as agreement between users. Secondly the number
-			of transforms labelled with a each descriptor should be taken into account. Using a number of
-			principal components which is less than the size of the smallest group of transforms avoids the
-			occurrence of zero valued eigenvalues caused by insufficient data points.
+			The number of PCs to use in the calculation of agreement, $K$, will depend on the dataset being
+			analysed. Two considerations help in the selection of this number. Firstly, only PCs with
+			eigenvalues greater than a certain value should be retained. Only in these PCs can a low variance
+			be interpreted as agreement between users. Secondly the number of transforms labelled with a each
+			descriptor should be taken into account. Using a number of PC which is less than the size of the
+			smallest group of transforms avoids the occurrence of zero valued eigenvalues caused by
+			insufficient data points.
 
 		\subsubsection*{Validation with Synthesised Data}
 			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},
@@ -691,17 +691,17 @@
 			\ref{eq:EigenvalueAgreement} artificial data can be synthesised which exhibits some of the issues
 			discussed with Equation \ref{eq:SocialEqAgreement}.
 			
-			Figure \ref{fig:SynthesisedData} show a synthesised, three dimensional, dataset containing four
-			clusters of points. Each cluster has different properties which need to be taken into account when
-			calculating the agreement score. Cluster 1 represents a set of points whose position in the feature
-			space is not agreed upon, exhibiting a high variance in every feature. Cluster 2 represents a set
-			of points whose position is very well agreed upon, having low variance in every feature. Cluster 3
-			represents a set of points whose position is only defined in one audio feature, having high
-			variance in the other two. Cluster 4 represent a set of points which are defined by a relationship
-			between two features, exhibiting high variance in all features but a strong correlation ($p = 0.9$)
-			between features 1 and 2. The clusters were generated using the techniques discussed by
-			\citet{ripley1987stochastic}, using the means, $\mu$, and covariance matrices, $\Sigma$, shown in
-			Datum \ref{dat:ClusterStats}.
+			Figure \ref{fig:SynthesisedData} shows a synthesised, three dimensional, dataset containing four
+			clusters of points. For ease of discussion it is assumed that this data represents the feature
+			space after PCA has been applied. Each cluster has different properties which need to be taken into
+			account when calculating the agreement score. Cluster 1 represents a set of points whose position
+			in the PCA space is not agreed upon, exhibiting a high variance in every PC. Cluster 2 represents a
+			set of points whose position is very well agreed upon, having low variance in every PC. Cluster 3
+			represents a set of points whose position is only defined in one PC, having high variance in the
+			other two. Cluster 4 represent a set of points which are defined by a relationship between two PCs,
+			exhibiting high variance in all PCs but a strong correlation ($p = 0.9$) between PCs 1 and 2. The
+			clusters were generated using the techniques discussed by \citet{ripley1987stochastic}, using the
+			means, $\mu$, and covariance matrices, $\Sigma$, shown in Datum \ref{dat:ClusterStats}.
 
 			\begin{datum}[h!]
 				\centering
@@ -811,11 +811,11 @@
 			Visualising the data in Figure \ref{fig:SynthesisedData} provides intuition as to how an agreement
 			score should rate each cluster. Cluster 1 should receive the lowest score as there is no
 			discernible pattern to the data points. Cluster 2 should receive the highest score as it is very
-			tightly clustered in all features. Both clusters 3 and 4 show some some patterns in the
-			distribution. Cluster 3 has a well defined position in feature 1 while cluster 4 shows a strong
-			relationship between features 1 and 2. The agreement scores for these clusters should reflect these
-			patterns. Table \ref{tab:SynthesisedDataAgreement} shows agreement scores, for the data shown in
-			Figure \ref{fig:SynthesisedData}, calculated using Equations \ref{eq:SocialEqAgreement},
+			tightly clustered in all PCs. Both clusters 3 and 4 show some some patterns in the distribution.
+			Cluster 3 has a well defined position in PC 1 while cluster 4 shows a strong relationship between
+			PCs 1 and 2. The agreement scores for these clusters should reflect these patterns. Table
+			\ref{tab:SynthesisedDataAgreement} shows agreement scores, for the data shown in Figure
+			\ref{fig:SynthesisedData}, calculated using Equations \ref{eq:SocialEqAgreement},
 			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement} and
 			\ref{eq:EigenvalueAgreement}.
 
@@ -835,7 +835,7 @@
 					\hline
 					\bf{2} & 55.1 & 12.2 & 117.9 & 117.9 \tabularnewline
 					\hline
-					\bf{3} & 2.7 & 0.6 & 95.7 & 95.7 \tabularnewline
+					\bf{3} & 2.7 & 0.6 & 95.6 & 95.6 \tabularnewline
 					\hline
 					\bf{4} & 2.9 & 0.7 & 7.7 & 34.8 \tabularnewline
 					\hline
@@ -845,10 +845,10 @@
 			\end{table}
 
 			The issues with Equations \ref{eq:SocialEqAgreement} and \ref{eq:ReciprocalOfSumAgreement} are
-			immediately obvious. They ignores readily noticeable patterns in the data, giving clusters 1, 3 and
+			immediately obvious. They ignore readily noticeable patterns in the data, giving clusters 1, 3 and
 			4 similar agreement scores. By removing the assumption that high variance implies disagreement,
 			Equation \ref{eq:SumOfReciprocalAgreement} takes account of the pattern in cluster 3. Equation
-			\ref{eq:EigenvalueAgreement} remove the assumption that all features are independent enabling it to
+			\ref{eq:EigenvalueAgreement} removes the assumption that all PCs are independent enabling it to
 			reflect the pattern shown in cluster 4.
 
 			\note
@@ -902,7 +902,7 @@
 				\cline{2-6}
 				\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
 				\hline
-				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
+				\bf{Feature} & \bf{PC 1} & \bf{PC 2} & \bf{PC 3} & \bf{PC 4} & \bf{PC 5} \tabularnewline
 				\hline
 				\hline
 				\bf{Krimphoff Irregularity} & \bf{-0.984} & -0.0238 & -0.0969 & 0.0537 & -0.0265 \tabularnewline
@@ -946,7 +946,7 @@
 				\bf{Zero Crossing Rate} & 0.145 & \bf{-0.817} & -0.0682 & 0.111 & 0.283 \tabularnewline
 				\hline
 			\end{tabular}
-			\caption{Correlations between audio features and principal components for Figure
+			\caption{Correlations between audio features and PCs for Figure
 				 \ref{fig:DistortionProcessedPCAs}.}
 			\label{fig:DistortionProcessedCorrelations}
 		\end{table}
@@ -974,7 +974,7 @@
 				\cline{2-6}
 				\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
 				\hline
-				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
+				\bf{Feature} & \bf{PC 1} & \bf{PC 2} & \bf{PC 3} & \bf{PC 4} & \bf{PC 5} \tabularnewline
 				\hline
 				\hline
 				\bf{Krimphoff Irregularity} & \bf{-0.986} & -0.0805 & 0.0147 & -0.0516 & -0.0494 \tabularnewline
@@ -1018,7 +1018,7 @@
 				\bf{Signal Variance} & \bf{-0.826} & -0.155 & 0.328 & 0.149 & 0.045 \tabularnewline
 				\hline
 			\end{tabular}
-			\caption{Correlations between audio features and principal components for Figure
+			\caption{Correlations between audio features and PCs for Figure
 				 \ref{fig:DistortionDifferencePCAs}.}
 			\label{fig:DistortionDifferenceCorrelations}
 		\end{table}
@@ -1046,7 +1046,7 @@
 				\cline{2-6}
 				\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
 				\hline
-				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
+				\bf{Feature} & \bf{PC 1} & \bf{PC 2} & \bf{PC 3} & \bf{PC 4} & \bf{PC 5} \tabularnewline
 				\hline
 				\hline
 				\bf{Krimphoff Irregularity} & \bf{0.93} & 0.317 & 0.0106 & 0.00983 & 0.127 \tabularnewline
@@ -1070,7 +1070,7 @@
 				\bf{MFCC 11} & 0.0922 & -0.178 & \bf{-0.819} & -0.116 & 0.248 \tabularnewline
 				\hline
 			\end{tabular}
-			\caption{Correlations between audio features and principal components for Figure
+			\caption{Correlations between audio features and PCs for Figure
 				 \ref{fig:EqualiserProcessedPCAs}.}
 			\label{fig:EqualiserProcessedCorrelations}
 		\end{table}
@@ -1098,7 +1098,7 @@
 				\cline{2-6}
 				\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
 				\hline
-				\bf{Feature} & \bf{PC1} & \bf{PC2} & \bf{PC3} & \bf{PC4} & \bf{PC5} \tabularnewline
+				\bf{Feature} & \bf{PC 1} & \bf{PC 2} & \bf{PC 3} & \bf{PC 4} & \bf{PC 5} \tabularnewline
 				\hline
 				\hline
 				\bf{Krimphoff Irregularity} & \bf{0.968} & -0.182 & 0.0148 & -0.0257 & -0.0661 \tabularnewline
@@ -1146,7 +1146,7 @@
 				\bf{Peak Spectral Standard Deviation} & -0.234 & \bf{-0.803} & 0.14 & -0.337 & 0.208 \tabularnewline
 				\hline
 			\end{tabular}
-			\caption{Correlations between audio features and principal components for Figure
+			\caption{Correlations between audio features and PCs for Figure
 				 \ref{fig:EqualiserDifferencePCAs}.}
 			\label{fig:EqualiserDifferenceCorrelations}
 		\end{table}
