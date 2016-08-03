@@ -676,9 +676,10 @@
 			variance in the other two. Cluster 4 represent a set of points which are defined by a relationship
 			between two features, exhibiting high variance in all features but a strong correlation ($p = 0.9$)
 			between features 1 and 2. The clusters were generated using the techniques discussed by
-			\citet{ripley1987stochastic}, using the covariance matrices shown in Data \ref{dat:ClusterMatrices}
+			\citet{ripley1987stochastic}, using the covariance matrices shown in Datum
+			\ref{dat:ClusterMatrices}.
 
-			\begin{data}[h!]
+			\begin{datum}[h!]
 				\centering
 				\subfloat[Cluster 1]
 				{
@@ -722,7 +723,7 @@
 				\caption{The covariance matrices for the clusters shown in Figure
 					 \ref{fig:SynthesisedData}.}
 				\label{dat:ClusterMatrices}
-			\end{data}
+			\end{datum}
 
 			\begin{figure}[h!]
 				\centering
@@ -747,11 +748,10 @@
 			tightly clustered in all features. Both clusters 3 and 4 show some some patterns in the
 			distribution. Cluster 3 has a well defined position in feature 1 while cluster 4 shows a strong
 			relationship between features 1 and 2. The agreement scores for these clusters should reflect these
-			patterns.
-
-			Table \ref{tab:SynthesisedDataAgreement} shows agreement scores, for the data shown in Figure
-			\ref{fig:SynthesisedData}, calculated using Equations \ref{eq:SocialEqAgreement},
-			\ref{eq:SumOfReciprocalAgreement} and \ref{eq:EigenvalueAgreement}.
+			patterns. Table \ref{tab:SynthesisedDataAgreement} shows agreement scores, for the data shown in
+			Figure \ref{fig:SynthesisedData}, calculated using Equations \ref{eq:SocialEqAgreement},
+			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement} and
+			\ref{eq:EigenvalueAgreement}.
 
 			\begin{table}[h!]
 				\centering
@@ -778,11 +778,12 @@
 				\label{tab:SynthesisedDataAgreement}
 			\end{table}
 
-			The issues with Equation \ref{eq:SocialEqAgreement} are immediately obvious, it ignores readily
-			noticeable patterns in the data giving clusters 1, 3 and 4 similar agreement scores. By removing
-			the assumption that high variance implies disagreement, Equation \ref{eq:SumOfReciprocalAgreement}
-			takes account of the pattern in cluster 3. Equation \ref{eq:EigenvalueAgreement} remove the
-			assumption that all features are independent enabling it to reflect the pattern shown in cluster 4.
+			The issues with Equations \ref{eq:SocialEqAgreement} and \ref{eq:ReciprocalOfSumAgreement} are
+			immediately obvious. They ignores readily noticeable patterns in the data, giving clusters 1, 3 and
+			4 similar agreement scores. By removing the assumption that high variance implies disagreement,
+			Equation \ref{eq:SumOfReciprocalAgreement} takes account of the pattern in cluster 3. Equation
+			\ref{eq:EigenvalueAgreement} remove the assumption that all features are independent enabling it to
+			reflect the pattern shown in cluster 4.
 
 			\note
 			{
