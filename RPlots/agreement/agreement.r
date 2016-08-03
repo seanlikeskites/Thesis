@@ -13,6 +13,12 @@ socialEqAgreement <- function(data)
 	return(num / den)
 }
 
+reciprocalOfSumAgreement <- function(data)
+{
+	vars <- apply(data, 2, var)
+	return(1 / sum(vars))
+}
+
 sumOfReciprocalsAgreement <- function(data)
 {
 	vars <- apply(data, 2, var)
