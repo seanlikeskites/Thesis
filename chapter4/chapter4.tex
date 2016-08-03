@@ -190,7 +190,7 @@
 
 		\begin{figure}[h!]
 			\centering
-			\begin{tikzpicture}[->,>=stealth',node distance=3cm,every node/.style={scale=0.75}]
+			\begin{tikzpicture}[->,>=stealth',node distance=3cm]
 				\tikzstyle{object} = [style=ellipse]
 
 				\node[object, fill=blue] (transform) {studio:Transform};
@@ -229,7 +229,7 @@
 
 		\begin{figure}[h!]
 			\centering
-			\begin{tikzpicture}[->,>=stealth',node distance=3cm,every node/.style={scale=0.75}]
+			\begin{tikzpicture}[->,>=stealth',node distance=3cm]
 				\tikzstyle{object} = [style=ellipse]
 
 				\node[object, fill=orange] (extraction) {safe:FeatureExtractionTransform};
@@ -684,7 +684,6 @@
 			of transforms labelled with a each descriptor should be taken into account. Using a number of
 			principal components which is less than the size of the smallest group of transforms avoids the
 			occurrence of zero valued eigenvalues caused by insufficient data points.
-
 
 		\subsubsection*{Validation with Synthesised Data}
 			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},
