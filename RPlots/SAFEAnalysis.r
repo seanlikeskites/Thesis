@@ -96,7 +96,7 @@ combProcClust <- hclust(dist(scale(combProcAvg)), method="ward.D2")
 combProcDend <- makePrettyDendrogram(combProcClust, 6)
 postscript("CombinedProcessedClusters.eps")
 par(mar=c(3.5, 1, 0, 2.5))
-a <- plot(combProcDend, main=NA, sub=NA, xlim=c(ceiling(attr(combProcDend, "height")), 0),
+a <- plot(combProcDend, main=NA, sub=NA, xlim=c(35, 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()
 
