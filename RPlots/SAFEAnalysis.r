@@ -7,7 +7,7 @@ load("SAFE_Data.RData")
 # define the descriptors we want
 ########################################################
 distDescriptors <- c("warm", "crunch", "fuzz", "cream", "bright", "harsh", "rasp", "smooth")
-eqDescriptors <- c("warm", "bright", "clear", "thin", "air", "boom", "deep", "fill", "tin", "mud", "box", "harsh")
+eqDescriptors <- c("warm", "bright", "clear", "thin", "air", "boom", "deep", "full", "tin", "mud", "box", "harsh")
 
 ########################################################
 # filter out the descriptors we want
@@ -223,17 +223,17 @@ postscript("DistortionProcessedCentroidsPCA.eps")
 a <- plotCentroidBiplot(distProcPCA, distDescriptors, distProcPlotFeatures, c(0.4, 0.15, 0.15, 0.15))
 dev.off()
 
-distDiffPlotFeatures <- c("Krimphoff Irregularity", "Peak Spectral Skewness", "Spectral Roll Off")
+distDiffPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "First Tristimulus")
 postscript("DistortionDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(distDiffPCA, distDescriptors, distDiffPlotFeatures, c(0.45, 0.15, 0.15, 0.15))
+a <- plotCentroidBiplot(distDiffPCA, distDescriptors, distDiffPlotFeatures, c(0.2, 0.45, 0.15, 0.15))
 dev.off()
 
-eqProcPlotFeatures <- c("Krimphoff Irregularity", "MFCC 10", "Harmonic Spectral Kurtosis", "Spectral Flatness")
+eqProcPlotFeatures <- c("Krimphoff Irregularity", "Peak Spectral Centroid", "MFCC 1")
 postscript("EqualiserProcessedCentroidsPCA.eps")
 a <- plotCentroidBiplot(eqProcPCA, eqDescriptors, eqProcPlotFeatures, c(0.25, 0.45, 0.15, 0.15))
 dev.off()
 
-eqDiffPlotFeatures <- c("Krimphoff Irregularity", "MFCC 10", "Peak Spectral Centroid", "Spectral Skewness")
+eqDiffPlotFeatures <- c("Krimphoff Irregularity", "Harmonic Spectral Standard Deviation", "MFCC 1")
 postscript("EqualiserDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqDiffPCA, eqDescriptors, eqDiffPlotFeatures, c(0.15, 0.25, 0.15, 0.15))
+a <- plotCentroidBiplot(eqDiffPCA, eqDescriptors, eqDiffPlotFeatures, c(0.35, 0.25, 0.15, 0.15))
 dev.off()
