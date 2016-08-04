@@ -1,4 +1,5 @@
 source("agreement.r")
+source("descriptorPositions.r")
 
 plotIndividualPCA <- function(points, legendPos)
 {
@@ -24,15 +25,16 @@ plotIndividualPCA <- function(points, legendPos)
 	legend(legendPos, legend=uniqueDescriptors, pch=4, col=colourPalette)
 }
 
-plotCentroidBiplot <- function(PCA, var, border=c(0.15, 0.15, 0.15, 0.15))
+plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
 {
-	points <- apply(PCA$x, 2, function(x) tapply(x, rownames(PCA$x), mean))
+	points <- getDescriptorPositions(PCA$x, desc)
+	centroids <- apply(points, 2, function(x) tapply(x, rownames(points), mean))
 
-	descriptors <- rownames(points)
+	descriptors <- rownames(centroids)
 	uniqueDescriptors <- sort(unique(descriptors))
 	colourPalette <- rainbow(length(uniqueDescriptors))
 
-	termAgreements <- termAgreement(PCA$x)
+	termAgreements <- termAgreement(scale(points))
 	agreements <- array(0, length(uniqueDescriptors))
 
 	colours <- "black"
@@ -40,11 +42,11 @@ plotCentroidBiplot <- function(PCA, var, border=c(0.15, 0.15, 0.15, 0.15))
 	for (i in 1:length(uniqueDescriptors))
 	{
 		colours[descriptors == uniqueDescriptors[i]] <- colourPalette[i]
-		agreements[descriptors == uniqueDescriptors[i]] <- log(termAgreements[i]) / 3
+		agreements[descriptors == uniqueDescriptors[i]] <- termAgreements[i]
 	}
 
-	xs <- points[,1]
-	ys <- points[,2]
+	xs <- centroids[,1]
+	ys <- centroids[,2]
 
 	xLabel <- "PC 1"
 	yLabel <- "PC 2"

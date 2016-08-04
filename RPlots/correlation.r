@@ -31,67 +31,122 @@ matrixCorrelationTest <- function(data1, data2)
 	return(output)
 }
 
-getSalientFeatures <- function(c, minCorr=0.9, maxP=0.05)
-{
-	numPCs <- nrow(c$correlations)
-	features <- character()
+#getSalientFeatures <- function(c, minCorr=0.9, maxP=0.05)
+#{
+#	numPCs <- nrow(c$correlations)
+#	features <- character()
+#
+#	for (i in 1:numPCs)
+#	{
+#		topFeatures <- colnames(c$correlations)[(abs(c$correlations[i,]) > minCorr) & (c$pValues[i,] < maxP)]
+#		features <- c(features, topFeatures[!grepl("Bark", topFeatures)])
+#	}
+#
+#	return(features)
+#}
 
-	for (i in 1:numPCs)
+getSalientFeatures <- function(correlations, minCorr=0.9, maxP=0.01)
+{
+	cor <- correlations$correlations
+	ps <- correlations$pValues
+	nPCs <- nrow(cor)
+	notBark <- !grepl("Bark", colnames(cor))
+	cor <- cor[,notBark]
+	ps <- ps[,notBark]
+	out <- list()
+
+	for (i in 1:nPCs)
 	{
-		topFeatures <- colnames(c$correlations)[(abs(c$correlations[i,]) > minCorr) & (c$pValues[i,] < maxP)]
-		features <- c(features, topFeatures[!grepl("Bark", topFeatures)])
+		current <- cor[i,]
+		currentPs <- ps[i,]
+		large <- current[(abs(current) > minCorr) & (currentPs < maxP)]
+		top <- large[order(abs(large), decreasing=TRUE)]
+
+		if (length(top))
+		{
+			out[[i]] <- top
+		}
 	}
 
-	return(features)
+	return(out)
 }
 
-makeCorrelationTable <- function(data, outFile, goodCorr=0.8)
+makeCorrelationList <- function(data, outFile)
 {
-	data <- data[,order(apply(abs(data), 2, max), decreasing=TRUE)]
 	lines <- character()
-
-	numPCs <- nrow(data)
-	firstLine <- paste("\\begin{tabular}{|c|", paste(rep("c|", numPCs), collapse=""),
-			   "}\n\t\\cline{2-", numPCs + 1, "}", sep="")
+	firstLine <- "\\begin{itemize}"
 	lines <- c(lines, firstLine)
 
-	titles <- paste("\t\\multicolumn{1}{c|}{} & \\multicolumn{", 
-			numPCs, 
-			"}{c|}{\\bf{Correlation}} \\tabularnewline\n\t\\hline", 
-			sep="")
-	lines <- c(lines, titles)
+	nPCs <- length(data)
 
-	subtitles <- "\t\\bf{Feature}"
-	for (i in 1:numPCs)
+	for (i in 1:nPCs)
 	{
-		subtitles <- paste(subtitles, " & \\bf{PC ", i, "}", sep="")
-	}
-	subtitles <- paste(subtitles, " \\tabularnewline\n\t\\hline\n\t\\hline", sep="")
-	lines <- c(lines, subtitles)
+		line <- paste("\t\\item {\\bf{PC ", i, ":}} ", sep="")
 
-	features <- colnames(data)
+		cors <- format(data[[i]], digits=3)
+		features <- names(cors)
 
-	for (i in 1:ncol(data))
-	{
-		line <- paste("\t\\bf{", features[i], "}", sep="")
-
-		for (k in 1:numPCs)
-		{
-			if (abs(data[k,i]) > goodCorr)
-				line <- paste(line, " & \\bf{", format(data[k,i], digits=3), "}", sep="")
-			else
-				line <- paste(line, " & ", format(data[k,i], digits=3), sep="")
-		}
-
-		line <- paste(line, " \\tabularnewline\n\t\\hline", sep="")
+		featureString <- paste(paste(features, cors, sep=" ($p = "), collapse="$), ")
+		line <- paste(line, featureString, "$).", sep="")
 
 		lines <- c(lines, line)
 	}
 
-	lastLine <- "\\end{tabular}"
+	lastLine <- "\\end{itemize}"
 	lines <- c(lines, lastLine)
 
 	f <- file(outFile)
 	writeLines(lines, f)
 	close(f)
 }
+
+#makeCorrelationTable <- function(data, outFile, goodCorr=0.8)
+#{
+#	data <- data[,order(apply(abs(data), 2, max), decreasing=TRUE)]
+#	lines <- character()
+#
+#	numPCs <- nrow(data)
+#	firstLine <- paste("\\begin{tabular}{|c|", paste(rep("c|", numPCs), collapse=""),
+#			   "}\n\t\\cline{2-", numPCs + 1, "}", sep="")
+#	lines <- c(lines, firstLine)
+#
+#	titles <- paste("\t\\multicolumn{1}{c|}{} & \\multicolumn{", 
+#			numPCs, 
+#			"}{c|}{\\bf{Correlation}} \\tabularnewline\n\t\\hline", 
+#			sep="")
+#	lines <- c(lines, titles)
+#
+#	subtitles <- "\t\\bf{Feature}"
+#	for (i in 1:numPCs)
+#	{
+#		subtitles <- paste(subtitles, " & \\bf{PC ", i, "}", sep="")
+#	}
+#	subtitles <- paste(subtitles, " \\tabularnewline\n\t\\hline\n\t\\hline", sep="")
+#	lines <- c(lines, subtitles)
+#
+#	features <- colnames(data)
+#
+#	for (i in 1:ncol(data))
+#	{
+#		line <- paste("\t\\bf{", features[i], "}", sep="")
+#
+#		for (k in 1:numPCs)
+#		{
+#			if (abs(data[k,i]) > goodCorr)
+#				line <- paste(line, " & \\bf{", format(data[k,i], digits=3), "}", sep="")
+#			else
+#				line <- paste(line, " & ", format(data[k,i], digits=3), sep="")
+#		}
+#
+#		line <- paste(line, " \\tabularnewline\n\t\\hline", sep="")
+#
+#		lines <- c(lines, line)
+#	}
+#
+#	lastLine <- "\\end{tabular}"
+#	lines <- c(lines, lastLine)
+#
+#	f <- file(outFile)
+#	writeLines(lines, f)
+#	close(f)
+#}

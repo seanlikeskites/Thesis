@@ -874,6 +874,23 @@
 		a scatter plot in which the position of each individual transform is shown.
 
 		\subsubsection*{Distortion Processed Features}
+			\begin{itemize}
+				\item {\bf{PC 1:}} Krimphoff Irregularity ($p = -0.992$), Peak Krimphoff Irregularity ($p =
+					-0.985$), Harmonic Krimphoff Irregularity ($p = -0.968$), Peak Spectral Kurtosis ($p
+					= -0.964$), Harmonic Spectral Kurtosis ($p = -0.959$), Peak Spectral Skewness ($p =
+					-0.957$), Harmonic Spectral Skewness ($p = -0.946$), Spectral Skewness ($p =
+					-0.923$), Signal Standard Deviation ($p = -0.919$), RMS Amplitude ($p = -0.919$),
+					Signal Variance ($p = -0.851$), Spectral Kurtosis ($p = -0.790$).
+				\item {\bf{PC 2:}} Spectral Roll Off ($p =  0.938$), Harmonic Spectral Standard Deviation
+					($p =  0.933$), Peak Spectral Standard Deviation ($p =  0.932$), Peak Spectral
+					Centroid ($p =  0.904$), Harmonic Spectral Centroid ($p =  0.903$), Zero Crossing
+					Rate ($p =  0.875$), Spectral Centroid ($p =  0.856$), MFCC 1 ($p = -0.851$),
+					Spectral Slope ($p =  0.827$), Peak Spectral Spread ($p =  0.788$), Harmonic
+					Spectral Spread ($p =  0.786$).
+				\item {\bf{PC 3:}} MFCC 2 ($p =  0.787$), MFCC 4 ($p =  0.774$), Third Peak Tristimulus ($p
+					= -0.722$), Third Tristimulus ($p = -0.704$).
+			\end{itemize}
+
 			\begin{figure}[h!]
 				\centering
 				\subfloat[Individual Transforms]
@@ -892,62 +909,23 @@
 				\label{fig:DistortionProcessedPCAs}
 			\end{figure}
 
-			\begin{table}[h!]
-				\centering
-				\begin{tabular}{|c|c|c|c|c|c|}
-					\cline{2-6}
-					\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
-					\hline
-					\bf{Feature} & \bf{PC 1} & \bf{PC 2} & \bf{PC 3} & \bf{PC 4} & \bf{PC 5} \tabularnewline
-					\hline
-					\hline
-					\bf{Krimphoff Irregularity} & \bf{-0.992} & -0.0154 & 0.0596 & -0.0023 & -0.0146 \tabularnewline
-					\hline
-					\bf{Peak Krimphoff Irregularity} & \bf{-0.985} & -0.0615 & 0.0341 & -0.078 & -0.0299 \tabularnewline
-					\hline
-					\bf{Harmonic Krimphoff Irregularity} & \bf{-0.968} & -0.0805 & 0.0128 & -0.118 & -0.0631 \tabularnewline
-					\hline
-					\bf{Peak Spectral Kurtosis} & \bf{-0.964} & -0.0649 & 0.0355 & -0.121 & -0.00483 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Kurtosis} & \bf{-0.959} & -0.0841 & 0.0247 & -0.143 & -0.04 \tabularnewline
-					\hline
-					\bf{Peak Spectral Skewness} & \bf{-0.957} & -0.116 & 0.0185 & -0.14 & -0.0177 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Skewness} & \bf{-0.946} & -0.144 & 0.0117 & -0.153 & -0.0577 \tabularnewline
-					\hline
-					\bf{Spectral Roll Off} & -0.0688 & \bf{0.938} & 0.0639 & -0.012 & -0.212 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Standard Deviation} & -0.00378 & \bf{0.933} & -0.033 & -0.0926 & -0.265 \tabularnewline
-					\hline
-					\bf{Peak Spectral Standard Deviation} & -0.00829 & \bf{0.932} & -0.0461 & -0.0911 & -0.257 \tabularnewline
-					\hline
-					\bf{Spectral Skewness} & \bf{-0.923} & -0.177 & -0.0676 & -0.204 & -0.0561 \tabularnewline
-					\hline
-					\bf{Signal Standard Deviation} & \bf{-0.919} & -0.209 & 0.0759 & -0.188 & -0.0899 \tabularnewline
-					\hline
-					\bf{RMS Amplitude} & \bf{-0.919} & -0.209 & 0.0761 & -0.188 & -0.0898 \tabularnewline
-					\hline
-					\bf{Peak Spectral Centroid} & 0.0215 & \bf{0.904} & -0.0364 & -0.0913 & -0.321 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Centroid} & 0.0279 & \bf{0.903} & -0.0348 & -0.107 & -0.328 \tabularnewline
-					\hline
-					\bf{Zero Crossing Rate} & 0.0335 & \bf{0.875} & -0.0179 & 0.0482 & -0.264 \tabularnewline
-					\hline
-					\bf{Spectral Centroid} & -0.0431 & \bf{0.856} & 0.311 & -0.159 & 0.0509 \tabularnewline
-					\hline
-					\bf{MFCC 1} & 0.151 & \bf{-0.851} & 0.103 & -0.275 & -0.0703 \tabularnewline
-					\hline
-					\bf{Signal Variance} & \bf{-0.851} & -0.092 & 0.0796 & -0.161 & -0.0518 \tabularnewline
-					\hline
-					\bf{Spectral Slope} & -0.0205 & \bf{0.827} & 0.293 & -0.231 & 0.116 \tabularnewline
-					\hline
-				\end{tabular}
-				\caption{Correlations between audio features and PCs for Figure
-					 \ref{fig:DistortionProcessedPCAs}.}
-				\label{fig:DistortionProcessedCorrelations}
-			\end{table}
-
 		\subsubsection*{Distortion Feature Differences}
+			\begin{itemize}
+				\item {\bf{PC 1:}} Krimphoff Irregularity ($p = 0.992$), Peak Krimphoff Irregularity ($p =
+					0.989$), Harmonic Krimphoff Irregularity ($p = 0.971$), Peak Spectral Skewness ($p =
+					0.956$), Peak Spectral Kurtosis ($p = 0.956$), Harmonic Spectral Skewness ($p =
+					0.943$), Harmonic Spectral Kurtosis ($p = 0.941$), Signal Standard Deviation ($p =
+					0.939$), RMS Amplitude ($p = 0.939$), Spectral Skewness ($p = 0.918$), Signal
+					Variance ($p = 0.877$), Spectral Kurtosis ($p = 0.744$).
+				\item {\bf{PC 2:}} Spectral Roll Off ($p = -0.913$), Spectral Centroid ($p = -0.901$),
+					Harmonic Spectral Standard Deviation ($p = -0.869$), Harmonic Spectral Centroid ($p
+					= -0.832$), Peak Spectral Standard Deviation ($p = -0.831$), Peak Spectral Centroid
+					($p = -0.830$), Spectral Slope ($p = -0.793$), Spectral Spread ($p = -0.764$),
+					Spectral Standard Deviation ($p = -0.761$), Peak Spectral Spread ($p = -0.725$),
+					Harmonic Spectral Spread ($p = -0.719$), Zero Crossing Rate ($p = -0.715$).
+				\item {\bf{PC 3:}} First Tristimulus ($p = -0.797$), First Peak Tristimulus ($p = -0.783$).
+			\end{itemize}
+
 			\begin{figure}[h!]
 				\centering
 				\subfloat[Individual Transforms]
@@ -966,56 +944,28 @@
 				\label{fig:DistortionDifferencePCAs}
 			\end{figure}
 
-			\begin{table}[h!]
-				\centering
-				\begin{tabular}{|c|c|c|c|c|c|}
-					\cline{2-6}
-					\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
-					\hline
-					\bf{Feature} & \bf{PC 1} & \bf{PC 2} & \bf{PC 3} & \bf{PC 4} & \bf{PC 5} \tabularnewline
-					\hline
-					\hline
-					\bf{Krimphoff Irregularity} & \bf{0.992} & 0.0493 & -0.003 & 0.000576 & 0.0412 \tabularnewline
-					\hline
-					\bf{Peak Krimphoff Irregularity} & \bf{0.989} & 0.064 & 0.0768 & 0.0347 & -0.0181 \tabularnewline
-					\hline
-					\bf{Harmonic Krimphoff Irregularity} & \bf{0.971} & 0.0637 & 0.153 & 0.0221 & -0.0384 \tabularnewline
-					\hline
-					\bf{Peak Spectral Skewness} & \bf{0.956} & 0.0643 & 0.152 & 0.0544 & -0.103 \tabularnewline
-					\hline
-					\bf{Peak Spectral Kurtosis} & \bf{0.956} & 0.0701 & 0.147 & 0.0586 & -0.0621 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Skewness} & \bf{0.943} & 0.0683 & 0.205 & 0.0448 & -0.101 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Kurtosis} & \bf{0.941} & 0.0696 & 0.212 & 0.0455 & -0.0608 \tabularnewline
-					\hline
-					\bf{Signal Standard Deviation} & \bf{0.939} & 0.112 & 0.126 & 0.0841 & -0.2 \tabularnewline
-					\hline
-					\bf{RMS Amplitude} & \bf{0.939} & 0.112 & 0.126 & 0.0844 & -0.199 \tabularnewline
-					\hline
-					\bf{Spectral Skewness} & \bf{0.918} & 0.0959 & 0.17 & 0.0445 & -0.266 \tabularnewline
-					\hline
-					\bf{Spectral Roll Off} & 0.194 & \bf{-0.913} & -0.00656 & 0.0844 & -0.053 \tabularnewline
-					\hline
-					\bf{Spectral Centroid} & 0.231 & \bf{-0.901} & -0.0802 & -0.115 & -0.0139 \tabularnewline
-					\hline
-					\bf{Signal Variance} & \bf{0.877} & 0.0899 & 0.0827 & -0.0276 & -0.233 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Standard Deviation} & 0.091 & \bf{-0.869} & 0.0437 & 0.352 & -0.0701 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Centroid} & 0.0801 & \bf{-0.832} & 0.0455 & 0.41 & -0.103 \tabularnewline
-					\hline
-					\bf{Peak Spectral Standard Deviation} & 0.0932 & \bf{-0.831} & 0.0612 & 0.362 & -0.0561 \tabularnewline
-					\hline
-					\bf{Peak Spectral Centroid} & 0.0857 & \bf{-0.83} & 0.0314 & 0.405 & -0.0904 \tabularnewline
-					\hline
-				\end{tabular}
-				\caption{Correlations between audio features and PCs for Figure
-					 \ref{fig:DistortionDifferencePCAs}.}
-				\label{fig:DistortionDifferenceCorrelations}
-			\end{table}
-
 		\subsubsection*{Equaliser Processed Features}
+			\begin{itemize}
+				\item {\bf{PC 1:}} Krimphoff Irregularity ($p = 0.991$), Peak Krimphoff Irregularity ($p =
+					0.981$), Harmonic Spectral Kurtosis ($p = 0.966$), Peak Spectral Kurtosis ($p =
+					0.962$), Harmonic Krimphoff Irregularity ($p = 0.958$), Spectral Skewness ($p =
+					0.945$), Peak Spectral Skewness ($p = 0.895$), Harmonic Spectral Skewness ($p =
+					0.886$), Spectral Kurtosis ($p = 0.884$), Signal Standard Deviation ($p = 0.840$),
+					RMS Amplitude ($p = 0.840$), Signal Variance ($p = 0.813$).
+				\item {\bf{PC 2:}} Harmonic Spectral Standard Deviation ($p =  0.922$), Peak Spectral
+					Standard Deviation ($p =  0.918$), Spectral Roll Off ($p =  0.895$), Harmonic
+					Spectral Centroid ($p =  0.881$), Peak Spectral Centroid ($p =  0.881$), Spectral
+					Centroid ($p =  0.806$), Spectral Slope ($p =  0.805$), MFCC 1 ($p = -0.802$), Zero
+					Crossing Rate ($p =  0.798$), Peak Spectral Spread ($p =  0.761$), Harmonic
+					Spectral Spread ($p =  0.761$), Second Peak Tristimulus ($p = -0.749$), Second
+					Tristimulus ($p = -0.745$), Spectral Crest ($p = -0.720$).
+				\item {\bf{PC 3:}} MFCC 4 ($p = -0.718$), MFCC 2 ($p = -0.715$), Spectral Standard
+					Deviation ($p = -0.714$).
+				\item {\bf{PC 4:}} MFCC 8 ($p = 0.926$), MFCC 10 ($p = 0.839$), MFCC 9 ($p = 0.836$), MFCC
+					12 ($p = 0.760$), MFCC 7 ($p = 0.725$), MFCC 11 ($p = 0.721$).
+				\item {\bf{PC 5:}} MFCC 5 ($p = 0.743$), MFCC 3 ($p = 0.705$).
+			\end{itemize}
+
 			\begin{figure}[h!]
 				\centering
 				\subfloat[Individual Transforms]
@@ -1034,68 +984,24 @@
 				\label{fig:EqualiserProcessedPCAs}
 			\end{figure}
 
-			\begin{table}
-				\centering
-				\begin{tabular}{|c|c|c|c|c|c|}
-					\cline{2-6}
-					\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
-					\hline
-					\bf{Feature} & \bf{PC 1} & \bf{PC 2} & \bf{PC 3} & \bf{PC 4} & \bf{PC 5} \tabularnewline
-					\hline
-					\hline
-					\bf{Krimphoff Irregularity} & \bf{0.991} & -0.00908 & -0.0163 & -0.0271 & 0.00208 \tabularnewline
-					\hline
-					\bf{Peak Krimphoff Irregularity} & \bf{0.981} & 0.0136 & 0.00345 & -0.016 & -0.0059 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Kurtosis} & \bf{0.966} & -0.0367 & -0.0122 & -0.0182 & 0.00214 \tabularnewline
-					\hline
-					\bf{Peak Spectral Kurtosis} & \bf{0.962} & -0.091 & -0.0432 & 0.00876 & -0.0317 \tabularnewline
-					\hline
-					\bf{Harmonic Krimphoff Irregularity} & \bf{0.958} & 0.0774 & 0.0617 & -0.0553 & 0.0418 \tabularnewline
-					\hline
-					\bf{Spectral Skewness} & \bf{0.945} & -0.161 & -0.0671 & 0.0405 & -0.106 \tabularnewline
-					\hline
-					\bf{MFCC 8} & -0.0991 & -0.087 & -0.0509 & \bf{0.926} & 0.167 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Standard Deviation} & 0.0419 & \bf{0.922} & -0.0149 & 0.0823 & -0.122 \tabularnewline
-					\hline
-					\bf{Peak Spectral Standard Deviation} & 0.0438 & \bf{0.918} & -0.00506 & 0.0828 & -0.122 \tabularnewline
-					\hline
-					\bf{Spectral Roll Off} & -0.055 & \bf{0.895} & -0.231 & 0.0926 & -0.142 \tabularnewline
-					\hline
-					\bf{Peak Spectral Skewness} & \bf{0.895} & -0.198 & -0.123 & 0.0653 & -0.0901 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Skewness} & \bf{0.886} & -0.185 & -0.12 & 0.0529 & -0.0797 \tabularnewline
-					\hline
-					\bf{Spectral Kurtosis} & \bf{0.884} & -0.178 & -0.0346 & 0.0511 & -0.134 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Centroid} & 0.0567 & \bf{0.881} & -0.00673 & 0.021 & -0.176 \tabularnewline
-					\hline
-					\bf{Peak Spectral Centroid} & 0.0577 & \bf{0.881} & -0.00097 & 0.02 & -0.176 \tabularnewline
-					\hline
-					\bf{Signal Standard Deviation} & \bf{0.84} & -0.253 & -0.261 & 0.0156 & -0.161 \tabularnewline
-					\hline
-					\bf{RMS Amplitude} & \bf{0.84} & -0.253 & -0.261 & 0.0156 & -0.161 \tabularnewline
-					\hline
-					\bf{MFCC 10} & -0.0455 & -0.123 & 0.169 & \bf{0.839} & -0.00629 \tabularnewline
-					\hline
-					\bf{MFCC 9} & 0.0353 & -0.0111 & 0.273 & \bf{0.836} & 0.169 \tabularnewline
-					\hline
-					\bf{Signal Variance} & \bf{0.813} & -0.147 & -0.321 & 0.103 & -0.171 \tabularnewline
-					\hline
-					\bf{Spectral Centroid} & -0.152 & \bf{0.806} & -0.427 & 0.13 & -0.153 \tabularnewline
-					\hline
-					\bf{Spectral Slope} & -0.16 & \bf{0.805} & -0.434 & 0.138 & -0.124 \tabularnewline
-					\hline
-					\bf{MFCC 1} & -0.0782 & \bf{-0.802} & -0.292 & -0.0949 & 0.158 \tabularnewline
-					\hline
-				\end{tabular}
-				\caption{Correlations between audio features and PCs for Figure
-					 \ref{fig:EqualiserProcessedPCAs}.}
-				\label{fig:EqualiserProcessedCorrelations}
-			\end{table}
-
 		\subsubsection*{Equaliser Feature Differences}
+			\begin{itemize}
+				\item {\bf{PC 1:}} Krimphoff Irregularity ($p = -0.986$), Peak Krimphoff Irregularity ($p =
+					-0.970$), Spectral Skewness ($p = -0.968$), Peak Spectral Kurtosis ($p = -0.932$),
+					Harmonic Krimphoff Irregularity ($p = -0.922$), Spectral Kurtosis ($p = -0.915$),
+					Harmonic Spectral Kurtosis ($p = -0.912$), Signal Variance ($p = -0.890$), Signal
+					Standard Deviation ($p = -0.872$), RMS Amplitude ($p = -0.872$), Peak Spectral
+					Skewness ($p = -0.862$), Harmonic Spectral Skewness ($p = -0.831$).
+				\item {\bf{PC 2:}} Peak Spectral Centroid ($p =  0.867$), Harmonic Spectral Centroid ($p =
+					0.863$), Harmonic Spectral Standard Deviation ($p =  0.838$), Peak Spectral
+					Standard Deviation ($p =  0.833$), Spectral Roll Off ($p =  0.813$), Spectral
+					Centroid ($p =  0.770$), Spectral Slope ($p =  0.745$), MFCC 1 ($p = -0.705$).
+				\item {\bf{PC 3:}} MFCC 5 ($p = -0.794$), MFCC 6 ($p = -0.791$), MFCC 7 ($p = -0.741$),
+					MFCC 0 ($p =  0.723$), Jensen Irregularity ($p =  0.722$).
+				\item {\bf{PC 4:}} MFCC 12 ($p = 0.917$), MFCC 11 ($p = 0.908$), MFCC 10 ($p = 0.893$),
+					MFCC 9 ($p = 0.848$), MFCC 8 ($p = 0.742$).
+			\end{itemize}
+
 			\begin{figure}[h!]
 				\centering
 				\subfloat[Individual Transforms]
@@ -1113,60 +1019,3 @@
 				\caption{Timbre space for the feature differences from the equaliser.}
 				\label{fig:EqualiserDifferencePCAs}
 			\end{figure}
-
-			\begin{table}
-				\centering
-				\begin{tabular}{|c|c|c|c|c|c|}
-					\cline{2-6}
-					\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Correlation}} \tabularnewline
-					\hline
-					\bf{Feature} & \bf{PC 1} & \bf{PC 2} & \bf{PC 3} & \bf{PC 4} & \bf{PC 5} \tabularnewline
-					\hline
-					\hline
-					\bf{Krimphoff Irregularity} & \bf{-0.986} & 0.0935 & 0.00862 & -0.0212 & 0.0494 \tabularnewline
-					\hline
-					\bf{Peak Krimphoff Irregularity} & \bf{-0.97} & 0.141 & -0.0182 & -0.00184 & -0.0477 \tabularnewline
-					\hline
-					\bf{Spectral Skewness} & \bf{-0.968} & 0.0123 & 0.0418 & 0.0317 & -0.0479 \tabularnewline
-					\hline
-					\bf{Peak Spectral Kurtosis} & \bf{-0.932} & -0.0526 & 0.0688 & -0.00596 & 0.0933 \tabularnewline
-					\hline
-					\bf{Harmonic Krimphoff Irregularity} & \bf{-0.922} & 0.217 & -0.0777 & -0.039 & -0.00256 \tabularnewline
-					\hline
-					\bf{MFCC 12} & -0.00222 & 0.0141 & -0.199 & \bf{0.917} & 0.26 \tabularnewline
-					\hline
-					\bf{Spectral Kurtosis} & \bf{-0.915} & 0.0292 & 0.0391 & 0.0331 & -0.0483 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Kurtosis} & \bf{-0.912} & 0.033 & 0.00275 & -0.0506 & 0.16 \tabularnewline
-					\hline
-					\bf{MFCC 11} & 0.00263 & 0.0043 & -0.253 & \bf{0.908} & 0.273 \tabularnewline
-					\hline
-					\bf{MFCC 10} & -0.0101 & -0.047 & -0.3 & \bf{0.893} & 0.282 \tabularnewline
-					\hline
-					\bf{Signal Variance} & \bf{-0.89} & 0.0238 & 0.0881 & -0.00174 & 0.0374 \tabularnewline
-					\hline
-					\bf{Signal Standard Deviation} & \bf{-0.872} & -0.0618 & 0.0927 & -0.0603 & 0.265 \tabularnewline
-					\hline
-					\bf{RMS Amplitude} & \bf{-0.872} & -0.0619 & 0.0928 & -0.0603 & 0.265 \tabularnewline
-					\hline
-					\bf{Peak Spectral Centroid} & 0.119 & \bf{0.867} & -0.011 & -0.0399 & 0.0461 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Centroid} & 0.118 & \bf{0.863} & -0.00763 & -0.0414 & 0.0505 \tabularnewline
-					\hline
-					\bf{Peak Spectral Skewness} & \bf{-0.862} & -0.131 & 0.147 & 0.0279 & 0.0473 \tabularnewline
-					\hline
-					\bf{MFCC 9} & -0.0168 & -0.0779 & -0.42 & \bf{0.848} & 0.262 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Standard Deviation} & 0.163 & \bf{0.838} & -0.0583 & 0.0426 & 0.0615 \tabularnewline
-					\hline
-					\bf{Peak Spectral Standard Deviation} & 0.165 & \bf{0.833} & -0.053 & 0.046 & 0.0596 \tabularnewline
-					\hline
-					\bf{Harmonic Spectral Skewness} & \bf{-0.831} & -0.0913 & 0.113 & -0.00206 & 0.109 \tabularnewline
-					\hline
-					\bf{Spectral Roll Off} & 0.137 & \bf{0.813} & -0.0523 & -0.0892 & 0.109 \tabularnewline
-					\hline
-				\end{tabular}
-				\caption{Correlations between audio features and PCs for Figure
-					 \ref{fig:EqualiserDifferencePCAs}.}
-				\label{fig:EqualiserDifferenceCorrelations}
-			\end{table}

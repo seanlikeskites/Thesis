@@ -4,22 +4,28 @@
 load("SAFE_Data.RData")
 
 ########################################################
-# apply stemming
+# define the descriptors we want
 ########################################################
-source("stemming.r")
-rownames(distProc) <- safeStem(rownames(distProc))
-rownames(distDiff) <- safeStem(rownames(distDiff))
-rownames(eqProc) <- safeStem(rownames(eqProc))
-rownames(eqDiff) <- safeStem(rownames(eqDiff))
+distDescriptors <- c("warm", "crunch", "fuzz", "cream", "bright", "harsh", "rasp", "smooth")
+eqDescriptors <- c("warm", "bright", "clear", "thin", "air", "boom", "deep", "fill", "tin", "mud", "box", "harsh")
 
 ########################################################
-# thesis feature names
+# filter out the descriptors we want
 ########################################################
-source("featureNames.r")
-colnames(distProc) <- tidyFeatureNames(colnames(distProc))
-colnames(distDiff) <- tidyFeatureNames(colnames(distDiff))
-colnames(eqProc) <- tidyFeatureNames(colnames(eqProc))
-colnames(eqDiff) <- tidyFeatureNames(colnames(eqDiff))
+source("descriptorPositions.r")
+distProcSel <- getDescriptorPositions(distProc, distDescriptors)
+distDiffSel <- getDescriptorPositions(distDiff, distDescriptors)
+eqProcSel <- getDescriptorPositions(eqProc, eqDescriptors)
+eqDiffSel <- getDescriptorPositions(eqDiff, eqDescriptors)
+
+########################################################
+# apply stemming (no longer used)
+########################################################
+#source("stemming.r")
+#rownames(distProc) <- safeStem(rownames(distProc))
+#rownames(distDiff) <- safeStem(rownames(distDiff))
+#rownames(eqProc) <- safeStem(rownames(eqProc))
+#rownames(eqDiff) <- safeStem(rownames(eqDiff))
 
 ########################################################
 # find centroids of terms
@@ -29,10 +35,10 @@ termCentroids <- function(data)
 	centroids <- apply(data, 2, function(x) tapply(x, rownames(data), mean))
 }
 
-distProcAvg <- termCentroids(distProc)
-distDiffAvg <- termCentroids(distDiff)
-eqProcAvg <- termCentroids(eqProc)
-eqDiffAvg <- termCentroids(eqDiff)
+distProcAvg <- termCentroids(distProcSel)
+distDiffAvg <- termCentroids(distDiffSel)
+eqProcAvg <- termCentroids(eqProcSel)
+eqDiffAvg <- termCentroids(eqDiffSel)
 
 ########################################################
 # do some clustering
@@ -60,7 +66,7 @@ distDiffClust <- hclust(dist(scale(distDiffAvg)), method="ward.D2")
 distDiffDend <- makePrettyDendrogram(distDiffClust, 3)
 postscript("DistortionDifferenceClusters.eps")
 par(mar=c(3.5, 0, 0, 0))
-a <- plot(distDiffDend, main=NA, sub=NA, xlim=c(ceiling(attr(distDiffDend, "height")), 0),
+a <- plot(distDiffDend, main=NA, sub=NA, xlim=c(25, 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()
 
@@ -69,7 +75,7 @@ eqProcClust <- hclust(dist(scale(eqProcAvg)), method="ward.D2")
 eqProcDend <- makePrettyDendrogram(eqProcClust, 6)
 postscript("EqualiserProcessedClusters.eps")
 par(mar=c(3.5, 0, 0, 0))
-a <- plot(eqProcDend, main=NA, sub=NA, xlim=c(ceiling(attr(eqProcDend, "height")), 0),
+a <- plot(eqProcDend, main=NA, sub=NA, xlim=c(25, 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()
 
@@ -113,9 +119,11 @@ source("plotPCA.r")
 
 # distortion processed PCA
 distProcPCA <- prcomp(distProc, scale=TRUE)
+distProcPCAPoints <- distProcPCA$x
+distProcPCAPointsSel <- getDescriptorPositions(distProcPCAPoints, distDescriptors)
 
 postscript("DistortionProcessedPCA.eps")
-a <- plotIndividualPCA(distProcPCA$x, "bottomleft")
+a <- plotIndividualPCA(distProcPCAPointsSel, "topleft")
 dev.off()
 
 postscript("DistortionProcessedScree.eps")
@@ -124,9 +132,11 @@ dev.off()
 
 # distortion difference PCA
 distDiffPCA <- prcomp(distDiff, scale=TRUE)
+distDiffPCAPoints <- distDiffPCA$x
+distDiffPCAPointsSel <- getDescriptorPositions(distDiffPCAPoints, distDescriptors)
 
 postscript("DistortionDifferencePCA.eps")
-a <- plotIndividualPCA(distDiffPCA$x, "bottomleft")
+a <- plotIndividualPCA(distDiffPCAPointsSel, "topright")
 dev.off()
 
 postscript("DistortionDifferenceScree.eps")
@@ -135,9 +145,11 @@ dev.off()
 
 # equaliser processed PCA
 eqProcPCA <- prcomp(eqProc, scale=TRUE)
+eqProcPCAPoints <- eqProcPCA$x
+eqProcPCAPointsSel <- getDescriptorPositions(eqProcPCAPoints, eqDescriptors)
 
 postscript("EqualiserProcessedPCA.eps")
-a <- plotIndividualPCA(eqProcPCA$x, "bottomright")
+a <- plotIndividualPCA(eqProcPCAPointsSel, "topright")
 dev.off()
 
 postscript("EqualiserProcessedScree.eps")
@@ -146,9 +158,11 @@ dev.off()
 
 # equaliser difference PCA
 eqDiffPCA <- prcomp(eqDiff, scale=TRUE)
+eqDiffPCAPoints <- eqDiffPCA$x
+eqDiffPCAPointsSel <- getDescriptorPositions(eqDiffPCAPoints, eqDescriptors)
 
 postscript("EqualiserDifferencePCA.eps")
-a <- plotIndividualPCA(eqDiffPCA$x, "bottomright")
+a <- plotIndividualPCA(eqDiffPCAPointsSel, "topleft")
 dev.off()
 
 postscript("EqualiserDifferenceScree.eps")
@@ -160,50 +174,66 @@ dev.off()
 ########################################################
 source("correlation.r")
 
-distProcCorr <- matrixCorrelationTest(distProcPCA$x[,1:5], distProc)
-distProcFeatures <- getSalientFeatures(distProcCorr, 0.8)
-makeCorrelationTable(distProcCorr$correlations[,distProcFeatures], "DistortionProcessedCorrelations.txt")
+distProcCorr <- matrixCorrelationTest(distProcPCAPoints[,1:5], distProc)
+distProcFeatures <- getSalientFeatures(distProcCorr, 0.7)
+makeCorrelationList(distProcFeatures, "DistortionProcessedCorrelations.txt")
+#makeCorrelationTable(distProcCorr$correlations[,distProcFeatures], "DistortionProcessedCorrelations.txt")
 
-distDiffCorr <- matrixCorrelationTest(distDiffPCA$x[,1:5], distDiff)
-distDiffFeatures <- getSalientFeatures(distDiffCorr, 0.8)
-makeCorrelationTable(distDiffCorr$correlations[,distDiffFeatures], "DistortionDifferenceCorrelations.txt")
+distDiffCorr <- matrixCorrelationTest(distDiffPCAPoints[,1:5], distDiff)
+distDiffFeatures <- getSalientFeatures(distDiffCorr, 0.7)
+makeCorrelationList(distDiffFeatures, "DistortionDifferenceCorrelations.txt")
+#makeCorrelationTable(distDiffCorr$correlations[,distDiffFeatures], "DistortionDifferenceCorrelations.txt")
 
-eqProcCorr <- matrixCorrelationTest(eqProcPCA$x[,1:5], eqProc)
-eqProcFeatures <- getSalientFeatures(eqProcCorr, 0.8)
-makeCorrelationTable(eqProcCorr$correlations[,eqProcFeatures], "EqualiserProcesedCorrelations.txt")
+eqProcCorr <- matrixCorrelationTest(eqProcPCAPoints[,1:5], eqProc)
+eqProcFeatures <- getSalientFeatures(eqProcCorr, 0.7)
+makeCorrelationList(eqProcFeatures, "EqualiserProcessedCorrelations.txt")
+#makeCorrelationTable(eqProcCorr$correlations[,eqProcFeatures], "EqualiserProcesedCorrelations.txt")
 
-eqDiffCorr <- matrixCorrelationTest(eqDiffPCA$x[,1:5], eqDiff)
-eqDiffFeatures <- getSalientFeatures(eqDiffCorr, 0.8)
-makeCorrelationTable(eqDiffCorr$correlations[,eqDiffFeatures], "EqualiserDifferenceCorrelations.txt")
+eqDiffCorr <- matrixCorrelationTest(eqDiffPCAPoints[,1:5], eqDiff)
+eqDiffFeatures <- getSalientFeatures(eqDiffCorr, 0.7)
+makeCorrelationList(eqDiffFeatures, "EqualiserDifferenceCorrelations.txt")
+#makeCorrelationTable(eqDiffCorr$correlations[,eqDiffFeatures], "EqualiserDifferenceCorrelations.txt")
 
 ########################################################
 # confidences
 ########################################################
 source("agreement.r")
-distProcAgreement <- termAgreement(distProcPCA$x)
-distDiffAgreement <- termAgreement(distDiffPCA$x)
-eqProcAgreement <- termAgreement(eqProcPCA$x)
-eqDiffAgreement <- termAgreement(eqDiffPCA$x)
+
+distProcPCAScaled <- scale(distProcPCAPoints)
+distProcPCAScaledSel <- getDescriptorPositions(distProcPCAScaled, distDescriptors)
+distProcAgreement <- termAgreement(distProcPCAScaledSel)
+
+distDiffPCAScaled <- scale(distDiffPCAPoints)
+distDiffPCAScaledSel <- getDescriptorPositions(distDiffPCAScaled, distDescriptors)
+distDiffAgreement <- termAgreement(distDiffPCAScaledSel)
+
+eqProcPCAScaled <- scale(eqProcPCAPoints)
+eqProcPCAScaledSel <- getDescriptorPositions(eqProcPCAScaled, eqDescriptors)
+eqProcAgreement <- termAgreement(eqProcPCAScaledSel)
+
+eqDiffPCAScaled <- scale(eqDiffPCAPoints)
+eqDiffPCAScaledSel <- getDescriptorPositions(eqDiffPCAScaled, eqDescriptors)
+eqDiffAgreement <- termAgreement(eqDiffPCAScaledSel)
 
 ########################################################
 # biplots
 ########################################################
 distProcPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "MFCC 1", "MFCC 4")
 postscript("DistortionProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(distProcPCA, distProcPlotFeatures, c(0.4, 0.15, 0.15, 0.15))
+a <- plotCentroidBiplot(distProcPCA, distDescriptors, distProcPlotFeatures, c(0.4, 0.15, 0.15, 0.15))
 dev.off()
 
 distDiffPlotFeatures <- c("Krimphoff Irregularity", "Peak Spectral Skewness", "Spectral Roll Off")
 postscript("DistortionDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(distDiffPCA, distDiffPlotFeatures, c(0.45, 0.15, 0.15, 0.15))
+a <- plotCentroidBiplot(distDiffPCA, distDescriptors, distDiffPlotFeatures, c(0.45, 0.15, 0.15, 0.15))
 dev.off()
 
 eqProcPlotFeatures <- c("Krimphoff Irregularity", "MFCC 10", "Harmonic Spectral Kurtosis", "Spectral Flatness")
 postscript("EqualiserProcessedCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqProcPCA, eqProcPlotFeatures, c(0.25, 0.45, 0.15, 0.15))
+a <- plotCentroidBiplot(eqProcPCA, eqDescriptors, eqProcPlotFeatures, c(0.25, 0.45, 0.15, 0.15))
 dev.off()
 
 eqDiffPlotFeatures <- c("Krimphoff Irregularity", "MFCC 10", "Peak Spectral Centroid", "Spectral Skewness")
 postscript("EqualiserDifferenceCentroidsPCA.eps")
-a <- plotCentroidBiplot(eqDiffPCA, eqDiffPlotFeatures, c(0.15, 0.25, 0.15, 0.15))
+a <- plotCentroidBiplot(eqDiffPCA, eqDescriptors, eqDiffPlotFeatures, c(0.15, 0.25, 0.15, 0.15))
 dev.off()

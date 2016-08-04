@@ -1,6 +1,8 @@
 tidyFeatureNames <- function(names)
 {
 	names <- gsub("_", " ", names)
+	names <- gsub("AVG\\(", "", names)
+	names <- gsub("\\)", "", names)
 
 	names[names == "DataMean"] <- "Signal Mean"
 	names[names == "Variance"] <- "Signal Variance"

@@ -7,11 +7,11 @@ safeStem <- function(words)
 		words [i] <- sub("i$", "", wordStem(words [i]))
 
 		if (words [i] == "brighter")
-			words [i] = "bright"
+			words [i] <- "bright"
 		else if (words [i] == "mudd")
-			words [i] = "mud"
+			words [i] <- "mud"
 		else if (words [i] == "tinn")
-			words [i] = "tin"
+			words [i] <- "tin"
 	}
 
 	return(words)
