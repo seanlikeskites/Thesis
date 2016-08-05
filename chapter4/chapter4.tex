@@ -465,17 +465,19 @@
 		Each of the terms arrived at, after stemming, in Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}
 		can be described by their position in a multi dimensional audio feature space. Each dimension of this space
 		corresponds to one of the audio features extracted by the SAFE plug-ins. The coordinates of each term are
-		calculated as the mean audio features across each transform described by that term. For each audio effect
-		two separate feature spaces are constructed, one in which a terms coordinates are calculated from the audio
-		features of the processed signal and the other in which they are calculated from the difference between
-		features of the output and input signal. These two spaces can be compared to determine whether certain
-		descriptors are mostly used to describe a transform (e.g. an increase in inharmonicity) or are used to
-		describe an output signal (e.g. a signal with a spectral centroid between 4 and 8kHz).
+		calculated as the mean of each audio feature for every transform described by that term. For each audio
+		effect two separate feature spaces are constructed. In the first, a terms coordinates are calculated from
+		the audio features of the processed signal. This gives insight into how terms are used to describe the
+		features of a signal (e.g. a signal with a spectral centroid between 4 and 8kHz). In the second feature
+		space a terms coordinates are calculated from the difference between features of the output and input
+		signal. This allows terms which describe the change of features associated with a transform (e.g. an
+		increase in inharmonicity) to be identified
 
-		To identify groups of semantically similar descriptors hierarchical clustering is applied to these feature
-		spaces. Prior to clustering, each dimension of the feature space is standardised, to mitigate any effect
-		the range of a particular audio feature might have on the clustering. Clusters are determined using the
-		ward linkage criterion in order to minimise the variance within each cluster.
+		To identify groups of semantically similar descriptors, hierarchical clustering is applied to these feature
+		spaces. Prior to clustering, each dimension of the feature space is standardised (i.e. scaled and offset
+		such that is has a mean of zero and a standard deviation of one) to mitigate any effect the range of a
+		particular audio feature might have on the clustering. Clusters are determined using the ward linkage
+		criterion \citep{ward1963hierarchical} in order to minimise the variance within each cluster.
 
 		Figure \ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
 		distortion features spaces. The clusters identified are similar for both the processed features
@@ -483,7 +485,9 @@
 		(\ref{fig:DistortionDifferenceClusters}), the cluster containing `harsh' and `bright' being the most
 		distant from that containing `warm', `cream' and `fuzz' and the term `crunch' siting in a cluster separate
 		from the majority of the other terms. This leads to the formation of three distinct timbral groups used to
-		describe the application of distortion (`warmth', `brightness' and `crunchiness'). 
+		describe the application of distortion (`warmth', `brightness' and `crunchiness'). These clusters reflect
+		some of the combinations of descriptors seen in Table \ref{tab:DistortionTermCombinations}, where `cream',
+		`fuzz' and `warm' are often used alongside each other to describe a transform.
 
 		\begin{figure}[h!]
 			\centering
@@ -518,10 +522,12 @@
 		
 		Within the equaliser's feature differences space two main clusters are identified corresponding with the
 		`warmth' and `brightness' clusters from the distortion feature spaces. The `warmth' cluster includes the
-		terms `deep' and `full' while the `brightness' cluster includes the terms `thin', `clear' and `air'. An
-		additional `boominess' cluster, containing `mud', `boom' and `box', is also present. These three terms
-		cluster better in the processed feature space indicating that they are more likely to describe a particular
-		set of feature values rather than the properties of a transform.
+		terms `deep' and `full', while the `brightness' cluster includes the terms `tin', `thin', `clear' and
+		`air'. An additional `boominess' cluster, containing `mud', `boom' and `box', is also present. These three
+		terms cluster better in the processed feature space indicating that they are more likely to describe a
+		particular set of feature values rather than the properties of a transform. There is a similarity between
+		these clusters and the combinations of descriptors used to describe equaliser transforms (Table
+		\ref{tab:EqualiserTermCombinations}) suggesting that some of these terms may be synonymous with each other.
 
 		\begin{figure}[h!]
 %		This figure is da baddest figure, ask your dyslexic down syndromed mother.
@@ -542,8 +548,9 @@
 		\end{figure}
 		
 		In order to investigate the similarity of descriptors across both plug-ins their respective feature spaces
-		are combined and clustering applied to produce the dendrograms shown in Figure \ref{fig:CombinedClusters}.
-		Each descriptors is prepended with the name of the plug-in it is associated with.
+		are combined and clustering is applied to produce the dendrograms shown in Figure
+		\ref{fig:CombinedClusters}.  Each descriptors is prepended with the name of the plug-in it is associated
+		with.
 
 		\begin{figure}[h!]
 			\centering
@@ -569,11 +576,7 @@
 		evidence of this is found in the similarity of the terms `bright' and `harsh'. When used to describe
 		distortion transforms these terms always sit adjacent to one another in a cluster, whereas for equaliser
 		transforms they are separated by a reasonable distance. These terms are more likely to be synonymous when
-		describing audio processed by a static nonlinearity then they are for equalised audio.
-
-		The finer detail of the additional groups from the separate feature spaces (`crunchiness' and `boominess')
-		are lost in the combined feature spaces. Each of these terms are clustered with terms from their associated
-		plug-in, highlighting the timbral similarity between all signals processed by the same effect.
+		describing audio processed by a static nonlinearity then they are for equalised audio. 
 
 	\subsection{Agreement}
 	\label{sec:TimbreEvaluation-Analysis-Agreement}
