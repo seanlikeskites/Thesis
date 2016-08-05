@@ -4,7 +4,9 @@ getDescriptorPositions <- function(data, descriptors)
 
 	for (desc in descriptors)
 	{
-		descriptorData <- data[grep(desc, rownames(data)),]
+		regex <- paste("\\b", desc, sep="")
+		descriptorData <- data[grep(regex, rownames(data)),]
+		descriptorData <- descriptorData[!grepl("free", rownames(descriptorData)),] # get rid of "mud-free"
 		rownames(descriptorData) <- array(desc, nrow(descriptorData))
 		out <- rbind(out, descriptorData)
 	}
