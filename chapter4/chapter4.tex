@@ -301,40 +301,52 @@
 
 	\subsection{Term Usage}
 	\label{sec:TimbreEvaluation-Analysis-TermUsage}
-		Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} show the most commonly used terms used to
-		describe transforms applied by the distortion and equaliser respectively.
+%		Several descriptors in the dataset are derived from the same root word with the addition of suffixes such
+%		as `y' or `er' (e.g. `crunch' and `crunchy' or `bright' and `brighter'). It is assumed that the addition of
+%		such suffixes has no effect over how a term is used to describe timbre. As such a stemming algorithm
+%		\citep{porter1980an} is used in order to reduce all descriptors in the dataset to their root words.
+%		Additional processing is required after stemming so that all descriptors with the same root can be
+%		combined.  The Porter stemming algorithm replaces the letter y at the end of a word with the letter i, for
+%		this analysis these tailing i's are removed so that terms such as `fuzz' and `fuzzy' are reduced to the
+%		same root. In some cases the output after this must be further reduced, for example the term `muddy' is
+%		reduced to `mudd' which must have the tailing d removed to give the correct root `mud'.
+%
+%		After stemming we are left with eight descriptors from the distortion (`warm', `crunch', `fuzz', `cream',
+%		`bright', `harsh', `rasp' and `smooth') and twelve descriptors from the equaliser (`warm', `bright',
+%		`clear', `thin', `air', `boom', `deep', `full', `tin', `mud', `box' and `harsh').
+%
+%		Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} show the most commonly used terms used to
+%		describe transforms applied by the distortion and equaliser respectively.
+
+%		304 transforms from the distortion and 1483 from the equaliser.
 
 		\begin{table}[h!]
 			\centering
 			\begin{tabular}{|c|c|}
 				\hline
-				\bf{Term} & \bf{Frequency} \tabularnewline
+				\bf{Term} & \bf{Frequency} \tabluarnewline
 				\hline
 				\hline
-				warm & 21 \tabularnewline
+				crunch & 29 \tabularnewline
 				\hline
-				crunch & 16 \tabularnewline
+				warm & 25 \tabularnewline
 				\hline
-				crunchy & 10 \tabularnewline
+				fuzz & 16 \tabularnewline
 				\hline
-				fuzz & 9 \tabularnewline
-				\hline
-				creamy & 6 \tabularnewline
+				cream & 6 \tabularnewline
 				\hline
 			\end{tabular}
 			\qquad
 			\begin{tabular}{|c|c|}
 				\hline
-				\bf{Term} & \bf{Frequency} \tabularnewline
+				\bf{Term} & \bf{Frequency} \tabluarnewline
 				\hline
-				\hline
-				fuzzy & 6 \tabularnewline
 				\hline
 				bright & 5 \tabularnewline
 				\hline
 				harsh & 4 \tabularnewline
 				\hline
-				raspy & 4 \tabularnewline
+				rasp & 4 \tabularnewline
 				\hline
 				smooth & 3 \tabularnewline
 				\hline
@@ -347,84 +359,56 @@
 			\centering
 			\begin{tabular}{|c|c|}
 				\hline
-				\bf{Term} & \bf{Frequency} \tabularnewline
+				\bf{Term} & \bf{Frequency} \tabluarnewline
 				\hline
 				\hline
-				warm & 437 \tabularnewline
+				warm & 439 \tabularnewline
 				\hline
-				bright & 408 \tabularnewline
+				bright & 422 \tabularnewline
 				\hline
-				clear & 17 \tabularnewline
+				clear & 18 \tabularnewline
 				\hline
-				thin & 11 \tabularnewline
-				\hline
-				airy & 9 \tabularnewline
+				air & 18 \tabularnewline
 				\hline
 			\end{tabular}
 			\qquad
 			\begin{tabular}{|c|c|}
 				\hline
-				\bf{Term} & \bf{Frequency} \tabularnewline
+				\bf{Term} & \bf{Frequency} \tabluarnewline
 				\hline
 				\hline
-				boomy & 8 \tabularnewline
+				thin & 13 \tabularnewline
 				\hline
-				air & 7 \tabularnewline
+				full & 10 \tabularnewline
 				\hline
-				brighter & 6 \tabularnewline
+				boom & 9 \tabularnewline
+				\hline
+				box & 8 \tabularnewline
+			\end{tabular}
+			\qquad
+			\begin{tabular}{|c|c|}
+				\hline
+				\bf{Term} & \bf{Frequency} \tabluarnewline
+				\hline
+				\hline
+				mud & 8 \tabularnewline
+				\hline
+				tin & 7 \tabularnewline
 				\hline
 				deep & 6 \tabularnewline
 				\hline
-				full & 6 \tabularnewline
-				\hline
-			\end{tabular}
-			\qquad
-			\begin{tabular}{|c|c|}
-				\hline
-				\bf{Term} & \bf{Frequency} \tabularnewline
-				\hline
-				\hline
-				tinny & 6 \tabularnewline
-				\hline
-				muddy & 5 \tabularnewline
-				\hline
-				boxy & 4 \tabularnewline
-				\hline
 				harsh & 4 \tabularnewline
-				\hline
-				box & 3 \tabularnewline
-				\hline
 			\end{tabular}
 			\caption{Most commonly used terms from the equaliser.}
 			\label{tab:EqualiserTerms}
 		\end{table}
 
-		\note
-		{
-			Should we mention how `warm' and `bright' from the EQ have so many instances because they were part
-			of an experiment?
-		}
-
-		The terms `warm' and `bright' have been used to describe transforms applied using both the distortion and
-		the equaliser effects, suggesting that the timbral characteristics these terms describe can be manipulated
-		using either effect. Other descriptors are only used to describe transforms applied using a specific
-		effect, suggesting that a unique property of that effect produces tat timbral result. For example the term
-		`crunch' is only used to in relation to the distortion effect.
-
-		Several descriptors in the dataset are derived from the same root word with the addition of suffixes such
-		as `y' or `er' (e.g. `crunch' and `crunchy' or `bright' and `brighter'). It is assumed that the addition of
-		such suffixes has no effect over how a term is used to describe timbre. As such a stemming algorithm
-		\citep{porter1980an} is used in order to reduce all descriptors in the dataset to their root words.
-		Additional processing is required after stemming so that all descriptors with the same root can be
-		combined.  The Porter stemming algorithm replaces the letter y at the end of a word with the letter i, for
-		this analysis these tailing i's are removed so that terms such as `fuzz' and `fuzzy' are reduced to the
-		same root. In some cases the output after this must be further reduced, for example the term `muddy' is
-		reduced to `mudd' which must have the tailing d removed to give the correct root `mud'.
-
-		After stemming we are left with eight descriptors from the distortion (`warm', `crunch', `fuzz', `cream',
-		`bright', `harsh', `rasp' and `smooth') and twelve descriptors from the equaliser (`warm', `bright',
-		`clear', `thin', `air', `boom', `deep', `full', `tin', `mud', `box' and `harsh').
-
+%		The terms `warm' and `bright' have been used to describe transforms applied using both the distortion and
+%		the equaliser effects, suggesting that the timbral characteristics these terms describe can be manipulated
+%		using either effect. Other descriptors are only used to describe transforms applied using a specific
+%		effect, suggesting that a unique property of that effect produces tat timbral result. For example the term
+%		`crunch' is only used to in relation to the distortion effect.
+%
 	\subsection{Term Clustering}
 	\label{sec:TimbreEvaluation-Analysis-TermClustering}
 		Each of the terms arrived at, after stemming, in Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}
