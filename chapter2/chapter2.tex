@@ -167,34 +167,35 @@
 			is distributed in a spectrum. The first four spectral moments are the centroid, spread, skewness and
 			kurtosis.
 
-			The spectral centroid of a signal, $\mu$, is the first raw moment (mean) of the spectrum. It is
-			calculated using Equation \ref{eq:SpectralCentroid}. Spectral centroid is often stated as being one
-			of the most salient audio features in timbre recognition \citep{freed1990auditory, lakatos2000a}. 
+			The spectral centroid of a signal, $\mu_{\textrm{s}}$, is the first raw moment (mean) of the
+			spectrum. It is calculated using Equation \ref{eq:SpectralCentroid}. Spectral centroid is often
+			stated as being one of the most salient audio features in timbre recognition
+			\citep{freed1990auditory, lakatos2000a}. 
 
 			\begin{equation}
-				\mu = \frac{\sum_{n = 1}^{N} \nu_{n}a_{n}}
-					   {\sum_{n = 1}^{N} a_{n}}
+				\mu_{\textrm{s}} = \frac{\sum_{n = 1}^{N} \nu_{n}a_{n}}
+					   	   {\sum_{n = 1}^{N} a_{n}}
 				\label{eq:SpectralCentroid}
 			\end{equation}
 
-			The spectral spread of a signal, $\sigma^{2}$, is the second central moment (variance) of the
-			spectrum. It is calculated using Equation \ref{eq:SpectralSpread}.
+			The spectral spread of a signal, $\sigma_{\textrm{s}}^{2}$, is the second central moment (variance)
+			of the spectrum. It is calculated using Equation \ref{eq:SpectralSpread}.
 
 			\begin{equation}
-				\sigma^{2} = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{2}}
-						  {\sum_{n = 1}^{N} a_{n}}
+				\sigma_{\textrm{s}}^{2} = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{2}}
+						  	  {\sum_{n = 1}^{N} a_{n}}
 				\label{eq:SpectralSpread}
 			\end{equation}
 
 			Together, the spectral centroid and spread give a description of where the energy in a spectrum is
 			centered and how far from this center the energy is spread.
 
-			The spectral skewness of a signal, $\gamma$, is the third standardised moment of the spectrum. It is
-			calculated using Equation \ref{eq:SpectralSkewness}.
+			The spectral skewness of a signal, $\gamma_{\textrm{s}}$, is the third standardised moment of the
+			spectrum. It is calculated using Equation \ref{eq:SpectralSkewness}.
 
 			\begin{equation}
-				\gamma = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{3}}
-					      {\sigma^{3}\sum_{n = 1}^{N} a_{n}}
+				\gamma_{\textrm{2}} = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{3}}
+					      	      {\sigma^{3}\sum_{n = 1}^{N} a_{n}}
 				\label{eq:SpectralSkewness}
 			\end{equation}
 
@@ -202,12 +203,12 @@
 			describes a spectrum with more energy above its centroid while a positive skewness describes the
 			opposite. A skewness of zero describes a spectrum with equal energy either side of its centroid.
 
-			The spectral kurtosis of a signal, $\kappa$, is the fourth standardised moment of the spectrum. It
-			is calculated using Equation \ref{eq:SpectralKurtosis}.
+			The spectral kurtosis of a signal, $\kappa_{\textrm{s}}$, is the fourth standardised moment of the
+			spectrum. It is calculated using Equation \ref{eq:SpectralKurtosis}.
 
 			\begin{equation}
-				\kappa = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{4}}
-					      {\sigma^{4}\sum_{n = 1}^{N} a_{n}}
+				\kappa_{\textrm{s}} = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu)^{4}}
+					      	      {\sigma^{4}\sum_{n = 1}^{N} a_{n}}
 				\label{eq:SpectralKurtosis}
 			\end{equation}
 
@@ -216,8 +217,8 @@
 			in which small amounts of energy lies at frequencies far away from the central band.
 
 			The kurtosis of a normal distribution is 3. This gives rise to a different measure, the excess
-			kurtosis, which is defined as $\kappa - 3$. The excess kurtosis is often referred to as the
-			kurtosis. This gives rise to some obscurity when reading literature which discusses the kurtosis
+			kurtosis, which is defined as $\kappa_{\textrm{s}} - 3$. The excess kurtosis is often referred to as
+			the kurtosis. This gives rise to some obscurity when reading literature which discusses the kurtosis
 			without providing a definition.
 
 		\subsubsection*{Spectral Irregularity}
@@ -318,8 +319,8 @@
 			\[ A = \sum_{n = 1}^{N} 20\log (a_{n}) \quad B = \sum_{n = 1}^{N} 20\nu_{n}\log (a_{n}) \]
 			\[ F = \sum_{n = 1}^{N} \nu_{n} \quad G = \sum_{n = 1}^{N} \nu_{n}^{2} \]
 			\begin{equation}
-				S = \frac{NB - FA}
-					 {NG - F^{2}}
+				\textrm{SSl} = \frac{NB - FA}
+					       {NG - F^{2}}
 				\label{eq:SpectralSlope}
 			\end{equation}
 
@@ -365,8 +366,8 @@
 			It is calculated using Equation \ref{eq:HarmonicParityRatio}.
 			
 			\begin{equation}
-				R_{\textrm{OE}} = \frac{\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}
-					      {\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
+				\textrm{OER} = \frac{\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}
+					       {\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
 				\label{eq:HarmonicParityRatio}
 			\end{equation}
 

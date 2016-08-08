@@ -128,32 +128,43 @@
 		\begin{itemize}
 			\item {\bf{Temporal Features:}} Features calculated from the temporal representation of the signal.
 			\begin{itemize}
-				\item Signal Mean, Signal Variance, Signal Standard Deviation, RMS Amplitude and Zero
-					Crossing Rate.
+				\item Signal Mean ($\mu$), Signal Variance ($\sigma^{2}$), Signal Standard Deviation
+				      ($\sigma$), RMS Amplitude ($\textrm{RMS}$) and Zero Crossing Rate ($\textrm{ZCR}$).
 			\end{itemize}
 			\item {\bf{Spectral Features:}} Features calculated from the DFT of the signal.
 			\begin{itemize}
-				\item Spectral Centroid, Spectral Spread, Spectral Standard Deviation, Spectral Skewness,
-				      Spectral Kurtosis, Jensen Irregularity, Krimphoff Irregularity, $f_{0}$, Spectral
-				      Smoothness, Spectral Roll Off, Spectral Flatness, Tonality, Spectral Crest and
-				      Spectral Slope
+				\item Spectral Centroid ($\mu_{\textrm{s}}$), Spectral Spread ($\sigma_{\textrm{s}}^{2}$),
+				      Spectral Standard Deviation ($\sigma_{\textrm{s}}^{2}$), Spectral Skewness
+				      ($\gamma_{\textrm{s}}$), Spectral Kurtosis ($\kappa_{\textrm{s}}$), Jensen
+				      Irregularity ($\textrm{JI}$), Krimphoff Irregularity ($\textrm{KI}$), $f_{0}$,
+				      Spectral Smoothness ($\textrm{SSm}$), Spectral Roll Off ($\textrm{SRO}$), Spectral
+				      Flatness ($\textrm{SF}$), Tonality ($\tau$), Spectral Crest ($\textrm{SC}$)
+				      and Spectral Slope ($\textrm{SSl}$).
 			\end{itemize}
 			\item {\bf{Peak Spectral Features:}} Features calculated from the spectral partials of the signal.
 			\begin{itemize}
-				\item Peak Spectral Centroid, Peak Spectral Spread, Peak Spectral Standard Deviation, Peak
-					Spectral Skewness, Peak Spectral Kurtosis, Peak Jensen Irregularity, Peak Krimphoff
-					Irregularity, Peak Tristimuli and Inharmonicity.
+				\item Peak Spectral Centroid ($\mu_{\textrm{p}}$), Peak Spectral Spread
+				      ($\sigma_{\textrm{p}}^{2}$), Peak Spectral Standard Deviation
+				      ($\sigma_{\textrm{p}}^{2}$), Peak Spectral Skewness ($\gamma_{\textrm{p}}$), Peak
+				      Spectral Kurtosis ($\kappa_{\textrm{p}}$), Peak Jensen Irregularity
+				      ($\textrm{JI}_{\textrm{p}}$), Peak Krimphoff Irregularity
+				      ($\textrm{KI}_{\textrm{p}}$), Peak Tristimuli ($T_{\textrm{p}1}$, $T_{\textrm{p}2}$
+				      and $T_{\textrm{p}3}$) and Inharmonicity ($I$).
 			\end{itemize}
 			\item {\bf{Harmonic Spectral Features:}} Features calculated from the harmonic partials of the
 			      signal.
 			\begin{itemize}
-				\item Harmonic Spectral Centroid, Harmonic Spectral Spread, Harmonic Spectral Standard
-					Deviation, Harmonic Spectral Skewness, Harmonic Spectral Kurtosis, Harmonic Jensen
-					Irregularity, Harmonic Krimphoff Irregularity, Tristimuli, Noisiness and Odd to
-					Even Harmonic Ratio.
+				\item Harmonic Spectral Centroid ($\mu_{\textrm{h}}$), Harmonic Spectral Spread
+				      ($\sigma_{\textrm{h}}^{2}$), Harmonic Spectral Standard Deviation
+				      ($\sigma_{\textrm{h}}$), Harmonic Spectral Skewness ($\gamma_{\textrm{h}}$), Harmonic
+				      Spectral Kurtosis ($\kappa_{\textrm{h}}$), Harmonic Jensen Irregularity
+				      ($\textrm{JI}_{\textrm{h}}$), Harmonic Krimphoff Irregularity
+				      ($\textrm{KI}_{\textrm{h}}$), Tristimuli ($T_{1}$, $T_{2}$ and $T_{3}$, Noisiness
+				      ($N$) and Odd to Even Harmonic Ratio ($\textrm{ROE}$).
 			\end{itemize}
-			\item {\bf{Bark Coefficient 0-24:}} The 25 bark band coefficients.
-			\item {\bf{MFCC 0-12:}} The 13 MFCCs.
+			\item {\bf{Bark Coefficients (}}$\textrm{Bark}_{0\textrm{-}24}${\bf{):}} The 25 bark band
+			      coefficients.
+			\item {\bf{MFCCs (}}$\textrm{MFCC}_{0\textrm{-}12}${\bf{):}} The 13 MFCCs.
 		\end{itemize}
 
 		One disadvantage in using plug-ins is that they cannot gather information about the processing chain they
