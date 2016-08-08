@@ -27,14 +27,17 @@ plotIndividualPCA <- function(points, legendPos)
 
 plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
 {
-	points <- getDescriptorPositions(PCA$x, desc)
+	data <- PCA$x
+	points <- getDescriptorPositions(data, desc)
+	scaledData <- scale(data)
+	scaledPoints <- getDescriptorPositions(scaledData, desc)
 	centroids <- apply(points, 2, function(x) tapply(x, rownames(points), mean))
 
 	descriptors <- rownames(centroids)
 	uniqueDescriptors <- sort(unique(descriptors))
 	colourPalette <- rainbow(length(uniqueDescriptors))
 
-	termAgreements <- termAgreement(scale(points))
+	termAgreements <- termAgreement(scaledPoints)
 	agreements <- array(0, length(uniqueDescriptors))
 
 	colours <- "black"
