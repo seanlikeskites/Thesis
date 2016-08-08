@@ -66,7 +66,7 @@ clusters <- c("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4")
 
 setEPS()
 
-postscript("ArtificialData1-2.eps")
+postscript("ArtificialData1-2.eps", pointsize=18)
 plot(allX, allY, type='n', main="", xlab="PC 1", ylab="PC 2")
 points(large[,1], large[,2], col=colours[1], pch=4, cex=2)
 points(small[,1], small[,2], col=colours[2], pch=4, cex=2)

@@ -917,14 +917,18 @@
 		dimensionality of the audio feature space allows for the most salient features to be identified. To
 		preserve as much of the audio feature data as possible, a different feature space, to that used for
 		clustering, is constructed. Rather than each descriptor representing one point in the feature space, each
-		individual transform, labeled with a certain descriptor, represents its own point. In this manner
-		dimensions which have little effect on a certain timbral descriptor are easily determined. The points
-		labeled with a particular term will be more spread out across the dimensions which do not affect them. 
+		individual transform represents its own point. In this manner dimensions which have little effect on a
+		certain timbral descriptor are easily determined. The points labeled with a particular term will be more
+		spread out across the dimensions which do not affect them. 
 		
 		Prior to analysis, the feature spaces are standardised to remove any bias caused by features with a large
 		range. PCA is then applied in order to create the low dimensionality timbre spaces discussed in this
 		section. Two different types of plot are used to identify patterns within these timbre spaces. The first is
-		a scatter plot in which the position of each individual transform is shown.
+		a scatter plot in which the position of each individual transform is shown. These plots shoe the regions of
+		the timbre space that certain terms describe. The second is a biplot showing the mean position of
+		transforms labelled with each descriptor along with vectors showing the influence of selected audio
+		features. In these graphs the size of the text indicates the agreement score associated with that
+		descriptor.
 
 		\subsubsection*{Distortion Processed Features}
 			\begin{itemize}

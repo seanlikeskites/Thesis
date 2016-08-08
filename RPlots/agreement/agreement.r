@@ -28,13 +28,11 @@ sumOfReciprocalsAgreement <- function(data)
 sumOfReciprocalEigenvaluesAgreement <- function(data)
 {
 	eigs <- eigen(cov(data))$values
-	print(eigs)
 	return(sum(1 / eigs))
 }
 
 boundedSumOfReciprocalEigenvaluesAgreement <- function(data)
 {
 	eigs <- eigen(cov(data))$values
-	print(eigs)
 	return(sum(1 / (1 + eigs)))
 }
