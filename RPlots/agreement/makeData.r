@@ -84,21 +84,25 @@ points(diag[,3], diag[,2], col=colours[4], pch=4, cex=2)
 legend("bottomright", legend=clusters, pch=4, col=colours)
 dev.off()
 
-agreements <- matrix(0, 4, 4)
+agreements <- matrix(0, 4, 5)
 agreements[1,] <- c(socialEqAgreement(largeScaled), 
 		    reciprocalOfSumAgreement(largeScaled),
 		    sumOfReciprocalsAgreement(largeScaled), 
-		    sumOfReciprocalEigenvaluesAgreement(largeScaled))
+		    sumOfReciprocalEigenvaluesAgreement(largeScaled),
+		    boundedSumOfReciprocalEigenvaluesAgreement(largeScaled))
 agreements[2,] <- c(socialEqAgreement(smallScaled),
 		    reciprocalOfSumAgreement(smallScaled),
 		    sumOfReciprocalsAgreement(smallScaled), 
-		    sumOfReciprocalEigenvaluesAgreement(smallScaled))
+		    sumOfReciprocalEigenvaluesAgreement(smallScaled),
+		    boundedSumOfReciprocalEigenvaluesAgreement(smallScaled))
 agreements[3,] <- c(socialEqAgreement(tallScaled), 
 		    reciprocalOfSumAgreement(tallScaled),
 		    sumOfReciprocalsAgreement(tallScaled), 
-		    sumOfReciprocalEigenvaluesAgreement(tallScaled))
+		    sumOfReciprocalEigenvaluesAgreement(tallScaled),
+		    boundedSumOfReciprocalEigenvaluesAgreement(tallScaled))
 agreements[4,] <- c(socialEqAgreement(diagScaled), 
 		    reciprocalOfSumAgreement(diagScaled),
 		    sumOfReciprocalsAgreement(diagScaled), 
-		    sumOfReciprocalEigenvaluesAgreement(diagScaled))
+		    sumOfReciprocalEigenvaluesAgreement(diagScaled),
+		    boundedSumOfReciprocalEigenvaluesAgreement(diagScaled))
 write.csv(format(agreements, digits=2), file="ArtificialDataAgreements.csv")

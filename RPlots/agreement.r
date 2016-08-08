@@ -16,7 +16,7 @@ termAgreement <- function(data, nPCs=5)
 			n <- nPCs
 		}
 
-		agreements[i] <- sum(1 / eig[1:n])
+		agreements[i] <- sum(1 / (1 + eig[1:n]))
 	}
 
 	names(agreements) <- uniqueDescriptors

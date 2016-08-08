@@ -690,14 +690,24 @@
 			labelled with descriptor $d$.
 
 			When using Equation \ref{eq:EigenvalueAgreement}, the number of eigenvalues used, $K$, needs to be
-			carefully selected. If $N_{d}$ is less than or equal to the total number of audio features the
+			carefully selected. If $N_{d}$ is less than or equal to the total number of audio features, the
 			covariance matrix will be singular, meaning it will have one or more eigenvalues equal to zero. At
-			most, only the $N_{d} - 1$ largest eigenvalues should be used in order to avoid the agreement score
-			becoming undefined.
+			most, only the $N_{d} - 1$ largest eigenvalues should be used.
+			
+			Any other eigenvalues equal to zero would imply a perfect linear relationship between a combination
+			of audio features. If the features concerned are mathematically defined to be directly proportional
+			then these zero eigenvalues should have no effect on the agreement score. If, however, a perfect
+			linear relationship is discovered in the data, the agreement score should be increased
+			accordingly. This raises an issue with Equation \ref{eq:EigenvalueAgreement} in that a devision by
+			zero will occur if a perfectly linear relationship is discovered. This can be remedied by
+			calculating the agreement using Equation \ref{eq:BoundedEigenvalueAgreement}. Calculating the
+			agreement in this manner also has the advantage of bounding the agreement score between zero (no
+			agreement) and $K$ (perfect agreement in all dimensions).
 
-			Any other zero eigenvalues would imply a perfect linear relationship between a combination of audio
-			features. \note{Can I just say we will ignore that for now? It is a very unlikely occurrence,
-			disregarding features which are defined to be linearly related (which will get fixed by PCA).}
+			\begin{equation}
+				A(d) = \sum_{k = 1}^{K} \frac{1}{1 + \lambda_{d,k}}
+				\label{eq:BoundedEigenvalueAgreement}
+			\end{equation}
 
 		\subsubsection*{Low Variance}
 			Low variance in a particular audio feature does not necessarily imply an agreement between users.
@@ -706,28 +716,36 @@
 			disregarded. This can be achieved by calculating the agreement in a reduced dimensionality feature
 			space.
 
-			Using PCA the dimensions with the largest variance in the feature space can be discovered. If the
+			Using PCA, the dimensions with the largest variance in the feature space can be discovered. If the
 			transforms labelled with a particular term exhibit a small variance in one of these dimensions it
 			is likely that that term is well agreed upon. Agreement can be calculated in the PCA timbre space
-			using Equation \ref{eq:EigenvalueAgreement}, with $\lambda_{d,k}$ being the $k$\super{th}
-			eigenvalue of the covariance matrix, of the first $K$ principal components (PCs), for every
-			transform labelled with descriptor $d$.  As when calculating the agreement in the feature space,
-			the coordinates of the transforms in each PC should be standardised to remove bias introduced by
-			the proportions of total variance each PC describes.
+			using Equation \ref{eq:BoundedEigenvalueAgreement}, with $\lambda_{d,k}$ being the $k$\super{th}
+			eigenvalue of the covariance matrix of the principal components (PCs) for every transform labelled
+			with descriptor $d$. As when calculating the agreement in the feature space, the coordinates of the
+			transforms in each PC should be standardised to remove bias introduced by the proportions of total
+			variance each PC describes.
 
-			The number of PCs to use in the calculation of agreement, $K$, will depend on the dataset being
-			analysed. Two considerations help in the selection of this number. Firstly, only PCs with
-			eigenvalues greater than a certain value should be retained. Only in these PCs can a low variance
-			be interpreted as agreement between users. Secondly the number of transforms labelled with a each
-			descriptor should be taken into account. Using a number of PC which is less than the size of the
-			smallest group of transforms avoids the occurrence of zero valued eigenvalues caused by
-			insufficient data points.
+			The number of PCs to used in the calculation of agreement is an important consideration. PCs which
+			describe a low proportion of total variance should be discarded as is can not be known whether this
+			low variance is due to user agreement. It is therefore recommended that a threshold is set, and
+			only PCs which describe a proportion of variance above this threshold are used. Discarding the low
+			variance PCs in this manner also removes any which have zero variance due to audio features
+			which are defined to be directly proportional to one another, removing their effect on the
+			agreement score.
+
+			Further to this, the number of eigenvalues used, $K$, needs to be decided. Where $N_{d}$ is greater
+			than the number of PCs used, all the eigenvalues should be used ($K$ equal to the number of PCs).
+			For cases where $N_{d}$ is less than or equal to the number of PCs used, only $N_{d} - 1$
+			eigenvalues should be used ($K = N_{d} - 1$). This dynamic value for $K$ has the benefit of
+			reducing the agreement scores for terms which describe very few transforms. It also ensures that
+			terms which describe only one transform will always receive an agreement score of zero, as $K$ will
+			be equal to zero.
 
 		\subsubsection*{Validation with Synthesised Data}
 			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},
-			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement} and
-			\ref{eq:EigenvalueAgreement} artificial data can be synthesised which exhibits some of the issues
-			discussed with Equation \ref{eq:SocialEqAgreement}.
+			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement}, \ref{eq:EigenvalueAgreement}
+			and \ref{eq:BoundedEigenvalueAgreement} artificial data can be synthesised which exhibits some of
+			the issues discussed with Equation \ref{eq:SocialEqAgreement}.
 			
 			Figure \ref{fig:SynthesisedData} shows a synthesised, three dimensional, dataset containing four
 			clusters of points. For ease of discussion it is assumed that this data represents the feature
@@ -854,8 +872,8 @@
 			PCs 1 and 2. The agreement scores for these clusters should reflect these patterns. Table
 			\ref{tab:SynthesisedDataAgreement} shows agreement scores, for the data shown in Figure
 			\ref{fig:SynthesisedData}, calculated using Equations \ref{eq:SocialEqAgreement},
-			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement} and
-			\ref{eq:EigenvalueAgreement}.
+			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement}, \ref{eq:EigenvalueAgreement}
+			and \ref{eq:BoundedEigenvalueAgreement}.
 
 			\begin{table}[h!]
 				\centering
@@ -866,16 +884,17 @@
 					\bf{Cluster} & \bf{Equation \ref{eq:SocialEqAgreement}} & 
 					\bf{Equation \ref{eq:ReciprocalOfSumAgreement}} &
 					\bf{Equation \ref{eq:SumOfReciprocalAgreement}} & 
-					\bf{Equation \ref{eq:EigenvalueAgreement}} \tabularnewline
+					\bf{Equation \ref{eq:EigenvalueAgreement}} &
+					\bf{Equation \ref{eq:BoundedEigenvalueAgreement}} \tabularnewline
 					\hline
 					\hline
-					\bf{1} & 2.3 & 0.5 & 4.7 & 4.7 \tabularnewline
+					\bf{1} & 2.3 & 0.5 & 4.7 & 4.7 & 1.8 \tabularnewline
 					\hline
-					\bf{2} & 55.1 & 12.2 & 117.9 & 117.9 \tabularnewline
+					\bf{2} & 55.1 & 12.2 & 117.9 & 117.9 & 2.9 \tabularnewline
 					\hline
-					\bf{3} & 2.7 & 0.6 & 95.6 & 95.6 \tabularnewline
+					\bf{3} & 2.7 & 0.6 & 95.7 & 95.7 & 2.1 \tabularnewline
 					\hline
-					\bf{4} & 2.9 & 0.7 & 7.7 & 34.8 \tabularnewline
+					\bf{4} & 2.9 & 0.7 & 7.7 & 34.8 & 2.1 \tabularnewline
 					\hline
 				\end{tabular}
 				\caption{Agreement scores for the synthesised data.}
@@ -887,13 +906,9 @@
 			4 similar agreement scores. By removing the assumption that high variance implies disagreement,
 			Equation \ref{eq:SumOfReciprocalAgreement} takes account of the pattern in cluster 3. Equation
 			\ref{eq:EigenvalueAgreement} removes the assumption that all PCs are independent enabling it to
-			reflect the pattern shown in cluster 4.
-
-			\note
-			{
-				I am also concerned about how unbounded these values are. I was thinking of using $1 +
-				s_{d,k}^{2}$ to bound it.
-			}
+			reflect the pattern shown in cluster 4. The final column of Table
+			\ref{tab:SynthesisedDataAgreement} shows the bounding effect given by Equation
+			\ref{BoundedEigenvalueAgreement}.
 
 	\subsection{Timbre Spaces}
 	\label{sec:TimbreEvaluation-Analysis-TimbreSpaces}
@@ -914,9 +929,9 @@
 		\subsubsection*{Distortion Processed Features}
 			\begin{itemize}
 				\item {\bf{PC 1:}} Krimphoff Irregularity ($p = -0.992$), Peak Krimphoff Irregularity ($p =
-					-0.985$), Harmonic Krimphoff Irregularity ($p = -0.968$), Peak Spectral Kurtosis ($p
-					= -0.964$), Harmonic Spectral Kurtosis ($p = -0.959$), Peak Spectral Skewness ($p =
-					-0.957$), Harmonic Spectral Skewness ($p = -0.946$), Spectral Skewness ($p =
+					-0.985$), Harmonic Krimphoff Irregularity ($p = -0.968$), Peak Spectral Kurtosis
+					($p = -0.964$), Harmonic Spectral Kurtosis ($p = -0.959$), Peak Spectral Skewness
+					($p = -0.957$), Harmonic Spectral Skewness ($p = -0.946$), Spectral Skewness ($p =
 					-0.923$), Signal Standard Deviation ($p = -0.919$), RMS Amplitude ($p = -0.919$),
 					Signal Variance ($p = -0.851$), Spectral Kurtosis ($p = -0.790$).
 				\item {\bf{PC 2:}} Spectral Roll Off ($p =  0.938$), Harmonic Spectral Standard Deviation
@@ -950,8 +965,8 @@
 		\subsubsection*{Distortion Feature Differences}
 			\begin{itemize}
 				\item {\bf{PC 1:}} Krimphoff Irregularity ($p = 0.992$), Peak Krimphoff Irregularity ($p =
-					0.989$), Harmonic Krimphoff Irregularity ($p = 0.971$), Peak Spectral Skewness ($p =
-					0.956$), Peak Spectral Kurtosis ($p = 0.956$), Harmonic Spectral Skewness ($p =
+					0.989$), Harmonic Krimphoff Irregularity ($p = 0.971$), Peak Spectral Skewness ($p
+					= 0.956$), Peak Spectral Kurtosis ($p = 0.956$), Harmonic Spectral Skewness ($p =
 					0.943$), Harmonic Spectral Kurtosis ($p = 0.941$), Signal Standard Deviation ($p =
 					0.939$), RMS Amplitude ($p = 0.939$), Spectral Skewness ($p = 0.918$), Signal
 					Variance ($p = 0.877$), Spectral Kurtosis ($p = 0.744$).
