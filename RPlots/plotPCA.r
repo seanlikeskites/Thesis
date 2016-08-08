@@ -45,7 +45,7 @@ plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
 	for (i in 1:length(uniqueDescriptors))
 	{
 		colours[descriptors == uniqueDescriptors[i]] <- colourPalette[i]
-		agreements[descriptors == uniqueDescriptors[i]] <- termAgreements[i] * 2
+		agreements[descriptors == uniqueDescriptors[i]] <- termAgreements[i]
 	}
 
 	xs <- centroids[,1]
