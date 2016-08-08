@@ -22,7 +22,7 @@ plotIndividualPCA <- function(points, legendPos)
 
 	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel)
 	points(xs, ys, pch=4, col=colours, cex=2)
-	legend(legendPos, legend=uniqueDescriptors, pch=4, col=colourPalette)
+	legend(legendPos, legend=uniqueDescriptors, pch=4, pt.cex=2, col=colourPalette)
 }
 
 plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
