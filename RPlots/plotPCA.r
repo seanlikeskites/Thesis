@@ -67,9 +67,8 @@ plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
 	scaleY <- PCA$sdev[2] * sqrt(n)
 	varYs <- PCA$rotation[var,2] * scaleY
 
-	par(mar=c(4, 4, 4, 4))
 	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel, xlim=xLimits, ylim=yLimits)
-	text(xs, ys, descriptors, col=colours, cex=1.5+agreements)
+	text(xs, ys, descriptors, col=colours, cex=1+agreements)
 
 	xLimScale <- max(abs(varXs)) / max(abs(xs)) * 1.3
 	xLimits <- xLimits * xLimScale
@@ -115,5 +114,5 @@ plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
 	arrows(0, 0, varXs, varYs, col=varCol)
 	axis(3, col.ticks=varCol, col.axis=varCol)
 	axis(4, col.ticks=varCol, col.axis=varCol)
-	text(varXs, varYs, var, pos=labelPos, col=varCol)
+	text(varXs, varYs, var, pos=labelPos, col=varCol, cex=0.8)
 }
