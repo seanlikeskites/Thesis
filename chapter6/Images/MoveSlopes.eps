@@ -1,8 +1,8 @@
 %!PS-Adobe-2.0 EPSF-2.0
-%%Title: /home/sean/Documents/ResearchWork/HarmonicExcitationOctave/Systems/MoveSlopes.eps
+%%Title: /home/sean/Documents/ResearchWork/HarmonicExcitationOctave/Systems/MoveSlopes.tex
 %%Creator: gnuplot 4.6 patchlevel 6
-%%CreationDate: Mon Aug  1 14:12:36 2016
-%%DocumentFonts: (atend)
+%%CreationDate: Tue Aug  9 15:24:39 2016
+%%DocumentFonts: 
 %%BoundingBox: 50 50 626 482
 %%EndComments
 %%BeginProlog
@@ -13,11 +13,11 @@ gnudict begin
 % The unit line width and grayscale image gamma correction may also be changed.
 %
 /Color false def
-/Blacktext false def
+/Blacktext true def
 /Solid false def
 /Dashlength 2 def
 /Landscape false def
-/Level1 true def
+/Level1 false def
 /Rounded false def
 /ClipToBoundingBox false def
 /SuppressPDFMark false def
@@ -27,7 +27,7 @@ gnudict begin
 /Gamma 1.0 def
 /BackgroundColor {-1.000 -1.000 -1.000} def
 %
-/vshift -120 def
+/vshift -133 def
 /dl1 {
   10.0 Dashlength mul mul
   Rounded { currentlinewidth 0.75 mul sub dup 0 le { pop 0.01 } if } if
@@ -420,34 +420,6 @@ Level1 {Level1PatternFill} {Level2PatternFill} ifelse
 /Symbol-Oblique /Symbol findfont [1 0 .167 1 0 0] makefont
 dup length dict begin {1 index /FID eq {pop pop} {def} ifelse} forall
 currentdict end definefont pop
-/MFshow {
-   { dup 5 get 3 ge
-     { 5 get 3 eq {gsave} {grestore} ifelse }
-     {dup dup 0 get findfont exch 1 get scalefont setfont
-     [ currentpoint ] exch dup 2 get 0 exch R dup 5 get 2 ne {dup dup 6
-     get exch 4 get {Gshow} {stringwidth pop 0 R} ifelse }if dup 5 get 0 eq
-     {dup 3 get {2 get neg 0 exch R pop} {pop aload pop M} ifelse} {dup 5
-     get 1 eq {dup 2 get exch dup 3 get exch 6 get stringwidth pop -2 div
-     dup 0 R} {dup 6 get stringwidth pop -2 div 0 R 6 get
-     show 2 index {aload pop M neg 3 -1 roll neg R pop pop} {pop pop pop
-     pop aload pop M} ifelse }ifelse }ifelse }
-     ifelse }
-   forall} def
-/Gswidth {dup type /stringtype eq {stringwidth} {pop (n) stringwidth} ifelse} def
-/MFwidth {0 exch { dup 5 get 3 ge { 5 get 3 eq { 0 } { pop } ifelse }
- {dup 3 get{dup dup 0 get findfont exch 1 get scalefont setfont
-     6 get Gswidth pop add} {pop} ifelse} ifelse} forall} def
-/MLshow { currentpoint stroke M
-  0 exch R
-  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
-/MRshow { currentpoint stroke M
-  exch dup MFwidth neg 3 -1 roll R
-  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
-/MCshow { currentpoint stroke M
-  exch dup MFwidth -2 div 3 -1 roll R
-  Blacktext {gsave 0 setgray MFshow grestore} {MFshow} ifelse } bind def
-/XYsave    { [( ) 1 2 true false 3 ()] } bind def
-/XYrestore { [( ) 1 2 true false 4 ()] } bind def
 Level1 SuppressPDFMark or 
 {} {
 /SDict 10 dict def
@@ -455,13 +427,13 @@ systemdict /pdfmark known not {
   userdict /pdfmark systemdict /cleartomark get put
 } if
 SDict begin [
-  /Title (/home/sean/Documents/ResearchWork/HarmonicExcitationOctave/Systems/MoveSlopes.eps)
+  /Title (/home/sean/Documents/ResearchWork/HarmonicExcitationOctave/Systems/MoveSlopes.tex)
   /Subject (gnuplot plot)
   /Creator (gnuplot 4.6 patchlevel 6)
   /Author (sean)
 %  /Producer (gnuplot)
 %  /Keywords ()
-  /CreationDate (Mon Aug  1 14:12:36 2016)
+  /CreationDate (Tue Aug  9 15:24:39 2016)
   /DOCINFO pdfmark
 end
 } ifelse
@@ -475,8 +447,6 @@ doclip
 0.050 0.050 scale
 0 setgray
 newpath
-(Arial) findfont 360 scalefont setfont
-BackgroundColor 0 lt 3 1 roll 0 lt exch 0 lt or or not {BackgroundColor C 1.000 0 0 11520.00 8640.00 BoxColFill} if
 gsave % colour palette begin
 /maxcolors 64 def
 /HSV2RGB {  exch dup 0.0 eq {pop exch pop dup dup} % achromatic gray
@@ -553,359 +523,298 @@ Color InterpolatedColor or { % COLOUR vs. GRAY map
 } ifelse
 1.000 UL
 LTb
-1.00 1.00 1.00 C 1.000 2196 1152 8674 7054 BoxColFill
-LCb setrgbcolor
-2196 1152 M
-0 7054 V
-8674 0 V
-0 -7054 V
--8674 0 V
+1.00 1.00 1.00 C 1.000 2440 1280 8358 6878 BoxColFill
+LTb
+2440 1280 M
+0 6878 V
+8358 0 V
+0 -6878 V
+-8358 0 V
 stroke
 0.500 UL
 LTb
-2196 1152 M
+2440 1280 M
 88 0 V
-8587 0 R
+8271 0 R
 -88 0 V
 stroke
-0.00 0.00 0.00 C 1980 1152 M
-[ [(Arial) 360.0 0.0 true true 0 (-0.01)]
-] -120.0 MRshow
-0.500 UL
+0.00 0.00 0.00 C 0.500 UL
 LTb
-2196 2563 M
+2440 2656 M
 88 0 V
-8587 0 R
+8271 0 R
 -88 0 V
 stroke
-0.00 0.00 0.00 C 1980 2563 M
-[ [(Arial) 360.0 0.0 true true 0 (-0.008)]
-] -120.0 MRshow
-0.500 UL
+0.00 0.00 0.00 C 0.500 UL
 LTb
-2196 3974 M
+2440 4032 M
 88 0 V
-8587 0 R
+8271 0 R
 -88 0 V
 stroke
-0.00 0.00 0.00 C 1980 3974 M
-[ [(Arial) 360.0 0.0 true true 0 (-0.006)]
-] -120.0 MRshow
-0.500 UL
+0.00 0.00 0.00 C 0.500 UL
 LTb
-2196 5385 M
+2440 5407 M
 88 0 V
-8587 0 R
+8271 0 R
 -88 0 V
 stroke
-0.00 0.00 0.00 C 1980 5385 M
-[ [(Arial) 360.0 0.0 true true 0 (-0.004)]
-] -120.0 MRshow
-0.500 UL
+0.00 0.00 0.00 C 0.500 UL
 LTb
-2196 6796 M
+2440 6783 M
 88 0 V
-8587 0 R
+8271 0 R
 -88 0 V
 stroke
-0.00 0.00 0.00 C 1980 6796 M
-[ [(Arial) 360.0 0.0 true true 0 (-0.002)]
-] -120.0 MRshow
-0.500 UL
+0.00 0.00 0.00 C 0.500 UL
 LTb
-2196 8207 M
+2440 8159 M
 88 0 V
-8587 0 R
+8271 0 R
 -88 0 V
 stroke
-0.00 0.00 0.00 C 1980 8207 M
-[ [(Arial) 360.0 0.0 true true 0 (0)]
-] -120.0 MRshow
-0.500 UL
+0.00 0.00 0.00 C 0.500 UL
 LTb
-2196 1152 M
+2440 1280 M
 0 88 V
-0 6967 R
+0 6791 R
 0 -88 V
 stroke
-0.00 0.00 0.00 C 2196 792 M
-[ [(Arial) 360.0 0.0 true true 0 (-10)]
-] -120.0 MCshow
-0.500 UL
+0.00 0.00 0.00 C 0.500 UL
 LTb
-4365 1152 M
+4530 1280 M
 0 88 V
-0 6967 R
+0 6791 R
 0 -88 V
 stroke
-0.00 0.00 0.00 C 4365 792 M
-[ [(Arial) 360.0 0.0 true true 0 (-5)]
-] -120.0 MCshow
-0.500 UL
+0.00 0.00 0.00 C 0.500 UL
 LTb
-6534 1152 M
+6619 1280 M
 0 88 V
-0 6967 R
+0 6791 R
 0 -88 V
 stroke
-0.00 0.00 0.00 C 6534 792 M
-[ [(Arial) 360.0 0.0 true true 0 (0)]
-] -120.0 MCshow
-0.500 UL
+0.00 0.00 0.00 C 0.500 UL
 LTb
-8702 1152 M
+8709 1280 M
 0 88 V
-0 6967 R
+0 6791 R
 0 -88 V
 stroke
-0.00 0.00 0.00 C 8702 792 M
-[ [(Arial) 360.0 0.0 true true 0 (5)]
-] -120.0 MCshow
-0.500 UL
+0.00 0.00 0.00 C 0.500 UL
 LTb
-10871 1152 M
+10799 1280 M
 0 88 V
-0 6967 R
+0 6791 R
 0 -88 V
 stroke
-0.00 0.00 0.00 C 10871 792 M
-[ [(Arial) 360.0 0.0 true true 0 (10)]
-] -120.0 MCshow
-0.500 UL
+0.00 0.00 0.00 C 0.500 UL
 LTb
 0.500 UL
 LTb
-2196 8207 N
-0 -7055 V
-8675 0 V
-0 7055 V
--8675 0 V
+2440 8159 N
+0 -6879 V
+8359 0 V
+0 6879 V
+-8359 0 V
 Z stroke
-0.00 0.00 0.00 C 288 4679 M
-currentpoint gsave translate 90 rotate 0 0 moveto
-[ [(Arial) 360.0 0.0 true true 0 (Tilt Gradient)]
-] -120.0 MCshow
-grestore
-LTb
-0.00 0.00 0.00 C 6533 252 M
-[ [(Arial) 360.0 0.0 true true 0 (Parameter Setting)]
-] -120.0 MCshow
-LTb
+0.00 0.00 0.00 C LTb
+0.00 0.00 0.00 C LTb
 1.000 UP
 0.500 UL
 LTb
 1.000 UL
 LTb
-6920 1215 N
-0 1440 V
-3735 0 V
-0 -1440 V
--3735 0 V
+6416 1343 N
+0 1600 V
+4143 0 V
+0 -1600 V
+-4143 0 V
 Z stroke
-% Begin plot #1
 0.500 UL
 LT0
-0.00 0.00 1.00 C 0.00 0.00 0.00 C 10655 2475 M
-[ [(Arial) 360.0 0.0 true true 0 (Cello)]
-] -120.0 MRshow
-LT0
-0.00 0.00 1.00 C 7136 2475 M
-927 0 V
-2196 4554 M
-217 58 V
-217 58 V
-217 59 V
-217 58 V
-216 58 V
-217 58 V
-217 58 V
-217 59 V
-217 58 V
-217 58 V
-217 58 V
-217 58 V
-216 59 V
-217 58 V
-217 58 V
-217 58 V
-217 58 V
-217 59 V
-217 58 V
-217 58 V
-216 58 V
-217 58 V
-217 59 V
-217 58 V
-217 58 V
-217 58 V
-217 58 V
-217 58 V
-216 59 V
-217 58 V
-217 58 V
-217 58 V
-217 58 V
-217 59 V
-217 58 V
-217 58 V
-216 58 V
-217 58 V
-217 59 V
-217 58 V
-% End plot #1
-% Begin plot #2
+0.00 0.00 1.00 C 0.00 0.00 0.00 C LT0
+0.00 0.00 1.00 C 6656 2743 M
+1023 0 V
+2440 4597 M
+209 57 V
+209 57 V
+209 56 V
+209 57 V
+209 57 V
+209 57 V
+209 56 V
+209 57 V
+209 57 V
+209 57 V
+209 56 V
+209 57 V
+209 57 V
+209 57 V
+209 56 V
+209 57 V
+209 57 V
+209 57 V
+209 56 V
+208 57 V
+209 57 V
+209 57 V
+209 56 V
+209 57 V
+209 57 V
+209 56 V
+209 57 V
+209 57 V
+209 57 V
+209 56 V
+209 57 V
+209 57 V
+209 57 V
+209 56 V
+209 57 V
+209 57 V
+209 57 V
+209 56 V
+209 57 V
+209 57 V
 stroke
 LT0
-0.00 0.50 0.00 C 0.00 0.00 0.00 C 10655 2115 M
-[ [(Arial) 360.0 0.0 true true 0 (Clarinet)]
-] -120.0 MRshow
-LT0
-0.00 0.50 0.00 C 7136 2115 M
-927 0 V
-2196 6559 M
-217 33 V
-217 33 V
-217 33 V
-217 33 V
-216 34 V
-217 33 V
-217 33 V
-217 33 V
-217 33 V
-217 33 V
-217 33 V
-217 34 V
-216 33 V
-217 33 V
-217 33 V
-217 33 V
-217 33 V
-217 34 V
-217 33 V
-217 33 V
-216 33 V
-217 33 V
-217 33 V
-217 34 V
-217 33 V
-217 33 V
-217 33 V
-217 33 V
-216 33 V
-217 33 V
-217 34 V
-217 33 V
-217 33 V
-217 33 V
-217 33 V
-217 33 V
-216 34 V
-217 33 V
-217 33 V
-217 33 V
-% End plot #2
-% Begin plot #3
+0.00 0.50 0.00 C 0.00 0.00 0.00 C LT0
+0.00 0.50 0.00 C 6656 2343 M
+1023 0 V
+2440 6552 M
+209 32 V
+209 33 V
+209 32 V
+209 32 V
+209 33 V
+209 32 V
+209 32 V
+209 33 V
+209 32 V
+209 32 V
+209 33 V
+209 32 V
+209 32 V
+209 32 V
+209 33 V
+209 32 V
+209 32 V
+209 33 V
+209 32 V
+208 32 V
+209 33 V
+209 32 V
+209 32 V
+209 33 V
+209 32 V
+209 32 V
+209 33 V
+209 32 V
+209 32 V
+209 33 V
+209 32 V
+209 32 V
+209 33 V
+209 32 V
+209 32 V
+209 33 V
+209 32 V
+209 32 V
+209 33 V
+209 32 V
 stroke
 LT0
-1.00 0.00 0.00 C 0.00 0.00 0.00 C 10655 1755 M
-[ [(Arial) 360.0 0.0 true true 0 (Synthesised)]
-] -120.0 MRshow
-LT0
-1.00 0.00 0.00 C 7136 1755 M
-927 0 V
-2196 5511 M
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-216 19 V
-217 19 V
-217 19 V
-217 20 V
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-216 19 V
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-217 20 V
-217 19 V
-216 19 V
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-216 20 V
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-217 19 V
-216 19 V
-217 19 V
-217 20 V
-217 19 V
-% End plot #3
-% Begin plot #4
+1.00 0.00 0.00 C 0.00 0.00 0.00 C LT0
+1.00 0.00 0.00 C 6656 1943 M
+1023 0 V
+2440 5530 M
+209 19 V
+209 18 V
+209 19 V
+209 18 V
+209 19 V
+209 19 V
+209 18 V
+209 19 V
+209 19 V
+209 18 V
+209 19 V
+209 18 V
+209 19 V
+209 19 V
+209 18 V
+209 19 V
+209 19 V
+209 18 V
+209 19 V
+208 18 V
+209 19 V
+209 19 V
+209 18 V
+209 19 V
+209 19 V
+209 18 V
+209 19 V
+209 18 V
+209 19 V
+209 19 V
+209 18 V
+209 19 V
+209 18 V
+209 19 V
+209 19 V
+209 18 V
+209 19 V
+209 19 V
+209 18 V
+209 19 V
 stroke
 LT0
-0.00 0.75 0.75 C 0.00 0.00 0.00 C 10655 1395 M
-[ [(Arial) 360.0 0.0 true true 0 (Piano)]
-] -120.0 MRshow
-LT0
-0.00 0.75 0.75 C 7136 1395 M
-927 0 V
-2196 2602 M
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-216 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-217 40 V
-217 39 V
-216 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-216 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-217 40 V
-216 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-217 39 V
-216 39 V
-217 39 V
-217 39 V
-217 39 V
-% End plot #4
+0.00 0.75 0.75 C 0.00 0.00 0.00 C LT0
+0.00 0.75 0.75 C 6656 1543 M
+1023 0 V
+2440 2694 M
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 39 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+208 38 V
+209 39 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 39 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
+209 38 V
 1.000 UP
 stroke
 LTb
@@ -915,4 +824,3 @@ grestore
 end
 showpage
 %%Trailer
-%%DocumentFonts: Arial
