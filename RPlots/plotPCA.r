@@ -2,7 +2,7 @@ source("agreement.r")
 source("descriptorPositions.r")
 source("featureNames.r")
 
-plotIndividualPCA <- function(points, legendPos)
+plotIndividualPCA <- function(points, legendPos, border=c(0, 0, 0, 0))
 {
 	descriptors <- rownames(points)
 	uniqueDescriptors <- sort(unique(descriptors))
@@ -18,12 +18,18 @@ plotIndividualPCA <- function(points, legendPos)
 	xs <- points[,1]
 	ys <- points[,2]
 
+	xRange <- diff(range(xs))
+	xLimits <- c(min(xs) - border[1] * xRange, max(xs) + border[2] * xRange)
+
+	yRange <- diff(range(ys))
+	yLimits <- c(min(ys) - border[3] * yRange, max(ys) + border[4] * yRange)
+
 	xLabel <- "PC 1"
 	yLabel <- "PC 2"
 
-	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel)
+	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel, xlim=xLimits, ylim=yLimits)
 	points(xs, ys, pch=4, col=colours, cex=2)
-	legend(legendPos, legend=uniqueDescriptors, pch=4, pt.cex=2, col=colourPalette)
+	legend(legendPos, legend=uniqueDescriptors, pch=4, pt.cex=1.5, col=colourPalette)
 }
 
 plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
