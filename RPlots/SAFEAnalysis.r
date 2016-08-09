@@ -261,7 +261,7 @@ eqDiffAgreement <- termAgreement(eqDiffPCAScaledSel)
 ########################################################
 # biplots
 ########################################################
-distProcPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "MFCC 1", "MFCC 4")
+distProcPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "MFCC 1", "MFCC 2")
 pdf("DistortionProcessedCentroidsPCA.pdf", pointsize=18, fonts=c("CM Roman", "CM Sans"), family="CM Sans")
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(distProcPCA, distDescriptors, distProcPlotFeatures, c(0.1, 0.1, 0, 0.1))
@@ -275,14 +275,14 @@ a <- plotCentroidBiplot(distDiffPCA, distDescriptors, distDiffPlotFeatures, c(0.
 dev.off()
 embed_fonts("DistortionDifferenceCentroidsPCA.pdf")
 
-eqProcPlotFeatures <- c("Krimphoff Irregularity", "Peak Spectral Centroid", "MFCC 1")
+eqProcPlotFeatures <- c("Krimphoff Irregularity", "Harmonic Spectral Standard Deviation", "MFCC 1")
 pdf("EqualiserProcessedCentroidsPCA.pdf", pointsize=18, fonts=c("CM Roman","CM Sans"), family="CM Sans")
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(eqProcPCA, eqDescriptors, eqProcPlotFeatures, c(0.1, 0.1, 0.15, 0))
 dev.off()
 embed_fonts("EqualiserProcessedCentroidsPCA.pdf")
 
-eqDiffPlotFeatures <- c("Krimphoff Irregularity", "Harmonic Spectral Standard Deviation", "MFCC 1")
+eqDiffPlotFeatures <- c("Krimphoff Irregularity", "Peak Spectral Centroid", "MFCC 1")
 pdf("EqualiserDifferenceCentroidsPCA.pdf", pointsize=18, fonts=c("CM Roman","CM Sans"), family="CM Sans")
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(eqDiffPCA, eqDescriptors, eqDiffPlotFeatures, c(0.1, 0.05, 0, 0))
