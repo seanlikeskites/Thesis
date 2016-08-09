@@ -943,20 +943,20 @@
 
 		\subsubsection*{Distortion Processed Features}
 			\begin{itemize}
-				\item {\bf{PC 1:}} Krimphoff Irregularity ($p = -0.992$), Peak Krimphoff Irregularity ($p =
-					-0.985$), Harmonic Krimphoff Irregularity ($p = -0.968$), Peak Spectral Kurtosis
-					($p = -0.964$), Harmonic Spectral Kurtosis ($p = -0.959$), Peak Spectral Skewness
-					($p = -0.957$), Harmonic Spectral Skewness ($p = -0.946$), Spectral Skewness ($p =
-					-0.923$), Signal Standard Deviation ($p = -0.919$), RMS Amplitude ($p = -0.919$),
-					Signal Variance ($p = -0.851$), Spectral Kurtosis ($p = -0.790$).
-				\item {\bf{PC 2:}} Spectral Roll Off ($p =  0.938$), Harmonic Spectral Standard Deviation
-					($p =  0.933$), Peak Spectral Standard Deviation ($p =  0.932$), Peak Spectral
-					Centroid ($p =  0.904$), Harmonic Spectral Centroid ($p =  0.903$), Zero Crossing
-					Rate ($p =  0.875$), Spectral Centroid ($p =  0.856$), MFCC 1 ($p = -0.851$),
-					Spectral Slope ($p =  0.827$), Peak Spectral Spread ($p =  0.788$), Harmonic
-					Spectral Spread ($p =  0.786$).
-				\item {\bf{PC 3:}} MFCC 2 ($p =  0.787$), MFCC 4 ($p =  0.774$), Third Peak Tristimulus ($p
-					= -0.722$), Third Tristimulus ($p = -0.704$).
+				\item {\bf{PC 1:}} $\textrm{KI}$ ($p = -0.992$), $\textrm{KI}_{\textrm{p}}$ ($p = -0.985$),
+					$\textrm{KI}_{\textrm{h}}$ ($p = -0.968$), $\kappa_{\textrm{p}}$ ($p = -0.964$),
+					$\kappa_{\textrm{h}}$ ($p = -0.959$), $\gamma_{\textrm{p}}$ ($p = -0.957$),
+					$\gamma_{\textrm{h}}$ ($p = -0.946$), $\gamma_{\textrm{s}}$ ($p = -0.923$),
+					$\sigma$ ($p = -0.919$), $\textrm{RMS}$ ($p = -0.919$), $\sigma^{2}$ ($p =
+					-0.851$), $\kappa_{\textrm{s}}$ ($p = -0.790$).
+				\item {\bf{PC 2:}} $\textrm{SRO}$ ($p =  0.938$), $\sigma_{\textrm{h}}$ ($p =  0.933$),
+					$\sigma_{\textrm{p}}$ ($p =  0.932$), $\mu_{\textrm{p}}$ ($p =  0.904$),
+					$\mu_{\textrm{h}}$ ($p =  0.903$), $\textrm{ZCR}$ ($p =  0.875$),
+					$\mu_{\textrm{s}}$ ($p =  0.856$), $\textrm{MFCC}_{1}$ ($p = -0.851$),
+					$\textrm{SSl}$ ($p =  0.827$), $\sigma_{\textrm{p}}^{2}$ ($p =  0.788$),
+					$\sigma_{\textrm{h}}^{2}$ ($p =  0.786$).
+				\item {\bf{PC 3:}} $\textrm{MFCC}_{2}$ ($p =  0.787$), $\textrm{MFCC}_{4}$ ($p =  0.774$),
+					$T_{\textrm{p}3}$ ($p = -0.722$), $T_{3}$ ($p = -0.704$).
 			\end{itemize}
 
 			\begin{figure}[h!]
@@ -979,19 +979,19 @@
 
 		\subsubsection*{Distortion Feature Differences}
 			\begin{itemize}
-				\item {\bf{PC 1:}} Krimphoff Irregularity ($p = 0.992$), Peak Krimphoff Irregularity ($p =
-					0.989$), Harmonic Krimphoff Irregularity ($p = 0.971$), Peak Spectral Skewness ($p
-					= 0.956$), Peak Spectral Kurtosis ($p = 0.956$), Harmonic Spectral Skewness ($p =
-					0.943$), Harmonic Spectral Kurtosis ($p = 0.941$), Signal Standard Deviation ($p =
-					0.939$), RMS Amplitude ($p = 0.939$), Spectral Skewness ($p = 0.918$), Signal
-					Variance ($p = 0.877$), Spectral Kurtosis ($p = 0.744$).
-				\item {\bf{PC 2:}} Spectral Roll Off ($p = -0.913$), Spectral Centroid ($p = -0.901$),
-					Harmonic Spectral Standard Deviation ($p = -0.869$), Harmonic Spectral Centroid ($p
-					= -0.832$), Peak Spectral Standard Deviation ($p = -0.831$), Peak Spectral Centroid
-					($p = -0.830$), Spectral Slope ($p = -0.793$), Spectral Spread ($p = -0.764$),
-					Spectral Standard Deviation ($p = -0.761$), Peak Spectral Spread ($p = -0.725$),
-					Harmonic Spectral Spread ($p = -0.719$), Zero Crossing Rate ($p = -0.715$).
-				\item {\bf{PC 3:}} First Tristimulus ($p = -0.797$), First Peak Tristimulus ($p = -0.783$).
+				\item {\bf{PC 1:}} $\textrm{KI}$ ($p = 0.992$), $\textrm{KI}_{\textrm{p}}$ ($p = 0.989$),
+					$\textrm{KI}_{\textrm{h}}$ ($p = 0.971$), $\gamma_{\textrm{p}}$ ($p = 0.956$),
+					$\kappa_{\textrm{p}}$ ($p = 0.956$), $\gamma_{\textrm{h}}$ ($p = 0.943$),
+					$\kappa_{\textrm{h}}$ ($p = 0.941$), $\sigma$ ($p = 0.939$), $\textrm{RMS}$ ($p =
+					0.939$), $\gamma_{\textrm{s}}$ ($p = 0.918$), $\sigma^{2}$ ($p = 0.877$),
+					$\kappa_{\textrm{s}}$ ($p = 0.744$).
+				\item {\bf{PC 2:}} $\textrm{SRO}$ ($p = -0.913$), $\mu_{\textrm{s}}$ ($p = -0.901$),
+					$\sigma_{\textrm{h}}$ ($p = -0.869$), $\mu_{\textrm{h}}$ ($p = -0.832$),
+					$\sigma_{\textrm{p}}$ ($p = -0.831$), $\mu_{\textrm{p}}$ ($p = -0.830$),
+					$\textrm{SSl}$ ($p = -0.793$), $\sigma_{\textrm{s}}^{2}$ ($p = -0.764$),
+					$\sigma_{\textrm{s}}$ ($p = -0.761$), $\sigma_{\textrm{p}}^{2}$ ($p = -0.725$),
+					$\sigma_{\textrm{h}}^{2}$ ($p = -0.719$), $\textrm{ZCR}$ ($p = -0.715$).
+				\item {\bf{PC 3:}} $T_{1}$ ($p = -0.797$), $T_{\textrm{p}1}$ ($p = -0.783$).
 			\end{itemize}
 
 			\begin{figure}[h!]
@@ -1014,24 +1014,25 @@
 
 		\subsubsection*{Equaliser Processed Features}
 			\begin{itemize}
-				\item {\bf{PC 1:}} Krimphoff Irregularity ($p = 0.991$), Peak Krimphoff Irregularity ($p =
-					0.981$), Harmonic Spectral Kurtosis ($p = 0.966$), Peak Spectral Kurtosis ($p =
-					0.962$), Harmonic Krimphoff Irregularity ($p = 0.958$), Spectral Skewness ($p =
-					0.945$), Peak Spectral Skewness ($p = 0.895$), Harmonic Spectral Skewness ($p =
-					0.886$), Spectral Kurtosis ($p = 0.884$), Signal Standard Deviation ($p = 0.840$),
-					RMS Amplitude ($p = 0.840$), Signal Variance ($p = 0.813$).
-				\item {\bf{PC 2:}} Harmonic Spectral Standard Deviation ($p =  0.922$), Peak Spectral
-					Standard Deviation ($p =  0.918$), Spectral Roll Off ($p =  0.895$), Harmonic
-					Spectral Centroid ($p =  0.881$), Peak Spectral Centroid ($p =  0.881$), Spectral
-					Centroid ($p =  0.806$), Spectral Slope ($p =  0.805$), MFCC 1 ($p = -0.802$), Zero
-					Crossing Rate ($p =  0.798$), Peak Spectral Spread ($p =  0.761$), Harmonic
-					Spectral Spread ($p =  0.761$), Second Peak Tristimulus ($p = -0.749$), Second
-					Tristimulus ($p = -0.745$), Spectral Crest ($p = -0.720$).
-				\item {\bf{PC 3:}} MFCC 4 ($p = -0.718$), MFCC 2 ($p = -0.715$), Spectral Standard
-					Deviation ($p = -0.714$).
-				\item {\bf{PC 4:}} MFCC 8 ($p = 0.926$), MFCC 10 ($p = 0.839$), MFCC 9 ($p = 0.836$), MFCC
-					12 ($p = 0.760$), MFCC 7 ($p = 0.725$), MFCC 11 ($p = 0.721$).
-				\item {\bf{PC 5:}} MFCC 5 ($p = 0.743$), MFCC 3 ($p = 0.705$).
+				\item {\bf{PC 1:}} $\textrm{KI}$ ($p = 0.991$), $\textrm{KI}_{\textrm{p}}$ ($p = 0.981$),
+					$\kappa_{\textrm{h}}$ ($p = 0.966$), $\kappa_{\textrm{p}}$ ($p = 0.962$),
+					$\textrm{KI}_{\textrm{h}}$ ($p = 0.958$), $\gamma_{\textrm{s}}$ ($p = 0.945$),
+					$\gamma_{\textrm{p}}$ ($p = 0.895$), $\gamma_{\textrm{h}}$ ($p = 0.886$),
+					$\kappa_{\textrm{s}}$ ($p = 0.884$), $\sigma$ ($p = 0.840$), $\textrm{RMS}$ ($p =
+					0.840$), $\sigma^{2}$ ($p = 0.813$).
+				\item {\bf{PC 2:}} $\sigma_{\textrm{h}}$ ($p =  0.922$), $\sigma_{\textrm{p}}$ ($p =
+					0.918$), $\textrm{SRO}$ ($p =  0.895$), $\mu_{\textrm{h}}$ ($p =  0.881$),
+					$\mu_{\textrm{p}}$ ($p =  0.881$), $\mu_{\textrm{s}}$ ($p =  0.806$),
+					$\textrm{SSl}$ ($p =  0.805$), $\textrm{MFCC}_{1}$ ($p = -0.802$), $\textrm{ZCR}$
+					($p =  0.798$), $\sigma_{\textrm{p}}^{2}$ ($p =  0.761$), $\sigma_{\textrm{h}}^{2}$
+					($p =  0.761$), $T_{\textrm{p}2}$ ($p = -0.749$), $T_{2}$ ($p = -0.745$),
+					$\textrm{SC}$ ($p = -0.720$).
+				\item {\bf{PC 3:}} $\textrm{MFCC}_{4}$ ($p = -0.718$), $\textrm{MFCC}_{2}$ ($p = -0.715$),
+					$\sigma_{\textrm{s}}$ ($p = -0.714$).
+				\item {\bf{PC 4:}} $\textrm{MFCC}_{8}$ ($p = 0.926$), $\textrm{MFCC}_{10}$ ($p = 0.839$),
+					$\textrm{MFCC}_{9}$ ($p = 0.836$), $\textrm{MFCC}_{12}$ ($p = 0.760$),
+					$\textrm{MFCC}_{7}$ ($p = 0.725$), $\textrm{MFCC}_{11}$ ($p = 0.721$).
+				\item {\bf{PC 5:}} $\textrm{MFCC}_{5}$ ($p = 0.743$), $\textrm{MFCC}_{3}$ ($p = 0.705$).
 			\end{itemize}
 
 			\begin{figure}[h!]
@@ -1054,20 +1055,22 @@
 
 		\subsubsection*{Equaliser Feature Differences}
 			\begin{itemize}
-				\item {\bf{PC 1:}} Krimphoff Irregularity ($p = -0.986$), Peak Krimphoff Irregularity ($p =
-					-0.970$), Spectral Skewness ($p = -0.968$), Peak Spectral Kurtosis ($p = -0.932$),
-					Harmonic Krimphoff Irregularity ($p = -0.922$), Spectral Kurtosis ($p = -0.915$),
-					Harmonic Spectral Kurtosis ($p = -0.912$), Signal Variance ($p = -0.890$), Signal
-					Standard Deviation ($p = -0.872$), RMS Amplitude ($p = -0.872$), Peak Spectral
-					Skewness ($p = -0.862$), Harmonic Spectral Skewness ($p = -0.831$).
-				\item {\bf{PC 2:}} Peak Spectral Centroid ($p =  0.867$), Harmonic Spectral Centroid ($p =
-					0.863$), Harmonic Spectral Standard Deviation ($p =  0.838$), Peak Spectral
-					Standard Deviation ($p =  0.833$), Spectral Roll Off ($p =  0.813$), Spectral
-					Centroid ($p =  0.770$), Spectral Slope ($p =  0.745$), MFCC 1 ($p = -0.705$).
-				\item {\bf{PC 3:}} MFCC 5 ($p = -0.794$), MFCC 6 ($p = -0.791$), MFCC 7 ($p = -0.741$),
-					MFCC 0 ($p =  0.723$), Jensen Irregularity ($p =  0.722$).
-				\item {\bf{PC 4:}} MFCC 12 ($p = 0.917$), MFCC 11 ($p = 0.908$), MFCC 10 ($p = 0.893$),
-					MFCC 9 ($p = 0.848$), MFCC 8 ($p = 0.742$).
+				\item {\bf{PC 1:}} $\textrm{KI}$ ($p = -0.986$), $\textrm{KI}_{\textrm{p}}$ ($p = -0.970$),
+					$\gamma_{\textrm{s}}$ ($p = -0.968$), $\kappa_{\textrm{p}}$ ($p = -0.932$),
+					$\textrm{KI}_{\textrm{h}}$ ($p = -0.922$), $\kappa_{\textrm{s}}$ ($p = -0.915$),
+					$\kappa_{\textrm{h}}$ ($p = -0.912$), $\sigma^{2}$ ($p = -0.890$), $\sigma$ ($p =
+					-0.872$), $\textrm{RMS}$ ($p = -0.872$), $\gamma_{\textrm{p}}$ ($p = -0.862$),
+					$\gamma_{\textrm{h}}$ ($p = -0.831$).
+				\item {\bf{PC 2:}} $\mu_{\textrm{p}}$ ($p =  0.867$), $\mu_{\textrm{h}}$ ($p =  0.863$),
+					$\sigma_{\textrm{h}}$ ($p =  0.838$), $\sigma_{\textrm{p}}$ ($p =  0.833$),
+					$\textrm{SRO}$ ($p =  0.813$), $\mu_{\textrm{s}}$ ($p =  0.770$), $\textrm{SSl}$
+					($p =  0.745$), $\textrm{MFCC}_{1}$ ($p = -0.705$).
+				\item {\bf{PC 3:}} $\textrm{MFCC}_{5}$ ($p = -0.794$), $\textrm{MFCC}_{6}$ ($p = -0.791$),
+					$\textrm{MFCC}_{7}$ ($p = -0.741$), $\textrm{MFCC}_{0}$ ($p =  0.723$),
+					$\textrm{JI}$ ($p =  0.722$).
+				\item {\bf{PC 4:}} $\textrm{MFCC}_{12}$ ($p = 0.917$), $\textrm{MFCC}_{11}$ ($p = 0.908$),
+					$\textrm{MFCC}_{10}$ ($p = 0.893$), $\textrm{MFCC}_{9}$ ($p = 0.848$),
+					$\textrm{MFCC}_{8}$ ($p = 0.742$).
 			\end{itemize}
 
 			\begin{figure}[h!]

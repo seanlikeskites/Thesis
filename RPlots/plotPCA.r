@@ -116,5 +116,5 @@ plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
 	axis(3, col.ticks=varCol, col.axis=varCol)
 	axis(4, col.ticks=varCol, col.axis=varCol)
 	plotVar <- plotFeatureNames(var)
-	text(varXs, varYs, plotVar, pos=labelPos, col=varCol, cex=0.8, family="CM Roman")
+	text(varXs, varYs, plotVar, pos=labelPos, col=varCol, family="CM Roman")
 }

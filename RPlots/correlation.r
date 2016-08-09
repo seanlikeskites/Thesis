@@ -1,3 +1,5 @@
+source("featureNames.r")
+
 matrixCorrelationTest <- function(data1, data2)
 {
 	if (nrow(data1) != nrow(data2))
@@ -84,7 +86,7 @@ makeCorrelationList <- function(data, outFile)
 		line <- paste("\t\\item {\\bf{PC ", i, ":}} ", sep="")
 
 		cors <- format(data[[i]], digits=3)
-		features <- names(cors)
+		features <- latexFeatureNames(names(cors))
 
 		featureString <- paste(paste(features, cors, sep=" ($p = "), collapse="$), ")
 		line <- paste(line, featureString, "$).", sep="")
