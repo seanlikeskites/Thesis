@@ -1,4 +1,5 @@
 library(MASS)
+library(extrafont)
 source("agreement.r")
 
 largeCovs <- matrix(0, 3, 3)
@@ -66,7 +67,7 @@ clusters <- c("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4")
 
 setEPS()
 
-postscript("ArtificialData1-2.eps", pointsize=18)
+pdf("ArtificialData1-2.pdf", pointsize=18, family="CM Sans")
 par(mar=c(4, 4, 0.1, 0.1))
 plot(allX, allY, type='n', main="", xlab="PC 1", ylab="PC 2")
 points(large[,1], large[,2], col=colours[1], pch=4, cex=2)
@@ -75,8 +76,9 @@ points(tall[,1], tall[,2], col=colours[3], pch=4, cex=2)
 points(diag[,1], diag[,2], col=colours[4], pch=4, cex=2)
 legend("bottomright", legend=clusters, pch=4, col=colours)
 dev.off()
+embed_fonts("ArtificialData1-2.pdf")
 
-postscript("ArtificialData3-2.eps", pointsize=18)
+pdf("ArtificialData3-2.pdf", pointsize=18, family="CM Sans")
 par(mar=c(4, 4, 0.1, 0.1))
 plot(allZ, allY, type='n', main="", xlab="PC 3", ylab="PC 2")
 points(large[,3], large[,2], col=colours[1], pch=4, cex=2)
@@ -85,6 +87,7 @@ points(tall[,3], tall[,2], col=colours[3], pch=4, cex=2)
 points(diag[,3], diag[,2], col=colours[4], pch=4, cex=2)
 legend("topleft", legend=clusters, pch=4, col=colours)
 dev.off()
+embed_fonts("ArtificialData3-2.pdf")
 
 agreements <- matrix(0, 4, 5)
 agreements[1,] <- c(socialEqAgreement(largeScaled), 
