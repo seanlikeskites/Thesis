@@ -1,4 +1,9 @@
 ########################################################
+# fonts!!
+########################################################
+library(extrafont)
+
+########################################################
 # load the data
 ########################################################
 load("SAFE_Data.RData")
@@ -247,25 +252,25 @@ eqDiffAgreement <- termAgreement(eqDiffPCAScaledSel)
 # biplots
 ########################################################
 distProcPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "MFCC 1", "MFCC 4")
-postscript("DistortionProcessedCentroidsPCA.eps", pointsize=18, fonts=c("serif", "Helvetica"))
+postscript("DistortionProcessedCentroidsPCA.eps", pointsize=18, fonts=c("CM Roman", "CM Sans"), family="CM Sans")
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(distProcPCA, distDescriptors, distProcPlotFeatures, c(0.1, 0.1, 0, 0.1))
 dev.off()
 
 distDiffPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "First Tristimulus")
-postscript("DistortionDifferenceCentroidsPCA.eps", pointsize=18, fonts=c("serif", "Helvetica"))
+postscript("DistortionDifferenceCentroidsPCA.eps", pointsize=18, fonts=c("CM Roman", "CM Sans"), family="CM Sans")
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(distDiffPCA, distDescriptors, distDiffPlotFeatures, c(0.1, 0.1, 0, 0))
 dev.off()
 
 eqProcPlotFeatures <- c("Krimphoff Irregularity", "Peak Spectral Centroid", "MFCC 1")
-postscript("EqualiserProcessedCentroidsPCA.eps", pointsize=18, fonts=c("serif", "Helvetica"))
+postscript("EqualiserProcessedCentroidsPCA.eps", pointsize=18, fonts=c("CM Roman", "CM Sans"), family="CM Sans")
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(eqProcPCA, eqDescriptors, eqProcPlotFeatures, c(0.1, 0.1, 0.15, 0))
 dev.off()
 
 eqDiffPlotFeatures <- c("Krimphoff Irregularity", "Harmonic Spectral Standard Deviation", "MFCC 1")
-postscript("EqualiserDifferenceCentroidsPCA.eps", pointsize=18, fonts=c("serif", "Helvetica"))
+postscript("EqualiserDifferenceCentroidsPCA.eps", pointsize=18, fonts=c("CM Roman", "CM Sans"), family="CM Sans")
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(eqDiffPCA, eqDescriptors, eqDiffPlotFeatures, c(0.1, 0.05, 0, 0))
 dev.off()
