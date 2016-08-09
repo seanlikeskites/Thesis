@@ -4,6 +4,11 @@
 %%+ font Helvetica-Oblique
 %%+ font Helvetica-BoldOblique
 %%+ font Symbol
+%%+ font Times-Roman
+%%+ font Times-Bold
+%%+ font Times-Italic
+%%+ font Times-BoldItalic
+%%+ font Symbol
 %%Title: R Graphics Output
 %%Creator: R Software
 %%Pages: (atend)
@@ -93,6 +98,45 @@ dup length dict begin
   currentdict
   end
 /Font5 exch definefont pop
+%%IncludeResource: font Times-Roman
+/Times-Roman findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font6 exch definefont pop
+%%IncludeResource: font Times-Bold
+/Times-Bold findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font7 exch definefont pop
+%%IncludeResource: font Times-Italic
+/Times-Italic findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font8 exch definefont pop
+%%IncludeResource: font Times-BoldItalic
+/Times-BoldItalic findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font9 exch definefont pop
+%%IncludeResource: font Symbol
+/Symbol findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  currentdict
+  end
+/Font10 exch definefont pop
 %%EndProlog
 %%Page: 1 1
 bp
@@ -330,21 +374,21 @@ o
 499.68 340.92 (20) .5 90 t
 499.68 428.96 (40) .5 90 t
 86.40 86.40 460.80 460.80 cl
-/Font1 findfont 14 s
+/Font6 findfont 14 s
 0.4510 0.4510 0.4510 srgb
-403.68 247.99 (K) 0 0 t
-413.02 247.99 (I) 0 0 t
-/Font5 findfont 14 s
-278.08 417.58 (m) 0 0 t
-/Font1 findfont 10 s
-286.14 415.02 (p) 0 0 t
-/Font1 findfont 14 s
-246.17 98.01 (M) 0 0 t
-257.83 98.01 (F) 0 0 t
-266.39 98.01 (C) 0 0 t
-276.50 98.01 (C) 0 0 t
-/Font1 findfont 10 s
-286.60 95.44 (1) 0 0 t
+403.68 248.25 (K) 0 0 t
+413.79 248.25 (I) 0 0 t
+/Font10 findfont 14 s
+278.36 417.33 (m) 0 0 t
+/Font6 findfont 10 s
+286.42 415.12 (p) 0 0 t
+/Font6 findfont 14 s
+247.21 98.66 (M) 0 0 t
+259.66 98.66 (F) 0 0 t
+267.44 98.66 (C) 0 0 t
+276.78 98.66 (C) 0 0 t
+/Font6 findfont 10 s
+286.12 96.45 (1) 0 0 t
 ep
 %%Trailer
 %%Pages: 1

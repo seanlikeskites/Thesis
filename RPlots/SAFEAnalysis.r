@@ -147,7 +147,7 @@ distProcPCAPoints <- distProcPCA$x
 distProcPCAPointsSel <- getDescriptorPositions(distProcPCAPoints, distDescriptors)
 
 postscript("DistortionProcessedPCA.eps", pointsize=18)
-par(mar=c(4, 4, 0.5, 0.5))
+par(mar=c(4, 4, 2, 2))
 a <- plotIndividualPCA(distProcPCAPointsSel, "topleft")
 dev.off()
 
@@ -161,7 +161,7 @@ distDiffPCAPoints <- distDiffPCA$x
 distDiffPCAPointsSel <- getDescriptorPositions(distDiffPCAPoints, distDescriptors)
 
 postscript("DistortionDifferencePCA.eps", pointsize=18)
-par(mar=c(4, 4, 0.5, 0.5))
+par(mar=c(4, 4, 2, 2))
 a <- plotIndividualPCA(distDiffPCAPointsSel, "topright")
 dev.off()
 
@@ -175,7 +175,7 @@ eqProcPCAPoints <- eqProcPCA$x
 eqProcPCAPointsSel <- getDescriptorPositions(eqProcPCAPoints, eqDescriptors)
 
 postscript("EqualiserProcessedPCA.eps", pointsize=18)
-par(mar=c(4, 4, 0.5, 0.5))
+par(mar=c(4, 4, 2, 2))
 a <- plotIndividualPCA(eqProcPCAPointsSel, "topright")
 dev.off()
 
@@ -189,7 +189,7 @@ eqDiffPCAPoints <- eqDiffPCA$x
 eqDiffPCAPointsSel <- getDescriptorPositions(eqDiffPCAPoints, eqDescriptors)
 
 postscript("EqualiserDifferencePCA.eps", pointsize=18)
-par(mar=c(4, 4, 0.5, 0.5))
+par(mar=c(4, 4, 2, 2))
 a <- plotIndividualPCA(eqDiffPCAPointsSel, "topleft")
 dev.off()
 
@@ -247,25 +247,25 @@ eqDiffAgreement <- termAgreement(eqDiffPCAScaledSel)
 # biplots
 ########################################################
 distProcPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "MFCC 1", "MFCC 4")
-postscript("DistortionProcessedCentroidsPCA.eps", pointsize=18)
+postscript("DistortionProcessedCentroidsPCA.eps", pointsize=18, fonts=c("serif", "Helvetica"))
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(distProcPCA, distDescriptors, distProcPlotFeatures, c(0.1, 0.1, 0, 0.1))
 dev.off()
 
 distDiffPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "First Tristimulus")
-postscript("DistortionDifferenceCentroidsPCA.eps", pointsize=18)
+postscript("DistortionDifferenceCentroidsPCA.eps", pointsize=18, fonts=c("serif", "Helvetica"))
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(distDiffPCA, distDescriptors, distDiffPlotFeatures, c(0.1, 0.1, 0, 0))
 dev.off()
 
 eqProcPlotFeatures <- c("Krimphoff Irregularity", "Peak Spectral Centroid", "MFCC 1")
-postscript("EqualiserProcessedCentroidsPCA.eps", pointsize=18)
+postscript("EqualiserProcessedCentroidsPCA.eps", pointsize=18, fonts=c("serif", "Helvetica"))
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(eqProcPCA, eqDescriptors, eqProcPlotFeatures, c(0.1, 0.1, 0.15, 0))
 dev.off()
 
 eqDiffPlotFeatures <- c("Krimphoff Irregularity", "Harmonic Spectral Standard Deviation", "MFCC 1")
-postscript("EqualiserDifferenceCentroidsPCA.eps", pointsize=18)
+postscript("EqualiserDifferenceCentroidsPCA.eps", pointsize=18, fonts=c("serif", "Helvetica"))
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(eqDiffPCA, eqDescriptors, eqDiffPlotFeatures, c(0.1, 0.05, 0, 0))
 dev.off()

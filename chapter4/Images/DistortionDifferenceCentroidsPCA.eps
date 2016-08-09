@@ -4,6 +4,11 @@
 %%+ font Helvetica-Oblique
 %%+ font Helvetica-BoldOblique
 %%+ font Symbol
+%%+ font Times-Roman
+%%+ font Times-Bold
+%%+ font Times-Italic
+%%+ font Times-BoldItalic
+%%+ font Symbol
 %%Title: R Graphics Output
 %%Creator: R Software
 %%Pages: (atend)
@@ -93,6 +98,45 @@ dup length dict begin
   currentdict
   end
 /Font5 exch definefont pop
+%%IncludeResource: font Times-Roman
+/Times-Roman findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font6 exch definefont pop
+%%IncludeResource: font Times-Bold
+/Times-Bold findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font7 exch definefont pop
+%%IncludeResource: font Times-Italic
+/Times-Italic findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font8 exch definefont pop
+%%IncludeResource: font Times-BoldItalic
+/Times-BoldItalic findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font9 exch definefont pop
+%%IncludeResource: font Symbol
+/Symbol findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  currentdict
+  end
+/Font10 exch definefont pop
 %%EndProlog
 %%Page: 1 1
 bp
@@ -322,16 +366,17 @@ o
 499.68 368.92 (5) .5 90 t
 499.68 421.20 (10) .5 90 t
 86.40 86.40 460.80 460.80 cl
-/Font1 findfont 14 s
+/Font6 findfont 14 s
 0.4510 0.4510 0.4510 srgb
-410.17 322.29 (K) 0 0 t
-419.51 322.29 (I) 0 0 t
-289.75 130.85 (S) 0 0 t
-299.09 130.85 (R) 0 0 t
-309.20 130.85 (O) 0 0 t
-290.49 364.78 (T) 0 0 t
-/Font1 findfont 10 s
-299.05 362.21 (1) 0 0 t
+410.17 322.55 (K) 0 0 t
+420.28 322.55 (I) 0 0 t
+291.30 131.55 (S) 0 0 t
+299.09 131.55 (R) 0 0 t
+308.43 131.55 (O) 0 0 t
+/Font8 findfont 14 s
+290.47 364.42 (T) 0 0 t
+/Font6 findfont 10 s
+299.63 362.21 (1) 0 0 t
 ep
 %%Trailer
 %%Pages: 1
