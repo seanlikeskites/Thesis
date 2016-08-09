@@ -1,5 +1,6 @@
 source("agreement.r")
 source("descriptorPositions.r")
+source("featureNames.r")
 
 plotIndividualPCA <- function(points, legendPos)
 {
@@ -114,5 +115,6 @@ plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
 	arrows(0, 0, varXs, varYs, col=varCol)
 	axis(3, col.ticks=varCol, col.axis=varCol)
 	axis(4, col.ticks=varCol, col.axis=varCol)
-	text(varXs, varYs, var, pos=labelPos, col=varCol, cex=0.8)
+	plotVar <- plotFeatureNames(var)
+	text(varXs, varYs, plotVar, pos=labelPos, col=varCol, cex=0.8)
 }
