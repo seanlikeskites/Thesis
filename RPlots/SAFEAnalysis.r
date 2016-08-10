@@ -84,7 +84,7 @@ makePrettyDendrogram <- function(clusters, numColours)
 # distortion processed clusters
 distProcClust <- hclust(dist(scale(distProcAvg)), method="ward.D2")
 distProcDend <- makePrettyDendrogram(distProcClust, 3)
-pdf("DistortionProcessedClusters.pdf", pointsize=18, family="CM Sans")
+pdf("DistortionProcessedClusters.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(3, 0, 0, 0))
 a <- plot(distProcDend, main=NA, sub=NA, xlim=c(20, 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
@@ -94,7 +94,7 @@ embed_fonts("DistortionProcessedClusters.pdf")
 # distortion difference clusters
 distDiffClust <- hclust(dist(scale(distDiffAvg)), method="ward.D2")
 distDiffDend <- makePrettyDendrogram(distDiffClust, 3)
-pdf("DistortionDifferenceClusters.pdf", pointsize=18, family="CM Sans")
+pdf("DistortionDifferenceClusters.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(3, 0, 0, 0))
 a <- plot(distDiffDend, main=NA, sub=NA, xlim=c(25, 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
@@ -104,7 +104,7 @@ embed_fonts("DistortionDifferenceClusters.pdf")
 # equaliser processed clusters
 eqProcClust <- hclust(dist(scale(eqProcAvg)), method="ward.D2")
 eqProcDend <- makePrettyDendrogram(eqProcClust, 6)
-pdf("EqualiserProcessedClusters.pdf", pointsize=18, family="CM Sans")
+pdf("EqualiserProcessedClusters.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(3, 0, 0, 0))
 a <- plot(eqProcDend, main=NA, sub=NA, xlim=c(25, 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
@@ -114,7 +114,7 @@ embed_fonts("EqualiserProcessedClusters.pdf")
 # equaliser difference clusters
 eqDiffClust <- hclust(dist(scale(eqDiffAvg)), method="ward.D2")
 eqDiffDend <- makePrettyDendrogram(eqDiffClust, 5)
-pdf("EqualiserDifferenceClusters.pdf", pointsize=18, family="CM Sans")
+pdf("EqualiserDifferenceClusters.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(3, 0, 0, 0))
 a <- plot(eqDiffDend, main=NA, sub=NA, xlim=c(ceiling(attr(eqDiffDend, "height")), 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
@@ -127,7 +127,7 @@ rownames(eqProcAvg) <- paste("Equaliser:", rownames(eqProcAvg), sep="")
 combProcAvg <- rbind(distProcAvg, eqProcAvg)
 combProcClust <- hclust(dist(scale(combProcAvg)), method="ward.D2")
 combProcDend <- makePrettyDendrogram(combProcClust, 6)
-pdf("CombinedProcessedClusters.pdf", pointsize=18, family="CM Sans")
+pdf("CombinedProcessedClusters.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(3, 0, 0, 4))
 a <- plot(combProcDend, main=NA, sub=NA, xlim=c(35, 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
@@ -140,7 +140,7 @@ rownames(eqDiffAvg) <- paste("Equaliser:", rownames(eqDiffAvg), sep="")
 combDiffAvg <- rbind(distDiffAvg, eqDiffAvg)
 combDiffClust <- hclust(dist(scale(combDiffAvg)), method="ward.D2")
 combDiffDend <- makePrettyDendrogram(combDiffClust, 6)
-pdf("CombinedDifferenceClusters.pdf", pointsize=18, family="CM Sans")
+pdf("CombinedDifferenceClusters.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(3, 0, 0, 4))
 a <- plot(combDiffDend, main=NA, sub=NA, xlim=c(ceiling(attr(combDiffDend, "height")), 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
@@ -157,7 +157,7 @@ distProcPCA <- prcomp(distProc, scale=TRUE)
 distProcPCAPoints <- distProcPCA$x
 distProcPCAPointsSel <- getDescriptorPositions(distProcPCAPoints, distDescriptors)
 
-pdf("DistortionProcessedPCA.pdf", pointsize=18, family="CM Sans")
+pdf("DistortionProcessedPCA.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(4, 4, 2, 2))
 a <- plotIndividualPCA(distProcPCAPointsSel, "topleft")
 dev.off()
@@ -172,7 +172,7 @@ distDiffPCA <- prcomp(distDiff, scale=TRUE)
 distDiffPCAPoints <- distDiffPCA$x
 distDiffPCAPointsSel <- getDescriptorPositions(distDiffPCAPoints, distDescriptors)
 
-pdf("DistortionDifferencePCA.pdf", pointsize=18, family="CM Sans")
+pdf("DistortionDifferencePCA.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(4, 4, 2, 2))
 a <- plotIndividualPCA(distDiffPCAPointsSel, "topright")
 dev.off()
@@ -187,7 +187,7 @@ eqProcPCA <- prcomp(eqProc, scale=TRUE)
 eqProcPCAPoints <- eqProcPCA$x
 eqProcPCAPointsSel <- getDescriptorPositions(eqProcPCAPoints, eqDescriptors)
 
-pdf("EqualiserProcessedPCA.pdf", pointsize=18, family="CM Sans")
+pdf("EqualiserProcessedPCA.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(4, 4, 2, 2))
 a <- plotIndividualPCA(eqProcPCAPointsSel, "topright")
 dev.off()
@@ -202,7 +202,7 @@ eqDiffPCA <- prcomp(eqDiff, scale=TRUE)
 eqDiffPCAPoints <- eqDiffPCA$x
 eqDiffPCAPointsSel <- getDescriptorPositions(eqDiffPCAPoints, eqDescriptors)
 
-pdf("EqualiserDifferencePCA.pdf", pointsize=18, family="CM Sans")
+pdf("EqualiserDifferencePCA.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(4, 4, 2, 2))
 a <- plotIndividualPCA(eqDiffPCAPointsSel, "topright", c(0, 0.2, 0, 0))
 dev.off()
@@ -262,28 +262,32 @@ eqDiffAgreement <- termAgreement(eqDiffPCAScaledSel)
 # biplots
 ########################################################
 distProcPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "MFCC 1", "MFCC 2")
-pdf("DistortionProcessedCentroidsPCA.pdf", pointsize=18, fonts=c("CM Roman", "CM Sans"), family="CM Sans")
+pdf("DistortionProcessedCentroidsPCA.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans",
+    width=3, height=3)
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(distProcPCA, distDescriptors, distProcPlotFeatures, c(0.1, 0.1, 0, 0.1))
 dev.off()
 embed_fonts("DistortionProcessedCentroidsPCA.pdf")
 
 distDiffPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "First Tristimulus")
-pdf("DistortionDifferenceCentroidsPCA.pdf", pointsize=18, fonts=c("CM Roman","CM Sans"), family="CM Sans")
+pdf("DistortionDifferenceCentroidsPCA.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+    width=3, height=3)
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(distDiffPCA, distDescriptors, distDiffPlotFeatures, c(0.1, 0.1, 0, 0))
 dev.off()
 embed_fonts("DistortionDifferenceCentroidsPCA.pdf")
 
 eqProcPlotFeatures <- c("Krimphoff Irregularity", "Harmonic Spectral Standard Deviation", "MFCC 1")
-pdf("EqualiserProcessedCentroidsPCA.pdf", pointsize=18, fonts=c("CM Roman","CM Sans"), family="CM Sans")
+pdf("EqualiserProcessedCentroidsPCA.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+    width=3, height=3)
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(eqProcPCA, eqDescriptors, eqProcPlotFeatures, c(0.1, 0.1, 0.15, 0))
 dev.off()
 embed_fonts("EqualiserProcessedCentroidsPCA.pdf")
 
 eqDiffPlotFeatures <- c("Krimphoff Irregularity", "Peak Spectral Centroid", "MFCC 1")
-pdf("EqualiserDifferenceCentroidsPCA.pdf", pointsize=18, fonts=c("CM Roman","CM Sans"), family="CM Sans")
+pdf("EqualiserDifferenceCentroidsPCA.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+    width=3, height=3)
 par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(eqDiffPCA, eqDescriptors, eqDiffPlotFeatures, c(0.1, 0.05, 0, 0))
 dev.off()
