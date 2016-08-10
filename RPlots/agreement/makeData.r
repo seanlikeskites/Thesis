@@ -67,7 +67,7 @@ clusters <- c("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4")
 
 setEPS()
 
-pdf("ArtificialData1-2.pdf", pointsize=18, family="CM Sans")
+pdf("ArtificialData1-2.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(4, 4, 0.1, 0.1))
 plot(allX, allY, type='n', main="", xlab="PC 1", ylab="PC 2")
 points(large[,1], large[,2], col=colours[1], pch=4, cex=2)
@@ -78,7 +78,7 @@ legend("bottomright", legend=clusters, pch=4, pt.cex=1.5, col=colours)
 dev.off()
 embed_fonts("ArtificialData1-2.pdf")
 
-pdf("ArtificialData3-2.pdf", pointsize=18, family="CM Sans")
+pdf("ArtificialData3-2.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(4, 4, 0.1, 0.1))
 plot(allZ, allY, type='n', main="", xlab="PC 3", ylab="PC 2")
 points(large[,3], large[,2], col=colours[1], pch=4, cex=2)
