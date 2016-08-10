@@ -16,6 +16,7 @@ plotManipulation <- function(x, y, lims, legendText, legendPos, xlab, ylab)
 	}
 
 	legend(legendPos, legend=legendText, lty=1, col=colours)
+	box()
 }
 
 ########################################################
