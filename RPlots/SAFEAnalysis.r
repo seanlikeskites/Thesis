@@ -316,7 +316,7 @@ distDiffPlotFeatures2 <- c("Spectral Roll Off", "First Tristimulus")
 pdf("DistortionDifferenceCentroidsPCA3-2.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
     width=pcaPlotSize, height=pcaPlotSize)
 par(mar=c(4, 4, 2, 2))
-a <- plotCentroidBiplot(distDiffPCA, c(3, 2), distDescriptors, distDiffPlotFeatures2, c(0.1, 0.05, 0, 0))
+a <- plotCentroidBiplot(distDiffPCA, c(3, 2), distDescriptors, distDiffPlotFeatures2, c(0.15, 0.05, 0, 0))
 dev.off()
 embed_fonts("DistortionDifferenceCentroidsPCA3-2.pdf")
 
