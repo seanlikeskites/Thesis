@@ -157,11 +157,17 @@ distProcPCA <- prcomp(distProc, scale=TRUE)
 distProcPCAPoints <- distProcPCA$x
 distProcPCAPointsSel <- getDescriptorPositions(distProcPCAPoints, distDescriptors)
 
-pdf("DistortionProcessedPCA.pdf", pointsize=8, family="CM Sans", width=3, height=3)
-par(mar=c(4, 4, 2, 2))
-a <- plotIndividualPCA(distProcPCAPointsSel, "topleft")
+pdf("DistortionProcessedPCA1-2.pdf", pointsize=8, family="CM Sans", width=3, height=3)
+par(mar=c(4, 4, 0.1, 0.1))
+a <- plotIndividualPCA(distProcPCAPointsSel, c(1, 2), "topleft")
 dev.off()
-embed_fonts("DistortionProcessedPCA.pdf")
+embed_fonts("DistortionProcessedPCA1-2.pdf")
+
+pdf("DistortionProcessedPCA3-2.pdf", pointsize=8, family="CM Sans", width=3, height=3)
+par(mar=c(4, 4, 0.1, 0.1))
+a <- plotIndividualPCA(distProcPCAPointsSel, c(3, 2), "topleft")
+dev.off()
+embed_fonts("DistortionProcessedPCA3-2.pdf")
 
 postscript("DistortionProcessedScree.eps")
 a <- screeplot(distProcPCA, type="l")
@@ -172,11 +178,17 @@ distDiffPCA <- prcomp(distDiff, scale=TRUE)
 distDiffPCAPoints <- distDiffPCA$x
 distDiffPCAPointsSel <- getDescriptorPositions(distDiffPCAPoints, distDescriptors)
 
-pdf("DistortionDifferencePCA.pdf", pointsize=8, family="CM Sans", width=3, height=3)
-par(mar=c(4, 4, 2, 2))
-a <- plotIndividualPCA(distDiffPCAPointsSel, "topright")
+pdf("DistortionDifferencePCA1-2.pdf", pointsize=8, family="CM Sans", width=3, height=3)
+par(mar=c(4, 4, 0.1, 0.1))
+a <- plotIndividualPCA(distDiffPCAPointsSel, c(1, 2), "topright")
 dev.off()
-embed_fonts("DistortionDifferencePCA.pdf")
+embed_fonts("DistortionDifferencePCA1-2.pdf")
+
+pdf("DistortionDifferencePCA3-2.pdf", pointsize=8, family="CM Sans", width=3, height=3)
+par(mar=c(4, 4, 0.1, 0.1))
+a <- plotIndividualPCA(distDiffPCAPointsSel, c(3, 2), "topright")
+dev.off()
+embed_fonts("DistortionDifferencePCA3-2.pdf")
 
 postscript("DistortionDifferenceScree.eps")
 a <- screeplot(distDiffPCA, type="l")
@@ -187,11 +199,17 @@ eqProcPCA <- prcomp(eqProc, scale=TRUE)
 eqProcPCAPoints <- eqProcPCA$x
 eqProcPCAPointsSel <- getDescriptorPositions(eqProcPCAPoints, eqDescriptors)
 
-pdf("EqualiserProcessedPCA.pdf", pointsize=8, family="CM Sans", width=3, height=3)
-par(mar=c(4, 4, 2, 2))
-a <- plotIndividualPCA(eqProcPCAPointsSel, "topright")
+pdf("EqualiserProcessedPCA1-2.pdf", pointsize=8, family="CM Sans", width=3, height=3)
+par(mar=c(4, 4, 0.1, 0.1))
+a <- plotIndividualPCA(eqProcPCAPointsSel, c(1, 2), "topright")
 dev.off()
-embed_fonts("EqualiserProcessedPCA.pdf")
+embed_fonts("EqualiserProcessedPCA1-2.pdf")
+
+pdf("EqualiserProcessedPCA3-2.pdf", pointsize=8, family="CM Sans", width=3, height=3)
+par(mar=c(4, 4, 0.1, 0.1))
+a <- plotIndividualPCA(eqProcPCAPointsSel, c(3, 2), "topleft", c(0.15, 0, 0, 0))
+dev.off()
+embed_fonts("EqualiserProcessedPCA3-2.pdf")
 
 postscript("EqualiserProcessedScree.eps")
 a <- screeplot(eqProcPCA, type="l")
@@ -202,11 +220,17 @@ eqDiffPCA <- prcomp(eqDiff, scale=TRUE)
 eqDiffPCAPoints <- eqDiffPCA$x
 eqDiffPCAPointsSel <- getDescriptorPositions(eqDiffPCAPoints, eqDescriptors)
 
-pdf("EqualiserDifferencePCA.pdf", pointsize=8, family="CM Sans", width=3, height=3)
-par(mar=c(4, 4, 2, 2))
-a <- plotIndividualPCA(eqDiffPCAPointsSel, "topright", c(0, 0.25, 0, 0))
+pdf("EqualiserDifferencePCA1-2.pdf", pointsize=8, family="CM Sans", width=3, height=3)
+par(mar=c(4, 4, 0.1, 0.1))
+a <- plotIndividualPCA(eqDiffPCAPointsSel, c(1, 2), "topright", c(0, 0.2, 0, 0))
 dev.off()
-embed_fonts("EqualiserDifferencePCA.pdf")
+embed_fonts("EqualiserDifferencePCA1-2.pdf")
+
+pdf("EqualiserDifferencePCA3-2.pdf", pointsize=8, family="CM Sans", width=3, height=3)
+par(mar=c(4, 4, 0.1, 0.1))
+a <- plotIndividualPCA(eqDiffPCAPointsSel, c(3, 2), "bottomright")
+dev.off()
+embed_fonts("EqualiserDifferencePCA3-2.pdf")
 
 postscript("EqualiserDifferenceScree.eps")
 a <- screeplot(eqDiffPCA, type="l")
@@ -258,37 +282,73 @@ eqDiffPCAScaled <- scale(eqDiffPCAPoints)
 eqDiffPCAScaledSel <- getDescriptorPositions(eqDiffPCAScaled, eqDescriptors)
 eqDiffAgreement <- termAgreement(eqDiffPCAScaledSel)
 
-########################################################
-# biplots
-########################################################
-distProcPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "MFCC 1", "MFCC 2")
-pdf("DistortionProcessedCentroidsPCA.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans",
+#########################################################
+## biplots
+#########################################################
+# distortion processed PCA
+distProcPlotFeatures1 <- c("Krimphoff Irregularity", "Spectral Roll Off", "MFCC 1")
+pdf("DistortionProcessedCentroidsPCA1-2.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans",
     width=3, height=3)
 par(mar=c(4, 4, 2, 2))
-a <- plotCentroidBiplot(distProcPCA, distDescriptors, distProcPlotFeatures, c(0.1, 0.1, 0, 0.1))
+a <- plotCentroidBiplot(distProcPCA, c(1, 2), distDescriptors, distProcPlotFeatures1, c(0.1, 0.1, 0, 0.1))
 dev.off()
-embed_fonts("DistortionProcessedCentroidsPCA.pdf")
+embed_fonts("DistortionProcessedCentroidsPCA1-2.pdf")
 
-distDiffPlotFeatures <- c("Krimphoff Irregularity", "Spectral Roll Off", "First Tristimulus")
-pdf("DistortionDifferenceCentroidsPCA.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+distProcPlotFeatures2 <- c("Spectral Roll Off", "MFCC 1", "MFCC 2", "Third Peak Tristimulus")
+pdf("DistortionProcessedCentroidsPCA3-2.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans",
     width=3, height=3)
 par(mar=c(4, 4, 2, 2))
-a <- plotCentroidBiplot(distDiffPCA, distDescriptors, distDiffPlotFeatures, c(0.1, 0.1, 0, 0))
+a <- plotCentroidBiplot(distProcPCA, c(3, 2), distDescriptors, distProcPlotFeatures2, c(0.15, 0.9, 0, 0.1))
 dev.off()
-embed_fonts("DistortionDifferenceCentroidsPCA.pdf")
+embed_fonts("DistortionProcessedCentroidsPCA3-2.pdf")
 
-eqProcPlotFeatures <- c("Krimphoff Irregularity", "Harmonic Spectral Standard Deviation", "MFCC 1")
-pdf("EqualiserProcessedCentroidsPCA.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+# distortion difference PCA
+distDiffPlotFeatures1 <- c("Krimphoff Irregularity", "Spectral Roll Off")
+pdf("DistortionDifferenceCentroidsPCA1-2.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
     width=3, height=3)
 par(mar=c(4, 4, 2, 2))
-a <- plotCentroidBiplot(eqProcPCA, eqDescriptors, eqProcPlotFeatures, c(0.1, 0.1, 0.15, 0))
+a <- plotCentroidBiplot(distDiffPCA, c(1, 2), distDescriptors, distDiffPlotFeatures1, c(0.1, 0.1, 0, 0))
 dev.off()
-embed_fonts("EqualiserProcessedCentroidsPCA.pdf")
+embed_fonts("DistortionDifferenceCentroidsPCA1-2.pdf")
 
-eqDiffPlotFeatures <- c("Krimphoff Irregularity", "Peak Spectral Centroid", "MFCC 1")
-pdf("EqualiserDifferenceCentroidsPCA.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+distDiffPlotFeatures2 <- c("Spectral Roll Off", "First Tristimulus")
+pdf("DistortionDifferenceCentroidsPCA3-2.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
     width=3, height=3)
 par(mar=c(4, 4, 2, 2))
-a <- plotCentroidBiplot(eqDiffPCA, eqDescriptors, eqDiffPlotFeatures, c(0.1, 0.05, 0, 0))
+a <- plotCentroidBiplot(distDiffPCA, c(3, 2), distDescriptors, distDiffPlotFeatures2, c(0.1, 0.05, 0, 0))
 dev.off()
-embed_fonts("EqualiserDifferenceCentroidsPCA.pdf")
+embed_fonts("DistortionDifferenceCentroidsPCA3-2.pdf")
+
+# equaliser processed PCA
+eqProcPlotFeatures1 <- c("Krimphoff Irregularity", "Harmonic Spectral Standard Deviation", "MFCC 1")
+pdf("EqualiserProcessedCentroidsPCA1-2.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+    width=3, height=3)
+par(mar=c(4, 4, 2, 2))
+a <- plotCentroidBiplot(eqProcPCA, c(1, 2), eqDescriptors, eqProcPlotFeatures1, c(0.1, 0.1, 0.15, 0))
+dev.off()
+embed_fonts("EqualiserProcessedCentroidsPCA1-2.pdf")
+
+eqProcPlotFeatures2 <- c("Harmonic Spectral Standard Deviation", "MFCC 1", "MFCC 4")
+pdf("EqualiserProcessedCentroidsPCA3-2.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+    width=3, height=3)
+par(mar=c(4, 4, 2, 2))
+a <- plotCentroidBiplot(eqProcPCA, c(3, 2), eqDescriptors, eqProcPlotFeatures2, c(0.1, 0.1, 0.15, 0))
+dev.off()
+embed_fonts("EqualiserProcessedCentroidsPCA3-2.pdf")
+
+# equaliser difference PCA
+eqDiffPlotFeatures1 <- c("Krimphoff Irregularity", "Peak Spectral Centroid", "MFCC 1")
+pdf("EqualiserDifferenceCentroidsPCA1-2.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+    width=3, height=3)
+par(mar=c(4, 4, 2, 2))
+a <- plotCentroidBiplot(eqDiffPCA, c(1, 2), eqDescriptors, eqDiffPlotFeatures1, c(0.1, 0.05, 0, 0))
+dev.off()
+embed_fonts("EqualiserDifferenceCentroidsPCA1-2.pdf")
+
+eqDiffPlotFeatures2 <- c("Peak Spectral Centroid", "MFCC 1", "MFCC 5")
+pdf("EqualiserDifferenceCentroidsPCA3-2.pdf", pointsize=8, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+    width=3, height=3)
+par(mar=c(4, 4, 2, 2))
+a <- plotCentroidBiplot(eqDiffPCA, c(3, 2), eqDescriptors, eqDiffPlotFeatures2, c(0.1, 0.05, 0, 0))
+dev.off()
+embed_fonts("EqualiserDifferenceCentroidsPCA3-2.pdf")

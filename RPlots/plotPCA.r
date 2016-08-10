@@ -2,7 +2,7 @@ source("agreement.r")
 source("descriptorPositions.r")
 source("featureNames.r")
 
-plotIndividualPCA <- function(points, legendPos, border=c(0, 0, 0, 0))
+plotIndividualPCA <- function(points, dims, legendPos, border=c(0, 0, 0, 0))
 {
 	descriptors <- rownames(points)
 	uniqueDescriptors <- sort(unique(descriptors))
@@ -15,8 +15,8 @@ plotIndividualPCA <- function(points, legendPos, border=c(0, 0, 0, 0))
 		colours[descriptors == uniqueDescriptors[i]] <- colourPalette[i]
 	}
 
-	xs <- points[,1]
-	ys <- points[,2]
+	xs <- points[,dims[1]]
+	ys <- points[,dims[2]]
 
 	xRange <- diff(range(xs))
 	xLimits <- c(min(xs) - border[1] * xRange, max(xs) + border[2] * xRange)
@@ -24,15 +24,15 @@ plotIndividualPCA <- function(points, legendPos, border=c(0, 0, 0, 0))
 	yRange <- diff(range(ys))
 	yLimits <- c(min(ys) - border[3] * yRange, max(ys) + border[4] * yRange)
 
-	xLabel <- "PC 1"
-	yLabel <- "PC 2"
+	xLabel <- paste("PC ", dims[1], sep="")
+	yLabel <- paste("PC ", dims[2], sep="")
 
 	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel, xlim=xLimits, ylim=yLimits)
 	points(xs, ys, pch=4, col=colours, cex=2)
 	legend(legendPos, legend=uniqueDescriptors, pch=4, pt.cex=1.5, col=colourPalette)
 }
 
-plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
+plotCentroidBiplot <- function(PCA, dims, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
 {
 	data <- PCA$x
 	points <- getDescriptorPositions(data, desc)
@@ -55,11 +55,11 @@ plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
 		agreements[descriptors == uniqueDescriptors[i]] <- termAgreements[i]
 	}
 
-	xs <- centroids[,1]
-	ys <- centroids[,2]
+	xs <- centroids[, dims[1]]
+	ys <- centroids[, dims[2]]
 
-	xLabel <- "PC 1"
-	yLabel <- "PC 2"
+	xLabel <- paste("PC ", dims[1], sep="")
+	yLabel <- paste("PC ", dims[2], sep="")
 
 	xRange <- diff(range(xs))
 	xLimits <- c(min(xs) - border[1] * xRange, max(xs) + border[2] * xRange)
@@ -68,11 +68,11 @@ plotCentroidBiplot <- function(PCA, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
 	yLimits <- c(min(ys) - border[3] * yRange, max(ys) + border[4] * yRange)
 
 	n <- nrow(PCA$x)
-	scaleX <- PCA$sdev[1] * sqrt(n)
-	varXs <- PCA$rotation[var,1] * scaleX
+	scaleX <- PCA$sdev[dims[1]] * sqrt(n)
+	varXs <- PCA$rotation[var, dims[1]] * scaleX
 
-	scaleY <- PCA$sdev[2] * sqrt(n)
-	varYs <- PCA$rotation[var,2] * scaleY
+	scaleY <- PCA$sdev[dims[2]] * sqrt(n)
+	varYs <- PCA$rotation[var, dims[2]] * scaleY
 
 	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel, xlim=xLimits, ylim=yLimits)
 	text(xs, ys, descriptors, col=colours, cex=1+agreements)
