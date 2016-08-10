@@ -208,7 +208,7 @@ embed_fonts("EqualiserProcessedPCA1-2.pdf")
 
 pdf("EqualiserProcessedPCA3-2.pdf", pointsize=8, family="CM Sans", width=pcaPlotSize, height=pcaPlotSize)
 par(mar=c(4, 4, 0.2, 0.2))
-a <- plotIndividualPCA(eqProcPCAPointsSel, c(3, 2), "topleft", c(0.15, 0, 0, 0))
+a <- plotIndividualPCA(eqProcPCAPointsSel, c(3, 2), "topleft", c(0.2, 0, 0, 0))
 dev.off()
 embed_fonts("EqualiserProcessedPCA3-2.pdf")
 
