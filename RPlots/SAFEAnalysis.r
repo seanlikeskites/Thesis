@@ -204,7 +204,7 @@ eqDiffPCAPointsSel <- getDescriptorPositions(eqDiffPCAPoints, eqDescriptors)
 
 pdf("EqualiserDifferencePCA.pdf", pointsize=8, family="CM Sans", width=3, height=3)
 par(mar=c(4, 4, 2, 2))
-a <- plotIndividualPCA(eqDiffPCAPointsSel, "topright", c(0, 0.2, 0, 0))
+a <- plotIndividualPCA(eqDiffPCAPointsSel, "topright", c(0, 0.25, 0, 0))
 dev.off()
 embed_fonts("EqualiserDifferencePCA.pdf")
 
