@@ -246,22 +246,22 @@ source("correlation.r")
 
 distProcCorr <- matrixCorrelationTest(distProcPCAPoints[,1:5], distProc)
 distProcFeatures <- getSalientFeatures(distProcCorr, 0.7)
-makeCorrelationList(distProcFeatures, "DistortionProcessedCorrelations.txt")
+makeCorrelationList(distProcFeatures, "DistortionProcessedCorrelations.tex")
 #makeCorrelationTable(distProcCorr$correlations[,distProcFeatures], "DistortionProcessedCorrelations.txt")
 
 distDiffCorr <- matrixCorrelationTest(distDiffPCAPoints[,1:5], distDiff)
 distDiffFeatures <- getSalientFeatures(distDiffCorr, 0.7)
-makeCorrelationList(distDiffFeatures, "DistortionDifferenceCorrelations.txt")
+makeCorrelationList(distDiffFeatures, "DistortionDifferenceCorrelations.tex")
 #makeCorrelationTable(distDiffCorr$correlations[,distDiffFeatures], "DistortionDifferenceCorrelations.txt")
 
 eqProcCorr <- matrixCorrelationTest(eqProcPCAPoints[,1:5], eqProc)
 eqProcFeatures <- getSalientFeatures(eqProcCorr, 0.7)
-makeCorrelationList(eqProcFeatures, "EqualiserProcessedCorrelations.txt")
+makeCorrelationList(eqProcFeatures, "EqualiserProcessedCorrelations.tex")
 #makeCorrelationTable(eqProcCorr$correlations[,eqProcFeatures], "EqualiserProcesedCorrelations.txt")
 
 eqDiffCorr <- matrixCorrelationTest(eqDiffPCAPoints[,1:5], eqDiff)
 eqDiffFeatures <- getSalientFeatures(eqDiffCorr, 0.7)
-makeCorrelationList(eqDiffFeatures, "EqualiserDifferenceCorrelations.txt")
+makeCorrelationList(eqDiffFeatures, "EqualiserDifferenceCorrelations.tex")
 #makeCorrelationTable(eqDiffCorr$correlations[,eqDiffFeatures], "EqualiserDifferenceCorrelations.txt")
 
 ########################################################
@@ -272,22 +272,22 @@ source("agreement.r")
 distProcPCAScaled <- scale(distProcPCAPoints)
 distProcPCAScaledSel <- getDescriptorPositions(distProcPCAScaled, distDescriptors)
 distProcAgreement <- termAgreement(distProcPCAScaledSel)
-makeAgreementTable(distProcAgreement, "DistortionProcessedAgreements.txt")
+makeAgreementTable(distProcAgreement, "DistortionProcessedAgreements.tex")
 
 distDiffPCAScaled <- scale(distDiffPCAPoints)
 distDiffPCAScaledSel <- getDescriptorPositions(distDiffPCAScaled, distDescriptors)
 distDiffAgreement <- termAgreement(distDiffPCAScaledSel)
-makeAgreementTable(distDiffAgreement, "DistortionDifferenceAgreements.txt")
+makeAgreementTable(distDiffAgreement, "DistortionDifferenceAgreements.tex")
 
 eqProcPCAScaled <- scale(eqProcPCAPoints)
 eqProcPCAScaledSel <- getDescriptorPositions(eqProcPCAScaled, eqDescriptors)
 eqProcAgreement <- termAgreement(eqProcPCAScaledSel)
-makeAgreementTable(eqProcAgreement, "EqualiserProcessedAgreements.txt")
+makeAgreementTable(eqProcAgreement, "EqualiserProcessedAgreements.tex")
 
 eqDiffPCAScaled <- scale(eqDiffPCAPoints)
 eqDiffPCAScaledSel <- getDescriptorPositions(eqDiffPCAScaled, eqDescriptors)
 eqDiffAgreement <- termAgreement(eqDiffPCAScaledSel)
-makeAgreementTable(eqDiffAgreement, "EqualiserDifferenceAgreements.txt")
+makeAgreementTable(eqDiffAgreement, "EqualiserDifferenceAgreements.tex")
 
 #########################################################
 ## biplots

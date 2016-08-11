@@ -6,7 +6,7 @@ chapters: combined $(CHAPTERS)
 
 combined: Sean_Enderby_Thesis.pdf
 
-Sean_Enderby_Thesis.pdf: Sean_Enderby_Thesis.tex Preamble.tex Bibliography.tex $(wildcard Images/*) $(wildcard chapter*/Images/*) $(wildcard chapter*/chapter*.tex) bibl.bib
+Sean_Enderby_Thesis.pdf: Sean_Enderby_Thesis.tex Preamble.tex Bibliography.tex $(wildcard Images/*) $(wildcard chapter*/Images/*) $(wildcard chapter*/Tables/*) $(wildcard chapter*/chapter*.tex) bibl.bib
 	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 	@echo \*\* Building $@
 	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
@@ -45,7 +45,7 @@ proofs.pdf: proofs.tex
 	@echo
 
 .SECONDEXPANSION:
-%.pdf: chapter*/%.tex $$(wildcard $$*/Images/*)
+%.pdf: chapter*/%.tex $$(wildcard $$*/Images/*) $$(wildcard $$*/Tables/*)
 	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 	@echo \*\* Building $@
 	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
