@@ -28,6 +28,7 @@ makeAgreementTable <- function(data, outFile)
 {
 	lines <- character()
 	nTerms <- length(data)
+	data <- sort(data, decreasing=TRUE)
 	terms <- names(data)
 	agreements <- format(data, digits=1)
 
