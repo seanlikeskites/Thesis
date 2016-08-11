@@ -9,10 +9,12 @@ plotIndividualPCA <- function(points, dims, legendPos, border=c(0, 0, 0, 0))
 	colourPalette <- rainbow(length(uniqueDescriptors))
 
 	colours <- "black"
+	pchs <- array(1, nrow(points))
 
 	for (i in 1:length(uniqueDescriptors))
 	{
 		colours[descriptors == uniqueDescriptors[i]] <- colourPalette[i]
+		pchs[descriptors == uniqueDescriptors[i]] <- i + 1
 	}
 
 	xs <- points[,dims[1]]
@@ -28,8 +30,8 @@ plotIndividualPCA <- function(points, dims, legendPos, border=c(0, 0, 0, 0))
 	yLabel <- paste("PC ", dims[2], sep="")
 
 	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel, xlim=xLimits, ylim=yLimits)
-	points(xs, ys, pch=4, col=colours, cex=2)
-	legend(legendPos, legend=uniqueDescriptors, pch=4, pt.cex=1.5, col=colourPalette)
+	points(xs, ys, pch=pchs, col=colours, cex=1.5)
+	legend(legendPos, legend=uniqueDescriptors, pch=2:(length(uniqueDescriptors) + 1), pt.cex=1, col=colourPalette)
 
 	box()
 }
