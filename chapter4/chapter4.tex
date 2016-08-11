@@ -944,35 +944,18 @@
 		using equation \ref{eq:BoundedEigenvalueAgreement} as discussed in Section
 		\ref{sec:TimbreEvaluation-Analysis-Agreement}.
 		
-		Two types of graph are then plotted to identify patterns within each timbre space. The first is a scatter
-		plot in which the position of each individual transform is shown. These plots show the regions of the
-		timbre space which have been described by each term. The second is a biplot showing the mean position of
+		Two types of graph are plotted to identify patterns within each timbre space. The first is a scatter plot
+		in which the position of each individual transform is shown. These plots show the regions of the timbre
+		space which have been described by each term. The second is a biplot showing the mean position of
 		transforms labelled with each descriptor, along with vectors showing the influence of the most salient
 		audio features in each PC. In these graphs the size of the text indicates the agreement score associated
 		with that descriptor. In combination these two plots give a visual representation of how the audio features
 		influence the use of descriptors.
 
 		\subsubsection*{Distortion Processed Features}
-			The salient features of the timbre space describing processed signals from the distortion are shown
-			in Datum \ref{dat:DistortionProcessedCorrelations}.
-
-			\begin{datum}[h!]
-				\centering
-				\begin{minipage}{0.9\textwidth}
-					\input{chapter4/Tables/DistortionProcessedCorrelations.tex}
-				\end{minipage}
-				\caption{The salient features of the distortion's 
-					 processed feature timbre space.}
-				\label{dat:DistortionProcessedCorrelations}
-			\end{datum}
-
-			\begin{table}[h!]
-				\centering
-				\input{chapter4/Tables/DistortionProcessedAgreements.tex}
-				\caption{The agreement scores for terms in the 
-					 distortion's processed feature timbre space.}
-				\label{tab:DistortionProcessedAgreements}
-			\end{table}
+			The first three PCs of the timbre space describing the processed signals produced by the distortion
+			are shown in Figure \ref{fig:DistortionProcessedPCAs}. The corresponding agreement scores are shown
+			in Table \ref{tab:DistortionProcessedAgreements}.
 
 			\begin{figure}[h!]
 				\centering
@@ -990,6 +973,27 @@
 				\caption{The distortion's processed feature timbre space.}
 				\label{fig:DistortionProcessedPCAs}
 			\end{figure}
+
+			\begin{table}[h!]
+				\centering
+				\input{chapter4/Tables/DistortionProcessedAgreements.tex}
+				\caption{The agreement scores for terms in the 
+					 distortion's processed feature timbre space.}
+				\label{tab:DistortionProcessedAgreements}
+			\end{table}
+
+			The salient features for this timbre space are shown in Datum
+			\ref{dat:DistortionProcessedCorrelations}.
+
+			\begin{datum}[h!]
+				\centering
+				\begin{minipage}{0.9\textwidth}
+					\input{chapter4/Tables/DistortionProcessedCorrelations.tex}
+				\end{minipage}
+				\caption{The salient features of the distortion's 
+					 processed feature timbre space.}
+				\label{dat:DistortionProcessedCorrelations}
+			\end{datum}
 
 			\begin{figure}[h!]
 				\centering
@@ -1009,27 +1013,9 @@
 			\end{figure}
 
 		\subsubsection*{Distortion Feature Differences}
-			The salient features of the timbre space describing feature manipulations from the distortion are
-			shown in Datum \ref{dat:DistortionDifferenceCorrelations}.
-
-			\begin{datum}[h!]
-				\centering
-				\begin{minipage}{0.9\textwidth}
-					\input{chapter4/Tables/DistortionDifferenceCorrelations.tex}
-				\end{minipage}
-				\caption{The salient features of the distortion's
-					 feature difference timbre space.}
-				\label{dat:DistortionDifferenceCorrelations}
-			\end{datum}
-
-			\begin{table}[h!]
-				\centering
-				\input{chapter4/Tables/DistortionDifferenceAgreements.tex}
-				\centering
-				\caption{The agreement scores for terms in the 
-					 distortion's feature difference timbre space.}
-				\label{tab:DistortionDifferenceAgreements}
-			\end{table}
+			The first three PCs of the timbre space describing the feature manipulations applied by the
+			distortion are shown in Figure \ref{fig:DistortionDifferencePCAs}. The corresponding agreement
+			scores are shown in Table \ref{tab:DistortionDifferenceAgreements}.
 
 			\begin{figure}[h!]
 				\centering
@@ -1047,6 +1033,28 @@
 				\caption{The distortion's feature difference timbre space.}
 				\label{fig:DistortionDifferencePCAs}
 			\end{figure}
+
+			\begin{table}[h!]
+				\centering
+				\input{chapter4/Tables/DistortionDifferenceAgreements.tex}
+				\centering
+				\caption{The agreement scores for terms in the 
+					 distortion's feature difference timbre space.}
+				\label{tab:DistortionDifferenceAgreements}
+			\end{table}
+
+			The salient features for this timbre space are shown in Datum
+			\ref{dat:DistortionDifferenceCorrelations}.
+
+			\begin{datum}[h!]
+				\centering
+				\begin{minipage}{0.9\textwidth}
+					\input{chapter4/Tables/DistortionDifferenceCorrelations.tex}
+				\end{minipage}
+				\caption{The salient features of the distortion's
+					 feature difference timbre space.}
+				\label{dat:DistortionDifferenceCorrelations}
+			\end{datum}
 
 			\begin{figure}[h!]
 				\centering
@@ -1066,26 +1074,9 @@
 			\end{figure}
 
 		\subsubsection*{Equaliser Processed Features}
-			The salient features of the timbre space describing processed signals from the equaliser are shown
-			in Datum \ref{dat:EqualiserProcessedCorrelations}.
-
-			\begin{datum}[h!]
-				\centering
-				\begin{minipage}{0.9\textwidth}
-					\input{chapter4/Tables/EqualiserProcessedCorrelations.tex}
-				\end{minipage}
-				\caption{The salient features of the equaliser's
-					 processed feature timbre space.}
-				\label{dat:EqualiserProcessedCorrelations}
-			\end{datum}
-
-			\begin{table}[h!]
-				\centering
-				\input{chapter4/Tables/EqualiserProcessedAgreements.tex}
-				\caption{The agreement scores for terms in the 
-					 equaliser's processed feature timbre space.}
-				\label{tab:DistortionDifferenceAgreements}
-			\end{table}
+			The first three PCs of the timbre space describing the processed signals produced by the equaliser
+			are shown in Figure \ref{fig:EqualiserProcessedPCAs}. The corresponding agreement scores are shown
+			in Table \ref{tab:EqualiserProcessedAgreements}.
 
 			\begin{figure}[h!]
 				\centering
@@ -1103,6 +1094,27 @@
 				\caption{The equaliser's processed feature timbre space.}
 				\label{fig:EqualiserProcessedPCAs}
 			\end{figure}
+
+			\begin{table}[h!]
+				\centering
+				\input{chapter4/Tables/EqualiserProcessedAgreements.tex}
+				\caption{The agreement scores for terms in the 
+					 equaliser's processed feature timbre space.}
+				\label{tab:DistortionDifferenceAgreements}
+			\end{table}
+
+			The salient features for this timbre space are shown in Datum
+			\ref{dat:EqualiserProcessedCorrelations}.
+
+			\begin{datum}[h!]
+				\centering
+				\begin{minipage}{0.9\textwidth}
+					\input{chapter4/Tables/EqualiserProcessedCorrelations.tex}
+				\end{minipage}
+				\caption{The salient features of the equaliser's
+					 processed feature timbre space.}
+				\label{dat:EqualiserProcessedCorrelations}
+			\end{datum}
 
 			\begin{figure}[h!]
 				\centering
@@ -1122,26 +1134,9 @@
 			\end{figure}
 
 		\subsubsection*{Equaliser Feature Differences}
-			The salient features of the timbre space describing feature manipulations from the equaliser are
-			shown in Datum \ref{dat:EqualiserDifferenceCorrelations}.
-
-			\begin{datum}[h!]
-				\centering
-				\begin{minipage}{0.9\textwidth}
-					\input{chapter4/Tables/EqualiserDifferenceCorrelations.tex}
-				\end{minipage}
-				\caption{The salient features of the equaliser's
-					 feature difference timbre space.}
-				\label{dat:EqualiserDifferenceCorrelations}
-			\end{datum}
-
-			\begin{table}[h!]
-				\centering
-				\input{chapter4/Tables/EqualiserDifferenceAgreements.tex}
-				\caption{The agreement scores for terms in the 
-					 equaliser's feature difference timbre space.}
-				\label{tab:DistortionDifferenceAgreements}
-			\end{table}
+			The first three PCs of the timbre space describing the feature manipulations applied by the
+			equaliser are shown in Figure \ref{fig:EqualiserDifferencePCAs}. The corresponding agreement
+			scores are shown in Table \ref{tab:EqualiserDifferenceAgreements}.
 
 			\begin{figure}[h!]
 				\centering
@@ -1159,6 +1154,27 @@
 				\caption{The equaliser's feature difference timbre space.}
 				\label{fig:EqualiserDifferencePCAs}
 			\end{figure}
+
+			\begin{table}[h!]
+				\centering
+				\input{chapter4/Tables/EqualiserDifferenceAgreements.tex}
+				\caption{The agreement scores for terms in the 
+					 equaliser's feature difference timbre space.}
+				\label{tab:DistortionDifferenceAgreements}
+			\end{table}
+
+			The salient features for this timbre space are shown in Datum
+			\ref{dat:EqualiserDifferenceCorrelations}.
+
+			\begin{datum}[h!]
+				\centering
+				\begin{minipage}{0.9\textwidth}
+					\input{chapter4/Tables/EqualiserDifferenceCorrelations.tex}
+				\end{minipage}
+				\caption{The salient features of the equaliser's
+					 feature difference timbre space.}
+				\label{dat:EqualiserDifferenceCorrelations}
+			\end{datum}
 
 			\begin{figure}[h!]
 				\centering
