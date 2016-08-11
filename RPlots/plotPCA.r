@@ -30,6 +30,8 @@ plotIndividualPCA <- function(points, dims, legendPos, border=c(0, 0, 0, 0))
 	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel, xlim=xLimits, ylim=yLimits)
 	points(xs, ys, pch=4, col=colours, cex=2)
 	legend(legendPos, legend=uniqueDescriptors, pch=4, pt.cex=1.5, col=colourPalette)
+
+	box()
 }
 
 plotCentroidBiplot <- function(PCA, dims, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
@@ -123,4 +125,6 @@ plotCentroidBiplot <- function(PCA, dims, desc, var, border=c(0.15, 0.15, 0.15, 
 	axis(4, col.ticks=varCol, col.axis=varCol)
 	plotVar <- plotFeatureNames(var)
 	text(varXs, varYs, plotVar, pos=labelPos, col=varCol, family="CM Roman")
+
+	box()
 }
