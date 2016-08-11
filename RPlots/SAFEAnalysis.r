@@ -272,18 +272,22 @@ source("agreement.r")
 distProcPCAScaled <- scale(distProcPCAPoints)
 distProcPCAScaledSel <- getDescriptorPositions(distProcPCAScaled, distDescriptors)
 distProcAgreement <- termAgreement(distProcPCAScaledSel)
+makeAgreementTable(distProcAgreement, "DistortionProcessedAgreements.txt")
 
 distDiffPCAScaled <- scale(distDiffPCAPoints)
 distDiffPCAScaledSel <- getDescriptorPositions(distDiffPCAScaled, distDescriptors)
 distDiffAgreement <- termAgreement(distDiffPCAScaledSel)
+makeAgreementTable(distDiffAgreement, "DistortionDifferenceAgreements.txt")
 
 eqProcPCAScaled <- scale(eqProcPCAPoints)
 eqProcPCAScaledSel <- getDescriptorPositions(eqProcPCAScaled, eqDescriptors)
 eqProcAgreement <- termAgreement(eqProcPCAScaledSel)
+makeAgreementTable(eqProcAgreement, "EqualiserProcessedAgreements.txt")
 
 eqDiffPCAScaled <- scale(eqDiffPCAPoints)
 eqDiffPCAScaledSel <- getDescriptorPositions(eqDiffPCAScaled, eqDescriptors)
 eqDiffAgreement <- termAgreement(eqDiffPCAScaledSel)
+makeAgreementTable(eqDiffAgreement, "EqualiserDifferenceAgreements.txt")
 
 #########################################################
 ## biplots

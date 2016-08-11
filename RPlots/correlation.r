@@ -88,7 +88,7 @@ makeCorrelationList <- function(data, outFile)
 		cors <- format(data[[i]], digits=3)
 		features <- latexFeatureNames(names(cors))
 
-		featureString <- paste(paste(features, cors, sep="~($p~=~"), collapse="$), ")
+		featureString <- paste(paste(features, cors, sep="~($r~=~"), collapse="$), ")
 		line <- paste(line, featureString, "$).", sep="")
 
 		lines <- c(lines, line)

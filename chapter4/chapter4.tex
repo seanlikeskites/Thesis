@@ -733,7 +733,7 @@
 			transforms in each PC should be standardised to remove bias introduced by the proportions of total
 			variance each PC describes.
 
-			The number of PCs to used in the calculation of agreement is an important consideration. PCs which
+			The number of PCs to use in the calculation of agreement is an important consideration. PCs which
 			describe a low proportion of total variance should be discarded as is can not be known whether this
 			low variance is due to user agreement. It is therefore recommended that a threshold is set, and
 			only PCs which describe a proportion of variance above this threshold are used. Discarding the low
@@ -763,7 +763,7 @@
 			set of points whose position is very well agreed upon, having low variance in every PC. Cluster 3
 			represents a set of points whose position is only defined in one PC, having high variance in the
 			other two. Cluster 4 represent a set of points which are defined by a relationship between two PCs,
-			exhibiting high variance in all PCs but a strong correlation ($p = 0.9$) between PCs 1 and 2. The
+			exhibiting high variance in all PCs but a strong correlation ($r = 0.9$) between PCs 1 and 2. The
 			clusters were generated using the techniques discussed by \citet{ripley1987stochastic}, using the
 			means, $\mu$, and covariance matrices, $\Sigma$, shown in Datum \ref{dat:ClusterStats}.
 
@@ -922,39 +922,89 @@
 	\label{sec:TimbreEvaluation-Analysis-TimbreSpaces}
 		Clustering provides insight into the similarity of descriptive terms but does not show what properties of
 		the signals / transforms contribute to the differences between descriptor clusters. Reducing the
-		dimensionality of the audio feature space allows for the most salient features to be identified. To
+		dimensionality of the audio feature space allows for the most salient audio features to be identified. To
 		preserve as much of the audio feature data as possible, a different feature space, to that used for
 		clustering, is constructed. Rather than each descriptor representing one point in the feature space, each
-		individual transform represents its own point. In this manner dimensions which have little effect on a
-		certain timbral descriptor are easily determined. The points labeled with a particular term will be more
-		spread out across the dimensions which do not affect them. 
+		individual transform represents its own point. 
+
+		Two low dimensionality timbre spaces are generated for each effect, one from the feature space of the
+		processed signals and the other from the feature space describing the difference in feature values between
+		the processed and unprocessed signals. To generate these timbre spaces, the feature values from every
+		applicable transform in the dataset (304 from the distortion and 1483 from the equaliser) are standardised
+		and then undergo PCA. For every space, the knee of the PCA scree plot lies at five PCs. The final reduced
+		dimensionality timbre spaces are then constructed from the first five PCs.
+
+		These timbre spaces are analysed in various steps. Firstly the audio features which correlate most highly
+		with each PC are determined. Features which satisfy a correlation criteria of $r > 0.7$ and $p < 0.01$ are
+		deemed to be the salient features of each timbre space. Next the agreement scores for the relevant
+		descriptors from Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} are calculated. As the
+		timbre space is a product of PCA no additional PCA is needed, the high variance dimensions of the data have
+		already been identified. Each timbre space is standardised and the covariance matrix for each descriptor is
+		calculated. The agreement scores are then calculated from the eigenvalues of these covariance matrices
+		using equation \ref{eq:BoundedEigenvalueAgreement} as discussed in Section
+		\ref{sec:TimbreEvaluation-Analysis-Agreement}.
 		
-		Prior to analysis, the feature spaces are standardised to remove any bias caused by features with a large
-		range. PCA is then applied in order to create the low dimensionality timbre spaces discussed in this
-		section. Two different types of plot are used to identify patterns within these timbre spaces. The first is
-		a scatter plot in which the position of each individual transform is shown. These plots shoe the regions of
-		the timbre space that certain terms describe. The second is a biplot showing the mean position of
-		transforms labelled with each descriptor along with vectors showing the influence of selected audio
-		features. In these graphs the size of the text indicates the agreement score associated with that
-		descriptor.
+		Two types of graph are then plotted to identify patterns within each timbre space. The first is a scatter
+		plot in which the position of each individual transform is shown. These plots show the regions of the
+		timbre space which have been described by each term. The second is a biplot showing the mean position of
+		transforms labelled with each descriptor, along with vectors showing the influence of the most salient
+		audio features in each PC. In these graphs the size of the text indicates the agreement score associated
+		with that descriptor. In combination these two plots give a visual representation of how the audio features
+		influence the use of descriptors.
 
 		\subsubsection*{Distortion Processed Features}
 			\begin{itemize}
-				\item {\bf{PC 1:}} $\textrm{KI}$~($p~=~-0.992$), $\textrm{KI}_{\textrm{p}}$~($p~=~-0.985$),
-					$\textrm{KI}_{\textrm{h}}$~($p~=~-0.968$), $\kappa_{\textrm{p}}$~($p~=~-0.964$),
-					$\kappa_{\textrm{h}}$~($p~=~-0.959$), $\gamma_{\textrm{p}}$~($p~=~-0.957$),
-					$\gamma_{\textrm{h}}$~($p~=~-0.946$), $\gamma_{\textrm{s}}$~($p~=~-0.923$),
-					$\sigma$~($p~=~-0.919$), $\textrm{RMS}$~($p~=~-0.919$),
-					$\sigma^{2}$~($p~=~-0.851$), $\kappa_{\textrm{s}}$~($p~=~-0.790$).
-				\item {\bf{PC 2:}} $\textrm{SRO}$~($p~=~ 0.938$), $\sigma_{\textrm{h}}$~($p~=~ 0.933$),
-					$\sigma_{\textrm{p}}$~($p~=~ 0.932$), $\mu_{\textrm{p}}$~($p~=~ 0.904$),
-					$\mu_{\textrm{h}}$~($p~=~ 0.903$), $\textrm{ZCR}$~($p~=~ 0.875$),
-					$\mu_{\textrm{s}}$~($p~=~ 0.856$), $\textrm{MFCC}_{1}$~($p~=~-0.851$),
-					$\textrm{SSl}$~($p~=~ 0.827$), $\sigma_{\textrm{p}}^{2}$~($p~=~ 0.788$),
-					$\sigma_{\textrm{h}}^{2}$~($p~=~ 0.786$).
-				\item {\bf{PC 3:}} $\textrm{MFCC}_{2}$~($p~=~ 0.787$), $\textrm{MFCC}_{4}$~($p~=~ 0.774$),
-					$T_{\textrm{p}3}$~($p~=~-0.722$), $T_{3}$~($p~=~-0.704$).
+				\item {\bf{PC 1:}} $\textrm{KI}$~($r~=~-0.992$), $\textrm{KI}_{\textrm{p}}$~($r~=~-0.985$),
+					$\textrm{KI}_{\textrm{h}}$~($r~=~-0.968$), $\kappa_{\textrm{p}}$~($r~=~-0.964$),
+					$\kappa_{\textrm{h}}$~($r~=~-0.959$), $\gamma_{\textrm{p}}$~($r~=~-0.957$),
+					$\gamma_{\textrm{h}}$~($r~=~-0.946$), $\gamma_{\textrm{s}}$~($r~=~-0.923$),
+					$\sigma$~($r~=~-0.919$), $\textrm{RMS}$~($r~=~-0.919$),
+					$\sigma^{2}$~($r~=~-0.851$), $\kappa_{\textrm{s}}$~($r~=~-0.790$).
+				\item {\bf{PC 2:}} $\textrm{SRO}$~($r~=~ 0.938$), $\sigma_{\textrm{h}}$~($r~=~ 0.933$),
+					$\sigma_{\textrm{p}}$~($r~=~ 0.932$), $\mu_{\textrm{p}}$~($r~=~ 0.904$),
+					$\mu_{\textrm{h}}$~($r~=~ 0.903$), $\textrm{ZCR}$~($r~=~ 0.875$),
+					$\mu_{\textrm{s}}$~($r~=~ 0.856$), $\textrm{MFCC}_{1}$~($r~=~-0.851$),
+					$\textrm{SSl}$~($r~=~ 0.827$), $\sigma_{\textrm{p}}^{2}$~($r~=~ 0.788$),
+					$\sigma_{\textrm{h}}^{2}$~($r~=~ 0.786$).
+				\item {\bf{PC 3:}} $\textrm{MFCC}_{2}$~($r~=~ 0.787$), $\textrm{MFCC}_{4}$~($r~=~ 0.774$),
+					$T_{\textrm{p}3}$~($r~=~-0.722$), $T_{3}$~($r~=~-0.704$).
 			\end{itemize}
+
+			\begin{table}
+				\centering
+				\begin{tabular}{|c|c|}
+					\hline
+					\bf{Term} & \bf{Agreement} \tabularnewline
+					\hline
+					\hline
+					bright & 0.20 \tabularnewline
+					\hline
+					cream & 0.39 \tabularnewline
+					\hline
+					crunch & 0.56 \tabularnewline
+					\hline
+					fuzz & 0.57 \tabularnewline
+					\hline
+				\end{tabular}
+				\qquad
+				\begin{tabular}{|c|c|}
+					\hline
+					\bf{Term} & \bf{Agreement} \tabularnewline
+					\hline
+					\hline
+					harsh & 0.14 \tabularnewline
+					\hline
+					rasp & 0.32 \tabularnewline
+					\hline
+					smooth & 0.07 \tabularnewline
+					\hline
+					warm & 0.71 \tabularnewline
+					\hline
+				\end{tabular}
+				\caption{The agreement scores for terms in the 
+					 distortion's processed feature timbre space.}
+				\label{tab:DistortionProcessedAgreements}
+			\end{table}
 
 			\begin{figure}[h!]
 				\centering
@@ -969,7 +1019,7 @@
 					\includegraphics{chapter4/Images/DistortionProcessedPCA3-2.pdf}
 					\label{fig:DistortionProcessedPCA3-2}
 				}
-				\caption{The timbre space for the processed features from the distortion.}
+				\caption{The distortion's processed feature timbre space.}
 				\label{fig:DistortionProcessedPCAs}
 			\end{figure}
 
@@ -986,26 +1036,63 @@
 					\includegraphics{chapter4/Images/DistortionProcessedCentroidsPCA3-2.pdf}
 					\label{fig:DistortionProcessedCentroidsPCA3-2}
 				}
-				\caption{Biplots of the processed features from the distortion.}
+				\caption{Biplots of the distortion's processed feature timbre space.}
 				\label{fig:DistortionProcessedCentroidsPCAs}
 			\end{figure}
 
 		\subsubsection*{Distortion Feature Differences}
 			\begin{itemize}
-				\item {\bf{PC 1:}} $\textrm{KI}$~($p~=~0.992$), $\textrm{KI}_{\textrm{p}}$~($p~=~0.989$),
-					$\textrm{KI}_{\textrm{h}}$~($p~=~0.971$), $\gamma_{\textrm{p}}$~($p~=~0.956$),
-					$\kappa_{\textrm{p}}$~($p~=~0.956$), $\gamma_{\textrm{h}}$~($p~=~0.943$),
-					$\kappa_{\textrm{h}}$~($p~=~0.941$), $\sigma$~($p~=~0.939$),
-					$\textrm{RMS}$~($p~=~0.939$), $\gamma_{\textrm{s}}$~($p~=~0.918$),
-					$\sigma^{2}$~($p~=~0.877$), $\kappa_{\textrm{s}}$~($p~=~0.744$).
-				\item {\bf{PC 2:}} $\textrm{SRO}$~($p~=~-0.913$), $\mu_{\textrm{s}}$~($p~=~-0.901$),
-					$\sigma_{\textrm{h}}$~($p~=~-0.869$), $\mu_{\textrm{h}}$~($p~=~-0.832$),
-					$\sigma_{\textrm{p}}$~($p~=~-0.831$), $\mu_{\textrm{p}}$~($p~=~-0.830$),
-					$\textrm{SSl}$~($p~=~-0.793$), $\sigma_{\textrm{s}}^{2}$~($p~=~-0.764$),
-					$\sigma_{\textrm{s}}$~($p~=~-0.761$), $\sigma_{\textrm{p}}^{2}$~($p~=~-0.725$),
-					$\sigma_{\textrm{h}}^{2}$~($p~=~-0.719$), $\textrm{ZCR}$~($p~=~-0.715$).
-				\item {\bf{PC 3:}} $T_{1}$~($p~=~-0.797$), $T_{\textrm{p}1}$~($p~=~-0.783$).
+				\item {\bf{PC 1:}} $\textrm{KI}$~($r~=~0.992$), $\textrm{KI}_{\textrm{p}}$~($r~=~0.989$),
+					$\textrm{KI}_{\textrm{h}}$~($r~=~0.971$), $\gamma_{\textrm{p}}$~($r~=~0.956$),
+					$\kappa_{\textrm{p}}$~($r~=~0.956$), $\gamma_{\textrm{h}}$~($r~=~0.943$),
+					$\kappa_{\textrm{h}}$~($r~=~0.941$), $\sigma$~($r~=~0.939$),
+					$\textrm{RMS}$~($r~=~0.939$), $\gamma_{\textrm{s}}$~($r~=~0.918$),
+					$\sigma^{2}$~($r~=~0.877$), $\kappa_{\textrm{s}}$~($r~=~0.744$).
+				\item {\bf{PC 2:}} $\textrm{SRO}$~($r~=~-0.913$), $\mu_{\textrm{s}}$~($r~=~-0.901$),
+					$\sigma_{\textrm{h}}$~($r~=~-0.869$), $\mu_{\textrm{h}}$~($r~=~-0.832$),
+					$\sigma_{\textrm{p}}$~($r~=~-0.831$), $\mu_{\textrm{p}}$~($r~=~-0.830$),
+					$\textrm{SSl}$~($r~=~-0.793$), $\sigma_{\textrm{s}}^{2}$~($r~=~-0.764$),
+					$\sigma_{\textrm{s}}$~($r~=~-0.761$), $\sigma_{\textrm{p}}^{2}$~($r~=~-0.725$),
+					$\sigma_{\textrm{h}}^{2}$~($r~=~-0.719$), $\textrm{ZCR}$~($r~=~-0.715$).
+				\item {\bf{PC 3:}} $T_{1}$~($r~=~-0.797$), $T_{\textrm{p}1}$~($r~=~-0.783$).
 			\end{itemize}
+
+			\begin{table}
+				\centering
+				\begin{tabular}{|c|c|}
+					\hline
+					\bf{Term} & \bf{Agreement} \tabularnewline
+					\hline
+					\hline
+					bright & 0.2 \tabularnewline
+					\hline
+					cream & 0.6 \tabularnewline
+					\hline
+					crunch & 0.6 \tabularnewline
+					\hline
+					fuzz & 0.5 \tabularnewline
+					\hline
+				\end{tabular}
+				\qquad
+				\begin{tabular}{|c|c|}
+					\hline
+					\bf{Term} & \bf{Agreement} \tabularnewline
+					\hline
+					\hline
+					harsh & 0.2 \tabularnewline
+					\hline
+					rasp & 0.3 \tabularnewline
+					\hline
+					smooth & 0.1 \tabularnewline
+					\hline
+					warm & 0.7 \tabularnewline
+					\hline
+				\end{tabular}
+				\centering
+				\caption{The agreement scores for terms in the 
+					 distortion's feature difference timbre space.}
+				\label{tab:DistortionDifferenceAgreements}
+			\end{table}
 
 			\begin{figure}[h!]
 				\centering
@@ -1020,7 +1107,7 @@
 					\includegraphics{chapter4/Images/DistortionDifferencePCA3-2.pdf}
 					\label{fig:DistortionDifferencePCA3-2}
 				}
-				\caption{The timbre space for the feature differences from the distortion.}
+				\caption{The distortion's feature difference timbre space.}
 				\label{fig:DistortionDifferencePCAs}
 			\end{figure}
 
@@ -1037,32 +1124,83 @@
 					\includegraphics{chapter4/Images/DistortionDifferenceCentroidsPCA3-2.pdf}
 					\label{fig:DistortionDifferenceCentroidsPCA3-2}
 				}
-				\caption{Biplots of the feature differences from the distortion.}
+				\caption{Biplots of the distortion's feature difference timbre space.}
 				\label{fig:DistortionDifferenceCentroidsPCAs}
 			\end{figure}
 
 		\subsubsection*{Equaliser Processed Features}
 			\begin{itemize}
-				\item {\bf{PC 1:}} $\textrm{KI}$~($p~=~0.991$), $\textrm{KI}_{\textrm{p}}$~($p~=~0.981$),
-					$\kappa_{\textrm{h}}$~($p~=~0.966$), $\kappa_{\textrm{p}}$~($p~=~0.962$),
-					$\textrm{KI}_{\textrm{h}}$~($p~=~0.958$), $\gamma_{\textrm{s}}$~($p~=~0.945$),
-					$\gamma_{\textrm{p}}$~($p~=~0.895$), $\gamma_{\textrm{h}}$~($p~=~0.886$),
-					$\kappa_{\textrm{s}}$~($p~=~0.884$), $\sigma$~($p~=~0.840$),
-					$\textrm{RMS}$~($p~=~0.840$), $\sigma^{2}$~($p~=~0.813$).
-				\item {\bf{PC 2:}} $\sigma_{\textrm{h}}$~($p~=~ 0.922$), $\sigma_{\textrm{p}}$~($p~=~
-					0.918$), $\textrm{SRO}$~($p~=~ 0.895$), $\mu_{\textrm{h}}$~($p~=~ 0.881$),
-					$\mu_{\textrm{p}}$~($p~=~ 0.881$), $\mu_{\textrm{s}}$~($p~=~ 0.806$),
-					$\textrm{SSl}$~($p~=~ 0.805$), $\textrm{MFCC}_{1}$~($p~=~-0.802$),
-					$\textrm{ZCR}$~($p~=~ 0.798$), $\sigma_{\textrm{p}}^{2}$~($p~=~ 0.761$),
-					$\sigma_{\textrm{h}}^{2}$~($p~=~ 0.761$), $T_{\textrm{p}2}$~($p~=~-0.749$),
-					$T_{2}$~($p~=~-0.745$), $\textrm{SC}$~($p~=~-0.720$).
-				\item {\bf{PC 3:}} $\textrm{MFCC}_{4}$~($p~=~-0.718$), $\textrm{MFCC}_{2}$~($p~=~-0.715$),
-					$\sigma_{\textrm{s}}$~($p~=~-0.714$).
-				\item {\bf{PC 4:}} $\textrm{MFCC}_{8}$~($p~=~0.926$), $\textrm{MFCC}_{10}$~($p~=~0.839$),
-					$\textrm{MFCC}_{9}$~($p~=~0.836$), $\textrm{MFCC}_{12}$~($p~=~0.760$),
-					$\textrm{MFCC}_{7}$~($p~=~0.725$), $\textrm{MFCC}_{11}$~($p~=~0.721$).
-				\item {\bf{PC 5:}} $\textrm{MFCC}_{5}$~($p~=~0.743$), $\textrm{MFCC}_{3}$~($p~=~0.705$).
+				\item {\bf{PC 1:}} $\textrm{KI}$~($r~=~0.991$), $\textrm{KI}_{\textrm{p}}$~($r~=~0.981$),
+					$\kappa_{\textrm{h}}$~($r~=~0.966$), $\kappa_{\textrm{p}}$~($r~=~0.962$),
+					$\textrm{KI}_{\textrm{h}}$~($r~=~0.958$), $\gamma_{\textrm{s}}$~($r~=~0.945$),
+					$\gamma_{\textrm{p}}$~($r~=~0.895$), $\gamma_{\textrm{h}}$~($r~=~0.886$),
+					$\kappa_{\textrm{s}}$~($r~=~0.884$), $\sigma$~($r~=~0.840$),
+					$\textrm{RMS}$~($r~=~0.840$), $\sigma^{2}$~($r~=~0.813$).
+				\item {\bf{PC 2:}} $\sigma_{\textrm{h}}$~($r~=~ 0.922$), $\sigma_{\textrm{p}}$~($r~=~
+					0.918$), $\textrm{SRO}$~($r~=~ 0.895$), $\mu_{\textrm{h}}$~($r~=~ 0.881$),
+					$\mu_{\textrm{p}}$~($r~=~ 0.881$), $\mu_{\textrm{s}}$~($r~=~ 0.806$),
+					$\textrm{SSl}$~($r~=~ 0.805$), $\textrm{MFCC}_{1}$~($r~=~-0.802$),
+					$\textrm{ZCR}$~($r~=~ 0.798$), $\sigma_{\textrm{p}}^{2}$~($r~=~ 0.761$),
+					$\sigma_{\textrm{h}}^{2}$~($r~=~ 0.761$), $T_{\textrm{p}2}$~($r~=~-0.749$),
+					$T_{2}$~($r~=~-0.745$), $\textrm{SC}$~($r~=~-0.720$).
+				\item {\bf{PC 3:}} $\textrm{MFCC}_{4}$~($r~=~-0.718$), $\textrm{MFCC}_{2}$~($r~=~-0.715$),
+					$\sigma_{\textrm{s}}$~($r~=~-0.714$).
+				\item {\bf{PC 4:}} $\textrm{MFCC}_{8}$~($r~=~0.926$), $\textrm{MFCC}_{10}$~($r~=~0.839$),
+					$\textrm{MFCC}_{9}$~($r~=~0.836$), $\textrm{MFCC}_{12}$~($r~=~0.760$),
+					$\textrm{MFCC}_{7}$~($r~=~0.725$), $\textrm{MFCC}_{11}$~($r~=~0.721$).
+				\item {\bf{PC 5:}} $\textrm{MFCC}_{5}$~($r~=~0.743$), $\textrm{MFCC}_{3}$~($r~=~0.705$).
 			\end{itemize}
+
+			\begin{table}
+				\centering
+				\begin{tabular}{|c|c|}
+					\hline
+					\bf{Term} & \bf{Agreement} \tabularnewline
+					\hline
+					\hline
+					air & 0.64 \tabularnewline
+					\hline
+					boom & 0.47 \tabularnewline
+					\hline
+					box & 0.59 \tabularnewline
+					\hline
+					bright & 1.24 \tabularnewline
+					\hline
+				\end{tabular}
+				\qquad
+				\begin{tabular}{|c|c|}
+					\hline
+					\bf{Term} & \bf{Agreement} \tabularnewline
+					\hline
+					\hline
+					clear & 0.48 \tabularnewline
+					\hline
+					deep & 0.95 \tabularnewline
+					\hline
+					full & 0.54 \tabularnewline
+					\hline
+					harsh & 0.08 \tabularnewline
+					\hline
+				\end{tabular}
+				\qquad
+				\begin{tabular}{|c|c|}
+					\hline
+					\bf{Term} & \bf{Agreement} \tabularnewline
+					\hline
+					\hline
+					mud & 0.58 \tabularnewline
+					\hline
+					thin & 0.52 \tabularnewline
+					\hline
+					tin & 0.42 \tabularnewline
+					\hline
+					warm & 1.53 \tabularnewline
+					\hline
+				\end{tabular}
+				\caption{The agreement scores for terms in the 
+					 equaliser's processed feature timbre space.}
+				\label{tab:DistortionDifferenceAgreements}
+			\end{table}
 
 			\begin{figure}[h!]
 				\centering
@@ -1077,7 +1215,7 @@
 					\includegraphics{chapter4/Images/EqualiserProcessedPCA3-2.pdf}
 					\label{fig:EqualiserProcessedPCA3-2}
 				}
-				\caption{The timbre space for the processed features from the equaliser.}
+				\caption{The equaliser's processed feature timbre space.}
 				\label{fig:EqualiserProcessedPCAs}
 			\end{figure}
 
@@ -1094,29 +1232,80 @@
 					\includegraphics{chapter4/Images/EqualiserProcessedCentroidsPCA3-2.pdf}
 					\label{fig:EqualiserProcessedCentroidsPCA3-2}
 				}
-				\caption{Biplots of the processed features from the equaliser.}
+				\caption{Biplots of the equaliser's processed feature timbre space.}
 				\label{fig:EqualiserProcessedCentroidsPCAs}
 			\end{figure}
 
 		\subsubsection*{Equaliser Feature Differences}
 			\begin{itemize}
-				\item {\bf{PC 1:}} $\textrm{KI}$~($p~=~-0.986$), $\textrm{KI}_{\textrm{p}}$~($p~=~-0.970$),
-					$\gamma_{\textrm{s}}$~($p~=~-0.968$), $\kappa_{\textrm{p}}$~($p~=~-0.932$),
-					$\textrm{KI}_{\textrm{h}}$~($p~=~-0.922$), $\kappa_{\textrm{s}}$~($p~=~-0.915$),
-					$\kappa_{\textrm{h}}$~($p~=~-0.912$), $\sigma^{2}$~($p~=~-0.890$),
-					$\sigma$~($p~=~-0.872$), $\textrm{RMS}$~($p~=~-0.872$),
-					$\gamma_{\textrm{p}}$~($p~=~-0.862$), $\gamma_{\textrm{h}}$~($p~=~-0.831$).
-				\item {\bf{PC 2:}} $\mu_{\textrm{p}}$~($p~=~ 0.867$), $\mu_{\textrm{h}}$~($p~=~ 0.863$),
-					$\sigma_{\textrm{h}}$~($p~=~ 0.838$), $\sigma_{\textrm{p}}$~($p~=~ 0.833$),
-					$\textrm{SRO}$~($p~=~ 0.813$), $\mu_{\textrm{s}}$~($p~=~ 0.770$),
-					$\textrm{SSl}$~($p~=~ 0.745$), $\textrm{MFCC}_{1}$~($p~=~-0.705$).
-				\item {\bf{PC 3:}} $\textrm{MFCC}_{5}$~($p~=~-0.794$), $\textrm{MFCC}_{6}$~($p~=~-0.791$),
-					$\textrm{MFCC}_{7}$~($p~=~-0.741$), $\textrm{MFCC}_{0}$~($p~=~ 0.723$),
-					$\textrm{JI}$~($p~=~ 0.722$).
-				\item {\bf{PC 4:}} $\textrm{MFCC}_{12}$~($p~=~0.917$), $\textrm{MFCC}_{11}$~($p~=~0.908$),
-					$\textrm{MFCC}_{10}$~($p~=~0.893$), $\textrm{MFCC}_{9}$~($p~=~0.848$),
-					$\textrm{MFCC}_{8}$~($p~=~0.742$).
+				\item {\bf{PC 1:}} $\textrm{KI}$~($r~=~-0.986$), $\textrm{KI}_{\textrm{p}}$~($r~=~-0.970$),
+					$\gamma_{\textrm{s}}$~($r~=~-0.968$), $\kappa_{\textrm{p}}$~($r~=~-0.932$),
+					$\textrm{KI}_{\textrm{h}}$~($r~=~-0.922$), $\kappa_{\textrm{s}}$~($r~=~-0.915$),
+					$\kappa_{\textrm{h}}$~($r~=~-0.912$), $\sigma^{2}$~($r~=~-0.890$),
+					$\sigma$~($r~=~-0.872$), $\textrm{RMS}$~($r~=~-0.872$),
+					$\gamma_{\textrm{p}}$~($r~=~-0.862$), $\gamma_{\textrm{h}}$~($r~=~-0.831$).
+				\item {\bf{PC 2:}} $\mu_{\textrm{p}}$~($r~=~ 0.867$), $\mu_{\textrm{h}}$~($r~=~ 0.863$),
+					$\sigma_{\textrm{h}}$~($r~=~ 0.838$), $\sigma_{\textrm{p}}$~($r~=~ 0.833$),
+					$\textrm{SRO}$~($r~=~ 0.813$), $\mu_{\textrm{s}}$~($r~=~ 0.770$),
+					$\textrm{SSl}$~($r~=~ 0.745$), $\textrm{MFCC}_{1}$~($r~=~-0.705$).
+				\item {\bf{PC 3:}} $\textrm{MFCC}_{5}$~($r~=~-0.794$), $\textrm{MFCC}_{6}$~($r~=~-0.791$),
+					$\textrm{MFCC}_{7}$~($r~=~-0.741$), $\textrm{MFCC}_{0}$~($r~=~ 0.723$),
+					$\textrm{JI}$~($r~=~ 0.722$).
+				\item {\bf{PC 4:}} $\textrm{MFCC}_{12}$~($r~=~0.917$), $\textrm{MFCC}_{11}$~($r~=~0.908$),
+					$\textrm{MFCC}_{10}$~($r~=~0.893$), $\textrm{MFCC}_{9}$~($r~=~0.848$),
+					$\textrm{MFCC}_{8}$~($r~=~0.742$).
 			\end{itemize}
+
+			\begin{table}
+				\centering
+				\begin{tabular}{|c|c|}
+					\hline
+					\bf{Term} & \bf{Agreement} \tabularnewline
+					\hline
+					\hline
+					air & 0.71 \tabularnewline
+					\hline
+					boom & 0.27 \tabularnewline
+					\hline
+					box & 0.49 \tabularnewline
+					\hline
+					bright & 1.19 \tabularnewline
+					\hline
+				\end{tabular}
+				\qquad
+				\begin{tabular}{|c|c|}
+					\hline
+					\bf{Term} & \bf{Agreement} \tabularnewline
+					\hline
+					\hline
+					clear & 0.45 \tabularnewline
+					\hline
+					deep & 1.17 \tabularnewline
+					\hline
+					full & 0.79 \tabularnewline
+					\hline
+					harsh & 0.05 \tabularnewline
+					\hline
+				\end{tabular}
+				\qquad
+				\begin{tabular}{|c|c|}
+					\hline
+					\bf{Term} & \bf{Agreement} \tabularnewline
+					\hline
+					\hline
+					mud & 0.33 \tabularnewline
+					\hline
+					thin & 0.38 \tabularnewline
+					\hline
+					tin & 0.30 \tabularnewline
+					\hline
+					warm & 1.49 \tabularnewline
+					\hline
+				\end{tabular}
+				\caption{The agreement scores for terms in the 
+					 equaliser's feature difference timbre space.}
+				\label{tab:DistortionDifferenceAgreements}
+			\end{table}
 
 			\begin{figure}[h!]
 				\centering
@@ -1131,7 +1320,7 @@
 					\includegraphics{chapter4/Images/EqualiserDifferencePCA3-2.pdf}
 					\label{fig:EqualiserDifferencePCA3-2}
 				}
-				\caption{The timbre space for the feature differences from the equaliser.}
+				\caption{The equaliser's feature difference timbre space.}
 				\label{fig:EqualiserDifferencePCAs}
 			\end{figure}
 
@@ -1148,6 +1337,6 @@
 					\includegraphics{chapter4/Images/EqualiserDifferenceCentroidsPCA3-2.pdf}
 					\label{fig:EqualiserDifferenceCentroidsPCA3-2}
 				}
-				\caption{Biplots of the feature differences from the equaliser.}
+				\caption{Biplots of the equaliser's feature difference timbre space.}
 				\label{fig:EqualiserDifferenceCentroidsPCAs}
 			\end{figure}

@@ -23,3 +23,39 @@ termAgreement <- function(data, nPCs=5)
 
 	return(agreements)
 }
+
+makeAgreementTable <- function(data, outFile)
+{
+	lines <- character()
+	nTerms <- length(data)
+	terms <- names(data)
+	agreements <- format(data, digits=1)
+
+	for (i in seq(1, nTerms, 4))
+	{
+		lines <- c(lines, "\\begin{tabular}{|c|c|}")
+		lines <- c(lines, "\t\\hline")
+		lines <- c(lines, "\t\\bf{Term} & \\bf{Agreement} \\tabularnewline")
+		lines <- c(lines, "\t\\hline")
+		lines <- c(lines, "\t\\hline")
+
+		for (n in 0:3)
+		{
+			termIdx <- i + n
+			lines <- c(lines, paste("\t", terms[termIdx], " & ",
+						agreements[termIdx], " \\tabularnewline", sep=""))
+			lines <- c(lines, "\t\\hline")
+		}
+
+		lines <- c(lines, "\\end{tabular}")
+
+		if (i < nTerms - 4)
+		{
+			lines <- c(lines, "\\qquad")
+		}
+	}
+
+	f <- file(outFile)
+	writeLines(lines, f)
+	close(f)
+}
