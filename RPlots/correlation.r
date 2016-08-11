@@ -76,26 +76,27 @@ getSalientFeatures <- function(correlations, minCorr=0.9, maxP=0.01)
 makeCorrelationList <- function(data, outFile)
 {
 	lines <- character()
-	firstLine <- "\\begin{itemize}"
-	lines <- c(lines, firstLine)
 
 	nPCs <- length(data)
 
 	for (i in 1:nPCs)
 	{
-		line <- paste("\t\\item {\\bf{PC ", i, ":}} ", sep="")
+		line <- paste("{\\bf{PC ", i, ":}} ", sep="")
 
 		cors <- format(data[[i]], digits=3)
 		features <- latexFeatureNames(names(cors))
 
-		featureString <- paste(paste(features, cors, sep="~($r~=~"), collapse="$), ")
-		line <- paste(line, featureString, "$).", sep="")
+		featureString <- paste(paste(features, cors, sep="~($r~=~{"), collapse="}$), ")
+		line <- paste(line, featureString, "}$).", sep="")
+
+		if (i < nPCs)
+		{
+			line <- paste(line, "\\vspace{0.5em}\\\\", sep="")
+		}
 
 		lines <- c(lines, line)
-	}
 
-	lastLine <- "\\end{itemize}"
-	lines <- c(lines, lastLine)
+	}
 
 	f <- file(outFile)
 	writeLines(lines, f)
