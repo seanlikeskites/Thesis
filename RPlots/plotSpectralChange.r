@@ -19,7 +19,7 @@ plotSpectrum <- function(data, legendPos, legendncol, diff, yBorder=c(0, 0))
 	}
 	else
 	{
-		yLabel <- "Mean Amplitude (dB"
+		yLabel <- "Mean Amplitude (dB)"
 	}
 
 	par(xaxs='i', mar=c(4, 4, 0.6, 0.6))
@@ -27,11 +27,12 @@ plotSpectrum <- function(data, legendPos, legendncol, diff, yBorder=c(0, 0))
 
 	nTerms <- nrow(meanSpectra)
 	colours <- rainbow(nTerms)
+	ltys <- rep(c(1, 2, 4, 5, 6), 1, nTerms)
 
 	for (i in 1:nTerms)
 	{
-		lines(0:24, meanSpectra[i,], col=colours[i])
+		lines(0:24, meanSpectra[i,], col=colours[i], lty=ltys[i])
 	}
 
-	legend(legendPos, legend=rownames(meanSpectra), ncol=legendncol, lty=1, col=colours)
+	legend(legendPos, legend=rownames(meanSpectra), ncol=legendncol, lty=ltys, col=colours)
 }
