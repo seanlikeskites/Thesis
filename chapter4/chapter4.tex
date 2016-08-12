@@ -952,6 +952,11 @@
 		with that descriptor. In combination these two plots give a visual representation of how the audio features
 		influence the use of descriptors.
 
+		Additionally an impression of the spectral characteristics of each descriptor can be seen by examining the
+		bark band coefficients in the feature space. When applied to the processed feature space this provides mean
+		spectrum of the output signals described with a particular term. When applied in the feature difference
+		space it provides the mean spectral manipulation applied by transforms associated with a particular term.
+
 		\subsubsection*{Distortion Processed Features}
 			The first three PCs of the timbre space describing the processed signals produced by the distortion
 			are shown in Figure \ref{fig:DistortionProcessedPCAs}. The corresponding agreement scores are shown
@@ -1041,10 +1046,13 @@
 			Combining the information from both visualisations of the timbre space it is suggested that the
 			terms `warm', `fuzz' and `cream' are characterised by a relatively low spectral roll off, spectral
 			standard deviation and spectral centroid. These features describe low bandwidth signals in which
-			the energy is concentrated in the low end of the spectrum. 
-			
-			`Crunchiness', however, is characterised by a relatively low value of Krimphoff irregularity,
-			spectral kurtosis and spectral skewness.
+			the energy is concentrated in the low end of the spectrum. `Crunchiness', however, is characterised
+			by a relatively low value of Krimphoff irregularity, spectral kurtosis and spectral skewness,
+			indicating a signal in which the energy is more evenly spread throughout the spectrum.
+
+			Looking at the mean spectra for the descriptors (Figure \ref{fig:DistortionProcessedSprectra}, the
+			spectral effects of a descriptor's position in PC 2 can be seen. As the position in PC 2 increases
+			so does the signals proportion of high frequency content. 
 
 			\begin{figure}[h!]
 				\centering
@@ -1148,7 +1156,7 @@
 				\input{chapter4/Tables/EqualiserProcessedAgreements.tex}
 				\caption{The agreement scores for terms in the 
 					 equaliser's processed feature timbre space.}
-				\label{tab:EqualiserDifferenceAgreements}
+				\label{tab:EqualiserProcessedAgreements}
 			\end{table}
 
 			The salient features for this timbre space are shown in Datum
