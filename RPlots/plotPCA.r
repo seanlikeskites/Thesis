@@ -41,7 +41,8 @@ plotIndividualPCA <- function(points, dims, legendPos, border=c(0, 0, 0, 0), col
 	box()
 }
 
-plotCentroidBiplot <- function(PCA, dims, desc, var, border=c(0.15, 0.15, 0.15, 0.15))
+plotCentroidBiplot <- function(PCA, dims, desc, var, border=c(0.15, 0.15, 0.15, 0.15),
+			       ax1=NULL, ax2=NULL, ax3=NULL, ax4=NULL)
 {
 	data <- PCA$x
 	points <- getDescriptorPositions(data, desc)
@@ -83,7 +84,18 @@ plotCentroidBiplot <- function(PCA, dims, desc, var, border=c(0.15, 0.15, 0.15, 
 	scaleY <- PCA$sdev[dims[2]] * sqrt(n)
 	varYs <- PCA$rotation[var, dims[2]] * scaleY
 
-	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel, xlim=xLimits, ylim=yLimits)
+	plot(xs, ys, type='n', main="", axes=FALSE, xlab=xLabel, ylab=yLabel, xlim=xLimits, ylim=yLimits)
+
+	if (is.null(ax1))
+		axis(1)
+	else
+		axis(1, at=ax1)
+
+	if (is.null(ax2))
+		axis(2)
+	else
+		axis(2, at=ax2)
+
 	text(xs, ys, descriptors, col=colours, cex=1+agreements)
 
 	xLimScale <- max(abs(varXs)) / max(abs(xs)) * 1.3
@@ -128,8 +140,17 @@ plotCentroidBiplot <- function(PCA, dims, desc, var, border=c(0.15, 0.15, 0.15, 
 	par(new=TRUE)
 	plot(varXs, varYs, type='n', axes=FALSE, xlab=NA, ylab=NA, xlim=xLimits, ylim=yLimits)
 	arrows(0, 0, varXs, varYs, col=varCol)
-	axis(3, col.ticks=varCol, col.axis=varCol)
-	axis(4, col.ticks=varCol, col.axis=varCol)
+
+	if (is.null(ax3))
+		axis(3, col.ticks=varCol, col.axis=varCol)
+	else
+		axis(3, at=ax3, col.ticks=varCol, col.axis=varCol)
+
+	if (is.null(ax4))
+		axis(4, col.ticks=varCol, col.axis=varCol)
+	else
+		axis(4, at=ax4, col.ticks=varCol, col.axis=varCol)
+
 	plotVar <- plotFeatureNames(var)
 	text(varXs, varYs, plotVar, pos=labelPos, col=varCol, family="CM Roman")
 

@@ -353,7 +353,8 @@ distDiffPlotFeatures1 <- c("Krimphoff Irregularity", "Spectral Roll Off")
 pdf("DistortionDifferenceCentroidsPCA1-2.pdf", pointsize=plotPointSize, fonts=c("CM Roman","CM Sans"), family="CM Sans",
     width=pcaPlotSize, height=pcaPlotSize)
 par(mar=c(4, 4, 2, 2))
-a <- plotCentroidBiplot(distDiffPCA, c(1, 2), distDescriptors, distDiffPlotFeatures1, c(0.1, 0.1, 0, 0))
+a <- plotCentroidBiplot(distDiffPCA, c(1, 2), distDescriptors, distDiffPlotFeatures1, c(0.1, 0.1, 0, 0),
+			ax2=c(-1.0, 0.0, 1.0), ax4=c(-20, -10, 0, 10))
 dev.off()
 embed_fonts("DistortionDifferenceCentroidsPCA1-2.pdf")
 
@@ -361,7 +362,8 @@ distDiffPlotFeatures2 <- c("Spectral Roll Off", "First Tristimulus")
 pdf("DistortionDifferenceCentroidsPCA3-2.pdf", pointsize=plotPointSize, fonts=c("CM Roman","CM Sans"), family="CM Sans",
     width=pcaPlotSize, height=pcaPlotSize)
 par(mar=c(4, 4, 2, 2))
-a <- plotCentroidBiplot(distDiffPCA, c(3, 2), distDescriptors, distDiffPlotFeatures2, c(0.15, 0.05, 0, 0))
+a <- plotCentroidBiplot(distDiffPCA, c(3, 2), distDescriptors, distDiffPlotFeatures2, c(0.15, 0.05, 0, 0),
+			ax2=c(-1.0, 0.0, 1.0), ax4=c(-20, -10, 0, 10))
 dev.off()
 embed_fonts("DistortionDifferenceCentroidsPCA3-2.pdf")
 
@@ -370,7 +372,8 @@ eqProcPlotFeatures1 <- c("Krimphoff Irregularity", "Harmonic Spectral Standard D
 pdf("EqualiserProcessedCentroidsPCA1-2.pdf", pointsize=plotPointSize, fonts=c("CM Roman","CM Sans"), family="CM Sans",
     width=pcaPlotSize, height=pcaPlotSize)
 par(mar=c(4, 4, 2, 2))
-a <- plotCentroidBiplot(eqProcPCA, c(1, 2), eqDescriptors, eqProcPlotFeatures1, c(0.15, 0.1, 0.15, 0))
+a <- plotCentroidBiplot(eqProcPCA, c(1, 2), eqDescriptors, eqProcPlotFeatures1, c(0.15, 0.1, 0.15, 0),
+			ax3=c(-60, -30, 0, 30, 60))
 dev.off()
 embed_fonts("EqualiserProcessedCentroidsPCA1-2.pdf")
 
@@ -378,7 +381,8 @@ eqProcPlotFeatures2 <- c("Harmonic Spectral Standard Deviation", "MFCC 1", "MFCC
 pdf("EqualiserProcessedCentroidsPCA3-2.pdf", pointsize=plotPointSize, fonts=c("CM Roman","CM Sans"), family="CM Sans",
     width=pcaPlotSize, height=pcaPlotSize)
 par(mar=c(4, 4, 2, 2))
-a <- plotCentroidBiplot(eqProcPCA, c(3, 2), eqDescriptors, eqProcPlotFeatures2, c(0.15, 0.1, 0.15, 0))
+a <- plotCentroidBiplot(eqProcPCA, c(3, 2), eqDescriptors, eqProcPlotFeatures2, c(0.15, 0.1, 0.15, 0),
+			ax3=c(-40, -20, 0, 20))
 dev.off()
 embed_fonts("EqualiserProcessedCentroidsPCA3-2.pdf")
 
