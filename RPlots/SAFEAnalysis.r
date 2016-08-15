@@ -162,7 +162,7 @@ distProcPCAPointsSel <- getDescriptorPositions(distProcPCAPoints, distDescriptor
 
 pdf("DistortionProcessedPCA1-2.pdf", pointsize=plotPointSize, family="CM Sans", width=pcaPlotSize, height=pcaPlotSize)
 par(mar=c(4, 4, 0.5, 0.5))
-a <- plotIndividualPCA(distProcPCAPointsSel, c(1, 2), "topleft")
+a <- plotIndividualPCA(distProcPCAPointsSel, c(1, 2), "topleft", c(0, 0, 0, 0.05))
 dev.off()
 embed_fonts("DistortionProcessedPCA1-2.pdf")
 
