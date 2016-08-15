@@ -952,10 +952,11 @@
 		with that descriptor. In combination these two plots give a visual representation of how the audio features
 		influence the use of descriptors.
 
-		Additionally an impression of the spectral characteristics of each descriptor can be seen by examining the
-		bark band coefficients in the feature space. When applied to the processed feature space this provides mean
-		spectrum of the output signals described with a particular term. When applied in the feature difference
-		space it provides the mean spectral manipulation applied by transforms associated with a particular term.
+		Additionally an impression of the spectral characteristics related to each descriptor can be seen by
+		examining the bark band coefficients in the feature space. When applied to the processed feature space this
+		provides a mean bark band spectrum of the output signals described with a particular term. When applied in
+		the feature difference space it provides the mean spectral manipulation applied by transforms associated
+		with a particular term.
 
 		\subsubsection*{Distortion Processed Features}
 			The first three PCs of the timbre space describing the processed signals produced by the distortion
@@ -1043,28 +1044,34 @@
 			described with the term `crunch' appears to sit at the top end of PC 2, it is known in actuality
 			that this descriptor's position in PC 2 is not significant.
 
-			Combining the information from both visualisations of the timbre space it is suggested that the
+			Combining the information from both visualisations of the timbre space, it is suggested that the
 			terms `warm', `fuzz' and `cream' are characterised by a relatively low spectral roll off, spectral
 			standard deviation and spectral centroid. These features describe low bandwidth signals in which
-			the energy is concentrated in the low end of the spectrum. `Crunchiness', however, is characterised
+			the energy is concentrated in the low end of the spectrum. `Crunchiness' however, is characterised
 			by a relatively low value of Krimphoff irregularity, spectral kurtosis and spectral skewness,
 			indicating a signal in which the energy is more evenly spread throughout the spectrum.
 
 			Looking at the mean spectra for the descriptors (Figure \ref{fig:DistortionProcessedSpectra}, the
-			spectral effects of a descriptor's position in PC 2 can be seen. As the position in PC 2 increases
-			so does the signals proportion of high frequency content. 
+			spectral effects of a descriptor's position in PC 2 can be seen. As the value of PC 2 increases so
+			does the signals proportion of high frequency content, `rasp' and `cream' describing signals will a
+			low proportion of high frequency energy and `bright' and `harsh' describing those with a larger
+			proportion. The spectral effects of the other PCs ore not as apparent, this is likely due to the
+			low resolution of the spectral representation but could also be caused by the low number of
+			instances of some terms.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter4/Images/DistortionProcessedSpectra.pdf}
-				\caption{The mean spectra of signals produced by the distortion.}
+				\caption{The mean bark band spectra of signals produced by the distortion.}
 				\label{fig:DistortionProcessedSpectra}
 			\end{figure}
 
 		\subsubsection*{Distortion Feature Differences}
 			The first three PCs of the timbre space describing the feature manipulations applied by the
 			distortion are shown in Figure \ref{fig:DistortionDifferencePCAs}. The corresponding agreement
-			scores are shown in Table \ref{tab:DistortionDifferenceAgreements}.
+			scores are shown in Table \ref{tab:DistortionDifferenceAgreements}. This space is largely similar
+			to that describing the distortion's processed signals (Figure \ref{fig:DistortionProcessedPCAs} and
+			similar conclusions can be drawn.
 
 			\begin{figure}[h!]
 				\centering
@@ -1192,7 +1199,7 @@
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter4/Images/EqualiserProcessedSpectra.pdf}
-				\caption{The mean spectra of signals produced by the equaliser.}
+				\caption{The mean bark band spectra of signals produced by the equaliser.}
 				\label{fig:EqualiserProcessedSpectra}
 			\end{figure}
 
