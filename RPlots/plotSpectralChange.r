@@ -26,6 +26,7 @@ plotSpectrum <- function(data, legendPos, legendncol, yBorder=c(0, 0))
 	}
 
 	legend(legendPos, legend=rownames(meanSpectra), ncol=legendncol, lty=ltys, col=colours)
+	box()
 }
 
 plotSpectralChange <- function(proc, unproc, legendPos, legendncol, yBorder=c(0, 0))
@@ -52,4 +53,5 @@ plotSpectralChange <- function(proc, unproc, legendPos, legendncol, yBorder=c(0,
 	}
 
 	legend(legendPos, legend=rownames(meanSpectra), ncol=legendncol, lty=ltys, col=colours)
+	box()
 }
