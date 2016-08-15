@@ -32,10 +32,9 @@ plotSpectralChange <- function(proc, unproc, legendPos, legendncol, yBorder=c(0,
 {
 	barkBands <- paste("Bark Coefficient ", as.character(0:24), sep="")
 	procSpectra <- proc[,barkBands]
-	procRmss <- apply(procSpectra, 2, function(x) tapply(x, rownames(procSpectra), rms))
 	unprocSpectra <- unproc[,barkBands]
-	unprocRmss <- apply(unprocSpectra, 2, function(x) tapply(x, rownames(unprocSpectra), rms))
-	meanSpectra <- 20*log10(procRmss / unprocRmss)
+	gains <- 20*log10(procSpectra / unprocSpectra)
+	meanSpectra <- apply(gains, 2, function(x) tapply(x, rownames(gains), mean))
 
 	yRange <- diff(range(meanSpectra))
 	yLimits <- c(min(meanSpectra) - yBorder[1]*yRange, max(meanSpectra) + yBorder[2]*yRange)

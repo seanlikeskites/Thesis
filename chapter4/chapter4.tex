@@ -467,9 +467,11 @@
 
 		The terms `warm' and `bright' have been used to describe transforms applied using both the distortion and
 		the equaliser effects, suggesting that the timbral characteristics these terms describe can be manipulated
-		using either effect. Other descriptors are only used to describe transforms applied using a specific
-		effect, suggesting that a unique property of that effect produces that timbral result. For example, the
-		term `crunch' is only used to in relation to the distortion effect.
+		using either effect. These terms have much a much greater frequency in the equaliser as the result of an
+		experiment in which participants were asked to us the equaliser to make audio samples `warmer' and
+		`brighter' \citep{stasis2015a}. Other descriptors are only used to describe transforms applied using a
+		specific effect, suggesting that a unique property of that effect produces that timbral result. For
+		example, the term `crunch' is only used to in relation to the distortion effect.
 
 	\subsection{Term Clustering}
 	\label{sec:TimbreEvaluation-Analysis-TermClustering}
@@ -1038,11 +1040,11 @@
 				\label{fig:DistortionProcessedCentroidsPCAs}
 			\end{figure}
 
-			From the analysis of Figure \ref{fig:DistortionProcessedPCAs} the PCs which best
-			describe each term were identified. This information can be used to assist in the analysis of
-			Figure \ref{fig:DistortionProcessedCentroidsPCAs}. For instance, while the mean position of signals
-			described with the term `crunch' appears to sit at the top end of PC 2, it is known in actuality
-			that this descriptor's position in PC 2 is not significant.
+			From the analysis of Figure \ref{fig:DistortionProcessedPCAs}, the PCs which best describe each
+			term were identified. This information can be used to assist in the analysis of Figure
+			\ref{fig:DistortionProcessedCentroidsPCAs}. For instance, while the mean position of signals
+			described with the term `crunch' appears to sit at the top end of PC 2, it is known that this
+			descriptor's position in PC 2 is not significant.
 
 			Combining the information from both visualisations of the timbre space, it is suggested that the
 			terms `warm', `fuzz' and `cream' are characterised by a relatively low spectral roll off, spectral
@@ -1070,8 +1072,8 @@
 			The first three PCs of the timbre space describing the feature manipulations applied by the
 			distortion are shown in Figure \ref{fig:DistortionDifferencePCAs}. The corresponding agreement
 			scores are shown in Table \ref{tab:DistortionDifferenceAgreements}. This space is largely similar
-			to that describing the distortion's processed signals (Figure \ref{fig:DistortionProcessedPCAs} and
-			similar conclusions can be drawn.
+			to that describing the distortion's processed signals (Figure \ref{fig:DistortionProcessedPCAs})
+			and similar conclusions can be drawn.
 
 			\begin{figure}[h!]
 				\centering
@@ -1099,8 +1101,17 @@
 				\label{tab:DistortionDifferenceAgreements}
 			\end{table}
 
+			Again `warm', `fuzz' and `cream' are best defined by their position in PC 1 while crunch is better
+			defined in PC 2. For the majority of the descriptors the agreement scores are not substantially
+			different from those calculated in the processed feature timbre space, making it uncertain whether
+			the terms best describe a signal's features or the manipulations applied by a transform. `cream'
+			does receive a higher agreement score but the small number of transforms labelled with this
+			descriptor (6) reduces the significance of any conclusions drawn from this.
+
 			The salient features for this timbre space are shown in Datum
-			\ref{dat:DistortionDifferenceCorrelations}.
+			\ref{dat:DistortionDifferenceCorrelations}. The most salient in each PC are then visualised, along
+			with the mean position and agreement score of each descriptor, in Figure
+			\ref{fig:DistortionDifferenceCentroidsPCAs}. 
 
 			\begin{datum}[h!]
 				\centering
@@ -1128,6 +1139,10 @@
 				\caption{Biplots of the distortion's feature difference timbre space.}
 				\label{fig:DistortionDifferenceCentroidsPCAs}
 			\end{figure}
+
+			PC 2 is again correlated with spectral roll off, spectral centroid and spectral standard deviation.
+			Referring to the raw values of the feature difference, it is noted that the position of `warm',
+			`cream' and `fuzz' in this PC is associated with a net decrease in these features. 
 
 			\begin{figure}[h!]
 				\centering
