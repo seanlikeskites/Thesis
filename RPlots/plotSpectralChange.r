@@ -3,7 +3,7 @@ rms <- function(data)
 	return(sqrt(mean(data^2)))
 }
 
-plotSpectrum <- function(data, legendPos, legendncol, yBorder=c(0, 0))
+plotSpectrum <- function(data, legendPos, legendncol, yBorder=c(0, 0), ax1=NULL, ax2=NULL)
 {
 	barkBands <- paste("Bark Coefficient ", as.character(0:24), sep="")
 	spectra <- data[,barkBands]
@@ -14,7 +14,18 @@ plotSpectrum <- function(data, legendPos, legendncol, yBorder=c(0, 0))
 	yLimits <- c(min(meanSpectra) - yBorder[1]*yRange, max(meanSpectra) + yBorder[2]*yRange)
 
 	par(xaxs='i', mar=c(4, 4, 0.6, 0.6))
-	plot(0:24, meanSpectra[1,], type='n', xlab="Bark Band", ylab="Mean Amplitude (dB)", ylim=yLimits)
+	plot(0:24, meanSpectra[1,], type='n', xlab="Bark Band", ylab="Mean Amplitude (dB)",
+	     ylim=yLimits, axes=FALSE)
+
+	if (is.null(ax1))
+		axis(1)
+	else
+		axis(1, at=(ax1))
+
+	if (is.null(ax2))
+		axis(2)
+	else
+		axis(2, at=(ax2))
 
 	nTerms <- nrow(meanSpectra)
 	colours <- rainbow(nTerms)
