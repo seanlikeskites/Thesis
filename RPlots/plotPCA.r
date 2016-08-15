@@ -2,11 +2,15 @@ source("agreement.r")
 source("descriptorPositions.r")
 source("featureNames.r")
 
-plotIndividualPCA <- function(points, dims, legendPos, border=c(0, 0, 0, 0))
+plotIndividualPCA <- function(points, dims, legendPos, border=c(0, 0, 0, 0), colourPalette=NULL, legendncol=1)
 {
 	descriptors <- rownames(points)
 	uniqueDescriptors <- sort(unique(descriptors))
-	colourPalette <- rainbow(length(uniqueDescriptors))
+
+	if (is.null(colourPalette))
+	{
+		colourPalette <- rainbow(length(uniqueDescriptors))
+	}
 
 	colours <- "black"
 	pchs <- array(1, nrow(points))
@@ -31,7 +35,8 @@ plotIndividualPCA <- function(points, dims, legendPos, border=c(0, 0, 0, 0))
 
 	plot(xs, ys, type='n', main="", xlab=xLabel, ylab=yLabel, xlim=xLimits, ylim=yLimits)
 	points(xs, ys, pch=pchs, col=colours, cex=1.5)
-	legend(legendPos, legend=uniqueDescriptors, pch=2:(length(uniqueDescriptors) + 1), pt.cex=1.5, col=colourPalette)
+	legend(legendPos, legend=uniqueDescriptors, pch=2:(length(uniqueDescriptors) + 1), pt.cex=1.5,
+	       col=colourPalette, ncol=legendncol)
 
 	box()
 }

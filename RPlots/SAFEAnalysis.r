@@ -201,16 +201,37 @@ dev.off()
 eqProcPCA <- prcomp(eqProc, scale=TRUE)
 eqProcPCAPoints <- eqProcPCA$x
 eqProcPCAPointsSel <- getDescriptorPositions(eqProcPCAPoints, eqDescriptors)
+eqPalette <- rainbow(length(eqDescriptors))
+eqRemainderPalette <- eqPalette[c(1:3, 5:11)]
+eqBrightWarmPalette <- eqPalette[c(4, 12)]
+
+# warm and bright
+eqProcBrightWarm <- eqProcPCAPointsSel[grepl("warm|bright", rownames(eqProcPCAPointsSel)),]
+
+pdf("EqualiserBWProcessedPCA1-2.pdf", pointsize=plotPointSize, family="CM Sans", width=pcaPlotSize, height=pcaPlotSize)
+par(mar=c(4, 4, 0.2, 0.2))
+a <- plotIndividualPCA(eqProcBrightWarm, c(1, 2), "topright", colourPalette=eqBrightWarmPalette)
+dev.off()
+embed_fonts("EqualiserBWProcessedPCA1-2.pdf")
+
+pdf("EqualiserBWProcessedPCA3-2.pdf", pointsize=plotPointSize, family="CM Sans", width=pcaPlotSize, height=pcaPlotSize)
+par(mar=c(4, 4, 0.2, 0.2))
+a <- plotIndividualPCA(eqProcBrightWarm, c(3, 2), "topright", colourPalette=eqBrightWarmPalette)
+dev.off()
+embed_fonts("EqualiserBWProcessedPCA3-2.pdf")
+
+# remainder
+eqProcRemainder <- eqProcPCAPointsSel[!grepl("warm|bright", rownames(eqProcPCAPointsSel)),]
 
 pdf("EqualiserProcessedPCA1-2.pdf", pointsize=plotPointSize, family="CM Sans", width=pcaPlotSize, height=pcaPlotSize)
 par(mar=c(4, 4, 0.2, 0.2))
-a <- plotIndividualPCA(eqProcPCAPointsSel, c(1, 2), "topright")
+a <- plotIndividualPCA(eqProcRemainder, c(1, 2), "topright", colourPalette=eqRemainderPalette)
 dev.off()
 embed_fonts("EqualiserProcessedPCA1-2.pdf")
 
 pdf("EqualiserProcessedPCA3-2.pdf", pointsize=plotPointSize, family="CM Sans", width=pcaPlotSize, height=pcaPlotSize)
 par(mar=c(4, 4, 0.2, 0.2))
-a <- plotIndividualPCA(eqProcPCAPointsSel, c(3, 2), "topleft", c(0.25, 0, 0, 0))
+a <- plotIndividualPCA(eqProcRemainder, c(3, 2), "topleft", colourPalette=eqRemainderPalette)
 dev.off()
 embed_fonts("EqualiserProcessedPCA3-2.pdf")
 
@@ -223,15 +244,33 @@ eqDiffPCA <- prcomp(eqDiff, scale=TRUE)
 eqDiffPCAPoints <- eqDiffPCA$x
 eqDiffPCAPointsSel <- getDescriptorPositions(eqDiffPCAPoints, eqDescriptors)
 
+# warm and bright
+eqDiffBrightWarm <- eqDiffPCAPointsSel[grepl("warm|bright", rownames(eqDiffPCAPointsSel)),]
+
+pdf("EqualiserBWDifferencePCA1-2.pdf", pointsize=plotPointSize, family="CM Sans", width=pcaPlotSize, height=pcaPlotSize)
+par(mar=c(4, 4, 0.2, 0.2))
+a <- plotIndividualPCA(eqDiffBrightWarm, c(1, 2), "topleft", colourPalette=eqBrightWarmPalette)
+dev.off()
+embed_fonts("EqualiserBWDifferencePCA1-2.pdf")
+
+pdf("EqualiserBWDifferencePCA3-2.pdf", pointsize=plotPointSize, family="CM Sans", width=pcaPlotSize, height=pcaPlotSize)
+par(mar=c(4, 4, 0.2, 0.2))
+a <- plotIndividualPCA(eqDiffBrightWarm, c(3, 2), "topleft", colourPalette=eqBrightWarmPalette)
+dev.off()
+embed_fonts("EqualiserBWDifferencePCA3-2.pdf")
+
+# remainder
+eqDiffRemainder <- eqDiffPCAPointsSel[!grepl("warm|bright", rownames(eqDiffPCAPointsSel)),]
+
 pdf("EqualiserDifferencePCA1-2.pdf", pointsize=plotPointSize, family="CM Sans", width=pcaPlotSize, height=pcaPlotSize)
 par(mar=c(4, 4, 0.2, 0.2))
-a <- plotIndividualPCA(eqDiffPCAPointsSel, c(1, 2), "topright", c(0, 0.3, 0, 0))
+a <- plotIndividualPCA(eqDiffRemainder, c(1, 2), "topleft", colourPalette=eqRemainderPalette, legendncol=2)
 dev.off()
 embed_fonts("EqualiserDifferencePCA1-2.pdf")
 
 pdf("EqualiserDifferencePCA3-2.pdf", pointsize=plotPointSize, family="CM Sans", width=pcaPlotSize, height=pcaPlotSize)
 par(mar=c(4, 4, 0.2, 0.2))
-a <- plotIndividualPCA(eqDiffPCAPointsSel, c(3, 2), "bottomright", c(0, 0.1, 0, 0))
+a <- plotIndividualPCA(eqDiffRemainder, c(3, 2), "topright", colourPalette=eqRemainderPalette, legendncol=2)
 dev.off()
 embed_fonts("EqualiserDifferencePCA3-2.pdf")
 
