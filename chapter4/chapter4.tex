@@ -524,15 +524,8 @@
 		space (Figure \ref{fig:EqualiserProcessedClusters}). They are, however, separated well in the equaliser's
 		feature difference space (Figure \ref{fig:EqualiserDifferenceClusters}) suggesting that these terms better
 		describe a certain change in audio features rather than an absolute feature value.
-
-		\note
-		{
-			Probably due to the large number of instances of bright and warm. There is a wide range of input
-			signals meaning the processed features average out to be similar. The underlying transforms are
-			distinct for each descriptor however.
-		}
 		
-		Within the equaliser's feature differences space two main clusters are identified corresponding with the
+		Within the equaliser's feature differences space, two main clusters are identified corresponding with the
 		`warmth' and `brightness' clusters from the distortion feature spaces. The `warmth' cluster includes the
 		terms `deep' and `full', while the `brightness' cluster includes the terms `tin', `thin', `clear' and
 		`air'. An additional `boominess' cluster, containing `mud', `boom' and `box', is also present. These three
@@ -1003,7 +996,7 @@
 			occupying a lesser extent of the range of PC 2. In contrast, the region described by the term
 			`crunch' is spread out across PCs 2 and 3 and concentrated to a smaller range of PC 1. This
 			suggests that `warm', `fuzz' and `cream' are used to describe signals which lie somewhere between
-			-5 and 5 in PC2, while `crunch' is used to describe signals which line between -5 and 5 in PC 1.
+			-5 and 5 in PC 2, while `crunch' is used to describe signals which line between -5 and 5 in PC 1.
 			Signals which lie withing both of these ranges could potentially be described as both `warm' and
 			`crunchy'. Table \ref{tab:DistortionTermCombinations} confirms that one such combination of
 			`warm' and `crunch' exists within the dataset.
@@ -1053,13 +1046,13 @@
 			by a relatively low value of Krimphoff irregularity, spectral kurtosis and spectral skewness,
 			indicating a signal in which the energy is more evenly spread throughout the spectrum.
 
-			Looking at the mean spectra for the descriptors (Figure \ref{fig:DistortionProcessedSpectra}, the
-			spectral effects of a descriptor's position in PC 2 can be seen. As the value of PC 2 increases so
-			does the signals proportion of high frequency content, `rasp' and `cream' describing signals will a
-			low proportion of high frequency energy and `bright' and `harsh' describing those with a larger
-			proportion. The spectral effects of the other PCs ore not as apparent, this is likely due to the
-			low resolution of the spectral representation but could also be caused by the low number of
-			instances of some terms.
+			Looking at the mean bark band spectra for the descriptors (Figure
+			\ref{fig:DistortionProcessedSpectra}, the spectral effects of a descriptor's position in PC 2 can
+			be seen. As the value of PC 2 increases so does the signals proportion of high frequency content,
+			`rasp' and `cream' describing signals will a low proportion of high frequency energy and `bright'
+			and `harsh' describing those with a larger proportion. The spectral effects of the other PCs ore
+			not as apparent, this is likely due to the low resolution of the spectral representation but could
+			also be caused by the low number of instances of some terms.
 
 			\begin{figure}[h!]
 				\centering
@@ -1150,12 +1143,13 @@
 
 			PC 1 is correlated with Krimphoff irregularity, spectral skewness and spectral kurtosis, the
 			position of `crunch' in this PC corresponding to a small increase in each of these features.
-			Looking at the spectra and spectral manipulations in Figures \ref{fig:DistortionProcessedSpectra}
-			and \ref{fig:DistortionDifferenceSpectra} the magnitude of these increases can be investigated. For
-			`crunch', at the low end of PC 1, a small amount higher frequency energy introduced creating a
-			signal in which the energy is more evenly distributed throughout the spectrum. For `bright', at the
-			other end of PC 1, much larger amounts of high frequency energy is added, producing signals in
-			which there is more energy at high frequencies than at mid frequencies.
+			Looking at the bark band spectra and spectral manipulations in Figures
+			\ref{fig:DistortionProcessedSpectra} and \ref{fig:DistortionDifferenceSpectra} the magnitude of
+			these increases can be investigated. For `crunch', at the low end of PC 1, a small amount higher
+			frequency energy introduced creating a signal in which the energy is more evenly distributed
+			throughout the spectrum. For `bright', at the other end of PC 1, much larger amounts of high
+			frequency energy is added, producing signals in which there is more energy at high frequencies than
+			at mid frequencies.
 
 			\begin{figure}[h!]
 				\centering
@@ -1165,9 +1159,12 @@
 			\end{figure}
 
 		\subsubsection*{Equaliser Processed Features}
+			To avoid the large number of instances of the terms `warm' and `bright' from obscuring the other
+			terms, the equaliser timbre spaces have been split across two sets of graphs. One showing the
+			positions of `warm' and `bright' and the other showing the positions of the remaining descriptors.
 			The first three PCs of the timbre space describing the processed signals produced by the equaliser
-			are shown in Figure \ref{fig:EqualiserProcessedPCAs}. The corresponding agreement scores are shown
-			in Table \ref{tab:EqualiserProcessedAgreements}.
+			are shown in Figures \ref{fig:EqualiserBWProcessedPCAs} and \ref{EqualiserProcessedPCAs}. The
+			corresponding agreement scores are shown in Table \ref{tab:EqualiserProcessedAgreements}.
 
 			\begin{figure}[h!]
 				\centering
@@ -1212,8 +1209,18 @@
 				\label{tab:EqualiserProcessedAgreements}
 			\end{table}
 
+			Within the equaliser's processed feature timbre space, the terms `warm' and `bright' do not occupy
+			distinct regions to one another. This reflects the clustering of these terms seen in Figure
+			\ref{fig:EqualiserProcessedClusters}, again suggesting that these terms have not been used to
+			describe distinct properties of the processed signal. The remaining descriptors are also difficult
+			to distinguish. One apparent pattern is the separation of `harsh' and `mud' in PC 2, although this
+			may be due to chance as the agreement score for `harsh' is very low.
+
 			The salient features for this timbre space are shown in Datum
-			\ref{dat:EqualiserProcessedCorrelations}.
+			\ref{dat:EqualiserProcessedCorrelations}. The most salient in each PC are then visualised, along
+			with the mean position and agreement score of each descriptor, in Figure
+			\ref{fig:EqualiserProcessedCentroidsPCAs}. These show that, although the clusters for each term are
+			not well separated, their centroids are positioned in the timbre space as one might expect.
 
 			\begin{datum}[h!]
 				\centering
@@ -1242,12 +1249,26 @@
 				\label{fig:EqualiserProcessedCentroidsPCAs}
 			\end{figure}
 
+			PC 2 is correlated with spectral standard deviation, spectral roll off and spectral centroid.
+			Signals with a larger proportion of high frequency energy being positioned at the top and those
+			with more low frequency energy at the bottom. The descriptors are spread out across this dimension,
+			illustrating a general trend that `deep', `mud', `boom' and `warm' are used to describe high
+			proportions of low frequencies and 'harsh', 'tin' and 'clear' used to describe higher proportions
+			of high frequencies. Examining the mean bark band spectra of these signals (Figure
+			\ref{fig:EqualiserProcessedSpectra}) these trends can be seen. 
+
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter4/Images/EqualiserProcessedSpectra.pdf}
 				\caption{The mean bark band spectra of signals produced by the equaliser.}
 				\label{fig:EqualiserProcessedSpectra}
 			\end{figure}
+
+			PC 1 seems to separate the low frequency descriptors into groups. `deep' describing signals with
+			smoother spectra and a greater skew towards lower frequencies than those described by `boom' and
+			`mud'. This difference is apparent in Figure \ref{fig:EqualiserProcessedSpectra}, signals described
+			as `deep' containing predominantly low frequency energy and those described as `boom' and `mud'
+			having more complex spectra but still with a large proportion of low frequency energy.
 
 		\subsubsection*{Equaliser Feature Differences}
 			The first three PCs of the timbre space describing the feature manipulations applied by the
@@ -1333,3 +1354,6 @@
 				\caption{The mean spectral manipulations applied using the equaliser.}
 				\label{fig:EqualiserDifferenceSpectra}
 			\end{figure}
+
+\section{Results Summary}
+	\note{Summarise those results!}
