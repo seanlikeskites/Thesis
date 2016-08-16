@@ -8,11 +8,16 @@ library(extrafont)
 ########################################################
 load("SAFE_Data.RData")
 
+source("combineData.r")
+combProc <- combineData(distProc, eqProc)
+combDiff <- combineData(distDiff, eqDiff)
+
 ########################################################
 # define the descriptors we want
 ########################################################
 distDescriptors <- c("warm", "crunch", "fuzz", "cream", "bright", "harsh", "rasp", "smooth")
 eqDescriptors <- c("warm", "bright", "clear", "thin", "air", "boom", "deep", "full", "tin", "mud", "box", "harsh")
+combDescriptors <- c(paste("D:", distDescriptors, sep=""), paste("E:", eqDescriptors, sep=""))
 
 ########################################################
 # filter out the descriptors we want
@@ -22,6 +27,8 @@ distProcSel <- getDescriptorPositions(distProc, distDescriptors)
 distDiffSel <- getDescriptorPositions(distDiff, distDescriptors)
 eqProcSel <- getDescriptorPositions(eqProc, eqDescriptors)
 eqDiffSel <- getDescriptorPositions(eqDiff, eqDescriptors)
+combProcSel <- getDescriptorPositions(combProc, combDescriptors)
+combDiffSel <- getDescriptorPositions(combDiff, combDescriptors)
 
 ########################################################
 # count the number of instances of each descriptor
@@ -68,6 +75,8 @@ distProcAvg <- termCentroids(distProcSel)
 distDiffAvg <- termCentroids(distDiffSel)
 eqProcAvg <- termCentroids(eqProcSel)
 eqDiffAvg <- termCentroids(eqDiffSel)
+combProcAvg <- termCentroids(combProcSel)
+combDiffAvg <- termCentroids(combDiffSel)
 
 ########################################################
 # do some clustering
@@ -124,26 +133,20 @@ dev.off()
 embed_fonts("EqualiserDifferenceClusters.pdf")
 
 # combined processed clusters
-rownames(distProcAvg) <- paste("Distortion:", rownames(distProcAvg), sep="")
-rownames(eqProcAvg) <- paste("Equaliser:", rownames(eqProcAvg), sep="")
-combProcAvg <- rbind(distProcAvg, eqProcAvg)
 combProcClust <- hclust(dist(scale(combProcAvg)), method="ward.D2")
 combProcDend <- makePrettyDendrogram(combProcClust, 6)
 pdf("CombinedProcessedClusters.pdf", pointsize=plotPointSize, family="CM Sans", width=3, height=3)
-par(mar=c(3, 0, 0, 4))
+par(mar=c(3, 0, 0, 0.5))
 a <- plot(combProcDend, main=NA, sub=NA, xlim=c(35, 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()
 embed_fonts("CombinedProcessedClusters.pdf")
 
 # combined difference clusters
-rownames(distDiffAvg) <- paste("Distortion:", rownames(distDiffAvg), sep="")
-rownames(eqDiffAvg) <- paste("Equaliser:", rownames(eqDiffAvg), sep="")
-combDiffAvg <- rbind(distDiffAvg, eqDiffAvg)
 combDiffClust <- hclust(dist(scale(combDiffAvg)), method="ward.D2")
 combDiffDend <- makePrettyDendrogram(combDiffClust, 6)
 pdf("CombinedDifferenceClusters.pdf", pointsize=plotPointSize, family="CM Sans", width=3, height=3)
-par(mar=c(3, 0, 0, 4))
+par(mar=c(3, 0, 0, 0.5))
 a <- plot(combDiffDend, main=NA, sub=NA, xlim=c(ceiling(attr(combDiffDend, "height")), 0),
 	  xlab=NA, ylab=NA, horiz=TRUE)
 dev.off()
@@ -278,6 +281,16 @@ postscript("EqualiserDifferenceScree.eps")
 a <- screeplot(eqDiffPCA, type="l")
 dev.off()
 
+# combined processed
+combProcPCA <- prcomp(combProc, scale=TRUE)
+combProcPCAPoints <- combProcPCA$x
+combProcPCAPointsSel <- getDescriptorPositions(combProcPCAPoints, combDescriptors)
+
+# combined difference
+combDiffPCA <- prcomp(combDiff, scale=TRUE)
+combDiffPCAPoints <- combDiffPCA$x
+combDiffPCAPointsSel <- getDescriptorPositions(combDiffPCAPoints, combDescriptors)
+
 ########################################################
 # feature correlations
 ########################################################
@@ -303,6 +316,14 @@ eqDiffFeatures <- getSalientFeatures(eqDiffCorr, 0.7)
 makeCorrelationList(eqDiffFeatures, "EqualiserDifferenceCorrelations.tex")
 #makeCorrelationTable(eqDiffCorr$correlations[,eqDiffFeatures], "EqualiserDifferenceCorrelations.txt")
 
+combProcCorr <- matrixCorrelationTest(combProcPCAPoints[,1:5], combProc)
+combProcFeatures <- getSalientFeatures(combProcCorr, 0.7)
+makeCorrelationList(combProcFeatures, "CombinedProcessedCorrelations.tex")
+
+combDiffCorr <- matrixCorrelationTest(combDiffPCAPoints[,1:5], combDiff)
+combDiffFeatures <- getSalientFeatures(combDiffCorr, 0.7)
+makeCorrelationList(combDiffFeatures, "CombinedDifferenceCorrelations.tex")
+
 ########################################################
 # confidences
 ########################################################
@@ -327,6 +348,16 @@ eqDiffPCAScaled <- scale(eqDiffPCAPoints)
 eqDiffPCAScaledSel <- getDescriptorPositions(eqDiffPCAScaled, eqDescriptors)
 eqDiffAgreement <- termAgreement(eqDiffPCAScaledSel)
 makeAgreementTable(eqDiffAgreement, "EqualiserDifferenceAgreements.tex")
+
+combProcPCAScaled <- scale(combProcPCAPoints)
+combProcPCAScaledSel <- getDescriptorPositions(combProcPCAScaled, combDescriptors)
+combProcAgreement <- termAgreement(combProcPCAScaledSel)
+makeAgreementTable(combProcAgreement, "CombinedProcessedAgreements.tex")
+
+combDiffPCAScaled <- scale(combDiffPCAPoints)
+combDiffPCAScaledSel <- getDescriptorPositions(combDiffPCAScaled, combDescriptors)
+combDiffAgreement <- termAgreement(combDiffPCAScaledSel)
+makeAgreementTable(combDiffAgreement, "CombinedDifferenceAgreements.tex")
 
 #########################################################
 ## biplots
@@ -402,6 +433,23 @@ par(mar=c(4, 4, 2, 2))
 a <- plotCentroidBiplot(eqDiffPCA, c(3, 2), eqDescriptors, eqDiffPlotFeatures2, c(0.15, 0.05, 0.02, 0))
 dev.off()
 embed_fonts("EqualiserDifferenceCentroidsPCA3-2.pdf")
+
+# combined processed PCA
+combProcPlotFeatures1 <- c("Krimphoff Irregularity", "Harmonic Spectral Standard Deviation", "MFCC 1")
+pdf("CombinedProcessedCentroidsPCA1-2.pdf", pointsize=plotPointSize, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+    width=pcaPlotSize, height=pcaPlotSize)
+par(mar=c(4, 4, 2, 2))
+a <- plotCentroidBiplot(combProcPCA, c(1, 2), combDescriptors, combProcPlotFeatures1, c(0.2, 0.15, 0.1, 0))
+dev.off()
+embed_fonts("CombinedProcessedCentroidsPCA1-2.pdf")
+
+combProcPlotFeatures2 <- c("Harmonic Spectral Standard Deviation", "MFCC 1", "MFCC 2")
+pdf("CombinedProcessedCentroidsPCA3-2.pdf", pointsize=plotPointSize, fonts=c("CM Roman","CM Sans"), family="CM Sans",
+    width=pcaPlotSize, height=pcaPlotSize)
+par(mar=c(4, 4, 2, 2))
+a <- plotCentroidBiplot(combProcPCA, c(3, 2), combDescriptors, combProcPlotFeatures2, c(0.15, 0.25, 0.15, 0))
+dev.off()
+embed_fonts("CombinedProcessedCentroidsPCA3-2.pdf")
 
 #########################################################
 ## plot some spectra

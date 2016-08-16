@@ -13,4 +13,3 @@ getDescriptorPositions <- function(data, descriptors)
 
 	return(out)
 }
-
