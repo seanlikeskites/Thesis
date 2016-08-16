@@ -498,9 +498,9 @@
 		(\ref{fig:DistortionDifferenceClusters}), the cluster containing `harsh' and `bright' being the most
 		distant from that containing `warm', `cream' and `fuzz' and the term `crunch' siting in a cluster separate
 		from the majority of the other terms. This leads to the formation of three distinct timbral groups used to
-		describe the application of distortion (`warmth', `brightness' and `crunchiness'). These clusters reflect
-		some of the combinations of descriptors seen in Table \ref{tab:DistortionTermCombinations}, where `cream',
-		`fuzz' and `warm' are often used alongside each other to describe a transform.
+		describe the application of distortion (`warm', `bright' and `crunch'). These clusters reflect some of
+		the combinations of descriptors seen in Table \ref{tab:DistortionTermCombinations}, where `cream', `fuzz'
+		and `warm' are often used alongside each other to describe a transform.
 
 		\begin{figure}[h!]
 			\centering
@@ -526,12 +526,12 @@
 		describe a certain change in audio features rather than an absolute feature value.
 		
 		Within the equaliser's feature differences space, two main clusters are identified corresponding with the
-		`warmth' and `brightness' clusters from the distortion feature spaces. The `warmth' cluster includes the
-		terms `deep' and `full', while the `brightness' cluster includes the terms `tin', `thin', `clear' and
-		`air'. An additional `boominess' cluster, containing `mud', `boom' and `box', is also present. These three
-		terms cluster better in the processed feature space indicating that they are more likely to describe a
-		particular set of feature values rather than the properties of a transform. There is a similarity between
-		these clusters and the combinations of descriptors used to describe equaliser transforms (Table
+		`warm' and `bright' clusters from the distortion feature spaces. The `warm' cluster includes the terms
+		`deep' and `full', while the `bright' cluster includes the terms `tin', `thin', `clear' and `air'. An
+		additional `mud' cluster, containing `mud', `boom' and `box', is also present. These three terms cluster
+		better in the processed feature space indicating that they are more likely to describe a particular set of
+		feature values rather than the properties of a transform. There is a similarity between these clusters and
+		the combinations of descriptors used to describe equaliser transforms (Table
 		\ref{tab:EqualiserTermCombinations}) suggesting that some of these terms may be synonymous with each other.
 
 		\begin{figure}[h!]
@@ -572,14 +572,14 @@
 			\label{fig:CombinedClusters}
 		\end{figure}
 
-		Here the `warmth' clusters from each plug-in's features spaces are combined, indicating that each of these
-		descriptors describe similar transforms regardless of the processing method used. In contrast the
-		`brightness' groups remain separated into clusters comprised mostly of descriptors from a single plug-in,
-		suggesting that the use of these terms may differ depending on the nature of the audio transform.  Further
-		evidence of this is found in the similarity of the terms `bright' and `harsh'. When used to describe
-		distortion transforms these terms always sit adjacent to one another in a cluster, whereas for equaliser
-		transforms they are separated by a reasonable distance. These terms are more likely to be synonymous when
-		describing audio processed by a static nonlinearity then they are for equalised audio. 
+		Here the `warm' clusters from each plug-in's features spaces are combined, indicating that each of these
+		descriptors describe similar transforms regardless of the processing method used. In contrast the `bright'
+		groups remain separated into clusters comprised mostly of descriptors from a single plug-in, suggesting
+		that the use of these terms may differ depending on the nature of the audio transform.  Further evidence of
+		this is found in the similarity of the terms `bright' and `harsh'. When used to describe distortion
+		transforms these terms always sit adjacent to one another in a cluster, whereas for equaliser transforms
+		they are separated by a reasonable distance. These terms are more likely to be synonymous when describing
+		audio processed by a static nonlinearity then they are for equalised audio. 
 
 	\subsection{Agreement}
 	\label{sec:TimbreEvaluation-Analysis-Agreement}
@@ -992,13 +992,13 @@
 			timbre space, further reinforcing the conclusion that these three terms are synonymous when used to
 			describe signals processed by a distortion effect.
 
-			This `warmth' region is spread across the majority of the ranges of both PCs 1 and 3, while only
+			This `warm' region is spread across the majority of the ranges of both PCs 1 and 3, while only
 			occupying a lesser extent of the range of PC 2. In contrast, the region described by the term
 			`crunch' is spread out across PCs 2 and 3 and concentrated to a smaller range of PC 1. This
 			suggests that `warm', `fuzz' and `cream' are used to describe signals which lie somewhere between
 			-5 and 5 in PC 2, while `crunch' is used to describe signals which line between -5 and 5 in PC 1.
 			Signals which lie withing both of these ranges could potentially be described as both `warm' and
-			`crunchy'. Table \ref{tab:DistortionTermCombinations} confirms that one such combination of
+			`crunch'. Table \ref{tab:DistortionTermCombinations} confirms that one such combination of
 			`warm' and `crunch' exists within the dataset.
 
 			The salient features for this timbre space are shown in Datum
@@ -1146,7 +1146,7 @@
 			Looking at the bark band spectra and spectral manipulations in Figures
 			\ref{fig:DistortionProcessedSpectra} and \ref{fig:DistortionDifferenceSpectra} the magnitude of
 			these increases can be investigated. For `crunch', at the low end of PC 1, a small amount higher
-			frequency energy introduced creating a signal in which the energy is more evenly distributed
+			frequency energy is introduced creating a signal in which the energy is more evenly distributed
 			throughout the spectrum. For `bright', at the other end of PC 1, much larger amounts of high
 			frequency energy is added, producing signals in which there is more energy at high frequencies than
 			at mid frequencies.
@@ -1388,4 +1388,27 @@
 			to cause this. As such, the signals must have been `deep' prior to processing.
 
 \section{Results Summary}
-	\note{Summarise those results!}
+	\note
+	{
+		Summarise those results!
+
+		\begin{itemize}
+			\item Four main groups of descriptors, `warm', `bright', `crunch' and `mud'.
+			\item `warm' is used similarly across both plug-ins.
+			\item `bright' seems to mean slightly different things depending on the processing, this could be
+				due to the way each system adds high frequency energy. Distortion `bright' is synonymous
+				with `harsh'. While equaliser `bright' and `harsh' are more distinct.
+			\item `warm' is associated with spectral centroid, spectral roll off and spectral standard
+				deviation. With distortion like effects it describes output signals which have more low
+				frequencies than high. With eq like effects it describes transforms which skew the spectrum
+				towards the lower end.
+			\item `bright' is associated with the same features but at the other extreme, greater proportions
+				of high frequency energy. In the eq `harsh' is a more pronounced version of it, whereas in
+				the distortion `harsh' is synonymous.
+			\item `crunchiness' is a descriptor associated with distortion only. It describes distortion which
+				flattens out the spectrum, not introducing too much high frequency energy to become
+				`harsh'.
+			\item `mud' is associated with high levels of low frequency energy, a more accentuated version of
+				`warm'.
+		\end{itemize}
+	}
