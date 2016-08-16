@@ -1163,7 +1163,7 @@
 			terms, the equaliser timbre spaces have been split across two sets of graphs. One showing the
 			positions of `warm' and `bright' and the other showing the positions of the remaining descriptors.
 			The first three PCs of the timbre space describing the processed signals produced by the equaliser
-			are shown in Figures \ref{fig:EqualiserBWProcessedPCAs} and \ref{EqualiserProcessedPCAs}. The
+			are shown in Figures \ref{fig:EqualiserBWProcessedPCAs} and \ref{fig:EqualiserProcessedPCAs}. The
 			corresponding agreement scores are shown in Table \ref{tab:EqualiserProcessedAgreements}.
 
 			\begin{figure}[h!]
@@ -1272,8 +1272,10 @@
 
 		\subsubsection*{Equaliser Feature Differences}
 			The first three PCs of the timbre space describing the feature manipulations applied by the
-			equaliser are shown in Figure \ref{fig:EqualiserDifferencePCAs}. The corresponding agreement
-			scores are shown in Table \ref{tab:EqualiserDifferenceAgreements}.
+			equaliser are shown in Figures \ref{fig:EqualiserBWDifferencesPCAs} and
+			\ref{fig:EqualiserDifferencePCAs}. The corresponding agreement scores are shown in Table
+			\ref{tab:EqualiserDifferenceAgreements}. This space shows more definite patterns than that
+			constructed from the processed feature values.
 
 			\begin{figure}[h!]
 				\centering
@@ -1318,8 +1320,17 @@
 				\label{tab:EqualiserDifferenceAgreements}
 			\end{table}
 
+			The clusters of transforms labelled with `warm' and `bright' are now better separated in PC 2,
+			`bright' taking positive values and `warm' negative values. In the other PCs these descriptors
+			occupy very similar ranges, suggesting that the distinction between these descriptors is in how the
+			features which correlate with PC 2 are manipulated. The clusters of the remaining descriptors are
+			again difficult to discriminate, the separation of `harsh' and `mud' in PC 2 being the most
+			noticeable pattern.
+
 			The salient features for this timbre space are shown in Datum
-			\ref{dat:EqualiserDifferenceCorrelations}.
+			\ref{dat:EqualiserDifferenceCorrelations}. The most salient in each PC are then visualised, along
+			with the mean position and agreement score of each descriptor, in Figure
+			\ref{fig:EqualiserDifferenceCentroidsPCAs}. 
 
 			\begin{datum}[h!]
 				\centering
@@ -1348,12 +1359,33 @@
 				\label{fig:EqualiserDifferenceCentroidsPCAs}
 			\end{figure}
 
+			The distinction between `warm' and `bright' becomes very clear here. PC 2 is highly correlated with
+			spectral centroid, spectral standard deviation and spectral roll off. Negative values of PC 2
+			correspond to a decrease in these features and positive values an increase. Signals can be made
+			`warmer' by reducing the spectral centroid and `brighter' by increasing it. This is most often done
+			by introducing more energy at low or higher frequencies respectively, as seen in Figure
+			\ref{fig:EqualiserDifferenceSpectra}. `harsh' and `tin' can be thought of as more accentuated
+			versions of `bright' and `mud' as a more accentuated version of `warm'.
+
+			The more distinct patterns seen by using the feature differences suggest that these terms have been
+			used to describe the transform rather than he output signal. The process of making a signal
+			`warmer' or `brighter' is independent of the absolute value of spectral centroid or spectral roll
+			off. It is the direction in which these features are moved which is being described. This makes it
+			conceptually easier to control audio in terms of these descriptors, rather than producing an output
+			with a particular feature value, the feature need only be moved in the correct direction.
+
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter4/Images/EqualiserDifferenceSpectra.pdf}
 				\caption{The mean spectral manipulations applied using the equaliser.}
 				\label{fig:EqualiserDifferenceSpectra}
 			\end{figure}
+
+			The usage of `deep' in the dataset seems to be a property of the input signals being used. Figure
+			\ref{fig:EqualiserDifferenceSpectra} shows that very little manipulation was applied in producing a
+			`deep' signal. While it is clear from Figure \ref{fig:EqualiserProcessedSpectra} that `deep'
+			describes signals with a large proportion of low frequency energy, no processing has been applied
+			to cause this. As such, the signals must have been `deep' prior to processing.
 
 \section{Results Summary}
 	\note{Summarise those results!}
