@@ -139,7 +139,7 @@ plotCentroidBiplot <- function(PCA, dims, desc, var, border=c(0.15, 0.15, 0.15, 
 	varCol <- "gray45"
 	par(new=TRUE)
 	plot(varXs, varYs, type='n', axes=FALSE, xlab=NA, ylab=NA, xlim=xLimits, ylim=yLimits)
-	arrows(0, 0, varXs, varYs, col=varCol)
+	arrows(0, 0, varXs, varYs, col=varCol, length=0.1, angle=25)
 
 	if (is.null(ax3))
 		axis(3, col.ticks=varCol, col.axis=varCol)
