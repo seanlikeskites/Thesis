@@ -56,7 +56,7 @@ embed_fonts("MoveSkewnesses.pdf")
 gains = seq(0, 10, 0.1)
 kurts <- read.octave("MoveKurtoses.mat")$kurts[c(1, 2, 4, 3),]
 pdf("MoveKurtoses.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotManipulation(gains, kurts, c(0, 10, 6, 16), signals, "topleft", "Band Gain", "Spectral Kurtosis")
+plotManipulation(gains, kurts, c(0, 10, 6, 17), signals, "topleft", "Band Gain", "Spectral Kurtosis")
 dev.off()
 embed_fonts("MoveKurtoses.pdf")
 
@@ -69,19 +69,19 @@ irregKs <- t(irregs[1,,c(1, 2, 4, 3)])
 irregJs <- t(irregs[2,,c(1, 2, 4, 3)])
 irregBs <- t(irregs[3,,c(1, 2, 4, 3)])
 
-pdf("MoveIrregularitiesK.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
+pdf("MoveIrregularitiesK.pdf", pointsize=8, family="CM Sans", width=2.8, height=2)
 plotManipulation(m, irregKs, c(-1, 1, 0, 0.4), signals, "topright", "Parameter Setting",
 		 "Krimphoff Irregularity")
 dev.off()
 embed_fonts("MoveIrregularitiesK.pdf")
 
-pdf("MoveIrregularitiesJ.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
+pdf("MoveIrregularitiesJ.pdf", pointsize=8, family="CM Sans", width=2.8, height=2)
 plotManipulation(m, irregJs, c(-1, 1, 0, 1), signals, "bottomleft", "Parameter Setting",
 		 "Jensen Irregularity")
 dev.off()
 embed_fonts("MoveIrregularitiesJ.pdf")
 
-pdf("MoveIrregularitiesB.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
+pdf("MoveIrregularitiesB.pdf", pointsize=8, family="CM Sans", width=2.8, height=2)
 plotManipulation(m, irregBs, c(-1, 1, 0, 0.4), signals, "topright", "Parameter Setting",
 		 "Beauchamp Irregularity")
 dev.off()
