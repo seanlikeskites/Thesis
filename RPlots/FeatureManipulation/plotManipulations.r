@@ -2,14 +2,25 @@ library(foreign)
 library(extrafont)
 
 signals <- c("Cello", "Clarinet", "Synthesised", "Piano")
-bigMar <- c(4, 4.3, 0.8, 0.8)
+bigMar <- c(4, 4.3, 1, 1)
 
-plotManipulation <- function(x, y, lims, legendText, legendPos, xlab, ylab, mar)
+plotManipulation <- function(x, y, lims, legendText, legendPos, xlab, ylab, mar, ax1=NULL, ax2=NULL)
 {
 	nLines <- nrow(y)
 	colours <- rainbow(nLines)
 	par(xaxs='i', yaxs='i', mar=mar)
-	plot(x, y[1,], type='n', main="", xlab=xlab, ylab=ylab, xlim=c(lims[1], lims[2]), ylim=c(lims[3], lims[4]))
+	plot(x, y[1,], type='n', main="", xlab=xlab, ylab=ylab,
+	     xlim=c(lims[1], lims[2]), ylim=c(lims[3], lims[4]), axes=FALSE)
+
+	if (is.null(ax1))
+		axis(1)
+	else
+		axis(1, at=ax1)
+
+	if (is.null(ax2))
+		axis(2)
+	else
+		axis(2, at=ax2)
 
 	for (i in 1:nLines)
 	{
@@ -100,3 +111,28 @@ plotManipulation(args, flatnesses, c(0, 1.5, 0, 0.1), signals, "topright", "Para
 		 bigMar)
 dev.off()
 embed_fonts("MoveFlatnesses.pdf")
+
+########################################################
+# slopes
+########################################################
+gains <- seq(-10, 10, 0.5)
+slopes <- read.octave("MoveSlopes.mat")$slopes[c(1, 2, 4, 3),]*100
+pdf("MoveSlopes.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
+plotManipulation(gains, slopes, c(-10, 10, -1, 0), signals, "bottomright", "Tilt Gradient", "Spectral Slope",
+		 bigMar)
+mtext(expression(x10^-2), side=2, line=2, at=0)
+dev.off()
+embed_fonts("MoveSlopes.pdf")
+
+########################################################
+# tristimulus 1
+########################################################
+gains <- seq(0, 5, 0.1)
+tri1s <- read.octave("MoveTristimulus1.mat")$tri1s[c(1, 2, 4, 3),]
+pdf("MoveTristimulus1.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
+plotManipulation(gains, tri1s, c(0, 5, 0, 0.9), signals, "topleft", "", 
+		 "First Tristimulus", bigMar)
+mtext(expression(italic(f)[0]), side=1, line=3, at=2.3, family="CM Roman")
+mtext("Gain", side=1, line=2.85, at=2.65)
+dev.off()
+embed_fonts("MoveTristimulus1.pdf")
