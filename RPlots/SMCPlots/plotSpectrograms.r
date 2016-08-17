@@ -22,7 +22,7 @@ plotSpectrogram <- function(sig)
 
 # original signal
 bass <- as.vector(signals$bass)
-pdf("CelloSpectrogram.pdf", pointsize=9, family="CM Sans", width=2.94, height=2.1)
+pdf("CelloSpectrogram.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(4, 4, 0.5, 0.5))
 plotSpectrogram(bass)
 dev.off()
@@ -30,7 +30,7 @@ embed_fonts("CelloSpectrogram.pdf")
 
 # filtered signal
 bassFilt <- as.vector(signals$bassFilt)
-pdf("CelloFilteredSpectrogram.pdf", pointsize=9, family="CM Sans", width=2.94, height=2.1)
+pdf("CelloFilteredSpectrogram.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(4, 4, 0.5, 0.5))
 plotSpectrogram(bassFilt)
 dev.off()
@@ -38,7 +38,7 @@ embed_fonts("CelloFilteredSpectrogram.pdf")
 
 # SSB signal
 bassSSB <- as.vector(signals$bassSSB)
-pdf("CelloSSBASpectrogram.pdf", pointsize=9, family="CM Sans", width=2.94, height=2.1)
+pdf("CelloSSBASpectrogram.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(4, 4, 0.5, 0.5))
 plotSpectrogram(bassSSB)
 dev.off()
@@ -46,7 +46,7 @@ embed_fonts("CelloSSBASpectrogram.pdf")
 
 # IAP signal
 bassIAP <- as.vector(signals$bassIAP)
-pdf("CelloIAPSpectrogram.pdf", pointsize=9, family="CM Sans", width=2.94, height=2.1)
+pdf("CelloIAPSpectrogram.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(4, 4, 0.5, 0.5))
 plotSpectrogram(bassIAP)
 dev.off()
@@ -54,7 +54,7 @@ embed_fonts("CelloIAPSpectrogram.pdf")
 
 # STFT signal
 bassSTFT <- as.vector(signals$bassSTFT)
-pdf("CelloSynthesisSpectrogram.pdf", pointsize=9, family="CM Sans", width=2.94, height=2.1)
+pdf("CelloSynthesisSpectrogram.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(4, 4, 0.5, 0.5))
 plotSpectrogram(bassSTFT)
 dev.off()
