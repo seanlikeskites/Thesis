@@ -7,7 +7,7 @@ plotManipulation <- function(x, y, lims, legendText, legendPos, xlab, ylab)
 {
 	nLines <- nrow(y)
 	colours <- rainbow(nLines)
-	par(xaxs='i', yaxs='i', mar=c(4, 4.5, 0.6, 4.5))
+	par(xaxs='i', yaxs='i', mar=c(4, 4.5, 0.5, 0.5))
 	plot(x, y[1,], type='n', main="", xlab=xlab, ylab=ylab, xlim=c(lims[1], lims[2]), ylim=c(lims[3], lims[4]))
 
 	for (i in 1:nLines)
