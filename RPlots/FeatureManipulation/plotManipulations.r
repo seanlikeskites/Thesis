@@ -7,7 +7,7 @@ plotManipulation <- function(x, y, lims, legendText, legendPos, xlab, ylab)
 {
 	nLines <- nrow(y)
 	colours <- rainbow(nLines)
-	par(xaxs='i', yaxs='i', mar=c(4, 4.5, 0.6, 0.6))
+	par(xaxs='i', yaxs='i', mar=c(4, 4.3, 0.6, 0.6))
 	plot(x, y[1,], type='n', main="", xlab=xlab, ylab=ylab, xlim=c(lims[1], lims[2]), ylim=c(lims[3], lims[4]))
 
 	for (i in 1:nLines)
@@ -15,7 +15,7 @@ plotManipulation <- function(x, y, lims, legendText, legendPos, xlab, ylab)
 		lines(x, y[i,], col=colours[i])
 	}
 
-	legend(legendPos, legend=legendText, lty=1, col=colours)
+	legend(legendPos, legend=legendText, lty=1, col=colours, cex=0.95)
 	box()
 }
 
@@ -69,19 +69,19 @@ irregKs <- t(irregs[1,,c(1, 2, 4, 3)])
 irregJs <- t(irregs[2,,c(1, 2, 4, 3)])
 irregBs <- t(irregs[3,,c(1, 2, 4, 3)])
 
-pdf("MoveIrregularitiesK.pdf", pointsize=8, family="CM Sans", width=2.8, height=2)
+pdf("MoveIrregularitiesK.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 plotManipulation(m, irregKs, c(-1, 1, 0, 0.4), signals, "topright", "Parameter Setting",
 		 "Krimphoff Irregularity")
 dev.off()
 embed_fonts("MoveIrregularitiesK.pdf")
 
-pdf("MoveIrregularitiesJ.pdf", pointsize=8, family="CM Sans", width=2.8, height=2)
+pdf("MoveIrregularitiesJ.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 plotManipulation(m, irregJs, c(-1, 1, 0, 1), signals, "bottomleft", "Parameter Setting",
 		 "Jensen Irregularity")
 dev.off()
 embed_fonts("MoveIrregularitiesJ.pdf")
 
-pdf("MoveIrregularitiesB.pdf", pointsize=8, family="CM Sans", width=2.8, height=2)
+pdf("MoveIrregularitiesB.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 plotManipulation(m, irregBs, c(-1, 1, 0, 0.4), signals, "topright", "Parameter Setting",
 		 "Beauchamp Irregularity")
 dev.off()
