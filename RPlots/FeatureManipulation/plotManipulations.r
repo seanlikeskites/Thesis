@@ -136,3 +136,48 @@ mtext(expression(italic(f)[0]), side=1, line=3, at=2.3, family="CM Roman")
 mtext("Gain", side=1, line=2.85, at=2.65)
 dev.off()
 embed_fonts("MoveTristimulus1.pdf")
+
+########################################################
+# tristimulus 2
+########################################################
+gains <- seq(0, 5, 0.1)
+tri2s <- read.octave("MoveTristimulus2.mat")$tri2s[c(1, 2, 4, 3),]
+pdf("MoveTristimulus2.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
+plotManipulation(gains, tri2s, c(0, 5, 0, 0.8), signals, "topleft", "Band Gain", 
+		 "Second Tristimulus", bigMar)
+dev.off()
+embed_fonts("MoveTristimulus2.pdf")
+
+########################################################
+# tristimulus 3
+########################################################
+gains <- seq(0, 5, 0.1)
+tri3s <- read.octave("MoveTristimulus3.mat")$tri3s[c(1, 2, 4, 3),]
+pdf("MoveTristimulus3.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
+plotManipulation(gains, tri3s, c(0, 5, 0, 0.9), signals, "topleft", "Band Gain", 
+		 "Third Tristimulus", bigMar)
+dev.off()
+embed_fonts("MoveTristimulus3.pdf")
+
+########################################################
+# parity ratios
+########################################################
+gains <- seq(0, 1, 0.01)
+parities <- read.octave("MoveParities.mat")$parities[c(1, 2, 4, 3),]
+pdf("MoveParities.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
+plotManipulation(gains, parities, c(0, 1, 0, 50), signals, "topleft", "Parameter Setting", 
+		 "Odd to Even Harmonic Ratio", bigMar)
+dev.off()
+embed_fonts("MoveParities.pdf")
+
+########################################################
+# inharmonicities
+########################################################
+gains <- seq(0, 0.001, 0.00005)
+inharms <- read.octave("MoveInharmonicities.mat")$inharms[c(1, 2, 4, 3),]
+pdf("MoveInharmonicities.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
+plotManipulation(1000*gains, inharms, c(0, 1, 0, 0.08), signals, "topleft", "Inharmonicity Factor", 
+		 "Inharmonicity", bigMar)
+mtext(expression(x10^-3), side=1, line=2, at=1)
+dev.off()
+embed_fonts("MoveInharmonicities.pdf")
