@@ -15,7 +15,7 @@ sig[(1:fs) + 6*fs] = 0
 
 plotTemporalManipulation <- function(t, sigs, names, yspace)
 {
-	par(mar=c(0, 0, 0, 0))
+	par(mar=c(0.1, 0, 0, 0))
 	plot(t, sig, type='n', axes=FALSE, ylim=c(yspace, 1))
 
 	colours <- c("blue", "green4", "red")
