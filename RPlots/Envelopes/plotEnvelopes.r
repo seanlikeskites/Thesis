@@ -33,8 +33,8 @@ release <- seq(140, 0, -0.5)/200
 adsr <- c(attack, decay, sustain, release)
 len <- length(adsr)
 
-pdf("ADSR.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-par(xaxs='i', yaxs='i', mar=c(4, 4, 0.6, 0.6))
+pdf("ADSR.pdf", pointsize=9, family="CM Sans", width=4.2-0.375, height=3-0.375)
+par(xaxs='i', yaxs='i', mar=c(2, 2, 0.1, 0.1))
 plot(1:len, adsr, type='l', col="blue", lty=1, axes=FALSE, xlab="", ylab="")
 lines(c(201, 201), c(0, 1), lty=3, col="black")
 lines(c(261, 261), c(0, 14/20), lty=3, col="black")
