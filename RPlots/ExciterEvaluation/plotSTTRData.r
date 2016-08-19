@@ -2,12 +2,11 @@ library(extrafont)
 library(foreign)
 
 data <- read.octave("STTRData.mat")
-len <- length(data$sigSpec) / 2
 
-freqs <- data$freqs[1:len]
-sigSpec <- 20*log10(abs(data$sigSpec[1:len]))
-ms1Spec <- 20*log10(abs(data$ms1Spec[1:len]))
-ms1p5Spec <- 20*log10(abs(data$ms1p5Spec[1:len]))
+freqs <- data$freqs/1000
+sigSpec <- 20*log10(abs(data$sigSpec))
+ms1Spec <- 20*log10(abs(data$ms1Spec))
+ms1p5Spec <- 20*log10(abs(data$ms1p5Spec))
 
 # window plot
 winLen = length(data$saveWindow)
@@ -24,3 +23,15 @@ axis(2)
 box()
 dev.off()
 embed_fonts("STTRWindow.pdf")
+
+# spectra
+pdf("STTRSpectra.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
+par(xaxs='i', yaxs='i', mar=c(4, 4, 0.6, 0.6))
+plot(freqs, sigSpec, type='n', xlim=c(0, 25), ylim=c(-100, 0), xlab="Frequency (kHz)", ylab=("Amplitude (dB)"))
+lines(freqs, ms1p5Spec, col="green2", lty=1)
+lines(freqs, ms1Spec, col="red", lty=1)
+lines(freqs, sigSpec, col="blue", lty=1)
+legend("topright", legend=c("Original Signal", "1ms Window", "1.5ms Window"), col=c("blue", "red", "green2"), lty=1)
+box()
+dev.off()
+embed_fonts("STTRSpectra.pdf")
