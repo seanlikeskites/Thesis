@@ -12,9 +12,9 @@ stretchSpec <- abs(data$stretchSpec[1:len])
 
 plotSpectra <- function(spectra, names, colours)
 {
-	par(xaxs='i', yaxs='i', mar=c(4, 2, 0.1, 0.6))
+	par(xaxs='i', yaxs='i', mar=c(2, 4, 0.1, 0.6))
 	f <- 1:length(spectra[[1]])
-	plot(f, spectra[[1]], type='n', axes=FALSE)
+	plot(f, spectra[[1]], type='n', axes=FALSE, xlab="", ylab="")
 
 	nSpectra <- length(spectra)
 
@@ -47,6 +47,6 @@ pdf("SpectralFoldingSpectrum.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), 
     width=4.2, height=3-0.375)
 plotSpectra(list(sigSpec, fold2Spec, fold3Spec), c("Input", "   = 2", "   = 3"), c("blue", "red", "green2"))
 par(family="CM Roman")
-text(20200, c(578, 542), expression(italic(k)))
+text(20050, c(567, 525), expression(italic(k)))
 dev.off()
 embed_fonts("SpectralFoldingSpectrum.pdf")
