@@ -7,11 +7,11 @@ ts <- 1/fs
 t <- seq(ts, 7, ts)
 sig <- sin(2*pi*t)
 
-up = (1:(2*fs)) / (2*fs)
-sig[1:fs] = 0
-sig[(1:(2*fs)) + fs] = sig[(1:(2*fs)) + fs] * up
-sig[(1:(2*fs)) + 4*fs] = sig[(1:(2*fs)) + 4*fs] * rev(up)
-sig[(1:fs) + 6*fs] = 0
+up <- (1:(2*fs)) / (2*fs)
+sig[1:fs] <- 0
+sig[(1:(2*fs)) + fs] <- sig[(1:(2*fs)) + fs] * up
+sig[(1:(2*fs)) + 4*fs] <- sig[(1:(2*fs)) + 4*fs] * rev(up)
+sig[(1:fs) + 6*fs] <- 0
 
 plotTemporalManipulation <- function(t, sigs, names, yspace)
 {
