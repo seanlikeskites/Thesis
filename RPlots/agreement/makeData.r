@@ -56,9 +56,9 @@ while (TRUE)
 	allY <- c(large[,2], small[,2], tall[,2], diag[,2])
 	allZ <- c(large[,3], small[,3], tall[,3], diag[,3])
 
-	xSize <- diff(range(allX))/3
-	ySize <- diff(range(allY))/3.5
-	zSize <- diff(range(allZ))/3
+	xSize <- diff(range(allX))/2.7
+	ySize <- diff(range(allY))/3.1
+	zSize <- diff(range(allZ))/2.7
 	
 	if ((sum((allX > max(allX)-xSize) & (allY < min(allY)+ySize)) + sum((allZ < min(allZ)+zSize) & (allY > max(allY)-ySize))) == 0)
 		break
@@ -77,7 +77,7 @@ clusters <- c("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4")
 
 setEPS()
 
-pdf("ArtificialData1-2.pdf", pointsize=8, family="CM Sans", width=2.95, height=2.95)
+pdf("ArtificialData1-2.pdf", pointsize=9, family="CM Sans", width=2.95, height=2.95)
 par(mar=c(4, 4, 0.5, 0.5))
 plot(allX, allY, type='n', main="", xlab="PC 1", ylab="PC 2")
 points(large[,1], large[,2], col=colours[1], pch=2, cex=1.5)
@@ -88,7 +88,7 @@ legend("bottomright", legend=clusters, pch=2:5, pt.cex=1.5, col=colours)
 dev.off()
 embed_fonts("ArtificialData1-2.pdf")
 
-pdf("ArtificialData3-2.pdf", pointsize=8, family="CM Sans", width=2.95, height=2.95)
+pdf("ArtificialData3-2.pdf", pointsize=9, family="CM Sans", width=2.95, height=2.95)
 par(mar=c(4, 4, 0.5, 0.5))
 plot(allZ, allY, type='n', main="", xlab="PC 3", ylab="PC 2")
 points(large[,3], large[,2], col=colours[1], pch=2, cex=1.5)
