@@ -12,7 +12,7 @@ stretchSpec <- abs(data$stretchSpec[1:len])
 
 plotSpectra <- function(spectra, names, colours)
 {
-	par(xaxs='i', yaxs='i', mar=c(2, 2, 0.1, 0.1))
+	par(xaxs='i', yaxs='i', mar=c(4, 2, 0.1, 0.6))
 	f <- 1:length(spectra[[1]])
 	plot(f, spectra[[1]], type='n', axes=FALSE)
 
@@ -31,20 +31,20 @@ plotSpectra <- function(spectra, names, colours)
 }
 
 # replication
-pdf("SpectralReplicationSpectrum.pdf", pointsize=9, family="CM Sans", width=4.2-0.375, height=3-0.375)
+pdf("SpectralReplicationSpectrum.pdf", pointsize=9, family="CM Sans", width=4.2, height=3-0.375)
 plotSpectra(list(repSpec, sigSpec), c("Output", "Input"), c("red", "blue"))
 dev.off()
 embed_fonts("SpectralReplicationSpectrum.pdf")
 
 # stretching
-pdf("SpectralStretchingSpectrum.pdf", pointsize=9, family="CM Sans", width=4.2-0.375, height=3-0.375)
+pdf("SpectralStretchingSpectrum.pdf", pointsize=9, family="CM Sans", width=4.2, height=3-0.375)
 plotSpectra(list(stretchSpec, sigSpec), c("Output", "Input"), c("red", "blue"))
 dev.off()
 embed_fonts("SpectralStretchingSpectrum.pdf")
 
 # folding
 pdf("SpectralFoldingSpectrum.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", 
-    width=4.2-0.375, height=3-0.375)
+    width=4.2, height=3-0.375)
 plotSpectra(list(sigSpec, fold2Spec, fold3Spec), c("Input", "   = 2", "   = 3"), c("blue", "red", "green2"))
 par(family="CM Roman")
 text(20200, c(578, 542), expression(italic(k)))
