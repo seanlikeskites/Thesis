@@ -43,7 +43,9 @@ dev.off()
 embed_fonts("SpectralStretchingSpectrum.pdf")
 
 # folding
-pdf("SpectralFoldingSpectrum.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotSpectra(list(sigSpec, fold2Spec, fold3Spec), c("Input", "Factor = 2", "Factor = 3"), c("blue", "red", "green2"))
+pdf("SpectralFoldingSpectrum.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
+plotSpectra(list(sigSpec, fold2Spec, fold3Spec), c("Input", "   = 2", "   = 3"), c("blue", "red", "green2"))
+par(family="CM Roman")
+text(20200, c(578, 542), expression(italic(k)))
 dev.off()
 embed_fonts("SpectralFoldingSpectrum.pdf")
