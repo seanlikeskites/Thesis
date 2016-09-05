@@ -72,7 +72,7 @@
 		\end{itemize}
 
 		Achieving this would require the creation of a new DAW, which would be impractical for the current
-		research.  DAWs are comprehensive software packages which perform many more tasks than the application of
+		research. DAWs are comprehensive software packages which perform many more tasks than the application of
 		audio effects (project management, audio editing functionality etc.). A lot of effort would be expended in
 		implementing these features before any timbral data could be collected. Music producers also tend to have a
 		preferred DAW with which they work most fluidly. Convincing producers to use a new DAW for the purposes of
@@ -94,13 +94,13 @@
 	\subsection{SAFE Plug-Ins}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}
 		The SAFE plug-ins consist of four commonly used audio effects: Equaliser, Distortion, Compressor and
-		Reverb. As part of the plug-ins's interface, the user has the option to save semantic terms. The interface
-		for the SAFE Distortion is shown in Figure \ref{fig:SAFE-Distortion}. Upon saving terms the plug-in will
-		analyse the audio at its inputs and outputs. When the analysis is completed the results are stored,
-		containing:
+		Reverb. As part of the plug-ins's interface, the user has the option to save a semantic description of the
+		application of the effect. The interface for the SAFE Distortion is shown in Figure
+		\ref{fig:SAFE-Distortion}. Upon saving a description the plug-in will record and analyse five seconds of
+		audio at its inputs and outputs. When the analysis is completed the results are stored, containing:
 
 		\begin{itemize}
-			\item The users semantic description of the transform.
+			\item The users semantic description of the effect's application.
 			\item The plug-in's current parameter settings.
 			\item The features of the audio before and after processing.
 			\item Some additional data about the user and the track being worked on.
@@ -110,7 +110,7 @@
 				\item The users age.
 				\item The users location.
 				\item The users primary language.
-				\item The number of year experience the user has in music production.
+				\item The number of years experience the user has in music production.
 			\end{itemize}
 		\end{itemize}
 
@@ -121,10 +121,9 @@
 			\label{fig:SAFE-Distortion}
 		\end{figure}
 
-		In total, the SAFE plug-ins analyse five seconds of audio both before and after processing. The audio is
-		analysed in frames of 4096 samples using the LibXtract software library \citep{bullock2007libxtract},
-		calculating 80 different audio features for each frame. These features are split into five groups as
-		follows:
+		The audio is analysed in frames of 4096 samples using the LibXtract software library
+		\citep{bullock2007libxtract}, calculating 80 different audio features for each frame. These features are
+		split into five groups as follows:
 
 		\begin{itemize}
 			\item {\bf{Temporal Features:}} Features calculated from the temporal representation of the signal.
@@ -177,16 +176,16 @@
 		over the listening environment in order to gather results from a much larger sample of people. In fact they
 		provide even lest control than methodologies like that used in the Social EQ project
 		\citep{cartwright2013socialeq} in that the choice of audio samples being used is decided by the test
-		subject. 
+		subject. This control is relinquished in order to access a greater user base. The metadata fields allow the
+		collected data to be categorised if information about a particular genre or instrument is desired.
+
+		\note{Probably explain the need to use an ontology, something about being machine navigable or something.}
 
 	\subsection{SAFE Ontology}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFEOntology}
-		\note{Really not sure how well this fits in here. Do we needs a section explaining RDF and such? Where
-		would that go?}
-
 		The data collected using the SAFE plug-ins is stored as RDF triples using the SAFE ontology.  The SAFE
 		Ontology was designed to describe the semantics relating to the application of an audio effect and the
-		statistical audio features of the signals involved. It acts as an extension to the Audio Effects Ontology
+		audio features of the signals involved. It acts as an extension to the Audio Effects Ontology
 		\citep{wilmering2013the}, introducing additional concepts for the description of semantic data.  This
 		additional data can be separated into three groups:
 
@@ -232,12 +231,12 @@
 		description for each transform. Metadata items are used to provide details about the application domain of
 		the effect, where each metadata item describes one property of an object, the property being identified
 		using an \emph{rdfs:label} and the description provided using an \emph{rdfs:comment}. Each object described
-		by a metadata item has its own set of properties, ``genre'' and ``instrument'' metadata tags for example,
+		by a metadata item has its own set of properties, ``genre'' and ``instrument'' metadata tags, for example,
 		describe an audio signal, while ``location'' metadata tags describe a transform.
 
 		The analysis of audio signals is described using the concept \emph{safe:FeatureExtractionTransform},
-		similar to a \emph{studio:Transform} but taking an audio signal as input and producing feature values at
-		the output, as shown in Figure \ref{fig:ExtractionGraph}.
+		similar to a \emph{studio:Transform} but taking an audio signal as input and producing a time series of
+		feature values at the output, as shown in Figure \ref{fig:ExtractionGraph}.
 
 		\begin{figure}[h!]
 			\centering
@@ -282,11 +281,11 @@
 		every \emph{safe:DescriptorItem} node in the dataset is attributed to a particular user. Conversely, the
 		metadata fields are not mandatory. In situations where a user has not filled in certain metadata fields
 		their values can be predicted on the server using supervised machine learning. Using the Provenance
-		Ontology, each metadata entity can be attributed to a particular agent, allowing it to understood as human
-		or machine labelled. This allows queries on the dataset to request only the more reliable user-labeled
-		data, or for example, compare data produced using different classification algorithms.
+		Ontology, each metadata entity can be attributed to a particular agent, allowing it to be understood as
+		human or machine labelled. This allows queries on the dataset to request only the more reliable
+		user-labeled data or, for example, compare data produced using different classification algorithms.
 
-		The Provenance Ontology is also used to describe the algorithms that produce audio feature data. Each
+		The Provenance Ontology is also used to describe the algorithms which produce audio feature data. Each
 		\emph{safe:FeatureExtractionTransform} node is a \emph{prov:Activity} which can be associated with a
 		particular implementation of the algorithm it uses (e.g. the LibXtract \citep{bullock2007libxtract}
 		spectral centroid function). Say a discrepancy was found between two implementations of a given feature
