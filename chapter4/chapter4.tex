@@ -477,9 +477,9 @@
 	\label{sec:TimbreEvaluation-Analysis-TermClustering}
 		Each of the terms arrived at, after stemming, in Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}
 		can be described by their position in a multi dimensional audio feature space. Each dimension of this space
-		corresponds to one of the audio features extracted by the SAFE plug-ins. The position, $p_{d,i}$ of a term,
-		$d$, in the $i$\super{th} dimension of the timbre space is calculated as the mean value of feature $i$
-		across every transform labelled with that descriptor (Equation \ref{eq:FeatureSpaceCoords}).
+		corresponds to one of the audio features extracted by the SAFE plug-ins. The position, $p_{d,i}$, of a
+		term, $d$, in the $i$\super{th} dimension of the timbre space is calculated as the mean value of feature
+		$i$ across every transform labelled with that descriptor (Equation \ref{eq:FeatureSpaceCoords}).
 
 		\begin{equation}
 			p_{d,i} = \frac{1}{N_{d}} \sum_{n = 1}^{N_{d}} \bar{x}_{d,n,i}
@@ -533,8 +533,8 @@
 		the two different feature spaces. While the terms `warm' and `bright' were the most distant from each other
 		in the distortion feature spaces, they are two of the closest terms in the equaliser's processed feature
 		space (Figure \ref{fig:EqualiserProcessedClusters}). They are, however, separated well in the equaliser's
-		feature difference space (Figure \ref{fig:EqualiserDifferenceClusters}) suggesting that these terms better
-		describe a certain change in audio features rather than an absolute feature value.
+		feature difference space (Figure \ref{fig:EqualiserDifferenceClusters}) suggesting that the difference
+		these terms is better described by certain change in audio features rather than an absolute feature value.
 		
 		Within the equaliser's feature differences space, two main clusters are identified corresponding with the
 		`warm' and `bright' clusters from the distortion feature spaces. The `warm' cluster includes the terms
@@ -562,10 +562,10 @@
 			\label{fig:EqualiserClusters}
 		\end{figure}
 		
-		In order to investigate the similarity of descriptors across both plug-ins their respective feature spaces
+		In order to investigate the similarity of descriptors across both plug-ins, their respective feature spaces
 		are combined and clustering is applied to produce the dendrograms shown in Figure
-		\ref{fig:CombinedClusters}.  Each descriptors is prepended with the name of the plug-in it is associated
-		with.
+		\ref{fig:CombinedClusters}. Descriptors are prepended with either and `E' or a `D' to distinguish between
+		those describing distortion transforms and those describing equaliser transforms.
 
 		\begin{figure}[h!]
 			\centering
@@ -589,8 +589,8 @@
 		that the use of these terms may differ depending on the nature of the audio transform.  Further evidence of
 		this is found in the similarity of the terms `bright' and `harsh'. When used to describe distortion
 		transforms these terms always sit adjacent to one another in a cluster, whereas for equaliser transforms
-		they are separated by a reasonable distance. These terms are more likely to be synonymous when describing
-		audio processed by a static nonlinearity then they are for equalised audio. 
+		they are separated by a greater distance. These terms are more likely to be synonymous when describing
+		audio processed by a distortion then they are for equalised audio. 
 
 	\subsection{Agreement}
 	\label{sec:TimbreEvaluation-Analysis-Agreement}
