@@ -503,94 +503,101 @@
 		particular audio feature might have on the clustering. Clusters are determined using the ward linkage
 		criterion \citep{ward1963hierarchical} in order to minimise the variance within each cluster.
 
-		Figure \ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
-		distortion features spaces. The clusters identified are similar for both the processed features
-		(\ref{fig:DistortionProcessedClusters}) and the feature differences
-		(\ref{fig:DistortionDifferenceClusters}), the cluster containing `harsh' and `bright' being the most
-		distant from that containing `warm', `cream' and `fuzz' and the term `crunch' siting in a cluster separate
-		from the majority of the other terms. This leads to the formation of three distinct timbral groups used to
-		describe the application of distortion (`warm', `bright' and `crunch'). These clusters reflect some of
-		the combinations of descriptors seen in Table \ref{tab:DistortionTermCombinations}, where `cream', `fuzz'
-		and `warm' are often used alongside each other to describe a transform.
+		\subsubsection*{Clustering of Distortion Terms}
+			Figure \ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
+			distortion features spaces. The clusters identified are similar for both the processed features
+			(\ref{fig:DistortionProcessedClusters}) and the feature differences
+			(\ref{fig:DistortionDifferenceClusters}), the cluster containing `harsh' and `bright' being the
+			most distant from that containing `warm', `cream' and `fuzz' and the term `crunch' siting in a
+			cluster separate from the majority of the other terms. This leads to the formation of three
+			distinct timbral groups used to describe the application of distortion (`warm', `bright' and
+			`crunch'). These clusters reflect some of the combinations of descriptors seen in Table
+			\ref{tab:DistortionTermCombinations}, where `cream', `fuzz' and `warm' are often used alongside
+			each other to describe a transform.
 
-		\begin{figure}[h!]
-			\centering
-			\subfloat[Processed Features]
-			{
-				\includegraphics{chapter4/Images/DistortionProcessedClusters.pdf}
-				\label{fig:DistortionProcessedClusters}
-			}
-			\subfloat[Feature Differences]
-			{
-				\includegraphics{chapter4/Images/DistortionDifferenceClusters.pdf}
-				\label{fig:DistortionDifferenceClusters}
-			}
-			\caption{Clustering of descriptors from the distortion.}
-			\label{fig:DistortionClusters}
-		\end{figure}
+			\begin{figure}[h!]
+				\centering
+				\subfloat[Processed Features]
+				{
+					\includegraphics{chapter4/Images/DistortionProcessedClusters.pdf}
+					\label{fig:DistortionProcessedClusters}
+				}
+				\subfloat[Feature Differences]
+				{
+					\includegraphics{chapter4/Images/DistortionDifferenceClusters.pdf}
+					\label{fig:DistortionDifferenceClusters}
+				}
+				\caption{Clustering of descriptors from the distortion.}
+				\label{fig:DistortionClusters}
+			\end{figure}
 		
-		The clusters identified in the equaliser (Figure \ref{fig:EqualiserClusters}) show less agreement between
-		the two different feature spaces. While the terms `warm' and `bright' were the most distant from each other
-		in the distortion feature spaces, they are two of the closest terms in the equaliser's processed feature
-		space (Figure \ref{fig:EqualiserProcessedClusters}). They are, however, separated well in the equaliser's
-		feature difference space (Figure \ref{fig:EqualiserDifferenceClusters}) suggesting that the difference
-		these terms is better described by certain change in audio features rather than an absolute feature value.
+		\subsubsection*{Clustering of Equaliser Terms}
+			The clusters identified in the equaliser (Figure \ref{fig:EqualiserClusters}) show less agreement
+			between the two different feature spaces. While the terms `warm' and `bright' were the most distant
+			from each other in the distortion feature spaces, they are two of the closest terms in the
+			equaliser's processed feature space (Figure \ref{fig:EqualiserProcessedClusters}). They are,
+			however, separated well in the equaliser's feature difference space (Figure
+			\ref{fig:EqualiserDifferenceClusters}) suggesting that the difference these terms is better
+			described by certain change in audio features rather than an absolute feature value.
+			
+			Within the equaliser's feature differences space, two main clusters are identified corresponding
+			with the `warm' and `bright' clusters from the distortion feature spaces. The `warm' cluster
+			includes the terms `deep' and `full', while the `bright' cluster includes the terms `tin', `thin',
+			`clear' and `air'. An additional `mud' cluster, containing `mud', `boom' and `box', is also
+			present. These three terms cluster better in the processed feature space indicating that they are
+			more likely to describe a particular set of feature values rather than the properties of a
+			transform. There is a similarity between these clusters and the combinations of descriptors used to
+			describe equaliser transforms (Table \ref{tab:EqualiserTermCombinations}) suggesting that some of
+			these terms may be synonymous with each other.
+
+			\begin{figure}[h!]
+%			This figure is da baddest figure, ask your dyslexic down syndromed mother.
+				\centering
+				\subfloat[Processed Features]
+				{
+					\includegraphics{chapter4/Images/EqualiserProcessedClusters.pdf}
+					\label{fig:EqualiserProcessedClusters}
+				}
+				\subfloat[Feature Differences]
+				{
+					\includegraphics{chapter4/Images/EqualiserDifferenceClusters.pdf}
+					\label{fig:EqualiserDifferenceClusters}
+				}
+				\caption{Clustering of descriptors from the equaliser.}
+				\label{fig:EqualiserClusters}
+			\end{figure}
 		
-		Within the equaliser's feature differences space, two main clusters are identified corresponding with the
-		`warm' and `bright' clusters from the distortion feature spaces. The `warm' cluster includes the terms
-		`deep' and `full', while the `bright' cluster includes the terms `tin', `thin', `clear' and `air'. An
-		additional `mud' cluster, containing `mud', `boom' and `box', is also present. These three terms cluster
-		better in the processed feature space indicating that they are more likely to describe a particular set of
-		feature values rather than the properties of a transform. There is a similarity between these clusters and
-		the combinations of descriptors used to describe equaliser transforms (Table
-		\ref{tab:EqualiserTermCombinations}) suggesting that some of these terms may be synonymous with each other.
+		\subsubsection*{Clustering Across Both Effects}
+			In order to investigate the similarity of descriptors across both plug-ins, their respective
+			feature spaces are combined and clustering is applied to produce the dendrograms shown in Figure
+			\ref{fig:CombinedClusters}. Descriptors are prepended with either and `E' or a `D' to distinguish
+			between those describing distortion transforms and those describing equaliser transforms.
 
-		\begin{figure}[h!]
-%		This figure is da baddest figure, ask your dyslexic down syndromed mother.
-			\centering
-			\subfloat[Processed Features]
-			{
-				\includegraphics{chapter4/Images/EqualiserProcessedClusters.pdf}
-				\label{fig:EqualiserProcessedClusters}
-			}
-			\subfloat[Feature Differences]
-			{
-				\includegraphics{chapter4/Images/EqualiserDifferenceClusters.pdf}
-				\label{fig:EqualiserDifferenceClusters}
-			}
-			\caption{Clustering of descriptors from the equaliser.}
-			\label{fig:EqualiserClusters}
-		\end{figure}
-		
-		In order to investigate the similarity of descriptors across both plug-ins, their respective feature spaces
-		are combined and clustering is applied to produce the dendrograms shown in Figure
-		\ref{fig:CombinedClusters}. Descriptors are prepended with either and `E' or a `D' to distinguish between
-		those describing distortion transforms and those describing equaliser transforms.
+			\begin{figure}[h!]
+				\centering
+				\subfloat[Processed Features]
+				{
+					\includegraphics{chapter4/Images/CombinedProcessedClusters.pdf}
+					\label{fig:CombinedProcessedClusters}
+				}
+				\subfloat[Feature Differences]
+				{
+					\includegraphics{chapter4/Images/CombinedDifferenceClusters.pdf}
+					\label{fig:CombinedDifferenceClusters}
+				}
+				\caption{Clustering of descriptors from the both the distortion and equaliser.}
+				\label{fig:CombinedClusters}
+			\end{figure}
 
-		\begin{figure}[h!]
-			\centering
-			\subfloat[Processed Features]
-			{
-				\includegraphics{chapter4/Images/CombinedProcessedClusters.pdf}
-				\label{fig:CombinedProcessedClusters}
-			}
-			\subfloat[Feature Differences]
-			{
-				\includegraphics{chapter4/Images/CombinedDifferenceClusters.pdf}
-				\label{fig:CombinedDifferenceClusters}
-			}
-			\caption{Clustering of descriptors from the both the distortion and equaliser.}
-			\label{fig:CombinedClusters}
-		\end{figure}
-
-		Here the `warm' clusters from each plug-in's features spaces are combined, indicating that each of these
-		descriptors describe similar transforms regardless of the processing method used. In contrast the `bright'
-		groups remain separated into clusters comprised mostly of descriptors from a single plug-in, suggesting
-		that the use of these terms may differ depending on the nature of the audio transform.  Further evidence of
-		this is found in the similarity of the terms `bright' and `harsh'. When used to describe distortion
-		transforms these terms always sit adjacent to one another in a cluster, whereas for equaliser transforms
-		they are separated by a greater distance. These terms are more likely to be synonymous when describing
-		audio processed by a distortion then they are for equalised audio. 
+			Here the `warm' clusters from each plug-in's features spaces are combined, indicating that each of
+			these descriptors describe similar transforms regardless of the processing method used. In contrast
+			the `bright' groups remain separated into clusters comprised mostly of descriptors from a single
+			plug-in, suggesting that the use of these terms may differ depending on the nature of the audio
+			transform.  Further evidence of this is found in the similarity of the terms `bright' and `harsh'.
+			When used to describe distortion transforms these terms always sit adjacent to one another in a
+			cluster, whereas for equaliser transforms they are separated by a greater distance. These terms are
+			more likely to be synonymous when describing audio processed by a distortion then they are for
+			equalised audio. 
 
 	\subsection{Agreement}
 	\label{sec:TimbreEvaluation-Analysis-Agreement}
