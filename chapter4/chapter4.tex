@@ -482,13 +482,13 @@
 		across every transform labelled with that descriptor (Equation \ref{eq:FeatureSpaceCoords}).
 
 		\begin{equation}
-			p_{d,i} = \sum_{n = 1}^{N_{d}} \sum_{f = 1}^{F_{d,n}} \frac{x_{d,n,f,i}}{N_{d}F_{d,n}}
+			p_{d,i} = \frac{1}{N_{d}} \sum_{n = 1}^{N_{d}} \bar{x}_{d,n,i}
 			\label{eq:FeatureSpaceCoords}
 		\end{equation}
 
-		Where $N_{d}$ is the number of transforms described by descriptor $d$, $F_{d,n}$ is the number of frames of
-		audio analysed when saving the $n$\super{th} transform described by descriptor $d$, and $x_{d,n,f,i}$ is
-		the value of feature $i$ in the $f$\super{th} frame of the audio associated with that transform.
+		Where $N_{d}$ is the number of transforms described by descriptor $d$, and $x_{d,n,i}$ is the mean of
+		feature $i$ across every frame of the signals analysed when saving the $n$\super{th} transform described by
+		descriptor $d$.
 		
 		For each audio effect two separate feature spaces are constructed. In the first, a terms coordinates are
 		calculated from the audio features of the processed signals. This gives insight into how terms are used to
