@@ -689,7 +689,7 @@
 			no effect on the perception of the term. In the first case the agreement score should be decreased,
 			but in the second the agreement score should not be affected. Because of this ambiguity, it is
 			preferable that a high variance has negligible effect on the agreement score. In this way, if a
-			high variance does imply disagreement it does not unduly increase the agreement score and if at
+			high variance does imply disagreement it does not unduly increase the agreement score and if it
 			does not imply disagreement it does to unduly decrease the agreement score.
 			
 			This can be implemented by changing Equation \ref{eq:ReciprocalOfSumAgreement} to be a sum of
@@ -701,28 +701,40 @@
 				\label{eq:SumOfReciprocalAgreement}
 			\end{equation}
 
+			Using this equation the agreement score is increased for each audio feature in which the
+			descriptor exhibits a small variance, better identifying descriptors with a defined position in
+			the feature space.
+
 		\subsubsection*{Dependent Features}
 			It may be the case that users agree that a particular term describes a relationship between several
 			audio features (e.g. a spectral centroid lying at the 4\super{th} harmonic). Equations
 			\ref{eq:SocialEqAgreement}, \ref{eq:ReciprocalOfSumAgreement} and \ref{eq:SumOfReciprocalAgreement}
 			all ignore any dependence between audio features.
 
-			Relationships between features can be taken into account by calculating the covariance matrix for
-			the transforms associated with a term. The variances in each feature can then be substituted with
-			the eigenvalues of this matrix, as shown in Equation \ref{eq:EigenvalueAgreement}.
+			Relationships between features can be taken into account by examining the covariance matrix,
+			$\Sigma_{d}$, of the coordinates of the transforms associated with a descriptor, $d$. This is
+			calculated using Equation \ref{eq:CovarianceMatrix}.
+
+			\begin{equation}
+				{\Sigma_{d}}_{ij} = \frac{1}{N_{d} - 1} \sum_{n = 1}^{N_{d}} 
+						     (\bar{x}_{d,n,i} - \mu_{d,i})(\bar{x}_{d,n,j} - \mu_{d,j})
+				\label{eq:CovarianceMatrix}
+			\end{equation}
+			
+			The variances used in Equation \ref{eq:SumOfReciprocalAgreement} can then be substituted with the
+			eigenvalues of this matrix, as shown in Equation \ref{eq:EigenvalueAgreement}.
 
 			\begin{equation}
 				A(d) = \sum_{k = 1}^{K} \frac{1}{\lambda_{d,k}}
 				\label{eq:EigenvalueAgreement}
 			\end{equation}
 			
-			Where $\lambda_{d, k}$ is the $k$\super{th} eigenvalue of the covariance matrix for all transforms
-			labelled with descriptor $d$.
+			Where $\lambda_{d, k}$ is the $k$\super{th} eigenvalue of the covariance matrix $\Sigma_{d}$.
 
 			When using Equation \ref{eq:EigenvalueAgreement}, the number of eigenvalues used, $K$, needs to be
 			carefully selected. If $N_{d}$ is less than or equal to the total number of audio features, the
-			covariance matrix will be singular, meaning it will have one or more eigenvalues equal to zero. At
-			most, only the $N_{d} - 1$ largest eigenvalues should be used.
+			covariance matrix will be singular, meaning that one or more of its eigenvalues will be equal to
+			zero. At most, only the $N_{d} - 1$ largest eigenvalues should be used.
 			
 			Any other eigenvalues equal to zero would imply a perfect linear relationship between a combination
 			of audio features. If the features concerned are mathematically defined to be directly proportional
