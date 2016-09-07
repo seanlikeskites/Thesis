@@ -477,17 +477,17 @@
 	\label{sec:TimbreEvaluation-Analysis-TermClustering}
 		Each of the terms arrived at, after stemming, in Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}
 		can be described by their position in a multi dimensional audio feature space. Each dimension of this space
-		corresponds to one of the audio features extracted by the SAFE plug-ins. The position, $p_{d,i}$, of a
-		term, $d$, in the $i$\super{th} dimension of the timbre space is calculated as the mean value of feature
-		$i$ across every transform labelled with that descriptor (Equation \ref{eq:FeatureSpaceCoords}).
+		corresponds to one of the audio features extracted by the SAFE plug-ins. The position, $p_{d,k}$, of a
+		term, $d$, in the $k$\super{th} dimension of the timbre space is calculated as the mean value of feature
+		$k$ across every transform labelled with that descriptor (Equation \ref{eq:FeatureSpaceCoords}).
 
 		\begin{equation}
-			p_{d,i} = \frac{1}{N_{d}} \sum_{n = 1}^{N_{d}} \bar{x}_{d,n,i}
+			p_{d,k} = \frac{1}{N_{d}} \sum_{n = 1}^{N_{d}} \bar{x}_{d,n,k}
 			\label{eq:FeatureSpaceCoords}
 		\end{equation}
 
-		Where $N_{d}$ is the number of transforms described by descriptor $d$, and $\bar{x}_{d,n,i}$ is the mean of
-		feature $i$ across every frame of the signals analysed when saving the $n$\super{th} transform described by
+		Where $N_{d}$ is the number of transforms described by descriptor $d$, and $\bar{x}_{d,n,k}$ is the mean of
+		feature $k$ across every frame of the signals analysed when saving the $n$\super{th} transform described by
 		descriptor $d$.
 		
 		For each audio effect two separate feature spaces are constructed. In the first, a terms coordinates are
@@ -601,13 +601,15 @@
 
 	\subsection{Agreement}
 	\label{sec:TimbreEvaluation-Analysis-Agreement}
-		In order to draw conclusions about the region a descriptor covers in a feature space, it is necessary to
-		have a measure of agreement for a descriptor. This measure describes the level to which different users
-		agree on the semantic meaning of descriptive terms. The closer together the transforms associated with a
-		particular descriptor are grouped in the feature space, the higher that descriptor's agreement score.
+		The clustering performed in the previous section is applied to the mean positions of each of the terms. In
+		reality a term describes several transforms which cover a region of the feature space. In order to draw
+		conclusions about the region a descriptor covers in a feature space, it is necessary to have a measure of
+		agreement for a descriptor. This measure describes the level to which different users agree on the semantic
+		meaning of descriptive terms. The closer together the transforms, associated with a particular descriptor,
+		are grouped in the feature space, the higher that descriptor's agreement score.
 
 		\citet{cartwright2013socialeq} measure how well participants agree on the semantic annotation of graphic
-		equaliser parameter settings. For each participant a set of weightings is produced which describes the
+		equaliser parameter settings. For each participant, a set of weightings is produced which describes the
 		influence of each equaliser band on the perception of a particular timbral descriptor. The agreement score
 		for a descriptor, $A(d)$, measures how similar these weightings are across different test participants
 		using Equation \ref{eq:SocialEqAgreement}.
@@ -626,11 +628,11 @@
 
 		This can be applied to data from the SAFE plug-ins by using audio feature values in place of parameter
 		weightings. In Equation \ref{eq:SocialEqAgreement}, $N_{d}$ is then the number of transforms labelled with
-		descriptor $d$, $s_{d,k}^{2}$ is the variance of feature $k$ across those transforms and $K$ is the
+		descriptor $d$, $s_{d,k}^{2}$ is the variance of feature $k$ across those transforms and $K$ is the total
 		number of features. As when clustering, the feature space should be standardised prior to calculating
 		agreement to remove the biasing effects caused by the ranges of each feature.
 
-		This agreement measure has several properties which do not necessarily reflect what is being measured:
+		This agreement score has several properties which do not necessarily reflect what is being measured:
 
 		\begin{itemize}
 			\item A larger number of transforms, $N_{d}$, produces higher agreement.
@@ -643,17 +645,26 @@
 
 		\subsubsection*{Number of Transforms}
 			In Equation \ref{eq:SocialEqAgreement} the logarithm of the number of transforms, $N_{d}$, is used
-			to scale the agreement score. This measures a different concept of agreement to what we desire for
-			this work. Rather than measuring the size of the region a descriptor occupies in the feature space,
-			it measure how many individual transforms make up that region. A sufficiently large number of
-			transforms will produce a large agreement score regardless of how spread apart they are. To measure
-			the size of the region a descriptor occupies, the scaling factor should be removed giving Equation
-			\ref{eq:ReciprocalOfSumAgreement}.
+			to scale the agreement score. This measures a different concept of agreement to what is desired for
+			this work. It measures the size of a region in the feature space along with how many participants
+			agree that the descriptor applies to the region, obscuring information about of how tightly the
+			transforms in a region are clustered. A sufficiently large number of transforms will produce a
+			large agreement score regardless of how spread apart they are. In this work, the agreement of
+			participants as to the position of a descriptor in the feature space is needed. This is better
+			measured by removing the scaling factor, giving Equation \ref{eq:ReciprocalOfSumAgreement}.
 
 			\begin{equation}
 				A(d) = \frac{1}{\sum_{k = 1}^{K} s_{d,k}^{2}}
 				\label{eq:ReciprocalOfSumAgreement}
 			\end{equation}
+
+			Measuring agreement in this way provides an indication of how easily audio can be manipulated to
+			exhibit a certain timbre. If the position of a descriptor in the feature space is well defined
+			(occupies a small region) then the manipulations which need to be applied to the audio are better
+			defined. The audio features of a signal must be moved to a particular location in the feature
+			space. As the size of the region a descriptor occupies increases, the number of different
+			manipulations which can be applied to a signal to place it within that region increases. The
+			descriptor could describe various different timbral effects.
 
 			To take account of the number of transforms labelled with a particular descriptor, Bessel's
 			correction can be used in the calculation of variance as shown in Equation
@@ -661,11 +672,11 @@
 			the variation present in the population.
 
 			\begin{equation}
-				s_{d,k}^{2} = \frac{1}{N_{d} - 1} \sum_{n = 1}^{N_{d}} (x_{d,k,n} - \bar{x}_{d,k})^{2}
+				s_{d,k}^{2} = \frac{1}{N_{d} - 1} \sum_{n = 1}^{N_{d}} (x_{d,n,k} - \bar{x}_{d,k})^{2}
 				\label{eq:UnbiasedVariance}
 			\end{equation}
 
-			Where $x_{d,k,n}$ is the value of feature $k$ for the $n$\super{th} transform labelled with
+			Where $x_{d,n,k}$ is the value of feature $k$ for the $n$\super{th} transform labelled with
 			descriptor $d$ and $\bar{x}_{d,k}$ is the mean value of feature $k$ across all transforms labelled
 			with descriptor $d$.
 
