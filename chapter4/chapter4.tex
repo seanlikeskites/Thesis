@@ -477,12 +477,12 @@
 	\label{sec:TimbreEvaluation-Analysis-TermClustering}
 		Each of the terms arrived at, after stemming, in Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}
 		can be described by their position in a multi dimensional audio feature space. Each dimension of this space
-		corresponds to one of the audio features extracted by the SAFE plug-ins. The position, $p_{d,k}$, of a
+		corresponds to one of the audio features extracted by the SAFE plug-ins. The position, $\mu_{d,k}$, of a
 		term, $d$, in the $k$\super{th} dimension of the timbre space is calculated as the mean value of feature
 		$k$ across every transform labelled with that descriptor (Equation \ref{eq:FeatureSpaceCoords}).
 
 		\begin{equation}
-			p_{d,k} = \frac{1}{N_{d}} \sum_{n = 1}^{N_{d}} \bar{x}_{d,n,k}
+			\mu_{d,k} = \frac{1}{N_{d}} \sum_{n = 1}^{N_{d}} \bar{x}_{d,n,k}
 			\label{eq:FeatureSpaceCoords}
 		\end{equation}
 
@@ -672,13 +672,11 @@
 			the variation present in the population.
 
 			\begin{equation}
-				s_{d,k}^{2} = \frac{1}{N_{d} - 1} \sum_{n = 1}^{N_{d}} (x_{d,n,k} - \bar{x}_{d,k})^{2}
+				s_{d,k}^{2} = \frac{1}{N_{d} - 1} \sum_{n = 1}^{N_{d}} (\bar{x}_{d,n,k} - \mu_{d,k})^{2}
 				\label{eq:UnbiasedVariance}
 			\end{equation}
 
-			Where $x_{d,n,k}$ is the value of feature $k$ for the $n$\super{th} transform labelled with
-			descriptor $d$ and $\bar{x}_{d,k}$ is the mean value of feature $k$ across all transforms labelled
-			with descriptor $d$.
+			Where $\bar{x}_{d,n,k}$ and $\mu_{d,k}$ are as described for Equation \ref{eq:FeatureSpaceCoords}.
 
 			Using this measure of variance in the agreement score provides an approximation of how closely
 			clustered transforms, labeled with a certain descriptor, would be in a feature space which
