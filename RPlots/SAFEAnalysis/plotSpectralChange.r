@@ -31,6 +31,7 @@ plotSpectrum <- function(data, legendPos, legendncol, yBorder=c(0, 0), ax1=NULL,
 
 	nTerms <- nrow(meanSpectra)
 	colours <- rainbow(nTerms)
+	colours[colours == "#FFFF00FF"] <- "#FFD700FF"
 	ltys <- rep(c(1, 2, 4, 5, 6), 1, nTerms)
 
 	for (i in 1:nTerms)
@@ -59,6 +60,7 @@ plotSpectralChange <- function(proc, unproc, legendPos, legendncol, yBorder=c(0,
 
 	nTerms <- nrow(meanSpectra)
 	colours <- rainbow(nTerms)
+	colours[colours == "#FFFF00FF"] <- "#FFD700FF"
 	ltys <- rep(c(1, 2, 4, 5, 6), 1, nTerms)
 
 	for (i in 1:nTerms)

@@ -205,6 +205,7 @@ eqProcPCA <- prcomp(eqProc, scale=TRUE)
 eqProcPCAPoints <- eqProcPCA$x
 eqProcPCAPointsSel <- getDescriptorPositions(eqProcPCAPoints, eqDescriptors)
 eqPalette <- rainbow(length(eqDescriptors))
+eqPalette[eqPalette == "#FFFF00FF"] <- "#FFD700FF"
 eqRemainderPalette <- eqPalette[c(1:3, 5:11)]
 eqBrightWarmPalette <- eqPalette[c(4, 12)]
 

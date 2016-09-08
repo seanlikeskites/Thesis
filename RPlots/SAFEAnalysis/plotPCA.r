@@ -10,6 +10,7 @@ plotIndividualPCA <- function(points, dims, legendPos, border=c(0, 0, 0, 0), col
 	if (is.null(colourPalette))
 	{
 		colourPalette <- rainbow(length(uniqueDescriptors))
+		colourPalette[colourPalette == "#FFFF00FF"] <- "#FFD700FF"
 	}
 
 	colours <- "black"
