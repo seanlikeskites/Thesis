@@ -54,6 +54,7 @@ plotCentroidBiplot <- function(PCA, dims, desc, var, border=c(0.15, 0.15, 0.15, 
 	descriptors <- rownames(centroids)
 	uniqueDescriptors <- sort(unique(descriptors))
 	colourPalette <- rainbow(length(uniqueDescriptors))
+	colourPalette[colourPalette == "#FFFF00FF"] <- "#FFD700FF"
 
 	termAgreements <- termAgreement(scaledPoints)
 	agreements <- array(0, length(uniqueDescriptors))
