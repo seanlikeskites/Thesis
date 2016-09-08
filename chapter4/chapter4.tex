@@ -963,10 +963,9 @@
 
 		Two low dimensionality timbre spaces are generated for each effect, one from the feature space of the
 		processed signals and the other from the feature space describing the difference in feature values between
-		the processed and unprocessed signals. To generate these timbre spaces, the feature values from every
-		applicable transform in the dataset (304 from the distortion and 1483 from the equaliser) are standardised
-		and then undergo PCA. For every space, the knee of the PCA scree plot lies at five PCs. The final reduced
-		dimensionality timbre spaces are then constructed from the first five PCs.
+		the processed and unprocessed signals. To generate these timbre spaces, the feature spaces are first
+		standardised and then undergo PCA. For every space, the knee of the PCA scree plot lies at five PCs. The
+		final reduced dimensionality timbre spaces are then constructed from the first five PCs.
 
 		These timbre spaces are analysed in various steps. Firstly the audio features which correlate most highly
 		with each PC are determined. Features which satisfy a correlation criteria of $r > 0.7$ and $p < 0.01$ are
@@ -986,8 +985,8 @@
 		with that descriptor. In combination these two plots give a visual representation of how the audio features
 		influence the use of descriptors.
 
-		Additionally an impression of the spectral characteristics related to each descriptor can be seen by
-		examining the bark band coefficients in the feature space. When applied to the processed feature space this
+		Additionally, an impression of the spectral characteristics related to each descriptor can be seen by
+		examining the bark band coefficients of the signals. When applied to the processed feature space this
 		provides a mean bark band spectrum of the output signals described with a particular term. When applied in
 		the feature difference space it provides the mean spectral manipulation applied by transforms associated
 		with a particular term.
@@ -1036,7 +1035,7 @@
 			`crunch' is spread out across PCs 2 and 3 and concentrated to a smaller range of PC 1. This
 			suggests that `warm', `fuzz' and `cream' are used to describe signals which lie somewhere between
 			-5 and 5 in PC 2, while `crunch' is used to describe signals which line between -5 and 5 in PC 1.
-			Signals which lie withing both of these ranges could potentially be described as both `warm' and
+			Signals which lie within both of these ranges could potentially be described as both `warm' and
 			`crunch'. Table \ref{tab:DistortionTermCombinations} confirms that one such combination of
 			`warm' and `crunch' exists within the dataset.
 
@@ -1076,7 +1075,8 @@
 			term were identified. This information can be used to assist in the analysis of Figure
 			\ref{fig:DistortionProcessedCentroidsPCAs}. For instance, while the mean position of signals
 			described with the term `crunch' appears to sit at the top end of PC 2, it is known that this
-			descriptor's position in PC 2 is not significant.
+			descriptor's position in PC 2 is not significant as the individual signals are distributed across
+			the entire PC.
 
 			Combining the information from both visualisations of the timbre space, it is suggested that the
 			terms `warm', `fuzz' and `cream' are characterised by a relatively low spectral roll off, spectral
@@ -1091,7 +1091,7 @@
 			`rasp' and `cream' describing signals will a low proportion of high frequency energy and `bright'
 			and `harsh' describing those with a larger proportion. The spectral effects of the other PCs ore
 			not as apparent, this is likely due to the low resolution of the spectral representation but could
-			also be caused by the low number of instances of some terms.
+			also be caused by the low frequency with which some of the terms have been used.
 
 			\begin{figure}[h!]
 				\centering
@@ -1134,7 +1134,7 @@
 			\end{table}
 
 			Again `warm', `fuzz' and `cream' are best defined by their position in PC 1 while crunch is better
-			defined in PC 2. For the majority of the descriptors the agreement scores are not substantially
+			defined in PC 2. For the majority of the descriptors, the agreement scores are not substantially
 			different from those calculated in the processed feature timbre space, making it uncertain whether
 			the terms best describe a signal's features or the manipulations applied by a transform. `cream'
 			does receive a higher agreement score but the small number of transforms labelled with this
@@ -1177,11 +1177,11 @@
 			these features and moved by the transforms labelled with `warm', `fuzz' and `crunch'. This is
 			reflected in Figure \ref{fig:DistortionProcessedSpectra} where the mean spectral manipulations for
 			these descriptors are mostly flat. This is an indication that, when used for describing signals
-			processed by distortion, these descriptors describe features of the output signal rather than of
-			the transform applied.
+			processed by distortion, these terms describe features of the output signal rather than of the
+			transform applied.
 
 			PC 1 is correlated with Krimphoff irregularity, spectral skewness and spectral kurtosis, the
-			position of `crunch' in this PC corresponding to a small increase in each of these features.
+			position of `crunch', in this PC, corresponding to a small increase in each of these features.
 			Looking at the bark band spectra and spectral manipulations in Figures
 			\ref{fig:DistortionProcessedSpectra} and \ref{fig:DistortionDifferenceSpectra} the magnitude of
 			these increases can be investigated. For `crunch', at the low end of PC 1, a small amount higher
@@ -1249,7 +1249,7 @@
 			\end{table}
 
 			Within the equaliser's processed feature timbre space, the terms `warm' and `bright' do not occupy
-			distinct regions to one another. This reflects the clustering of these terms seen in Figure
+			distinct regions from one another. This reflects the clustering of these terms seen in Figure
 			\ref{fig:EqualiserProcessedClusters}, again suggesting that these terms have not been used to
 			describe distinct properties of the processed signal. The remaining descriptors are also difficult
 			to distinguish. One apparent pattern is the separation of `harsh' and `mud' in PC 2, although this
@@ -1361,9 +1361,9 @@
 
 			The clusters of transforms labelled with `warm' and `bright' are now better separated in PC 2,
 			`bright' taking positive values and `warm' negative values. In the other PCs these descriptors
-			occupy very similar ranges, suggesting that the distinction between these descriptors is in how the
-			features which correlate with PC 2 are manipulated. The clusters of the remaining descriptors are
-			again difficult to discriminate, the separation of `harsh' and `mud' in PC 2 being the most
+			occupy very similar ranges, suggesting that the distinction between `warm' and `bright' is in how
+			the features which correlate with PC 2 are manipulated. The clusters of the remaining descriptors
+			are again difficult to discriminate, the separation of `harsh' and `mud' in PC 2 being the most
 			noticeable pattern.
 
 			The salient features for this timbre space are shown in Datum
@@ -1407,8 +1407,8 @@
 			versions of `bright' and `mud' as a more accentuated version of `warm'.
 
 			The more distinct patterns seen by using the feature differences suggest that these terms have been
-			used to describe the transform rather than he output signal. The process of making a signal
-			`warmer' or `brighter' is independent of the absolute value of spectral centroid or spectral roll
+			used to describe the transform rather than the output signal. The process of making a signal
+			`warmer' or `brighter' is independent of the resulting value of spectral centroid or spectral roll
 			off. It is the direction in which these features are moved which is being described. This makes it
 			conceptually easier to control audio in terms of these descriptors, rather than producing an output
 			with a particular feature value, the feature need only be moved in the correct direction.
@@ -1421,10 +1421,10 @@
 			\end{figure}
 
 			The usage of `deep' in the dataset seems to be a property of the input signals being used. Figure
-			\ref{fig:EqualiserDifferenceSpectra} shows that very little manipulation was applied in producing a
-			`deep' signal. While it is clear from Figure \ref{fig:EqualiserProcessedSpectra} that `deep'
-			describes signals with a large proportion of low frequency energy, no processing has been applied
-			to cause this. As such, the signals must have been `deep' prior to processing.
+			\ref{fig:EqualiserDifferenceSpectra} shows that very little spectral manipulation was applied in
+			producing a `deep' signal. While it is clear from Figure \ref{fig:EqualiserProcessedSpectra} that
+			`deep' describes signals with a large proportion of low frequency energy, no processing has been
+			applied to cause this. As such, the signals must have been `deep' prior to processing.
 
 \section{Results Summary}
 	\note
