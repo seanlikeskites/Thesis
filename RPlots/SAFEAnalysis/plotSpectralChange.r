@@ -7,6 +7,8 @@ plotSpectrum <- function(data, legendPos, legendncol, yBorder=c(0, 0), ax1=NULL,
 {
 	barkBands <- paste("Bark Coefficient ", as.character(0:24), sep="")
 	spectra <- data[,barkBands]
+	spectra <- t(scale(t(spectra), center=FALSE, scale=apply(spectra, 1, sum)))
+	spectra <- sqrt(spectra)
 	rmss <- apply(spectra, 2, function(x) tapply(x, rownames(data), rms))
 	meanSpectra <- 20*log10(rmss)
 
@@ -46,6 +48,7 @@ plotSpectralChange <- function(proc, unproc, legendPos, legendncol, yBorder=c(0,
 	procSpectra <- proc[,barkBands]
 	unprocSpectra <- unproc[,barkBands]
 	gains <- 20*log10(procSpectra / unprocSpectra)
+	gains <- t(scale(t(gains), center=TRUE, scale=FALSE))
 	meanSpectra <- apply(gains, 2, function(x) tapply(x, rownames(gains), mean))
 
 	yRange <- diff(range(meanSpectra))

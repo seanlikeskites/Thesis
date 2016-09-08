@@ -458,7 +458,7 @@ source("plotSpectralChange.r")
 
 # distortion processed
 pdf("DistortionProcessedSpectra.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotSpectrum(distProcSel, "topright", 2, ax2=c(-40, -30, -20, -10))
+plotSpectrum(distProcSel, "topright", 2)
 dev.off()
 embed_fonts("DistortionProcessedSpectra.pdf")
 
@@ -471,13 +471,13 @@ embed_fonts("DistortionDifferenceSpectra.pdf")
 
 # equaliser processed
 pdf("EqualiserProcessedSpectra.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotSpectrum(eqProcSel, "topright", 4, c(0, 0.2), ax2=c(-60, -40, -20, 0))
+plotSpectrum(eqProcSel, "topright", 4)
 dev.off()
 embed_fonts("EqualiserProcessedSpectra.pdf")
 
 # equaliser difference
 eqUnprocSel <- eqProcSel - eqDiffSel
 pdf("EqualiserDifferenceSpectra.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotSpectralChange(eqProcSel, eqUnprocSel, "bottomright", 3, c(0.2, 0))
+plotSpectralChange(eqProcSel, eqUnprocSel, "bottomright", 3, c(0.3, 0))
 dev.off()
 embed_fonts("EqualiserDifferenceSpectra.pdf")
