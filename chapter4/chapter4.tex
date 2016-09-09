@@ -1292,7 +1292,7 @@
 			Signals with a larger proportion of high frequency energy being positioned at the top and those
 			with more low frequency energy at the bottom. The descriptors are spread out across this dimension,
 			illustrating a general trend that `deep', `mud', `boom' and `warm' are used to describe high
-			proportions of low frequencies and 'harsh', 'tin' and 'clear' used to describe higher proportions
+			proportions of low frequencies and `harsh', `tin' and `clear' used to describe higher proportions
 			of high frequencies. Examining the mean bark band spectra of these signals (Figure
 			\ref{fig:EqualiserProcessedSpectra}) these trends can be seen. 
 
@@ -1437,29 +1437,30 @@
 		\item Muddiness: mud, boom and box.
 	\end{itemize}
 
-	These descriptor groups are used differently depending on the nature of the processing being applied.
+	`Warmth' is used in a similar manner when describing distortion and equaliser transforms. It is used to describe a
+	shift in energy towards the lower end of the spectrum, decreasing the spectral centroid and spectral roll off. This
+	corresponds to amplifying the low frequencies using an equaliser of applying a nonlinearity which produces a
+	spectrum with a low proportion of high frequency energy. `Warm' and its related descriptors can be further
+	distinguished by the smoothness of the spectrum, `deep' signals being having the smoothest spectra with `full',
+	`cream', `warm' then `fuzz' describing increasing irregularity.
 
-	\note
-	{
-		Summarise those results!
+	`Brightness' describes slightly different properties depending on the nature of the processing. In all cases it it
+	associated with an increase in spectral centroid, increasing the proportion of high frequency energy in the signal.
+	For the nonlinearity used in the SAFE distortion plug-in `bright' and 'harsh' both describe similar transforms,
+	those producing signals which have a significant proportion of high frequency energy. For equalisation the terms
+	can better separated, `bright' describing a small amplification of high frequencies and `harsh' a larger one.
 
-		\begin{itemize}
-			\item Four main groups of descriptors, `warm', `bright', `crunch' and `mud'.
-			\item `warm' is used similarly across both plug-ins.
-			\item `bright' seems to mean slightly different things depending on the processing, this could be
-				due to the way each system adds high frequency energy. Distortion `bright' is synonymous
-				with `harsh'. While equaliser `bright' and `harsh' are more distinct.
-			\item `warm' is associated with spectral centroid, spectral roll off and spectral standard
-				deviation. With distortion like effects it describes output signals which have more low
-				frequencies than high. With eq like effects it describes transforms which skew the spectrum
-				towards the lower end.
-			\item `bright' is associated with the same features but at the other extreme, greater proportions
-				of high frequency energy. In the eq `harsh' is a more pronounced version of it, whereas in
-				the distortion `harsh' is synonymous.
-			\item `crunchiness' is a descriptor associated with distortion only. It describes distortion which
-				flattens out the spectrum, not introducing too much high frequency energy to become
-				`harsh'.
-			\item `mud' is associated with high levels of low frequency energy, a more accentuated version of
-				`warm'.
-		\end{itemize}
-	}
+	`Crunchiness' is a term used only to describe audio processed by the distortion effect. Here it describes the
+	application of a nonlinearity which flattens the spectrum of a signal. As the proportion of high frequency energy
+	introduced by the nonlinearity increases the terms used to describe it move from `warm' through `crunch' to
+	`bright' and `harsh'. There is a crossover point at which both `warm and `crunch' are applicable. `Crunchiness' is
+	distinguished from terms used to describe equalisation by a slight increase in spectral irregularity. A typical
+	harmonic signal will have a fairly smooth decrease in the amplitude of its partials. Once a nonlinearity has been
+	applied the overall shape of the spectrum may appear flatter but the variation in amplitude between all the
+	distortion components creates a more irregular spectrum.
+
+	`Muddiness' has only been used to describe signals processed by the equaliser. It is characterised by the
+	introduction of a large proportion of low frequency energy, more so than `warm'. The different descriptors in this
+	group can be differentiated by the frequency range this energy is introduced to, `boom' adding the most in the
+	first bark band (20-100Hz), `mud' in the second and third bark bands (200-400Hz) and `box' in the sixth and seventh
+	bark bands (630-920Hz).
