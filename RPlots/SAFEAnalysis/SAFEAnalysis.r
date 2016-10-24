@@ -152,6 +152,15 @@ a <- plot(combDiffDend, main=NA, sub=NA, xlim=c(ceiling(attr(combDiffDend, "heig
 dev.off()
 embed_fonts("CombinedDifferenceClusters.pdf")
 
+# save cluster distances
+distProcDist <- as.matrix(cophenetic(distProcClust))
+distDiffDist <- as.matrix(cophenetic(distDiffClust))
+eqProcDist <- as.matrix(cophenetic(eqProcClust))
+eqDiffDist <- as.matrix(cophenetic(eqDiffClust))
+combProcDist <- as.matrix(cophenetic(combProcClust))
+combDiffDist <- as.matrix(cophenetic(combDiffClust))
+save(distProcDist, distDiffDist, eqProcDist, eqDiffDist, combProcDist, combDiffDist, file="ClusterDistances.RData")
+
 ########################################################
 # do some PCA
 ########################################################
