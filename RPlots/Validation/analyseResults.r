@@ -48,3 +48,14 @@ crunch[,2:4] <- safeStem(crunch[,2:4])
 
 harsh <- prependDescriptors(harsh, 2)
 crunch <- prependDescriptors(crunch, c())
+
+# these need some serious thinking about, can we just use the closest shared descriptor?
+harshDists <- data.frame(harsh)
+harshDists[,2] <- combDiffDist["E:warm", harsh[,2]]
+harshDists[,3] <- combDiffDist["D:bright", harsh[,3]]
+harshDists[,4] <- combDiffDist["D:harsh", harsh[,4]]
+
+crunchDists <- data.frame(crunch)
+crunchDists[,2] <- combDiffDist["E:harsh", crunch[,2]]
+crunchDists[,3] <- combDiffDist["D:bright", crunch[,3]]
+crunchDists[,4] <- combDiffDist["D:crunch", crunch[,4]]
