@@ -1,27 +1,40 @@
 source("../SAFEAnalysis/stemming.r")
 load("../SAFEAnalysis/ClusterDistances.RData")
 
-prependDescriptors <- function(descriptors, cols)
+getDistances <- function(descriptors, cols, distances)
 {
-	distDescriptors <- c("crunch", "fuzz", "cream", "rasp", "smooth", "harsh")
+	distDescriptors <- c("crunch", "fuzz", "cream", "rasp", "smooth")
 	eqDescriptors <- c("clear", "air", "thin", "full", "boom", "box", "tin", "deep", "mud")
-	sharedDescriptors <- c("warm", "bright")
+	sharedDescriptors <- c("warm", "bright", "harsh")
 
-	distIdx <- descriptors %in% distDescriptors
-	descriptors[distIdx] <- paste("D:", descriptors[distIdx], sep="")
+	outDists <- descriptors
 
-	eqIdx <- descriptors %in% eqDescriptors
-	descriptors[eqIdx] <- paste("E:", descriptors[eqIdx], sep="")
+	for (i in 1:nrow(descriptors))
+	{
+		for (j in 2:4)
+		{
+			term <- descriptors[i, j]
+			target <- cols[j - 1]
 
-	special <- descriptors[,cols]
-	specialIdx <- special %in% sharedDescriptors
-	special[specialIdx] <- paste("E:", special[specialIdx], sep="")
-	descriptors[,cols] <- special
+			if (term %in% distDescriptors)
+				term <- paste("D:", term, sep="")
+			else if (term %in% eqDescriptors)
+				term <- paste("E:", term, sep="")
+			else if (term %in% sharedDescriptors)
+				term <- c(paste("E:", term, sep=""), paste("D:", term, sep=""))
 
-	sharedIdx <- descriptors %in% sharedDescriptors
-	descriptors[sharedIdx] <- paste("D:", descriptors[sharedIdx], sep="")
+			if (target %in% distDescriptors)
+				target <- paste("D:", target, sep="")
+			else if (target %in% eqDescriptors)
+				target <- paste("E:", target, sep="")
+			else if (target %in% sharedDescriptors)
+				target <- c(paste("E:", target, sep=""), paste("D:", target, sep=""))
 
-	return(descriptors)
+			outDists[i, j] <- min(distances[term, target])
+		}
+	}
+
+	return(data.frame(outDists))
 }
 
 doods <- dir("results")
@@ -46,16 +59,8 @@ crunch <- trimws(as.matrix(crunch[order(crunch$V1),]))
 harsh[,2:4] <- safeStem(harsh[,2:4])
 crunch[,2:4] <- safeStem(crunch[,2:4])
 
-harsh <- prependDescriptors(harsh, 2)
-crunch <- prependDescriptors(crunch, c())
+harshProcDists <- getDistances(harsh, c("warm", "bright", "harsh"), combProcDist)
+harshDiffDists <- getDistances(harsh, c("warm", "bright", "harsh"), combDiffDist)
 
-# these need some serious thinking about, can we just use the closest shared descriptor?
-harshDists <- data.frame(harsh)
-harshDists[,2] <- combDiffDist["E:warm", harsh[,2]]
-harshDists[,3] <- combDiffDist["D:bright", harsh[,3]]
-harshDists[,4] <- combDiffDist["D:harsh", harsh[,4]]
-
-crunchDists <- data.frame(crunch)
-crunchDists[,2] <- combDiffDist["E:harsh", crunch[,2]]
-crunchDists[,3] <- combDiffDist["D:bright", crunch[,3]]
-crunchDists[,4] <- combDiffDist["D:crunch", crunch[,4]]
+crunchProcDists <- getDistances(crunch, c("harsh", "bright", "crunch"), combProcDist)
+crunchDiffDists <- getDistances(crunch, c("harsh", "bright", "crunch"), combDiffDist)
