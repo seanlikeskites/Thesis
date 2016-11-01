@@ -7,14 +7,15 @@ getDistances <- function(descriptors, cols, distances)
 	eqDescriptors <- c("clear", "air", "thin", "full", "boom", "box", "tin", "deep", "mud")
 	sharedDescriptors <- c("warm", "bright", "harsh")
 
-	outDists <- descriptors
+	outDists <- matrix(0, nrow(descriptors), 3)
+	rownames(outDists) <- descriptors[,1]
 
 	for (i in 1:nrow(descriptors))
 	{
-		for (j in 2:4)
+		for (j in 1:3)
 		{
-			term <- descriptors[i, j]
-			target <- cols[j - 1]
+			term <- descriptors[i, j + 1]
+			target <- cols[j]
 
 			if (term %in% distDescriptors)
 				term <- paste("D:", term, sep="")
@@ -34,7 +35,12 @@ getDistances <- function(descriptors, cols, distances)
 		}
 	}
 
-	return(data.frame(outDists))
+	return(outDists)
+}
+
+groupMeans <- function(data)
+{
+	means <- apply(data, 2, function(x) tapply(x, rownames(data), mean))
 }
 
 doods <- dir("results")
