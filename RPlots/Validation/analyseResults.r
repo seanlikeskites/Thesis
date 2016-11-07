@@ -66,7 +66,13 @@ harsh[,2:4] <- safeStem(harsh[,2:4])
 crunch[,2:4] <- safeStem(crunch[,2:4])
 
 harshProcDists <- getDistances(harsh, c("warm", "bright", "harsh"), combProcDist)
+harshProcMeans <- groupMeans(harshProcDists)
+
 harshDiffDists <- getDistances(harsh, c("warm", "bright", "harsh"), combDiffDist)
+harshDiffMeans <- groupMeans(harshDiffDists)
 
 crunchProcDists <- getDistances(crunch, c("harsh", "bright", "crunch"), combProcDist)
+crunchProcMeans <- groupMeans(crunchProcDists)
+
 crunchDiffDists <- getDistances(crunch, c("harsh", "bright", "crunch"), combDiffDist)
+crunchDiffMeans <- groupMeans(crunchDiffDists)
