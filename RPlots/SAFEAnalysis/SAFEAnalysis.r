@@ -89,7 +89,7 @@ makePrettyDendrogram <- function(clusters, numColours)
 {
 	dend <- as.dendrogram(clusters)
 	dend <- color_branches(dend, k=numColours)
-	dend <- hang.dendrogram(dend, hang_height=0.1)
+	dend <- hang.dendrogram(dend, hang_height=0.3)
 }
 
 # distortion processed clusters
