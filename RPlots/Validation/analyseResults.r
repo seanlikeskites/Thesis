@@ -43,6 +43,11 @@ groupMeans <- function(data)
 	means <- apply(data, 2, function(x) tapply(x, rownames(data), mean))
 }
 
+groupSds <- function(data)
+{
+	sds <- apply(data, 2, function(x) tapply(x, rownames(data), sd))
+}
+
 doods <- dir("results")
 
 harsh <- data.frame()
@@ -67,12 +72,16 @@ crunch[,2:4] <- safeStem(crunch[,2:4])
 
 harshProcDists <- getDistances(harsh, c("warm", "bright", "harsh"), combProcDist)
 harshProcMeans <- groupMeans(harshProcDists)
+harshProcSds <- groupSds(harshProcDists)
 
 harshDiffDists <- getDistances(harsh, c("warm", "bright", "harsh"), combDiffDist)
 harshDiffMeans <- groupMeans(harshDiffDists)
+harshDiffSds <- groupSds(harshDiffDists)
 
 crunchProcDists <- getDistances(crunch, c("harsh", "bright", "crunch"), combProcDist)
 crunchProcMeans <- groupMeans(crunchProcDists)
+crunchProcSds <- groupSds(crunchProcDists)
 
 crunchDiffDists <- getDistances(crunch, c("harsh", "bright", "crunch"), combDiffDist)
 crunchDiffMeans <- groupMeans(crunchDiffDists)
+crunchDiffSds <- groupSds(crunchDiffDists)
