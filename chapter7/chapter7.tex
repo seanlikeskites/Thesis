@@ -213,6 +213,12 @@
 	\label{sec:PerceptualExperiments-SemanticControl-EffectDesign}
 
 		\subsubsection*{Warmth / Harshness}
+			\note
+			{
+				Adjusts the spectral centroid using a refined version of the system given in Figure
+				\ref{fig:TwoBandSpectralCentroidSystem}
+			}
+
 			\begin{figure}[h!]
 				\centering
 				\begin{tikzpicture}
@@ -273,6 +279,13 @@
 			\end{figure}
 
 		\subsubsection*{Harshness / Crunchiness}
+			\note
+			{
+				Based on the techniques discussed in Section
+				\ref{sec:FeatureControl-Parameterisation-Irregularity}. Only 6 harmonics controlled and a
+				surrogate harmonic profile is used to ease computational load.
+			}
+
 			\begin{figure}[h!]
 				\centering
 				\begin{tikzpicture}
