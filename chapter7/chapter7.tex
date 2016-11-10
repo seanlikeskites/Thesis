@@ -211,7 +211,68 @@
 
 	\subsection{Effect Design}
 	\label{sec:PerceptualExperiments-SemanticControl-EffectDesign}
-		\note{Warm-Bright-Harsh and Harsh-Crunch.}
+
+		\subsubsection*{Warm to Harsh}
+			\begin{figure}[h!]
+				\centering
+				\begin{tikzpicture}
+					\node (In) at (-1, -3.25) {$x[n]$};
+					\coordinate (InMid) at (0, -3.25);
+					\draw (In) -- (InMid);
+
+					\coordinate (Side1) at (0, -1.25);
+					\coordinate (Side2) at (0, -2.25);
+					\draw (InMid) -- (Side2);
+					\draw (Side2) -- (Side1);
+
+					\node (F0) [draw] at (2, -1.25) {$f_{0}$ Tracker};
+					\node (F0Filter) [draw] at (2, -2.25) {LPF};
+					\draw (Side2) -- (F0Filter);
+					\draw (F0) -- (F0Filter);
+					\draw (Side1) -- (F0);
+
+					\node (Centroid) [draw] at (2, -3.25) {Spectral Centroid};
+					\draw (InMid) -- (Centroid);
+
+					\node (Add) [operator] at (7.75, -3.25) {+};
+
+					% NLD
+					\node (NLD) [draw] at (3.5, -2.25) {NLD};
+					\draw (F0Filter) -- (NLD);
+
+					\node (NLDFilter) [draw] at (5, -2.25) {HPF};
+					\draw (NLD) -- (NLDFilter);
+
+					\node (NLDGain) [gain] at (6.25, -2.25) {};
+					\draw (NLDFilter) -- (NLDGain);
+					\coordinate (NLDOut) at (6.75, -2.25);
+					\draw (NLDGain) -- (NLDOut);
+					\draw (NLDOut) -- (Add);
+
+					\coordinate (NLDSide) at (5, -3.25);
+					\draw (Centroid) -- (NLDSide);
+					\draw (NLDSide) -- (NLDFilter);
+
+					% through
+					\coordinate (Through) at (0, -4.25);
+					\node (ThroughFilter) [draw] at (2, -4.25) {LPF};
+					\draw (Through) -- (ThroughFilter);
+					\draw (Side2) -- (Through);
+					\draw (Centroid) -- (ThroughFilter);
+					\node (ThroughGain) [gain] at (6.25, -4.25) {};
+					\coordinate (ThroughOut) at (6.75, -4.25);
+					\draw (ThroughFilter) -- (ThroughGain);
+					\draw (ThroughGain) -- (ThroughOut);
+					\draw (ThroughOut) -- (Add);
+
+					\node (Out) at (9, -3.25) {$y[n]$};
+					\draw (Add) -- (Out);
+				\end{tikzpicture}
+				\caption{}
+				\label{fig:WarmHarsh}
+			\end{figure}
+
+		\subsubsection*{Harsh To Crunch}
 
 	\subsection{Evaluation Experiment}
 	\label{sec:PerceptualExperiments-SemanticControl-EvaluationExperiment}
