@@ -212,7 +212,7 @@
 	\subsection{Effect Design}
 	\label{sec:PerceptualExperiments-SemanticControl-EffectDesign}
 
-		\subsubsection*{Warm to Harsh}
+		\subsubsection*{Warmth / Harshness}
 			\begin{figure}[h!]
 				\centering
 				\begin{tikzpicture}
@@ -231,7 +231,7 @@
 					\draw (F0) -- (F0Filter);
 					\draw (Side1) -- (F0);
 
-					\node (Centroid) [draw] at (2, -3.25) {Spectral Centroid};
+					\node (Centroid) [draw] at (2, -3.25) {$\mu_{s}$ Tracker};
 					\draw (InMid) -- (Centroid);
 
 					\node (Add) [operator] at (7.75, -3.25) {+};
@@ -268,11 +268,95 @@
 					\node (Out) at (9, -3.25) {$y[n]$};
 					\draw (Add) -- (Out);
 				\end{tikzpicture}
-				\caption{}
+				\caption{The system employed in the warmth / harshness effect.}
 				\label{fig:WarmHarsh}
 			\end{figure}
 
-		\subsubsection*{Harsh To Crunch}
+		\subsubsection*{Harshness / Crunchiness}
+			\begin{figure}[h!]
+				\centering
+				\begin{tikzpicture}
+					\node (In) at (-1, -0.75) {$x[n]$};
+					\coordinate (InMid) at (0, -0.75);
+					\draw (In) -- (InMid);
+
+					\coordinate (Side) at (0, 0.25);
+					\draw (InMid) -- (Side);
+
+					\node (F0) [draw] at (2, 0.25) {$f_{0}$ Tracker};
+					\node (F0Filter) [draw] at (2, -0.75) {LPF};
+					\draw (InMid) -- (F0Filter);
+					\draw (F0) -- (F0Filter);
+					\draw (Side) -- (F0);
+
+					\node (Add) [operator] at (11.5, -0.75) {+};
+
+					\coordinate (ExciterIn) at (4, -0.75);
+					\draw (F0Filter) -- (ExciterIn);
+
+					% the fundamental
+					\coordinate (F0In) at (4, 1);
+					\node (F0Gain) [gain] at (10, 1) {};
+					\draw (F0In) -- (F0Gain);
+					\coordinate (F0Out) at (10.5, 1);
+					\draw (F0Gain) -- (F0Out);
+					\draw (F0Out) -- (Add);
+
+					% second harmonic
+					\coordinate (F1In) at (4, 0);
+					\draw (F0In) -- (F1In);
+					\node (F1) [draw] at (6, 0) {2\super{nd} Harmonic};
+					\draw (F1In) -- (F1);
+
+					\node (F1Filter) [draw] at (8.5, 0) {BPF};
+					\draw (F1) -- (F1Filter);
+
+					\node (F1Gain) [gain] at (10, 0) {};
+					\draw (F1Filter) -- (F1Gain);
+					\coordinate (F1Out) at (10.5, 0);
+					\draw (F1Gain) -- (F1Out);
+					\draw (F1Out) -- (Add);
+
+					% sixth harmonic
+					\coordinate (F5In) at (4, -1.5);
+					\draw (F1In) -- (F5In);
+					\node (F5) [draw] at (6, -1.5) {6\super{th} Harmonic};
+					\draw (F5In) -- (F5);
+
+					\node (F5Filter) [draw] at (8.5, -1.5) {BPF};
+					\draw (F5) -- (F5Filter);
+
+					\node (F5Gain) [gain] at (10, -1.5) {};
+					\draw (F5Filter) -- (F5Gain);
+					\coordinate (F5Out) at (10.5, -1.5);
+					\draw (F5Gain) -- (F5Out);
+					\draw (F5Out) -- (Add);
+
+					\draw [dots] (F1) -- (F5);
+					\draw [dots] (F1Filter) -- (F5Filter);
+					\draw [dots] (F1Gain) -- (F5Gain);
+
+					% high order harmonics
+					\coordinate (HighIn) at (4, -2.5);
+					\draw (F5In) -- (HighIn);
+					\node (High) [draw] at (6, -2.5) {Nonlinear Device};
+					\draw (HighIn) -- (High);
+
+					\node (HighFilter) [draw] at (8.5, -2.5) {HPF};
+					\draw (High) -- (HighFilter);
+
+					\node (HighGain) [gain] at (10, -2.5) {};
+					\draw (HighFilter) -- (HighGain);
+					\coordinate (HighOut) at (10.5, -2.5);
+					\draw (HighGain) -- (HighOut);
+					\draw (HighOut) -- (Add);
+
+					\node (Out) at (12.75, -0.75) {$y[n]$};
+					\draw (Add) -- (Out);
+				\end{tikzpicture}
+				\caption{The system employed in the harshness / crunchiness effect.}
+				\label{fig:HarshCrunch}
+			\end{figure}
 
 	\subsection{Evaluation Experiment}
 	\label{sec:PerceptualExperiments-SemanticControl-EvaluationExperiment}
