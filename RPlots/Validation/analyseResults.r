@@ -8,13 +8,14 @@ getDistances <- function(descriptors, cols, distances)
 	sharedDescriptors <- c("warm", "bright", "harsh")
 
 	outDists <- matrix(0, nrow(descriptors), 3)
-	rownames(outDists) <- descriptors[,1]
+	rownames(outDists) <- rownames(descriptors)
+	colnames(outDists) <- colnames(descriptors)
 
 	for (i in 1:nrow(descriptors))
 	{
 		for (j in 1:3)
 		{
-			term <- descriptors[i, j + 1]
+			term <- descriptors[i, j]
 			target <- cols[j]
 
 			if (term %in% distDescriptors)
@@ -48,6 +49,9 @@ groupSds <- function(data)
 	sds <- apply(data, 2, function(x) tapply(x, rownames(data), sd))
 }
 
+descriptors <- sort(c("crunch", "fuzz", "cream", "rasp", "smooth", "clear", "air", "thin", "full", "boom", "box", "tin",
+		      "deep", "mud", "warm", "bright", "harsh"))
+
 doods <- dir("results")
 
 harsh <- data.frame()
@@ -65,11 +69,16 @@ for (dood in doods)
 }
 
 harsh <- trimws(as.matrix(harsh[order(harsh$V1),]))
+rownames(harsh) <- harsh[,1]
+harsh <- safeStem(harsh[,2:4])
+colnames(harsh) <- c("warm", "bright", "harsh")
+
 crunch <- trimws(as.matrix(crunch[order(crunch$V1),]))
+rownames(crunch) <- crunch[,1]
+crunch <- safeStem(crunch[,2:4])
+colnames(crunch) <- c("harsh", "bright", "crunch")
 
-harsh[,2:4] <- safeStem(harsh[,2:4])
-crunch[,2:4] <- safeStem(crunch[,2:4])
-
+# distances
 harshProcDists <- getDistances(harsh, c("warm", "bright", "harsh"), combProcDist)
 harshProcMeans <- groupMeans(harshProcDists)
 harshProcSds <- groupSds(harshProcDists)
@@ -85,3 +94,26 @@ crunchProcSds <- groupSds(crunchProcDists)
 crunchDiffDists <- getDistances(crunch, c("harsh", "bright", "crunch"), combDiffDist)
 crunchDiffMeans <- groupMeans(crunchDiffDists)
 crunchDiffSds <- groupSds(crunchDiffDists)
+
+# confusion matrices
+brightCounts <- table(c(harsh[,"bright"], crunch[,"bright"]))
+crunchCounts <- table(crunch[,"crunch"])
+harshCounts <- table(c(harsh[,"harsh"], crunch[,"harsh"]))
+warmCounts <- table(harsh[,"warm"])
+
+confusion <- matrix(0, 4, length(descriptors), dimnames=list(c("bright", "crunch", "harsh", "warm"), descriptors))
+confusion["bright", rownames(brightCounts)] <- brightCounts
+confusion["crunch", rownames(crunchCounts)] <- crunchCounts
+confusion["harsh", rownames(harshCounts)] <- harshCounts
+confusion["warm", rownames(warmCounts)] <- warmCounts
+
+library(gplots)
+library(extrafont)
+colMap <- colorRampPalette(c(rgb(0.96, 0.96, 1), rgb(0.1, 0.1, 0.9)), space="rgb")
+plotPointSize <- 9
+pdf("Confusion.pdf", pointsize=plotPointSize, family="CM Sans", width=3, height=3)
+heatmap.2(confusion, trace="none", col=colMap, dendrogram="column", key=FALSE, cellnote=confusion, notecol="black",
+	  cexRow=1, cexCol=1, lwid=c(0.1, 10), lhei=c(0.4, 0.6))
+dev.off()
+embed_fonts("Confusion.pdf")
+
