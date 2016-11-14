@@ -96,24 +96,57 @@ crunchDiffMeans <- groupMeans(crunchDiffDists)
 crunchDiffSds <- groupSds(crunchDiffDists)
 
 # confusion matrices
-brightCounts <- table(c(harsh[,"bright"], crunch[,"bright"]))
-crunchCounts <- table(crunch[,"crunch"])
-harshCounts <- table(c(harsh[,"harsh"], crunch[,"harsh"]))
-warmCounts <- table(harsh[,"warm"])
-
-confusion <- matrix(0, 4, length(descriptors), dimnames=list(c("bright", "crunch", "harsh", "warm"), descriptors))
-confusion["bright", rownames(brightCounts)] <- brightCounts
-confusion["crunch", rownames(crunchCounts)] <- crunchCounts
-confusion["harsh", rownames(harshCounts)] <- harshCounts
-confusion["warm", rownames(warmCounts)] <- warmCounts
-
 library(gplots)
 library(extrafont)
 colMap <- colorRampPalette(c(rgb(0.96, 0.96, 1), rgb(0.1, 0.1, 0.9)), space="rgb", bias=1)
-pdf("Confusion.pdf", pointsize=12, family="CM Sans", width=6, height=5)
-heatmap.2(confusion, Rowv=NA, trace="none", col=colMap, dendrogram="column", key=FALSE,
-	  cellnote=confusion, notecol="black", cexRow=1, cexCol=1, lwid=c(0.1, 100), notecex=1, 
+
+# harsh
+harshHarshCounts <- table(harsh[,"harsh"])
+harshBrightCounts <- table(harsh[,"bright"])
+harshWarmCounts <- table(harsh[,"warm"])
+
+harshConfusion <- matrix(0, 3, length(descriptors), dimnames=list(c("bright", "harsh", "warm"), descriptors))
+harshConfusion["harsh", rownames(harshHarshCounts)] <- harshHarshCounts
+harshConfusion["bright", rownames(harshBrightCounts)] <- harshBrightCounts
+harshConfusion["warm", rownames(harshWarmCounts)] <- harshWarmCounts
+
+harshDend <- as.dendrogram(hclust(dist(t(harshConfusion)), method="ward.D2"))
+pdf("HarshConfusion.pdf", pointsize=12, family="CM Sans", width=6, height=4)
+heatmap.2(harshConfusion, Colv=harshDend, Rowv=NA, trace="none", col=colMap, dendrogram="column", key=FALSE,
+	  cellnote=harshConfusion, notecol="black", cexRow=1, cexCol=1, lwid=c(0.1, 100), notecex=1, 
 	  lhei=c(0.4, 0.6), mar=c(3.6, 3.5), breaks=c(0, 4, 6, 10, 20, 30, 40, 50, 60, 70, 80))
 dev.off()
-embed_fonts("Confusion.pdf")
+embed_fonts("HarshConfusion.pdf")
 
+# crunch
+crunchHarshCounts <- table(crunch[,"harsh"])
+crunchBrightCounts <- table(crunch[,"bright"])
+crunchCrunchCounts <- table(crunch[,"crunch"])
+
+crunchConfusion <- matrix(0, 3, length(descriptors), dimnames=list(c("bright", "crunch", "harsh"), descriptors))
+crunchConfusion["harsh", rownames(crunchHarshCounts)] <- crunchHarshCounts
+crunchConfusion["bright", rownames(crunchBrightCounts)] <- crunchBrightCounts
+crunchConfusion["crunch", rownames(crunchCrunchCounts)] <- crunchCrunchCounts
+
+crunchDend <- as.dendrogram(hclust(dist(t(crunchConfusion)), method="ward.D2"))
+pdf("CrunchConfusion.pdf", pointsize=12, family="CM Sans", width=6, height=4)
+heatmap.2(crunchConfusion, Colv=crunchDend, Rowv=NA, trace="none", col=colMap, dendrogram="column", key=FALSE,
+	  cellnote=crunchConfusion, notecol="black", cexRow=1, cexCol=1, lwid=c(0.1, 100), notecex=1, 
+	  lhei=c(0.4, 0.6), mar=c(3.6, 3.5), breaks=c(0, 4, 6, 10, 20, 30, 40, 50, 60, 70, 80))
+dev.off()
+embed_fonts("CrunchConfusion.pdf")
+
+# combined
+combConfusion <- matrix(0, 4, length(descriptors), dimnames=list(c("bright", "crunch", "harsh", "warm"), descriptors))
+combConfusion["harsh",] <- harshConfusion["harsh",] + crunchConfusion["harsh",]
+combConfusion["bright",] <- harshConfusion["bright",] + crunchConfusion["bright",]
+combConfusion["warm",] <- harshConfusion["warm",]
+combConfusion["crunch",] <- crunchConfusion["crunch",]
+
+combDend <- as.dendrogram(hclust(dist(t(combConfusion)), method="ward.D2"))
+pdf("CombinedConfusion.pdf", pointsize=12, family="CM Sans", width=6, height=5)
+heatmap.2(combConfusion, Colv=combDend, Rowv=NA, trace="none", col=colMap, dendrogram="column", key=FALSE,
+	  cellnote=combConfusion, notecol="black", cexRow=1, cexCol=1, lwid=c(0.1, 100), notecex=1, 
+	  lhei=c(0.4, 0.6), mar=c(3.6, 3.5), breaks=c(0, 4, 6, 10, 20, 30, 40, 50, 60, 70, 80))
+dev.off()
+embed_fonts("CombinedConfusion.pdf")
