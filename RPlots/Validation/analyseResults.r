@@ -78,24 +78,9 @@ rownames(crunch) <- crunch[,1]
 crunch <- safeStem(crunch[,2:4])
 colnames(crunch) <- c("harsh", "bright", "crunch")
 
-# distances
-harshProcDists <- getDistances(harsh, c("warm", "bright", "harsh"), combProcDist)
-harshProcMeans <- groupMeans(harshProcDists)
-harshProcSds <- groupSds(harshProcDists)
-
-harshDiffDists <- getDistances(harsh, c("warm", "bright", "harsh"), combDiffDist)
-harshDiffMeans <- groupMeans(harshDiffDists)
-harshDiffSds <- groupSds(harshDiffDists)
-
-crunchProcDists <- getDistances(crunch, c("harsh", "bright", "crunch"), combProcDist)
-crunchProcMeans <- groupMeans(crunchProcDists)
-crunchProcSds <- groupSds(crunchProcDists)
-
-crunchDiffDists <- getDistances(crunch, c("harsh", "bright", "crunch"), combDiffDist)
-crunchDiffMeans <- groupMeans(crunchDiffDists)
-crunchDiffSds <- groupSds(crunchDiffDists)
-
+#######################################
 # confusion matrices
+#######################################
 library(gplots)
 library(extrafont)
 colMap <- colorRampPalette(c(rgb(0.96, 0.96, 1), rgb(0.1, 0.1, 0.9)), space="rgb", bias=1)
@@ -150,3 +135,129 @@ heatmap.2(combConfusion, Colv=combDend, Rowv=NA, trace="none", col=colMap, dendr
 	  lhei=c(0.4, 0.6), mar=c(3.6, 3.5), breaks=c(0, 4, 6, 10, 20, 30, 40, 50, 60, 70, 80))
 dev.off()
 embed_fonts("CombinedConfusion.pdf")
+
+#######################################
+# distances
+#######################################
+harshProcDists <- getDistances(harsh, c("warm", "bright", "harsh"), combProcDist)
+harshProcMeans <- groupMeans(harshProcDists)
+harshProcSds <- groupSds(harshProcDists)
+
+harshDiffDists <- getDistances(harsh, c("warm", "bright", "harsh"), combDiffDist)
+harshDiffMeans <- groupMeans(harshDiffDists)
+harshDiffSds <- groupSds(harshDiffDists)
+
+crunchProcDists <- getDistances(crunch, c("harsh", "bright", "crunch"), combProcDist)
+crunchProcMeans <- groupMeans(crunchProcDists)
+crunchProcSds <- groupSds(crunchProcDists)
+
+crunchDiffDists <- getDistances(crunch, c("harsh", "bright", "crunch"), combDiffDist)
+crunchDiffMeans <- groupMeans(crunchDiffDists)
+crunchDiffSds <- groupSds(crunchDiffDists)
+
+#######################################
+# box plots
+#######################################
+prettyInstrumentNames <- function(names)
+{
+	for (i in 1:length(names))
+	{
+		if (names[i] == "Bass1")
+			names[i] <- "Bass 1"
+		else if (names[i] == "Bass2")
+			names[i] <- "Bass 2"
+		else if (names[i] == "Guitar1")
+			names[i] <- "Guitar 1"
+		else if (names[i] == "Guitar2")
+			names[i] <- "Guitar 2"
+	}
+
+	return(names)
+}
+
+plotDistanceBoxPlot <- function(distances, term, ylim=NULL)
+{
+	names <- rownames(distances)
+	terms <- do.call(cbind, split(distances[,term], names))
+	boxplot(terms, frame.plot=FALSE, axes=FALSE, ylim=ylim, col="blue", 
+		medcol="red", ylab="Cophenetic Distance")
+	plotNames <- prettyInstrumentNames(colnames(terms))
+	axis(1, at=1:length(plotNames), line=-1, lwd=0, labels=plotNames, las=2)
+	axis(2)
+}
+
+# harsh processed
+pdf("HarshProcessedWarmBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(harshProcDists, "warm", ylim=c(0, 35))
+dev.off()
+embed_fonts("HarshProcessedWarmBox.pdf")
+
+pdf("HarshProcessedBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(harshProcDists, "bright", ylim=c(0, 35))
+dev.off()
+embed_fonts("HarshProcessedBrightBox.pdf")
+
+pdf("HarshProcessedHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(harshProcDists, "harsh", ylim=c(0, 20))
+dev.off()
+embed_fonts("HarshProcessedHarshBox.pdf")
+
+# harsh differences
+pdf("HarshDifferenceWarmBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(harshDiffDists, "warm", ylim=c(0, 30))
+dev.off()
+embed_fonts("HarshDifferenceWarmBox.pdf")
+
+pdf("HarshDifferenceBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(harshDiffDists, "bright", ylim=c(0, 25))
+dev.off()
+embed_fonts("HarshDifferenceBrightBox.pdf")
+
+pdf("HarshDifferenceHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(harshDiffDists, "harsh", ylim=c(0, 25))
+dev.off()
+embed_fonts("HarshDifferenceHarshBox.pdf")
+
+# crunch processed
+pdf("CrunchProcessedCrunchBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(crunchProcDists, "crunch", ylim=c(0, 35))
+dev.off()
+embed_fonts("CrunchProcessedCrunchBox.pdf")
+
+pdf("CrunchProcessedBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(crunchProcDists, "bright", ylim=c(0, 35))
+dev.off()
+embed_fonts("CrunchProcessedBrightBox.pdf")
+
+pdf("CrunchProcessedHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(crunchProcDists, "harsh", ylim=c(0, 20))
+dev.off()
+embed_fonts("CrunchProcessedHarshBox.pdf")
+
+# crunch processed
+pdf("CrunchDifferenceCrunchBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(crunchDiffDists, "crunch", ylim=c(0, 30))
+dev.off()
+embed_fonts("CrunchDifferenceCrunchBox.pdf")
+
+pdf("CrunchDifferenceBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(crunchDiffDists, "bright", ylim=c(0, 25))
+dev.off()
+embed_fonts("CrunchDifferenceBrightBox.pdf")
+
+pdf("CrunchDifferenceHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4, 4, 0, 0))
+plotDistanceBoxPlot(crunchDiffDists, "harsh", ylim=c(0, 25))
+dev.off()
+embed_fonts("CrunchDifferenceHarshBox.pdf")
