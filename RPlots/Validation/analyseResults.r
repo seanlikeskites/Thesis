@@ -175,11 +175,12 @@ prettyInstrumentNames <- function(names)
 	return(names)
 }
 
-plotDistanceBoxPlot <- function(distances, term, ylim=NULL)
+plotDistanceBoxPlot <- function(distances, term)
 {
 	names <- rownames(distances)
 	terms <- do.call(cbind, split(distances[,term], names))
-	boxplot(terms, frame.plot=FALSE, axes=FALSE, ylim=ylim, col="blue", 
+	lims <- c(0, 5 * ceiling(max(terms) / 5))
+	boxplot(terms, frame.plot=FALSE, axes=FALSE, ylim=lims, col="blue", 
 		medcol="red", ylab="Cophenetic Distance")
 	plotNames <- prettyInstrumentNames(colnames(terms))
 	axis(1, at=1:length(plotNames), line=-1, lwd=0, labels=plotNames, las=2)
@@ -189,75 +190,75 @@ plotDistanceBoxPlot <- function(distances, term, ylim=NULL)
 # harsh processed
 pdf("HarshProcessedWarmBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(harshProcDists, "warm", ylim=c(0, 35))
+plotDistanceBoxPlot(harshProcDists, "warm")
 dev.off()
 embed_fonts("HarshProcessedWarmBox.pdf")
 
 pdf("HarshProcessedBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(harshProcDists, "bright", ylim=c(0, 35))
+plotDistanceBoxPlot(harshProcDists, "bright")
 dev.off()
 embed_fonts("HarshProcessedBrightBox.pdf")
 
 pdf("HarshProcessedHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(harshProcDists, "harsh", ylim=c(0, 20))
+plotDistanceBoxPlot(harshProcDists, "harsh")
 dev.off()
 embed_fonts("HarshProcessedHarshBox.pdf")
 
 # harsh differences
 pdf("HarshDifferenceWarmBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(harshDiffDists, "warm", ylim=c(0, 30))
+plotDistanceBoxPlot(harshDiffDists, "warm")
 dev.off()
 embed_fonts("HarshDifferenceWarmBox.pdf")
 
 pdf("HarshDifferenceBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(harshDiffDists, "bright", ylim=c(0, 25))
+plotDistanceBoxPlot(harshDiffDists, "bright")
 dev.off()
 embed_fonts("HarshDifferenceBrightBox.pdf")
 
 pdf("HarshDifferenceHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(harshDiffDists, "harsh", ylim=c(0, 25))
+plotDistanceBoxPlot(harshDiffDists, "harsh")
 dev.off()
 embed_fonts("HarshDifferenceHarshBox.pdf")
 
 # crunch processed
 pdf("CrunchProcessedCrunchBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(crunchProcDists, "crunch", ylim=c(0, 35))
+plotDistanceBoxPlot(crunchProcDists, "crunch")
 dev.off()
 embed_fonts("CrunchProcessedCrunchBox.pdf")
 
 pdf("CrunchProcessedBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(crunchProcDists, "bright", ylim=c(0, 35))
+plotDistanceBoxPlot(crunchProcDists, "bright")
 dev.off()
 embed_fonts("CrunchProcessedBrightBox.pdf")
 
 pdf("CrunchProcessedHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(crunchProcDists, "harsh", ylim=c(0, 20))
+plotDistanceBoxPlot(crunchProcDists, "harsh")
 dev.off()
 embed_fonts("CrunchProcessedHarshBox.pdf")
 
 # crunch processed
 pdf("CrunchDifferenceCrunchBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(crunchDiffDists, "crunch", ylim=c(0, 30))
+plotDistanceBoxPlot(crunchDiffDists, "crunch")
 dev.off()
 embed_fonts("CrunchDifferenceCrunchBox.pdf")
 
 pdf("CrunchDifferenceBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(crunchDiffDists, "bright", ylim=c(0, 25))
+plotDistanceBoxPlot(crunchDiffDists, "bright")
 dev.off()
 embed_fonts("CrunchDifferenceBrightBox.pdf")
 
 pdf("CrunchDifferenceHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
 par(mar=c(4, 4, 0, 0))
-plotDistanceBoxPlot(crunchDiffDists, "harsh", ylim=c(0, 25))
+plotDistanceBoxPlot(crunchDiffDists, "harsh")
 dev.off()
 embed_fonts("CrunchDifferenceHarshBox.pdf")
