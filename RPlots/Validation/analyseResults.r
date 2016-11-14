@@ -109,11 +109,11 @@ confusion["warm", rownames(warmCounts)] <- warmCounts
 
 library(gplots)
 library(extrafont)
-colMap <- colorRampPalette(c(rgb(0.96, 0.96, 1), rgb(0.1, 0.1, 0.9)), space="rgb")
-plotPointSize <- 9
-pdf("Confusion.pdf", pointsize=plotPointSize, family="CM Sans", width=6, height=5)
-heatmap.2(confusion, Rowv=NA, trace="none", col=colMap, dendrogram="column", key=FALSE, cellnote=confusion, notecol="black",
-	  cexRow=1, cexCol=1, lwid=c(0.1, 10), lhei=c(0.4, 0.6))
+colMap <- colorRampPalette(c(rgb(0.96, 0.96, 1), rgb(0.1, 0.1, 0.9)), space="rgb", bias=1)
+pdf("Confusion.pdf", pointsize=12, family="CM Sans", width=6, height=5)
+heatmap.2(confusion, Rowv=NA, trace="none", col=colMap, dendrogram="column", key=FALSE,
+	  cellnote=confusion, notecol="black", cexRow=1, cexCol=1, lwid=c(0.1, 100), notecex=1, 
+	  lhei=c(0.4, 0.6), mar=c(3.5, 3.5), breaks=c(0, 4, 6, 10, 20, 30, 40, 50, 60, 70, 80))
 dev.off()
 embed_fonts("Confusion.pdf")
 
