@@ -162,7 +162,7 @@ crunchDiffMeans <- groupMeans(crunchDiffDists)
 crunchDiffSds <- groupSds(crunchDiffDists)
 
 #######################################
-# box plots
+# bar charts
 #######################################
 prettyInstrumentNames <- function(names)
 {
@@ -181,11 +181,113 @@ prettyInstrumentNames <- function(names)
 	return(names)
 }
 
+plotDistanceBarChart <- function(means, sds, term)
+{
+	names <- rownames(means)
+	means <- means[,term]
+	sds <- sds[,term]
+
+	nDoods <- length(means)
+	error <- qt(0.95, df=nDoods - 1) * sds / sqrt (nDoods)
+	mins <- means - error
+	maxs <- means + error
+	lims <- c(0, 35)
+
+	plotNames <- prettyInstrumentNames(names(means))
+
+	centres <- barplot(means, ylab="Cophenetic Distance", col="blue", xaxt="n", ylim=lims)
+	axis(1, at=centres, line=-0.6, lwd=0, labels=plotNames, las=2)
+
+	# clip so we don't get yuckiness
+	usr <- par("usr")
+	clip(usr[1], usr[2], usr[3], usr[4])
+	arrows(centres, mins, centres, maxs, angle=90, length=0.03, code=3, col="red")
+}
+
+# harsh processed
+pdf("HarshProcessedWarmBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(harshProcMeans, harshProcSds, "warm")
+dev.off()
+embed_fonts("HarshProcessedWarmBar.pdf")
+
+pdf("HarshProcessedBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(harshProcMeans, harshProcSds, "bright")
+dev.off()
+embed_fonts("HarshProcessedBrightBar.pdf")
+
+pdf("HarshProcessedHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(harshProcMeans, harshProcSds, "harsh")
+dev.off()
+embed_fonts("HarshProcessedHarshBar.pdf")
+
+# harsh differences
+pdf("HarshDifferenceWarmBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(harshDiffMeans, harshDiffSds, "warm")
+dev.off()
+embed_fonts("HarshDifferenceWarmBar.pdf")
+
+pdf("HarshDifferenceBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(harshDiffMeans, harshDiffSds, "bright")
+dev.off()
+embed_fonts("HarshDifferenceBrightBar.pdf")
+
+pdf("HarshDifferenceHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(harshDiffMeans, harshDiffSds, "harsh")
+dev.off()
+embed_fonts("HarshDifferenceHarshBar.pdf")
+
+# crunch processed
+pdf("CrunchProcessedCrunchBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(crunchProcMeans, crunchProcSds, "crunch")
+dev.off()
+embed_fonts("CrunchProcessedCrunchBar.pdf")
+
+pdf("CrunchProcessedBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(crunchProcMeans, crunchProcSds, "bright")
+dev.off()
+embed_fonts("CrunchProcessedBrightBar.pdf")
+
+pdf("CrunchProcessedHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(crunchProcMeans, crunchProcSds, "harsh")
+dev.off()
+embed_fonts("CrunchProcessedHarshBar.pdf")
+
+# crunch processed
+pdf("CrunchDifferenceCrunchBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, "crunch")
+dev.off()
+embed_fonts("CrunchDifferenceCrunchBar.pdf")
+
+pdf("CrunchDifferenceBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, "bright")
+dev.off()
+embed_fonts("CrunchDifferenceBrightBar.pdf")
+
+pdf("CrunchDifferenceHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(4.5, 4, 1, 0))
+plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, "harsh")
+dev.off()
+embed_fonts("CrunchDifferenceHarshBar.pdf")
+
+#######################################
+# box plots
+#######################################
 plotDistanceBoxPlot <- function(distances, term)
 {
 	names <- rownames(distances)
 	terms <- do.call(cbind, split(distances[,term], names))
-	lims <- c(0, 5 * ceiling(max(terms) / 5))
+	lims <- c(0, 35)
 
 	boxWidth <- 0.8
 	boxplot(terms, frame.plot=FALSE, axes=FALSE, ylim=lims, col="blue", 

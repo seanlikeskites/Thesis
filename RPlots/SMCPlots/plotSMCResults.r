@@ -3,7 +3,6 @@ library(extrafont)
 
 plotResults <- function(res, conf)
 {
-	par(lwd=0.5)
 	centres <- barplot(res, ylab="Normalised Grade",
 			   col="blue")
 	axis(1, at=centres, line=-1, lwd=0, labels=as.character(1:11))
