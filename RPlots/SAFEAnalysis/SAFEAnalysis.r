@@ -302,7 +302,7 @@ combDiffPCAPoints <- combDiffPCA$x
 combDiffPCAPointsSel <- getDescriptorPositions(combDiffPCAPoints, combDescriptors)
 
 # save PCAs
-save(distProcPCA, distDiffPCA, eqProcPCA, eqDiffPCA, file="PCAData.RData")
+save(distProcPCA, distDiffPCA, eqProcPCA, eqDiffPCA, combProcPCA, combDiffPCA, file="PCAData.RData")
 
 ########################################################
 # feature correlations
