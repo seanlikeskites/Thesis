@@ -1,6 +1,6 @@
 library(XML)
-#harshData <- xmlToList(xmlParse("SAFEHarshData.xml"))
-#crunchData <- xmlToList(xmlParse("SAFECrunchData.xml"))
+harshData <- xmlToList(xmlParse("SAFEHarshData.xml"))
+crunchData <- xmlToList(xmlParse("SAFECrunchData.xml"))
 
 instruments <- c("Bass1", "Bass2", "Flute", "Guitar1", "Guitar2", "Marimba", "Oboe",  "Saxophone", "Trumpet", "Violin")
 nInstruments <- length(instruments)
@@ -21,14 +21,21 @@ buildMeans <- function(data, descriptors)
 		term <- entry$.attrs["Descriptor1"]
 
 		unproc <- entry$UnprocessedAudioFeatures$Channel0
-		unproc <- matrix(unlist(unproc), ncol=nFeatures, byrow=TRUE)
-		print(mean(as.numeric(unproc[1,])))
+		unproc <- matrix(as.numeric(unlist(unproc)), ncol=nFeatures, byrow=TRUE)
+		unproc[!is.finite(unproc)] <- NA
+		unprocMeans <- apply(unproc, 2, mean, na.rm=TRUE)
+		means[[term]][["Unprocessed"]][instrument,] <- unprocMeans
 
-		break
+		proc <- entry$ProcessedAudioFeatures$Channel0
+		proc <- matrix(as.numeric(unlist(proc)), ncol=nFeatures, byrow=TRUE)
+		proc[!is.finite(proc)] <- NA
+		procMeans <- apply(proc, 2, mean, na.rm=TRUE)
+		means[[term]][["Processed"]][instrument,] <- procMeans
 	}
 
 	return(means)
 }
 
 harshMeans <- buildMeans(harshData, c("Warm", "Bright", "Harsh"))
-
+crunchMeans <- buildMeans(crunchData, c("Crunch", "Bright", "Harsh"))
+save(harshMeans, crunchMeans, file="ValidationMeans.RData")
