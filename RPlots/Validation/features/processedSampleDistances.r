@@ -103,6 +103,7 @@ harshProcDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Warm", "Bright", 
 harshProcDists["Warm",] <- calculateDistance(harshMeans$Warm$Processed, combProcPCA, c("E:warm", "D:warm"))
 harshProcDists["Bright",] <- calculateDistance(harshMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
 harshProcDists["Harsh",] <- calculateDistance(harshMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
+makeDistanceTable(harshProcDists, "HarshProcessedJeffsDistance.tex")
 
 # harsh difference distances
 harshDiffDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Warm", "Bright", "Harsh"), instruments))
@@ -112,12 +113,14 @@ harshDiffDists["Bright",] <- calculateDistance(harshMeans$Bright$Processed - har
 					       combDiffPCA, c("E:bright", "D:bright"))
 harshDiffDists["Harsh",] <- calculateDistance(harshMeans$Harsh$Processed - harshMeans$Harsh$Unprocessed, 
 					      combDiffPCA, c("E:harsh", "D:harsh"))
+makeDistanceTable(harshDiffDists, "HarshDifferenceJeffsDistance.tex")
 
 # crunch processed distances
 crunchProcDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Harsh", "Bright", "Crunch"), instruments))
 crunchProcDists["Harsh",] <- calculateDistance(crunchMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
 crunchProcDists["Bright",] <- calculateDistance(crunchMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
 crunchProcDists["Crunch",] <- calculateDistance(crunchMeans$Crunch$Processed, combProcPCA, "D:crunch")
+makeDistanceTable(crunchProcDists, "CrunchProcessedJeffsDistance.tex")
 
 # crunch difference distances
 crunchDiffDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Harsh", "Bright", "Crunch"), instruments))
@@ -127,3 +130,4 @@ crunchDiffDists["Bright",] <- calculateDistance(crunchMeans$Bright$Processed - c
 					       combDiffPCA, c("E:bright", "D:bright"))
 crunchDiffDists["Crunch",] <- calculateDistance(crunchMeans$Crunch$Processed - crunchMeans$Crunch$Unprocessed, 
 					      combDiffPCA, "D:crunch")
+makeDistanceTable(crunchDiffDists, "CrunchDifferenceJeffsDistance.tex")
