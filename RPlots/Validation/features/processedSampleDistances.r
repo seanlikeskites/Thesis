@@ -2,6 +2,35 @@ load("../../SAFEAnalysis/PCAData.RData")
 load("ValidationMeans.RData")
 source("../../SAFEAnalysis/descriptorPositions.r")
 
+prettyInstrumentNames <- function(names)
+{
+	for (i in 1:length(names))
+	{
+		if (names[i] == "Bass1")
+			names[i] <- "B1"
+		else if (names[i] == "Bass2")
+			names[i] <- "B2"
+		else if (names[i] == "Flute")
+			names[i] <- "F"
+		else if (names[i] == "Guitar1")
+			names[i] <- "G1"
+		else if (names[i] == "Guitar2")
+			names[i] <- "G2"
+		else if (names[i] == "Marimba")
+			names[i] <- "M"
+		else if (names[i] == "Oboe")
+			names[i] <- "O"
+		else if (names[i] == "Saxophone")
+			names[i] <- "S"
+		else if (names[i] == "Trumpet")
+			names[i] <- "T"
+		else if (names[i] == "Violin")
+			names[i] <- "V"
+	}
+
+	return(names)
+}
+
 getPCACoords <- function(means, pca)
 {
 	means <- scale(means, center=pca$center, scale=pca$scale)
@@ -33,35 +62,68 @@ calculateDistance <- function(means, pca, descriptors)
 	return(apply(dists, 2, min))
 }
 
+makeDistanceTable <- function(data, outFile)
+{
+	lines <- character()
+	nInstruments <- ncol(data)
+	intruments <- colnames(data)
+	instruments <- prettyInstrumentNames(instruments)
+	terms <- rownames(data)
+
+	lines <- c(lines, paste("\\begin{tabular}{|c||", paste(rep("c|", nInstruments), collapse=""), "}", sep=""))
+	lines <- c(lines, paste("\t\\cline{2-", nInstruments + 1, "}", sep=""))
+	lines <- c(lines, paste("\t\\multicolumn{1}{c|}{} & \\bf{", 
+				paste(instruments, collapse="} & \\bf{"), 
+				"} \\tabularnewline", sep=""))
+	lines <- c(lines, paste("\t\\hhline{-::",
+				paste(rep("=:", nInstruments), collapse=""),
+				"}", sep=""))
+
+	for (term in terms)
+	{
+		dists <- format(round(data[term,], 1), nsmall=1)
+		lines <- c(lines, paste("\t\\bf{", term, "} & ",
+					paste(dists, collapse=" & "),
+					" \\tabularnewline", sep=""))
+		lines <- c(lines, "\t\\hline")
+	}
+
+	lines <- c(lines, "\\end{tabular}")
+
+	f <- file(outFile)
+	writeLines(lines, f)
+	close(f)
+}
+
 instruments <- c("Bass1", "Bass2", "Flute", "Guitar1", "Guitar2", "Marimba", "Oboe",  "Saxophone", "Trumpet", "Violin")
 nInstruments <- length(instruments)
 
 # harsh processed distances
-harshProcDists <-  matrix(0, 3, nInstruments, dimnames=list(c("warm", "bright", "harsh"), instruments))
-harshProcDists["warm",] <- calculateDistance(harshMeans$Warm$Processed, combProcPCA, c("E:warm", "D:warm"))
-harshProcDists["bright",] <- calculateDistance(harshMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
-harshProcDists["harsh",] <- calculateDistance(harshMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
+harshProcDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Warm", "Bright", "Harsh"), instruments))
+harshProcDists["Warm",] <- calculateDistance(harshMeans$Warm$Processed, combProcPCA, c("E:warm", "D:warm"))
+harshProcDists["Bright",] <- calculateDistance(harshMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
+harshProcDists["Harsh",] <- calculateDistance(harshMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
 
 # harsh difference distances
-harshDiffDists <-  matrix(0, 3, nInstruments, dimnames=list(c("warm", "bright", "harsh"), instruments))
-harshDiffDists["warm",] <- calculateDistance(harshMeans$Warm$Processed - harshMeans$Warm$Unprocessed, 
+harshDiffDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Warm", "Bright", "Harsh"), instruments))
+harshDiffDists["Warm",] <- calculateDistance(harshMeans$Warm$Processed - harshMeans$Warm$Unprocessed, 
 					     combDiffPCA, c("E:warm", "D:warm"))
-harshDiffDists["bright",] <- calculateDistance(harshMeans$Bright$Processed - harshMeans$Bright$Unprocessed, 
+harshDiffDists["Bright",] <- calculateDistance(harshMeans$Bright$Processed - harshMeans$Bright$Unprocessed, 
 					       combDiffPCA, c("E:bright", "D:bright"))
-harshDiffDists["harsh",] <- calculateDistance(harshMeans$Harsh$Processed - harshMeans$Harsh$Unprocessed, 
+harshDiffDists["Harsh",] <- calculateDistance(harshMeans$Harsh$Processed - harshMeans$Harsh$Unprocessed, 
 					      combDiffPCA, c("E:harsh", "D:harsh"))
 
 # crunch processed distances
-crunchProcDists <-  matrix(0, 3, nInstruments, dimnames=list(c("harsh", "bright", "crunch"), instruments))
-crunchProcDists["harsh",] <- calculateDistance(crunchMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
-crunchProcDists["bright",] <- calculateDistance(crunchMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
-crunchProcDists["crunch",] <- calculateDistance(crunchMeans$Crunch$Processed, combProcPCA, "D:crunch")
+crunchProcDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Harsh", "Bright", "Crunch"), instruments))
+crunchProcDists["Harsh",] <- calculateDistance(crunchMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
+crunchProcDists["Bright",] <- calculateDistance(crunchMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
+crunchProcDists["Crunch",] <- calculateDistance(crunchMeans$Crunch$Processed, combProcPCA, "D:crunch")
 
 # crunch difference distances
-crunchDiffDists <-  matrix(0, 3, nInstruments, dimnames=list(c("harsh", "bright", "crunch"), instruments))
-crunchDiffDists["harsh",] <- calculateDistance(crunchMeans$Harsh$Processed - crunchMeans$Harsh$Unprocessed, 
+crunchDiffDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Harsh", "Bright", "Crunch"), instruments))
+crunchDiffDists["Harsh",] <- calculateDistance(crunchMeans$Harsh$Processed - crunchMeans$Harsh$Unprocessed, 
 					     combDiffPCA, c("E:harsh", "D:harsh"))
-crunchDiffDists["bright",] <- calculateDistance(crunchMeans$Bright$Processed - crunchMeans$Bright$Unprocessed, 
+crunchDiffDists["Bright",] <- calculateDistance(crunchMeans$Bright$Processed - crunchMeans$Bright$Unprocessed, 
 					       combDiffPCA, c("E:bright", "D:bright"))
-crunchDiffDists["crunch",] <- calculateDistance(crunchMeans$Crunch$Processed - crunchMeans$Crunch$Unprocessed, 
+crunchDiffDists["Crunch",] <- calculateDistance(crunchMeans$Crunch$Processed - crunchMeans$Crunch$Unprocessed, 
 					      combDiffPCA, "D:crunch")

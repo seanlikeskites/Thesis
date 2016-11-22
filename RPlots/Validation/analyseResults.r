@@ -169,13 +169,25 @@ prettyInstrumentNames <- function(names)
 	for (i in 1:length(names))
 	{
 		if (names[i] == "Bass1")
-			names[i] <- "Bass 1"
+			names[i] <- "B1"
 		else if (names[i] == "Bass2")
-			names[i] <- "Bass 2"
+			names[i] <- "B2"
+		else if (names[i] == "Flute")
+			names[i] <- "F"
 		else if (names[i] == "Guitar1")
-			names[i] <- "Guitar 1"
+			names[i] <- "G1"
 		else if (names[i] == "Guitar2")
-			names[i] <- "Guitar 2"
+			names[i] <- "G2"
+		else if (names[i] == "Marimba")
+			names[i] <- "M"
+		else if (names[i] == "Oboe")
+			names[i] <- "O"
+		else if (names[i] == "Saxophone")
+			names[i] <- "S"
+		else if (names[i] == "Trumpet")
+			names[i] <- "T"
+		else if (names[i] == "Violin")
+			names[i] <- "V"
 	}
 
 	return(names)
@@ -206,76 +218,76 @@ plotDistanceBarChart <- function(means, sds, term)
 
 # harsh processed
 pdf("HarshProcessedWarmBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(harshProcMeans, harshProcSds, "warm")
 dev.off()
 embed_fonts("HarshProcessedWarmBar.pdf")
 
 pdf("HarshProcessedBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(harshProcMeans, harshProcSds, "bright")
 dev.off()
 embed_fonts("HarshProcessedBrightBar.pdf")
 
 pdf("HarshProcessedHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(harshProcMeans, harshProcSds, "harsh")
 dev.off()
 embed_fonts("HarshProcessedHarshBar.pdf")
 
 # harsh differences
 pdf("HarshDifferenceWarmBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(harshDiffMeans, harshDiffSds, "warm")
 dev.off()
 embed_fonts("HarshDifferenceWarmBar.pdf")
 
 pdf("HarshDifferenceBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(harshDiffMeans, harshDiffSds, "bright")
 dev.off()
 embed_fonts("HarshDifferenceBrightBar.pdf")
 
 pdf("HarshDifferenceHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(harshDiffMeans, harshDiffSds, "harsh")
 dev.off()
 embed_fonts("HarshDifferenceHarshBar.pdf")
 
 # crunch processed
 pdf("CrunchProcessedCrunchBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(crunchProcMeans, crunchProcSds, "crunch")
 dev.off()
 embed_fonts("CrunchProcessedCrunchBar.pdf")
 
 pdf("CrunchProcessedBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(crunchProcMeans, crunchProcSds, "bright")
 dev.off()
 embed_fonts("CrunchProcessedBrightBar.pdf")
 
 pdf("CrunchProcessedHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(crunchProcMeans, crunchProcSds, "harsh")
 dev.off()
 embed_fonts("CrunchProcessedHarshBar.pdf")
 
 # crunch processed
 pdf("CrunchDifferenceCrunchBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, "crunch")
 dev.off()
 embed_fonts("CrunchDifferenceCrunchBar.pdf")
 
 pdf("CrunchDifferenceBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, "bright")
 dev.off()
 embed_fonts("CrunchDifferenceBrightBar.pdf")
 
 pdf("CrunchDifferenceHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4.5, 4, 1, 0))
+par(mar=c(1.5, 4, 1, 0))
 plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, "harsh")
 dev.off()
 embed_fonts("CrunchDifferenceHarshBar.pdf")
@@ -319,76 +331,76 @@ plotDistanceBoxPlot <- function(distances, term)
 
 # harsh processed
 pdf("HarshProcessedWarmBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(harshProcDists, "warm")
 dev.off()
 embed_fonts("HarshProcessedWarmBox.pdf")
 
 pdf("HarshProcessedBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(harshProcDists, "bright")
 dev.off()
 embed_fonts("HarshProcessedBrightBox.pdf")
 
 pdf("HarshProcessedHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(harshProcDists, "harsh")
 dev.off()
 embed_fonts("HarshProcessedHarshBox.pdf")
 
 # harsh differences
 pdf("HarshDifferenceWarmBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(harshDiffDists, "warm")
 dev.off()
 embed_fonts("HarshDifferenceWarmBox.pdf")
 
 pdf("HarshDifferenceBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(harshDiffDists, "bright")
 dev.off()
 embed_fonts("HarshDifferenceBrightBox.pdf")
 
 pdf("HarshDifferenceHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(harshDiffDists, "harsh")
 dev.off()
 embed_fonts("HarshDifferenceHarshBox.pdf")
 
 # crunch processed
 pdf("CrunchProcessedCrunchBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(crunchProcDists, "crunch")
 dev.off()
 embed_fonts("CrunchProcessedCrunchBox.pdf")
 
 pdf("CrunchProcessedBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(crunchProcDists, "bright")
 dev.off()
 embed_fonts("CrunchProcessedBrightBox.pdf")
 
 pdf("CrunchProcessedHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(crunchProcDists, "harsh")
 dev.off()
 embed_fonts("CrunchProcessedHarshBox.pdf")
 
 # crunch processed
 pdf("CrunchDifferenceCrunchBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(crunchDiffDists, "crunch")
 dev.off()
 embed_fonts("CrunchDifferenceCrunchBox.pdf")
 
 pdf("CrunchDifferenceBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(crunchDiffDists, "bright")
 dev.off()
 embed_fonts("CrunchDifferenceBrightBox.pdf")
 
 pdf("CrunchDifferenceHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(4, 4, 0, 0))
+par(mar=c(1, 4, 0, 0))
 plotDistanceBoxPlot(crunchDiffDists, "harsh")
 dev.off()
 embed_fonts("CrunchDifferenceHarshBox.pdf")
