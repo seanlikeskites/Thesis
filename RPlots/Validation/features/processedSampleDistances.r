@@ -85,7 +85,9 @@ makeDistanceTable <- function(data, outFile)
 		lines <- c(lines, paste("\t\\bf{", term, "} & ",
 					paste(dists, collapse=" & "),
 					" \\tabularnewline", sep=""))
-		lines <- c(lines, "\t\\hline")
+		lines <- c(lines, paste("\t\\hhline{-||",
+					paste(rep("-|", nInstruments), collapse=""),
+					"}", sep=""))
 	}
 
 	lines <- c(lines, "\\end{tabular}")
