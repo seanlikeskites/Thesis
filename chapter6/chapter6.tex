@@ -644,11 +644,11 @@
 	on four harmonic audio signals produced by, a bowed cello, a clarinet, an additive synthesiser and a piano
 	respectively.
 
-	The cello and clarinet samples both represent typical recorded harmonic sounds. Both are composed of harmonic
-	partials and noise. The fundamental difference between the two is that the cello sample contains energy at all
-	harmonics while clarinet sample has the majority of its energy in the odd order harmonics. The synthesised sound
-	has perfectly harmonic partials and zero noise energy. This sample is included to examine how the excitation
-	systems perform in an ideal situation. The piano sample poses a problem to the systems discussed in Section
+	The cello and clarinet signals both represent typical recorded harmonic sounds. Both are composed of harmonic
+	partials and noise. The fundamental difference between the two is that the cello signal contains energy at all
+	harmonics while clarinet signal has the majority of its energy in the odd order harmonics. The synthesised sound
+	has perfectly harmonic partials and zero noise energy. This signal is included to examine how the excitation
+	systems perform in an ideal situation. The piano signal poses a problem to the systems discussed in Section
 	\ref{sec:FeatureControl-Systems} as it has a damped $f_{0}$, its second harmonic has considerably more energy than
 	its $f_{0}$. This signal is included to examine to extent to which the systems are affected by these problems.
 
@@ -1102,7 +1102,7 @@
 		values shown in Figure \ref{fig:MoveTristimulus1} used second order IIR filters. This means that the
 		isolated $f_{0}$ signal contains energy in some of the higher order spectral partials. In sounds where the
 		$f_{0}$ has significantly less amplitude than subsequent spectral partials this is particularly
-		problematic. The piano sample used for testing illustrates this. In this case the isolated $f_{0}$ signal
+		problematic. The piano signal used for testing illustrates this. In this case the isolated $f_{0}$ signal
 		has more energy in the second harmonic than at the $f_{0}$, severely reducing the maximum value which the
 		first tristimulus can be altered to.  Using higher order filters will alleviate this problem at the cost of
 		increased processing complexity.
@@ -1287,14 +1287,14 @@
 		little energy in the second harmonic. With a better isolated $f_{0}$ the two bands of excited harmonics
 		will be better separated with respect to the parities of harmonics they contain.
 
-		The cello and synthesised samples both exhibit a limit on how high the $R_{\textrm{OE}}$ can be made. This
+		The cello and synthesised signals both exhibit a limit on how high the $R_{\textrm{OE}}$ can be made. This
 		is due to both bands of excited harmonics containing both parities of harmonic.  The general upward trend
-		for both samples illustrates that the two bands generated do contain the majority of their energy in the
+		for both signals illustrates that the two bands generated do contain the majority of their energy in the
 		correct parity harmonics but higher order filtering of the $f_{0}$ is needed to better segregate them. The
 		decrease in $R_{\textrm{OE}}$ seen for the synthesised signal is due to destructive superposition between
 		the harmonics in the three signals being summed.
 
-		The system discussed here provides no control over the $R_{\textrm{OE}}$ of the piano sample. This is again
+		The system discussed here provides no control over the $R_{\textrm{OE}}$ of the piano signal. This is again
 		due to the low amplitude $f_{0}$. The isolated $f_{0}$ signal contains the majority of its energy in the
 		second harmonic. This causes the two bands of generated harmonics to both contain mostly even order
 		harmonics, meaning the resulting signal will have a high evenness, or low $R_{\textrm{OE}}$.
@@ -1348,11 +1348,11 @@
 		\end{figure}
 
 		As only the first nine harmonics are being altered, the degree to which the inharmonicity can be
-		manipulated depends on the spectral content of the input signal. In the synthesised sample all of the
+		manipulated depends on the spectral content of the input signal. In the synthesised signal all of the
 		spectral partials are at perfectly harmonic frequencies and there is significant energy in the harmonics
-		with higher order than the ninth. The inharmonic signal generated from the synthesised sample then still
+		with higher order than the ninth. The inharmonic signal generated from the synthesised signal then still
 		has a significant amount of energy in perfectly harmonic partials giving it a low inharmonicity. This
-		reduces the range of values which the resulting inharmonicity can take. The other three samples all have
+		reduces the range of values which the resulting inharmonicity can take. The other three signals all have
 		higher spectral roll off, such that the influence of their existing high order partials has a smaller
 		effect on the overall inharmonicity.
 
