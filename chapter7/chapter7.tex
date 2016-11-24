@@ -207,7 +207,12 @@
 \label{sec:PerceptualExperiments-SemanticControl}
 	The findings of Chapter \ref{chap:TimbreEvaluation} can be combined with the techniques discussed in Chapter
 	\ref{chap:FeatureControl} to develop audio effects with control parameters which relate to specific descriptive
-	terms. In this section two such effects are developed and their performance evaluated.
+	terms. In this section two such effects are developed and their performance evaluated. Each of these effects have a
+	single `semantic' control parameter which changes processing parameters based three related semantic terms. The
+	first effect, the `warmth / harshness' effect, is intended to introduce `warmth' for low values of the
+	control parameter, `brightness' for middle values of the control parameter and `harshness' for high values of the
+	control parameter. The second effect, the `harshness / crunchiness effect', is intended to change between
+	'harshness', `brightness' and 'crunchiness' for different values of the control parameter.
 
 	\subsection{Effect Design}
 	\label{sec:PerceptualExperiments-SemanticControl-EffectDesign}
@@ -240,22 +245,22 @@
 					\node (Centroid) [draw] at (2, -3.25) {$\mu_{s}$ Tracker};
 					\draw (InMid) -- (Centroid);
 
-					\node (Add) [operator] at (7.75, -3.25) {+};
+					\node (Add) [operator] at (9.75, -3.25) {+};
 
 					% NLD
-					\node (NLD) [draw] at (3.5, -2.25) {NLD};
+					\node (NLD) [draw] at (4.5, -2.25) {Nonlinear Device};
 					\draw (F0Filter) -- (NLD);
 
-					\node (NLDFilter) [draw] at (5, -2.25) {HPF};
+					\node (NLDFilter) [draw] at (7, -2.25) {HPF};
 					\draw (NLD) -- (NLDFilter);
 
-					\node (NLDGain) [gain] at (6.25, -2.25) {};
+					\node (NLDGain) [gain] at (8.25, -2.25) {};
 					\draw (NLDFilter) -- (NLDGain);
-					\coordinate (NLDOut) at (6.75, -2.25);
+					\coordinate (NLDOut) at (8.75, -2.25);
 					\draw (NLDGain) -- (NLDOut);
 					\draw (NLDOut) -- (Add);
 
-					\coordinate (NLDSide) at (5, -3.25);
+					\coordinate (NLDSide) at (7, -3.25);
 					\draw (Centroid) -- (NLDSide);
 					\draw (NLDSide) -- (NLDFilter);
 
@@ -265,13 +270,13 @@
 					\draw (Through) -- (ThroughFilter);
 					\draw (Side2) -- (Through);
 					\draw (Centroid) -- (ThroughFilter);
-					\node (ThroughGain) [gain] at (6.25, -4.25) {};
-					\coordinate (ThroughOut) at (6.75, -4.25);
+					\node (ThroughGain) [gain] at (8.25, -4.25) {};
+					\coordinate (ThroughOut) at (8.75, -4.25);
 					\draw (ThroughFilter) -- (ThroughGain);
 					\draw (ThroughGain) -- (ThroughOut);
 					\draw (ThroughOut) -- (Add);
 
-					\node (Out) at (9, -3.25) {$y[n]$};
+					\node (Out) at (11, -3.25) {$y[n]$};
 					\draw (Add) -- (Out);
 				\end{tikzpicture}
 				\caption{The system employed in the warmth / harshness effect.}
@@ -432,83 +437,65 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/HarshProcessedWarmBar.pdf}
-			\includegraphics{chapter7/Images/HarshProcessedWarmBox.pdf}
 			\caption{Harsh Processed Warm}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/HarshProcessedBrightBar.pdf}
-			\includegraphics{chapter7/Images/HarshProcessedBrightBox.pdf}
 			\caption{Harsh Processed Bright}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/HarshProcessedHarshBar.pdf}
-			\includegraphics{chapter7/Images/HarshProcessedHarshBox.pdf}
 			\caption{Harsh Processed Harsh}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/HarshDifferenceWarmBar.pdf}
-			\includegraphics{chapter7/Images/HarshDifferenceWarmBox.pdf}
 			\caption{Harsh Difference Warm}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/HarshDifferenceBrightBar.pdf}
-			\includegraphics{chapter7/Images/HarshDifferenceBrightBox.pdf}
 			\caption{Harsh Difference Bright}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/HarshDifferenceHarshBar.pdf}
-			\includegraphics{chapter7/Images/HarshDifferenceHarshBox.pdf}
-			\caption{Harsh Difference Harsh}
-		\end{figure}
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics{chapter7/Images/CrunchProcessedHarshBar.pdf}
-			\includegraphics{chapter7/Images/CrunchProcessedHarshBox.pdf}
 			\caption{Crunch Processed Harsh}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/CrunchProcessedBrightBar.pdf}
-			\includegraphics{chapter7/Images/CrunchProcessedBrightBox.pdf}
 			\caption{Crunch Processed Bright}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/CrunchProcessedCrunchBar.pdf}
-			\includegraphics{chapter7/Images/CrunchProcessedCrunchBox.pdf}
 			\caption{Crunch Processed Crunch}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/CrunchDifferenceHarshBar.pdf}
-			\includegraphics{chapter7/Images/CrunchDifferenceHarshBox.pdf}
 			\caption{Crunch Difference Harsh}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/CrunchDifferenceBrightBar.pdf}
-			\includegraphics{chapter7/Images/CrunchDifferenceBrightBox.pdf}
 			\caption{Crunch Difference Bright}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/CrunchDifferenceCrunchBar.pdf}
-			\includegraphics{chapter7/Images/CrunchDifferenceCrunchBox.pdf}
 			\caption{Crunch Difference Crunch}
 		\end{figure}

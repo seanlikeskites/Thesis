@@ -75,8 +75,12 @@ makeDistanceTable <- function(data, outFile)
 	lines <- c(lines, paste("\t\\multicolumn{1}{c|}{} & \\bf{", 
 				paste(instruments, collapse="} & \\bf{"), 
 				"} \\tabularnewline", sep=""))
-	lines <- c(lines, paste("\t\\hhline{-::",
-				paste(rep("=:", nInstruments), collapse=""),
+	lines <- c(lines, paste("\t\\hhline{~|",
+				paste(rep("-|", nInstruments), collapse=""),
+				"}", sep=""))
+	lines <- c(lines, "\t\\noalign{\\vspace{\\doublerulesep}}")
+	lines <- c(lines, paste("\t\\hhline{-||",
+				paste(rep("-|", nInstruments), collapse=""),
 				"}", sep=""))
 
 	for (term in terms)
