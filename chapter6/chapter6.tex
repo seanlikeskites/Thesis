@@ -641,20 +641,14 @@
 	\ref{sec:FeatureControl-Systems}, along with the methods discussed in this Section, would provide precise control
 	over the audio features. In a `real world' implementation, the properties of the input signal and filters used will
 	affect how the features are manipulated. To examine these effects, each method for manipulating a feature is tested
-	on four harmonic audio signals produced by the following instruments:
-
-	\begin{itemize}
-		\item A bowed cello.
-		\item A clarinet.
-		\item A synthesised harmonic sound.
-		\item A piano.
-	\end{itemize}
+	on four harmonic audio signals produced by, a bowed cello, a clarinet, an additive synthesiser and a piano
+	respectively.
 
 	The cello and clarinet samples both represent typical recorded harmonic sounds. Both are composed of harmonic
 	partials and noise. The fundamental difference between the two is that the cello sample contains energy at all
 	harmonics while clarinet sample has the majority of its energy in the odd order harmonics. The synthesised sound
 	has perfectly harmonic partials and zero noise energy. This sample is included to examine how the excitation
-	systems perform in an idealised situation. The piano sample poses a problem to the systems discussed in Section
+	systems perform in an ideal situation. The piano sample poses a problem to the systems discussed in Section
 	\ref{sec:FeatureControl-Systems} as it has a damped $f_{0}$, its second harmonic has considerably more energy than
 	its $f_{0}$. This signal is included to examine to extent to which the systems are affected by these problems.
 
