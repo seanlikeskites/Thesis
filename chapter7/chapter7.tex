@@ -86,7 +86,7 @@
 	The results of this experiment are shown in Figure \ref{fig:SMCResults} with error bars showing the 95\% confidence
 	intervals. The stimuli numbers refer to different processing algorithms as follows.
 
-	\begin{tabular}{>{\bfseries}cl}
+	\begin{tabular}{>{\bfseries}rl}
 		1. & The reference stimulus. \tabularnewline
 		2. & Stimulus reconstructed using the synthesis method with an STFT window length of 50
 		     samples. \tabularnewline
@@ -100,7 +100,7 @@
 		8. & Stimulus reconstructed using the IAP method using a 50\super{th} order filter. \tabularnewline
 		9. & Stimulus reconstructed using the IAP method using a 100\super{th} order filter. \tabularnewline
 		10. & Stimulus reconstructed using the IAP method using a 500\super{th} order filter. \tabularnewline
-		11. & Stimulus with third through ninth harmonics removed (anchor). \tabularnewline
+		11. & Stimulus with third through ninth harmonics removed (anchor).
 	\end{tabular}
 
 	\begin{figure}[h!]
@@ -202,13 +202,49 @@
 	\ref{chap:FeatureControl} to develop audio effects with control parameters which relate to specific descriptive
 	terms. In this section two such effects are developed and their performance evaluated. Each of these effects have a
 	single `semantic' control parameter which changes processing parameters based three related semantic terms. The
-	first effect, the `warmth / harshness' effect, is intended to introduce `warmth' for low values of the
+	first effect, the warmth / harshness effect, is intended to introduce `warmth' for low values of the
 	control parameter, `brightness' for middle values of the control parameter and `harshness' for high values of the
-	control parameter. The second effect, the `harshness / crunchiness effect', is intended to change between
+	control parameter. The second effect, the harshness / crunchiness effect, is intended to change between
 	`harshness', `brightness' and `crunchiness' for different values of the control parameter.
 
-	\subsection{Effect Design}
+	The performance of each effect is evaluated using a set of ten test signals, comprising two electric bass guitars
+	(B1 and B2), a flute (F), two electric guitars (G1 and G2), a marimba (M), an oboe (O), a saxophone (S), a trumpet
+	(T) and a violin (V). The signals were adjusted to have equal loudness prior to experimentation.  Firstly the
+	effects are evaluated objectively by comparing them to the analysis performed in Chapter
+	\ref{chap:TimbreEvaluation}. Secondly the effects are evaluated subjectively as discussed in Sections
+	\ref{sec:PerceptualExperiments-SemanticControl-EvaluationExperiment} and
+	\ref{sec:PerceptualExperiments-SemanticControl-PerformanceResults}.
+
+	\subsection{Semantically Controlled Effect Design}
 	\label{sec:PerceptualExperiments-SemanticControl-EffectDesign}
+		This section describes the underlying systems of the warmth / harshness and harshness / crunchiness effects
+		and the operation of their control parameters. The performance of each effect is evaluated objectively by
+		examining how they manipulate the features of the test signals. Each effect is used to process each of the
+		test signals with its parameter set to the minimum value, the middle value and the maximum value,
+		corresponding to `warm', `bright' and `harsh' for the warmth / harshness effect and `harsh', `bright' and
+		`crunchy' for the harshness / crunchiness effect. The audio features of the unprocessed and processed
+		signals in each of these applications are calculated in the same manner as in the SAFE plug-ins. These audio
+		features are the compared to those taken from the SAFE dataset.
+
+		As discussed in Chapter \ref{chap:TimbreEvaluation} the terms `warm', `harsh' and `bright' are all used to
+		describe transformations applied by both distortion and equalisation effects. `Harsh' and `bright' having
+		different definitions depending on the type of processing applied. The objective performance of the effects
+		proposed in this section is evaluated against data from both the SAFE distortion and equaliser. In order to
+		do this, two new timbre spaces are constructed representing the processed audio features and feature
+		differences of the combined distortion and equaliser data. Two performance score are given to each
+		combination of audio effect, descriptor and test signal. The first measuring how close the processed
+		features of the signal are to points labelled with the descriptor in the processed feature timbre space.
+		The second measuring how close the changes in features applied by the affect are to points labelled with the
+		descriptor in the feature difference timbre space.
+
+		The performance of a particular effect, with a particular parameter setting on a particular test signal is
+		measured by projecting the extracted audio features to a point on the relevant timbre space. The processed
+		features of the signal are projected onto the processed feature timbre space and the feature differences
+		onto the feature difference timbre space. The Mahalanobis distance between this point and the distribution
+		of transforms labelled with the relevant descriptor is taken as a measure of closeness to ideal performance.
+		Where the relevant descriptor is represented by two distributions of transforms, one from the distortion and
+		one from the equaliser, the Mahalanobis distance from both distributions is taken and the minimum distance
+		kept as the measure of performance.
 
 		\subsubsection*{Warmth / Harshness}
 			\note
