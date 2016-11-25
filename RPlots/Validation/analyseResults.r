@@ -53,6 +53,7 @@ descriptors <- sort(c("crunch", "fuzz", "cream", "rasp", "smooth", "clear", "air
 		      "deep", "mud", "warm", "bright", "harsh"))
 
 doods <- dir("results")
+nDoods <- length(doods)
 
 harsh <- data.frame()
 crunch <- data.frame()
@@ -193,214 +194,70 @@ prettyInstrumentNames <- function(names)
 	return(names)
 }
 
-plotDistanceBarChart <- function(means, sds, term)
-{
-	names <- rownames(means)
-	means <- means[,term]
-	sds <- sds[,term]
+#plotDistanceBarChart <- function(means, sds, term)
+#{
+#	names <- rownames(means)
+#	means <- means[,term]
+#	sds <- sds[,term]
+#
+#	nDoods <- length(means)
+#	error <- qt(0.95, df=nDoods - 1) * sds / sqrt (nDoods)
+#	mins <- means - error
+#	maxs <- means + error
+#	lims <- c(0, 35)
+#
+#	plotNames <- prettyInstrumentNames(names(means))
+#
+#	centres <- barplot(means, ylab="Cophenetic Distance", col="blue", xaxt="n", ylim=lims)
+#	axis(1, at=centres, line=-0.6, lwd=0, labels=plotNames, las=2)
+#
+#	# clip so we don't get yuckiness
+#	usr <- par("usr")
+#	clip(usr[1], usr[2], usr[3], usr[4])
+#	arrows(centres, mins, centres, maxs, angle=90, length=0.03, code=3, col="red")
+#}
 
-	nDoods <- length(means)
+plotDistanceBarChart <- function(means, sds, nDoods)
+{
+	means <- t(means)
+	sds <- t(sds)
+
+	names <- colnames(means)
+	descriptors <- rownames(means)
+	plotNames <- prettyInstrumentNames(names)
+
 	error <- qt(0.95, df=nDoods - 1) * sds / sqrt (nDoods)
 	mins <- means - error
 	maxs <- means + error
 	lims <- c(0, 35)
 
-	plotNames <- prettyInstrumentNames(names(means))
-
-	centres <- barplot(means, ylab="Cophenetic Distance", col="blue", xaxt="n", ylim=lims)
-	axis(1, at=centres, line=-0.6, lwd=0, labels=plotNames, las=2)
+	centres <- barplot(means, ylab="Cophenetic Distance", xaxt="n", ylim=lims, beside=TRUE,
+			   col=c("blue", "turquoise", "green"), legend=descriptors)
+	labelPoints <- centres[seq(2, 3 * ncol(means), 3)]
+	axis(1, at=labelPoints, line=-1, lwd=0, labels=plotNames)
 
 	# clip so we don't get yuckiness
 	usr <- par("usr")
 	clip(usr[1], usr[2], usr[3], usr[4])
-	arrows(centres, mins, centres, maxs, angle=90, length=0.03, code=3, col="red")
+	arrows(centres, mins, centres, maxs, angle=90, length=0.01, code=3, col="red")
 }
 
-# harsh processed
-pdf("HarshProcessedWarmBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(harshProcMeans, harshProcSds, "warm")
+pdf("HarshProcessedBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(1, 4, 0.5, 0))
+plotDistanceBarChart(harshProcMeans, harshProcSds, nDoods)
 dev.off()
-embed_fonts("HarshProcessedWarmBar.pdf")
 
-pdf("HarshProcessedBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(harshProcMeans, harshProcSds, "bright")
+pdf("HarshDifferenceBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(1, 4, 0.5, 0))
+plotDistanceBarChart(harshDiffMeans, harshDiffSds, nDoods)
 dev.off()
-embed_fonts("HarshProcessedBrightBar.pdf")
 
-pdf("HarshProcessedHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(harshProcMeans, harshProcSds, "harsh")
+pdf("CrunchProcessedBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(1, 4, 0.5, 0))
+plotDistanceBarChart(crunchProcMeans, crunchProcSds, nDoods)
 dev.off()
-embed_fonts("HarshProcessedHarshBar.pdf")
 
-# harsh differences
-pdf("HarshDifferenceWarmBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(harshDiffMeans, harshDiffSds, "warm")
+pdf("CrunchDifferenceBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+par(mar=c(1, 4, 0.5, 0))
+plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, nDoods)
 dev.off()
-embed_fonts("HarshDifferenceWarmBar.pdf")
-
-pdf("HarshDifferenceBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(harshDiffMeans, harshDiffSds, "bright")
-dev.off()
-embed_fonts("HarshDifferenceBrightBar.pdf")
-
-pdf("HarshDifferenceHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(harshDiffMeans, harshDiffSds, "harsh")
-dev.off()
-embed_fonts("HarshDifferenceHarshBar.pdf")
-
-# crunch processed
-pdf("CrunchProcessedCrunchBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(crunchProcMeans, crunchProcSds, "crunch")
-dev.off()
-embed_fonts("CrunchProcessedCrunchBar.pdf")
-
-pdf("CrunchProcessedBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(crunchProcMeans, crunchProcSds, "bright")
-dev.off()
-embed_fonts("CrunchProcessedBrightBar.pdf")
-
-pdf("CrunchProcessedHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(crunchProcMeans, crunchProcSds, "harsh")
-dev.off()
-embed_fonts("CrunchProcessedHarshBar.pdf")
-
-# crunch processed
-pdf("CrunchDifferenceCrunchBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, "crunch")
-dev.off()
-embed_fonts("CrunchDifferenceCrunchBar.pdf")
-
-pdf("CrunchDifferenceBrightBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, "bright")
-dev.off()
-embed_fonts("CrunchDifferenceBrightBar.pdf")
-
-pdf("CrunchDifferenceHarshBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1.5, 4, 1, 0))
-plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, "harsh")
-dev.off()
-embed_fonts("CrunchDifferenceHarshBar.pdf")
-
-#######################################
-# box plots
-#######################################
-plotDistanceBoxPlot <- function(distances, term)
-{
-	names <- rownames(distances)
-	terms <- do.call(cbind, split(distances[,term], names))
-	lims <- c(0, 35)
-
-	boxWidth <- 0.8
-	boxplot(terms, frame.plot=FALSE, axes=FALSE, ylim=lims, col="blue", 
-		medlty="blank", ylab="Cophenetic Distance", boxwex=boxWidth,
-		boxlty="blank")
-	plotNames <- prettyInstrumentNames(colnames(terms))
-	axis(1, at=1:length(plotNames), line=-1, lwd=0, labels=plotNames, las=2)
-	axis(2)
-
-	# plot the medians
-	nInstruments <- ncol(terms)
-	for (i in 1:nInstruments)
-	{
-		stats <- boxplot.stats(terms[,i])$stats
-
-		left <- i - boxWidth / 2
-		right <- i + boxWidth / 2
-		bottom <- stats[2]
-		top <- stats[4]
-		clip(left, right, bottom, top)
-		abline(h=stats[3], col="red", lwd=3)
-
-		lims <- par("usr")
-		clip(lims[1], lims[2], lims[3], lims[4])
-		rect(left, bottom, right, top, lwd=1)
-	}
-
-}
-
-# harsh processed
-pdf("HarshProcessedWarmBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(harshProcDists, "warm")
-dev.off()
-embed_fonts("HarshProcessedWarmBox.pdf")
-
-pdf("HarshProcessedBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(harshProcDists, "bright")
-dev.off()
-embed_fonts("HarshProcessedBrightBox.pdf")
-
-pdf("HarshProcessedHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(harshProcDists, "harsh")
-dev.off()
-embed_fonts("HarshProcessedHarshBox.pdf")
-
-# harsh differences
-pdf("HarshDifferenceWarmBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(harshDiffDists, "warm")
-dev.off()
-embed_fonts("HarshDifferenceWarmBox.pdf")
-
-pdf("HarshDifferenceBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(harshDiffDists, "bright")
-dev.off()
-embed_fonts("HarshDifferenceBrightBox.pdf")
-
-pdf("HarshDifferenceHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(harshDiffDists, "harsh")
-dev.off()
-embed_fonts("HarshDifferenceHarshBox.pdf")
-
-# crunch processed
-pdf("CrunchProcessedCrunchBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(crunchProcDists, "crunch")
-dev.off()
-embed_fonts("CrunchProcessedCrunchBox.pdf")
-
-pdf("CrunchProcessedBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(crunchProcDists, "bright")
-dev.off()
-embed_fonts("CrunchProcessedBrightBox.pdf")
-
-pdf("CrunchProcessedHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(crunchProcDists, "harsh")
-dev.off()
-embed_fonts("CrunchProcessedHarshBox.pdf")
-
-# crunch processed
-pdf("CrunchDifferenceCrunchBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(crunchDiffDists, "crunch")
-dev.off()
-embed_fonts("CrunchDifferenceCrunchBox.pdf")
-
-pdf("CrunchDifferenceBrightBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(crunchDiffDists, "bright")
-dev.off()
-embed_fonts("CrunchDifferenceBrightBox.pdf")
-
-pdf("CrunchDifferenceHarshBox.pdf", pointsize=8, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0, 0))
-plotDistanceBoxPlot(crunchDiffDists, "harsh")
-dev.off()
-embed_fonts("CrunchDifferenceHarshBox.pdf")
