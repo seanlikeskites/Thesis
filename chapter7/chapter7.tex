@@ -230,19 +230,30 @@
 		describe transformations applied by both distortion and equalisation effects. `Harsh' and `bright' having
 		different definitions depending on the type of processing applied. The objective performance of the effects
 		proposed in this section is evaluated against data from both the SAFE distortion and equaliser. In order to
-		do this, two new timbre spaces are constructed representing the processed audio features and feature
-		differences of the combined distortion and equaliser data. Two performance score are given to each
+		do this, two new timbre spaces are constructed by performing PCA on the processed audio features and feature
+		differences of the combined distortion and equaliser data. Two performance scores are given to each
 		combination of audio effect, descriptor and test signal. The first measuring how close the processed
 		features of the signal are to points labelled with the descriptor in the processed feature timbre space.
-		The second measuring how close the changes in features applied by the affect are to points labelled with the
+		The second measuring how close the changes in features caused by the effect are to points labelled with the
 		descriptor in the feature difference timbre space.
 
 		The performance of a particular effect, with a particular parameter setting on a particular test signal is
 		measured by projecting the extracted audio features to a point on the relevant timbre space. The processed
 		features of the signal are projected onto the processed feature timbre space and the feature differences
-		onto the feature difference timbre space. The Mahalanobis distance between this point and the distribution
-		of transforms labelled with the relevant descriptor is taken as a measure of closeness to ideal performance.
-		Where the relevant descriptor is represented by two distributions of transforms, one from the distortion and
+		onto the feature difference timbre space. The Mahalanobis distance, $M(x, d)$, between this point, $x$, and
+		the distribution of transforms labelled with the descriptor, $d$, is taken using Equation
+		\ref{eq:Mahalanbois}
+		
+		\begin{equation}
+			M_{d}(x) = \sqrt{(x - \mu_{d})^{T}\Sigma_{d}^{-1}(x - \mu_{d})}
+			\label{eq:Mahalanobis}
+		\end{equation}
+
+		Where $x$ is a column vector containing the coordinates of the point in the timbre space, $\mu_{d}$ a column
+		vector containing the mean coordinates of all transforms in the timbre space labelled with descriptor $d$
+		and $\Sigma_{d}$ is the covariance matrix of those transforms' coordinates in the timbre space.
+
+		Where the descriptor, $d$, is represented by two distributions of transforms, one from the distortion and
 		one from the equaliser, the Mahalanobis distance from both distributions is taken and the minimum distance
 		kept as the measure of performance.
 

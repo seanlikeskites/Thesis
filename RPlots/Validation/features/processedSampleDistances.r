@@ -56,7 +56,7 @@ calculateDistance <- function(means, pca, descriptors)
 		cluster <- cluster[,1:(n-1)]
 		center <- apply(cluster, 2, mean)
 		covariance <- cov(cluster)
-		dists[i,] <- mahalanobis(coords[,1:(n-1)], center, covariance)
+		dists[i,] <- sqrt(mahalanobis(coords[,1:(n-1)], center, covariance))
 	}
 
 	return(apply(dists, 2, min))
