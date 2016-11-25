@@ -194,29 +194,6 @@ prettyInstrumentNames <- function(names)
 	return(names)
 }
 
-#plotDistanceBarChart <- function(means, sds, term)
-#{
-#	names <- rownames(means)
-#	means <- means[,term]
-#	sds <- sds[,term]
-#
-#	nDoods <- length(means)
-#	error <- qt(0.95, df=nDoods - 1) * sds / sqrt (nDoods)
-#	mins <- means - error
-#	maxs <- means + error
-#	lims <- c(0, 35)
-#
-#	plotNames <- prettyInstrumentNames(names(means))
-#
-#	centres <- barplot(means, ylab="Cophenetic Distance", col="blue", xaxt="n", ylim=lims)
-#	axis(1, at=centres, line=-0.6, lwd=0, labels=plotNames, las=2)
-#
-#	# clip so we don't get yuckiness
-#	usr <- par("usr")
-#	clip(usr[1], usr[2], usr[3], usr[4])
-#	arrows(centres, mins, centres, maxs, angle=90, length=0.03, code=3, col="red")
-#}
-
 plotDistanceBarChart <- function(means, sds, nDoods)
 {
 	means <- t(means)
@@ -242,25 +219,25 @@ plotDistanceBarChart <- function(means, sds, nDoods)
 	arrows(centres, mins, centres, maxs, angle=90, length=0.01, code=3, col="red")
 }
 
-pdf("HarshProcessedBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+pdf("HarshProcessedBar.pdf", pointsize=9, family="CM Sans", width=4, height=3)
 par(mar=c(1, 4, 0.5, 0))
 plotDistanceBarChart(harshProcMeans, harshProcSds, nDoods)
 dev.off()
 embed_fonts("HarshProcessedBar.pdf")
 
-pdf("HarshDifferenceBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+pdf("HarshDifferenceBar.pdf", pointsize=9, family="CM Sans", width=4, height=3)
 par(mar=c(1, 4, 0.5, 0))
 plotDistanceBarChart(harshDiffMeans, harshDiffSds, nDoods)
 dev.off()
 embed_fonts("HarshDifferenceBar.pdf")
 
-pdf("CrunchProcessedBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+pdf("CrunchProcessedBar.pdf", pointsize=9, family="CM Sans", width=4, height=3)
 par(mar=c(1, 4, 0.5, 0))
 plotDistanceBarChart(crunchProcMeans, crunchProcSds, nDoods)
 dev.off()
 embed_fonts("CrunchProcessedBar.pdf")
 
-pdf("CrunchDifferenceBar.pdf", pointsize=8, family="CM Sans", width=4, height=3)
+pdf("CrunchDifferenceBar.pdf", pointsize=9, family="CM Sans", width=4, height=3)
 par(mar=c(1, 4, 0.5, 0))
 plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, nDoods)
 dev.off()
