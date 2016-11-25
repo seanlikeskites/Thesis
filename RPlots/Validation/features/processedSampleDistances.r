@@ -1,3 +1,4 @@
+library(extrafont)
 load("../../SAFEAnalysis/PCAData.RData")
 load("ValidationMeans.RData")
 source("../../SAFEAnalysis/descriptorPositions.r")
@@ -101,39 +102,73 @@ makeDistanceTable <- function(data, outFile)
 	close(f)
 }
 
+plotDistanceBarChart <- function(means, colours)
+{
+	names <- colnames(means)
+	descriptors <- rownames(means)
+	plotNames <- prettyInstrumentNames(names)
+
+	lims <- c(0, 10)
+
+	centres <- barplot(means, ylab="Mahalanobis Distance", xaxt="n", ylim=lims, beside=TRUE,
+			   col=colours, legend=descriptors, args.legend=list(ncol=3))
+	labelPoints <- centres[seq(2, 3 * ncol(means), 3)]
+	axis(1, at=labelPoints, line=-1, lwd=0, labels=plotNames)
+}
+
 instruments <- c("Bass1", "Bass2", "Flute", "Guitar1", "Guitar2", "Marimba", "Oboe",  "Saxophone", "Trumpet", "Violin")
 nInstruments <- length(instruments)
 
 # harsh processed distances
-harshProcDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Warm", "Bright", "Harsh"), instruments))
-harshProcDists["Warm",] <- calculateDistance(harshMeans$Warm$Processed, combProcPCA, c("E:warm", "D:warm"))
-harshProcDists["Bright",] <- calculateDistance(harshMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
-harshProcDists["Harsh",] <- calculateDistance(harshMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
-makeDistanceTable(harshProcDists, "HarshProcessedJeffsDistance.tex")
+harshProcDists <-  matrix(0, 3, nInstruments, dimnames=list(c("warm", "bright", "harsh"), instruments))
+harshProcDists["warm",] <- calculateDistance(harshMeans$Warm$Processed, combProcPCA, c("E:warm", "D:warm"))
+harshProcDists["bright",] <- calculateDistance(harshMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
+harshProcDists["harsh",] <- calculateDistance(harshMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
+
+pdf("HarshProcessedJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+par(mar=c(1, 4, 0.5, 0))
+plotDistanceBarChart(harshProcDists, c("blue", "turquoise", "green"))
+dev.off()
+embed_fonts("HarshProcessedJeffsDistance.pdf")
 
 # harsh difference distances
-harshDiffDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Warm", "Bright", "Harsh"), instruments))
-harshDiffDists["Warm",] <- calculateDistance(harshMeans$Warm$Processed - harshMeans$Warm$Unprocessed, 
+harshDiffDists <-  matrix(0, 3, nInstruments, dimnames=list(c("warm", "bright", "harsh"), instruments))
+harshDiffDists["warm",] <- calculateDistance(harshMeans$Warm$Processed - harshMeans$Warm$Unprocessed, 
 					     combDiffPCA, c("E:warm", "D:warm"))
-harshDiffDists["Bright",] <- calculateDistance(harshMeans$Bright$Processed - harshMeans$Bright$Unprocessed, 
+harshDiffDists["bright",] <- calculateDistance(harshMeans$Bright$Processed - harshMeans$Bright$Unprocessed, 
 					       combDiffPCA, c("E:bright", "D:bright"))
-harshDiffDists["Harsh",] <- calculateDistance(harshMeans$Harsh$Processed - harshMeans$Harsh$Unprocessed, 
+harshDiffDists["harsh",] <- calculateDistance(harshMeans$Harsh$Processed - harshMeans$Harsh$Unprocessed, 
 					      combDiffPCA, c("E:harsh", "D:harsh"))
-makeDistanceTable(harshDiffDists, "HarshDifferenceJeffsDistance.tex")
+
+pdf("HarshDifferenceJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+par(mar=c(1, 4, 0.5, 0))
+plotDistanceBarChart(harshDiffDists, c("blue", "turquoise", "green"))
+dev.off()
+embed_fonts("HarshDifferenceJeffsDistance.pdf")
 
 # crunch processed distances
-crunchProcDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Harsh", "Bright", "Crunch"), instruments))
-crunchProcDists["Harsh",] <- calculateDistance(crunchMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
-crunchProcDists["Bright",] <- calculateDistance(crunchMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
-crunchProcDists["Crunch",] <- calculateDistance(crunchMeans$Crunch$Processed, combProcPCA, "D:crunch")
-makeDistanceTable(crunchProcDists, "CrunchProcessedJeffsDistance.tex")
+crunchProcDists <-  matrix(0, 3, nInstruments, dimnames=list(c("harsh", "bright", "crunch"), instruments))
+crunchProcDists["harsh",] <- calculateDistance(crunchMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
+crunchProcDists["bright",] <- calculateDistance(crunchMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
+crunchProcDists["crunch",] <- calculateDistance(crunchMeans$Crunch$Processed, combProcPCA, "D:crunch")
+
+pdf("CrunchProcessedJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+par(mar=c(1, 4, 0.5, 0))
+plotDistanceBarChart(crunchProcDists, c("green", "turquoise", "purple"))
+dev.off()
+embed_fonts("CrunchProcessedJeffsDistance.pdf")
 
 # crunch difference distances
-crunchDiffDists <-  matrix(0, 3, nInstruments, dimnames=list(c("Harsh", "Bright", "Crunch"), instruments))
-crunchDiffDists["Harsh",] <- calculateDistance(crunchMeans$Harsh$Processed - crunchMeans$Harsh$Unprocessed, 
+crunchDiffDists <-  matrix(0, 3, nInstruments, dimnames=list(c("harsh", "bright", "crunch"), instruments))
+crunchDiffDists["harsh",] <- calculateDistance(crunchMeans$Harsh$Processed - crunchMeans$Harsh$Unprocessed, 
 					     combDiffPCA, c("E:harsh", "D:harsh"))
-crunchDiffDists["Bright",] <- calculateDistance(crunchMeans$Bright$Processed - crunchMeans$Bright$Unprocessed, 
+crunchDiffDists["bright",] <- calculateDistance(crunchMeans$Bright$Processed - crunchMeans$Bright$Unprocessed, 
 					       combDiffPCA, c("E:bright", "D:bright"))
-crunchDiffDists["Crunch",] <- calculateDistance(crunchMeans$Crunch$Processed - crunchMeans$Crunch$Unprocessed, 
+crunchDiffDists["crunch",] <- calculateDistance(crunchMeans$Crunch$Processed - crunchMeans$Crunch$Unprocessed, 
 					      combDiffPCA, "D:crunch")
-makeDistanceTable(crunchDiffDists, "CrunchDifferenceJeffsDistance.tex")
+
+pdf("CrunchDifferenceJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+par(mar=c(1, 4, 0.5, 0))
+plotDistanceBarChart(crunchDiffDists, c("green", "turquoise", "purple"))
+dev.off()
+embed_fonts("CrunchDifferenceJeffsDistance.pdf")
