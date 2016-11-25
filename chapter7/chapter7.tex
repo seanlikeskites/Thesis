@@ -242,7 +242,7 @@
 		features of the signal are projected onto the processed feature timbre space and the feature differences
 		onto the feature difference timbre space. The Mahalanobis distance, $M(x, d)$, between this point, $x$, and
 		the distribution of transforms labelled with the descriptor, $d$, is taken using Equation
-		\ref{eq:Mahalanbois}
+		\ref{eq:Mahalanobis}
 		
 		\begin{equation}
 			M(x, d) = \sqrt{(x - \mu_{d})^{T}\Sigma_{d}^{-1}(x - \mu_{d})}
@@ -251,7 +251,7 @@
 
 		Where $x$ is a column vector containing the coordinates of the point in the timbre space, $\mu_{d}$ a column
 		vector containing the mean coordinates of all transforms in the timbre space labelled with descriptor $d$
-		and $\Sigma_{d}$ is the covariance matrix of those transforms' coordinates in the timbre space.
+		and $\Sigma_{d}$ the covariance matrix of those transforms' coordinates in the timbre space.
 
 		Where the descriptor, $d$, is represented by two distributions of transforms, one from the distortion and
 		one from the equaliser, the Mahalanobis distance from both distributions is taken and the minimum distance
