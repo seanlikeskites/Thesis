@@ -206,10 +206,10 @@ plotDistanceBarChart <- function(means, sds, nDoods, colours)
 	error <- qt(0.95, df=nDoods - 1) * sds / sqrt (nDoods)
 	mins <- means - error
 	maxs <- means + error
-	lims <- c(0, 35)
+	lims <- c(0, 40)
 
 	centres <- barplot(means, ylab="Cophenetic Distance", xaxt="n", ylim=lims, beside=TRUE,
-			   col=colours, legend=descriptors)
+			   col=colours, legend=descriptors, args.legend=list(ncol=3))
 	labelPoints <- centres[seq(2, 3 * ncol(means), 3)]
 	axis(1, at=labelPoints, line=-1, lwd=0, labels=plotNames)
 
