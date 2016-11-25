@@ -776,12 +776,12 @@
 			agreement score.
 
 			Further to this, the number of eigenvalues used, $K$, needs to be decided. Where $N_{d}$ is greater
-			than the number of PCs used, all the eigenvalues should be used ($K$ equal to the number of PCs).
-			For cases where $N_{d}$ is less than or equal to the number of PCs used, only $N_{d} - 1$
-			eigenvalues should be used ($K = N_{d} - 1$). This dynamic value for $K$ has the benefit of
-			reducing the agreement scores for terms which describe very few transforms. It also ensures that
-			terms which describe only one transform will always receive an agreement score of zero, as $K$ will
-			be equal to zero.
+			than the number of PCs used, all the eigenvalues should be used ($K$ equal to the number of
+			non-discarded PCs).  For cases where $N_{d}$ is less than or equal to the number of PCs used, only
+			$N_{d} - 1$ eigenvalues should be used ($K = N_{d} - 1$). This dynamic value for $K$ has the
+			benefit of reducing the agreement scores for terms which describe very few transforms. It also
+			ensures that terms which describe only one transform will always receive an agreement score of
+			zero, as $K$ will be equal to zero.
 
 		\subsubsection*{Validation with Synthesised Data}
 			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},

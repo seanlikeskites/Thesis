@@ -251,7 +251,12 @@
 
 		Where $x$ is a column vector containing the coordinates of the point in the timbre space, $\mu_{d}$ a column
 		vector containing the mean coordinates of all transforms in the timbre space labelled with descriptor $d$
-		and $\Sigma_{d}$ the covariance matrix of those transforms' coordinates in the timbre space.
+		and $\Sigma_{d}$ the covariance matrix of those transforms' coordinates in the timbre space. The number of
+		coordinates used in the calculation of Mahalanobis distance is determined in the same manner as discussed in
+		Section \ref{sec:TimbreEvaluation-Analysis-Agreement}. Where there more than five transforms in the
+		distribution, the coordinates in the first five PCs of the timbre space are used. Where the number of points
+		in the distribution, $N_{d}$, is lower, only the first $N_{d} - 1$ coordinates can be used in order to avoid
+		$\Sigma_{d}$ being singular.
 
 		Where the descriptor, $d$, is represented by two distributions of transforms, one from the distortion and
 		one from the equaliser, the Mahalanobis distance from both distributions is taken and the minimum distance
