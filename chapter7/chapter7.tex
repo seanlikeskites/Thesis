@@ -388,12 +388,11 @@
 			wide range of input signals.
 
 		\subsubsection*{Harshness / Crunchiness}
-			\note
-			{
-				Based on the techniques discussed in Section
-				\ref{sec:FeatureControl-Parameterisation-Irregularity}. Only 6 harmonics controlled and a
-				surrogate harmonic profile is used to ease computational load.
-			}
+			The harshness / crunchiness effect controls the spectral irregularity of a signal along with the
+			proportion of high frequency energy introduced. The system is based on that described in Figure
+			\ref{fig:SpectralShapingSystem} and uses the technique discussed in Section
+			\ref{sec:FeatureControl-Parameterisation-Irregularity} to control spectral irregularity. The
+			full system is shown in Figure \ref{fig:HarshCrunch}.
 
 			\begin{figure}[h!]
 				\centering
@@ -479,6 +478,12 @@
 				\caption{The system employed in the harshness / crunchiness effect.}
 				\label{fig:HarshCrunch}
 			\end{figure}
+
+			\note
+			{
+				Only 6 harmonics controlled and a surrogate harmonic profile is used to ease computational
+				load.
+			}
 
 			The Mahalanobis distances between the test signals after being processed by this effect and those in
 			the timbre space constructed from the SAFE dataset are shown in Figure \ref{fig:CrunchJeffs}.
