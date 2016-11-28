@@ -212,6 +212,7 @@ plotDistanceBarChart <- function(means, sds, nDoods, colours)
 			   col=colours, legend=descriptors, args.legend=list(ncol=3))
 	labelPoints <- centres[seq(2, 3 * ncol(means), 3)]
 	axis(1, at=labelPoints, line=-1, lwd=0, labels=plotNames)
+	mtext("Test Singal", 1, 2)
 
 	# clip so we don't get yuckiness
 	usr <- par("usr")
@@ -220,25 +221,25 @@ plotDistanceBarChart <- function(means, sds, nDoods, colours)
 }
 
 pdf("HarshProcessedCophDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0.5, 0))
+par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(harshProcMeans, harshProcSds, nDoods, c("blue", "turquoise", "green"))
 dev.off()
 embed_fonts("HarshProcessedCophDistance.pdf")
 
 pdf("HarshDifferenceCophDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0.5, 0))
+par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(harshDiffMeans, harshDiffSds, nDoods, c("blue", "turquoise", "green"))
 dev.off()
 embed_fonts("HarshDifferenceCophDistance.pdf")
 
 pdf("CrunchProcessedCophDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0.5, 0))
+par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(crunchProcMeans, crunchProcSds, nDoods, c("green", "turquoise", "purple"))
 dev.off()
 embed_fonts("CrunchProcessedCophDistance.pdf")
 
 pdf("CrunchDifferenceCophDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0.5, 0))
+par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, nDoods, c("green", "turquoise", "purple"))
 dev.off()
 embed_fonts("CrunchDifferenceCophDistance.pdf")

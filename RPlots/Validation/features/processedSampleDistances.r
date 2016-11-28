@@ -114,6 +114,7 @@ plotDistanceBarChart <- function(means, colours)
 			   col=colours, legend=descriptors, args.legend=list(ncol=3))
 	labelPoints <- centres[seq(2, 3 * ncol(means), 3)]
 	axis(1, at=labelPoints, line=-1, lwd=0, labels=plotNames)
+	mtext("Test Signal", 1, 2)
 }
 
 instruments <- c("Bass1", "Bass2", "Flute", "Guitar1", "Guitar2", "Marimba", "Oboe",  "Saxophone", "Trumpet", "Violin")
@@ -126,7 +127,7 @@ harshProcDists["bright",] <- calculateDistance(harshMeans$Bright$Processed, comb
 harshProcDists["harsh",] <- calculateDistance(harshMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
 
 pdf("HarshProcessedJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0.5, 0))
+par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(harshProcDists, c("blue", "turquoise", "green"))
 dev.off()
 embed_fonts("HarshProcessedJeffsDistance.pdf")
@@ -141,7 +142,7 @@ harshDiffDists["harsh",] <- calculateDistance(harshMeans$Harsh$Processed - harsh
 					      combDiffPCA, c("E:harsh", "D:harsh"))
 
 pdf("HarshDifferenceJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0.5, 0))
+par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(harshDiffDists, c("blue", "turquoise", "green"))
 dev.off()
 embed_fonts("HarshDifferenceJeffsDistance.pdf")
@@ -153,7 +154,7 @@ crunchProcDists["bright",] <- calculateDistance(crunchMeans$Bright$Processed, co
 crunchProcDists["crunch",] <- calculateDistance(crunchMeans$Crunch$Processed, combProcPCA, "D:crunch")
 
 pdf("CrunchProcessedJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0.5, 0))
+par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(crunchProcDists, c("green", "turquoise", "purple"))
 dev.off()
 embed_fonts("CrunchProcessedJeffsDistance.pdf")
@@ -168,7 +169,7 @@ crunchDiffDists["crunch",] <- calculateDistance(crunchMeans$Crunch$Processed - c
 					      combDiffPCA, "D:crunch")
 
 pdf("CrunchDifferenceJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
-par(mar=c(1, 4, 0.5, 0))
+par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(crunchDiffDists, c("green", "turquoise", "purple"))
 dev.off()
 embed_fonts("CrunchDifferenceJeffsDistance.pdf")
