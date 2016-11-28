@@ -352,32 +352,35 @@
 			applies processing which corresponds to that described as `bright' in the SAFE dataset. 
 
 			The Mahalanobis distances between the test signals after being processed by this effect and those in
-			the timbre space constructed from the SAFE dataset are shown in Figures \ref{fig:HarshProcJeff} and
-			\ref{fig:HarshDiffJeff}. The distances in the processed feature space (Figure
-			\ref{fig:HarshProcJeff}) are not as significant as those in the feature difference space (Figure
-			\ref{fig:HarshDiffJeff}) as it was determined in Chapter \ref{chap:TimbreEvaluation} that the
-			descriptors `warm', `bright' and `harsh' are best defined by relative changes in audio feature
-			rather than absolute values.
+			the timbre space constructed from the SAFE dataset are shown in Figure \ref{fig:HarshJeffs}. The
+			distances in the processed feature space (Figure \ref{fig:HarshProcJeff}) are not as significant as
+			those in the feature difference space (Figure \ref{fig:HarshDiffJeff}) as it was determined in
+			Chapter \ref{chap:TimbreEvaluation} that the descriptors `warm', `bright' and `harsh' are best
+			defined by relative changes in audio feature rather than absolute values.
 
 			\begin{figure}[h!]
 				\centering
-				\includegraphics{chapter7/Images/HarshProcessedJeffsDistance.pdf}
-				\caption{Mahalanobis distances for the processed 
-					 features of the warmth / harshness effect.}
-				\label{fig:HarshProcJeff}
-			\end{figure}
-
-			\begin{figure}[h!]
-				\centering
-				\includegraphics{chapter7/Images/HarshDifferenceJeffsDistance.pdf}
-				\caption{Mahalanobis distances for the feature differences of 
-					 the warmth / harshness effect.}
-				\label{fig:HarshDiffJeff}
+				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+				\subfloat[Processed Featues]
+				{
+					\includegraphics{chapter7/Images/HarshProcessedJeffsDistance.pdf}
+					\label{fig:HarshProcJeff}
+				}
+				\quad
+				\subfloat[FeatureDifferences]
+				{
+					\includegraphics{chapter7/Images/HarshDifferenceJeffsDistance.pdf}
+					\label{fig:HarshDiffJeff}
+				}
+				\caption{Mahalanobis distances for the warmth / harshness effect.}
+				\label{fig:HarshJeffs}
 			\end{figure}
 
 			The results in Figure \ref{fig:HarshDiffJeff} imply that the effect is successful in applying
 			transforms similar to those described as `warm' and `bright' in the SAFE dataset to a range of input
-			signals.
+			signals. The trumpet signal poses more of a problem then the others for these descriptors. When
+			attempting to make the test signals `harsher' however the effect does not perform well on the bass
+			guitar, flute, marimba or oboe signals.
 
 		\subsubsection*{Harshness / Crunchiness}
 			\note
@@ -473,23 +476,24 @@
 			\end{figure}
 
 			The Mahalanobis distances between the test signals after being processed by this effect and those in
-			the timbre space constructed from the SAFE dataset are shown in Figures \ref{fig:CrunchProcJeff} and
-			\ref{fig:CrunchDiffJeff}.
+			the timbre space constructed from the SAFE dataset are shown in Figure \ref{fig:CrunchJeffs}.
 
 			\begin{figure}[h!]
 				\centering
-				\includegraphics{chapter7/Images/CrunchProcessedJeffsDistance.pdf}
-				\caption{Mahalanobis distances for the processed 
-					 features of the harshness / crunchiness effect.}
-				\label{fig:CrunchProcJeff}
-			\end{figure}
-
-			\begin{figure}[h!]
-				\centering
-				\includegraphics{chapter7/Images/CrunchDifferenceJeffsDistance.pdf}
-				\caption{Mahalanobis distances for the feature differences of 
-					 the harshness / crunchiness effect.}
-				\label{fig:CrunchDiffJeff}
+				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+				\subfloat[Processed Featues]
+				{
+					\includegraphics{chapter7/Images/CrunchProcessedJeffsDistance.pdf}
+					\label{fig:CrunchProcJeff}
+				}
+				\quad
+				\subfloat[FeatureDifferences]
+				{
+					\includegraphics{chapter7/Images/CrunchDifferenceJeffsDistance.pdf}
+					\label{fig:CrunchDiffJeff}
+				}
+				\caption{Mahalanobis distances for the harshness / crunchiness effect.}
+				\label{fig:CrunchJeffs}
 			\end{figure}
 
 	\subsection{Evaluation Experiment}
@@ -520,24 +524,36 @@
 
 		\begin{figure}[h!]
 			\centering
-			\includegraphics{chapter7/Images/HarshProcessedCophDistance.pdf}
-			\caption{Cophenetic distances for the processed features of the warmth / harshness effect.}
+			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+			\subfloat[Processed Featues]
+			{
+				\includegraphics{chapter7/Images/HarshProcessedCophDistance.pdf}
+				\label{fig:HarshProcCoph}
+			}
+			\quad
+			\subfloat[FeatureDifferences]
+			{
+				\includegraphics{chapter7/Images/HarshDifferenceCophDistance.pdf}
+				\label{fig:HarshDiffCoph}
+			}
+			\caption{Cophenetic distances for the warmth / harshness effect.}
+			\label{fig:HarshCophs}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
-			\includegraphics{chapter7/Images/HarshDifferenceCophDistance.pdf}
-			\caption{Cophenetic distances for the feature differences of the warmth / harshness effect.}
-		\end{figure}
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics{chapter7/Images/CrunchProcessedCophDistance.pdf}
-			\caption{Cophenetic distances for the processed features of the harshness / crunchiness effect.}
-		\end{figure}
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics{chapter7/Images/CrunchDifferenceCophDistance.pdf}
-			\caption{Cophenetic distances for the feature differences of the harshness / crunchiness effect.}
+			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+			\subfloat[Processed Featues]
+			{
+				\includegraphics{chapter7/Images/CrunchProcessedCophDistance.pdf}
+				\label{fig:CrunchProcCoph}
+			}
+			\quad
+			\subfloat[FeatureDifferences]
+			{
+				\includegraphics{chapter7/Images/CrunchDifferenceCophDistance.pdf}
+				\label{fig:CrunchDiffCoph}
+			}
+			\caption{Cophenetic distances for the harshness / crunchiness effect.}
+			\label{fig:CrunchCophs}
 		\end{figure}

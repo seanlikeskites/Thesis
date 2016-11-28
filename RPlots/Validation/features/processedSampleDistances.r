@@ -108,7 +108,7 @@ plotDistanceBarChart <- function(means, colours)
 	descriptors <- rownames(means)
 	plotNames <- prettyInstrumentNames(names)
 
-	lims <- c(0, 10)
+	lims <- c(0, 11)
 
 	centres <- barplot(means, ylab="Mahalanobis Distance", xaxt="n", ylim=lims, beside=TRUE,
 			   col=colours, legend=descriptors, args.legend=list(ncol=3))
@@ -126,7 +126,7 @@ harshProcDists["warm",] <- calculateDistance(harshMeans$Warm$Processed, combProc
 harshProcDists["bright",] <- calculateDistance(harshMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
 harshProcDists["harsh",] <- calculateDistance(harshMeans$Harsh$Processed, combProcPCA, c("E:harsh", "D:harsh"))
 
-pdf("HarshProcessedJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+pdf("HarshProcessedJeffsDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(harshProcDists, c("blue", "turquoise", "green"))
 dev.off()
@@ -141,7 +141,7 @@ harshDiffDists["bright",] <- calculateDistance(harshMeans$Bright$Processed - har
 harshDiffDists["harsh",] <- calculateDistance(harshMeans$Harsh$Processed - harshMeans$Harsh$Unprocessed, 
 					      combDiffPCA, c("E:harsh", "D:harsh"))
 
-pdf("HarshDifferenceJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+pdf("HarshDifferenceJeffsDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(harshDiffDists, c("blue", "turquoise", "green"))
 dev.off()
@@ -153,7 +153,7 @@ crunchProcDists["harsh",] <- calculateDistance(crunchMeans$Harsh$Processed, comb
 crunchProcDists["bright",] <- calculateDistance(crunchMeans$Bright$Processed, combProcPCA, c("E:bright", "D:bright"))
 crunchProcDists["crunch",] <- calculateDistance(crunchMeans$Crunch$Processed, combProcPCA, "D:crunch")
 
-pdf("CrunchProcessedJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+pdf("CrunchProcessedJeffsDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(crunchProcDists, c("green", "turquoise", "purple"))
 dev.off()
@@ -168,7 +168,7 @@ crunchDiffDists["bright",] <- calculateDistance(crunchMeans$Bright$Processed - c
 crunchDiffDists["crunch",] <- calculateDistance(crunchMeans$Crunch$Processed - crunchMeans$Crunch$Unprocessed, 
 					      combDiffPCA, "D:crunch")
 
-pdf("CrunchDifferenceJeffsDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+pdf("CrunchDifferenceJeffsDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(crunchDiffDists, c("green", "turquoise", "purple"))
 dev.off()

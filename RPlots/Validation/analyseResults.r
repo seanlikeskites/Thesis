@@ -206,13 +206,13 @@ plotDistanceBarChart <- function(means, sds, nDoods, colours)
 	error <- qt(0.95, df=nDoods - 1) * sds / sqrt (nDoods)
 	mins <- means - error
 	maxs <- means + error
-	lims <- c(0, 40)
+	lims <- c(0, 45)
 
 	centres <- barplot(means, ylab="Cophenetic Distance", xaxt="n", ylim=lims, beside=TRUE,
 			   col=colours, legend=descriptors, args.legend=list(ncol=3))
 	labelPoints <- centres[seq(2, 3 * ncol(means), 3)]
 	axis(1, at=labelPoints, line=-1, lwd=0, labels=plotNames)
-	mtext("Test Singal", 1, 2)
+	mtext("Test Signal", 1, 2)
 
 	# clip so we don't get yuckiness
 	usr <- par("usr")
@@ -220,25 +220,25 @@ plotDistanceBarChart <- function(means, sds, nDoods, colours)
 	arrows(centres, mins, centres, maxs, angle=90, length=0.01, code=3, col="red")
 }
 
-pdf("HarshProcessedCophDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+pdf("HarshProcessedCophDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(harshProcMeans, harshProcSds, nDoods, c("blue", "turquoise", "green"))
 dev.off()
 embed_fonts("HarshProcessedCophDistance.pdf")
 
-pdf("HarshDifferenceCophDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+pdf("HarshDifferenceCophDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(harshDiffMeans, harshDiffSds, nDoods, c("blue", "turquoise", "green"))
 dev.off()
 embed_fonts("HarshDifferenceCophDistance.pdf")
 
-pdf("CrunchProcessedCophDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+pdf("CrunchProcessedCophDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(crunchProcMeans, crunchProcSds, nDoods, c("green", "turquoise", "purple"))
 dev.off()
 embed_fonts("CrunchProcessedCophDistance.pdf")
 
-pdf("CrunchDifferenceCophDistance.pdf", pointsize=9, family="CM Sans", width=4, height=3)
+pdf("CrunchDifferenceCophDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, nDoods, c("green", "turquoise", "purple"))
 dev.off()
