@@ -379,8 +379,13 @@
 			The results in Figure \ref{fig:HarshDiffJeff} imply that the effect is successful in applying
 			transforms similar to those described as `warm' and `bright' in the SAFE dataset to a range of input
 			signals. The trumpet signal poses more of a problem then the others for these descriptors. When
-			attempting to make the test signals `harsher' however the effect does not perform well on the bass
-			guitar, flute, marimba or oboe signals.
+			attempting to make the test signals `harsher' however, the effect does not perform well on the bass
+			guitar, flute, marimba or oboe signals. This is likely due to the small number of transforms
+			labelled harsh in the timbre space. In Chapter \ref{chap:TimbreEvaluation} `harsh' was given a low
+			agreement score in both the distortion and equaliser timbre spaces due to there only being four
+			transforms labeled `harsh' in each space. As such, only a small region of the timbre space is
+			described as harsh, making it more difficult design a transform which will sit in that region for a
+			wide range of input signals.
 
 		\subsubsection*{Harshness / Crunchiness}
 			\note
