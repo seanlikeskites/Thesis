@@ -173,3 +173,6 @@ par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(crunchDiffDists, c("green", "turquoise", "purple"))
 dev.off()
 embed_fonts("CrunchDifferenceJeffsDistance.pdf")
+
+# save things
+save(harshProcDists, harshDiffDists, crunchProcDists, crunchDiffDists, file="JeffsDistances.RData")

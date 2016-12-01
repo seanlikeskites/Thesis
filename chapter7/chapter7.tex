@@ -541,7 +541,10 @@
 			causing the spectral transformations associated with `bright' and `harsh' signals.
 
 			The Mahalanobis distances between the test signals after being processed by this effect and those in
-			the timbre space constructed from the SAFE dataset are shown in Figure \ref{fig:CrunchJeffs}.
+			the timbre space constructed from the SAFE dataset are shown in Figure \ref{fig:CrunchJeffs}. Here
+			both the processed features and feature differences (Figures \ref{fig:CrunchProcJeff} and
+			\ref{fig:CrunchDiffJeff}) are significant as `crunchiness' is characterised by a certain change in
+			spectral irregularity and the distribution of energy in the output spectrum.
 
 			\begin{figure}[h!]
 				\centering
@@ -561,9 +564,28 @@
 				\label{fig:CrunchJeffs}
 			\end{figure}
 
+			Figure \ref{fig:CrunchProcJeff} shows that the effect is reasonably successful in generating output
+			signals with features similar to those in the SAFE dataset labelled as `harsh', `bright' and
+			`crunchy'. In, replicating the transforms which produced these signals the effect is less
+			successful. This is possibly explain by the simplifications made to reduce the effects computational
+			complexity. Using lower order filters increases the level of intermodulation components in the
+			individually generated harmonics. Controlling the relative levels of these generated harmonics no
+			longer has the expected effect on spectral irregularity as each generated harmonic contains several
+			spectral partials with unknown amplitudes.
+
 	\subsection{Evaluation Experiment}
 	\label{sec:PerceptualExperiments-SemanticControl-EvaluationExperiment}
-		\note{Randomised parameter slider and sample order.}
+		To assess the performance of the developed effects subjectively a series of perceptual listening tests were
+		undertaken.
+
+		\note
+		{
+			Randomness, DAW, list of descriptors, 3 points labelled, asked to listen to the effect prior to
+			annotation.
+
+			(airy, boomy, boxy, bright, clear, creamy, crunchy, deep, full, fuzzy, harsh, muddy, raspy, smooth,
+			thin, tinny and warm)
+		}
 
 	\subsection{Performance Results}
 	\label{sec:PerceptualExperiments-SemanticControl-PerformanceResults}

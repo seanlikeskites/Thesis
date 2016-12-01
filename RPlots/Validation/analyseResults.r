@@ -243,3 +243,46 @@ par(mar=c(3, 4, 0.5, 0))
 plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, nDoods, c("green", "turquoise", "purple"))
 dev.off()
 embed_fonts("CrunchDifferenceCophDistance.pdf")
+
+#######################################
+# rank correlations
+#######################################
+load("features/JeffsDistances.RData")
+
+matrixCorrelationTest <- function(data1, data2)
+{
+	if (nrow(data1) != nrow(data2))
+	{
+		stop("The number of rows in each dataset doesn't match")
+	}
+
+	numRows <- ncol(data1)
+	numCols <- ncol(data2)
+	correlations <- matrix(nrow=numRows, ncol=numCols)
+	rownames(correlations) <- colnames(data1)
+	colnames(correlations) <- colnames(data2)
+	pvalues <- matrix(nrow=numRows, ncol=numCols)
+	rownames(pvalues) <- colnames(data1)
+	colnames(pvalues) <- colnames(data2)
+
+	for (i in 1:numRows)
+	{
+		for (j in 1:numCols)
+		{
+			cortest <- cor.test (data1[,i], data2[,j], method="s")
+			correlations[i,j] <- cortest$estimate
+			pvalues[i,j] <- cortest$p.value
+		}
+	}
+
+	output <- list()
+	output$correlations <- correlations
+	output$pValues <- pvalues
+
+	return(output)
+}
+
+harshProcCor <- matrixCorrelationTest(harshProcMeans, t(harshProcDists))
+harshDiffCor <- matrixCorrelationTest(harshDiffMeans, t(harshDiffDists))
+crunchProcCor <- matrixCorrelationTest(crunchProcMeans, t(crunchProcDists))
+crunchDiffCor <- matrixCorrelationTest(crunchDiffMeans, t(crunchDiffDists))
