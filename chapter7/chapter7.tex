@@ -576,24 +576,33 @@
 	\subsection{Evaluation Experiment}
 	\label{sec:PerceptualExperiments-SemanticControl-EvaluationExperiment}
 		To assess the performance of the developed effects subjectively a series of perceptual listening tests were
-		undertaken. Each of the effects were implemented as audio plug-ins with the interface shown in Figure
-		\ref{fig:TestPlugInterface}.
+		undertaken. For the purposes of testing each of the effect was implemented as an audio plug-in. Participants
+		were presented with a DAW session containing a track for each of the test signals. On each track both effect
+		plug-ins were inserted. The effects were labelled as ``Plug-In 1'' and ``Plug-In 2'' and had identical
+		interfaces as seen in Figure \ref{fig:TestPlugInterface}.
 
 		\begin{figure}[h!]
 			\centering
-			\includegraphics{chapter7/Images/TestPlugInInterface.png}
+			\includegraphics[width=0.6\textwidth]{chapter7/Images/TestPlugInInterface.png}
 			\caption{The interface used for assessing the performance of the developed effects.}
 			\label{fig:TestPlugInterface}
 		\end{figure}
 
-		\note
-		{
-			Randomness, DAW, list of descriptors, 3 points labelled, asked to listen to the effect prior to
-			annotation.
+		To mitigate influence of the plug-in's interface layout on the result of the experiment the direction of
+		the parameter sliders was randomised for each participant. The order of the tracks in the DAW session was
+		also randomised to mitigate any effect the order of tracks may have on results.
 
-			(airy, boomy, boxy, bright, clear, creamy, crunchy, deep, full, fuzzy, harsh, muddy, raspy, smooth,
-			thin, tinny and warm)
-		}
+		For each effect on each track participants were asked to first take a short time to audition the effect to
+		become accustomed to how changing the parameter value affects that particular input signal. Once they had
+		investigated the operation of the effect they were asked to label the parameter slider at three positions
+		(parameter values of 0, 0.5 and 1) with a term they felt best described the timbral effect of the effect at
+		that parameter setting. A list of available terms was provided in a drop down list at each parameter value
+		to be labelled as seen in Figure \ref{fig:TestPlugInterface}. The available terms were the 17 unique terms
+		from the SAFE dataset discussed in Chapter \ref{chap:TimbreEvaluation} (airy, boomy, boxy, bright, clear,
+		creamy, crunchy, deep, full, fuzzy, harsh, muddy, raspy, smooth, thin, tinny and warm).
+
+		In total 22 participants took part in the test, all of whom had experience in music production and reported
+		no known hearing problems. All participants undertook the test using the same equipment.
 
 	\subsection{Performance Results}
 	\label{sec:PerceptualExperiments-SemanticControl-PerformanceResults}
@@ -603,18 +612,21 @@
 			\centering
 			\includegraphics{chapter7/Images/HarshConfusion.pdf}
 			\caption{Heat map of term usage for the warmth / harshness effect.}
+			\label{fig:HarshConfusion}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/CrunchConfusion.pdf}
 			\caption{Heat map of term usage for the harshness / crunchiness effect.}
+			\label{fig:CrunchConfusion}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter7/Images/CombinedConfusion.pdf}
 			\caption{Heat map of term usage across both effects.}
+			\label{fig:CombConfusion}
 		\end{figure}
 
 		\begin{figure}[h!]
