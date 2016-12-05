@@ -207,69 +207,16 @@
 		do similar with the above experiment.
 	}
 
-	The findings of Chapter \ref{chap:TimbreEvaluation} can be combined with the techniques discussed in Chapter
-	\ref{chap:FeatureControl} to develop audio effects with control parameters which relate to specific descriptive
-	terms. In this section two such effects are developed and their performance evaluated. Each of these effects have a
-	single `semantic' control parameter which changes processing parameters based three related semantic terms. The
-	first effect, the warmth / harshness effect, is intended to introduce `warmth' for low values of the
-	control parameter, `brightness' for middle values of the control parameter and `harshness' for high values of the
-	control parameter. The second effect, the harshness / crunchiness effect, is intended to change between
-	`harshness', `brightness' and `crunchiness' for different values of the control parameter.
-
-	The performance of each effect is evaluated using a set of ten test signals, comprising two electric bass guitars
-	(B1 and B2), a flute (F), two electric guitars (G1 and G2), a marimba (M), an oboe (O), a saxophone (S), a trumpet
-	(T) and a violin (V). The signals were adjusted to have equal loudness prior to experimentation.  Firstly the
-	effects are evaluated objectively by comparing them to the analysis performed in Chapter
-	\ref{chap:TimbreEvaluation}. Secondly the effects are evaluated subjectively as discussed in Sections
-	\ref{sec:PerceptualExperiments-SemanticControl-EvaluationExperiment} and
-	\ref{sec:PerceptualExperiments-SemanticControl-PerformanceResults}.
-
-	\subsection{Semantically Controlled Effect Design}
+	\subsection{Effect Design}
 	\label{sec:PerceptualExperiments-SemanticControl-EffectDesign}
-		This section describes the underlying systems of the warmth / harshness and harshness / crunchiness effects
-		and the operation of their control parameters. The performance of each effect is evaluated objectively by
-		examining how they manipulate the features of the test signals. Each effect is used to process each of the
-		test signals with its parameter set to the minimum value, the middle value and the maximum value,
-		corresponding to `warm', `bright' and `harsh' for the warmth / harshness effect and `harsh', `bright' and
-		`crunchy' for the harshness / crunchiness effect. The audio features of the unprocessed and processed
-		signals in each of these applications are calculated in the same manner as in the SAFE plug-ins. These audio
-		features are the compared to those taken from the SAFE dataset.
-
-		As discussed in Chapter \ref{chap:TimbreEvaluation} the terms `warm', `harsh' and `bright' are all used to
-		describe transformations applied by both distortion and equalisation effects. `Harsh' and `bright' having
-		different definitions depending on the type of processing applied. The objective performance of the effects
-		proposed in this section is evaluated against data from both the SAFE distortion and equaliser. In order to
-		do this, two new timbre spaces are constructed by performing PCA on the processed audio features and feature
-		differences of the combined distortion and equaliser data. Two performance scores are given to each
-		combination of audio effect, descriptor and test signal. The first measuring how close the processed
-		features of the signal are to points labelled with the descriptor in the processed feature timbre space.
-		The second measuring how close the changes in features caused by the effect are to points labelled with the
-		descriptor in the feature difference timbre space.
-
-		The performance of a particular effect, with a particular parameter setting on a particular test signal is
-		measured by projecting the extracted audio features to a point on the relevant timbre space. The processed
-		features of the signal are projected onto the processed feature timbre space and the feature differences
-		onto the feature difference timbre space. The Mahalanobis distance, $M(x, d)$, between this point, $x$, and
-		the distribution of transforms labelled with the descriptor, $d$, is taken using Equation
-		\ref{eq:Mahalanobis}
-		
-		\begin{equation}
-			M(x, d) = \sqrt{(x - \mu_{d})^{T}\Sigma_{d}^{-1}(x - \mu_{d})}
-			\label{eq:Mahalanobis}
-		\end{equation}
-
-		Where $x$ is a column vector containing the coordinates of the point in the timbre space, $\mu_{d}$ a column
-		vector containing the mean coordinates of all transforms in the timbre space labelled with descriptor $d$
-		and $\Sigma_{d}$ the covariance matrix of those transforms' coordinates in the timbre space. The number of
-		coordinates used in the calculation of Mahalanobis distance is determined in the same manner as discussed in
-		Section \ref{sec:TimbreEvaluation-Analysis-Agreement}. Where there more than five transforms in the
-		distribution, the coordinates in the first five PCs of the timbre space are used. Where the number of points
-		in the distribution, $N_{d}$, is lower, only the first $N_{d} - 1$ coordinates can be used in order to avoid
-		$\Sigma_{d}$ being singular.
-
-		Where the descriptor, $d$, is represented by two distributions of transforms, one from the distortion and
-		one from the equaliser, the Mahalanobis distance from both distributions is taken and the minimum distance
-		kept as the measure of performance.
+		The findings of Chapter \ref{chap:TimbreEvaluation} can be combined with the techniques discussed in Chapter
+		\ref{chap:FeatureControl} to develop audio effects with control parameters which relate to specific
+		descriptive terms. In this section two such effects are developed. Each of these effects have a single
+		`semantic' control parameter which changes processing parameters based three related semantic terms. The
+		first effect, the warmth / harshness effect, is intended to introduce `warmth' for low values of the control
+		parameter, `brightness' for middle values of the control parameter and `harshness' for high values of the
+		control parameter. The second effect, the harshness / crunchiness effect, is intended to change between
+		`harshness', `brightness' and `crunchiness' for different values of the control parameter.
 
 		\subsubsection*{Warmth / Harshness}
 			The warmth / harshness effect controls the spectral centroid of a signal using a refined version of
@@ -359,42 +306,6 @@
 			increase in spectral centroid and corresponding to transforms labelled `harsh' in the SAFE dataset.
 			The power to which $p$ is raised was determined experimentally such that when $p = 0.5$ the effect
 			applies processing which corresponds to that described as `bright' in the SAFE dataset. 
-
-			The Mahalanobis distances between the test signals after being processed by this effect and those in
-			the timbre space constructed from the SAFE dataset are shown in Figure \ref{fig:HarshJeffs}. The
-			distances in the processed feature space (Figure \ref{fig:HarshProcJeff}) are not as significant as
-			those in the feature difference space (Figure \ref{fig:HarshDiffJeff}) as it was determined in
-			Chapter \ref{chap:TimbreEvaluation} that the descriptors `warm', `bright' and `harsh' are best
-			defined by relative changes in audio feature rather than absolute values.
-
-			\begin{figure}[h!]
-				\centering
-				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-				\subfloat[Processed Featues]
-				{
-					\includegraphics{chapter7/Images/HarshProcessedJeffsDistance.pdf}
-					\label{fig:HarshProcJeff}
-				}
-				\quad
-				\subfloat[FeatureDifferences]
-				{
-					\includegraphics{chapter7/Images/HarshDifferenceJeffsDistance.pdf}
-					\label{fig:HarshDiffJeff}
-				}
-				\caption{Mahalanobis distances for the warmth / harshness effect.}
-				\label{fig:HarshJeffs}
-			\end{figure}
-
-			The results in Figure \ref{fig:HarshDiffJeff} imply that the effect is successful in applying
-			transforms similar to those described as `warm' and `bright' in the SAFE dataset to a range of input
-			signals. The trumpet signal poses more of a problem then the others for these descriptors. When
-			attempting to make the test signals `harsher' however, the effect does not perform well on the bass
-			guitar, flute, marimba or oboe signals. This is likely due to the small number of transforms
-			labelled harsh in the timbre space. In Chapter \ref{chap:TimbreEvaluation} `harsh' was given a low
-			agreement score in both the distortion and equaliser timbre spaces due to there only being four
-			transforms labeled `harsh' in each space. As such, only a small region of the timbre space is
-			described as harsh, making it more difficult design a transform which will sit in that region for a
-			wide range of input signals.
 
 		\subsubsection*{Harshness / Crunchiness}
 			In Chapter \ref{chap:TimbreEvaluation} it was suggested that `crunchiness' is associated with a
@@ -540,72 +451,160 @@
 			dataset. Lower values of $p$ increase the levels of high frequency energy in the output signal
 			causing the spectral transformations associated with `bright' and `harsh' signals.
 
-			The Mahalanobis distances between the test signals after being processed by this effect and those in
-			the timbre space constructed from the SAFE dataset are shown in Figure \ref{fig:CrunchJeffs}. Here
-			both the processed features and feature differences (Figures \ref{fig:CrunchProcJeff} and
-			\ref{fig:CrunchDiffJeff}) are significant as `crunchiness' is characterised by a certain change in
-			spectral irregularity and the distribution of energy in the output spectrum.
+	\subsection{Methodology}
+	\label{sec:PerceptualExperiments-SemanticControl-Methodology}
+		The performance of each effect is evaluated using a set of ten test signals, comprising two electric bass
+		guitars (B1 and B2), a flute (F), two electric guitars (G1 and G2), a marimba (M), an oboe (O), a saxophone
+		(S), a trumpet (T) and a violin (V). The signals were adjusted to have equal loudness prior to
+		experimentation.  Firstly the effects are evaluated objectively by comparing them to the analysis performed
+		in Chapter \ref{chap:TimbreEvaluation}. Secondly the effects are evaluated subjectively in a series of
+		perceptual listening tests.
+
+		\subsubsection*{Objective Evaluation}
+			The performance of each effect is evaluated objectively by examining how they manipulate the
+			features of the test signals. Each effect is used to process each of the test signals with its
+			parameter set to the minimum value, the middle value and the maximum value, corresponding to `warm',
+			`bright' and `harsh' for the warmth / harshness effect and `harsh', `bright' and `crunchy' for the
+			harshness / crunchiness effect. The audio features of the unprocessed and processed signals in each
+			of these applications are calculated in the same manner as in the SAFE plug-ins. These audio
+			features are the compared to those taken from the SAFE dataset.
+
+			As discussed in Chapter \ref{chap:TimbreEvaluation} the terms `warm', `harsh' and `bright' are all
+			used to describe transformations applied by both distortion and equalisation effects. `Harsh' and
+			`bright' having different definitions depending on the type of processing applied. The objective
+			performance of the effects proposed in this section is evaluated against data from both the SAFE
+			distortion and equaliser. In order to do this, two new timbre spaces are constructed by performing
+			PCA on the processed audio features and feature differences of the combined distortion and equaliser
+			data. Two performance scores are given to each combination of audio effect, descriptor and test
+			signal. The first measuring how close the processed features of the signal are to points labelled
+			with the descriptor in the processed feature timbre space.  The second measuring how close the
+			changes in features caused by the effect are to points labelled with the descriptor in the feature
+			difference timbre space.
+
+			The performance of a particular effect, with a particular parameter setting on a particular test
+			signal is measured by projecting the extracted audio features to a point on the relevant timbre
+			space. The processed features of the signal are projected onto the processed feature timbre space
+			and the feature differences onto the feature difference timbre space. The Mahalanobis distance,
+			$M(x, d)$, between this point, $x$, and the distribution of transforms labelled with the descriptor,
+			$d$, is taken using Equation \ref{eq:Mahalanobis}
+			
+			\begin{equation}
+				M(x, d) = \sqrt{(x - \mu_{d})^{T}\Sigma_{d}^{-1}(x - \mu_{d})}
+				\label{eq:Mahalanobis}
+			\end{equation}
+
+			Where $x$ is a column vector containing the coordinates of the point in the timbre space, $\mu_{d}$
+			a column vector containing the mean coordinates of all transforms in the timbre space labelled with
+			descriptor $d$ and $\Sigma_{d}$ the covariance matrix of those transforms' coordinates in the timbre
+			space. The number of coordinates used in the calculation of Mahalanobis distance is determined in
+			the same manner as discussed in Section \ref{sec:TimbreEvaluation-Analysis-Agreement}. Where there
+			more than five transforms in the distribution, the coordinates in the first five PCs of the timbre
+			space are used. Where the number of points in the distribution, $N_{d}$, is lower, only the first
+			$N_{d} - 1$ coordinates can be used in order to avoid $\Sigma_{d}$ being singular.
+
+			Where the descriptor, $d$, is represented by two distributions of transforms, one from the
+			distortion and one from the equaliser, the Mahalanobis distance from both distributions is taken and
+			the minimum distance kept as the measure of performance.
+	
+		\subsubsection*{Subjective Evaluation}
+			To assess the performance of the developed effects subjectively a series of perceptual listening
+			tests were undertaken. For the purposes of testing each of the effect was implemented as an audio
+			plug-in. Participants were presented with a DAW session containing a track for each of the test
+			signals. On each track both effect plug-ins were inserted. The effects were labelled as ``Plug-In
+			1'' and ``Plug-In 2'' and had identical interfaces as seen in Figure \ref{fig:TestPlugInterface}.
 
 			\begin{figure}[h!]
 				\centering
-				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-				\subfloat[Processed Featues]
-				{
-					\includegraphics{chapter7/Images/CrunchProcessedJeffsDistance.pdf}
-					\label{fig:CrunchProcJeff}
-				}
-				\quad
-				\subfloat[FeatureDifferences]
-				{
-					\includegraphics{chapter7/Images/CrunchDifferenceJeffsDistance.pdf}
-					\label{fig:CrunchDiffJeff}
-				}
-				\caption{Mahalanobis distances for the harshness / crunchiness effect.}
-				\label{fig:CrunchJeffs}
+				\includegraphics[width=0.6\textwidth]{chapter7/Images/TestPlugInInterface.png}
+				\caption{The interface used for assessing the performance of the developed effects.}
+				\label{fig:TestPlugInterface}
 			\end{figure}
 
-			Figure \ref{fig:CrunchProcJeff} shows that the effect is reasonably successful in generating output
-			signals with features similar to those in the SAFE dataset labelled as `harsh', `bright' and
-			`crunchy'. In, replicating the transforms which produced these signals the effect is less
-			successful. This is possibly explain by the simplifications made to reduce the effects computational
-			complexity. Using lower order filters increases the level of intermodulation components in the
-			individually generated harmonics. Controlling the relative levels of these generated harmonics no
-			longer has the expected effect on spectral irregularity as each generated harmonic contains several
-			spectral partials with unknown amplitudes.
+			To mitigate influence of the plug-in's interface layout on the result of the experiment the
+			direction of the parameter sliders was randomised for each participant. The order of the tracks in
+			the DAW session was also randomised to mitigate any effect the order of tracks may have on results.
 
-	\subsection{Evaluation Experiment}
-	\label{sec:PerceptualExperiments-SemanticControl-EvaluationExperiment}
-		To assess the performance of the developed effects subjectively a series of perceptual listening tests were
-		undertaken. For the purposes of testing each of the effect was implemented as an audio plug-in. Participants
-		were presented with a DAW session containing a track for each of the test signals. On each track both effect
-		plug-ins were inserted. The effects were labelled as ``Plug-In 1'' and ``Plug-In 2'' and had identical
-		interfaces as seen in Figure \ref{fig:TestPlugInterface}.
+			For each effect on each track participants were asked to first take a short time to audition the
+			effect to become accustomed to how changing the parameter value affects that particular input
+			signal. Once they had investigated the operation of the effect they were asked to label the
+			parameter slider at three positions (parameter values of 0, 0.5 and 1) with a term they felt best
+			described the timbral effect of the effect at that parameter setting. A list of available terms was
+			provided in a drop down list at each parameter value to be labelled as seen in Figure
+			\ref{fig:TestPlugInterface}. The available terms were the 17 unique terms from the SAFE dataset
+			discussed in Chapter \ref{chap:TimbreEvaluation} (airy, boomy, boxy, bright, clear, creamy, crunchy,
+			deep, full, fuzzy, harsh, muddy, raspy, smooth, thin, tinny and warm).
+
+			In total 22 participants took part in the test, all of whom had experience in music production and
+			reported no known hearing problems. All participants undertook the test using the same equipment.
+
+	\subsection{Results}
+	\label{sec:PerceptualExperiments-SemanticControl-Results}
+		The Mahalanobis distances between the test signals after being processed by this effect and those in the
+		timbre space constructed from the SAFE dataset are shown in Figure \ref{fig:HarshJeffs}. The distances in
+		the processed feature space (Figure \ref{fig:HarshProcJeff}) are not as significant as those in the feature
+		difference space (Figure \ref{fig:HarshDiffJeff}) as it was determined in Chapter
+		\ref{chap:TimbreEvaluation} that the descriptors `warm', `bright' and `harsh' are best defined by relative
+		changes in audio feature rather than absolute values.
 
 		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=0.6\textwidth]{chapter7/Images/TestPlugInInterface.png}
-			\caption{The interface used for assessing the performance of the developed effects.}
-			\label{fig:TestPlugInterface}
+			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+			\subfloat[Processed Featues]
+			{
+				\includegraphics{chapter7/Images/HarshProcessedJeffsDistance.pdf}
+				\label{fig:HarshProcJeff}
+			}
+			\quad
+			\subfloat[FeatureDifferences]
+			{
+				\includegraphics{chapter7/Images/HarshDifferenceJeffsDistance.pdf}
+				\label{fig:HarshDiffJeff}
+			}
+			\caption{Mahalanobis distances for the warmth / harshness effect.}
+			\label{fig:HarshJeffs}
 		\end{figure}
 
-		To mitigate influence of the plug-in's interface layout on the result of the experiment the direction of
-		the parameter sliders was randomised for each participant. The order of the tracks in the DAW session was
-		also randomised to mitigate any effect the order of tracks may have on results.
+		The results in Figure \ref{fig:HarshDiffJeff} imply that the effect is successful in applying transforms
+		similar to those described as `warm' and `bright' in the SAFE dataset to a range of input signals. The
+		trumpet signal poses more of a problem then the others for these descriptors. When attempting to make the
+		test signals `harsher' however, the effect does not perform well on the bass guitar, flute, marimba or oboe
+		signals. This is likely due to the small number of transforms labelled harsh in the timbre space. In Chapter
+		\ref{chap:TimbreEvaluation} `harsh' was given a low agreement score in both the distortion and equaliser
+		timbre spaces due to there only being four transforms labeled `harsh' in each space. As such, only a small
+		region of the timbre space is described as harsh, making it more difficult design a transform which will sit
+		in that region for a wide range of input signals.
 
-		For each effect on each track participants were asked to first take a short time to audition the effect to
-		become accustomed to how changing the parameter value affects that particular input signal. Once they had
-		investigated the operation of the effect they were asked to label the parameter slider at three positions
-		(parameter values of 0, 0.5 and 1) with a term they felt best described the timbral effect of the effect at
-		that parameter setting. A list of available terms was provided in a drop down list at each parameter value
-		to be labelled as seen in Figure \ref{fig:TestPlugInterface}. The available terms were the 17 unique terms
-		from the SAFE dataset discussed in Chapter \ref{chap:TimbreEvaluation} (airy, boomy, boxy, bright, clear,
-		creamy, crunchy, deep, full, fuzzy, harsh, muddy, raspy, smooth, thin, tinny and warm).
+		The Mahalanobis distances between the test signals after being processed by this effect and those in the
+		timbre space constructed from the SAFE dataset are shown in Figure \ref{fig:CrunchJeffs}. Here both the
+		processed features and feature differences (Figures \ref{fig:CrunchProcJeff} and \ref{fig:CrunchDiffJeff})
+		are significant as `crunchiness' is characterised by a certain change in spectral irregularity and the
+		distribution of energy in the output spectrum.
 
-		In total 22 participants took part in the test, all of whom had experience in music production and reported
-		no known hearing problems. All participants undertook the test using the same equipment.
+		\begin{figure}[h!]
+			\centering
+			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+			\subfloat[Processed Featues]
+			{
+				\includegraphics{chapter7/Images/CrunchProcessedJeffsDistance.pdf}
+				\label{fig:CrunchProcJeff}
+			}
+			\quad
+			\subfloat[FeatureDifferences]
+			{
+				\includegraphics{chapter7/Images/CrunchDifferenceJeffsDistance.pdf}
+				\label{fig:CrunchDiffJeff}
+			}
+			\caption{Mahalanobis distances for the harshness / crunchiness effect.}
+			\label{fig:CrunchJeffs}
+		\end{figure}
 
-	\subsection{Performance Results}
-	\label{sec:PerceptualExperiments-SemanticControl-PerformanceResults}
+		Figure \ref{fig:CrunchProcJeff} shows that the effect is reasonably successful in generating output signals
+		with features similar to those in the SAFE dataset labelled as `harsh', `bright' and `crunchy'. In,
+		replicating the transforms which produced these signals the effect is less successful. This is possibly
+		explain by the simplifications made to reduce the effects computational complexity. Using lower order
+		filters increases the level of intermodulation components in the individually generated harmonics.
+		Controlling the relative levels of these generated harmonics no longer has the expected effect on spectral
+		irregularity as each generated harmonic contains several spectral partials with unknown amplitudes.
 
 		\begin{figure}[h!]
 			\centering
@@ -627,22 +626,6 @@
 			\caption{Heat map of term usage across both effects.}
 			\label{fig:CombConfusion}
 		\end{figure}
-
-		\note
-		{
-			For warmth / harshness both `warm' and `harsh' are used to describe the relevant signals. `harsh' is
-			also shared with `fuzz' and `bright' is far more often labelled as `fuzz' or `rasp'. Both the
-			`harsh' and `bright' for the clusters in chapter 4 `fuzz' and `bright' and `harsh' are shown to be
-			similar for distorted signals. Two main clusters are identified, `warmth' and `harshness', a lower
-			resolution of the clustering done in chapter 4.
-
-			For harshness / crunchiness term usage is not as well defined. Again `fuzz' is used a lot, refer to
-			SAFE clusters again. Usage of 'crunch' seems to cluster more with the harsh descriptors as well,
-			although, `mud' was used to describe the `crunchy' signal the most which is closer to `crunch' in
-			the SAFE clustering. Again term usage suggests a lower resolution clustering compared to chapter 4.
-
-			Across both effects again two main clustered are formed, low and high frequency energy in effect.
-		}
 
 		\begin{figure}[h!]
 			\centering
@@ -679,3 +662,21 @@
 			\caption{Cophenetic distances for the harshness / crunchiness effect.}
 			\label{fig:CrunchCophs}
 		\end{figure}
+
+	\subsection{Discussion}
+	\label{sec:PerceptualExperiments-SemanticControl-Discussion}
+		\note
+		{
+			For warmth / harshness both `warm' and `harsh' are used to describe the relevant signals. `harsh' is
+			also shared with `fuzz' and `bright' is far more often labelled as `fuzz' or `rasp'. Both the
+			`harsh' and `bright' for the clusters in chapter 4 `fuzz' and `bright' and `harsh' are shown to be
+			similar for distorted signals. Two main clusters are identified, `warmth' and `harshness', a lower
+			resolution of the clustering done in chapter 4.
+
+			For harshness / crunchiness term usage is not as well defined. Again `fuzz' is used a lot, refer to
+			SAFE clusters again. Usage of 'crunch' seems to cluster more with the harsh descriptors as well,
+			although, `mud' was used to describe the `crunchy' signal the most which is closer to `crunch' in
+			the SAFE clustering. Again term usage suggests a lower resolution clustering compared to chapter 4.
+
+			Across both effects again two main clustered are formed, low and high frequency energy in effect.
+		}
