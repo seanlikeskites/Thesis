@@ -11,6 +11,53 @@
 
 	\subsection{Reconstruction Systems}
 	\label{sec:PerceptualExperiments-Reconstruction-Systems}
+		Three different methods of generating individual harmonics in a signal are evaluated. Two of these use the
+		system illustrated in Figure \ref{fig:FilterAndShift}, isolating the fundamental with a low pass filter and
+		then using a frequency shifting technique to change the frequency to that of the desired harmonic. The two
+		frequency shifting techniques used in this experiment were SSBA (Section \ref{sec:Excitation-Methods-SSBA})
+		and IAP (Section \ref{sec:Excitation-Methods-IAP}).
+
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}
+				\node (In) at (1.3, 1) {$x[n]$};
+				\node (Filter) [draw] at (2.5, 1) {LPF};
+				\draw (In) -- (Filter);
+
+				\node (Exciter) [draw] at (4.75, 1) {Frequency Shifter};
+				\draw (Filter) -- (Exciter);
+
+				\node (Out) at (6.95, 1) {$h[n]$};
+				\draw (Exciter) -- (Out);
+			\end{tikzpicture}
+			\caption{}
+			\label{fig:FilterAndShift}
+		\end{figure}
+
+		The third method of reconstructing the harmonics is based on synthesis of new sinusoids an is illustrated in
+		Figure \ref{fig:Synthesise}. The STFT of the input signal is calculated and used to generate an amplitude
+		envelope for the input signals fundamental.  This amplitude envelope is then used in the synthesis of a
+		sinusoid at the frequency of the desired harmonic.
+
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}
+				\node (In) at (-0.1, 1) {$x[n]$};
+				\node (STFT) [draw] at (1.25, 1) {STFT};
+				\draw (In) -- (STFT);
+
+				\node (Amp) [draw] at (3.76, 1) {Amplitude Envelope};
+				\draw (STFT) -- (Amp);
+
+				\node (Synth) [draw] at (7.5, 1) {Sine Wave Synthesiser};
+				\draw (Amp) -- (Synth);
+
+				\node (Out) at (10.05, 1) {$h[n]$};
+				\draw (Synth) -- (Out);
+			\end{tikzpicture}
+			\caption{}
+			\label{fig:Synthesise}
+		\end{figure}
 
 	\subsection{Methodology}
 	\label{sec:PerceptualExperiments-Reconstruction-Methodology}
