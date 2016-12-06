@@ -18,19 +18,26 @@
 
 \section{Reconstruction of Individual Harmonics}
 \label{sec:PerceptualExperiments-Reconstruction}
-	An experiment was conducted to evaluate which harmonic excitation method is best suited to the generation of
-	individual harmonics. A primary aim of this experiment was to determine whether any of the methods would cause a
-	tone from a single instrument to be perceived as coming from multiple sources. Each method was used to reconstruct
-	signals which from which some harmonic content had been removed. The quality of the reconstruction was assessed by
-	participants in a multiple stimulus listening test. 
+	Several of the harmonic excitation systems discussed in Section \ref{sec:FeatureControl-Systems} rely on the
+	generation of individual harmonics of the input signal. Ideally, when a new harmonic is added to a signal using one
+	of these systems it should sound `natural'. The resulting signal should sound as though it came from a single
+	source. A poorly generated harmonic may be perceived as a new sinusoid completely separate from the original input
+	signal. Harmonic generation methods can be evaluated by how `naturally' they can reconstruct signals from which
+	harmonics have been removed. In this section an experiment is conducted evaluating the performance of three
+	different harmonic generation methods. This is evaluated both objectively, using the R\sub{nonlin} metric
+	\citep{tan2004predicting}, and subjectively using a multiple stimulus test based on MUSHRA \citep{mushra2014}.
 
-	\subsection{Reconstruction Systems}
+	\subsection{Harmonic Reconstruction Systems}
 	\label{sec:PerceptualExperiments-Reconstruction-Systems}
-		Three different methods of generating individual harmonics in a signal are evaluated. Two of these use the
-		system illustrated in Figure \ref{fig:FilterAndShift}, isolating the fundamental with a low pass filter and
-		then using a frequency shifting technique to change the frequency to that of the desired harmonic. The two
-		frequency shifting techniques used in this experiment were SSBA (Section \ref{sec:Excitation-Methods-SSBA})
-		and IAP (Section \ref{sec:Excitation-Methods-IAP}).
+		Missing harmonics can be reintroduced to a signal by generating them from the remaining information in the
+		deteriorated signal. This can be achieved using a spectral shaping system similar to that shown in Figure
+		\ref{fig:SpectralShapingSystem}. Rather than shaping the spectrum to achieve a musical effect it is used to
+		reconstruct the shape of the original spectrum.
+
+		Two of these use the system illustrated in Figure \ref{fig:FilterAndShift}, isolating the fundamental with a
+		low pass filter and then using a frequency shifting technique to change the frequency to that of the desired
+		harmonic. The two frequency shifting techniques used in this experiment are SSBA (Section
+		\ref{sec:Excitation-Methods-SSBA}) and IAP (Section \ref{sec:Excitation-Methods-IAP}).
 
 		\begin{figure}[h!]
 			\centering
@@ -49,8 +56,8 @@
 			\label{fig:FilterAndShift}
 		\end{figure}
 
-		The third method of reconstructing the harmonics is based on synthesis of new sinusoids an is illustrated in
-		Figure \ref{fig:Synthesise}. The STFT of the input signal is calculated and used to generate an amplitude
+		The third method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated
+		in Figure \ref{fig:Synthesise}. The STFT of the input signal is calculated and used to generate an amplitude
 		envelope for the input signals fundamental. This amplitude envelope is then used in the synthesis of a
 		sinusoid at the frequency of the desired harmonic.
 
@@ -76,62 +83,64 @@
 
 	\subsection{Methodology}
 	\label{sec:PerceptualExperiments-Reconstruction-Methodology}
-		\note{The same stimuli from chapter 6 are used.}
+		\subsubsection*{Stimuli Generation}
+			\note{The same stimuli from chapter 6 are used.}
 
-		For each stimuli the third through ninth harmonics were removed. Spectrograms of the cello stimulus before
-		and after this process are shown in Figures \ref{fig:CelloSpectrogram} and
-		\ref{fig:CelloFilteredSpectrogram}.  Test stimuli were then created by reintroducing these harmonics using
-		SSBA, IAP and a synthesis method.  The synthesis method consisted of using the STFT to measure the amplitude
-		envelope of the fundamental frequency and applying this to a synthesised sine wave at the frequency of the
-		desired harmonic. 
+			For each stimuli the third through ninth harmonics were removed. Spectrograms of the cello stimulus
+			before and after this process are shown in Figures \ref{fig:CelloSpectrogram} and
+			\ref{fig:CelloFilteredSpectrogram}.  Test stimuli were then created by reintroducing these harmonics
+			using SSBA, IAP and a synthesis method.  The synthesis method consisted of using the STFT to measure
+			the amplitude envelope of the fundamental frequency and applying this to a synthesised sine wave at
+			the frequency of the desired harmonic. 
 
-		\begin{figure}[h!]
-			\centering
-			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Unprocessed Stimulus]
-			{
-				\includegraphics{chapter7/Images/CelloSpectrogram.pdf}
-				\label{fig:CelloSpectrogram}
-			}
-			\quad
-			\subfloat[Filtered Stimulus]
-			{
-				\includegraphics{chapter7/Images/CelloFilteredSpectrogram.pdf}
-				\label{fig:CelloFilteredSpectrogram}
-			}
-			\caption{Spectrograms of the cello stimulus.}
-			\label{fig:CelloSpectrograms}
-		\end{figure}
+			\begin{figure}[h!]
+				\centering
+				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+				\subfloat[Unprocessed Stimulus]
+				{
+					\includegraphics{chapter7/Images/CelloSpectrogram.pdf}
+					\label{fig:CelloSpectrogram}
+				}
+				\quad
+				\subfloat[Filtered Stimulus]
+				{
+					\includegraphics{chapter7/Images/CelloFilteredSpectrogram.pdf}
+					\label{fig:CelloFilteredSpectrogram}
+				}
+				\caption{Spectrograms of the cello stimulus.}
+				\label{fig:CelloSpectrograms}
+			\end{figure}
 
-		Each stimulus was reconstructed three times using each method, using different parameters each time. For the
-		SSBA and IAP methods a different order FIR filter was used to isolate the fundamental frequency. The filters
-		used had orders of 50, 100 and 500. For the synthesis method the window length of the STFT was changed,
-		taking values of 50, 100 and 500 samples. Spectrograms for the reconstructed stimuli, using the smallest
-		filter order / STFT window length, are shown in Figure \ref{fig:ReconstructedCelloSpectrograms}.
+			Each stimulus was reconstructed three times using each method, using different parameters each time.
+			For the SSBA and IAP methods a different order FIR filter was used to isolate the fundamental
+			frequency. The filters used had orders of 50, 100 and 500. For the synthesis method the window
+			length of the STFT was changed, taking values of 50, 100 and 500 samples. Spectrograms for the
+			reconstructed stimuli, using the smallest filter order / STFT window length, are shown in Figure
+			\ref{fig:ReconstructedCelloSpectrograms}.
 
-		\begin{figure}[h!]
-			\centering
-			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[SSBA with a 50\super{th} order filter.]
-			{
-				\includegraphics{chapter7/Images/CelloSSBASpectrogram.pdf}
-				\label{fig:CelloSSBASpectrogram}
-			}
-			\quad
-			\subfloat[IAP with a 50\super{th} order filter.]
-			{
-				\includegraphics{chapter7/Images/CelloIAPSpectrogram.pdf}
-				\label{fig:CelloIAPSpectrogram}
-			}
-			
-			\subfloat[Synthesis with an STFT window length of 50 samples.]
-			{
-				\includegraphics{chapter7/Images/CelloSynthesisSpectrogram.pdf}
-				\label{fig:CelloSynthesisSpectrogram}
-			}
-			\caption{Spectrograms of the cello stimulus reconstructed using three different methods.}
-			\label{fig:ReconstructedCelloSpectrograms}
-		\end{figure}
+			\begin{figure}[h!]
+				\centering
+				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+				\subfloat[SSBA with a 50\super{th} order filter.]
+				{
+					\includegraphics{chapter7/Images/CelloSSBASpectrogram.pdf}
+					\label{fig:CelloSSBASpectrogram}
+				}
+				\quad
+				\subfloat[IAP with a 50\super{th} order filter.]
+				{
+					\includegraphics{chapter7/Images/CelloIAPSpectrogram.pdf}
+					\label{fig:CelloIAPSpectrogram}
+				}
+				
+				\subfloat[Synthesis with an STFT window length of 50 samples.]
+				{
+					\includegraphics{chapter7/Images/CelloSynthesisSpectrogram.pdf}
+					\label{fig:CelloSynthesisSpectrogram}
+				}
+				\caption{Spectrograms of the cello stimulus reconstructed using three different methods.}
+				\label{fig:ReconstructedCelloSpectrograms}
+			\end{figure}
 
 		On inspection of these spectrograms the characteristics of the three excitation methods can be seen. The
 		amplitude envelopes of the generated harmonics differ greatly between the methods. Comparing the decay
