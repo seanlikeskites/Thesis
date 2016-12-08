@@ -35,29 +35,7 @@
 		amplitudes they had in the original (non-degraded) signal. In this section three methods of generating these
 		individual harmonics are discussed.
 
-		Two of the harmonic generation methods use the system illustrated in Figure \ref{fig:FilterAndShift},
-		isolating the fundamental with a low pass filter and then using a frequency shifting technique to change the
-		frequency to that of the desired harmonic. The two frequency shifting techniques used in this experiment are
-		SSBA (Section \ref{sec:Excitation-Methods-SSBA}) and IAP (Section \ref{sec:Excitation-Methods-IAP}).
-
-		\begin{figure}[h!]
-			\centering
-			\begin{tikzpicture}
-				\node (In) at (1.3, 1) {$x[n]$};
-				\node (Filter) [draw] at (2.5, 1) {LPF};
-				\draw (In) -- (Filter);
-
-				\node (Exciter) [draw] at (4.75, 1) {Frequency Shifter};
-				\draw (Filter) -- (Exciter);
-
-				\node (Out) at (6.95, 1) {$h[n]$};
-				\draw (Exciter) -- (Out);
-			\end{tikzpicture}
-			\caption{}
-			\label{fig:FilterAndShift}
-		\end{figure}
-
-		The third method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated
+		The first method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated
 		in Figure \ref{fig:Synthesise}. The STFT of the input signal is calculated and used to generate an amplitude
 		envelope for the input signal's fundamental. This amplitude envelope is then used in the synthesis of a
 		sinusoid at the frequency of the desired harmonic.
@@ -80,6 +58,28 @@
 			\end{tikzpicture}
 			\caption{}
 			\label{fig:Synthesise}
+		\end{figure}
+
+		The other two harmonic generation methods use the system illustrated in Figure \ref{fig:FilterAndShift},
+		isolating the fundamental with a low pass filter and then using a frequency shifting technique to change the
+		frequency to that of the desired harmonic. The two frequency shifting techniques used in this experiment are
+		SSBA (Section \ref{sec:Excitation-Methods-SSBA}) and IAP (Section \ref{sec:Excitation-Methods-IAP}).
+
+		\begin{figure}[h!]
+			\centering
+			\begin{tikzpicture}
+				\node (In) at (1.3, 1) {$x[n]$};
+				\node (Filter) [draw] at (2.5, 1) {LPF};
+				\draw (In) -- (Filter);
+
+				\node (Exciter) [draw] at (4.75, 1) {Frequency Shifter};
+				\draw (Filter) -- (Exciter);
+
+				\node (Out) at (6.95, 1) {$h[n]$};
+				\draw (Exciter) -- (Out);
+			\end{tikzpicture}
+			\caption{}
+			\label{fig:FilterAndShift}
 		\end{figure}
 
 	\subsection{Methodology}
@@ -114,63 +114,67 @@
 				\label{fig:CelloSpectrograms}
 			\end{figure}
 
-			Test stimuli were created by reconstructing the third through ninth harmonics using the systems
-			described in Section \ref{sec:PerceptualExperiments-Reconstruction-Systems}. In order to reduce the
-			number of variables, each of the unprocessed signals was analysed prior to the creation of the test
-			stimuli. The fundamental frequency of each signal was measured along with the amplitudes of the
-			third through ninth harmonics. This information was then used in the reconstruction of the signal
-			mitigating any inaccuracies which may be introduced by calculating it in real time and allowing the
-			`naturalness' of the generated harmonics to be assessed more thoroughly.
+			Test stimuli were created by reintroducing the third through ninth harmonics to the filtered signals
+			using the systems described in Section \ref{sec:PerceptualExperiments-Reconstruction-Systems}. In
+			order to reduce the number of variables, each of the unprocessed signals was analysed prior to the
+			creation of the test stimuli. The fundamental frequency of each signal was measured along with the
+			amplitudes of the third through ninth harmonics. This information was then used in the
+			reconstruction of the signal mitigating any inaccuracies which may be introduced by calculating it
+			in real time and allowing the `naturalness' of the generated harmonics to be assessed more
+			thoroughly.
 
-			Each signal was reconstructed three times using each method, using different parameters each time.
-			For the SSBA and IAP methods a different order FIR filter was used to isolate the fundamental
-			frequency. The filters used had orders of 50, 100 and 500. As the filter order increases the
-			fundamental will be better isolated reducing the level of any intermodulation components. For the
-			synthesis method the window length of the STFT was changed, taking values of 50, 100 and 500
-			samples. As the window length increases the frequency resolution of the spectrum increases allowing
-			for more accurate tracking of the fundamentals amplitude. Spectrograms for the reconstructed
-			stimuli, using the smallest filter order / STFT window length, are shown in Figure
+			Eleven test stimuli were created from each of the original four signals. The first two being the
+			unprocessed signal and the filtered signal. The remaining nine were reconstructions of the original
+			signal from the filtered signal. Each signal was reconstructed three times using each system, using
+			different parameters each time. For the synthesis method the window length of the STFT was changed,
+			taking values of 50, 100 and 500 samples. As the window length increases the frequency resolution of
+			the spectrum increases allowing for more accurate tracking of the fundamentals amplitude. For the
+			SSBA and IAP methods a different order FIR filter was used to isolate the fundamental frequency. The
+			filters used had orders of 50, 100 and 500. As the filter order increases the fundamental will be
+			better isolated reducing the level of any intermodulation components. Spectrograms for the
+			reconstructed stimuli, using the smallest STFT window length / filter order, are shown in Figure
 			\ref{fig:ReconstructedCelloSpectrograms}.
 
 			\begin{figure}[h!]
 				\centering
 				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-				\subfloat[SSBA with a 50\super{th} order filter.]
-				{
-					\includegraphics{chapter7/Images/CelloSSBASpectrogram.pdf}
-					\label{fig:CelloSSBASpectrogram}
-				}
-				\quad
-				\subfloat[IAP with a 50\super{th} order filter.]
-				{
-					\includegraphics{chapter7/Images/CelloIAPSpectrogram.pdf}
-					\label{fig:CelloIAPSpectrogram}
-				}
-				
 				\subfloat[Synthesis with an STFT window length of 50 samples.]
 				{
 					\includegraphics{chapter7/Images/CelloSynthesisSpectrogram.pdf}
 					\label{fig:CelloSynthesisSpectrogram}
 				}
+				\quad
+				\subfloat[SSBA with a 50\super{th} order filter.]
+				{
+					\includegraphics{chapter7/Images/CelloSSBASpectrogram.pdf}
+					\label{fig:CelloSSBASpectrogram}
+				}
+				
+				\subfloat[IAP with a 50\super{th} order filter.]
+				{
+					\includegraphics{chapter7/Images/CelloIAPSpectrogram.pdf}
+					\label{fig:CelloIAPSpectrogram}
+				}
 				\caption{Spectrograms of the cello stimulus reconstructed using three different methods.}
 				\label{fig:ReconstructedCelloSpectrograms}
 			\end{figure}
 
-		On inspection of these spectrograms the characteristics of the three excitation methods can be seen. The
-		amplitude envelopes of the generated harmonics differ greatly between the methods. Comparing the decay
-		portion of the envelopes compared with those in the original signal (Figure \ref{fig:CelloSpectrogram})
-		highlights these differences. In the cello stimulus the fundamental frequency and third harmonic have a
-		longer decay time then the other harmonics. The harmonics generated by the IAP and synthesis methods
-		(Figures \ref{fig:CelloIAPSpectrogram} and \ref{fig:CelloSynthesisSpectrogram}) use the amplitude envelope
-		of the fundamental frequency extending the decay time of the these harmonics compared to that in the
-		original. Those generated by the SSBA method (Figure \ref{fig:CelloSSBASpectrogram}) have shortened decay
-		times. As the order of the harmonic is increased the decay time gets shorter due to the dynamic expansion
-		shown in Figure \ref{fig:SSBATemporalEffects}.
+			On inspection of these spectrograms the characteristics of the three excitation methods can be seen.
+			The amplitude envelopes of the generated harmonics differ greatly between the methods. Comparing the
+			decay portion of the envelopes compared with those in the original signal (Figure
+			\ref{fig:CelloSpectrogram}) highlights these differences. In the cello stimulus the fundamental
+			frequency and third harmonic have a longer decay time then the other harmonics. The harmonics
+			generated by the IAP and synthesis methods (Figures \ref{fig:CelloIAPSpectrogram} and
+			\ref{fig:CelloSynthesisSpectrogram}) use the amplitude envelope of the fundamental frequency
+			extending the decay time of the these harmonics compared to that in the original. Those generated by
+			the SSBA method (Figure \ref{fig:CelloSSBASpectrogram}) have shortened decay times. As the order of
+			the harmonic is increased the decay time gets shorter due to the dynamic expansion shown in Figure
+			\ref{fig:SSBATemporalEffects}.
 
-		The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large amount of
-		ripple. This is due to the amplitude of the fundamental being calculated in blocks. These inaccuracies are
-		not present in the harmonics generated using the IAP method as the amplitude is calculated on a sample by
-		sample basis.
+			The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large
+			amount of ripple. This is due to the amplitude of the fundamental being calculated in blocks. These
+			inaccuracies are not present in the harmonics generated using the IAP method as the amplitude is
+			calculated on a sample by sample basis.
 
 		\subsubsection*{Objective Evaluation}
 			An approximation of the perceptual difference between the stimuli and the relevant audio signal is
@@ -183,14 +187,25 @@
 
 		\subsubsection*{Subjective Evaluation}
 			The performance of the reconstruction systems was evaluated subjectively using series of multiple
-			stimulus listening tests using the MUSHRA methodology \citep{mushra2014}.
+			stimulus listening tests using the MUSHRA methodology \citep{mushra2014}. Each tests is split into
+			two phases, a training phase and an evaluation phase. In the training phase participants are
+			presented with an interface (Figure \ref{fig:MushraTraining}) which allows them to audition every
+			one of the stimuli. The stimuli which are the unprocessed versions of the original signals are
+			identified as the reference stimuli. Participants are asked to listen to each of the stimuli in
+			comparison with the relevant reference in order to learn the range of degradation across stimuli.
+			Once they have auditioned every stimulus they are able to proceed to the evaluation phase.
 
 			\begin{figure}[h!]
 				\centering
-				\includegraphics[width=\textwidth]{chapter7/Images/MushraTraining.png}
+				\includegraphics[width=0.8\textwidth]{chapter7/Images/MushraTraining.png}
 				\caption{The training phase interface.}
 				\label{fig:MushraTraining}
 			\end{figure}
+
+			During the evaluation phase participants are presented with all stimuli created from the same signal
+			at once. They were asked to rate how well each of the stimuli recreate the reference stimuli (the
+			unprocessed signal) on a scale from 0 to 100. The scale is shown in Figure \ref{fig:MushraScale} and
+			the full interface in Figure \ref{fig:MushraEvaluation}.
 
 			\begin{figure}[h!]
 				\centering
@@ -204,21 +219,28 @@
 					\foreach \x/\xtext in {0.75/Bad, 2.25/Poor, 3.75/Fair, 5.25/Good, 6.75/Excellent}
 						\draw (\x, 3pt) node[above] {\xtext};
 				\end{tikzpicture}
-				\caption{MUSHRA Grading Scale}
+				\caption{The grading scale used in the evaluation phase.}
 				\label{fig:MushraScale}
 			\end{figure}
 
+			Among the stimuli to be graded were a hidden reference and anchor. These are included in order to
+			assess the performance of test participants. The hidden reference is a repetition of the reference
+			signal and as such should be given a grade of 100 as there is no difference between it and the
+			reference. The anchor is the filtered signal and should be graded worse than the all the other
+			stimuli as no attempt has been made to reconstruct the signal. If a participant does not grade the
+			hidden reference and anchor in this way their results may not be reliable.
+
 			\begin{figure}[h!]
 				\centering
-				\includegraphics[width=\textwidth]{chapter7/Images/MushraEvaluation.png}
+				\includegraphics[width=0.8\textwidth]{chapter7/Images/MushraEvaluation.png}
 				\caption{The evaluation phase interface.}
 				\label{fig:MushraEvaluation}
 			\end{figure}
 
-			Test participants were presented with all processed version of a particular stimulus at once along
-			with a reference stimulus (the unprocessed signal) and an anchor stimulus (the signal with its
-			harmonics removed). Participants were asked to grade how well each processed stimulus recreated the
-			reference stimulus on a scale from 0 to 100.
+			This evaluation phase is repeated for each of the original audio signals. The order in which the
+			evaluation phases for each signal were presented to participants was randomised along with the order
+			in which the stimuli appear in the interface in order to mitigate any effect the order in which
+			stimuli are heard may have on the results.
 
 	\subsection{Results}
 	\label{sec:PerceptualExperiments-Reconstruction-Results}
