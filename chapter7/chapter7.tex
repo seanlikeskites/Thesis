@@ -23,21 +23,22 @@
 	of these systems it should sound `natural'. The resulting signal should sound as though it came from a single
 	source. A poorly generated harmonic may be perceived as a new sinusoid completely separate from the original input
 	signal. Harmonic generation methods can be evaluated by how `naturally' they can reconstruct signals from which
-	harmonics have been removed. In this section an experiment is conducted evaluating the performance of three
-	different harmonic generation methods. This is evaluated both objectively, using the R\sub{nonlin} metric
-	\citep{tan2004predicting}, and subjectively using a multiple stimulus test based on MUSHRA \citep{mushra2014}.
+	harmonics have been removed. In this section an experiment is described evaluating the performance of three
+	different harmonic generation methods.
 
 	\subsection{Harmonic Reconstruction Systems}
 	\label{sec:PerceptualExperiments-Reconstruction-Systems}
 		Missing harmonics can be reintroduced to a signal by generating them from the remaining information in the
-		deteriorated signal. This can be achieved using a spectral shaping system similar to that shown in Figure
+		degraded signal. This can be achieved using a spectral shaping system similar to that shown in Figure
 		\ref{fig:SpectralShapingSystem}. Rather than shaping the spectrum to achieve a musical effect it is used to
-		reconstruct the shape of the original spectrum.
+		reconstruct the shape of the original spectrum. The missing harmonics are generated individually with the
+		amplitudes they had in the original (non-degraded) signal. In this section three methods of generating these
+		individual harmonics are discussed.
 
-		Two of these use the system illustrated in Figure \ref{fig:FilterAndShift}, isolating the fundamental with a
-		low pass filter and then using a frequency shifting technique to change the frequency to that of the desired
-		harmonic. The two frequency shifting techniques used in this experiment are SSBA (Section
-		\ref{sec:Excitation-Methods-SSBA}) and IAP (Section \ref{sec:Excitation-Methods-IAP}).
+		Two of the harmonic generation methods use the system illustrated in Figure \ref{fig:FilterAndShift},
+		isolating the fundamental with a low pass filter and then using a frequency shifting technique to change the
+		frequency to that of the desired harmonic. The two frequency shifting techniques used in this experiment are
+		SSBA (Section \ref{sec:Excitation-Methods-SSBA}) and IAP (Section \ref{sec:Excitation-Methods-IAP}).
 
 		\begin{figure}[h!]
 			\centering
@@ -58,7 +59,7 @@
 
 		The third method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated
 		in Figure \ref{fig:Synthesise}. The STFT of the input signal is calculated and used to generate an amplitude
-		envelope for the input signals fundamental. This amplitude envelope is then used in the synthesis of a
+		envelope for the input signal's fundamental. This amplitude envelope is then used in the synthesis of a
 		sinusoid at the frequency of the desired harmonic.
 
 		\begin{figure}[h!]
@@ -84,38 +85,51 @@
 	\subsection{Methodology}
 	\label{sec:PerceptualExperiments-Reconstruction-Methodology}
 		\subsubsection*{Stimuli Generation}
-			\note{The same stimuli from chapter 6 are used.}
-
-			For each stimuli the third through ninth harmonics were removed. Spectrograms of the cello stimulus
-			before and after this process are shown in Figures \ref{fig:CelloSpectrogram} and
-			\ref{fig:CelloFilteredSpectrogram}.  Test stimuli were then created by reintroducing these harmonics
-			using SSBA, IAP and a synthesis method.  The synthesis method consisted of using the STFT to measure
-			the amplitude envelope of the fundamental frequency and applying this to a synthesised sine wave at
-			the frequency of the desired harmonic. 
+			The harmonic reconstruction systems were evaluated using the same four audio signals used in Section
+			\ref{sec:FeatureControl-Parameterisation} to assess audio feature parameterisation techniques
+			(cello, clarinet, synthesised and piano). For each signal the third through ninth harmonics were
+			removed. This was in order to cause significant degradation in the quality of the signal such that
+			the difference is plainly audible to the majority of listeners. The second harmonic was left in the
+			signal to pose a challenge to the SSBA and IAP methods. As mentioned in previously the performance
+			of these methods depends on how well the fundamental is isolated.  Retaining the second harmonic
+			allows for the effect of filter order on the performance of the system to be assessed. Spectrograms
+			of the cello signal before and after this process are shown in Figures \ref{fig:CelloSpectrogram}
+			and \ref{fig:CelloFilteredSpectrogram}. 
 
 			\begin{figure}[h!]
 				\centering
 				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-				\subfloat[Unprocessed Stimulus]
+				\subfloat[Unprocessed Signal]
 				{
 					\includegraphics{chapter7/Images/CelloSpectrogram.pdf}
 					\label{fig:CelloSpectrogram}
 				}
 				\quad
-				\subfloat[Filtered Stimulus]
+				\subfloat[Filtered Signal]
 				{
 					\includegraphics{chapter7/Images/CelloFilteredSpectrogram.pdf}
 					\label{fig:CelloFilteredSpectrogram}
 				}
-				\caption{Spectrograms of the cello stimulus.}
+				\caption{Spectrograms of the cello signal.}
 				\label{fig:CelloSpectrograms}
 			\end{figure}
 
-			Each stimulus was reconstructed three times using each method, using different parameters each time.
+			Test stimuli were created by reconstructing the third through ninth harmonics using the systems
+			described in Section \ref{sec:PerceptualExperiments-Reconstruction-Systems}. In order to reduce the
+			number of variables, each of the unprocessed signals was analysed prior to the creation of the test
+			stimuli. The fundamental frequency of each signal was measured along with the amplitudes of the
+			third through ninth harmonics. This information was then used in the reconstruction of the signal
+			mitigating any inaccuracies which may be introduced by calculating it in real time and allowing the
+			`naturalness' of the generated harmonics to be assessed more thoroughly.
+
+			Each signal was reconstructed three times using each method, using different parameters each time.
 			For the SSBA and IAP methods a different order FIR filter was used to isolate the fundamental
-			frequency. The filters used had orders of 50, 100 and 500. For the synthesis method the window
-			length of the STFT was changed, taking values of 50, 100 and 500 samples. Spectrograms for the
-			reconstructed stimuli, using the smallest filter order / STFT window length, are shown in Figure
+			frequency. The filters used had orders of 50, 100 and 500. As the filter order increases the
+			fundamental will be better isolated reducing the level of any intermodulation components. For the
+			synthesis method the window length of the STFT was changed, taking values of 50, 100 and 500
+			samples. As the window length increases the frequency resolution of the spectrum increases allowing
+			for more accurate tracking of the fundamentals amplitude. Spectrograms for the reconstructed
+			stimuli, using the smallest filter order / STFT window length, are shown in Figure
 			\ref{fig:ReconstructedCelloSpectrograms}.
 
 			\begin{figure}[h!]
@@ -154,14 +168,57 @@
 		shown in Figure \ref{fig:SSBATemporalEffects}.
 
 		The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large amount of
-		ripple.  This is due to the amplitude of the fundamental being calculated in blocks. These inaccuracies are
+		ripple. This is due to the amplitude of the fundamental being calculated in blocks. These inaccuracies are
 		not present in the harmonics generated using the IAP method as the amplitude is calculated on a sample by
 		sample basis.
 
-		Test participants were presented with all processed version of a particular stimulus at once along with a
-		reference stimulus (the unprocessed stimulus) and an anchor stimulus (the stimulus with its harmonics
-		removed).  Participants were asked to grade how well each processed stimulus recreated the reference
-		stimulus on a scale from 0 to 100.
+		\subsubsection*{Objective Evaluation}
+			An approximation of the perceptual difference between the stimuli and the relevant audio signal is
+			measured using the R\sub{nonlin} metric proposed by \citet{tan2004predicting}. As discussed in
+			Section \ref{sec:Excitation-Analysis-Metrics} this is a metric which uses psychoacoustic models of
+			the human hearing system to judge the perceived level of distortion in a signal. It is calculated by
+			comparing the degraded signal against the non-degraded signal, returning a value between 0 and 1. 1
+			denoting a signal which is indistinguishable from the original and lower values describing signals
+			with a higher level of perceivable distortion.
+
+		\subsubsection*{Subjective Evaluation}
+			The performance of the reconstruction systems was evaluated subjectively using series of multiple
+			stimulus listening tests using the MUSHRA methodology \citep{mushra2014}.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=\textwidth]{chapter7/Images/MushraTraining.png}
+				\caption{The training phase interface.}
+				\label{fig:MushraTraining}
+			\end{figure}
+
+			\begin{figure}[h!]
+				\centering
+				\begin{tikzpicture}
+					\draw(0, 0) -- (7.5, 0);
+
+					\foreach \x/\xvalue in {0/0, 1.5/20, 3/40, 4.5/60, 6/80, 7.5/100}
+						\draw (\x, 0pt) -- (\x, 3pt)
+						(\x, 0pt) node[below] {\xvalue};
+
+					\foreach \x/\xtext in {0.75/Bad, 2.25/Poor, 3.75/Fair, 5.25/Good, 6.75/Excellent}
+						\draw (\x, 3pt) node[above] {\xtext};
+				\end{tikzpicture}
+				\caption{MUSHRA Grading Scale}
+				\label{fig:MushraScale}
+			\end{figure}
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics[width=\textwidth]{chapter7/Images/MushraEvaluation.png}
+				\caption{The evaluation phase interface.}
+				\label{fig:MushraEvaluation}
+			\end{figure}
+
+			Test participants were presented with all processed version of a particular stimulus at once along
+			with a reference stimulus (the unprocessed signal) and an anchor stimulus (the signal with its
+			harmonics removed). Participants were asked to grade how well each processed stimulus recreated the
+			reference stimulus on a scale from 0 to 100.
 
 	\subsection{Results}
 	\label{sec:PerceptualExperiments-Reconstruction-Results}
