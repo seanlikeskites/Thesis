@@ -1,12 +1,23 @@
 library(R.matlab)
 library(extrafont)
 
-plotResults <- function(res, conf)
+plotResults <- function(res, conf, nonlin=FALSE)
 {
-	centres <- barplot(res, ylab="Normalised Grade",
+	if (!nonlin)
+		ylab = "Normalised Grade"
+	else
+		ylab = ""
+
+	centres <- barplot(res, ylab=ylab,
 			   col="blue")
 	axis(1, at=centres, line=-1, lwd=0, labels=as.character(1:11))
 	mtext("Stimulus Number", 1, 2)
+
+	if (nonlin)
+	{
+		mtext("Normalised", 2, 3, at=40)
+		mtext(expression(R[nonlin]), 2, 2.85, at=67)
+	}
 
 	# find which error bars we should draw
 	arrowsToDraw <- conf != 0
@@ -55,24 +66,24 @@ rnonlin <- readMat("RNonlin_Results.mat")
 
 pdf("CelloRNonlin.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
-plotResults(rnonlin$results[1,], array(0, 11))
+plotResults(rnonlin$results[1,], array(0, 11), TRUE)
 dev.off()
 embed_fonts("CelloRNonlin.pdf")
 
 pdf("SynthRNonlin.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
-plotResults(rnonlin$results[2,], array(0, 11))
+plotResults(rnonlin$results[2,], array(0, 11), TRUE)
 dev.off()
 embed_fonts("SynthRNonlin.pdf")
 
 pdf("PianoRNonlin.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
-plotResults(rnonlin$results[3,], array(0, 11))
+plotResults(rnonlin$results[3,], array(0, 11), TRUE)
 dev.off()
 embed_fonts("PianoRNonlin.pdf")
 
 pdf("ClarinetRNonlin.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
-plotResults(rnonlin$results[4,], array(0, 11))
+plotResults(rnonlin$results[4,], array(0, 11), TRUE)
 dev.off()
 embed_fonts("ClarinetRNonlin.pdf")

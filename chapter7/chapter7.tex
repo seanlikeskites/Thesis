@@ -242,10 +242,15 @@
 			in which the stimuli appear in the interface in order to mitigate any effect the order in which
 			stimuli are heard may have on the results.
 
+			Listening tests were undertaken using circumaural headphones in a quiet listening environment. In
+			total eight participants took part in the listening tests, all of whom reported no know hearing
+			problems. On average participants spent 5.14 minutes in the training phase ($\sigma$ = 1.85) and
+			3.36 minutes on each of the four evaluation phases ($\sigma$ = 20.6).
+
 	\subsection{Results}
 	\label{sec:PerceptualExperiments-Reconstruction-Results}
-		The results of this experiment are shown in Figure \ref{fig:SMCResults} with error bars showing the 95\%
-		confidence intervals. The stimuli numbers refer to different processing algorithms as follows.
+		In the results figures presented in this section the eleven stimuli created from each test signal are
+		numerated 1 to 11 as follows:
 
 		\begin{tabular}{>{\bfseries}rl}
 			1. & The reference stimulus. \tabularnewline
@@ -267,35 +272,14 @@
 			11. & Stimulus with third through ninth harmonics removed (anchor).
 		\end{tabular}
 
-		\begin{figure}[h!]
-			\centering
-			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Cello Stumulus]
-			{
-				\includegraphics{chapter7/Images/CelloResults.pdf}
-				\label{fig:CelloResults}
-			}
-			\quad
-			\subfloat[Clarinet Stimulus]
-			{
-				\includegraphics{chapter7/Images/ClarinetResults.pdf}
-				\label{fig:ClarinetResults}
-			}
-
-			\subfloat[Synthesised Stimulus]
-			{
-				\includegraphics{chapter7/Images/SynthResults.pdf}
-				\label{fig:SynthResults}
-			}
-			\quad
-			\subfloat[Piano Stimulus]
-			{
-				\includegraphics{chapter7/Images/PianoResults.pdf}
-				\label{fig:PianoResults}
-			}
-			\caption{Mean grades and confidence intervals for each of the stimuli.}
-			\label{fig:SMCResults}
-		\end{figure}
+		The R\sub{nonlin} results for each of the stimuli are presented in Figure \ref{fig:SMCRNonlin}. The
+		values have been normalised to the range 0 to 100 for purposes of comparison with the grading scale used
+		in the listening test. 
+		
+		\note
+		{
+			Note that for the piano stimuli some of the stimuli have a lower rnonlin than the anchor.
+		}
 
 		\begin{figure}[h!]
 			\centering
@@ -325,6 +309,36 @@
 			}
 			\caption{R\sub{nonlin} values for each of the stimuli.}
 			\label{fig:SMCRNonlin}
+		\end{figure}
+
+		\begin{figure}[h!]
+			\centering
+			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+			\subfloat[Cello Stumulus]
+			{
+				\includegraphics{chapter7/Images/CelloResults.pdf}
+				\label{fig:CelloResults}
+			}
+			\quad
+			\subfloat[Clarinet Stimulus]
+			{
+				\includegraphics{chapter7/Images/ClarinetResults.pdf}
+				\label{fig:ClarinetResults}
+			}
+
+			\subfloat[Synthesised Stimulus]
+			{
+				\includegraphics{chapter7/Images/SynthResults.pdf}
+				\label{fig:SynthResults}
+			}
+			\quad
+			\subfloat[Piano Stimulus]
+			{
+				\includegraphics{chapter7/Images/PianoResults.pdf}
+				\label{fig:PianoResults}
+			}
+			\caption{Mean grades and confidence intervals for each of the stimuli.}
+			\label{fig:SMCResults}
 		\end{figure}
 
 	\subsection{Discussion}
