@@ -87,3 +87,40 @@ par(mar=c(3, 4, 0.8, 0))
 plotResults(rnonlin$results[4,], array(0, 11), TRUE)
 dev.off()
 embed_fonts("ClarinetRNonlin.pdf")
+
+# find correlations
+celloCor <- cor.test(rnonlin$results[1,], results$res[1,])
+synthCor <- cor.test(rnonlin$results[2,], results$res[2,])
+pianoCor <- cor.test(rnonlin$results[3,], results$res[3,])
+clarinetCor <- cor.test(rnonlin$results[4,], results$res[4,])
+samples <- c("Cello", "Clarinet", "Synthesised", "Piano")
+
+correlations <- matrix(c(celloCor$estimate, celloCor$p.value,
+		         clarinetCor$estimate, clarinetCor$p.value,
+		         synthCor$estimate, synthCor$p.value,
+		         pianoCor$estimate, pianoCor$p.value), 
+		       ncol=2, byrow=TRUE, 
+		       dimnames=list(samples, c("r", "p")))
+
+lines <- character()
+nSamples <- length(samples)
+
+lines <- c(lines, "\\begin{tabular}{|c|c|c|}")
+lines <- c(lines, "\t\\hline")
+lines <- c(lines, "\t\\bf{Signal} & $\\boldsymbol{r}$ & $\\boldsymbol{p}$ \\tabularnewline")
+lines <- c(lines, "\t\\hline")
+lines <- c(lines, "\t\\hline")
+
+for (i in 1:nSamples)
+{
+	correlation <- format(correlations[i, 1], digits=2)
+	pValue <- format(round(correlations[i, 2], 3), nsmall=3)
+	lines <- c(lines, paste("\t", samples[i], " & ", correlation, " & ", pValue, " \\tabularnewline", sep=""))
+	lines <- c(lines, "\t\\hline")
+}
+
+lines <- c(lines, "\\end{tabular}")
+
+f <- file("SMCCorrelations.tex")
+writeLines(lines, f)
+close(f)
