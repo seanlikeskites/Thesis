@@ -108,10 +108,10 @@ plotDistanceBarChart <- function(means, colours)
 	descriptors <- rownames(means)
 	plotNames <- prettyInstrumentNames(names)
 
-	lims <- c(0, 11)
+	lims <- c(0, 10)
 
 	centres <- barplot(means, ylab="Mahalanobis Distance", xaxt="n", ylim=lims, beside=TRUE,
-			   col=colours, legend=descriptors, args.legend=list(ncol=3))
+			   col=colours, legend=descriptors, args.legend=list(ncol=3, y=10))
 	labelPoints <- centres[seq(2, 3 * ncol(means), 3)]
 	axis(1, at=labelPoints, line=-1, lwd=0, labels=plotNames)
 	mtext("Test Signal", 1, 2)
