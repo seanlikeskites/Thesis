@@ -203,7 +203,7 @@
 			\end{figure}
 
 			During the evaluation phase participants are presented with all stimuli created from the same signal
-			at once. They were asked to rate how well each of the stimuli recreate the reference stimuli (the
+			at once. They were asked to grade how well each of the stimuli recreate the reference stimuli (the
 			unprocessed signal) on a scale from 0 to 100. The scale is shown in Figure \ref{fig:MushraScale} and
 			the full interface in Figure \ref{fig:MushraEvaluation}.
 
@@ -272,37 +272,41 @@
 			11. & Stimulus with third through ninth harmonics removed (anchor).
 		\end{tabular}
 
-		The R\sub{nonlin} results for each of the stimuli are presented in Figure \ref{fig:SMCRNonlin}. The
-		values have been normalised to the range 0 to 100 for purposes of comparison with the grading scale used
-		in the listening test. 
+		The R\sub{nonlin} results for each of the stimuli are presented in Figure \ref{fig:SMCRNonlin}. The values
+		have been normalised to the range 0 to 100 for purposes of comparison with the grading scale used in the
+		listening test. Note that for the piano signal three of the reconstructed stimuli have R\sub{nonlin} score
+		lower than that of the anchor. This is due to the piano signal having a damped fundamental.  Reconstructing
+		the higher order harmonics using information in the fundamental produces lower quality harmonics as the
+		structure of the fundamental does not reflect that of the other harmonics in the signal. I lieu of this,
+		test participants who grade any of the reconstructed piano stimuli less than the piano anchor will not be
+		deemed unreliable.
 		
-		\note
-		{
-			Note that for the piano stimuli some of the stimuli have a lower rnonlin than the anchor.
-		}
+		Two of the eight participants who took part in the listening tests failed to grade the hidden reference
+		correctly causing their results have been discarded. The mean grading of the remaining six participants are
+		shown in Figure \ref{fig:SMCRNonlin} with error bars representing the 95\% confidence interval.
 
 		\begin{figure}[h!]
 			\centering
 			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Cello Stimulus]
+			\subfloat[Cello Stimuli]
 			{
 				\includegraphics{chapter7/Images/CelloRNonlin.pdf}
 				\label{fig:CelloRNonlin}
 			}
 			\quad
-			\subfloat[Clarinet Stimulus]
+			\subfloat[Clarinet Stimuli]
 			{
 				\includegraphics{chapter7/Images/ClarinetRNonlin.pdf}
 				\label{fig:ClarinetRNonlin}
 			}
 
-			\subfloat[Synthesised Stimulus]
+			\subfloat[Synthesised Stimuli]
 			{
 				\includegraphics{chapter7/Images/SynthRNonlin.pdf}
 				\label{fig:SynthRNonlin}
 			}
 			\quad
-			\subfloat[Piano Stimulus]
+			\subfloat[Piano Stimuli]
 			{
 				\includegraphics{chapter7/Images/PianoRNonlin.pdf}
 				\label{fig:PianoRNonlin}
@@ -314,25 +318,25 @@
 		\begin{figure}[h!]
 			\centering
 			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Cello Stumulus]
+			\subfloat[Cello Stumuli]
 			{
 				\includegraphics{chapter7/Images/CelloResults.pdf}
 				\label{fig:CelloResults}
 			}
 			\quad
-			\subfloat[Clarinet Stimulus]
+			\subfloat[Clarinet Stimuli]
 			{
 				\includegraphics{chapter7/Images/ClarinetResults.pdf}
 				\label{fig:ClarinetResults}
 			}
 
-			\subfloat[Synthesised Stimulus]
+			\subfloat[Synthesised Stimuli]
 			{
 				\includegraphics{chapter7/Images/SynthResults.pdf}
 				\label{fig:SynthResults}
 			}
 			\quad
-			\subfloat[Piano Stimulus]
+			\subfloat[Piano Stimuli]
 			{
 				\includegraphics{chapter7/Images/PianoResults.pdf}
 				\label{fig:PianoResults}
