@@ -244,7 +244,7 @@
 		correctly causing their results have been discarded. The mean grades given by the remaining six participants
 		are shown in Figure \ref{fig:SMCRNonlin} with error bars illustrating 95\% confidence intervals. The Pearson
 		correlation ($r$) between these mean grades and the R\sub{nonlin} scores for the stimuli are shown in Table
-		\ref{SMCCorrelations}.
+		\ref{tab:SMCCorrelations}.
 
 		\begin{figure}[h!]
 			\centering
@@ -310,7 +310,7 @@
 			\centering
 			\input{chapter7/Tables/SMCCorrelations.tex}
 			\caption{Correlations between the R\sub{nonlin} values and the mean grades.}
-			\label{fig:SMCCorrelations}
+			\label{tab:SMCCorrelations}
 		\end{table}
 
 	\subsection{Discussion}
@@ -383,7 +383,7 @@
 		SSBA and IAP methods filtering this harmonic out and shifting its frequency to the desired value. For the
 		cello sample, for instance, it may be better to use the fundamental in the generation of the third harmonic
 		but the second harmonic in the generation of the other harmonics as the amplitude envelopes of those
-		combinations are better matched as seen in Figure \ref{CelloSpectrogram}. Building a system like this
+		combinations are better matched as seen in Figure \ref{fig:CelloSpectrogram}. Building a system like this
 		however, requires knowledge of which harmonics in the input signal will be the best choice for
 		reconstructing a given harmonic. This will be different depending on the source of the signal and is no
 		calculable from a degraded input signal. Furthermore, the SSBA and IAP techniques are only able apply
@@ -391,9 +391,9 @@
 		of harmonic using these techniques the fundamental must be used as the input to the frequency shifter.
 
 		The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large amount of
-		ripple as seen in Figure \ref{CelloSTFTSpectrogram}. This is due to the amplitude of the fundamental being
-		calculated on a window by window basis. These inaccuracies are not present in the harmonics generated using
-		the IAP method as the amplitude is calculated on a sample by sample basis. This could be improved by
+		ripple as seen in Figure \ref{fig:CelloSTFTSpectrogram}. This is due to the amplitude of the fundamental
+		being calculated on a window by window basis. These inaccuracies are not present in the harmonics generated
+		using the IAP method as the amplitude is calculated on a sample by sample basis. This could be improved by
 		introducing overlap between the analysis frames increasing the temporal resolution of the analysis at the
 		expense of increasing the computational complexity.
 
