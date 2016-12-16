@@ -754,17 +754,15 @@
 
 			For each combination of signal, effect and parameter position there is an intended descriptor (those
 			the effects were designed to elicit) and a descriptor provided by the participant. The relationships
-			between these responses are assessed in two ways. Firstly, heat maps are plotted comparing the usage
-			of the 17 available descriptors against the intended descriptors. Secondly, participant's responses
-			are compared against the clustering performed in Section
-			\ref{sec:TimbreEvaluation-Analysis-TermClustering}.
-
-			The dendrograms shown in Figure \ref{fig:CombinedClusters} provide information about how similar the
+			between these responses are assessed in two ways. Firstly, participant's responses are compared
+			against the clustering performed in Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}. The
+			dendrograms shown in Figure \ref{fig:CombinedClusters} provide information about how similar the
 			signals / transforms described by certain terms are. This information can be used as a metric
 			describing the proximity of the user's response to the intended response. The proximity of two
 			descriptors is measured as the cophenetic distance between the clusters in which the two descriptors
 			lie. Where a descriptor appears twice in the dendrogram (from both the distortion and equaliser) the
-			combination of points which yield the lowest cophenetic distance is used.
+			combination of points which yield the lowest cophenetic distance is used. Secondly, heat maps are
+			plotted comparing the usage of the 17 available descriptors against the intended descriptors.
 
 			Listening tests were undertaken using circumaural headphones in a quiet listening environment. In
 			total 22 participants took part in the listening tests, all of whom reported no know hearing
@@ -820,37 +818,6 @@
 			\end{figure}
 
 		\subsubsection{Listening Test Results}
-			Figures \ref{fig:HarshConfusion}, \ref{fig:CrunchConfusion} and \ref{fig:CombConfusion} show heat
-			maps comparing the usage of terms by test participants and the terms the effects were designed to
-			control. Figure \ref{fig:HarshConfusion} for the results collected from the warmth / harshness
-			effect, Figure \ref{fig:CrunchConfusion} for the harshness / crunchiness effect and
-			\ref{fig:CombConfusion} the combination of data from both effects. Each cell in the figures
-			represents the frequency with which one of the available descriptors (bottom) was used to describe
-			the timbral effect at the parameter position which was intended to produce a particular timbral
-			result (right). Above the figure is a dendrogram representing the clustering of terms based on their
-			frequency of usage.
-
-			\begin{figure}[h!]
-				\centering
-				\includegraphics{chapter7/Images/HarshConfusion.pdf}
-				\caption{Heat map of term usage for the warmth / harshness effect.}
-				\label{fig:HarshConfusion}
-			\end{figure}
-
-			\begin{figure}[h!]
-				\centering
-				\includegraphics{chapter7/Images/CrunchConfusion.pdf}
-				\caption{Heat map of term usage for the harshness / crunchiness effect.}
-				\label{fig:CrunchConfusion}
-			\end{figure}
-
-			\begin{figure}[h!]
-				\centering
-				\includegraphics{chapter7/Images/CombinedConfusion.pdf}
-				\caption{Heat map of term usage across both effects.}
-				\label{fig:CombConfusion}
-			\end{figure}
-
 			The mean cophenetic distances between participants' annotation of the warmth / harshness effect's
 			parameter and the descriptors `warm', `bright' and `harsh' are shown in Figure \ref{fig:HarshCophs},
 			The error bars representing the 95\% confidence interval for each mean.  Cophenetic distances in
@@ -897,6 +864,37 @@
 				}
 				\caption{Cophenetic distances for the harshness / crunchiness effect.}
 				\label{fig:CrunchCophs}
+			\end{figure}
+
+			Figures \ref{fig:HarshConfusion}, \ref{fig:CrunchConfusion} and \ref{fig:CombConfusion} show heat
+			maps comparing the usage of terms by test participants and the terms the effects were designed to
+			control. Figure \ref{fig:HarshConfusion} for the results collected from the warmth / harshness
+			effect, Figure \ref{fig:CrunchConfusion} for the harshness / crunchiness effect and
+			\ref{fig:CombConfusion} the combination of data from both effects. Each cell in the figures
+			represents the frequency with which one of the available descriptors (bottom) was used to describe
+			the timbral effect at the parameter position which was intended to produce a particular timbral
+			result (right). Above the figure is a dendrogram representing the clustering of terms based on their
+			frequency of usage.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics{chapter7/Images/HarshConfusion.pdf}
+				\caption{Heat map of term usage for the warmth / harshness effect.}
+				\label{fig:HarshConfusion}
+			\end{figure}
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics{chapter7/Images/CrunchConfusion.pdf}
+				\caption{Heat map of term usage for the harshness / crunchiness effect.}
+				\label{fig:CrunchConfusion}
+			\end{figure}
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics{chapter7/Images/CombinedConfusion.pdf}
+				\caption{Heat map of term usage across both effects.}
+				\label{fig:CombConfusion}
 			\end{figure}
 
 	\subsection{Discussion}
