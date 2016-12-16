@@ -742,7 +742,7 @@
 			direction of the parameter sliders was randomised for each participant. The order of the tracks in
 			the DAW session was also randomised to mitigate any effect the order of tracks may have on results.
 
-			For each effect on each track participants were asked to first take a short time to audition the
+			For each effect, on each signal, participants were asked to first take a short time to audition the
 			effect to become accustomed to how changing the parameter value affects that particular input
 			signal. Once they had investigated the operation of the effect they were asked to label the
 			parameter slider at three positions (parameter values of 0, 0.5 and 1) with a term they felt best
@@ -752,6 +752,20 @@
 			discussed in Chapter \ref{chap:TimbreEvaluation} (airy, boomy, boxy, bright, clear, creamy, crunchy,
 			deep, full, fuzzy, harsh, muddy, raspy, smooth, thin, tinny and warm).
 
+			For each combination of signal, effect and parameter position there is an intended descriptor (those
+			the effects were designed to elicit) and a descriptor provided by the participant. The relationships
+			between these responses are assessed in two ways. Firstly, heat maps are plotted comparing the usage
+			of the 17 available descriptors against the intended descriptors. Secondly, participant's responses
+			are compared against the clustering performed in Section
+			\ref{sec:TimbreEvaluation-Analysis-TermClustering}.
+
+			The dendrograms shown in Figure \ref{fig:CombinedClusters} provide information about how similar the
+			signals / transforms described by certain terms are. This information can be used as a metric
+			describing the proximity of the user's response to the intended response. The proximity of two
+			descriptors is measured as the cophenetic distance between the clusters in which the two descriptors
+			lie. Where a descriptor appears twice in the dendrogram (from both the distortion and equaliser) the
+			combination of points which yield the lowest cophenetic distance is used.
+
 			Listening tests were undertaken using circumaural headphones in a quiet listening environment. In
 			total 22 participants took part in the listening tests, all of whom reported no know hearing
 			problems. On average participants took 25 minutes to complete the test.
@@ -759,12 +773,10 @@
 	\subsection{Results}
 	\label{sec:PerceptualExperiments-SemanticControl-Results}
 		\subsubsection{Mahalanobis Distances}
-			The Mahalanobis distances between the test signals after being processed by this effect and those in
-			the timbre space constructed from the SAFE dataset are shown in Figure \ref{fig:HarshJeffs}. The
-			distances in the processed feature space (Figure \ref{fig:HarshProcJeff}) are not as significant as
-			those in the feature difference space (Figure \ref{fig:HarshDiffJeff}) as it was determined in
-			Chapter \ref{chap:TimbreEvaluation} that the descriptors `warm', `bright' and `harsh' are best
-			defined by relative changes in audio feature rather than absolute values.
+			The Mahalanobis distances between the test signals after being processed by the warmth / harshness
+			effect and those in the timbre space constructed from the SAFE dataset are shown in Figure
+			\ref{fig:HarshJeffs}. Distances in both the processed feature space and the feature difference space
+			are shown in Figures \ref{fig:HarshProcJeff} and \ref{fig:HarshDiffJeff} respectively.
 
 			\begin{figure}[h!]
 				\centering
@@ -784,22 +796,10 @@
 				\label{fig:HarshJeffs}
 			\end{figure}
 
-			The results in Figure \ref{fig:HarshDiffJeff} imply that the effect is successful in applying
-			transforms similar to those described as `warm' and `bright' in the SAFE dataset to a range of input
-			signals. The trumpet signal poses more of a problem then the others for these descriptors. When
-			attempting to make the test signals `harsher' however, the effect does not perform well on the bass
-			guitar, flute, marimba or oboe signals. This is likely due to the small number of transforms
-			labelled harsh in the timbre space. In Chapter \ref{chap:TimbreEvaluation} `harsh' was given a low
-			agreement score in both the distortion and equaliser timbre spaces due to there only being four
-			transforms labeled `harsh' in each space. As such, only a small region of the timbre space is
-			described as harsh, making it more difficult design a transform which will sit in that region for a
-			wide range of input signals.
-
-			The Mahalanobis distances between the test signals after being processed by this effect and those in
-			the timbre space constructed from the SAFE dataset are shown in Figure \ref{fig:CrunchJeffs}. Here
-			both the processed features and feature differences (Figures \ref{fig:CrunchProcJeff} and
-			\ref{fig:CrunchDiffJeff}) are significant as `crunchiness' is characterised by a certain change in
-			spectral irregularity and the distribution of energy in the output spectrum.
+			The Mahalanobis distances between the test signals after being processed by the harshness /
+			crunchiness effect and those in the timbre space constructed from the SAFE dataset are shown in
+			Figure \ref{fig:CrunchJeffs} again separated into separate figures for both the processed feature
+			space and feature difference space.
 
 			\begin{figure}[h!]
 				\centering
@@ -818,15 +818,6 @@
 				\caption{Mahalanobis distances for the harshness / crunchiness effect.}
 				\label{fig:CrunchJeffs}
 			\end{figure}
-
-			Figure \ref{fig:CrunchProcJeff} shows that the effect is reasonably successful in generating output
-			signals with features similar to those in the SAFE dataset labelled as `harsh', `bright' and
-			`crunchy'. In, replicating the transforms which produced these signals the effect is less
-			successful. This is possibly explained by the simplifications made to reduce the effects
-			computational complexity. Using lower order filters increases the level of intermodulation
-			components in the individually generated harmonics.  Controlling the relative levels of these
-			generated harmonics no longer has the expected effect on spectral irregularity as each generated
-			harmonic contains several spectral partials with unknown amplitudes.
 
 		\subsubsection{Listening Test Results}
 			Figures \ref{fig:HarshConfusion}, \ref{fig:CrunchConfusion} and \ref{fig:CombConfusion} show heat
@@ -860,17 +851,12 @@
 				\label{fig:CombConfusion}
 			\end{figure}
 
-			The results of the listening tests can also be analysed by comparing them to the clustering
-			performed in Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}. The proximity of the users
-			response to the desired response can be measured as the proximity of the descriptor they responded
-			with to the desired descriptor in the dendrograms shown in Figure \ref{fig:CombinedClusters}. This
-			is measured as the cophenetic distance between the clusters in which the two descriptors lie. Where
-			a descriptor appears twice in the dendrogram (from both the distortion and equaliser) the
-			combination of points which yield the lowest cophenetic distance is used. Figures
-			\ref{fig:HarshCophs} and \ref{fig:CrunchCophs} show the mean cophenetic distances for each
-			instrument, effect and parameter setting combination in both the processed feature and feature
-			difference clustering dendrograms (Figures \ref{fig:CombinedProcessedClusters} and
-			\ref{fig:CombinedDifferenceClusters}).
+			The mean cophenetic distances between participants' annotation of the warmth / harshness effect's
+			parameter and the descriptors `warm', `bright' and `harsh' are shown in Figure \ref{fig:HarshCophs},
+			The error bars representing the 95\% confidence interval for each mean.  Cophenetic distances in
+			both the processed feature dendrogram (Figure \ref{fig:CombinedProcessedClusters}) and the feature
+			difference dendrogram (Figure \ref{fig:CombinedDifferenceClusters}) are shown in Figures
+			\ref{fig:HarshProcCoph} and \ref{fig:HarshDiffCoph} respectively.
 
 			\begin{figure}[h!]
 				\centering
@@ -889,6 +875,11 @@
 				\caption{Cophenetic distances for the warmth / harshness effect.}
 				\label{fig:HarshCophs}
 			\end{figure}
+
+			The mean cophenetic distances between participants' annotation of the harshness / crunchiness
+			effect's parameter and the descriptors `harsh', `bright' and `crunch' are shown in Figure
+			\ref{fig:HarshCophs}. Again, distances in both the processed feature dendrogram and
+			feature difference dendrogram are shown separately.
 
 			\begin{figure}[h!]
 				\centering
@@ -910,6 +901,23 @@
 
 	\subsection{Discussion}
 	\label{sec:PerceptualExperiments-SemanticControl-Discussion}
+		\subsubsection*{Warmth / Harshness Effect}
+			The distances in the processed feature space (Figure \ref{fig:HarshProcJeff}) are not as significant
+			as those in the feature difference space (Figure \ref{fig:HarshDiffJeff}) as it was determined in
+			Chapter \ref{chap:TimbreEvaluation} that the descriptors `warm', `bright' and `harsh' are best
+			defined by relative changes in audio features rather than absolute values.
+
+			The results in Figure \ref{fig:HarshDiffJeff} imply that the warmth / harshness effect is successful
+			in applying transforms similar to those described as `warm' and `bright' in the SAFE dataset to a
+			range of input signals. The trumpet signal poses more of a problem then the others for these
+			descriptors. When attempting to make the test signals `harsher' however, the effect does not perform
+			well on the bass guitar, flute, marimba or oboe signals. This is likely due to the small number of
+			transforms labelled harsh in the timbre space. In Chapter \ref{chap:TimbreEvaluation} `harsh' was
+			given a low agreement score in both the distortion and equaliser timbre spaces due to there only
+			being four transforms labeled `harsh' in each space. As such, only a small region of the timbre
+			space is described as harsh, making it more difficult design a transform which will sit in that
+			region for a wide range of input signals.
+
 		\note
 		{
 			For warmth / harshness both `warm' and `harsh' are used to describe the relevant signals. `harsh' is
@@ -926,5 +934,20 @@
 			Across both effects again two main clustered are formed, low and high frequency energy in effect.
 		}
 
-	\subsubsection{Conclusion}
+		\subsubsection*{Harshness / Crunchiness Effect}
+			Here both the processed features and feature differences (Figures \ref{fig:CrunchProcJeff} and
+			\ref{fig:CrunchDiffJeff}) are significant as `crunchiness' is characterised by a certain change in
+			spectral irregularity and the distribution of energy in the spectrum of the output signal.
+
+			Figure \ref{fig:CrunchProcJeff} shows that the harshness / crunchiness effect is reasonably
+			successful in generating output signals with features similar to those in the SAFE dataset labelled
+			as `harsh', `bright' and `crunchy'. In, replicating the transforms which produced these signals the
+			effect is less successful. This is possibly explained by the simplifications made to reduce the
+			effects computational complexity. Using lower order filters increases the level of intermodulation
+			components in the individually generated harmonics.  Controlling the relative levels of these
+			generated harmonics no longer has the expected effect on spectral irregularity as each generated
+			harmonic contains several spectral partials with unknown amplitudes.
+
+
+	\subsection{Conclusion}
 	\label{sec:PerceptualExperiments-SemanticControl-Conclusion}
