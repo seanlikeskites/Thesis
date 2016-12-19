@@ -32,13 +32,13 @@
 		degraded signal. This can be achieved using a spectral shaping system similar to that shown in Figure
 		\ref{fig:SpectralShapingSystem}. Rather than shaping the spectrum to achieve a musical effect it is used to
 		reconstruct the shape of the original spectrum. The missing harmonics are generated individually with the
-		amplitudes they had in the original (non-degraded) signal. In this section three methods of generating these
-		individual harmonics are discussed.
+		amplitudes they had in the original (non-degraded) signal. In this section three methods of generating
+		these individual harmonics are discussed.
 
 		The first method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated
-		in Figure \ref{fig:Synthesise}. The STFT of the input signal is calculated and used to generate an amplitude
-		envelope for the input signal's fundamental. This amplitude envelope is then used in the synthesis of a
-		sinusoid at the frequency of the desired harmonic.
+		in Figure \ref{fig:Synthesise}. The STFT of the input signal is calculated and used to generate an
+		amplitude envelope for the input signal's fundamental. This amplitude envelope is then used in the
+		synthesis of a sinusoid at the frequency of the desired harmonic.
 
 		\begin{figure}[h!]
 			\centering
@@ -61,9 +61,10 @@
 		\end{figure}
 
 		The other two harmonic generation methods use the system illustrated in Figure \ref{fig:FilterAndShift},
-		isolating the fundamental with a low pass filter and then using a frequency shifting technique to change the
-		frequency to that of the desired harmonic. The two frequency shifting techniques used in this experiment are
-		SSBA (Section \ref{sec:Excitation-Methods-SSBA}) and IAP (Section \ref{sec:Excitation-Methods-IAP}).
+		isolating the fundamental with a low pass filter and then using a frequency shifting technique to change
+		the frequency to that of the desired harmonic. The two frequency shifting techniques used in this
+		experiment are SSBA (Section \ref{sec:Excitation-Methods-SSBA}) and IAP (Section
+		\ref{sec:Excitation-Methods-IAP}).
 
 		\begin{figure}[h!]
 			\centering
@@ -85,16 +86,16 @@
 	\subsection{Methodology}
 	\label{sec:PerceptualExperiments-Reconstruction-Methodology}
 		\subsubsection*{Stimuli Generation}
-			The harmonic reconstruction systems were evaluated using the same four audio signals used in Section
-			\ref{sec:FeatureControl-Parameterisation} to assess audio feature parameterisation techniques
-			(cello, clarinet, synthesised and piano). For each signal the third through ninth harmonics were
-			removed. This was in order to cause significant degradation in the quality of the signal such that
-			the difference is plainly audible to the majority of listeners. The second harmonic was left in the
-			signal to pose a challenge to the SSBA and IAP methods. As mentioned in previously the performance
-			of these methods depends on how well the fundamental is isolated.  Retaining the second harmonic
-			allows for the effect of filter order on the performance of the system to be assessed. Spectrograms
-			of the cello signal before and after this process are shown in Figures \ref{fig:CelloSpectrogram}
-			and \ref{fig:CelloFilteredSpectrogram}. 
+			The harmonic reconstruction systems were evaluated using the same four audio signals used in
+			Section \ref{sec:FeatureControl-Parameterisation} to assess audio feature parameterisation
+			techniques (cello, clarinet, synthesised and piano). For each signal the third through ninth
+			harmonics were removed. This was in order to cause significant degradation in the quality of the
+			signal such that the difference is plainly audible to the majority of listeners. The second
+			harmonic was left in the signal to pose a challenge to the SSBA and IAP methods. As mentioned in
+			previously the performance of these methods depends on how well the fundamental is isolated.
+			Retaining the second harmonic allows for the effect of filter order on the performance of the
+			system to be assessed. Spectrograms of the cello signal before and after this process are shown in
+			Figures \ref{fig:CelloSpectrogram} and \ref{fig:CelloFilteredSpectrogram}. 
 
 			\begin{figure}[h!]
 				\centering
@@ -114,24 +115,24 @@
 				\label{fig:CelloSpectrograms}
 			\end{figure}
 
-			Test stimuli were created by reintroducing the third through ninth harmonics to the filtered signals
-			using the systems described in Section \ref{sec:PerceptualExperiments-Reconstruction-Systems}. In
-			order to reduce the number of variables, each of the unprocessed signals was analysed prior to the
-			creation of the test stimuli. The fundamental frequency of each signal was measured along with the
-			amplitudes of the third through ninth harmonics. This information was then used in the
-			reconstruction of the signal mitigating any inaccuracies which may be introduced by calculating it
-			in real time and allowing the `naturalness' of the generated harmonics to be assessed more
-			thoroughly.
+			Test stimuli were created by reintroducing the third through ninth harmonics to the filtered
+			signals using the systems described in Section
+			\ref{sec:PerceptualExperiments-Reconstruction-Systems}. In order to reduce the number of variables,
+			each of the unprocessed signals was analysed prior to the creation of the test stimuli. The
+			fundamental frequency of each signal was measured along with the amplitudes of the third through
+			ninth harmonics. This information was then used in the reconstruction of the signal mitigating any
+			inaccuracies which may be introduced by calculating it in real time and allowing the `naturalness'
+			of the generated harmonics to be assessed more thoroughly.
 
 			Eleven test stimuli were created from each of the original four signals. The first two being the
 			unprocessed signal and the filtered signal. The remaining nine were reconstructions of the original
 			signal from the filtered signal. Each signal was reconstructed three times using each system, using
 			different parameters each time. For the synthesis method the window length of the STFT was changed,
-			taking values of 50, 100 and 500 samples. As the window length increases the frequency resolution of
-			the spectrum increases allowing for more accurate calculation of the amplitude of the fundamental.
-			Longer window length however will decrease the temporal resolution of the system, smoothing
-			the extracted amplitude envelope. Care must be taken to not increase the STFT window length such
-			that this smoothing starts to reduce the accuracy of the extracted amplitude envelope.
+			taking values of 50, 100 and 500 samples. As the window length increases the frequency resolution
+			of the spectrum increases allowing for more accurate calculation of the amplitude of the
+			fundamental.  Longer window length however will decrease the temporal resolution of the system,
+			smoothing the extracted amplitude envelope. Care must be taken to not increase the STFT window
+			length such that this smoothing starts to reduce the accuracy of the extracted amplitude envelope.
 			For the SSBA and IAP methods a different order FIR filter was used to isolate the fundamental
 			frequency. The filters used were windowed sinc filters with orders of 50, 100 and 500 and using the
 			Blackman window to maximise stopband attenuation \citep{schlichtharle2011digital}. As the filter
@@ -142,10 +143,10 @@
 			An approximation of the perceptual difference between the stimuli and the relevant audio signal is
 			measured using the R\sub{nonlin} metric proposed by \citet{tan2004predicting}. As discussed in
 			Section \ref{sec:Excitation-Analysis-Metrics} this is a metric which uses psychoacoustic models of
-			the human hearing system to judge the perceived level of distortion in a signal. It is calculated by
-			comparing the degraded signal against the non-degraded signal, returning a value between 0 and 1. 1
-			denoting a signal which is indistinguishable from the original and lower values describing signals
-			with a higher level of perceivable distortion.
+			the human hearing system to judge the perceived level of distortion in a signal. It is calculated
+			by comparing the degraded signal against the non-degraded signal, returning a value between 0 and
+			1. 1 denoting a signal which is indistinguishable from the original and lower values describing
+			signals with a higher level of perceivable distortion.
 
 		\subsubsection*{Subjective Evaluation}
 			The performance of the reconstruction systems was evaluated subjectively using series of multiple
@@ -164,10 +165,10 @@
 				\label{fig:MushraTraining}
 			\end{figure}
 
-			During the evaluation phase participants are presented with all stimuli created from the same signal
-			at once. They were asked to grade how well each of the stimuli recreate the reference stimuli (the
-			unprocessed signal) on a scale from 0 to 100. The scale is shown in Figure \ref{fig:MushraScale} and
-			the full interface in Figure \ref{fig:MushraEvaluation}.
+			During the evaluation phase participants are presented with all stimuli created from the same
+			signal at once. They were asked to grade how well each of the stimuli recreate the reference
+			stimuli (the unprocessed signal) on a scale from 0 to 100. The scale is shown in Figure
+			\ref{fig:MushraScale} and the full interface in Figure \ref{fig:MushraEvaluation}.
 
 			\begin{figure}[h!]
 				\centering
@@ -200,9 +201,9 @@
 			\end{figure}
 
 			This evaluation phase is repeated for each of the original audio signals. The order in which the
-			evaluation phases for each signal were presented to participants was randomised along with the order
-			in which the stimuli appear in the interface in order to mitigate any effect the order in which
-			stimuli are heard may have on the results.
+			evaluation phases for each signal were presented to participants was randomised along with the
+			order in which the stimuli appear in the interface in order to mitigate any effect the order in
+			which stimuli are heard may have on the results.
 
 			Listening tests were undertaken using circumaural headphones in a quiet listening environment. In
 			total eight participants took part in the listening tests, all of whom reported no know hearing
@@ -244,10 +245,10 @@
 		deemed unreliable.
 		
 		Two of the eight participants who took part in the listening tests failed to grade the hidden reference
-		correctly causing their results have been discarded. The mean grades given by the remaining six participants
-		are shown in Figure \ref{fig:SMCRNonlin} with error bars illustrating 95\% confidence intervals. The Pearson
-		correlation ($r$) between these mean grades and the R\sub{nonlin} scores for the stimuli are shown in Table
-		\ref{tab:SMCCorrelations}.
+		correctly causing their results have been discarded. The mean grades given by the remaining six
+		participants are shown in Figure \ref{fig:SMCRNonlin} with error bars illustrating 95\% confidence
+		intervals. The Pearson correlation ($r$) between these mean grades and the R\sub{nonlin} scores for the
+		stimuli are shown in Table \ref{tab:SMCCorrelations}.
 
 		\begin{figure}[h!]
 			\centering
@@ -321,10 +322,10 @@
 		The results of the listening test show that the effects of STFT window length and filter order are as
 		expected. Across the majority of the stimuli there is an increase in the perceived quality of the
 		reconstruction as the STFT window length / filter order is increased. The R\sub{nonlin} measures confirm
-		that as these parameters are increased the resulting reconstructed signal is objectively more similar to the
-		original signal. For each of the original signals the reconstruction with a window length / filter order of
-		500 receive similar grades, it is in the lower setting of these parameters that differences between the
-		methods become noticeable.
+		that as these parameters are increased the resulting reconstructed signal is objectively more similar to
+		the original signal. For each of the original signals the reconstruction with a window length / filter
+		order of 500 receive similar grades, it is in the lower setting of these parameters that differences
+		between the methods become noticeable.
 
 		For each of the acoustic signals (cello, clarinet and piano) the reconstruction with the synthesis method
 		and an STFT window length of 50 samples was given the lowest mean grade by test participants. This is most
@@ -337,13 +338,14 @@
 		explained by the fact that the synthesised signal is the easiest to reconstruct. It is a purely harmonic
 		signal with no energy at inharmonic frequencies. This makes it easy to isolate the fundamental and produce
 		harmonics with less intermodulation components. As all the reconstructions of the synthesised signal are
-		similar to each other it is more difficult for test participants to decide where to grade them on the scale.
-		Where there is more variability between the stimuli, as for the acoustic signals, it becomes easier for test
-		participants to grade stimuli on the scale as they will need to be spread over a wider larger range.
+		similar to each other it is more difficult for test participants to decide where to grade them on the
+		scale.  Where there is more variability between the stimuli, as for the acoustic signals, it becomes easier
+		for test participants to grade stimuli on the scale as they will need to be spread over a wider larger
+		range.
 
-		Further insight into how each of the different methods perform can be acquired by examining the spectrograms
-		of the reconstructed signals. Spectrograms for the reconstructions of the cellos signal, using an STFT
-		window length / filter order of 50, are shown in Figure \ref{fig:ReconstructedCelloSpectrograms}.
+		Further insight into how each of the different methods perform can be acquired by examining the
+		spectrograms of the reconstructed signals. Spectrograms for the reconstructions of the cellos signal, using
+		an STFT window length / filter order of 50, are shown in Figure \ref{fig:ReconstructedCelloSpectrograms}.
 
 		\begin{figure}[h!]
 			\centering
@@ -381,13 +383,13 @@
 		the harmonic is increased the decay time gets shorter due to the dynamic expansion shown in Figure
 		\ref{fig:SSBATemporalEffects}.
 
-		Better results may be achieved by using one of the higher order harmonics in the generation of new harmonics
-		rather than the fundamental. For the synthesis method, measuring the amplitude of this harmonic and for the
-		SSBA and IAP methods filtering this harmonic out and shifting its frequency to the desired value. For the
-		cello sample, for instance, it may be better to use the fundamental in the generation of the third harmonic
-		but the second harmonic in the generation of the other harmonics as the amplitude envelopes of those
-		combinations are better matched as seen in Figure \ref{fig:CelloSpectrogram}. Building a system like this
-		however, requires knowledge of which harmonics in the input signal will be the best choice for
+		Better results may be achieved by using one of the higher order harmonics in the generation of new
+		harmonics rather than the fundamental. For the synthesis method, measuring the amplitude of this harmonic
+		and for the SSBA and IAP methods filtering this harmonic out and shifting its frequency to the desired
+		value. For the cello sample, for instance, it may be better to use the fundamental in the generation of the
+		third harmonic but the second harmonic in the generation of the other harmonics as the amplitude envelopes
+		of those combinations are better matched as seen in Figure \ref{fig:CelloSpectrogram}. Building a system
+		like this however, requires knowledge of which harmonics in the input signal will be the best choice for
 		reconstructing a given harmonic. This will be different depending on the source of the signal and is no
 		calculable from a degraded input signal. Furthermore, the SSBA and IAP techniques are only able apply
 		frequency shifts at integer multiples of the frequency of the input signal. In order to generate all orders
@@ -405,12 +407,12 @@
 		It has been shown that the `naturalness' of harmonics generated using the information present in the
 		fundamental of a signal depends on both the method of generating the harmonic and the properties of the
 		input signal. If sufficient processing is applied (increasing the STFT window length / filter order) all
-		three of the tested harmonic generation methods perform similarly well. As these parameters are decreased in
-		value the synthesis method's performance decreases more rapidly than that of SSBA and IAP. These two methods
-		also have the advantage of having lower computational complexity. Of the three tested methods IAP is the
-		most suitable for use the harmonic excitation systems due to it being a homogeneous process. As discussed in
-		Section \ref{sec:ExcitationEvaluation-Comparison-Homogeneity} this allows it to be applied to a wider range
-		of signals with more predictable results.
+		three of the tested harmonic generation methods perform similarly well. As these parameters are decreased
+		in value the synthesis method's performance decreases more rapidly than that of SSBA and IAP. These two
+		methods also have the advantage of having lower computational complexity. Of the three tested methods IAP
+		is the most suitable for use the harmonic excitation systems due to it being a homogeneous process. As
+		discussed in Section \ref{sec:ExcitationEvaluation-Comparison-Homogeneity} this allows it to be applied to
+		a wider range of signals with more predictable results.
 
 \section{Semantic Control}
 \label{sec:PerceptualExperiments-SemanticControl}
@@ -429,12 +431,12 @@
 		were `warm', `bright' and `crunch'. As such the two effects were designed taking into account the timbral
 		groups these descriptors belong to. The first effect, the warmth / harshness effect, is intended to alter
 		timbre between the warmth and brightness groups, introducing `warmth' for low parameter values and
-		`brightness' for higher parameter values. As `harsh' was shown to be a in the same timbral group as `bright'
-		but being a more exaggerated version of it the highest parameter values should introduce `harshness'. The
-		second effect, the harshness / crunchiness effect, is intended to alter timbre between the  between
-		`brightness' and `crunchiness' groups, introducing `crunchiness' for high parameter values and `brightness'
-		for lower values. Again, due to `harsh' being a more exaggerated version of `bright' the lowest values
-		should produce `harsher' timbres.
+		`brightness' for higher parameter values. As `harsh' was shown to be a in the same timbral group as
+		`bright' but being a more exaggerated version of it the highest parameter values should introduce
+		`harshness'. The second effect, the harshness / crunchiness effect, is intended to alter timbre between the
+		between `brightness' and `crunchiness' groups, introducing `crunchiness' for high parameter values and
+		`brightness' for lower values. Again, due to `harsh' being a more exaggerated version of `bright' the
+		lowest values should produce `harsher' timbres.
 
 		\subsubsection*{Warmth / Harshness}
 			The warmth / harshness effect controls the spectral centroid of a signal using a refined version of
@@ -502,11 +504,12 @@
 				\label{fig:WarmHarsh}
 			\end{figure}
 
-			The low frequency band is generated by low pass filtering the input signal at its spectral centroid.
-			The high frequency band is generated by applying full wave rectification to the isolated fundamental
-			of the input signal and high pass filtering at the input's spectral centroid. Separating the bands
-			at the spectral centroid in this way ensures that their respective spectral centroids sit either
-			side of the input's. Full wave rectification is used to ensure the system is homogeneous.
+			The low frequency band is generated by low pass filtering the input signal at its spectral
+			centroid.  The high frequency band is generated by applying full wave rectification to the isolated
+			fundamental of the input signal and high pass filtering at the input's spectral centroid.
+			Separating the bands at the spectral centroid in this way ensures that their respective spectral
+			centroids sit either side of the input's. Full wave rectification is used to ensure the system is
+			homogeneous.
 
 			The parameter of the effect controls the relative gains applied to each of the spectral bands. The
 			parameter value, $p$, ranges from 0 to 1 and is used to calculate the gains, $m_{L}$ and $m_{H}$,
@@ -529,8 +532,8 @@
 			In Chapter \ref{chap:TimbreEvaluation} it was suggested that `crunchiness' is associated with a
 			small increase in spectral irregularity and an output signal with a low spectral kurtosis and
 			spectral skewness. To attempt to recreate this the harshness / crunchiness effect controls the
-			spectral irregularity of a signal along with the proportion of high frequency energy introduced. The
-			system is based on that described in Figure \ref{fig:SpectralShapingSystem}. The full system is
+			spectral irregularity of a signal along with the proportion of high frequency energy introduced.
+			The system is based on that described in Figure \ref{fig:SpectralShapingSystem}. The full system is
 			shown in Figure \ref{fig:HarshCrunch}.
 
 			\begin{figure}[h!]
@@ -622,14 +625,14 @@
 			\ref{sec:Excitation-Methods-IAP}. This method was chosen due to it performing the best in the
 			experiments in Section \ref{sec:PerceptualExperiments-Reconstruction}. To reduce computational load
 			the filter used to isolate the fundamental in this system is a second order IIR low pass filter.
-			The use of a low order filter means that there is a higher proportion of high frequency energy which
-			remains in the isolated fundamental. This in turn produces more intermodulation components in the
-			generated harmonics. Each of the generated harmonics is band pass filtered in order to reduce the
-			influence of these intermodulation components. For higher order harmonics this band pass filtering
-			is not effective so only the first six harmonics are generated individually. Again a high frequency
-			spectral band is generated by full wave rectifying the isolated fundamental. This high frequency
-			band is high pass filtered at the frequency of the sixth harmonic so as not to interfere with the
-			individually generated harmonics.
+			The use of a low order filter means that there is a higher proportion of high frequency energy
+			which remains in the isolated fundamental. This in turn produces more intermodulation components in
+			the generated harmonics. Each of the generated harmonics is band pass filtered in order to reduce
+			the influence of these intermodulation components. For higher order harmonics this band pass
+			filtering is not effective so only the first six harmonics are generated individually. Again a high
+			frequency spectral band is generated by full wave rectifying the isolated fundamental. This high
+			frequency band is high pass filtered at the frequency of the sixth harmonic so as not to interfere
+			with the individually generated harmonics.
 
 			The effect has one control parameter which ranges from 0 to 1 and controls the relative amplitudes
 			of regions of the output spectrum. The spectral irregularity is controlled by adjusting the
@@ -653,9 +656,9 @@
 			noted for the transforms labelled `crunchy' in Chapter \ref{chap:TimbreEvaluation}.
 			
 			The relative amount of high frequency content in the output is also controlled by $p$. This is
-			achieved by changing the relative levels of the band containing the first six harmonics and the band
-			generated by the full wave rectifier. The final gains applied to the six generated harmonics along
-			with that applied to the rectifier output are given by Equation \ref{eq:HarshCrunchParam}.
+			achieved by changing the relative levels of the band containing the first six harmonics and the
+			band generated by the full wave rectifier. The final gains applied to the six generated harmonics
+			along with that applied to the rectifier output are given by Equation \ref{eq:HarshCrunchParam}.
 
 			\[ m_{n} = a_{n}\frac{3p + 2}{4} \]
 			\begin{equation}
@@ -664,10 +667,10 @@
 			\end{equation}
 
 			The constants used here were derived experimentally such that when $p = 1$ the amount of energy in
-			the high and low bands of the spectrum are roughly equal for a range of input signals. This produces
-			the low spectral kurtosis and spectral skewness noticed in signals labeled `crunchy' in the SAFE
-			dataset. Lower values of $p$ increase the levels of high frequency energy in the output signal
-			causing the spectral transformations associated with `bright' and then `harsh' signals.
+			the high and low bands of the spectrum are roughly equal for a range of input signals. This
+			produces the low spectral kurtosis and spectral skewness noticed in signals labeled `crunchy' in
+			the SAFE dataset. Lower values of $p$ increase the levels of high frequency energy in the output
+			signal causing the spectral transformations associated with `bright' and then `harsh' signals.
 
 	\subsection{Methodology}
 	\label{sec:PerceptualExperiments-SemanticControl-Methodology}
@@ -681,30 +684,30 @@
 		\subsubsection*{Objective Evaluation}
 			The performance of each effect is evaluated objectively by examining how they manipulate the
 			features of the test signals. Each effect is used to process each of the test signals with its
-			parameter set to the minimum value, the middle value and the maximum value, corresponding to `warm',
-			`bright' and `harsh' for the warmth / harshness effect and `harsh', `bright' and `crunchy' for the
-			harshness / crunchiness effect. The audio features of the unprocessed and processed signals in each
-			of these applications are calculated in the same manner as in the SAFE plug-ins. These audio
-			features are the compared to those taken from the SAFE dataset.
+			parameter set to the minimum value, the middle value and the maximum value, corresponding to
+			`warm', `bright' and `harsh' for the warmth / harshness effect and `harsh', `bright' and `crunchy'
+			for the harshness / crunchiness effect. The audio features of the unprocessed and processed signals
+			in each of these applications are calculated in the same manner as in the SAFE plug-ins. These
+			audio features are the compared to those taken from the SAFE dataset.
 
 			As discussed in Chapter \ref{chap:TimbreEvaluation} the terms `warm', `harsh' and `bright' are all
 			used to describe transformations applied by both distortion and equalisation effects. `Harsh' and
 			`bright' having different definitions depending on the type of processing applied. The objective
 			performance of the effects proposed in this section is evaluated against data from both the SAFE
 			distortion and equaliser. In order to do this, two new timbre spaces are constructed by performing
-			PCA on the processed audio features and feature differences of the combined distortion and equaliser
-			data. Two performance scores are given to each combination of audio effect, descriptor and test
-			signal. The first measuring how close the processed features of the signal are to points labelled
-			with the descriptor in the processed feature timbre space.  The second measuring how close the
-			changes in features caused by the effect are to points labelled with the descriptor in the feature
-			difference timbre space.
+			PCA on the processed audio features and feature differences of the combined distortion and
+			equaliser data. Two performance scores are given to each combination of audio effect, descriptor
+			and test signal. The first measuring how close the processed features of the signal are to points
+			labelled with the descriptor in the processed feature timbre space.  The second measuring how close
+			the changes in features caused by the effect are to points labelled with the descriptor in the
+			feature difference timbre space.
 
 			The performance of a particular effect, with a particular parameter setting on a particular test
 			signal is measured by projecting the extracted audio features to a point on the relevant timbre
 			space. The processed features of the signal are projected onto the processed feature timbre space
 			and the feature differences onto the feature difference timbre space. The Mahalanobis distance,
-			$M(x, d)$, between this point, $x$, and the distribution of transforms labelled with the descriptor,
-			$d$, is taken using Equation \ref{eq:Mahalanobis}
+			$M(x, d)$, between this point, $x$, and the distribution of transforms labelled with the
+			descriptor, $d$, is taken using Equation \ref{eq:Mahalanobis}
 			
 			\begin{equation}
 				M(x, d) = \sqrt{(x - \mu_{d})^{T}\Sigma_{d}^{-1}(x - \mu_{d})}
@@ -713,16 +716,17 @@
 
 			Where $x$ is a column vector containing the coordinates of the point in the timbre space, $\mu_{d}$
 			a column vector containing the mean coordinates of all transforms in the timbre space labelled with
-			descriptor $d$ and $\Sigma_{d}$ the covariance matrix of those transforms' coordinates in the timbre
-			space. The number of coordinates used in the calculation of Mahalanobis distance is determined in
-			the same manner as discussed in Section \ref{sec:TimbreEvaluation-Analysis-Agreement}. Where there
-			more than five transforms in the distribution, the coordinates in the first five PCs of the timbre
-			space are used. Where the number of points in the distribution, $N_{d}$, is lower, only the first
-			$N_{d} - 1$ coordinates can be used in order to avoid $\Sigma_{d}$ being singular.
+			descriptor $d$ and $\Sigma_{d}$ the covariance matrix of those transforms' coordinates in the
+			timbre space. The number of coordinates used in the calculation of Mahalanobis distance is
+			determined in the same manner as discussed in Section
+			\ref{sec:TimbreEvaluation-Analysis-Agreement}. Where there more than five transforms in the
+			distribution, the coordinates in the first five PCs of the timbre space are used. Where the number
+			of points in the distribution, $N_{d}$, is lower, only the first $N_{d} - 1$ coordinates can be
+			used in order to avoid $\Sigma_{d}$ being singular.
 
 			Where the descriptor, $d$, is represented by two distributions of transforms, one from the
-			distortion and one from the equaliser, the Mahalanobis distance from both distributions is taken and
-			the minimum distance kept as the measure of performance.
+			distortion and one from the equaliser, the Mahalanobis distance from both distributions is taken
+			and the minimum distance kept as the measure of performance.
 	
 		\subsubsection*{Subjective Evaluation}
 			To assess the performance of the developed effects subjectively a series of perceptual listening
@@ -749,20 +753,21 @@
 			described the timbral effect of the effect at that parameter setting. A list of available terms was
 			provided in a drop down list at each parameter value to be labelled as seen in Figure
 			\ref{fig:TestPlugInterface}. The available terms were the 17 unique terms from the SAFE dataset
-			discussed in Chapter \ref{chap:TimbreEvaluation} (airy, boomy, boxy, bright, clear, creamy, crunchy,
-			deep, full, fuzzy, harsh, muddy, raspy, smooth, thin, tinny and warm).
+			discussed in Chapter \ref{chap:TimbreEvaluation} (airy, boomy, boxy, bright, clear, creamy,
+			crunchy, deep, full, fuzzy, harsh, muddy, raspy, smooth, thin, tinny and warm).
 
-			For each combination of signal, effect and parameter position there is an intended descriptor (those
-			the effects were designed to elicit) and a descriptor provided by the participant. The relationships
-			between these responses are assessed in two ways. Firstly, participant's responses are compared
-			against the clustering performed in Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}. The
-			dendrograms shown in Figure \ref{fig:CombinedClusters} provide information about how similar the
-			signals / transforms described by certain terms are. This information can be used as a metric
-			describing the proximity of the user's response to the intended response. The proximity of two
-			descriptors is measured as the cophenetic distance between the clusters in which the two descriptors
-			lie. Where a descriptor appears twice in the dendrogram (from both the distortion and equaliser) the
-			combination of points which yield the lowest cophenetic distance is used. Secondly, heat maps are
-			plotted comparing the usage of the 17 available descriptors against the intended descriptors.
+			For each combination of signal, effect and parameter position there is an intended descriptor
+			(those the effects were designed to elicit) and a descriptor provided by the participant. The
+			relationships between these responses are assessed in two ways. Firstly, participant's responses
+			are compared against the clustering performed in Section
+			\ref{sec:TimbreEvaluation-Analysis-TermClustering}. The dendrograms shown in Figure
+			\ref{fig:CombinedClusters} provide information about how similar the signals / transforms described
+			by certain terms are. This information can be used as a metric describing the proximity of the
+			user's response to the intended response. The proximity of two descriptors is measured as the
+			cophenetic distance between the clusters in which the two descriptors lie. Where a descriptor
+			appears twice in the dendrogram (from both the distortion and equaliser) the combination of points
+			which yield the lowest cophenetic distance is used. Secondly, heat maps are plotted comparing the
+			usage of the 17 available descriptors against the intended descriptors.
 
 			Listening tests were undertaken using circumaural headphones in a quiet listening environment. In
 			total 22 participants took part in the listening tests, all of whom reported no know hearing
@@ -773,8 +778,8 @@
 		\subsubsection{Mahalanobis Distances}
 			The Mahalanobis distances between the test signals after being processed by the warmth / harshness
 			effect and those in the timbre space constructed from the SAFE dataset are shown in Figure
-			\ref{fig:HarshJeffs}. Distances in both the processed feature space and the feature difference space
-			are shown in Figures \ref{fig:HarshProcJeff} and \ref{fig:HarshDiffJeff} respectively.
+			\ref{fig:HarshJeffs}. Distances in both the processed feature space and the feature difference
+			space are shown in Figures \ref{fig:HarshProcJeff} and \ref{fig:HarshDiffJeff} respectively.
 
 			\begin{figure}[h!]
 				\centering
@@ -819,11 +824,12 @@
 
 		\subsubsection{Listening Test Results}
 			The mean cophenetic distances between participants' annotation of the warmth / harshness effect's
-			parameter and the descriptors `warm', `bright' and `harsh' are shown in Figure \ref{fig:HarshCophs},
-			The error bars representing the 95\% confidence interval for each mean.  Cophenetic distances in
-			both the processed feature dendrogram (Figure \ref{fig:CombinedProcessedClusters}) and the feature
-			difference dendrogram (Figure \ref{fig:CombinedDifferenceClusters}) are shown in Figures
-			\ref{fig:HarshProcCoph} and \ref{fig:HarshDiffCoph} respectively.
+			parameter and the descriptors `warm', `bright' and `harsh' are shown in Figure
+			\ref{fig:HarshCophs}, The error bars representing the 95\% confidence interval for each mean.
+			Cophenetic distances in both the processed feature dendrogram (Figure
+			\ref{fig:CombinedProcessedClusters}) and the feature difference dendrogram (Figure
+			\ref{fig:CombinedDifferenceClusters}) are shown in Figures \ref{fig:HarshProcCoph} and
+			\ref{fig:HarshDiffCoph} respectively.
 
 			\begin{figure}[h!]
 				\centering
@@ -873,8 +879,8 @@
 			\ref{fig:CombConfusion} the combination of data from both effects. Each cell in the figures
 			represents the frequency with which one of the available descriptors (bottom) was used to describe
 			the timbral effect at the parameter position which was intended to produce a particular timbral
-			result (right). Above the figure is a dendrogram representing the clustering of terms based on their
-			frequency of usage.
+			result (right). Above the figure is a dendrogram representing the clustering of terms based on
+			their frequency of usage.
 
 			\begin{figure}[h!]
 				\centering
@@ -900,38 +906,68 @@
 	\subsection{Discussion}
 	\label{sec:PerceptualExperiments-SemanticControl-Discussion}
 		\subsubsection*{Warmth / Harshness Effect}
-			The distances in the processed feature space (Figure \ref{fig:HarshProcJeff}) are not as significant
-			as those in the feature difference space (Figure \ref{fig:HarshDiffJeff}) as it was determined in
-			Chapter \ref{chap:TimbreEvaluation} that the descriptors `warm', `bright' and `harsh' are best
-			defined by relative changes in audio features rather than absolute values.
+			It was determined in Chapter \ref{chap:TimbreEvaluation} that the descriptors `warm', `bright' and
+			`harsh' are best defined by relative changes in audio features rather than absolute values of
+			features in the output signal. `Warmth' describing transforms which shift spectral energy towards
+			lower frequencies and `brightness' and `harshness' describing transforms which introduce increasing
+			proportions of high frequency energy. Because of this, distances measured in the processed feature
+			space (Figures \ref{fig:HarshProcJeff} and \ref{fig:HarshProcCoph}) do not give as good a measure
+			of performance as those in the feature difference space (Figure \ref{fig:HarshDiffJeff} and
+			\ref{fig:HarshDiffCoph}).
 
-			The results in Figure \ref{fig:HarshDiffJeff} imply that the warmth / harshness effect is successful
-			in applying transforms similar to those described as `warm' and `bright' in the SAFE dataset to a
-			range of input signals. The trumpet signal poses more of a problem then the others for these
-			descriptors. When attempting to make the test signals `harsher' however, the effect does not perform
-			well on the bass guitar, flute, marimba or oboe signals. This is likely due to the small number of
-			transforms labelled harsh in the timbre space. In Chapter \ref{chap:TimbreEvaluation} `harsh' was
-			given a low agreement score in both the distortion and equaliser timbre spaces due to there only
-			being four transforms labeled `harsh' in each space. As such, only a small region of the timbre
-			space is described as harsh, making it more difficult design a transform which will sit in that
-			region for a wide range of input signals.
+			The results in Figure \ref{fig:HarshDiffJeff} imply that the warmth / harshness effect is
+			successful in applying transforms similar to those described as `warm' and `bright' in the SAFE
+			dataset. For the majority of the input signals the Mahalanobis distances for the `warm' and
+			`bright' transforms are close to 1, indicating that the transform fits well within the distribution
+			of other transforms labeled with these descriptors in the timbre space.
+			
+			When attempting to make the test signals `harsher' however, the effect does not perform well on the
+			bass guitar, flute, marimba or oboe signals. This is likely due to the small number of transforms
+			labelled harsh in the timbre space. In Chapter \ref{chap:TimbreEvaluation} `harsh' was given a low
+			agreement score in both the distortion and equaliser timbre spaces due to there only being four
+			transforms labeled `harsh' in each space. As such, only a small region of the timbre space is
+			described as harsh, making it more difficult to design a transform which will sit in that region
+			for a wide range of input signals.
+			
+			Examining the mean cophenetic distances in Figure \ref{fig:HarshDiffCoph} it might appear that
+			while listening test participants don't always use the terms which the warmth / harshness effect
+			was designed to elicit, an average they use terms which lie in the same cluster. Referring to
+			Figure \ref{fig:CombinedDifferenceClusters} we find three main clusters which could be described as
+			`warmth' (containing the terms `mud', `boom', `smooth', `crunch', `full', `deep', `warm' and
+			`cream'), `distorted brightness' (containing the terms `fuzz', `bright', `harsh', `box' and `rasp')
+			and `equalised brightness' (containing the terms 'clear', `bright', `tin', `thin', `air' an
+			`harsh'). These three clusters have heights of 17.3, 13.5 and 16.5 respectively. The mean
+			cophenetic for each of the test signals all lie close to or below these cluster heights. Further
+			analysis is required to determine whether this indicates that participants are using terms in the
+			relevant clusters.
 
-		\note
-		{
-			For warmth / harshness both `warm' and `harsh' are used to describe the relevant signals. `harsh' is
-			also shared with `fuzz' and `bright' is far more often labelled as `fuzz' or `rasp'. Both the
-			`harsh' and `bright' for the clusters in chapter 4 `fuzz' and `bright' and `harsh' are shown to be
-			similar for distorted signals. Two main clusters are identified, `warmth' and `harshness', a lower
-			resolution of the clustering done in chapter 4.
+			Figure \ref{fig:HarshConfusion} shows that `warm' was the most commonly used term to describe the
+			effect of the warmth / harshness effect when its parameter is set to `warm', followed by `clear',
+			`box' and `mud'. These descriptors lie across all three of the clusters identified in Figure
+			\ref{fig:CombinedDifferenceClusters}. Summing the cells of this figure it is found that
+			participants only used descriptors in the same cluster as `warm' 54\% of the time. The mean
+			cophenetic distances for the `warm' transform in Figure \ref{fig:HarshDiffCoph} do not represent
+			participants using descriptors from the correct cluster.
+			
+			Considering only the changes in audio features described by transforms, the terms `bright' and
+			`harsh' seem to have different definitions depending on the type of processing applied, as seen in
+			Chapter \ref{chap:TimbreEvaluation}. The results of this listening test, however, suggest that
+			these terms may be more closely related. The differences in their clustering being due only to the
+			differences in processing rather than differences in perception. Figure \ref{fig:HarshConfusion}
+			shows that, when describing the effect of the warmth / harshness effect, participants used a
+			descriptor related to the intended descriptor 74\% of the time for `bright' and 80\% of the time
+			for `harsh'. The terms used come from both the `distorted brightness' and `equalised brightness'
+			clusters, suggesting that although some of these terms were gathered using the SAFE Equaliser they
+			can still be applied to distortion type effects. Even so, the most commonly used descriptors,
+			`fuzz', `harsh' and `rasp' all lie within the `distorted brightness' cluster.
 
-			For harshness / crunchiness term usage is not as well defined. Again `fuzz' is used a lot, refer to
-			SAFE clusters again. Usage of 'crunch' seems to cluster more with the harsh descriptors as well,
-			although, `mud' was used to describe the `crunchy' signal the most which is closer to `crunch' in
-			the SAFE clustering. Again term usage suggests a lower resolution clustering compared to chapter 4.
-
-			Across both effects again two main clustered are formed, low and high frequency energy in effect.
-		}
-
+			The listening test data does not represent a difference between `bright' and `harsh' as seen in
+			Chapter \ref{chap:TimbreEvaluation}. Both the `bright' and `harsh' positions of the warmth /
+			harshness effect's parameter were labelled as `fuzzy' the most often. The `harsh' position was
+			labelled as `harsh' more often than the `bright' position, suggesting that the `harsh' position on
+			the slider produces `harsher' transforms than the `bright' position, but not that `harsh' does not
+			apply as a descriptor to the `bright' position.
+			
 		\subsubsection*{Harshness / Crunchiness Effect}
 			Here both the processed features and feature differences (Figures \ref{fig:CrunchProcJeff} and
 			\ref{fig:CrunchDiffJeff}) are significant as `crunchiness' is characterised by a certain change in
@@ -946,6 +982,27 @@
 			generated harmonics no longer has the expected effect on spectral irregularity as each generated
 			harmonic contains several spectral partials with unknown amplitudes.
 
+		\subsubsection*{Descriptor Clustering}
+
+		\note
+		{
+			For harshness / crunchiness term usage is not as well defined. Again `fuzz' is used a lot, refer to
+			SAFE clusters again. Usage of 'crunch' seems to cluster more with the harsh descriptors as well,
+			although, `mud' was used to describe the `crunchy' signal the most which is closer to `crunch' in
+			the SAFE clustering. Again term usage suggests a lower resolution clustering compared to chapter 4.
+
+			For warmth / harshness both `warm' and `harsh' are used to describe the relevant signals. `harsh'
+			is also shared with `fuzz' and `bright' is far more often labelled as `fuzz' or `rasp'. Both the
+			`harsh' and `bright' for the clusters in chapter 4 `fuzz' and `bright' and `harsh' are shown to be
+			similar for distorted signals. Two main clusters are identified, `warmth' and `harshness', a lower
+			resolution of the clustering done in chapter 4.
+
+			Across both effects again two main clusters are formed, low and high frequency energy in effect.
+		}
 
 	\subsection{Conclusion}
 	\label{sec:PerceptualExperiments-SemanticControl-Conclusion}
+		\note
+		{
+			I made some effects! They sort of worked but not very well. The End!
+		}
