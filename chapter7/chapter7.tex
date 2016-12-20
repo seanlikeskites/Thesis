@@ -930,7 +930,7 @@
 			for a wide range of input signals.
 			
 			Examining the mean cophenetic distances in Figure \ref{fig:HarshDiffCoph} it might appear that
-			while listening test participants don't always use the terms which the warmth / harshness effect
+			while listening test participants do not always use the terms which the warmth / harshness effect
 			was designed to elicit, an average they use terms which lie in the same cluster. Referring to
 			Figure \ref{fig:CombinedDifferenceClusters} we find three main clusters which could be described as
 			`warmth' (containing the terms `mud', `boom', `smooth', `crunch', `full', `deep', `warm' and
@@ -971,35 +971,69 @@
 		\subsubsection*{Harshness / Crunchiness Effect}
 			In Chapter \ref{chap:TimbreEvaluation} it was concluded that `crunchiness' is defined by an output
 			signal with energy spread evenly throughout the spectrum and a slight increase in spectral
-			irregularity. This means that both the processed features and feature differences (Figures
-			\ref{fig:CrunchProcJeff} and \ref{fig:CrunchDiffJeff}) are relevant.
-
-			Figure \ref{fig:CrunchProcJeff} shows that the harshness / crunchiness effect is reasonably
-			successful in generating output signals with features similar to those in the SAFE dataset labelled
-			as `harsh', `bright' and `crunchy'. In, replicating the transforms which produced these signals the
-			effect is less successful. This is possibly explained by the simplifications made to reduce the
+			irregularity. This means that, when attempting to make signals sound `crunchier', both the
+			processed features and feature differences are relevant.  Figure \ref{fig:CrunchProcJeff} shows
+			that for the majority of the input signals the harshness / crunchiness effect produces output
+			signals which are close to those labeled as `crunchy' in the SAFE dataset. However, the transforms
+			applied to produce these signals are less similar to those in the SAFE dataset, as seen in Figure
+			\ref{fig:CrunchDiffJeff}. This is possibly explained by the simplifications made to reduce the
 			effects computational complexity. Using lower order filters increases the level of intermodulation
-			components in the individually generated harmonics.  Controlling the relative levels of these
+			components in the individually generated harmonics. Controlling the relative levels of these
 			generated harmonics no longer has the expected effect on spectral irregularity as each generated
 			harmonic contains several spectral partials with unknown amplitudes.
 
+			For the harshness / crunchiness effect's `bright' and `harsh' parameter settings only the measures
+			of Mahalanobis distance in the feature difference space are relevant again. In this regard the
+			effect is most accurate in recreating transforms labelled `bright' in the SAFE dataset, having
+			similar performance to the warmth / harshness effect. For its `harsh' parameter setting it is less
+			accurate, again possibly due to the low confidence definition of the term `harsh' due to it being
+			used with very low frequency in the SAFE dataset.
+
+			In Figure \ref{fig:CombinedClusters} the term `crunch' sits in different clusters depending on the
+			features used for clustering. When clustering using processed features it sits in a cluster
+			alongside `tin', `harsh', `full', `thin', `air' and `clear', whereas using the feature differences
+			it is part of the `warmth' cluster described previously. Examining the mean cophenetic distances
+			from the listening test (Figure \ref{fig:CrunchCophs}) it appears that participants used terms
+			which cluster closer to `crunch' in the feature difference clusters when labelling the harshness /
+			crunchiness effect's `crunch' parameter position. Summing the relevant cells in the heat map shown
+			in Figure \ref{fig:CrunchConfusion} is is seen that using the clusters calculated from processed
+			features participants only used terms in the same cluster as `crunch' 17\% of the time. Whereas
+			when using the feature difference this figure rises to 51\%. This might suggest that `crunch' is
+			better defined as a particular transform rather than properties of the output signal.
+
+			The performance of the harshness / crunchiness effect in its `bright' and `harsh' parameter
+			settings is similar to that of the warmth / harshness effect. In these parameter settings both
+			effects have a very similar operation, introducing a high pass filtered version of the full wave
+			rectified fundamental. Again `fuzz' is the most commonly used descriptor for both parameter
+			settings.
+
 		\subsubsection*{Descriptor Clustering}
+			The results of the listening test can be further analysed by clustering terms based on how often
+			they were used to describe particular a particular combination of signal, effect and parameter
+			setting. This clustering can be used to identify synonyms and compare them with the timbral groups
+			identified in Chapter \ref{chap:TimbralEvaluation}. Dendrograms of this clustering are shown on the
+			heat maps in Figures \ref{fig:HarshConfusion}, \ref{fig:CrunchConfusion} and
+			\ref{fig:CombConfusion}.
 
-		\note
-		{
-			For harshness / crunchiness term usage is not as well defined. Again `fuzz' is used a lot, refer to
-			SAFE clusters again. Usage of 'crunch' seems to cluster more with the harsh descriptors as well,
-			although, `mud' was used to describe the `crunchy' signal the most which is closer to `crunch' in
-			the SAFE clustering. Again term usage suggests a lower resolution clustering compared to chapter 4.
+			
 
-			For warmth / harshness both `warm' and `harsh' are used to describe the relevant signals. `harsh'
-			is also shared with `fuzz' and `bright' is far more often labelled as `fuzz' or `rasp'. Both the
-			`harsh' and `bright' for the clusters in chapter 4 `fuzz' and `bright' and `harsh' are shown to be
-			similar for distorted signals. Two main clusters are identified, `warmth' and `harshness', a lower
-			resolution of the clustering done in chapter 4.
+			\note
+			{
+				For warmth / harshness both `warm' and `harsh' are used to describe the relevant signals.
+				`harsh' is also shared with `fuzz' and `bright' is far more often labelled as `fuzz' or
+				`rasp'. Both the `harsh' and `bright' for the clusters in chapter 4 `fuzz' and `bright' and
+				`harsh' are shown to be similar for distorted signals. Two main clusters are identified,
+				`warmth' and `harshness', a lower resolution of the clustering done in chapter 4.
 
-			Across both effects again two main clusters are formed, low and high frequency energy in effect.
-		}
+				For harshness / crunchiness term usage is not as well defined. Again `fuzz' is used a lot,
+				refer to SAFE clusters again. Usage of 'crunch' seems to cluster more with the harsh
+				descriptors as well, although, `mud' was used to describe the `crunchy' signal the most
+				which is closer to `crunch' in the SAFE clustering. Again term usage suggests a lower
+				resolution clustering compared to chapter 4.
+
+				Across both effects again two main clusters are formed, low and high frequency energy in
+				effect.
+			}
 
 	\subsection{Conclusion}
 	\label{sec:PerceptualExperiments-SemanticControl-Conclusion}
