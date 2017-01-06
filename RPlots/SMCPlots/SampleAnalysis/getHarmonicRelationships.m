@@ -20,7 +20,13 @@ for i = 1:nFrames
 		[minProx, harmIdx] = min(proxs);
 
 		if (length(peakIdxs) == 0) || (minProx > 0.4)
-			freq = j * f0;
+
+			if (i > 1)
+				freq = freqs(j, i - 1);
+			else
+				freq = j * f0;
+			end
+
 			amps(j, i) = frame(round(freq * window / fs));
 			freqs(j, i) = freq;
 		else
