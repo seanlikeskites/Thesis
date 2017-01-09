@@ -19,7 +19,7 @@ plotHarmonicLevels <- function(data, stepSize, ylim=c(0, 1), legendpos="topleft"
 
 	par(xaxs='i', yaxs='i')
 	plot(time, data[1,], type='n', ylim=ylim,
-	     xlab="Time (s)", ylab="Relative Amplitude")
+	     xlab="Time (s)", ylab="Amplitude Ratio")
 
 	colours <- rainbow(nHarms)
 	ltys <- rep(c(1, 2, 4, 5, 6), 1, nHarms)
@@ -71,7 +71,7 @@ harmonicAmplitudeBoxPlot <- function(data, ylim=c(0, 2))
 	par(xaxs='i', yaxs='i')
 	boxplot(data, frame.plot=FALSE, axes=FALSE, col="blue",
 		medlty="blank", boxwex=boxWidth, boxlty="blank", ylim=ylim,
-		ylab="Relative Amplitude", outline=FALSE)
+		ylab="Amplitude Ratio", outline=FALSE)
 	axis(1, at=1:nHarmonics, line=0, lwd=0, labels=(1:nHarmonics)+2)
 	mtext("Harmonic", 1, 3)
 	axis(2)
