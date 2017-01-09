@@ -2,10 +2,10 @@ library(foreign)
 library(extrafont)
 
 data <- read.octave("HarmonicRelationships.mat")
-bassAmps <- data$bassAmpRatios[3:9,20:110]
-clarAmps <- data$clarAmpRatios[3:9,1:230]
-pianAmps <- data$pianAmpRatios[3:9,1:250]
-synAmps <- data$synAmpRatios[3:9,300:400]
+bassAmps <- data$bassAmpRatios[3:9,]
+clarAmps <- data$clarAmpRatios[3:9,]
+pianAmps <- data$pianAmpRatios[3:9,]
+synAmps <- data$synAmpRatios[3:9,]
 stepSize <- data$stepSize
 
 #######################
@@ -37,26 +37,26 @@ plotHarmonicLevels <- function(data, stepSize, ylim=c(0, 1), legendpos="topleft"
 }
 
 pdf("CelloHarmonicAmplitudes.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=2.94, height=2.1)
-par(mar=c(4, 4, 0.6, 0.2))
+par(mar=c(4.1, 4, 0.6, 0.2))
 plotHarmonicLevels(bassAmps, stepSize, c(0, 1.1), legendcol=4)
 dev.off()
 embed_fonts("CelloHarmonicAmplitudes.pdf")
 
 pdf("ClarinetHarmonicAmplitudes.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=2.94, height=2.1)
-par(mar=c(4, 4, 0.6, 0.2))
-plotHarmonicLevels(clarAmps, stepSize, c(0, 2.2), legendcol=2)
+par(mar=c(4.1, 4, 0.6, 0.2))
+plotHarmonicLevels(clarAmps, stepSize, c(0, 2.3), legendcol=2)
 dev.off()
 embed_fonts("ClarinetHarmonicAmplitudes.pdf")
 
 pdf("PianoHarmonicAmplitudes.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=2.94, height=2.1)
-par(mar=c(4, 4, 0.6, 0.2))
-plotHarmonicLevels(pianAmps, stepSize, c(0, 10), "topright")
+par(mar=c(4.1, 4, 0.6, 0.2))
+plotHarmonicLevels(pianAmps, stepSize, c(0, 8), "topright")
 dev.off()
 embed_fonts("PianoHarmonicAmplitudes.pdf")
 
 pdf("SynthHarmonicAmplitudes.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=2.94, height=2.1)
-par(mar=c(4, 4, 0.6, 0.2))
-plotHarmonicLevels(synAmps, stepSize, c(0, 0.7), legendcol=4)
+par(mar=c(4.1, 4, 0.6, 0.2))
+plotHarmonicLevels(synAmps, stepSize, c(0, 1.8))
 dev.off()
 embed_fonts("SynthHarmonicAmplitudes.pdf")
 
@@ -95,25 +95,25 @@ harmonicAmplitudeBoxPlot <- function(data, ylim=c(0, 2))
 }
 
 pdf("CelloHarmonicAmplitudeBoxs.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
-par(mar=c(4, 4, 0.6, 0))
+par(mar=c(4.1, 4, 0.6, 0))
 harmonicAmplitudeBoxPlot(t(bassAmps), c(0, 1.1))
 dev.off()
 embed_fonts("CelloHarmonicAmplitudeBoxs.pdf")
 
 pdf("ClarinetHarmonicAmplitudeBoxs.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
-par(mar=c(4, 4, 0.6, 0))
-harmonicAmplitudeBoxPlot(t(clarAmps), c(0, 2.2))
+par(mar=c(4.1, 4, 0.6, 0))
+harmonicAmplitudeBoxPlot(t(clarAmps), c(0, 2.3))
 dev.off()
 embed_fonts("ClarinetHarmonicAmplitudeBoxs.pdf")
 
 pdf("PianoHarmonicAmplitudeBoxs.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
-par(mar=c(4, 4, 0.6, 0))
-harmonicAmplitudeBoxPlot(t(pianAmps), c(0, 10))
+par(mar=c(4.1, 4, 0.6, 0))
+harmonicAmplitudeBoxPlot(t(pianAmps), c(0, 8))
 dev.off()
 embed_fonts("PianoHarmonicAmplitudeBoxs.pdf")
 
 pdf("SynthHarmonicAmplitudeBoxs.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
-par(mar=c(4, 4, 0.6, 0))
-harmonicAmplitudeBoxPlot(t(synAmps), c(0, 0.7))
+par(mar=c(4.1, 4, 0.6, 0))
+harmonicAmplitudeBoxPlot(t(synAmps), c(0, 1.8))
 dev.off()
 embed_fonts("SynthHarmonicAmplitudeBoxs.pdf")
