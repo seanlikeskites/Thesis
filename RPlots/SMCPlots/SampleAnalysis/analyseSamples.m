@@ -23,4 +23,5 @@ save("HarmonicRelationships.mat",
      "bassAmpRatios", "bassFreqRatios",
      "clarAmpRatios", "clarFreqRatios",
      "pianAmpRatios", "pianFreqRatios",
-     "synAmpRatios", "synFreqRatios")
+     "synAmpRatios", "synFreqRatios",
+     "stepSize")
