@@ -393,7 +393,10 @@
 		Using the amplitude envelope of the fundamental in the generation of the harmonics also introduces
 		inaccuracies in the sustain portion of the reconstructed signals. Figures \ref{fig:CelloHarmonics} through
 		\ref{fig:PianoHarmonics} show the amplitude ratios between the third through ninth harmonics and the
-		fundamental in the sustain portions of the test signals. 
+		fundamental in the sustain portions of the test signals. Any changes in these ratios during the duration of
+		the signals are lost when reconstructing the harmonics. The cello signal (Figure \ref{fig:CelloHarmonics})
+		has the least variance in these harmonic amplitude rations in its sustain section suggesting that it will
+		be the best constructed using the harmonic excitation systems.
 
 		\begin{figure}[h!]
 			\centering
@@ -447,8 +450,8 @@
 				\includegraphics{chapter7/Images/SynthHarmonicAmplitudeBoxs.pdf}
 				\label{fig:SynthBoxs}
 			}
-			\caption{The relative amplitudes of the third through ninth harmonics 
-				 in the synthesised signal.}
+			\caption{The amplitude ratios between the third through ninth harmonics 
+				 and the fundamental in the synthesised signal.}
 			\label{fig:SynthHarmonics}
 		\end{figure}
 
@@ -466,8 +469,8 @@
 				\includegraphics{chapter7/Images/PianoHarmonicAmplitudeBoxs.pdf}
 				\label{fig:PianoBoxs}
 			}
-			\caption{The relative amplitudes of the third through ninth harmonics 
-				 in the piano signal.}
+			\caption{The amplitude ratios between the third through ninth harmonics 
+				 and the fundamental in the piano signal.}
 			\label{fig:PianoHarmonics}
 		\end{figure}
 
