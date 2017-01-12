@@ -326,172 +326,252 @@
 
 	\subsection{Discussion}
 	\label{sec:PerceptualExperiments-Reconstruction-Discussion}
-		The results of the listening test show that the effects of STFT window length and filter order are as
-		expected. Across the majority of the stimuli there is an increase in the perceived quality of the
-		reconstruction as the STFT window length / filter order is increased. The R\sub{nonlin} measures confirm
-		that as these parameters are increased the resulting reconstructed signal is objectively more similar to
-		the original signal. For each of the original signals the reconstruction with a window length / filter
-		order of 500 receive similar grades, it is in the lower setting of these parameters that differences
-		between the methods become noticeable.
-
-		For each of the acoustic signals (cello, clarinet and piano) the reconstruction with the synthesis method
-		and an STFT window length of 50 samples was given the lowest mean grade by test participants. This is most
-		likely because of the poor spectral resolution achieved when using such a short analysis window. The SSBA
-		and IAP techniques produce better reconstructions of these signals at lower filter orders and require less
-		computational power. The results for the synthesised sample do not exhibit this pattern, with the IAP
-		reconstructions being given lower grades than the other methods for lower filter orders. However, examining
-		the R\sub{nonlin} measures it is seen that the IAP reconstructions of this signal are objectively more
-		similar to the original signal than those reconstructed with the synthesis method. This is possibly
-		explained by the fact that the synthesised signal is the easiest to reconstruct. It is a purely harmonic
-		signal with no energy at inharmonic frequencies. This makes it easy to isolate the fundamental and produce
-		harmonics with less intermodulation components. As all the reconstructions of the synthesised signal are
-		similar to each other it is more difficult for test participants to decide where to grade them on the
-		scale.  Where there is more variability between the stimuli, as for the acoustic signals, it becomes easier
-		for test participants to grade stimuli on the scale as they will need to be spread over a wider larger
-		range.
-
-		Further insight into how each of the different methods perform can be acquired by examining the
-		spectrograms of the reconstructed signals. Spectrograms for the reconstructions of the cellos signal, using
-		an STFT window length / filter order of 50, are shown in Figure \ref{fig:ReconstructedCelloSpectrograms}.
+%		The results of the listening test show that the effects of STFT window length and filter order are as
+%		expected. Across the majority of the stimuli there is an increase in the perceived quality of the
+%		reconstruction as the STFT window length / filter order is increased. The R\sub{nonlin} measures confirm
+%		that as these parameters are increased the resulting reconstructed signal is objectively more similar to
+%		the original signal. For each of the original signals the reconstruction with a window length / filter
+%		order of 500 receive similar grades, it is in the lower setting of these parameters that differences
+%		between the methods become noticeable.
+%
+%		For each of the acoustic signals (cello, clarinet and piano) the reconstruction with the synthesis method
+%		and an STFT window length of 50 samples was given the lowest mean grade by test participants. This is most
+%		likely because of the poor spectral resolution achieved when using such a short analysis window. The SSBA
+%		and IAP techniques produce better reconstructions of these signals at lower filter orders and require less
+%		computational power. The results for the synthesised sample do not exhibit this pattern, with the IAP
+%		reconstructions being given lower grades than the other methods for lower filter orders. However, examining
+%		the R\sub{nonlin} measures it is seen that the IAP reconstructions of this signal are objectively more
+%		similar to the original signal than those reconstructed with the synthesis method. This is possibly
+%		explained by the fact that the synthesised signal is the easiest to reconstruct. It is a purely harmonic
+%		signal with no energy at inharmonic frequencies. This makes it easy to isolate the fundamental and produce
+%		harmonics with less intermodulation components. As all the reconstructions of the synthesised signal are
+%		similar to each other it is more difficult for test participants to decide where to grade them on the
+%		scale.  Where there is more variability between the stimuli, as for the acoustic signals, it becomes easier
+%		for test participants to grade stimuli on the scale as they will need to be spread over a wider larger
+%		range.
+%
+%		Further insight into how each of the different methods perform can be acquired by examining the
+%		spectrograms of the reconstructed signals. Spectrograms for the reconstructions of the cellos signal, using
+%		an STFT window length / filter order of 50, are shown in Figure \ref{fig:ReconstructedCelloSpectrograms}.
+%
+%		\begin{figure}[h!]
+%			\centering
+%			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+%			\subfloat[Synthesis with an STFT window length of 50 samples.]
+%			{
+%				\includegraphics{chapter7/Images/CelloSynthesisSpectrogram.pdf}
+%				\label{fig:CelloSynthesisSpectrogram}
+%			}
+%			\quad
+%			\subfloat[SSBA with a 50\super{th} order filter.]
+%			{
+%				\includegraphics{chapter7/Images/CelloSSBASpectrogram.pdf}
+%				\label{fig:CelloSSBASpectrogram}
+%			}
+%			
+%			\subfloat[IAP with a 50\super{th} order filter.]
+%			{
+%				\includegraphics{chapter7/Images/CelloIAPSpectrogram.pdf}
+%				\label{fig:CelloIAPSpectrogram}
+%			}
+%			\caption{Spectrograms of the cello stimulus reconstructed using three different methods.}
+%			\label{fig:ReconstructedCelloSpectrograms}
+%		\end{figure}
+%
+%		On inspection of these spectrograms the characteristics of the three excitation methods can be seen.
+%		The amplitude envelopes of the generated harmonics differ greatly between the methods. Comparing the
+%		decay portion of the envelopes compared with those in the original signal (Figure
+%		\ref{fig:CelloSpectrogram}) highlights these differences. In the cello stimulus the fundamental
+%		frequency and third harmonic have a longer decay time then the other harmonics. The harmonics
+%		generated by the IAP and synthesis methods (Figures \ref{fig:CelloIAPSpectrogram} and
+%		\ref{fig:CelloSynthesisSpectrogram}) use the amplitude envelope of the fundamental frequency
+%		extending the decay time of the these harmonics compared to that in the original. Those generated by
+%		the SSBA method (Figure \ref{fig:CelloSSBASpectrogram}) have shortened decay times. As the order of
+%		the harmonic is increased the decay time gets shorter due to the dynamic expansion shown in Figure
+%		\ref{fig:SSBATemporalEffects}.
+%
+%		Using the amplitude envelope of the fundamental in the generation of the harmonics also introduces
+%		inaccuracies in the sustain portion of the reconstructed signals. Figures \ref{fig:CelloHarmonics} through
+%		\ref{fig:PianoHarmonics} show the amplitude ratios between the third through ninth harmonics and the
+%		fundamental in the sustain portions of the test signals. Any changes in these ratios during the duration of
+%		the signals are lost when reconstructing the harmonics. The cello signal (Figure \ref{fig:CelloHarmonics})
+%		has the least variance in these harmonic amplitude rations in its sustain section suggesting that it will
+%		be the best constructed using the harmonic excitation systems.
+%
+%		\begin{figure}[h!]
+%			\centering
+%			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+%			\subfloat[Temporal Envelopes]
+%			{
+%				\includegraphics{chapter7/Images/CelloHarmonicAmplitudes.pdf}
+%				\label{fig:CelloAmps}
+%			}
+%			\quad
+%			\subfloat[Amplitude Distributions]
+%			{
+%				\includegraphics{chapter7/Images/CelloHarmonicAmplitudeBoxs.pdf}
+%				\label{fig:CelloBoxs}
+%			}
+%			\caption{The amplitude ratios between the third through ninth harmonics 
+%				 and the fundamental in the cello signal.}
+%			\label{fig:CelloHarmonics}
+%		\end{figure}
+%
+%		\begin{figure}[h!]
+%			\centering
+%			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+%			\subfloat[Temporal Envelopes]
+%			{
+%				\includegraphics{chapter7/Images/ClarinetHarmonicAmplitudes.pdf}
+%				\label{fig:ClarinetAmps}
+%			}
+%			\quad
+%			\subfloat[Amplitude Distributions]
+%			{
+%				\includegraphics{chapter7/Images/ClarinetHarmonicAmplitudeBoxs.pdf}
+%				\label{fig:ClarinetBoxs}
+%			}
+%			\caption{The amplitude ratios between the third through ninth harmonics 
+%				 and the fundamental in the clarinet signal.}
+%			\label{fig:ClarinetHarmonics}
+%		\end{figure}
+%
+%		\begin{figure}[h!]
+%			\centering
+%			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+%			\subfloat[Temporal Envelopes]
+%			{
+%				\includegraphics{chapter7/Images/SynthHarmonicAmplitudes.pdf}
+%				\label{fig:SynthAmps}
+%			}
+%			\quad
+%			\subfloat[Amplitude Distributions]
+%			{
+%				\includegraphics{chapter7/Images/SynthHarmonicAmplitudeBoxs.pdf}
+%				\label{fig:SynthBoxs}
+%			}
+%			\caption{The amplitude ratios between the third through ninth harmonics 
+%				 and the fundamental in the synthesised signal.}
+%			\label{fig:SynthHarmonics}
+%		\end{figure}
+%
+%		\begin{figure}[h!]
+%			\centering
+%			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+%			\subfloat[Temporal Envelopes]
+%			{
+%				\includegraphics{chapter7/Images/PianoHarmonicAmplitudes.pdf}
+%				\label{fig:PianoAmps}
+%			}
+%			\quad
+%			\subfloat[Amplitude Distributions]
+%			{
+%				\includegraphics{chapter7/Images/PianoHarmonicAmplitudeBoxs.pdf}
+%				\label{fig:PianoBoxs}
+%			}
+%			\caption{The amplitude ratios between the third through ninth harmonics 
+%				 and the fundamental in the piano signal.}
+%			\label{fig:PianoHarmonics}
+%		\end{figure}
+%
+%		Better results may be achieved by using one of the higher order harmonics in the generation of new
+%		harmonics rather than the fundamental. For the synthesis method, measuring the amplitude of this harmonic
+%		and for the SSBA and IAP methods filtering this harmonic out and shifting its frequency to the desired
+%		value. For the cello sample, for instance, it may be better to use the fundamental in the generation of the
+%		third harmonic but the second harmonic in the generation of the other harmonics as the amplitude envelopes
+%		of those combinations are better matched as seen in Figure \ref{fig:CelloSpectrogram}. Building a system
+%		like this however, requires knowledge of which harmonics in the input signal will be the best choice for
+%		reconstructing a given harmonic. This will be different depending on the source of the signal and is no
+%		calculable from a degraded input signal. Furthermore, the SSBA and IAP techniques are only able apply
+%		frequency shifts at integer multiples of the frequency of the input signal. In order to generate all orders
+%		of harmonic using these techniques the fundamental must be used as the input to the frequency shifter.
+%
+%		The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large amount of
+%		ripple as seen in Figure \ref{fig:CelloSynthesisSpectrogram}. This is due to the amplitude of the
+%		fundamental being calculated on a window by window basis. These inaccuracies are not present in the
+%		harmonics generated using the IAP method as the amplitude is calculated on a sample by sample basis. This
+%		could be improved by introducing overlap between the analysis frames increasing the temporal resolution of
+%		the analysis at the expense of increasing the computational complexity.
 
 		\begin{figure}[h!]
 			\centering
 			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Synthesis with an STFT window length of 50 samples.]
+			\subfloat[Cello Signal]
 			{
-				\includegraphics{chapter7/Images/CelloSynthesisSpectrogram.pdf}
-				\label{fig:CelloSynthesisSpectrogram}
+				\includegraphics{chapter7/Images/CelloAttackAmplitudes.pdf}
+				\label{fig:CelloAttack}
 			}
 			\quad
-			\subfloat[SSBA with a 50\super{th} order filter.]
+			\subfloat[Synthesised Signal]
 			{
-				\includegraphics{chapter7/Images/CelloSSBASpectrogram.pdf}
-				\label{fig:CelloSSBASpectrogram}
+				\includegraphics{chapter7/Images/SynthAttackAmplitudes.pdf}
+				\label{fig:SynthAttack}
 			}
-			
-			\subfloat[IAP with a 50\super{th} order filter.]
-			{
-				\includegraphics{chapter7/Images/CelloIAPSpectrogram.pdf}
-				\label{fig:CelloIAPSpectrogram}
-			}
-			\caption{Spectrograms of the cello stimulus reconstructed using three different methods.}
-			\label{fig:ReconstructedCelloSpectrograms}
-		\end{figure}
 
-		On inspection of these spectrograms the characteristics of the three excitation methods can be seen.
-		The amplitude envelopes of the generated harmonics differ greatly between the methods. Comparing the
-		decay portion of the envelopes compared with those in the original signal (Figure
-		\ref{fig:CelloSpectrogram}) highlights these differences. In the cello stimulus the fundamental
-		frequency and third harmonic have a longer decay time then the other harmonics. The harmonics
-		generated by the IAP and synthesis methods (Figures \ref{fig:CelloIAPSpectrogram} and
-		\ref{fig:CelloSynthesisSpectrogram}) use the amplitude envelope of the fundamental frequency
-		extending the decay time of the these harmonics compared to that in the original. Those generated by
-		the SSBA method (Figure \ref{fig:CelloSSBASpectrogram}) have shortened decay times. As the order of
-		the harmonic is increased the decay time gets shorter due to the dynamic expansion shown in Figure
-		\ref{fig:SSBATemporalEffects}.
-
-		Using the amplitude envelope of the fundamental in the generation of the harmonics also introduces
-		inaccuracies in the sustain portion of the reconstructed signals. Figures \ref{fig:CelloHarmonics} through
-		\ref{fig:PianoHarmonics} show the amplitude ratios between the third through ninth harmonics and the
-		fundamental in the sustain portions of the test signals. Any changes in these ratios during the duration of
-		the signals are lost when reconstructing the harmonics. The cello signal (Figure \ref{fig:CelloHarmonics})
-		has the least variance in these harmonic amplitude rations in its sustain section suggesting that it will
-		be the best constructed using the harmonic excitation systems.
-
-		\begin{figure}[h!]
-			\centering
-			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Temporal Envelopes]
+			\subfloat[Piano Signal]
 			{
-				\includegraphics{chapter7/Images/CelloHarmonicAmplitudes.pdf}
-				\label{fig:CelloAmps}
+				\includegraphics{chapter7/Images/PianoAttackAmplitudes.pdf}
+				\label{fig:PianoAttack}
 			}
-			\quad
-			\subfloat[Amplitude Distributions]
-			{
-				\includegraphics{chapter7/Images/CelloHarmonicAmplitudeBoxs.pdf}
-				\label{fig:CelloBoxs}
-			}
-			\caption{The amplitude ratios between the third through ninth harmonics 
-				 and the fundamental in the cello signal.}
-			\label{fig:CelloHarmonics}
+			\caption{}
+			\label{fig:AttackAmplitudes}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Temporal Envelopes]
+			\subfloat[Cello Signal]
 			{
-				\includegraphics{chapter7/Images/ClarinetHarmonicAmplitudes.pdf}
-				\label{fig:ClarinetAmps}
+				\includegraphics{chapter7/Images/CelloSustainAmplitudes.pdf}
+				\label{fig:CelloSustain}
 			}
 			\quad
-			\subfloat[Amplitude Distributions]
+			\subfloat[Clarinet Signal]
 			{
-				\includegraphics{chapter7/Images/ClarinetHarmonicAmplitudeBoxs.pdf}
-				\label{fig:ClarinetBoxs}
+				\includegraphics{chapter7/Images/ClarinetSustainAmplitudes.pdf}
+				\label{fig:ClarinetSustain}
 			}
-			\caption{The amplitude ratios between the third through ninth harmonics 
-				 and the fundamental in the clarinet signal.}
-			\label{fig:ClarinetHarmonics}
+
+			\subfloat[Synthesised Signal]
+			{
+				\includegraphics{chapter7/Images/SynthSustainAmplitudes.pdf}
+				\label{fig:SynthSustain}
+			}
+			\quad
+			\subfloat[Piano Signal]
+			{
+				\includegraphics{chapter7/Images/PianoSustainAmplitudes.pdf}
+				\label{fig:PianoSustain}
+			}
+
+			\caption{}
+			\label{fig:SustainAmplitudes}
 		\end{figure}
 
 		\begin{figure}[h!]
 			\centering
 			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Temporal Envelopes]
+			\subfloat[Cello Signal]
 			{
-				\includegraphics{chapter7/Images/SynthHarmonicAmplitudes.pdf}
-				\label{fig:SynthAmps}
+				\includegraphics{chapter7/Images/CelloReleaseAmplitudes.pdf}
+				\label{fig:CelloRelease}
 			}
 			\quad
-			\subfloat[Amplitude Distributions]
+			\subfloat[Clarinet Signal]
 			{
-				\includegraphics{chapter7/Images/SynthHarmonicAmplitudeBoxs.pdf}
-				\label{fig:SynthBoxs}
+				\includegraphics{chapter7/Images/ClarinetReleaseAmplitudes.pdf}
+				\label{fig:ClarinetRelease}
 			}
-			\caption{The amplitude ratios between the third through ninth harmonics 
-				 and the fundamental in the synthesised signal.}
-			\label{fig:SynthHarmonics}
+
+			\subfloat[Piano Signal]
+			{
+				\includegraphics{chapter7/Images/PianoReleaseAmplitudes.pdf}
+				\label{fig:PianoRelease}
+			}
+
+			\caption{}
+			\label{fig:ReleaseAmplitudes}
 		\end{figure}
-
-		\begin{figure}[h!]
-			\centering
-			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Temporal Envelopes]
-			{
-				\includegraphics{chapter7/Images/PianoHarmonicAmplitudes.pdf}
-				\label{fig:PianoAmps}
-			}
-			\quad
-			\subfloat[Amplitude Distributions]
-			{
-				\includegraphics{chapter7/Images/PianoHarmonicAmplitudeBoxs.pdf}
-				\label{fig:PianoBoxs}
-			}
-			\caption{The amplitude ratios between the third through ninth harmonics 
-				 and the fundamental in the piano signal.}
-			\label{fig:PianoHarmonics}
-		\end{figure}
-
-		Better results may be achieved by using one of the higher order harmonics in the generation of new
-		harmonics rather than the fundamental. For the synthesis method, measuring the amplitude of this harmonic
-		and for the SSBA and IAP methods filtering this harmonic out and shifting its frequency to the desired
-		value. For the cello sample, for instance, it may be better to use the fundamental in the generation of the
-		third harmonic but the second harmonic in the generation of the other harmonics as the amplitude envelopes
-		of those combinations are better matched as seen in Figure \ref{fig:CelloSpectrogram}. Building a system
-		like this however, requires knowledge of which harmonics in the input signal will be the best choice for
-		reconstructing a given harmonic. This will be different depending on the source of the signal and is no
-		calculable from a degraded input signal. Furthermore, the SSBA and IAP techniques are only able apply
-		frequency shifts at integer multiples of the frequency of the input signal. In order to generate all orders
-		of harmonic using these techniques the fundamental must be used as the input to the frequency shifter.
-
-		The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large amount of
-		ripple as seen in Figure \ref{fig:CelloSynthesisSpectrogram}. This is due to the amplitude of the
-		fundamental being calculated on a window by window basis. These inaccuracies are not present in the
-		harmonics generated using the IAP method as the amplitude is calculated on a sample by sample basis. This
-		could be improved by introducing overlap between the analysis frames increasing the temporal resolution of
-		the analysis at the expense of increasing the computational complexity.
 
 	\subsection{Conclusion}
 	\label{sec:PerceptualExperiments-Reconstruction-Conclusion}
