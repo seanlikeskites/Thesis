@@ -450,20 +450,27 @@
 		for test participants to grade stimuli on the scale as they will need to be spread over a wider larger
 		range.
 
-		Further insight into how each of the different methods perform can be acquired by examining the
-		relationships between the amplitudes of harmonics and the fundamental in the test signals. All the systems
-		evaluated in this section use the amplitude envelope of the fundamental to inform the amplitude envelopes
-		of the generated harmonics. This assumes that the amplitude envelopes of the harmonics in a signal have a
-		simple relationship with that of the fundamental. A linear relationship is assumed by both the IAP and
-		synthesis based systems while the SSBA system assumes a polynomial relationship depending on the order of
-		the harmonic being generated.
+		All the systems evaluated in this section use the amplitude envelope of the fundamental to inform the
+		amplitude envelopes of the generated harmonics. This assumes that the amplitude envelopes of the harmonics
+		in a signal have a simple relationship with that of the fundamental. A linear relationship is assumed by
+		both the IAP and synthesis based systems while the SSBA system assumes a polynomial relationship which is
+		dependant on the order of the harmonic being generated. These assumptions introduce inaccuracies in the
+		reconstruction of signals in which the amplitudes of the harmonics do not obey these relationships. The
+		degree of inaccuracy introduced can be estimated by examining the relationships of the harmonics'
+		amplitudes in the unprocessed test signals. As the systems use the fundamental's amplitude envelope in
+		reconstructing this relationship will be measure as the ratio between the amplitude of each harmonic and
+		that of the fundamental ($\frac{h_{n}}{h_{1}}$). Depending on the source of the sound, and playing method
+		if it was produced by an acoustic instrument, the relationships between the harmonics' amplitudes may be
+		different in the attack, sustain and release portions of the signal. Figures \ref{fig:AttackAmplitudes} to
+		\ref{fig:ReleaseAmplitudes} show the amplitude ratios between the third through ninth harmonics of the test
+		signals and their fundamentals.
 
 		\note
 		{
 			\begin{itemize}
 				\item Cello has the most `stable' sustain yet is not rated the highest.
 				\item Other sustains are rather `unstable' but negligible audible degradation.
-				\item In the cello the all harmonics but the third have a shorter release than the
+				\item In the cello all harmonics but the third have a shorter release than the
 					fundamental.
 				\item The damped fundamental of the piano is apparent, with a lot of the harmonics being
 					louder than it.
