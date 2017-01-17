@@ -124,3 +124,7 @@ lines <- c(lines, "\\end{tabular}")
 f <- file("SMCCorrelations.tex")
 writeLines(lines, f)
 close(f)
+
+# find maximum reconstruction scores
+maxScores <- results$res[c(1, 4, 2, 3),2:10]
+save(maxScores, file="maxMushraScores.RData")

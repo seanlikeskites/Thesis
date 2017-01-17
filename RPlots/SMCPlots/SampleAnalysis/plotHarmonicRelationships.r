@@ -189,3 +189,86 @@ harmonicAmplitudeBoxPlot <- function(data, ylim=c(0, 2))
 #harmonicAmplitudeBoxPlot(t(synAmps), c(0, 1.8))
 #dev.off()
 #embed_fonts("SynthHarmonicAmplitudeBoxs.pdf")
+
+#######################
+# Do the correlation
+#######################
+load("../maxMushraScores.RData")
+
+matrixCorrelationTest <- function(data1, data2)
+{
+	if (nrow(data1) != length(data2))
+	{
+		stop("The number of rows in each dataset doesn't match")
+	}
+
+	numRows <- ncol(data1)
+	numCols <- 1
+	correlations <- matrix(nrow=numRows, ncol=numCols)
+	rownames(correlations) <- colnames(data1)
+	colnames(correlations) <- colnames(data2)
+	pvalues <- matrix(nrow=numRows, ncol=numCols)
+	rownames(pvalues) <- colnames(data1)
+	colnames(pvalues) <- colnames(data2)
+
+	for (i in 1:numRows)
+	{
+		for (j in 1:numCols)
+		{
+			cortest <- cor.test (data1[,i], data2)
+			correlations[i,j] <- cortest$estimate
+			pvalues[i,j] <- cortest$p.value
+		}
+	}
+
+	output <- list()
+	output$correlations <- correlations
+	output$pValues <- pvalues
+
+	return(output)
+}
+
+harmonicVariation <- function(data)
+{
+	return(sum(apply(data, 1, sd)))
+}
+
+harmVars <- c(harmonicVariation(bassAmps),
+	      harmonicVariation(clarAmps),
+	      harmonicVariation(synAmps),
+	      harmonicVariation(pianAmps))
+
+correlations <- matrixCorrelationTest(maxScores, harmVars)
+
+lines <- character()
+nStimuli <- ncol(maxScores)
+
+for (j in 0:2)
+{
+	lines <- c(lines, "\\begin{tabular}{|c|c|c|}")
+	lines <- c(lines, "\t\\hline")
+	lines <- c(lines, "\t\\bf{Stimulus} & $\\boldsymbol{r}$ & $\\boldsymbol{p}$ \\tabularnewline")
+	lines <- c(lines, "\t\\hline")
+	lines <- c(lines, "\t\\hline")
+
+	for (i in 1:3)
+	{
+		idx <- 3 * j + i
+		correlation <- format(round(correlations$correlations[idx], 3), nsmall=3)
+		pValue <- format(round(correlations$pValues[idx], 3), nsmall=3)
+		lines <- c(lines, paste("\t", idx + 1, " & ", correlation, " & ", pValue, " \\tabularnewline", sep=""))
+		lines <- c(lines, "\t\\hline")
+	}
+
+	lines <- c(lines, "\\end{tabular}")
+
+	if (j < 2)
+	{
+		lines <- c(lines, "\\qquad")
+	}
+}
+
+
+f <- file("HarmonicVarianceCorrelations.tex")
+writeLines(lines, f)
+close(f)

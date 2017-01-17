@@ -595,16 +595,22 @@
 		\ref{fig:PianoRelease}) the 3\super{rd} harmonic is again very dominant but the damped fundamental must be
 		taken into account when considering the relevance of this.
 
-		Comparing these observations with the results of the multiple stimulus listening test, it appears that the
-		relationships between the amplitudes of the harmonics in the original signal are not the most important
-		factor in the perceived quality of the reconstruction. Aside from those reconstructed from the piano
-		signal, the maximum mean grade for any of the reconstructed signals was approximately 60. It might be
-		expected that because the harmonics in the sustain section of the cello signal have the most similar
-		amplitude envelopes to the fundamental it would receive higher average score due to fewer inaccuracies
-		being introduced by the reconstruction. It might also be expected that removing the amplitude modulation of
-		the harmonics in the synthesised signal would decrease the perceived quality of the reconstruction. These
-		expectations are not met in the results, suggesting that another factor is more prominent in the accuracy
-		of the reconstruction.
+		\note
+		{
+			In actuality, the sum of standard deviations for each of the harmonic's amplitude ratios correlates
+			very well with the subjective rating of the IAP500 reconstructed stimuli.
+			
+			While some of the samples appear be suitable for reconstruction in this manner, they all have
+			defining features which are obscured by the reconstruction.
+		}
+
+		\begin{table}[h!]
+			\centering
+			\input{chapter7/Tables/HarmonicVarianceCorrelations.tex}
+			\caption{Correlations between the variability of the harmonic ratios and 
+				 the mean grades from the multiple stimulus test.}
+			\label{tab:HarmonicVarianceCorrlations}
+		\end{table}
 
 %		The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large amount of
 %		ripple as seen in Figure \ref{fig:CelloSynthesisSpectrogram}. This is due to the amplitude of the
