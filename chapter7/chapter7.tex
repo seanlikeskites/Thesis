@@ -455,8 +455,20 @@
 		in a signal have a simple relationship with that of the fundamental. A linear relationship is assumed by
 		both the IAP and synthesis based systems while the SSBA system assumes a polynomial relationship which is
 		dependant on the order of the harmonic being generated. These assumptions introduce inaccuracies in the
-		reconstruction of signals in which the amplitudes of the harmonics do not obey these relationships. The
-		degree of inaccuracy introduced can be estimated by examining the relationships of the harmonics'
+		reconstruction of signals in which the amplitudes of the harmonics do not obey these relationships. Better
+		results might be achieved by using one of the higher order harmonics in the generation of new harmonics,
+		rather than the fundamental. For the synthesis method, measuring the amplitude of this harmonic and for the
+		SSBA and IAP methods filtering this harmonic out and shifting its frequency to the desired value. For the
+		cello sample, for instance, it may be better to use the fundamental in the generation of the third harmonic
+		but the second harmonic in the generation of the other harmonics as the amplitude envelopes of those
+		combinations are better matched as seen in Figure \ref{fig:CelloSpectrogram}. Building a system like this
+		however, requires knowledge of which harmonics in the input signal will be the best choice for
+		reconstructing a given harmonic. This will be different depending on the source of the signal and is not
+		calculable from a degraded input signal. Furthermore, the SSBA and IAP techniques are only able apply
+		frequency shifts at integer multiples of the frequency of the input signal. In order to generate all orders
+		of harmonic using these techniques the fundamental must be used as the input to the frequency shifter.
+		
+		The degree of inaccuracy introduced can be estimated by examining the relationships of the harmonics'
 		amplitudes in the unprocessed test signals. As the systems use the fundamental's amplitude envelope in
 		reconstructing this relationship will be measure as the ratio between the amplitude of each harmonic and
 		that of the fundamental $\left(\frac{h_{n}}{h_{1}}\right)$. Depending on the source of the sound, and
@@ -583,32 +595,17 @@
 		\ref{fig:PianoRelease}) the 3\super{rd} harmonic is again very dominant but the damped fundamental must be
 		taken into account when considering the relevance of this.
 
-		\note
-		{
-			\begin{itemize}
-				\item Cello should possibly be the easiest to reconstruct but maybe its attack and decay
-					cause lower reconstruction scores.
-				\item Piano is really hard to reconstruct because of the fundamental being damped and not
-					any of the other harmonics.
-				\item Synth has a lot of variation in amplitude ratio but still receives high scores so
-					perhaps the amplitude ratios are not important for perception.
-				\item Clarinet receives similar scores to the cello, both are simple harmonically
-					structured acoustic sounds.
-			\end{itemize}
-		}
+		Comparing these observations with the results of the multiple stimulus listening test, it appears that the
+		relationships between the amplitudes of the harmonics in the original signal are not the most important
+		factor in the perceived quality of the reconstruction. Aside from those reconstructed from the piano
+		signal, the maximum mean grade for any of the reconstructed signals was approximately 60. It might be
+		expected that because the harmonics in the sustain section of the cello signal have the most similar
+		amplitude envelopes to the fundamental it would receive higher average score due to fewer inaccuracies
+		being introduced by the reconstruction. It might also be expected that removing the amplitude modulation of
+		the harmonics in the synthesised signal would decrease the perceived quality of the reconstruction. These
+		expectations are not met in the results, suggesting that another factor is more prominent in the accuracy
+		of the reconstruction.
 
-		Better results might be achieved by using one of the higher order harmonics in the generation of new
-		harmonics rather than the fundamental. For the synthesis method, measuring the amplitude of this harmonic
-		and for the SSBA and IAP methods filtering this harmonic out and shifting its frequency to the desired
-		value. For the cello sample, for instance, it may be better to use the fundamental in the generation of the
-		third harmonic but the second harmonic in the generation of the other harmonics as the amplitude envelopes
-		of those combinations are better matched as seen in Figure \ref{fig:CelloSpectrogram}. Building a system
-		like this however, requires knowledge of which harmonics in the input signal will be the best choice for
-		reconstructing a given harmonic. This will be different depending on the source of the signal and is no
-		calculable from a degraded input signal. Furthermore, the SSBA and IAP techniques are only able apply
-		frequency shifts at integer multiples of the frequency of the input signal. In order to generate all orders
-		of harmonic using these techniques the fundamental must be used as the input to the frequency shifter.
-%
 %		The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large amount of
 %		ripple as seen in Figure \ref{fig:CelloSynthesisSpectrogram}. This is due to the amplitude of the
 %		fundamental being calculated on a window by window basis. These inaccuracies are not present in the
