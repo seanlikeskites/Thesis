@@ -596,10 +596,10 @@
 		taken into account when considering the relevance of this.
 
 		The degree to which the relationships between the harmonics' amplitudes in a signal differ from those
-		assumed by the reconstruction systems can be measures as the sum of the standard deviations of each of the
-		harmonic amplitude ratios. This harmonic variability (HV) is measured using Equation
-		\ref{eq:HarmonicVariability}.
-
+		assumed by the reconstruction systems can be measured as the sum of the standard deviations of each of the
+		harmonic amplitude ratios. This harmonic variability ($\textrm{HV}$) is measured using Equation
+		\ref{eq:HarmonicVariability}. 		
+		
 		\begin{gather}
 			\mu_{n} = \frac{\sum_{f = 1}^{F} \frac{h_{n,f}}{h_{1,f}}}{F} \nonumber \\
 			\sigma_{n} = \sqrt{\frac{\sum_{f = 1}^{F} 
@@ -609,7 +609,8 @@
 		\end{gather}
 
 		Where $h_{n,f}$ is the amplitude of the $n$\super{th} harmonic in the $f$\super{th} frame of the STFT of
-		the signal and $F$ the total number of frames in the STFT.
+		the signal and $F$ the total number of frames in the STFT. Harmonic variability values for the four test
+		signals used in this experiment are shown in Table \ref{tab:HarmonicVariabilities}.
 
 		\begin{table}[h!]
 			\centering
@@ -622,17 +623,25 @@
 		reproduce the test signals. A higher harmonic variability describes a signal with will be less convincingly
 		reconstructed. This is confirmed by measuring the correlation between the harmonic variability values and
 		the mean scores given to stimuli reconstructed using a particular set of parameters in the multiple
-		stimulus test. Correlation values for each of the reconstruction systems and parameter settings are
-		given in Table \ref{tab:HarmonicVariabilityCorrelations}.
+		stimulus test. Correlation values for each of the reconstruction systems and parameter setting combinations
+		are given in Table \ref{tab:HarmonicVariabilityCorrelations}.
 
 		\begin{table}[h!]
 			\centering
 			\input{chapter7/Tables/HarmonicVariabilityCorrelations.tex}
-			\caption{Correlations between the variability of the harmonic ratios and 
-				 the mean grades from the multiple stimulus test.}
+			\caption{Correlations between the harmonic variabilities of the test signals and 
+				 the mean grades given the multiple stimulus test.}
 			\label{tab:HarmonicVariabilityCorrelations}
 		\end{table}
 
+		\note
+		{
+			For every reconstruction method the harmonic variability explains the difference in reconstruction
+			quality between the different samples. Apart from the synthesis method with the shortest window
+			length. This is most likely to do with the poor resolution of the SFTF in this system causeing
+			unwanted amplitude modulation in the signal.
+		}
+		
 %		The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large amount of
 %		ripple as seen in Figure \ref{fig:CelloSynthesisSpectrogram}. This is due to the amplitude of the
 %		fundamental being calculated on a window by window basis. These inaccuracies are not present in the
