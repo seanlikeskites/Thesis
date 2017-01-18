@@ -191,11 +191,11 @@
 		another can be calculated. For a signal with a given $f_{0}$, this order, $n$, can be calculated using the
 		inequality in Equation \ref{eq:MinimumFusedHarmonic}.
 
-		\[ f_{0} < 24.7 \left( 4.37n \frac{f_{0}}{1000} + 1 \right) \]
-		\begin{equation}
+		\begin{gather}
+			f_{0} < 24.7 \left( 4.37n \frac{f_{0}}{1000} + 1 \right) \nonumber \\
 			n > 1000 \frac{f_{0} - 24.7}{24.7 \times 4.37f_{0}}
 			\label{eq:MinimumFusedHarmonic}
-		\end{equation}
+		\end{gather}
 
 		This value is dependant on the $f_{0}$ of the signal. As $f_{0}$ rises the minimum value of $n$ grows
 		asymptotically towards 9.26 as shown in Equation \ref{eq:IndividualHarmonicLimit}.
@@ -952,15 +952,15 @@
 		the reciprocal gain $\frac{1}{m}$ applied to the spectral components denoted by set $L$. The resulting
 		spectral flatness is calculated using Equation \ref{eq:FlatnessManipulation}.
 
-		\[ P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \]
-		\[ E = P \setminus (L \medcup H) \]
-		\[ A_{L} = \sum_{n \in L} a_{n}^{2} \quad A_{H} = \sum_{n \in H} a_{n}^{2}
-		   \quad A_{E} = \sum_{n \in E} a_{n}^{2} \]
-		\begin{equation}
+		\begin{gather}
+			P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \nonumber \\
+			E = P \setminus (L \medcup H) \nonumber \\
+			A_{L} = \sum_{n \in L} a_{n}^{2} \quad A_{H} = \sum_{n \in H} a_{n}^{2}
+			   \quad A_{E} = \sum_{n \in E} a_{n}^{2} \nonumber \\
 			\textrm{SF} = \frac{N\sqrt[N]{\prod_{n \in P} a_{n}^{2}}}
 					   {\frac{A_{L}}{m^{2}} + m^{2}A_{H} + A_{E}}
 			\label{eq:FlatnessManipulation}
-		\end{equation}
+		\end{gather}
 
 		The spectral flatness can be increased by using a value of $m$ such that $\sqrt{\frac{A_{L}}{A_{H}}} < m <
 		1$. The maximum possible flatness which can be achieved with the selected spectral components occurs when
@@ -1056,12 +1056,12 @@
 		spectral components, $S$, and a set which includes that set, $F$. This is shown in Equation
 		\ref{eq:GeneralTristimulus}.
 
-		\[ A = \sum_{n \in F} a_{n} \]
-		\[ B = \sum_{n \in S} a_{n}, \quad S \subseteq F \]
-		\begin{equation}
+		\begin{gather}
+			A = \sum_{n \in F} a_{n} \nonumber \\
+			B = \sum_{n \in S} a_{n}, \quad S \subseteq F \nonumber \\
 			R = \frac{B}{A}
 			\label{eq:GeneralTristimulus}
-		\end{equation}
+		\end{gather}
 
 		This ration can be adjusted by applying gain to the spectral components in $S$. To attain a particular
 		value of $R$ the required gain, $m$, can be calculated using Equation
@@ -1152,12 +1152,12 @@
 		Equations \ref{eq:Oddness} and \ref{eq:Evenness} can be generalised to give Equation
 		\ref{eq:GeneralOddness}.
 
-		\[ A = \sum_{n \in F} a_{n}^{2} \]
-		\[ B = \sum_{n \in S} a_{n}^{2}, \quad S \subseteq F \]
-		\begin{equation}
+		\begin{gather}
+			A = \sum_{n \in F} a_{n}^{2} \nonumber \\
+			B = \sum_{n \in S} a_{n}^{2}, \quad S \subseteq F \nonumber \\
 			R = \sqrt{\frac{B}{A}}
 			\label{eq:GeneralOddness}
-		\end{equation}
+		\end{gather}
 
 		Like Equation \ref{eq:GeneralTristimulus} this measures the ratio of amplitudes of a set of frequencies and
 		a larger set of frequencies. This time using the squares of the amplitudes and taking the square root

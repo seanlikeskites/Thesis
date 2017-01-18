@@ -423,15 +423,15 @@
 			curve, as such it only introduces even order distortion components. The Fourier coefficients of a
 			rectified sine wave are shown in Equation \ref{eq:RectificationFourier}.
 
-			\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \abs{sin(x)}e^{-inx} dx \]
 
-			\begin{equation}
+			\begin{gather}
+				c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \abs{sin(x)}e^{-inx} dx \nonumber \\
 				c_{n} = \begin{cases}
 					\frac{2}{\pi(1 - n^{2})} & \text{when $n$ is even} \\
 					0 & \text{when $n$ is odd}
 				\end{cases}
 				\label{eq:RectificationFourier}
-			\end{equation}
+			\end{gather}
 
 			This represents all even order harmonics rolling off at approximately 12dB per octave.  As with
 			other static nonlinearities, rectifiers are susceptible to aliasing. The relatively shallow roll
@@ -454,16 +454,15 @@
 			Applying Equation \ref{eq:Integrator} to a sine wave produces a signal with Fourier coefficients as
 			shown in Equation \ref{eq:IntegratorFourier}.
 
-			\[ c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1 - cos(x))e^{-inx} dx +
-							       \int_{\pi}^{2\pi} (3 + cos(x))e^{-inx} dx \right) \]
-
-			\[ c_{-1} = - \frac{2ikf_{s}}{\pi} \]
-			\[ c_{0} = 2kf_{s} \]
-			\[ c_{1} = \frac{2ikf_{s}}{\pi} \]
-			\begin{equation}
+			\begin{gather}
+				c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1 - cos(x))e^{-inx} dx +
+							\int_{\pi}^{2\pi} (3 + cos(x))e^{-inx} dx \right) \nonumber \\
+				c_{-1} = - \frac{2ikf_{s}}{\pi} \nonumber \\
+				c_{0} = 2kf_{s} \nonumber \\
+				c_{1} = \frac{2ikf_{s}}{\pi} \nonumber \\
 				c_{n} = \frac{ikf_{s}}{2\pi} \left( \frac{4n^{2} + 2e^{-i\pi n} - 2}{n^{3} - n} \right)
 				\label{eq:IntegratorFourier}
-			\end{equation}
+			\end{gather}
 
 			This produces all harmonics with amplitudes rolling off at approximately 6dB per octave. This
 			shallow roll of make integrators very useful when a large amount of new frequency content is

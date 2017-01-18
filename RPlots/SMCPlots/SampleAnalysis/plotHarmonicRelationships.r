@@ -228,9 +228,19 @@ matrixCorrelationTest <- function(data1, data2)
 	return(output)
 }
 
+pop.var <- function(x)
+{
+	return(var(x) * (length(x) - 1) / length(x))
+}
+
+pop.sd <- function(x)
+{
+	return(sqrt(pop.var(x)))
+}
+
 harmonicVariation <- function(data)
 {
-	return(sum(apply(data, 1, sd)))
+	return(sum(apply(data, 1, pop.sd)))
 }
 
 harmVars <- c(harmonicVariation(bassAmps),
