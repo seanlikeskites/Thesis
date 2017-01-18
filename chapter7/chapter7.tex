@@ -469,13 +469,13 @@
 		of harmonic using these techniques the fundamental must be used as the input to the frequency shifter.
 		
 		The degree of inaccuracy introduced can be estimated by examining the relationships of the harmonics'
-		amplitudes in the unprocessed test signals. As the systems use the fundamental's amplitude envelope in
-		reconstructing this relationship will be measure as the ratio between the amplitude of each harmonic and
-		that of the fundamental $\left(\frac{h_{n}}{h_{1}}\right)$. Depending on the source of the sound, and
-		playing method if it was produced by an acoustic instrument, the relationships between the harmonics'
-		amplitudes may be different in the attack, sustain and release portions of the signal. Figures
-		\ref{fig:AttackAmplitudes} to \ref{fig:ReleaseAmplitudes} show the amplitude ratios between the third
-		through ninth harmonics of the test signals and their fundamentals.
+		amplitudes in the unprocessed test signals. As the systems rely on the fundamental's amplitude envelope
+		this relationship will be measured as the ratio between the amplitude of each harmonic and that of the
+		fundamental $\left(\frac{h_{n}}{h_{1}}\right)$. Depending on the source of the sound, and playing method if
+		it was produced by an acoustic instrument, the relationships between the harmonics' amplitudes may be
+		different in the attack, sustain and release portions of the signal. Figures \ref{fig:AttackAmplitudes} to
+		\ref{fig:ReleaseAmplitudes} show the amplitude ratios between the third through ninth harmonics of the test
+		signals and their fundamentals.
 
 		\note
 		{
@@ -595,20 +595,10 @@
 		\ref{fig:PianoRelease}) the 3\super{rd} harmonic is again very dominant but the damped fundamental must be
 		taken into account when considering the relevance of this.
 
-		\note
-		{
-			In actuality, the sum of standard deviations for each of the harmonic's amplitude ratios correlates
-			very well with the subjective rating of the IAP500 reconstructed stimuli.
-			
-			While some of the samples appear be suitable for reconstruction in this manner, they all have
-			defining features which are obscured by the reconstruction.
-
-			The degree to which the relationships between the amplitudes of the harmonics differ from those
-			assumed by the reconstruction systems can be measured using Equation \ref{eq:HarmonicVariability}.
-
-			The correlation between the values of $\textrm{HV}$ and the mean score given to the reconstructed
-			samples are given in Table \ref{tab:HarmonicVariabilityCorrelations}.
-		}
+		The degree to which the relationships between the harmonics' amplitudes in a signal differ from those
+		assumed by the reconstruction systems can be measures as the sum of the standard deviations of each of the
+		harmonic amplitude ratios. This harmonic variability (HV) is measured using Equation
+		\ref{eq:HarmonicVariability}.
 
 		\begin{gather}
 			\mu_{n} = \frac{\sum_{f = 1}^{F} \frac{h_{n,f}}{h_{1,f}}}{F} \nonumber \\
@@ -623,7 +613,21 @@
 
 		\begin{table}[h!]
 			\centering
-			\input{chapter7/Tables/HarmonicVarianceCorrelations.tex}
+			\input{chapter7/Tables/HarmonicVariabilities.tex}
+			\caption{The harmonic variabilities of the test signals.}
+			\label{tab:HarmonicVariabilities}
+		\end{table}
+
+		The harmonic variability values provide a measure of how well the reconstruction systems should be able to
+		reproduce the test signals. A higher harmonic variability describes a signal with will be less convincingly
+		reconstructed. This is confirmed by measuring the correlation between the harmonic variability values and
+		the mean scores given to stimuli reconstructed using a particular set of parameters in the multiple
+		stimulus test. Correlation values for each of the reconstruction systems and parameter settings are
+		given in Table \ref{tab:HarmonicVariabilityCorrelations}.
+
+		\begin{table}[h!]
+			\centering
+			\input{chapter7/Tables/HarmonicVariabilityCorrelations.tex}
 			\caption{Correlations between the variability of the harmonic ratios and 
 				 the mean grades from the multiple stimulus test.}
 			\label{tab:HarmonicVariabilityCorrelations}

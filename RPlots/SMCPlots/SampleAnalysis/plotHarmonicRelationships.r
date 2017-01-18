@@ -248,6 +248,31 @@ harmVars <- c(harmonicVariation(bassAmps),
 	      harmonicVariation(synAmps),
 	      harmonicVariation(pianAmps))
 
+# make table of harmonic variabilities
+samples <- c("Cello", "Clarinet", "Synthesised", "Piano")
+lines <- character()
+nSamples <- length(samples)
+
+lines <- c(lines, "\\begin{tabular}{|c|c|}")
+lines <- c(lines, "\t\\hline")
+lines <- c(lines, "\t\\bf{Signal} & $\\textbf{\\textrm{HV}}$ \\tabularnewline")
+lines <- c(lines, "\t\\hline")
+lines <- c(lines, "\t\\hline")
+
+for (i in 1:nSamples)
+{
+	variability <- format(round(harmVars[i], 2), nsmall=2)
+	lines <- c(lines, paste("\t", samples[i], " & ", variability, " \\tabularnewline", sep=""))
+	lines <- c(lines, "\t\\hline")
+}
+
+lines <- c(lines, "\\end{tabular}")
+
+f <- file("HarmonicVariabilities.tex")
+writeLines(lines, f)
+close(f)
+
+# correlations
 correlations <- matrixCorrelationTest(maxScores, harmVars)
 
 lines <- character()
@@ -278,7 +303,6 @@ for (j in 0:2)
 	}
 }
 
-
-f <- file("HarmonicVarianceCorrelations.tex")
+f <- file("HarmonicVariabilityCorrelations.tex")
 writeLines(lines, f)
 close(f)
