@@ -22,6 +22,13 @@ clarSustain <- clarAmps[,clarSustainFrame]
 clarReleaseFrame <- (tail(clarSustainFrame, 1) + 1):dim(clarAmps)[2]
 clarRelease <- clarAmps[,clarReleaseFrame]
 
+clarSTFT50Amps <- data$clarSTFT50AmpRatios[harmonicsToPlot,]
+clarSTFT50Sustain <- clarSTFT50Amps[,clarSustainFrame]
+clarSTFT100Amps <- data$clarSTFT100AmpRatios[harmonicsToPlot,]
+clarSTFT100Sustain <- clarSTFT100Amps[,clarSustainFrame]
+clarSTFT500Amps <- data$clarSTFT500AmpRatios[harmonicsToPlot,]
+clarSTFT500Sustain <- clarSTFT500Amps[,clarSustainFrame]
+
 pianAmps <- data$pianAmpRatios[harmonicsToPlot,]
 pianAttackFrame <- 1:round(8728 / stepSize)
 pianAttack <- pianAmps[,pianAttackFrame]
@@ -93,6 +100,27 @@ par(mar=c(4.1, 4, 0.6, 0.2))
 plotHarmonicLevels(clarSustain, stepSize, c(0, 2.5), legendcol=4)
 dev.off()
 embed_fonts("ClarinetSustainAmplitudes.pdf")
+
+pdf("ClarinetSTFT50SustainAmplitudes.pdf", pointsize=8, 
+    fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=2.94, height=2.1)
+par(mar=c(4.1, 4, 0.6, 0.2))
+plotHarmonicLevels(clarSTFT50Sustain, stepSize, c(0, 1), legendcol=4)
+dev.off()
+embed_fonts("ClarinetSTFT50SustainAmplitudes.pdf")
+
+pdf("ClarinetSTFT100SustainAmplitudes.pdf", pointsize=8, 
+    fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=2.94, height=2.1)
+par(mar=c(4.1, 4, 0.6, 0.2))
+plotHarmonicLevels(clarSTFT100Sustain, stepSize, c(0, 1), legendcol=4)
+dev.off()
+embed_fonts("ClarinetSTFT100SustainAmplitudes.pdf")
+
+pdf("ClarinetSTFT500SustainAmplitudes.pdf", pointsize=8, 
+    fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=2.94, height=2.1)
+par(mar=c(4.1, 4, 0.6, 0.2))
+plotHarmonicLevels(clarSTFT500Sustain, stepSize, c(0, 1), legendcol=4)
+dev.off()
+embed_fonts("ClarinetSTFT500SustainAmplitudes.pdf")
 
 pdf("ClarinetReleaseAmplitudes.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=2.94, height=2.1)
 par(mar=c(4.1, 4, 0.6, 0.2))

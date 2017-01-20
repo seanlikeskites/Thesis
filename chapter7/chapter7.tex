@@ -641,6 +641,31 @@
 			length. This is most likely to do with the poor resolution of the SFTF in this system causing
 			unwanted amplitude modulation in the signal.
 		}
+
+		\begin{figure}[h!]
+			\centering
+			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+			\subfloat[50 Sample Window Length]
+			{
+				\includegraphics{chapter7/Images/ClarinetSTFT50SustainAmplitudes.pdf}
+				\label{fig:ClarinetSTFT50Sustain}
+			}
+			\quad
+			\subfloat[100 Sample Window Length]
+			{
+				\includegraphics{chapter7/Images/ClarinetSTFT100SustainAmplitudes.pdf}
+				\label{fig:ClarinetSTFT100Sustain}
+			}
+
+			\subfloat[500 Sample Window Length]
+			{
+				\includegraphics{chapter7/Images/ClarinetSTFT500SustainAmplitudes.pdf}
+				\label{fig:ClarinetSTFT500Sustain}
+			}
+			\caption{Amplitude ratios between the harmonics and fundamental in the sustain portion
+				 of the clarinet signal reconstructed with the synthesis technique.}
+			\label{fig:STFTModulations}
+		\end{figure}
 		
 %		The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large amount of
 %		ripple as seen in Figure \ref{fig:CelloSynthesisSpectrogram}. This is due to the amplitude of the
