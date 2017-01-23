@@ -620,27 +620,29 @@
 		\end{table}
 
 		The harmonic variability values provide a measure of how well the reconstruction systems should be able to
-		reproduce the test signals. A higher harmonic variability describes a signal with will be less convincingly
-		reconstructed. This is confirmed by measuring the correlation between the harmonic variability values and
-		the mean scores given to stimuli reconstructed using a particular set of parameters in the multiple
-		stimulus test. Correlation values for each of the reconstruction systems and parameter setting combinations
-		are given in Table \ref{tab:HarmonicVariabilityCorrelations}.
+		reproduce the test signals. A higher harmonic variability describes a signal which will be less
+		convincingly reconstructed. This is confirmed by measuring the correlation between the harmonic variability
+		values and the mean scores given to stimuli reconstructed using a particular set of parameters in the
+		multiple stimulus test. Correlation values for each of the reconstruction systems and parameter setting
+		combinations are given in Table \ref{tab:HarmonicVariabilityCorrelations}. The stimulus numbers refer to
+		the different reconstruction systems as in Figures \ref{fig:SMCRNonlin} and \ref{fig:SMCResults}.
 
 		\begin{table}[h!]
 			\centering
 			\input{chapter7/Tables/HarmonicVariabilityCorrelations.tex}
 			\caption{Correlations between the harmonic variabilities of the test signals and 
-				 the mean grades given the multiple stimulus test.}
+				 the mean grades given in the multiple stimulus test.}
 			\label{tab:HarmonicVariabilityCorrelations}
 		\end{table}
 
-		\note
-		{
-			For every reconstruction method the harmonic variability explains the difference in reconstruction
-			quality between the different samples. Apart from the synthesis method with the shortest window
-			length. This is most likely to do with the poor resolution of the SFTF in this system causing
-			unwanted amplitude modulation in the signal.
-		}
+		These correlation values suggest that, for all but one of the reconstruction methods, the differences in
+		the reconstruction quality between the test signals is due to the different relationships between their
+		harmonics' amplitudes. For signals reconstructed using the synthesis method with a window length of 50
+		samples (stimulus 2) the correlation between scores and harmonic variability is not so definitive. Another
+		factor of the signals or system must influence the inaccuracies introduced when reconstructing in this
+		manner. Inspecting the amplitude ratios of the harmonics in the reconstructed signals provides a possible
+		explanation for this. The amplitudes ratios of the harmonics for the clarinet signal reconstructed using
+		the synthesis technique are shown in Figure \ref{fig:STFTModulations}.
 
 		\begin{figure}[h!]
 			\centering
@@ -666,14 +668,10 @@
 				 of the clarinet signal reconstructed with the synthesis technique.}
 			\label{fig:STFTModulations}
 		\end{figure}
-		
-%		The amplitude envelopes of the harmonics generated using the synthesis techniques exhibit a large amount of
-%		ripple as seen in Figure \ref{fig:CelloSynthesisSpectrogram}. This is due to the amplitude of the
-%		fundamental being calculated on a window by window basis. These inaccuracies are not present in the
-%		harmonics generated using the IAP method as the amplitude is calculated on a sample by sample basis. This
-%		could be improved by introducing overlap between the analysis frames increasing the temporal resolution of
-%		the analysis at the expense of increasing the computational complexity.
 
+		A window length of 50 samples does not provide the synthesis reconstruction system with enough spectral
+		resolution to accurately track the amplitude envelope of the fundamental.
+		
 	\subsection{Conclusion}
 	\label{sec:PerceptualExperiments-Reconstruction-Conclusion}
 		It has been shown that the `naturalness' of harmonics generated using the information present in the
