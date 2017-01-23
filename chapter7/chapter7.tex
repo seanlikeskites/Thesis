@@ -670,19 +670,31 @@
 		\end{figure}
 
 		A window length of 50 samples does not provide the synthesis reconstruction system with enough spectral
-		resolution to accurately track the amplitude envelope of the fundamental.
+		resolution to accurately track the amplitude envelope of the fundamental. As a result the generated
+		harmonics do not have a consistent amplitude relationship with the fundamental as seen in Figure
+		\ref{fig:ClarinetSTFT50Sustain}. Figures \ref{fig:ClarinetSTFT100Sustain} and
+		\ref{fig:ClarinetSTFT500Sustain} show that longer window lenghts allow the amplitude envelope of the
+		fundamental to be tracked more accuratly, meaning the generated harmonics follow its amplitude envelope
+		move consistently.
 		
 	\subsection{Conclusion}
 	\label{sec:PerceptualExperiments-Reconstruction-Conclusion}
 		It has been shown that the `naturalness' of harmonics generated using the information present in the
 		fundamental of a signal depends on both the method of generating the harmonic and the properties of the
 		input signal. If sufficient processing is applied (increasing the STFT window length / filter order) all
-		three of the tested harmonic generation methods perform similarly well. As these parameters are decreased
-		in value the synthesis method's performance decreases more rapidly than that of SSBA and IAP. These two
-		methods also have the advantage of having lower computational complexity. Of the three tested methods IAP
-		is the most suitable for use the harmonic excitation systems due to it being a homogeneous process. As
-		discussed in Section \ref{sec:ExcitationEvaluation-Comparison-Homogeneity} this allows it to be applied to
-		a wider range of signals with more predictable results.
+		three of the tested harmonic generation methods perform similarly well. As the amount of processing is
+		decreased (decreasing STRT window length / filter order) the synthesis method's performance decreases more
+		rapidly than that of the SSBA and IAP based systems. For a given reconstruction system the amplitude
+		envelopes of the harmonics in the input signal determine how easily it can be reconstructed. Signals in
+		which the harmonics have amplitude envelopes which are linearly related to that of the fundamental are
+		reconstructed with better quality than those with more complex relationships.
+		
+		The SSBA and IAP techniques also have the advantage of having lower computational complexity and introduce
+		less latency. The synthesis method requires the calculation of the DFT and introduces latency equal to the
+		window length used. Of the three tested methods IAP is the most suitable for use the harmonic excitation
+		systems due to it being a homogeneous process. As discussed in Section
+		\ref{sec:ExcitationEvaluation-Comparison-Homogeneity} this allows it to be applied to a wider range of
+		signals with more predictable results.
 
 \section{Semantic Control}
 \label{sec:PerceptualExperiments-SemanticControl}
