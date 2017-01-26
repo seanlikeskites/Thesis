@@ -99,7 +99,7 @@ harshConfusion["warm", rownames(harshWarmCounts)] <- harshWarmCounts
 sHarshConfusion <- harshConfusion / apply(harshConfusion, 1, sum)
 harshLabels <- format(round(sHarshConfusion, 2), nsmall=2)
 harshDend <- as.dendrogram(hclust(dist(t(sHarshConfusion)), method="ward.D2"))
-pdf("HarshConfusion.pdf", pointsize=12, family="CM Sans", width=6, height=4)
+pdf("HarshConfusion.pdf", pointsize=12, family="CM Sans", width=6, height=3)
 heatmap.2(sHarshConfusion, Colv=harshDend, Rowv=NA, trace="none", col=colMap, dendrogram="column", key=FALSE,
 	  cellnote=harshLabels, notecol="black", cexRow=1, cexCol=1, lwid=c(0.1, 100), notecex=0.8, 
 	  lhei=c(0.4, 0.6), mar=c(3.6, 3.5), breaks=c(0, 4, 6, 10, 20, 30, 40, 50, 60, 70, 80) / 180)
@@ -119,7 +119,7 @@ crunchConfusion["crunch", rownames(crunchCrunchCounts)] <- crunchCrunchCounts
 sCrunchConfusion <- crunchConfusion / apply(crunchConfusion, 1, sum)
 crunchLabels <- format(round(sCrunchConfusion, 2), nsmall=2)
 crunchDend <- as.dendrogram(hclust(dist(t(sCrunchConfusion)), method="ward.D2"))
-pdf("CrunchConfusion.pdf", pointsize=12, family="CM Sans", width=6, height=4)
+pdf("CrunchConfusion.pdf", pointsize=12, family="CM Sans", width=6, height=3)
 heatmap.2(sCrunchConfusion, Colv=crunchDend, Rowv=NA, trace="none", col=colMap, dendrogram="column", key=FALSE,
 	  cellnote=crunchLabels, notecol="black", cexRow=1, cexCol=1, lwid=c(0.1, 100), notecex=0.8, 
 	  lhei=c(0.4, 0.6), mar=c(3.6, 3.5), breaks=c(0, 4, 6, 10, 20, 30, 40, 50, 60, 70, 80) / 180)
@@ -136,7 +136,7 @@ combConfusion["crunch",] <- crunchConfusion["crunch",]
 sCombConfusion <- combConfusion / apply(combConfusion, 1, sum)
 combLabels <- format(round(sCombConfusion, 2), nsmall=2)
 combDend <- as.dendrogram(hclust(dist(t(sCombConfusion)), method="ward.D2"))
-pdf("CombinedConfusion.pdf", pointsize=12, family="CM Sans", width=6, height=5)
+pdf("CombinedConfusion.pdf", pointsize=12, family="CM Sans", width=6, height=3.75)
 heatmap.2(sCombConfusion, Colv=combDend, Rowv=NA, trace="none", col=colMap, dendrogram="column", key=FALSE,
 	  cellnote=combLabels, notecol="black", cexRow=1, cexCol=1, lwid=c(0.1, 100), notecex=0.8, 
 	  lhei=c(0.4, 0.6), mar=c(3.6, 3.5), breaks=c(0, 4, 6, 10, 20, 30, 40, 50, 60, 70, 80) / 180)
