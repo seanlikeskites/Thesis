@@ -466,11 +466,11 @@
 		\ref{fig:ReleaseAmplitudes} show the amplitude ratios between the third through ninth harmonics of the test
 		signals and their fundamentals.
 
-		\note
-		{
-			If you have a gander at Figure \ref{fig:AttackAmplitudes} you can see that they have 8 colours and
-			some lines what wiggle about and shit (Stasis, 2017).
-		}
+%		\note
+%		{
+%			If you have a gander at Figure \ref{fig:AttackAmplitudes} you can see that they have 8 colours and
+%			some lines what wiggle about and shit (Stasis, 2017).
+%		}
 
 		\begin{figure}[h!]
 			\centering
@@ -1309,33 +1309,37 @@
 
 	\subsection{Conclusion}
 	\label{sec:PerceptualExperiments-SemanticControl-Conclusion}
+		This experiment has shown that, using information collected from the SAFE data and the harmonic excitation
+		systems developed in Chapter \ref{chap:FeatureControl}, harmonic excitation can be easily used to introduce
+		brightness and harshness to an audio signal while crunchiness is a more difficult timbre to isolate.
+
 		Both the warmth / harshness and harshness / brightness effects are successful in producing effect which are
-		described as `bright' and `harsh'. `Hash' is confirmed to be a more exaggerated version of `bright'
-		describing signals with higher proportions of high frequency content. Due to the nature of the processing
-		however, other terms are also used to describe these effects suck as `fuzzy' and `raspy'. These terms were
-		associated with the SAFE distortion effect in Chapter \ref{chap:TimbreEvaluation} and so it it expected
-		that they may get used to describe a harmonic excitation system.
+		described as `bright' and `harsh' by isolating the fundamental, applying full wave rectification and high
+		pass filtering. `Hash' is confirmed to be a more exaggerated version of `bright' describing signals with
+		higher proportions of high frequency content. Due to the nature of the processing however, other terms are
+		also used to describe these effects suck as `fuzzy' and `raspy'. These terms were associated with the SAFE
+		distortion effect in Chapter \ref{chap:TimbreEvaluation} and so it it expected that they may get used to
+		describe a harmonic excitation system.
 
-		\note
-		{
-			When provided with descriptors to use, people might use descriptors they wouldn't necessarily
-			provide themselves to describe a sound. So the distortion and equaliser terms both get used.
-			Anonymous effect. People labelling a distortion will use distortion like words, but with an
-			anonymous effect all words are open.
-
-			\begin{itemize}
-				\item Warmth is difficult to elicit.
-				\item Harsh was found to be a more exaggerated version of bright. Although related terms
-					are used with describe the distorted nature more often.
-				\item Brightness and harshness are both simple to elicit through the introduction of a
-					high pass filtered distortion.
-			\end{itemize}
-		}
-		
+		The results of the listening test with the warmth / harshness effect show that applying a low pass filter
+		with a cutoff frequency at the input's spectral centroid is not sufficient to produce a `warmer' sound.
+		Further analysis of the input signal may be necessary in order to ensure the resulting output is `warmer'
+		than it. Crunchiness is also difficult to achieve, despite being well defined in the timbre spaces shown in
+		Chapter \ref{chap:TimbreEvaluation}. In these timbre spaces the `crunchy' and `warm' regions have am
+		overlap suggesting that there may be other factors which could be used by audio effects to better
+		differentiate the two.
 
 \section{Conclusion}
 \label{sec:PerceptualExperiments-Conclusion}
 	\note
 	{
-		In the end it is all silly.
+		Something along the lines of showing how the systems developed in Chapter \ref{chap:FeatureControl} can be
+		built into useful systems. Whether it be for the reconstruction of degraded audio of for the application of
+		creative audio effects. The resulting systems are provably accurate in terms of objective and subjective
+		performance.
+
+		More advanced perceptual control systems, perhaps with additional control parameters may perform better. Or
+		perhaps a control interface which mimics the timbre space, a la Mr stasis the bad man.
+
+		Then I guess summarise the conclusions of the two experiments.
 	}
