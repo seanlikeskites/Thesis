@@ -5,9 +5,9 @@
 \label{sec:PerceptualExperiments-Introduction}
 	This chapter discusses two experiments to evaluate the performance of harmonic excitations systems based on those
 	discussed in Chapter \ref{chap:FeatureControl}. The first experiment (Section
-	\ref{sec:PerceptualExpertiments-Reconstruction}) compares the abilities of different excitation methods in
+	\ref{sec:PerceptualExperiments-Reconstruction}) compares the abilities of different excitation methods in
 	generating individual harmonics to reconstruct degraded signals. The second experiment (Section
-	\ref{sec:PerceptualExperiments-SemanticControl}) uses the results discussed in Chapter \ref{fig:TimbreEvaluation}
+	\ref{sec:PerceptualExperiments-SemanticControl}) uses the results discussed in Chapter \ref{chap:TimbreEvaluation}
 	to inform the design of harmonic excitation effects which provide control over a particular perceptual parameter.
 	In both experiments the performance of the systems under test is evaluated using both objective metrics and
 	subjectively through perceptual listening tests.
@@ -1202,11 +1202,11 @@
 			
 			Examining the mean cophenetic distances in Figure \ref{fig:HarshDiffCoph} it might appear that
 			while listening test participants do not always use the terms which the warmth / harshness effect
-			was designed to elicit, an average they use terms which lie in the same cluster. Referring to
-			Figure \ref{fig:CombinedDifferenceClusters} we find three main clusters which could be described as
-			`warmth' (containing the terms `mud', `boom', `smooth', `crunch', `full', `deep', `warm' and
+			was designed to elicit, on average they use terms which lie in the same cluster. Referring to
+			Figure \ref{fig:CombinedDifferenceClusters} we find three main clusters, which could be described
+			as `warmth' (containing the terms `mud', `boom', `smooth', `crunch', `full', `deep', `warm' and
 			`cream'), `distorted brightness' (containing the terms `fuzz', `bright', `harsh', `box' and `rasp')
-			and `equalised brightness' (containing the terms 'clear', `bright', `tin', `thin', `air' an
+			and `equalised brightness' (containing the terms 'clear', `bright', `tin', `thin', `air' and
 			`harsh'). These three clusters have heights of 17.3, 13.5 and 16.5 respectively. The mean
 			cophenetic for each of the test signals all lie close to or below these cluster heights. Further
 			analysis is required to determine whether this indicates that participants are using terms in the
@@ -1218,7 +1218,11 @@
 			\ref{fig:CombinedDifferenceClusters}. Summing the cells of this figure it is found that
 			participants only used descriptors in the same cluster as `warm' 54\% of the time. The mean
 			cophenetic distances for the `warm' transform in Figure \ref{fig:HarshDiffCoph} do not represent
-			participants using descriptors from the correct cluster.
+			participants using descriptors from the correct cluster. The failure of the effect to elicit terms
+			related to warmth from participants may indicate that warmth is not only defined by a shift in
+			spectral energy towards lower frequencies. Examining figure \ref{fig:HarshProcJeff} it is seen
+			that, for approximately half the test signals, the processed signals are significantly distant from
+			the region described as `warm' in the processed feature space constructed from the SAFE dataset.
 			
 			Considering only the changes in audio features described by transforms, the terms `bright' and
 			`harsh' seem to have different definitions depending on the type of processing applied, as seen in
@@ -1230,7 +1234,12 @@
 			for `harsh'. The terms used come from both the `distorted brightness' and `equalised brightness'
 			clusters, suggesting that although some of these terms were gathered using the SAFE Equaliser they
 			can still be applied to distortion type effects. Even so, the most commonly used descriptors,
-			`fuzz', `harsh' and `rasp' all lie within the `distorted brightness' cluster.
+			`fuzz', `harsh' and `rasp' all lie within the `distorted brightness' cluster. The use of terms
+			which were collected from the SAFE equaliser may be explained by the anonymity of the effects in
+			this test. While using the SAFE plug-ins the user is aware of the type of effect they are using so
+			may be more likely to use descriptors they associate with that effect. In this test the type of
+			effect is not know to the user so they may select descriptors they would not usually associate with
+			the type of effect being used.
 
 			The listening test data does not represent a difference between `bright' and `harsh' as seen in
 			Chapter \ref{chap:TimbreEvaluation}. Both the `bright' and `harsh' positions of the warmth /
@@ -1248,35 +1257,39 @@
 			signals which are close to those labeled as `crunchy' in the SAFE dataset. However, the transforms
 			applied to produce these signals are less similar to those in the SAFE dataset, as seen in Figure
 			\ref{fig:CrunchDiffJeff}. This is possibly explained by the simplifications made to reduce the
-			effects computational complexity. Using lower order filters increases the level of intermodulation
+			effect's computational complexity. Using lower order filters increases the level of intermodulation
 			components in the individually generated harmonics. Controlling the relative levels of these
 			generated harmonics no longer has the expected effect on spectral irregularity as each generated
 			harmonic contains several spectral partials with unknown amplitudes.
 
 			For the harshness / crunchiness effect's `bright' and `harsh' parameter settings only the measures
-			of Mahalanobis distance in the feature difference space are relevant again. In this regard the
-			effect is most accurate in recreating transforms labelled `bright' in the SAFE dataset, having
-			similar performance to the warmth / harshness effect. For its `harsh' parameter setting it is less
-			accurate, again possibly due to the low confidence definition of the term `harsh' due to it being
-			used with very low frequency in the SAFE dataset.
+			of Mahalanobis distance in the feature difference space are relevant (is in the analysis of the
+			warmth / harshness effect). In this regard the effect is most accurate in recreating transforms
+			labelled `bright' in the SAFE dataset, having similar performance to the warmth / harshness effect.
+			For its `harsh' parameter setting it is less accurate, again possibly due to the low confidence
+			definition of the term `harsh' due to it being used with very low frequency in the SAFE dataset.
 
 			In Figure \ref{fig:CombinedClusters} the term `crunch' sits in different clusters depending on the
 			features used for clustering. When clustering using processed features it sits in a cluster
 			alongside `tin', `harsh', `full', `thin', `air' and `clear', whereas using the feature differences
 			it is part of the `warmth' cluster described previously. Examining the mean cophenetic distances
 			from the listening test (Figure \ref{fig:CrunchCophs}) it appears that participants used terms
-			which cluster closer to `crunch' in the feature difference clusters when labelling the harshness /
+			which cluster closer to `crunch' in the feature difference space when labelling the harshness /
 			crunchiness effect's `crunch' parameter position. Summing the relevant cells in the heat map shown
 			in Figure \ref{fig:CrunchConfusion} is is seen that using the clusters calculated from processed
-			features participants only used terms in the same cluster as `crunch' 17\% of the time. Whereas
+			features, participants only used terms in the same cluster as `crunch' 17\% of the time. Whereas
 			when using the feature difference this figure rises to 51\%. This might suggest that `crunch' is
-			better defined as a particular transform rather than properties of the output signal.
+			better defined by properties of the transform rather than of the output signal.
 
 			The performance of the harshness / crunchiness effect in its `bright' and `harsh' parameter
-			settings is similar to that of the warmth / harshness effect. In these parameter settings both
-			effects have a very similar operation, introducing a high pass filtered version of the full wave
-			rectified fundamental. Again `fuzz' is the most commonly used descriptor for both parameter
-			settings.
+			settings is similar to that of the warmth / harshness effect. The mean cophenetic distances in the
+			feature difference space (Figure \ref{fig: }) are low, suggesting that participants are selecting
+			descriptors in the relevant clusters. Referring to the heat map in Figure \ref{fig:CrunchConfusion}
+			it is seen that a descriptor from a relevant cluster is used 72\% of the time for the `bright'
+			parameter setting and 90\% of the time for the `harsh' parameter setting. Both the warmth /
+			harshness and harshness / crunchiness effects behave similarly in their `bright' and `harsh'
+			parameter parameter settings, introducing a high pass filtered version of the full wave rectified
+			fundamental. Again `fuzz' is the most commonly used descriptor for both parameter settings.
 
 		\subsubsection*{Descriptor Clustering}
 			The results of the listening test can be further analysed by clustering terms based on how often
@@ -1296,7 +1309,33 @@
 
 	\subsection{Conclusion}
 	\label{sec:PerceptualExperiments-SemanticControl-Conclusion}
+		Both the warmth / harshness and harshness / brightness effects are successful in producing effect which are
+		described as `bright' and `harsh'. `Hash' is confirmed to be a more exaggerated version of `bright'
+		describing signals with higher proportions of high frequency content. Due to the nature of the processing
+		however, other terms are also used to describe these effects suck as `fuzzy' and `raspy'. These terms were
+		associated with the SAFE distortion effect in Chapter \ref{chap:TimbreEvaluation} and so it it expected
+		that they may get used to describe a harmonic excitation system.
+
 		\note
 		{
-			I made some effects! They sort of worked but not very well. The End!
+			When provided with descriptors to use, people might use descriptors they wouldn't necessarily
+			provide themselves to describe a sound. So the distortion and equaliser terms both get used.
+			Anonymous effect. People labelling a distortion will use distortion like words, but with an
+			anonymous effect all words are open.
+
+			\begin{itemize}
+				\item Warmth is difficult to elicit.
+				\item Harsh was found to be a more exaggerated version of bright. Although related terms
+					are used with describe the distorted nature more often.
+				\item Brightness and harshness are both simple to elicit through the introduction of a
+					high pass filtered distortion.
+			\end{itemize}
 		}
+		
+
+\section{Conclusion}
+\label{sec:PerceptualExperiments-Conclusion}
+	\note
+	{
+		In the end it is all silly.
+	}
