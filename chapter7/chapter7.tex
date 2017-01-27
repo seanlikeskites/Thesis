@@ -1283,13 +1283,14 @@
 
 			The performance of the harshness / crunchiness effect in its `bright' and `harsh' parameter
 			settings is similar to that of the warmth / harshness effect. The mean cophenetic distances in the
-			feature difference space (Figure \ref{fig: }) are low, suggesting that participants are selecting
-			descriptors in the relevant clusters. Referring to the heat map in Figure \ref{fig:CrunchConfusion}
-			it is seen that a descriptor from a relevant cluster is used 72\% of the time for the `bright'
-			parameter setting and 90\% of the time for the `harsh' parameter setting. Both the warmth /
-			harshness and harshness / crunchiness effects behave similarly in their `bright' and `harsh'
-			parameter parameter settings, introducing a high pass filtered version of the full wave rectified
-			fundamental. Again `fuzz' is the most commonly used descriptor for both parameter settings.
+			feature difference space (Figure \ref{fig:CrunchDiffCoph}) are low, suggesting that participants
+			are selecting descriptors in the relevant clusters. Referring to the heat map in Figure
+			\ref{fig:CrunchConfusion} it is seen that a descriptor from a relevant cluster is used 72\% of the
+			time for the `bright' parameter setting and 90\% of the time for the `harsh' parameter setting.
+			Both the warmth / harshness and harshness / crunchiness effects behave similarly in their `bright'
+			and `harsh' parameter parameter settings, introducing a high pass filtered version of the full wave
+			rectified fundamental. Again `fuzz' is the most commonly used descriptor for both parameter
+			settings.
 
 		\subsubsection*{Descriptor Clustering}
 			The results of the listening test can be further analysed by clustering terms based on how often
@@ -1331,15 +1332,21 @@
 
 \section{Conclusion}
 \label{sec:PerceptualExperiments-Conclusion}
-	\note
-	{
-		Something along the lines of showing how the systems developed in Chapter \ref{chap:FeatureControl} can be
-		built into useful systems. Whether it be for the reconstruction of degraded audio of for the application of
-		creative audio effects. The resulting systems are provably accurate in terms of objective and subjective
-		performance.
+	% It all works, it's fine, don't worry about it, leave me alone.
+	The two experiments discussed in this chapter have illustrated the effectiveness the developed harmonic excitation
+	systems in performing common audio production tasks. 
+	
+	Systems such as that shown in Figure \ref{fig:InharmonicitySystem} provide individual control over the amplitude
+	and frequency of individual partials in the output signal. This can be used by expert users for the reconstruction
+	of the fine spectral structure of degraded signals. As seen in Section
+	\ref{sec:PerceptualExperiments-Reconstruction}, when using a suitable harmonic generation method and sufficiently
+	selective filters these systems can produce reconstructions which are objectively similar to the non-degraded
+	signal and also perform well in subjective listening tests. One disadvantage of these systems is their reliance on
+	using the amplitude envelope of the fundamental frequency in the reconstruction of harmonics. It has been shown
+	that the degree to which the amplitude envelopes of the harmonics in a signal differ from that of the fundamental
+	dictates the perceived quality of a reconstruction using these systems. If additional prior information is known
+	about the relationships between the harmonics in the signal being reconstructed the quality of the reconstruction
+	could be improved by selecting different harmonics to base the reconstructed amplitude envelopes on.
 
-		More advanced perceptual control systems, perhaps with additional control parameters may perform better. Or
-		perhaps a control interface which mimics the timbre space, a la Mr stasis the bad man.
-
-		Then I guess summarise the conclusions of the two experiments.
-	}
+	The parameters of these systems (individual harmonic gain and frequency shifts) can be mapped onto higher lever
+	`perceptual control' parameters.
