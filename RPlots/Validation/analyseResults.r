@@ -163,6 +163,40 @@ crunchDiffMeans <- groupMeans(crunchDiffDists)
 crunchDiffSds <- groupSds(crunchDiffDists)
 
 #######################################
+# clusters
+#######################################
+# processed
+procAirCluster <- list()
+procAirCluster$height <- combProcDist["E:air", "E:tin"]
+procAirCluster$col <- "brown4"
+procAirCluster$name <- "air"
+
+procWarmCluster <- list()
+procWarmCluster$height <- combProcDist["E:mud", "E:warm"]
+procWarmCluster$col <- "yellow4"
+procWarmCluster$name <- "warmth"
+
+procClusts <- list(procAirCluster, procWarmCluster)
+
+# differences
+diffWarmthClust <- list()
+diffWarmthClust$height <- combDiffDist["E:mud", "D:cream"]
+diffWarmthClust$col <- "tomato3"
+diffWarmthClust$name <- "warmth"
+
+diffDistBrightClust <- list()
+diffDistBrightClust$height <- combDiffDist["D:fuzz", "D:rasp"]
+diffDistBrightClust$col <- "orchid4"
+diffDistBrightClust$name <- "D:bright"
+
+diffEqBrightClust <- list()
+diffEqBrightClust$height <- combDiffDist["E:clear", "E:harsh"]
+diffEqBrightClust$col <- "darkcyan"
+diffEqBrightClust$name <- "E:bright"
+
+diffClusts <- list(diffWarmthClust, diffDistBrightClust, diffEqBrightClust)
+
+#######################################
 # bar charts
 #######################################
 prettyInstrumentNames <- function(names)
@@ -194,7 +228,27 @@ prettyInstrumentNames <- function(names)
 	return(names)
 }
 
-plotDistanceBarChart <- function(means, sds, nDoods, colours)
+interleave <- function(x, y)
+{
+	lenX <- length(x)
+	lenY <- length(y)
+	maxLen <- max(lenX, lenY)
+
+	out <- c(x[[1]], y[[1]])
+
+	for (i in 2:maxLen)
+	{
+		if (i <= lenX)
+			out <- c(out, x[[i]])
+		
+		if (i <= lenY)
+			out <- c(out, y[[i]])
+	}
+
+	return(out)
+}
+
+plotDistanceBarChart <- function(means, sds, nDoods, colours, clusters)
 {
 	means <- t(means)
 	sds <- t(sds)
@@ -206,13 +260,40 @@ plotDistanceBarChart <- function(means, sds, nDoods, colours)
 	error <- qt(0.95, df=nDoods - 1) * sds / sqrt (nDoods)
 	mins <- means - error
 	maxs <- means + error
-	lims <- c(0, 40)
+	lims <- c(0, 42)
 
 	centres <- barplot(means, ylab="Cophenetic Distance", xaxt="n", ylim=lims, beside=TRUE,
-			   col=colours, legend=descriptors, args.legend=list(ncol=3, y=40))
+			   col=colours, legend=FALSE, axes=FALSE)
 	labelPoints <- centres[seq(2, 3 * ncol(means), 3)]
+
+	clusterWidth <- 2.5
+	clusterCols <- list()
+	clusterNames <- list()
+
+	for (clust in clusters)
+	{
+		axis(2, at=clust$height, labels=FALSE, col=clust$col, tcl=-1, lwd.ticks=clusterWidth, line=0.06)
+
+		clusterCols <- c(clusterCols, clust$col)
+		clusterNames <- c(clusterNames, clust$name)
+	}
+
+	axis(2)
 	axis(1, at=labelPoints, line=-1, lwd=0, labels=plotNames)
 	mtext("Test Signal", 1, 2)
+
+	# do a legend
+	nDescriptors <- length(descriptors)
+	nClusters <- length(clusters)
+	legendLabels <- interleave(descriptors, clusterNames)
+	legendFill <- interleave(colours, array(NA, nClusters))
+	legendLty <- interleave(array(NA, nDescriptors), array(1, nClusters))
+	legendBorder <- interleave(array("black", nDescriptors), array("white", nClusters))
+	legendCols <- interleave(array("white", nDescriptors), clusterCols)
+
+	legend("top", legend=legendLabels, ncol=3, lwd=clusterWidth,
+	       lty=legendLty, fill=legendFill, seg.len=0.6, 
+	       border=legendBorder, col=legendCols, merge=TRUE)
 
 	# clip so we don't get yuckiness
 	usr <- par("usr")
@@ -222,25 +303,25 @@ plotDistanceBarChart <- function(means, sds, nDoods, colours)
 
 pdf("HarshProcessedCophDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
-plotDistanceBarChart(harshProcMeans, harshProcSds, nDoods, c("blue", "turquoise", "green"))
+plotDistanceBarChart(harshProcMeans, harshProcSds, nDoods, c("blue", "turquoise", "green"), procClusts)
 dev.off()
 embed_fonts("HarshProcessedCophDistance.pdf")
 
 pdf("HarshDifferenceCophDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
-plotDistanceBarChart(harshDiffMeans, harshDiffSds, nDoods, c("blue", "turquoise", "green"))
+plotDistanceBarChart(harshDiffMeans, harshDiffSds, nDoods, c("blue", "turquoise", "green"), diffClusts)
 dev.off()
 embed_fonts("HarshDifferenceCophDistance.pdf")
 
 pdf("CrunchProcessedCophDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
-plotDistanceBarChart(crunchProcMeans, crunchProcSds, nDoods, c("green", "turquoise", "purple"))
+plotDistanceBarChart(crunchProcMeans, crunchProcSds, nDoods, c("green", "turquoise", "purple"), procClusts)
 dev.off()
 embed_fonts("CrunchProcessedCophDistance.pdf")
 
 pdf("CrunchDifferenceCophDistance.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.5, 0))
-plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, nDoods, c("green", "turquoise", "purple"))
+plotDistanceBarChart(crunchDiffMeans, crunchDiffSds, nDoods, c("green", "turquoise", "purple"), diffClusts)
 dev.off()
 embed_fonts("CrunchDifferenceCophDistance.pdf")
 
