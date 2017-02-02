@@ -67,16 +67,14 @@
 	A widely cited definition of timbre \citep{ASA1960american} suggests that timbre in influenced by various low level
 	features of an audio signal. The spectral content, waveform and temporal characteristics all effect the perceived
 	timbre of a sound. Signal analysis techniques can be used to extract information about these elements of a signal.
-	A large list of such feature extraction techniques is given by \citep{peeters2004a}. These features can be
-	separated into three categories. Features which describe the properties of a signals waveform and how it evolves
-	with time (temporal features), features which describe the frequency content of a signal (spectral features) and
-	features which describe how the frequency content of a signal evolves with time (spectro-temporal features). 
-
-	\note
-	{
-		Should I provide full equations for every feature which the SAFE plug-ins extract? Seems like some might be
-		wasted space seeing as they are never discussed.
-	}
+	A large list of such feature extraction techniques is given by \citet{peeters2004a} and
+	\citet{bullock2008implementing}. These features can be separated into three categories. Features which describe the
+	properties of a signal's waveform and how it evolves with time (temporal features), features which describe the
+	frequency content of a signal (spectral features) and features which describe how the frequency content of a signal
+	evolves with time (spectro-temporal features). In the later part of this work (Chapters \ref{chap:TimbreEvaluation}
+	and \ref{chap:FeatureControl}) several of these features are discussed in the analysis of timbre and operation of
+	audio effects. Definitions for the features discussed in those chapters are given in this section, for definitions
+	of other audio features refer to the previously published literature \citep{peeters2004a, bullock2008implementing}.
 
 	\subsection{Temporal Features}
 	\label{sec:Timbre-LowLevelFeatures-Temporal}
@@ -978,6 +976,8 @@
 \section{Audio Processing}
 \note
 {
+	In music production various different effects are used to manipulate the timbre of sounds.
+
 	General audio processing methods and how they influence timbre. Use top descriptors for each plug-in from the SAFE
 	data. What effect do these effects have on the low level features.
 }
