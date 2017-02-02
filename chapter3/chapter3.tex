@@ -693,69 +693,9 @@
 	\label{sec:Excitation-Methods-SSBA}
 		Single sideband automodulation (SSBA) utilises the concept of single sideband modulation
 		\citep{corinthios2009signals}. This allows you to apply amplitude modulation to a signal and only produce
-		either the sum or difference sideband.
-
-		A simple way to apply single sideband modulation to a signal is through construction of an analytic signal.
-		An analytic signal is a complex valued signal, the real part of which is the original signal and the
-		imaginary part its Hilbert transform. The analytic signal is often denoted with a subscript letter
-		$a$, such that the analytic representation of the signal $x(n)$ would be denoted $x_{a}(n)$.
-
-		An ideal Hilbert transform alters the phase information of a signal while leaving the magnitude information
-		unchanged. Any negative frequencies in the signal have their phase shifted by $\frac{\pi}{2}$ radians.  The
-		phase of positive frequencies is shifted by $-\frac{\pi}{2}$ radians. The transfer function for an FIR
-		implementation of a Hilbert transform is shown in Equation \ref{eq:FirHilbertTransform}.
-
-		\begin{equation}
-			H(z) = \sum_{m = -M}^{M} \frac{2}{m\pi} sin^{2} \left( \frac{m\pi}{2} \right) z^{-m}
-			\label{eq:FirHilbertTransform}
-		\end{equation}
-
-		For an ideal Hilbert transform the impulse response should be infinitely long ($M = \infty$). Practicable
-		approximations of an ideal Hilbert transform can be created by using a finite value for $M$. A delay of $M$
-		samples must also be introduced in order to make the filter causal. As the value of $M$ is decreased this
-		delay is reduced while the magnitude response of the filter deviates further from the ideal. Figure
-		\ref{fig:HilbertMagnitude} shows the magnitude responses for FIR Hilbert transform filters with $M = 11$
-		and $M = 101$. The filters have a bandpass response with some ripple in the pass band. As $M$ is increased
-		the bandwidth of the passband is increased and the ripple reduced. The phase response of these filters
-		remains ideal no matter the value of $M$, as evidenced by Figure \ref{fig:HilbertPhase}.
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics{chapter3/Images/HilbertMagnitudeResponses.pdf}
-			\caption{Magnitude responses of FIR Hilbert transform filter with different orders.}
-			\label{fig:HilbertMagnitude}
-		\end{figure}
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics{chapter3/Images/HilbertPhaseResponses.pdf}
-			\caption{Phase responses of FIR Hilbert transform filters with different orders.}
-			\label{fig:HilbertPhase}
-		\end{figure}
-
-		When using Equation \ref{eq:FirHilbertTransform} a compromise needs to be made between the tolerable amount
-		of delay and the accuracy of the filter's magnitude response. Increasing $M$ will give a more accurate
-		filter but introduce more delay and increase the complexity of the filter. More efficient implementations
-		can be build using IIR filters if some of the properties of an ideal Hilbert transform are disregarded.
-
-		\citet{oppenheim2014discrete} suggest constructing a phase splitter: processing audio with two parallel
-		allpass IIR filters the phase responses of which differ from each other by $\frac{\pi}{2}$ radians for a
-		large proportion of the spectrum. While this is not strictly a Hilbert transform it creates two signals
-		which can be used as the real and imaginary part of an analytic signal. \citet{niemitalo2003hilbert}
-		provides an implementation of such a pair of filters. The phase difference between these two filters is
-		seen in Figure \ref{fig:IIRHilbertPhase}.
-
-		\begin{figure}[h!]
-			\centering
-			\includegraphics{chapter3/Images/IIRHilbertPhaseResponses.pdf}
-			\caption{The phase difference between the two allpass filters proposed by
-			         \citet{niemitalo2003hilbert}.}
-			\label{fig:IIRHilbertPhase}
-		\end{figure}
-
-		In single sideband automodulation the analytical representation of the input signal is multiplied with
-		itself in order to generate harmonics. Equation \ref{eq:SSB} shows the $h$\super{th} order single side
-		band automodulation of a signal.
+		either the sum or difference sideband. This is easily implemented by constructing an analytic signal
+		$x_{a}[n]$ from the input signal and raising to a given power to generate harmonics. Equation \ref{eq:SSB}
+		shows the $h$\super{th} order single side band automodulation of a signal.
 
 		\begin{equation}
 			y[n] = \Re \left( x_{a}[n]^{h} \right), \quad h \in \textbf{N}
