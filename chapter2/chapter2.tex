@@ -164,12 +164,19 @@
 			\end{figure}
 
 		\subsubsection*{Amplitude Envelope Analysis}
-			\citet{howard2009acoustics} separates the envelope of a sound into three sections. The steady state
-			section is the middle portion in which the timbre of the sound only varies slightly. The onset and
-			offset sections describe the way the sound rises from silence to the steady state and returns to
-			silence after. Further refinement of the description of amplitude envelopes leads to the ADSR
-			(Attack, Decay, Sustain, Release) model \citep{descrivan2012music}. An example ADSR envelope is
-			shown in Figure \ref{fig:ADSR}.
+			The amplitude envelope of a signal can be used to extract more meaningful information about it's
+			temporal evolution. This is often done by splitting the sound into different sections according to
+			the properties of its amplitude envelope. \citet{howard2009acoustics} separates the amplitude
+			envelope of a sound into three sections: the steady state section being the middle portion in which
+			the timbre of the sound only varies slightly and the onset and offset sections which describe the
+			way the sound rises from silence to the steady state and returns to silence afterwards. Further
+			refinement of the description of amplitude envelopes leads to the ADSR (Attack, Decay, Sustain,
+			Release) model \citep{descrivan2012music}. The attack and decay portions constitute the onset of
+			the signal, the attack describing the time it takes for the amplitude to rise from silence to a
+			maximum and the decay describing the time it takes for the amplitude to decrease back to a steady
+			level. The sustain describes the level at which the amplitude remains during the steady state
+			portion of the signal and the release the time taken for the amplitude to fall from this level to
+			silence. An example ADSR envelope is shown in Figure \ref{fig:ADSR}.
 
 			\begin{figure}[h!]
 				\centering
@@ -178,17 +185,25 @@
 				\label{fig:ADSR}
 			\end{figure}
 
-			Once the amplitude envelope of a signal has been extracted further statistics can be calculated
-			from it such as log attack time and temporal centroid \citep{peeters2000instrument}.
+			Properties of the amplitude envelope can be used to describe the temporal features of a signal's
+			amplitude. The attack time of sounds is important in the distinction of different timbres
+			\citep{ilmoniemi2004subjective} and is often scaled logarithmically giving the log attack time.
+			Other temporal features measure the amplitude envelope in its entirely, such and the temporal
+			centroid which is the mean time of the signals duration weighted by the amplitude at each instant
+			\citep{peeters2000instrument}.
 
-			Some other temporal features measure the oscillation or repetition of a signal. Examples are the
-			zeros crossing rate and the autocorrelation, both of which can be used in pitch / frequency
-			estimation \citep{mcleod2005a}.
+		\subsubsection*{Other Temporal Audio Features}
+			Basic frequency information can be attained trough temporal analysis by enumerating the number of
+			specific events which happen in a given time period. One such event is a zero crossing (a change in
+			signal polarity), the counting of which can yield an estimate of the frequency content of a signal
+			(the zero crossing rate). The temporal distance between similar events in a signal can also be
+			found through autocorrelation and used as an estimate of pitch / frequency \citep{mcleod2005a}.
 
-		\note
-		{
-			pmf features as used by \citet{wilson2014profiling}
-		}
+			Larger scale temporal feature measure the properties of passages of music rather than individual
+			notes, such as the measure used by \citet{wilson2014profiling} in which probability mass function
+			(PMF) of sample amplitudes in a segment of audio is used as a measure of distortion present.
+			Temporal features on this scale are outside of the scope of this work as they no longer relate to
+			the timbre of individual sounds but rather the perceived nature of a musical piece.
 
 	\subsection{Spectral Features}
 	\label{sec:Timbre-LowLevelFeatures-Spectral}
@@ -756,7 +771,7 @@
 				\centering
 				\begin{tabular}{|c|C{3cm}cC{3cm}|}
 					\hline
-					\bf{No.} & \multicolumn{3}{|c|}{\bf{Adjectives}} \tabularnewline
+					\bf{No.} & \multicolumn{3}{c|}{\bf{Adjectives}} \tabularnewline
 					\hline
 					\hline
 					1 & hard & $\Longleftrightarrow$ & soft \tabularnewline
