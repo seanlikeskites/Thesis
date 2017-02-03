@@ -488,27 +488,29 @@
 			\end{gather}
 
 		\subsubsection*{Odd to Even Harmonic Ratio}
-			The odd to even harmonic ratio measures the ratio of energy between odd and even order harmonics in
-			a signal. It was found to be a salient feature in timbral recognition by
-			\citet{hall2010importance}. It is calculated using Equation \ref{eq:HarmonicParityRatio}.
+			The odd to even harmonic ratio, $\textrm{OER}$, measures the ratio of energy between odd and even
+			order harmonics in a signal describing how much of the signal's energy is made up of odd or even
+			order harmonics. It was found to be a salient feature in timbral recognition by
+			\citet{hall2010importance} allowing for distinction between signals which consist only of odd
+			harmonics or of even harmonics. The ratio is calculated from the squared amplitudes of the harmonic
+			partials in a signal according to Equation \ref{eq:HarmonicParityRatio}.
 			
 			\begin{equation}
-				\textrm{ROE} = \frac{\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}
+				\textrm{OER} = \frac{\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}
 					       {\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
 				\label{eq:HarmonicParityRatio}
 			\end{equation}
 
-			It describes how much of the signals energy is made up of odd or even order harmonics. This allows
-			for distinction between signal which consist only of odd harmonics or of even harmonics. 
-
-			Equation \ref{eq:HarmonicParityRatio} produces an asymmetric scale which may be difficult to
-			interpret. Signals with most of their energy at even harmonics produce values between zero and
-			one.  Signals with more energy at the odd harmonics can produce any value greater then one. Another
-			problem arises for signals with no energy at even harmonics where a division by zero will occur.
+			Measuring the proportion of odd and even harmonics in a signal using Equation
+			\ref{eq:HarmonicParityRatio} produces an asymmetric scale which may be difficult to interpret.
+			Signals with most of their energy at even harmonics produce values between zero and one.  Signals
+			with more energy at the odd harmonics can produce any value greater then one. Another problem
+			arises for signals with no energy at even harmonics where a division by zero will occur.
 
 			A more robust measure is to have separate measures for the proportion of odd harmonics in a signal
 			and the proportion of even harmonics in a signal. \citet{lukasik2005towards} describes two metrics
-			which measure the oddness, $O$, and the evenness, $E$, of a signal. These are given in Equations
+			which measure the oddness, $O$, and the evenness, $E$, of a signal producing more easilty
+			interpreted values of 0 and 1. Formulae for the oddness and evenness are given in Equations
 			\ref{eq:Oddness} and \ref{eq:Evenness}.
 
 			\begin{equation}
@@ -523,14 +525,12 @@
 				\label{eq:Evenness}
 			\end{equation}
 
-			These both produce values in the range zero to one and satisfy the statement $O + E = 1$. 
-
 		\subsubsection*{Inharmonicity}
-			Inharmonicity is a measure of how much the frequencies of a signal's partials deviate from harmonic
-			frequencies. As such it must be calculated from the amplitudes and frequencies of a signals
-			spectral partials. \citet{fletcher1962quality} state that inharmonicity of some partials is
-			necessary for the recognition of the timbre of a piano. The inharmonicity of a signal is measured
-			using Equation \ref{eq:Inharmonicity}.
+			Inharmonicity, $I$, is a measure of how much the frequencies of a signal's partials deviate from
+			harmonic frequencies. As such it must be calculated from the amplitudes and frequencies of a
+			signal's spectral partials. \citet{fletcher1962quality} state that inharmonicity of some partials
+			is necessary for the recognition of the timbre of a piano. The inharmonicity of a signal is
+			measured using Equation \ref{eq:Inharmonicity}.
 			
 			\begin{equation}
 				I = \frac{2\sum_{n = 1}^{N}a_{n}^{2}
@@ -542,14 +542,6 @@
 			This produces values between zero and one. Zero describing a signal in which all partials have
 			perfectly harmonic frequencies and one describing a signal where all partials have frequencies
 			lying $\frac{f_{0}}{2}$Hz from harmonic frequencies.
-
-		\note
-		{
-			More detailed metrics in the shape of a spectrum can be calculated in the form of Mel Frequency
-			Cepstral Coefficients (MFCCs). These measurements were originally used in speech recognition
-			systems \citep{davis1980comparison}. More recently they have been applied to the analysis of timbre
-			\citep{depoli1997sonological}. 
-		}
 
 		\note
 		{
@@ -656,6 +648,14 @@
 
 	\note
 	{
+		More detailed metrics in the shape of a spectrum can be calculated in the form of Mel Frequency
+		Cepstral Coefficients (MFCCs). These measurements were originally used in speech recognition
+		systems \citep{davis1980comparison}. More recently they have been applied to the analysis of timbre
+		\citep{depoli1997sonological}. 
+	}
+
+	\note
+	{
 		Perhaps some more on masking. Although it may be wasted space.
 	}
 
@@ -678,7 +678,7 @@
 		\end{equation}
 
 		Where $S$ is the sharpness, $N'$ is the specific loudness, $z$ is frequency in barks, and $g(z)$ is a
-		weighting function designed to emphasises the presence of high frequency content.
+		weighting function designed to emphasise the presence of high frequency content.
 
 		\citet{marui2006predicting} run listening experiments to test how well perceived sharpness can be predicted
 		using this metric. They find that it does not predict the sharpness of broadband noise accurately and
