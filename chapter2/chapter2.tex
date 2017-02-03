@@ -556,39 +556,54 @@
 	\citep{moore1997a} and pitch \citep{gerhard2003pitch}. Other research considers the human hearing systems ability
 	to locate sound sources \citep{blauert1997spatial}. 
 
-	As discussed in Section \ref{sec:Timbre-LowLevelFeatures-Spectral} there are several metrics to describe the
+	As discussed in Section \ref{sec:Timbre-LowLevelFeatures-Spectral} there are several metrics which describe the
 	spectral content of a signal. While it may be possible to measure changes in values of these features, the changes
 	may not be detectable by the human hearing system. Psychoacoustic models allow us to determine how audio signals
-	are interpreted by the human hearing system and how well we will notice such changes.
+	are interpreted by the human hearing system and the perceptibility of such changes.
+
+	\subsection{Psychoacoustic Frequency}
+	\label{sec:Timbre-PsychoacousticPrinciples-Frequency}
+		In scientific work frequency is typically discussed as an absolute number of cycles per second in units of
+		Hz. In music theory the frequency difference between two sounds is described in terms of tones and octaves.
+		This musical notation assumes that the ratio of between two frequencies defines the perceived interval
+		between them: the perceived difference between 50 and 75Hz is the same as that between 1kHz and 1.5kHz.
+		While this model suffices for musical composition and performance it does not accurately describe the
+		perception of frequency by human listeners. \citep{stevens1937a} propose a new frequency scale, the Mel
+		scale, on which a given change in frequency produces the same perceived interval.
+
+		This perceptual frequency scale allows audio feature metrics to analyse audio in more perceptually relevant
+		bands. One such metric is the Mel Frequency Cepstral Coefficients (MFCCs) developed for use in speech
+		recognition \citep{davis1980comparison}. These provide more detailed about the shape of the spectrum than
+		the spectral moments discussed in Section \ref{sec:Timbre-LowLevelFeatures-Spectral}. From their first use
+		in speech recognition MFCCs have been added to the corpus of audio features used by researchers
+		investigating timbre \citep{depoli1997sonological}. 
 
 	\subsection{Critical Bands}
 	\label{sec:Timbre-PsychoacousticPrinciples-CriticalBands}
 		The part of the inner ear which deals with frequency separation is know as the basilar membrane. This is a
 		structure which resonates at different frequencies along its length. Low frequencies at one end to high at
 		the other. A sinusoidal tone excites a portion of the basilar membrane corresponding to a narrow band of
-		frequencies. Two tones whose excitation bands overlap will interfere with how each other are perceived by
-		the listener.
-
-		The basilar membrane can be modelled as a filter bank comprised of band pass filters. Each of these
-		auditory filters represents the region of the membrane excited by a sinusoidal tone at its centre
-		frequency. The bandwidth of these filters is known as the critical bandwidth. Portions of signals will
-		interfere with the perception of others which are within one critical bandwidth.
+		frequencies. A tone whose excitation band overlaps with another will interfere with how other tone is
+		perceived by a listener. The basilar membrane can be modelled as a parallel filter bank comprised of band
+		pass filters. Each of these auditory filters represents the region of the membrane excited by a sinusoidal
+		tone at its centre frequency. The bandwidth of these filters is known as the critical bandwidth. Portions
+		of signals will interfere with the perception of others which are within one critical bandwidth.
 		\citet{glasberg1990derivation} simplify the auditory filters by modelling them as rectangular filters. The
-		bandwidth of these filters known as the equivalent rectangular bandwidth (ERB) and can be approximated
-		using Equation \ref{eq:ERB}.
+		bandwidth of these filters known as the equivalent rectangular bandwidth ($\textrm{ERB}$) and can be
+		approximated using Equation \ref{eq:ERB}.
 
 		\begin{equation}
 			\textrm{ERB}(f_{c}) = 24.7(4.37f_{c} + 1)
 			\label{eq:ERB}
 		\end{equation}
 
-		Where $f_{c}$ is the center frequency of the auditory filter in kHz and ERB$(f_{c})$ is the equivalent
-		rectangular bandwidth, in Hz, at that frequency.
+		Where $f_{c}$ is the center frequency of the auditory filter in kHz and $\textrm{ERB}(f_{c})$ is the
+		equivalent rectangular bandwidth, in Hz, at that frequency.
 
 		\citet{howard2009acoustics} discusses the perception of two tones, sounded simultaneously, as they get
 		further apart in frequency. When within 15Hz of one another the two tones are perceived as a single sound
 		with a sinusoidally varying amplitude. The frequency of this variation is equal to the difference in
-		frequency of the tones. As the difference in frequencies gets greater then 15Hz this amplitude modulation
+		frequency of the tones. As the difference in frequencies gets greater than 15Hz this amplitude modulation
 		becomes fast enough for it to be perceived as a roughness in texture rather than `beats' in the amplitude.
 		In between 15Hz and the critical bandwidth the perceived sound transitions from a single sound to two
 		separate sounds but still with a rough texture. Once the difference in frequencies exceeds the critical
@@ -627,32 +642,24 @@
 
 		It is evident from Equation \ref{eq:ERB} that the critical bandwidth increases with frequency. This
 		together with the perceptual information shown in Figure \ref{fig:ToneSeparation} suggests that tones
-		separated by the same amount will be heard as separate if they or both low in frequency but as their
+		separated by the same amount will be heard as separate if they are both low in frequency but as their
 		frequencies rise they will start to be perceived as a single fused sound.
 
 	\subsection{Specific Loudness}
 	\label{sec:Timbre-PsychoacousticPrinciples-SpecificLoudness}
 		In hearing models for measuring loudness it is common to split the audible spectrum into bands which all
 		have the same perceived width. Before calculating the total loudness the specific loudness for each of
-		these bands is calculated. The procedure for doing this is beyond the scope of this report. A description
+		these bands is calculated. The procedure for doing this is beyond the scope of this work. A description
 		of this process is provided by \citet{moore1997a}. The specific loudness measures the perceived loudness of
 		a signal in a given frequency range. For the analysis of the perception of timbre this allows for better
-		modelling of what portions of a signals spectrum are audible. While the spectrum describes what frequency
+		modelling of what portions of a signal's spectrum are audible. While the spectrum describes what frequency
 		content is present in the signal, the specific loudness describes how much of each frequency is perceived
 		by a listener.
 
 		A widely used set of bands was proposed by \citet{zwicker1961subdivision} who spilt the spectrum into 24
-		bands, each one critical bandwidth wide. These bands are known and the bark bands and provide a perceptual
+		bands, each one critical bandwidth wide. These bands are known as the bark bands and provide a perceptual
 		unit of frequency, the bark. Integer values of barks occur at the boundaries between two bark bands. An
 		change in frequency of one bark is equal to one critical bandwidth.
-
-	\note
-	{
-		More detailed metrics in the shape of a spectrum can be calculated in the form of Mel Frequency
-		Cepstral Coefficients (MFCCs). These measurements were originally used in speech recognition
-		systems \citep{davis1980comparison}. More recently they have been applied to the analysis of timbre
-		\citep{depoli1997sonological}. 
-	}
 
 	\note
 	{
