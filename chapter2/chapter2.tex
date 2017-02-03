@@ -210,7 +210,7 @@
 		In existing timbral research is is widely reported that features describing a sound's spectrum produce the
 		largest effects on timbre. To calculate these features the signal is first converted into a frequency
 		domain representation. This is most commonly done using either the Discrete Fourier Transform (DTF) or a
-		filter bank. The calculation of many spectral features is done directly from these spectral
+		parallel filter bank. The calculation of many spectral features is done directly from these spectral
 		representations, for others peak finding is applied to the spectrum in order to determine the spectral
 		partials.
 
@@ -229,7 +229,7 @@
 
 		To aid in discussion throughout this work it is useful to define the concept of a spectral component. This
 		is a general concept used to describe individual portions of a signal's spectrum. A signal is composed of
-		$N$ spectral components which are each describe by an amplitude and a frequency. The amplitude and
+		$N$ spectral components which are each described by an amplitude and a frequency. The amplitude and
 		frequency of the $n$\super{th} spectral component are denoted $a_{n}$ and $\nu_{n}$ respectively. Spectral
 		components can describe DFT bins, $a_{n}$ being the bin's magnitude and $\nu_{n}$ its frequency; filter
 		bank bands, $a_{n}$ representing the total energy in the band and $\nu_{n}$ the band's center frequency; or
@@ -245,7 +245,7 @@
 		notation is required for the frequency of the harmonic as it is implicitly equal to $nf_{0}$Hz.
 
 		\subsubsection*{Spectral Moments}
-			The spectral moments are the statistical moments of a signals spectrum. They describe how the
+			The spectral moments are the statistical moments of a signal's spectrum. They describe how the
 			energy is distributed in a spectrum. The first four spectral moments are the centroid, spread,
 			skewness and kurtosis.
 
@@ -295,7 +295,7 @@
 				\label{eq:SpectralKurtosis}
 			\end{equation}
 
-			The kurtosis measures the length of a distributions tails. A low kurtosis describes a spectrum
+			The kurtosis measures the length of a distribution's tails. A low kurtosis describes a spectrum
 			where the energy in evenly distributed in a band around the centroid. A high kurtosis describes a
 			spectrum in which small amounts of energy lies at frequencies far away from the central band.
 
@@ -305,9 +305,12 @@
 			kurtosis without providing a definition.
 
 		\subsubsection*{Spectral Irregularity}
-			Spectral irregularity measures the smoothness of a spectrum. Various different methods of measuring
+			Spectral irregularity measures the smoothness of a magnitude spectrum. It is typically measured
+			using the amplitudes of spectral partials as the spectral of pitched signals are characteristically
+			`unsmooth', having sharp amplitude peaks at each partial. Various different methods of measuring
 			this are often cited in the literature. The first being that proposed by
-			\citet{krimphoff1994caracterisation}, shown in Equation \ref{eq:KrimphoffIrregularity}.
+			\citet{krimphoff1994caracterisation}, shown in Equation \ref{eq:KrimphoffIrregularity} and
+			hereafter referred to as Krimphoff Irregularity ($\textrm{KI}$).
 
 			\begin{equation}
 				\textrm{KI} = \log \left( 20 \sum_{n = 2}^{N - 1}
@@ -327,8 +330,8 @@
 				\label{eq:LibXtractKrimphoffIrregularity}
 			\end{equation}
 
-			A second method is proposed by \citet{jensen1999timbre}, shown in Equation
-			\ref{eq:JensenIrregularity}.
+			A second method, Jensen irregularity ($\textrm{JI}$), is proposed by \citet{jensen1999timbre},
+			shown in Equation \ref{eq:JensenIrregularity}.
 
 			\begin{equation}
 				\textrm{JI} = \frac{\sum_{n = 1}^{N} (a_{n} - a_{n+1})^{2}}
@@ -337,8 +340,8 @@
 				\label{eq:JensenIrregularity}
 			\end{equation}
 
-			A third method is given by \citet{beauchamp2007analysis}, shown in Equation
-			\ref{eq:BeauchampIrregularity}.
+			A third method, Beauchamp irregularity ($\textrm{BI}$) is given by \citet{beauchamp2007analysis},
+			shown in Equation \ref{eq:BeauchampIrregularity}.
 
 			\begin{gather}
 			        \bar{a}_{n} = \frac{a_{n-1} + a_{n} + a_{n+1}}{3} \nonumber \\
@@ -354,7 +357,7 @@
 			measures of irregularity of two different signals to be compared more easily.
 
 		\subsubsection*{Spectral Flatness}
-			Spectral flatness measures how uniformly distributed the energy is in the spectrum.
+			Spectral flatness, $\textrm{SF}$, measures how uniformly distributed the energy is in the spectrum.
 			\citet{johnston1988transform} measures the spectral flatness as the ratio of the geometric and
 			arithmetic means of the power spectrum of a signal (Equation \ref{eq:Flatness}).
 
@@ -375,7 +378,7 @@
 			Where $L_{n}$ is the $n$\super{th} element of list $L$. The two means are only equal if all
 			elements of $L$ have the same value.
 
-			Due to this the spectral flatness of a signal takes a value between zero and one. Low values
+			Due to this, the spectral flatness of a signal takes a value between zero and one. Low values
 			describe signals whose energy lies in narrow bands of the spectrum (tones). High values describe
 			signals whose energy is more spread out, a value of one describing a signal where all bins of the
 			power spectrum have the same amplitude (white noise). This means the spectral flatness also gives a
@@ -388,41 +391,52 @@
 			spectral flatness of zero. This is particularly problematic for digitally synthesised signals as
 			they do not have the inherent noise present in recorded sounds. The method used by
 			\citet{peeters2004a} mitigates this by using filter bank bands as the spectral components. It is
-			less likely that there will be zero energy in a wider spectral band than a single DFT bin. 
-			
-			Another method to avoid spectral flatnesses of zero is to use the signals partials as spectral
-			components.  This no longer measures the tonality / noisiness of a signal but rather the flatness
-			of its spectral envelope.
+			less likely that there will be zero energy in a wider spectral band than a single DFT bin. Another
+			method to avoid spectral flatnesses of zero is to use the signals partials as spectral components.
+			This no longer measures the tonality / noisiness of a signal but rather the flatness of its
+			spectral envelope.
 
 		\subsubsection*{Spectral Slope}
-			The spectral slope measures the gradient of the spectrum. It is calculated by first order liner
-			regression of the spectrum. For a signal with $N$ spectral components the spectral slope can be
-			calculated with Equation \ref{eq:SpectralSlope}.
+			The spectral slope, $\textrm{SSl}$ measures the gradient of the spectrum. It is calculated by first
+			order liner regression of the spectrum. For a signal with $N$ spectral components the spectral
+			slope can be calculated with Equation \ref{eq:SpectralSlope}.
 
 			\begin{gather}
-				A = \sum_{n = 1}^{N} 20\log (a_{n}) 
+				A = \sum_{n = 1}^{N} a_{n}
 				\quad 
-				B = \sum_{n = 1}^{N} 20\nu_{n}\log (a_{n}) \nonumber \\
+				B = \sum_{n = 1}^{N} \nu_{n}a_{n} \nonumber \\
 				F = \sum_{n = 1}^{N} \nu_{n} \quad G = \sum_{n = 1}^{N} \nu_{n}^{2} \nonumber \\
-				\textrm{SSl} = \frac{NB - FA}
-					       {NG - F^{2}}
+				\textrm{SSl} = \frac{1}{A} \frac{NB - FA}{NG - F^{2}}
 				\label{eq:SpectralSlope}
 			\end{gather}
 
 			Negative values of spectral slope describe a spectrum where the majority of the energy is in the
 			low end of the spectrum. Positive values describe signals with more energy in the high end of the
-			spectrum. A value of zero describes either a signal where the energy is evenly distributed
-			throughout the spectrum or one in which the majority of the energy is in the middle of the
-			spectrum.
-
-			Traditional measures of spectral slope take a linear regression of the DFT bins. For musical
-			signals which are composed of partials it may be more beneficial to measure the slope of the
-			partial's amplitudes rather than of the whole spectrum. It is also common to measure how the
-			amplitudes of partials decrease with frequency in dB per octave. Equation \ref{eq:SpectralSlope}
-			can be altered to produce values in this unit by using the $\log_{2}$ of the frequency.
+			spectrum. Traditional measures of spectral slope are calculated using the amplitudes and
+			frequencies of the DFT bins. For musical signals which are composed of partials it may be more
+			beneficial to measure the slope of the partial's amplitudes rather than of the whole spectrum. 
+			
+			Equation \ref{eq:SpectralSlope} produces values with units of Hz\super{-1}. The equation can be
+			altered to provide results in units of dB per Hz by substituting $a_{n}$ with $20\log(a_{n})$ and
+			removing the scaling factor of $\frac{1}{A}$ from the final calculation, giving Equation
+			\ref{eq:SpectralSlope2}.
+			
+			\begin{gather}
+				A = \sum_{n = 1}^{N} 20\log(a_{n})
+				\quad 
+				B = \sum_{n = 1}^{N} 20\nu_{n}\log(a_{n}) \nonumber \\
+				F = \sum_{n = 1}^{N} \nu_{n} \quad G = \sum_{n = 1}^{N} \nu_{n}^{2} \nonumber \\
+				\textrm{SSl} = \frac{NB - FA}{NG - F^{2}}
+				\label{eq:SpectralSlope2}
+			\end{gather}
+			
+			A commonly used unit for measuring slopes in spectra is dB per octave, as used when measuring the
+			roll off rate in a filters stop band. Equation \ref{eq:SpectralSlope2} can be altered to produce
+			values in this unit by substituting $\nu_{n}$ with $\log_{2}(\nu_{n})$.
 
 		\subsubsection*{Tristimulus}
-			The tristimulus metrics are a set of three metrics proposed by \citet{pollard1982a}. They are
+			The tristimulus metrics, $T_{1}$, $T_{2}$ and $T_{3}$, are a set of three metrics proposed by
+			\citet{pollard1982a} which measure the distribution of energy in a signal's spectrum. They are
 			calculated using the harmonic partials of a signal by use of Equations \ref{eq:Tristimulus1},
 			\ref{eq:Tristimulus2} and \ref{eq:Tristimulus3}.
 			
@@ -443,34 +457,52 @@
 
 			Each tristimulus metric measures the amplitude ratio of a specific set of harmonics and all the
 			harmonics. In each of these equations the denominator is always greater than or equal to the
-			numerator. For this reason the tristimulus takes values from zero to one. Zero meaning there is no
-			energy in that set of harmonics, one meaning the signal is entirely composed of those harmonics.
+			numerator, meaning the tristimulus takes values from zero to one. Zero meaning there is no energy
+			in that set of harmonics, one meaning the signal is entirely composed of those harmonics.
+
+			In this work the tristimulus metrics are generalised to include inharmonic partials of a signal,
+			giving the peak tristimulus measures $T_{\textrm{p}1}$, $T_{\textrm{p}2}$ and $T_{\textrm{p}3}$.
+			The spectrum is still split into three bands but the number of partials within these bands depends
+			on the content of the signal. The bands include all partials with a frequency within $0.5f_{0}$Hz
+			of the harmonics in the equivalent band used in the calculation of tristimulus. The peak
+			tristimulus measures are given by Equations \ref{eq:PeakTristimulus1}, \ref{eq:PeakTristimulus2}
+			and \ref{eq:PeakTristimulus3}.
+
+			\begin{gather}
+				P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \nonumber \\
+				F = \left\{ n | n \in P \land 0.5f_{0} \leq \nu_{n} < 1.5f_{0} \right\} \nonumber \\
+				T_{\textrm{p}1} = \frac{\sum_{n \in F} a_{n}}{\sum_{n = 1}^{N} a_{n}}
+				\label{eq:PeakTristimulus1}
+			\end{gather}
+
+			\begin{gather}
+				M = \left\{ n | n \in P \land 1.5f_{0} \leq \nu_{n} < 4.5f_{0} \right\} \nonumber \\
+				T_{\textrm{p}2} = \frac{\sum_{n \in M} a_{n}}{\sum_{n = 1}^{N} a_{n}}
+				\label{eq:PeakTristimulus2}
+			\end{gather}
+
+			\begin{gather}
+				H = \left\{ n | n \in P \land \nu_{n} \geq 4.5f_{0} \right\} \nonumber \\
+				T_{\textrm{p}3} = \frac{\sum_{n \in H} a_{n}}{\sum_{n = 1}^{N} a_{n}}
+				\label{eq:PeakTristimulus3}
+			\end{gather}
 
 		\subsubsection*{Odd to Even Harmonic Ratio}
 			The odd to even harmonic ratio measures the ratio of energy between odd and even order harmonics in
 			a signal. It was found to be a salient feature in timbral recognition by
-			\citet{hall2010importance}.  It is calculated using Equation \ref{eq:HarmonicParityRatio}.
+			\citet{hall2010importance}. It is calculated using Equation \ref{eq:HarmonicParityRatio}.
 			
 			\begin{equation}
-				\textrm{OER} = \frac{\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}
+				\textrm{ROE} = \frac{\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}
 					       {\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
 				\label{eq:HarmonicParityRatio}
 			\end{equation}
 
 			It describes how much of the signals energy is made up of odd or even order harmonics. This allows
-			for distinction between signal which consist only of odd harmonics or of even harmonics. The ration
-			can easily be altered by applying gain to the odd harmonics. The required gain factor, $m$, is
-			calculated using Equation \ref{eq:HarmonicParityRatioManipulation}.
-
-			\begin{equation}
-				m = \sqrt{\frac{R_{\textrm{OE}}\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
-					       {\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}},
-					       \quad R_{\textrm{OE}} \geq 0;
-			       \label{eq:HarmonicParityRatioManipulation}
-			\end{equation}
+			for distinction between signal which consist only of odd harmonics or of even harmonics. 
 
 			Equation \ref{eq:HarmonicParityRatio} produces an asymmetric scale which may be difficult to
-			interpret.  Signals with most of their energy at even harmonics produce values between zero and
+			interpret. Signals with most of their energy at even harmonics produce values between zero and
 			one.  Signals with more energy at the odd harmonics can produce any value greater then one. Another
 			problem arises for signals with no energy at even harmonics where a division by zero will occur.
 

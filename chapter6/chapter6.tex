@@ -1149,8 +1149,19 @@
 
 	\subsection{Odd to Even Harmonic Ratio}
 	\label{sec:FeatureControl-Parameterisation-HarmonicParityRatio}
-		Equations \ref{eq:Oddness} and \ref{eq:Evenness} can be generalised to give Equation
-		\ref{eq:GeneralOddness}.
+		The odd to even harmonic ratio, Equation \ref{eq:HarmonicParityRatio}, can easily be altered by applying
+		gain to the odd harmonics. The required gain factor, $m$, is calculated using Equation
+		\ref{eq:HarmonicParityRatioManipulation}.
+
+		\begin{equation}
+			m = \sqrt{\frac{\textrm{ROE}\sum_{1 \leq n \leq N, n \textrm{ is even}} h_{n}^{2}}
+				       {\sum_{1 \leq n \leq N, n \textrm{ is odd}} h_{n}^{2}}},
+				       \quad \textrm{ROE} \geq 0;
+		       \label{eq:HarmonicParityRatioManipulation}
+		\end{equation}
+
+		The oddness and evenness, Equations \ref{eq:Oddness} and \ref{eq:Evenness}, can be generalised to give
+		Equation \ref{eq:GeneralOddness}.
 
 		\begin{gather}
 			A = \sum_{n \in F} a_{n}^{2} \nonumber \\
