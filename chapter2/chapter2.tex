@@ -584,9 +584,19 @@
 		This perceptual frequency scale allows audio feature metrics to analyse audio in more perceptually relevant
 		bands. One such metric is the Mel Frequency Cepstral Coefficients (MFCCs) developed for use in speech
 		recognition \citep{davis1980comparison}. These provide more detailed about the shape of the spectrum than
-		the spectral moments discussed in Section \ref{sec:Timbre-LowLevelFeatures-Spectral}. From their first use
-		in speech recognition MFCCs have been added to the corpus of audio features used by researchers
-		investigating timbre \citep{depoli1997sonological}. 
+		the spectral moments discussed in Section \ref{sec:Timbre-LowLevelFeatures-Spectral}. In brief the power
+		spectrum of a signal is partitioned into bands which are equally spaced on the mel scale. The DCT of the
+		log powers of these bands is then calculated to produce the MFCCs. From their first use in speech
+		recognition MFCCs have been added to the corpus of audio features used by researchers investigating timbre
+		\citep{depoli1997sonological}. 
+
+		Investigating the perception of frequency allows us to build models of how the human hearing system detects
+		and processes frequency information. This not only allows for the description of the perception of
+		individual tones but also the perception of simultaneously sounded tones. In certain situations a sound
+		will mask the perception of another sound causing it to become inaudible. The degree of masking between two
+		sounds depends on the amplitude, frequency and temporal relationships between them. Two sounds which are
+		perceptually close in frequency are more likely to interact with each others perception causing one to be
+		masked.
 
 	\subsection{Critical Bands}
 	\label{sec:Timbre-PsychoacousticPrinciples-CriticalBands}
