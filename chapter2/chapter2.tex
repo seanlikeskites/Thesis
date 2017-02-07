@@ -313,8 +313,8 @@
 			hereafter referred to as Krimphoff Irregularity ($\textrm{KI}$).
 
 			\begin{equation}
-				\textrm{KI} = \log \left( 20 \sum_{n = 2}^{N - 1}
-							  \abs{\log(a_{n}) - \frac{\log(a_{n-1}a_{n}a_{n+1})}{3}}
+				\textrm{KI} = \log_{10} \left( 20 \sum_{n = 2}^{N - 1}
+						   \abs{\log_{10}(a_{n}) - \frac{\log_{10}(a_{n-1}a_{n}a_{n+1})}{3}}
 						   \right)
 				\label{eq:KrimphoffIrregularity}
 			\end{equation}
@@ -417,14 +417,14 @@
 			beneficial to measure the slope of the partial's amplitudes rather than of the whole spectrum. 
 			
 			Equation \ref{eq:SpectralSlope} produces values with units of Hz\super{-1}. The equation can be
-			altered to provide results in units of dB per Hz by substituting $a_{n}$ with $20\log(a_{n})$ and
-			removing the scaling factor of $\frac{1}{A}$ from the final calculation, giving Equation
+			altered to provide results in units of dB per Hz by substituting $a_{n}$ with $20\log_{10}(a_{n})$
+			and removing the scaling factor of $\frac{1}{A}$ from the final calculation, giving Equation
 			\ref{eq:SpectralSlope2}.
 			
 			\begin{gather}
-				A = \sum_{n = 1}^{N} 20\log(a_{n})
+				A = \sum_{n = 1}^{N} 20\log_{10}(a_{n})
 				\quad 
-				B = \sum_{n = 1}^{N} 20\nu_{n}\log(a_{n}) \nonumber \\
+				B = \sum_{n = 1}^{N} 20\nu_{n}\log_{10}(a_{n}) \nonumber \\
 				F = \sum_{n = 1}^{N} \nu_{n} \quad G = \sum_{n = 1}^{N} \nu_{n}^{2} \nonumber \\
 				\textrm{SSl} = \frac{NB - FA}{NG - F^{2}}
 				\label{eq:SpectralSlope2}
@@ -564,12 +564,22 @@
 	\subsection{Psychoacoustic Frequency}
 	\label{sec:Timbre-PsychoacousticPrinciples-Frequency}
 		In scientific work frequency is typically discussed as an absolute number of cycles per second in units of
-		Hz. In music theory the frequency difference between two sounds is described in terms of tones and octaves.
-		This musical notation assumes that the ratio of between two frequencies defines the perceived interval
-		between them: the perceived difference between 50 and 75Hz is the same as that between 1kHz and 1.5kHz.
-		While this model suffices for musical composition and performance it does not accurately describe the
-		perception of frequency by human listeners. \citep{stevens1937a} propose a new frequency scale, the Mel
-		scale, on which a given change in frequency produces the same perceived interval.
+		hertz. In music theory the frequency difference between two sounds is described in terms of tones and
+		octaves.  This musical notation assumes that the ratio of between two frequencies defines the perceived
+		interval between them: the perceived difference between 50 and 75Hz is the same as that between 1kHz and
+		1.5kHz.  While this model suffices for musical composition and performance it does not accurately describe
+		the perception of frequency by human listeners. \citep{stevens1937a} propose a new frequency scale, the mel
+		scale, on which a given change in frequency produces the same perceived interval. This scaled was devised
+		through a series of listening tests in which participants were asked to adjust the frequency of a tone such
+		that it had a pitch which what half that of a reference tone. This was repeated for ten individual
+		reference tones producing ten data points which were used to provide a mapping between the hertz and mel
+		scales. A formula to approximate the frequency in mel, $m$, for any given frequency in hertz, $f$, is given
+		by \cite{oshaughnessy2000speech} and shown in Equation \ref{eq:mel}.
+
+		\begin{equation}
+			2595 \log_{10} \left(1 + \frac{f}{700} \right)
+			\label{eq:mel}
+		\end{equation}
 
 		This perceptual frequency scale allows audio feature metrics to analyse audio in more perceptually relevant
 		bands. One such metric is the Mel Frequency Cepstral Coefficients (MFCCs) developed for use in speech
