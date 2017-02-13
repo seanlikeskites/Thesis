@@ -985,19 +985,18 @@
 
 \section{Parameterisation of Timbre}
 \label{sec:Timbre-Parameterisation}
-	As mentioned previously, timbre is a multidimensional property of a sound. One of the aims of timbral research is
-	to identify salient dimensions which can be used for the description of timbre. Various features have already been
-	discussed which might be considered dimensions on which the perceived nature of a sound can be described (loudness,
-	pitch, sharpness, roughness). One disadvantage to these descriptions is that they do not represent orthogonal
-	dimensions. Models of the perception of sharpness and roughness depend on the frequency register of a signal, thus
-	changing the pitch of a signal will also alter its sharpness and roughness.
-
-	Previous studies attempting to uncover salient dimensions of timbre all use a similar structure in their approach.
-	First a set of audio stimuli is selected. These are usually equalised in pitch and loudness so as to negate those
-	attribute effects on the timbre. Listening tests are then undertaken in which participants evaluate the stimuli on
-	a given set of criteria. The results of these experiments are then analysed using dimensionality reduction
-	techniques to produce a timbre space in which the differences between the stimuli is described by a small set of
-	dimensions.
+	As discussed earlier in the chapter, timbre is a multidimensional property of a sound. One of the aims of timbral
+	research is to identify salient dimensions which can be used for the description of timbre. Various features have
+	already been discussed which might be considered dimensions on which the perceived nature of a sound can be
+	described (loudness, pitch, sharpness, roughness). One disadvantage to these descriptions is that they do not
+	represent orthogonal dimensions. Models of the perception of sharpness and roughness depend on the frequency
+	register of a signal, thus changing the pitch of a signal will also alter its sharpness and roughness. Previous
+	studies attempting to uncover salient dimensions of timbre all use a similar structure in their approach.  First a
+	set of audio stimuli is selected. These are usually equalised in pitch and loudness so as to negate those
+	attributes' effects on the timbre. Listening tests are then undertaken in which participants evaluate the stimuli
+	on a given set of criteria. The results of these experiments are then analysed using dimensionality reduction
+	techniques to produce a timbre space in which the differences between the stimuli are described by a small set of
+	orthogonal dimensions.
 
 	\section{Dimensionality Reduction}
 	\label{sec:Timbre-Parameterisation-DimensionalityReduction}
@@ -1008,7 +1007,7 @@
 		audio stimulus sits at the point denoted by its gradings on those scales. Dimensionality reduction is
 		applied to reduce the number of dimensions while preserving information relating to the differences between
 		stimuli (such as the euclidean distances between them). The dimensionality reduction method used depends on
-		the type of data collected in the listening experiment.  Various methods have been used in previous timbral
+		the type of data collected in the listening experiment. Various methods have been used in previous timbral
 		research including multidimensional scaling (MDS), principle component analysis (PCA) and exploratory
 		factor analysis (EFA).
 
@@ -1017,19 +1016,15 @@
 		consists of the distances between each pair of stimuli. This is the type of data collected using pairwise
 		dissimilarity tests. Non-metric data consists of rankings of the stimulus' dissimilarity (e.g. this pair of
 		stimuli is more similar than this pair of stimuli). This is the type of data collected using a triadic
-		comparisons experiment.
-
-		The goal of MDS analysis is to take this dissimilarity data and represent it in an $N$ dimensional timbre
-		space.  Each audio stimulus is placed at a point in this space, the distances between them representing
-		their dissimilarities. For timbral research the data is usually represented in two
+		comparisons experiment. The goal of MDS analysis is to take this dissimilarity data and represent it in an
+		$N$ dimensional timbre space. Each audio stimulus is placed at a point in this space, the distances between
+		them representing their dissimilarities. For timbral research the data is usually represented in two
 		\citep{giragama2003relating} or three \citep{grey1978perceptual} dimensions and sometimes four
-		\citep{bernays2011verbal}.
-		
-		There are multiple different algorithms for performing MDS several of which are discussed by
-		\citet{mcadams1999perspectives}. Each has slight performance improvements for specific types of input data.
-		\citet{burgoyne2008a} reanalysed the results of various classic timbre studies with an improved MDS
-		algorithm stating that through removing nonlinearities in the input data the timbre space can be better
-		represented.
+		\citep{bernays2011verbal}. There are multiple different algorithms for performing MDS several of which are
+		discussed by \citet{mcadams1999perspectives}. Each has slight performance improvements for specific types
+		of input data.  \citet{burgoyne2008a} reanalysed the results of various classic timbre studies with an
+		improved MDS algorithm stating that through removing nonlinearities in the input data the timbre space can
+		be better represented.
 
 		The other two methods (PCA and EFA) take multivariate data and try to describe it using a smaller set of
 		variables, called components or factors. This approach is well suited to data obtained from attribute scale
@@ -1045,24 +1040,23 @@
 
 	\subsection{Correlation of Dimensions with Audio Features}
 	\label{sec:Timbre-DimensionalityReduction-DimensionCorrelations}
-		Once a timbre space has been constructed the relationship between the timbre space dimensions and audio
+		Once a timbre space has been constructed, the relationship between the timbre space dimensions and audio
 		features can be investigated. A common way of doing this is take correlation measurements between the audio
 		stimulus' features and their position in a given dimension of the timbre space.
-
 		\citet{mcadams1995perceptual} find that two of their timbre space dimensions correlate well with the log
-		attack time and spectral centroid on the audio stimuli respectively. Similar results were also found by
+		attack time and spectral centroid of the audio stimuli respectively. Similar results were also found by
 		\citet{caclin2005acoustic} who, as discussed before, used synthetic audio stimuli which only differed in
 		those features and spectral flux. This suggests that log attack time and spectral centroid are two
-		orthogonal features which contribute a lot to the perception of difference in timbre.
+		orthogonal features which contribute greatly to the perception of difference in timbre.
 		\citet{alluri2010exploring} take a more in depth approach, using regression techniques to identify which
 		audio features contribute to which dimensions of their timbre space.
 
-		Where timbral descriptors are available the semantic meanings of the dimensions can be discussed. When PCA
+		Where timbral descriptors are available, the semantic meanings of the dimensions can be discussed. When PCA
 		or EFA are used on the results from attribute scale tests the results directly show how much each of the
 		graded attributes contribute to each dimension of the timbre space. \citet{marui2005timbre} use the results
 		from their semantic differential test in order to assign semantic descriptors to the dimensions of their
-		timbre space.
-
+		timbre space. 
+		
 		Further analysis can be carried out in the form of clustering. This identifies groups (clusters) of stimuli
 		with similar timbres. The clustering applied by \citet{lakatos2000a} identifies clusters which correlate
 		well with the class of instruments played in the audio stimuli. Clustering can also be applied to attribute
@@ -1071,43 +1065,46 @@
 
 \section{Controlling Timbre}
 \label{sec:Timbre-Control}
-	Correlations of audio features to timbre space dimensions provides methods of moving sounds around within the
-	timbre space. Correlations of semantic descriptors with the timbre space dimensions allows the space to be
-	partitioned into regions which correspond to particular descriptors. With this information systems can be created
-	to synthesise sounds at particular positions within a timbre space or manipulate existing sounds to alter their
-	location in the timbre space.
 
-	Early work in this area was performed by \citet{wessel1979timbre} who suggests that a timbre space can be used as
-	an intuitive control system for audio. \citet{vertegaal1994isee} use this concept to produce a system which
-	provides control over a synthesis engine using four parameters, an overtones parameter which controls the harmonic
-	content of the signal, a brightness parameter which controls the magnitude distribution of the spectrum and
-	articulation and envelope parameters which control the temporal properties of the signals amplitude envelope. They
-	state that this system assists novice users but proves too limited for experienced users who desire a finer degree
-	of control.
+	\subsection{Control via Timbre Spaces}
+	\label{sec:Timbre-Control-TimbreSpaces}
+		Measuring the correlations of audio features with the timbre space dimensions provides information on which
+		features need be manipulated to move sounds around within the timbre space. Measuring the correlations of
+		semantic descriptors with the timbre space dimensions allows the space to be partitioned into regions which
+		correspond to particular descriptors. With this information systems can be created to synthesise sounds at
+		particular positions within a timbre space or manipulate existing sounds to alter their location in the
+		timbre space.
 
-	A commonly stated timbral mapping is that between a sounds spectral centroid and its perceived brightness
-	\citep{schubert2006does}. This has been used in order to produce systems providing control over the brightness of a
-	sound. \citet{williams2007perceptually} propose a system for manipulation the brightness of recorded sounds. The
-	system follows an analysis / resynthesis structure. Firstly the short-time Fourier transform of the signal is
-	calculated. The magnitudes of the frequency bins are then altered in order to alter the spectral centroid to
-	achieve the desired change in brightness. Lastly the signal is resynthesised using the new magnitude data.  Two
-	further studies by the same researchers propose systems which control perceived softness by manipulating attack
-	time \citep{williams2009perceptually} and perceived warmth through altering the relative amplitude of the first
-	three harmonics and the rest of the signal \citep{williams2010perceptually}.
+		Early work in this area was performed by \citet{wessel1979timbre} who suggests that a timbre space can be
+		used as an intuitive control system for audio. \citet{vertegaal1994isee} use this concept to produce a
+		system which provides control over a synthesis engine using four parameters, an overtones parameter which
+		controls the harmonic content of the signal, a brightness parameter which controls the magnitude
+		distribution of the spectrum and articulation and envelope parameters which control the temporal properties
+		of the signals amplitude envelope. They state that this system assists novice users but proves too limited
+		for experienced users who desire a finer degree of control.
 
-	\citet{zacharakis2011an} propose an additive synthesis system which can independently control the spectral centroid
-	and the relative energy of the first three harmonics. They report that this is somewhat successful in independent
-	control of perceived brightness and warmth. Although they also find evidence, through listening tests, that the
-	perception of each of these attributes overlaps and that spectral centroid is not the only contributing factor to
-	perceived brightness.
+		A commonly stated timbral mapping is that between a sounds spectral centroid and its perceived brightness
+		\citep{schubert2006does}. This has been used in order to produce systems providing control over the
+		brightness of a sound. \citet{williams2007perceptually} propose a system for manipulation the brightness of
+		recorded sounds. The system follows an analysis / resynthesis structure. Firstly the short-time Fourier
+		transform of the signal is calculated. The magnitudes of the frequency bins are then altered in order to
+		alter the spectral centroid to achieve the desired change in brightness. Lastly the signal is resynthesised
+		using the new magnitude data.  Two further studies by the same researchers propose systems which control
+		perceived softness by manipulating attack time \citep{williams2009perceptually} and perceived warmth
+		through altering the relative amplitude of the first three harmonics and the rest of the signal
+		\citep{williams2010perceptually}. \citet{zacharakis2011an} propose an additive synthesis system which can
+		independently control the spectral centroid and the relative energy of the first three harmonics. They
+		report that this is somewhat successful in independent control of perceived brightness and warmth. Although
+		they also find evidence, through listening tests, that the perception of each of these attributes overlaps
+		and that spectral centroid is not the only contributing factor to perceived brightness.
 
-	\subsection{Building Parameter Spaces}
+	\subsection{Control via Parameter Spaces}
 	\label{sec:Timbre-Control-ParameterSpaces}
-		A different approach to controlling is based around analysing the parameter settings of effects used to
-		produce a given semantic effect. One way of doing this is to construct parameter spaces by performing
+		A different approach to controlling timbre is based around analysing the parameter settings of effects used
+		to produce a given semantic effect. One way of doing this is to construct parameter spaces by performing
 		dimensionality reduction on a large set of possible parameter configurations for an audio processing
 		algorithm. This is the approach take by \citet{cartwright2013socialeq} and
-		\citet{seetharaman2014crowdsourcing}. In thee studies the researchers asked listening test participants to
+		\citet{seetharaman2014crowdsourcing}. In these studies the researchers asked listening test participants to
 		attribute semantic descriptors to audio stimuli processed using an equaliser and a reverb respectively. MDS
 		analysis is then performed on the effects parameter configurations to produce a two dimensional parameter
 		space onto which the descriptors are mapped.
@@ -1116,17 +1113,15 @@
 		parameters of certain audio effects contribute most to particular timbral attributes. This is done by
 		having listening test participants rank how well given semantic descriptors describe an audio stimulus
 		processed with several different parameter configurations. Weightings for each effect parameter can then be
-		deduced by looking at the correlations of parameter values and these rankings.
+		deduced by looking at the correlations of parameter values and these rankings. \citet{huang2014active} use
+		a more computational method, using the machine learning method of Gaussian processes in order to `learn' a
+		function $f(x)$ which maps between the parameters of a synthesiser and the perception of a particular
+		descriptor.
 
-		One downside of this approach is that it take no account of the audio being processed by the effect. For
-		example, consider a situation in which it was found that increasing the amplitude of frequencies around
-		2kHz, with an equaliser, increased the brightness of a sound. This would have no effect on signals which
-		have no energy at that frequency.
-
-		\note
-		{
-			And the there is also \citet{huang2014active} who does magic with synthesis parameters.
-		}
+		One downside of this analysing timbral manipulations in the parameter space is that it does not take
+		account of the audio being processed by the effect. For example, consider a situation in which it was found
+		that increasing the amplitude of frequencies around 2kHz, with an equaliser, increased the brightness of a
+		sound. This would have no effect on signals which have no energy at that frequency.
 
 \section{Audio Processing}
 \note
