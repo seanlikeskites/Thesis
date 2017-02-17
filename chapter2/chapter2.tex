@@ -1128,15 +1128,19 @@
 	piece of audio. These devices can be applied for corrective purposes (e.g. noise removal), to meet technical
 	requirements (e.g. broadcast limiting) or as creative effects as additional tools in music production. Regardless
 	of the intended use case, these devices are typically referred to as audio effects, an audio effect being any
-	device which applies a transformation to the input signal.
+	device which applies a transformation to the input signal. There are numerous ways to classify audio effects based
+	on their mathematical properties, operation or timbral characteristics. \citet{verfaille2006an} suggest that these
+	different classifications are each more appropriate for different tasks involving audio effects. When considering
+	the development of audio effects it is meaningful to group effects based on the signal processing techniques used
+	in their construction. In contrast, end users of the effects (music producers, musicians etc.) may find it more
+	convenient to classify effect by the perceptual characteristics they impart on a signal.
 
-\note
-{
-	\citep{verfaille2006an, eichas2015feature}
-
-	General audio processing methods and how they influence timbre. Use top descriptors for each plug-in from the SAFE
-	data. What effect do these effects have on the low level features.
-}
+	\citet{eichas2015feature} classify audio effects using the mathematical properties of the underlying system:
+	whether the system is linear and whether or not the output is dependant on time. This classification provides a
+	compromise between the previous two methods, grouping effects into classes which are similarly implemented and also
+	have similar timbral effects. In this section the most commonly used audio effects are listed and their properties
+	and usages discussed. The effects are split into three categories: linear time invariant, linear time variant and
+	nonlinear as is done by \citet{eichas2015feature}.
 
 	\subsection{Linear Time Invariant Effects}
 	\label{sec:Timbre-AudioProcessing-LTI}
@@ -1146,3 +1150,10 @@
 
 	\subsection{Nonlinear Effects}
 	\label{sec:Timbre-AudioProcessing-Nonlinear}
+
+\note
+{
+	General audio processing methods and how they influence timbre. Use top descriptors for each plug-in from the SAFE
+	data. What effect do these effects have on the low level features.
+}
+
