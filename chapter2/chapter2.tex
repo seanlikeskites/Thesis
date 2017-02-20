@@ -1144,16 +1144,57 @@
 
 	\subsection{Linear Time Invariant Effects}
 	\label{sec:Timbre-AudioProcessing-LTI}
+		A linear system is one which satisfies the conditions met by the superposition principle. These conditions
+		are that of additivity (Equation \ref{eq:additivity}) and homogeneity (Equation \ref{eq:homogeneity}).
+
+		\begin{equation} f(x + y) = f(x) + f(y) \label{eq:additivity} \end{equation}
+
+		\begin{equation} f(ax) = af(x) \label{eq:homogeneity} \end{equation}
+
+		Where the system is represented as a function $f$, $x$ and $y$ represent two different input signals, and
+		$a$ an arbitrary scaling factor.
+
+		Time invariance includes a further restriction that the behaviour of the system does not vary with time:
+		identical signals processed at different times will produce identical results. A linear time invariant
+		(LTI) system is then one which satisfies the principles of superposition and time invariance. LTI systems
+		also exhibit the property of commutativity, meaning that the order in which multiple LTI systems are
+		applied has no effect on the resultant signal as illustrated in Equation \ref{eq:commutativity}.
+
+		\begin{equation} f(g(x)) = g(f(x)) \label{eq:commutativity} \end{equation}
+
+		Where $f$ and $g$ are both functions representing LTI systems and $x$ is an input signal.
+
+		The LTI effects commonly used in audio production are equalisation, delay and reverb.
+
+		\subsubsection*{Equalisation}
+
+		\subsubsection*{Delay and Reverb}
 
 	\subsection{Linear Time Variant Effects}
 	\label{sec:Timbre-AudioProcessing-LTV}
+		Linear time variant (LTV) systems satisfy the superposition principle but include an element which varies
+		with time. In audio effects this time variance is most often due to modulation of the processing parameters
+		by an internally generated signal. In audio effects this internal signal generator is often referred to as
+		a low frequency oscillator (LFO).
 
 	\subsection{Nonlinear Effects}
 	\label{sec:Timbre-AudioProcessing-Nonlinear}
+		Nonlinear systems are those that do not satisfy the superposition principle. In audio processing the
+		nonlinear systems used typically apply automodulation (multiplying the input by itself) or adjust
+		processing parameters based on the amplitude of the input signal.
+
+		\subsubsection*{Dynamics Processing}
+			\note{Gates, compressors, expanders}
+
+		\subsubsection*{Nonlinear Distortion}
+			\note
+			{
+				Deliberate introduction of nonlinear distortion components. Further detail in Section
+				\ref{sec:Excitation-AnalysisOfNonlinearSystems}.
+			}
 
 \note
 {
 	General audio processing methods and how they influence timbre. Use top descriptors for each plug-in from the SAFE
 	data. What effect do these effects have on the low level features.
 }
-
