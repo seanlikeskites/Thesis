@@ -1,8 +1,13 @@
-\chapter{Perceptual Experiments}
+\chapter{Perceptual Experiments} % probably change the title.
 \label{chap:PerceptualExperiments}
 
 \section{Introduction}
 \label{sec:PerceptualExperiments-Introduction}
+	\note
+	{
+		Motivation for doing perceptual tests in general. Who will benefit?
+	}
+
 	This chapter discusses two experiments to evaluate the performance of harmonic excitations systems based on those
 	discussed in Chapter \ref{chap:FeatureControl}. The first experiment (Section
 	\ref{sec:PerceptualExperiments-Reconstruction}) compares the abilities of different excitation methods in
@@ -14,6 +19,11 @@
 
 \section{Reconstruction of Individual Harmonics}
 \label{sec:PerceptualExperiments-Reconstruction}
+	\note
+	{
+		Why is harmonic reconstruction useful? Audio inpainting?
+	}
+
 	Several of the harmonic excitation systems discussed in Section \ref{sec:FeatureControl-Systems} rely on the
 	generation of individual harmonics of the input signal. Ideally, when a new harmonic is added to a signal using one
 	of these systems it should sound `natural'. The resulting signal should sound as though it came from a single
@@ -82,6 +92,11 @@
 	\subsection{Methodology}
 	\label{sec:PerceptualExperiments-Reconstruction-Methodology}
 		\subsubsection*{Stimuli Generation}
+			\note
+			{
+				Degradation filter params?
+			}
+
 			The harmonic reconstruction systems were evaluated using the same four audio signals used in
 			Section \ref{sec:FeatureControl-Parameterisation} to assess audio feature parameterisation
 			techniques (cello, clarinet, synthesised and piano). For each signal the third through ninth
@@ -210,6 +225,12 @@
 	\label{sec:PerceptualExperiments-Reconstruction-Results}
 		In the results figures presented in this section the eleven stimuli created from each test signal are
 		numerated 1 to 11 as follows:
+
+		\note
+		{
+			Explain that they are not comparable, but we demonstrate changes in processing accuracy through
+			changes in parameters. Clarify that there is no relation between window size and filter order.
+		}
 
 		\begin{tabular}{>{\bfseries}rl}
 			1. & The reference stimulus. \tabularnewline
@@ -438,6 +459,11 @@
 		scale.  Where there is more variability between the stimuli, as for the acoustic signals, it becomes easier
 		for test participants to grade stimuli on the scale as they will need to be spread over a wider larger
 		range.
+
+		\note
+		{
+			Link into further work, we need to model the relationships between harmonic amplitudes.
+		}
 
 		All the systems evaluated in this section use the amplitude envelope of the fundamental to inform the
 		amplitude envelopes of the generated harmonics. This assumes that the amplitude envelopes of the harmonics
@@ -687,6 +713,11 @@
 
 \section{Semantic Control}
 \label{sec:PerceptualExperiments-SemanticControl}
+	\note
+	{
+		Why is this useful?
+	}
+
 	In this section the findings of Chapter \ref{chap:TimbreEvaluation} are combined with the techniques discussed in
 	Chapter \ref{chap:FeatureControl} to develop audio effects with control parameters which relate to specific
 	descriptive terms. Two such effects are developed, each with a single `semantic' control parameter which changes
