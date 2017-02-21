@@ -6,17 +6,6 @@
 
 \chapter{Timbre}
 \label{chap:Timbre}
-\note
-{
-	CataRT system developed by \citet{schwarz2007corpus}.
-
-	Temporal features, hidden markov models to look at feature change over time. 
-
-	All that stuff about only distorting the only the sustain.
-
-	Timbral effects of amplitude envelope being reversed \citep{patterson1994the}.
-
-}
 
 \section{Introduction}
 \label{sec:Timbre-Introduction}
@@ -190,7 +179,9 @@
 			\citep{ilmoniemi2004subjective} and is often scaled logarithmically giving the log attack time.
 			Other temporal features measure the amplitude envelope in its entirely, such and the temporal
 			centroid which is the mean time of the signals duration weighted by the amplitude at each instant
-			\citep{peeters2000instrument}.
+			\citep{peeters2000instrument}. The temporal evolution of the amplitude envelope can have a distinct
+			effect of the perceived timbre of a sound. \citet{patterson1994the} show that signals with similar
+			spectral content but different amplitude envelopes had be differentiated.
 
 		\subsubsection*{Other Temporal Audio Features}
 			Basic frequency information can be attained trough temporal analysis by enumerating the number of
@@ -1140,7 +1131,9 @@
 	compromise between the previous two methods, grouping effects into classes which are similarly implemented and also
 	have similar timbral effects. In this section the most commonly used audio effects are listed and their properties
 	and usages discussed. The effects are split into three categories: linear time invariant, linear time variant and
-	nonlinear as is done by \citet{eichas2015feature}.
+	nonlinear as is done by \citet{eichas2015feature}. Popular terms used to describe the timbre effects of the most
+	commonly used audio effect are gather from the dataset collected from the SAFE project (discussed in detail in
+	Section \ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}).
 
 	\subsection{Linear Time Invariant Effects}
 	\label{sec:Timbre-AudioProcessing-LTI}
@@ -1164,9 +1157,12 @@
 
 		Where $f$ and $g$ are both functions representing LTI systems and $x$ is an input signal.
 
-		The LTI effects commonly used in audio production are equalisation, delay and reverb.
+		From the corpus of audio effects used by audio engineers equalisation, delay and reverb are based on LTI
+		systems.
 
 		\subsubsection*{Equalisation}
+			Equalisation is the process of applying filters to a signal to accentuate / attenuate certain
+			frequency ranges. An equaliser (EQ) is the audio effect used to apply these spectral manipulations.
 
 		\subsubsection*{Delay and Reverb}
 
@@ -1187,6 +1183,9 @@
 			\note{Gates, compressors, expanders}
 
 		\subsubsection*{Nonlinear Distortion}
+			In contrast to dynamics processing, nonlinear distortion effects are intended to introduce
+			artifacts to a signal.
+
 			\note
 			{
 				Deliberate introduction of nonlinear distortion components. Further detail in Section
