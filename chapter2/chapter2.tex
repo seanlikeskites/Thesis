@@ -1131,8 +1131,8 @@
 	compromise between the previous two methods, grouping effects into classes which are similarly implemented and also
 	have similar timbral effects. In this section the most commonly used audio effects are listed and their properties
 	and usages discussed. The effects are split into three categories: linear time invariant, linear time variant and
-	nonlinear as is done by \citet{eichas2015feature}. Popular terms used to describe the timbre effects of the most
-	commonly used audio effect are gather from the dataset collected from the SAFE project (discussed in detail in
+	nonlinear as is done by \citet{eichas2015feature}. Popular terms used to describe the timbral effects of the most
+	commonly used audio effects are gathered from the dataset collected by the SAFE project (discussed in detail in
 	Section \ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}).
 
 	\subsection{Linear Time Invariant Effects}
@@ -1163,24 +1163,42 @@
 		\subsubsection*{Equalisation}
 			Equalisation is the process of applying filters to a signal to accentuate / attenuate certain
 			frequency ranges. An equaliser (EQ) is the audio effect used to apply these spectral manipulations.
+			Equalisers were first developed as specific electronic circuits used for corrective tasks
+			associated with signal transmission. As the field of audio production has evolved more flexible
+			equalisers with more control parameters have been introduced \citep{gottlieb2007shaping}. These
+			modern equalisers are still used for corrective purposes but also provide more opportunities for
+			the creative shaping of timbre. Responses from the SAFE project (Section
+			\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}) indicate that the most commonly used
+			terms to describe the timbral effects of equalisation are: warm, bright, clear, airy, thin, full,
+			boomy, boxy, tinny, deep, muddy and harsh.
 
-		\subsubsection*{Delay and Reverb}
+		\subsubsection*{Reverberation}
+			Reverberation (reverb) effects simulate the effects of the natural reflection of sounds in enclosed
+			spaces. A common use case is to introduce a sense of space to audio recorded with close microphone
+			techniques. These recording techniques do not capture the natural reverberation of the room in
+			which a sound was recorded, artificial reverb is added to make the recording sound more natural
+			\citep{gottlieb2007shaping}. As with equalisation, reverb effects can also be used more creatively
+			to enhance a musical production. The timbral characteristics of the reverb effect use in the SAFE
+			project has been described with the terms roomy, damp, dreamy, airy, big, massive and distant.
 
 	\subsection{Linear Time Variant Effects}
 	\label{sec:Timbre-AudioProcessing-LTV}
 		Linear time variant (LTV) systems satisfy the superposition principle but include an element which varies
 		with time. In audio effects this time variance is most often due to modulation of the processing parameters
 		by an internally generated signal. In audio effects this internal signal generator is often referred to as
-		a low frequency oscillator (LFO).
+		a low frequency oscillator (LFO). \note{Flange, phase, chorus a la \citep{huber2010modern}}.
 
 	\subsection{Nonlinear Effects}
 	\label{sec:Timbre-AudioProcessing-Nonlinear}
 		Nonlinear systems are those that do not satisfy the superposition principle. In audio processing the
 		nonlinear systems used typically apply automodulation (multiplying the input by itself) or adjust
-		processing parameters based on the amplitude of the input signal.
+		processing parameters based on the amplitude of the input signal. Two common uses for nonlinear processing
+		is control of dynamics and application of deliberate distortion.
 
 		\subsubsection*{Dynamics Processing}
 			\note{Gates, compressors, expanders}
+
+			\note{punchy, tight, smooth, squashed, snappy and crushed.}
 
 		\subsubsection*{Nonlinear Distortion}
 			In contrast to dynamics processing, nonlinear distortion effects are intended to introduce
@@ -1191,6 +1209,8 @@
 				Deliberate introduction of nonlinear distortion components. Further detail in Section
 				\ref{sec:Excitation-AnalysisOfNonlinearSystems}.
 			}
+
+			\note{crunchy, warm, fuzzy, creamy, bright, harsh, raspy and smooth.}
 
 \note
 {
