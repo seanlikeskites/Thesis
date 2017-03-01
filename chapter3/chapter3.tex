@@ -23,30 +23,28 @@
 	quantified and the timbral transforms they impart. Firstly the analysis of nonlinear systems is discussed in Section
 	\ref{sec:Excitation-AnalysisOfNonlinearSystems}. Existing research into the perceived timbral effects of these
 	systems is then discussed in Section \ref{sec:Excitation-Timbre}. Section \ref{sec:Excitation-Uses} describes the
-	common uses for nonlinear distortion by audio engineers. Section \ref{sec:ExcitationEvaluation-Methods} then
-	explains the operation of various nonlinear systems used, or proposed for use, in audio processing.
+	common uses for nonlinear distortion by audio engineers. Section \ref{sec:Excitation-Methods} then explains the
+	operation of various nonlinear systems used, or proposed for use, in audio processing.
 
 \section{Analysis of Nonlinear Systems}
 \label{sec:Excitation-AnalysisOfNonlinearSystems}
 	The behaviour of an LTI system can be entirely summarised by its response to an impulse signal
-	\citep{phillips2007signals}. Once the impulse response of a linear time invariant (LTI) system has been measured,
-	the system's response to any arbitrary input is known. Analysis of nonlinear systems is more complicated. Unlike LTI
-	systems the properties of the system cannot be summarised by the system's response to a single input signal.
-	Depending on the field in which a nonlinear system is being studied, different approaches are taken in an attempt to
-	summarise the behaviour of nonlinear systems.
-
-	In the field of audio engineering much of the literature concerning nonlinearities has to do with minimising
-	distortion or measuring the maximum allowable levels of distortion. Several distortion metrics have been developed
-	each with their own uses. A review of many of these metrics is given by \cite{voishvillo2006assessment}, some of
-	which will be discussed in Section \ref{sec:Excitation-Analysis-Metrics}.
-
-	Where more information is needed, nonlinear modelling techniques are used. These revolve around setting the
-	parameters of a generalised nonlinear system such that its behaviour matches that of the system being analysed. The
-	nonlinear modelling techniques utilised in the audio processing literature are discussed in Section
-	\ref{sec:Excitation-Analysis-Modelling}.
+	\citep{phillips2007signals}. Once the impulse response of the system has been measured, the system's response to any
+	arbitrary input is known. Analysis of nonlinear systems is more complicated, unlike LTI systems the properties of
+	the system cannot be summarised by the system's response to a single input signal. Depending on the field in which a
+	nonlinear system is being studied, different approaches are taken in an attempt to summarise the behaviour of
+	nonlinear systems. In the field of audio engineering much of the literature concerning nonlinearities has to do with
+	minimising distortion or measuring the maximum allowable levels of distortion. Several distortion metrics have been
+	developed each with their own uses. A review of many of these metrics is given by \cite{voishvillo2006assessment},
+	some of which will be discussed in Section \ref{sec:Excitation-Analysis-Metrics}. Where more information is needed,
+	nonlinear modelling techniques are used. These typically involve setting the parameters of a generalised nonlinear
+	system such that its behaviour matches that of the system being analysed. The nonlinear modelling techniques
+	utilised in the audio processing literature are discussed in Section \ref{sec:Excitation-Analysis-Modelling}. Prior
+	to discussing how the effects of nonlinear systems are measures / modelled the concept of distortion components (the
+	artefacts introduced by nonlinear systems) is introduced in Section \ref{sec:Excitation-Analysis-Components}.
 
 	\subsection{Distortion Components}
-	\label{sec:Excitation-AnalysisOfNonlinearSystems-Components}
+	\label{sec:Excitation-Analysis-Components}
 		Nonlinear systems introduce new spectral components to a signal. These distortion components are produced
 		via intermodulation of the existing components in the signal. The frequencies of these distortion components
 		are linear combinations of the frequency components in the input signal. For a signal with $N$ frequency
