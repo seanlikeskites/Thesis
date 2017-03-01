@@ -95,7 +95,7 @@
 			time. The number of samples of the signal's amplitude measured per second is referred to as the
 			sampling frequency, $f_{s}$. The sampling frequency of a discrete signal imposes a restriction on
 			the highest frequency which can be represented within it. This frequency is known as the Nyquist
-			frequency ,$f_{N}$, and is calculated using Equation \ref{eq:nyquist}.
+			frequency, $f_{N}$, and is calculated using Equation \ref{eq:nyquist}.
 
 			\begin{equation}
 				f_{N} = \frac{f_{s}}{2}
@@ -104,8 +104,8 @@
 
 			When sampling a signal, frequency content above the Nyquist is represented as alias frequencies
 			within the bandwidth allowed by the sampling frequency. The alias frequency, $f_{\textrm{alias}}$,
-			for a given frequency in the input signal, $f$, is the displacement between the frequency and the
-			nearest integer multiple of the sampling frequency (Equation \ref{eq:aliasing}).
+			for a given frequency in the input signal, $f$, is the displacement between it and the nearest
+			integer multiple of the sampling frequency (Equation \ref{eq:aliasing}).
 
 			\begin{equation}
 				f_{\textrm{alias}} = \abs{f - f_{s}\floor{\frac{f}{f_{s}} + \frac{1}{2}}}
@@ -130,40 +130,41 @@
 
 	\subsection{Objective Distortion Metrics}
 	\label{sec:Excitation-Analysis-Metrics}
-		Total Harmonic Distortion (THD) and Intermodulation Distortion (IMD) are the traditional objective measures
-		of distortion \citep{czerwinski2001multitone1}. 
-		
-		THD measures the level of new harmonic components introduced to a sinusoidal signal. There are two different
-		ways in which THD is calculated. These have been denoted THD\sub{F} and THD\sub{R} by
-		\citet{shmilovitz2005on} and are calculated using Equations \ref{eq:thdf} and \ref{eq:thdr} respectively.
+		Traditional measurements of the effects of nonlinear systems measure the ratio between the levels of
+		unwanted distortion components and wanted frequency components in the output signal. Two metrics, Total
+		Harmonic Distortion (THD) and Intermodulation Distortion (IMD), are the traditional objective measures of
+		distortion in audio systems \citep{czerwinski2001multitone1}. THD measures the level of harmonic distortion
+		components introduced by a system for a sinusoidal input signal and is calculated using two different
+		methods. These have been denoted $\textrm{THD}_{F}$ and $\textrm{THD}_{R}$ by \citet{shmilovitz2005on} and
+		are calculated using Equations \ref{eq:thdf} and \ref{eq:thdr} respectively.
 
 		\begin{equation}
-			\textrm{THD}_{\textrm{F}} = \frac{\sqrt{\sum_{n = 2}^{\infty} a_{n}^{2}}}{a_{1}}
+			\textrm{THD}_{F} = \frac{\sqrt{\sum_{n = 2}^{\infty} h_{n}^{2}}}{h_{1}}
 			\label{eq:thdf}
 		\end{equation}
 
 		\begin{equation}
-			\textrm{THD}_{\textrm{R}} = \sqrt{\frac{\sum_{n = 2}^{\infty} a_{n}^{2}}
-			                                       {\sum_{n = 1}^{\infty} a_{n}^{2}}}
+			\textrm{THD}_{R} = \sqrt{\frac{\sum_{n = 2}^{\infty} h_{n}^{2}}
+			                                       {\sum_{n = 1}^{\infty} h_{n}^{2}}}
 			\label{eq:thdr}
 		\end{equation}
 
-		Where $a_n$ is the amplitude of the $n$\super{th} harmonic. 
+		Where $h_n$ is the amplitude of the $n$\super{th} harmonic. 
 
-		Each of these measures has slightly different properties. THD\sub{R} measure the proportion of the output
-		signal which consists of new harmonic components, producing a value between zero and one. THD\sub{F}
-		measures the relative levels of new harmonic content and the energy at the frequency of the original
-		sinusoid producing a positive value. \citet{shmilovitz2005on} suggests that THD\sub{F} provides a better
-		measure for signals with high distortion as there is no upper bound on the value which is produced.
-
-		Both these methods been used in recent work published in the audio field (THD\sub{F} by
-		\citet{fleischmann2014a} and THD\sub{R} by \citet{dutilleux2011nonlinear}). The lack of standardisation for
-		this metric makes it difficult to compare experimental results reported by different sources.
+		Each of these measures has slightly different properties. $\textrm{THD}_{R}$ measures the proportion of the
+		output signal which consists of new harmonic components, producing a value between zero and one.
+		$\textrm{THD}_{F}$ measures the relative levels of new harmonic content and the energy at the frequency of
+		the original sinusoid producing a positive value. \citet{shmilovitz2005on} suggests that $\textrm{THD}_{F}$
+		provides a better measure for signals with high distortion as there is no upper bound on the value which is
+		produced.  Both methods have been used in recent work published in the audio processing field
+		($\textrm{THD}_{F}$ by \citet{fleischmann2014a} and $\textrm{THD}_{R}$ by \citet{dutilleux2011nonlinear}).
+		The lack of standardisation for this metric makes it difficult to compare experimental results reported by
+		different sources.
 
 		Various standards exists for the measurement of IMD. Typically the systems response to a signal consisting
 		of two sinusoids is measured. According to the \citet{IEC2001amplifiers} standard, a signal comprising two
 		frequency components, $f_{1}$ and $f_{2}$ (where $f_{2} > f_{1}$), with an amplitude ratio of 4:1 is used.
-		The only the levels of the second and third order intermodulation components are then measured separately
+		The levels of the second and third order intermodulation components present is then measured separately
 		according to Equations \ref{eq:imd2} and \ref{eq:imd3}.
 
 		\begin{equation}
@@ -180,15 +181,12 @@
 
 		THD and IMD give very limited information about the response of nonlinear systems. They are typically
 		measured using simple input signals which are not representative of the signals a system would process in
-		actual use. Given that nonlinear systems may not satisfy the condition of superposition a system may
-		process simple and complex signals in vastly differing manners. 
-
-		These metrics also give no indication of the perceived degradation in audio quality a system introduces. A
-		signal with a high THD values may potentially sound less distorted that one with a small THD. Several
-		researchers have developed new distortion metrics which indicate the perceived amount of distortion.
-
-		\citet{geddes2003auditory} suggest some psychoacoustic principles which may be applicable to the analysis
-		of nonlinear distortion:
+		actual use. Given that nonlinear systems may not satisfy the condition of superposition a system may process
+		simple and complex signals in vastly differing manners. These metrics also give no indication of the
+		perceived degradation in audio quality a system introduces. A signal with a high THD values may potentially
+		sound less distorted that one with a small THD. Several researchers have developed new distortion metrics
+		which indicate the perceived amount of distortion. \citet{geddes2003auditory} suggest some psychoacoustic
+		principles which may be applicable to the analysis of nonlinear distortion:
 
 		\begin{itemize}
 			\item New frequency components introduced, with lower frequencies than the original components,
@@ -201,12 +199,11 @@
 		low ends of the frequency spectrum.
 
 		A subset of nonlinear systems can be described by a characteristic curve (a function mapping the
-		instantaneous amplitude of the input signal to the input amplitude of the output signal). These systems are
+		instantaneous amplitude of the input signal to the amplitude of the output signal). These systems are
 		referred to as static nonlinearities and are memoryless systems (their behaviour is only governed by the
-		instantaneous amplitude of the input, not any of its previous states).
-
-		The GedLee metric, proposed by \citet{geddes2003auditory}, measures how much a static nonlinearity will be
-		perceived through analysis of its characteristic curve. It is calculated using Equation \ref{eq:gedlee}.
+		instantaneous amplitude of the input, not any of its previous states). The GedLee metric, proposed by
+		\citet{geddes2003auditory}, measures how much a static nonlinearity will be perceived through analysis of
+		its characteristic curve, $T(x)$. It is calculated using Equation \ref{eq:gedlee}.
 
 		\begin{equation}
 			G_{m} = \sqrt{\int_{-1}^{1} \left( \cos \left( \frac{x\pi}{2} \right) \right)^{2}
@@ -214,40 +211,45 @@
 			\label{eq:gedlee}
 		\end{equation}
 
-		Where $T(x)$ is the characteristic curve of the static nonlinearity in question.
-
 		A considerable advantage of the GedLee metric is that it directly measures the system in question rather
 		than signals processed by it. This should allow measurements taken using the metric to describe the audible
-		degradation of any signal processed by a system. \citet{lee2003auditory} provide results of an experiment
-		in which their metric was tested against THD and IMD as a rating of audio quality. They show that for low
+		degradation of any signal processed by a system. \citet{lee2003auditory} provide results of an experiment in
+		which their metric was tested against THD and IMD as a rating of audio quality. They show that for low
 		levels of distortion the GedLee metric correlates with subjective audio quality ratings. THD and IMD are
-		both found to not correlate well with perceived quality.
+		both found not to correlate well with perceived quality. The GedLee metric is only applicable to the
+		analysis of static nonlinearities. Many nonlinear systems are more complex than this and may exhibit
+		frequency dependant or time varying behaviour. While the GedLee metric may provide a good, signal
+		independent, measure of distortion, it is only applicable to a subset of nonlinear systems.
 
-		The GedLee metric is only applicable to the analysis of static nonlinearities. Many nonlinear systems are
-		more complex than this and may exhibit frequency dependant or time varying behaviour.  While the GedLee
-		metric may provide a good, signal independent, measure of distortion, it is only applicable to a subset of
-		nonlinear systems.
+		\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score ($\textrm{DS}$),
+		which employs models of the human hearing system to better approximate the perceived level of distortion.
+		Both the input and output signal of the system under test are split into non-overlapping 30ms frames and
+		spectral analysis applied to each frame. Distortion components which are inaudible due to masking are taken
+		into account by splitting the spectrum of each frame into non-overlapping bands which are one ERB in width.
+		The final metric is calculated from the difference in power between these bands in the input and output
+		signal according to Equation \ref{eq:DistortionScore}.
 
-		\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score (DS), which they then
-		improved upon to create the R\sub{nonlin} metric \citep{tan2004predicting}. Both these metrics rely on
-		analysing signals which have been processed, so they may not give results which can be applied as generally
-		as those using the GedLee metric. These metrics have an advantage in that they use models of the human
-		hearing system to better approximate the perceived level of distortion.
-
-		To calculate the DS the audio is split into frequency bands which model the auditory filters of the
-		cochlear. These auditory filters represent bands within which two tones will interfere with the perception
-		of each other \citep{fastl2007psychoacoustics}. Tones can be masked (made inaudible) by other tones within
-		the same auditory filter band. By processing the audio in this manner the DS metric can take account of
-		elements of the distortion which may not be perceptible because of masking.
+		\begin{equation}
+			\textrm{DS} = \frac{1}{N} \sum_{n = 1}^{N} \sum_{m = 1}^{M} 
+				\abs{20\log_{10} \left( \frac{\textrm{OP}_{n,m}}{\textrm{IP}_{n,m}} \right) }
+			\label{eq:DistortionScore}
+		\end{equation}
 		
-		The R\sub{nonlin} metric improves on this model of the hearing system by including a filter with a
-		frequency response similar to that of the outer and middle ear. The filter used is as described by
-		\citet{glasberg2002a}, it attenuates frequencies at either end of the audible spectrum. This models the
-		decreased perception of distortion at these frequencies as reported by \citet{voishvillo2006assessment}.
+		% carry on here
+		\citep{tan2003predicting} suggest improvements to the $\textrm{DS}$ metric leading to the
+		$R_{\textrm{nonlin}}$ metric. The first improvement is the inclusion of a filter with a frequency response
+		similar to that of the outer and middle ear. The filter used is as described by \citet{glasberg2002a}, it
+		attenuates frequencies at either end of the audible spectrum, modelling the decreased perception of
+		distortion at these frequencies as reported by \citet{voishvillo2006assessment}. This filter is applied to
+		the output and input signal before they are split into frames.
 
-		\citet{tan2004predicting} report greater correlation between R\sub{nonlin} and perceived audio quality then
-		\citet{lee2003auditory} do for the GedLee metric. They also demonstrate how accurate the R\sub{nonlin}
-		metric is in predicting the perceived distortion level introduced to music and speech signals.
+		Both these metrics rely on analysing signals which have been processed, so they may not give results which
+		can be applied as generally as those using the GedLee metric.
+
+		\citet{tan2004predicting} report greater correlation between $R_{\textrm{nonlin}}$ and perceived audio
+		quality then \citet{lee2003auditory} do for the GedLee metric. They also demonstrate how accurate the
+		$R_{\textrm{nonlin}}$ metric is in predicting the perceived distortion level introduced to music and speech
+		signals.
 
 		The research discussed in this section has focused on measuring the extent to which unwanted distortion can
 		be perceived. This does not provide enough information for the description of timbre. The listening tests

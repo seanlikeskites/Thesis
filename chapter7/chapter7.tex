@@ -152,12 +152,12 @@
 
 		\subsubsection*{Objective Evaluation}
 			An approximation of the perceptual difference between the stimuli and the relevant audio signal is
-			measured using the R\sub{nonlin} metric proposed by \citet{tan2004predicting}. As discussed in
-			Section \ref{sec:Excitation-Analysis-Metrics} this is a metric which uses psychoacoustic models of
-			the human hearing system to judge the perceived level of distortion in a signal. It is calculated
-			by comparing the degraded signal against the non-degraded signal, returning a value between 0 and
-			1. 1 denoting a signal which is indistinguishable from the original and lower values describing
-			signals with a higher level of perceivable distortion.
+			measured using the $R_{\textrm{nonlin}}$ metric proposed by \citet{tan2004predicting}. As discussed
+			in Section \ref{sec:Excitation-Analysis-Metrics} this is a metric which uses psychoacoustic models
+			of the human hearing system to judge the perceived level of distortion in a signal. It is
+			calculated by comparing the degraded signal against the non-degraded signal, returning a value
+			between 0 and 1. 1 denoting a signal which is indistinguishable from the original and lower values
+			describing signals with a higher level of perceivable distortion.
 
 		\subsubsection*{Subjective Evaluation}
 			The performance of the reconstruction systems was evaluated subjectively using series of multiple
@@ -252,20 +252,20 @@
 			11. & Stimulus with third through ninth harmonics removed (anchor).
 		\end{tabular}
 
-		The R\sub{nonlin} results for each of the stimuli are presented in Figure \ref{fig:SMCRNonlin}. The values
-		have been normalised to the range 0 to 100 for purposes of comparison with the grading scale used in the
-		listening test. Note that for the piano signal three of the reconstructed stimuli have R\sub{nonlin} score
-		lower than that of the anchor. This is due to the piano signal having a damped fundamental.  Reconstructing
-		the higher order harmonics using information in the fundamental produces lower quality harmonics as the
-		structure of the fundamental does not reflect that of the other harmonics in the signal. In lieu of this,
-		test participants who grade any of the reconstructed piano stimuli less than the piano anchor will not be
-		deemed unreliable.
+		The $R_{\textrm{nonlin}}$ results for each of the stimuli are presented in Figure \ref{fig:SMCRNonlin}. The
+		values have been normalised to the range 0 to 100 for purposes of comparison with the grading scale used in
+		the listening test. Note that for the piano signal three of the reconstructed stimuli have
+		$R_{\textrm{nonlin}}$ score lower than that of the anchor. This is due to the piano signal having a damped
+		fundamental.  Reconstructing the higher order harmonics using information in the fundamental produces lower
+		quality harmonics as the structure of the fundamental does not reflect that of the other harmonics in the
+		signal. In lieu of this, test participants who grade any of the reconstructed piano stimuli less than the
+		piano anchor will not be deemed unreliable.
 		
 		Two of the eight participants who took part in the listening tests failed to grade the hidden reference
 		correctly causing their results have been discarded. The mean grades given by the remaining six
 		participants are shown in Figure \ref{fig:SMCResults} with error bars illustrating 95\% confidence
-		intervals. The Pearson correlation ($r$) between these mean grades and the R\sub{nonlin} scores for the
-		stimuli are shown in Table \ref{tab:SMCCorrelations}.
+		intervals. The Pearson correlation ($r$) between these mean grades and the $R_{\textrm{nonlin}}$ scores for
+		the stimuli are shown in Table \ref{tab:SMCCorrelations}.
 
 		\begin{figure}[h!]
 			\centering
@@ -293,7 +293,7 @@
 				\includegraphics{chapter7/Images/PianoRNonlin.pdf}
 				\label{fig:PianoRNonlin}
 			}
-			\caption{R\sub{nonlin} values for each of the stimuli.}
+			\caption{$R_{\textrm{nonlin}}$ values for each of the stimuli.}
 			\label{fig:SMCRNonlin}
 		\end{figure}
 
@@ -330,7 +330,7 @@
 		\begin{table}[h!]
 			\centering
 			\input{chapter7/Tables/SMCCorrelations.tex}
-			\caption{Correlations between the R\sub{nonlin} values and the mean grades.}
+			\caption{Correlations between the $R_{\textrm{nonlin}}$ values and the mean grades.}
 			\label{tab:SMCCorrelations}
 		\end{table}
 
@@ -438,11 +438,11 @@
 %
 		The results of the listening test show that the effects of STFT window length and filter order are as
 		expected. Across the majority of the stimuli there is an increase in the perceived quality of the
-		reconstruction as the STFT window length / filter order is increased. The R\sub{nonlin} measurements
-		confirm that as these parameters are increased the resulting reconstructed signal is objectively more
-		similar to the original signal. For each of the original signals the reconstruction with a window length /
-		filter order of 500 receive similar grades, it is in the lower setting of these parameters that differences
-		between the methods become noticeable.
+		reconstruction as the STFT window length / filter order is increased. The $R_{\textrm{nonlin}}$
+		measurements confirm that as these parameters are increased the resulting reconstructed signal is
+		objectively more similar to the original signal. For each of the original signals the reconstruction with a
+		window length / filter order of 500 receive similar grades, it is in the lower setting of these parameters
+		that differences between the methods become noticeable.
 
 		For each of the acoustic signals (cello, clarinet and piano) the reconstruction with the synthesis method
 		and an STFT window length of 50 samples was given the lowest mean grade by test participants. This is most
@@ -450,8 +450,8 @@
 		and IAP techniques produce better reconstructions of these signals at lower filter orders and require less
 		computational power. The results for the synthesised sample do not exhibit this pattern, with the IAP
 		reconstructions being given lower grades than the other methods for lower filter orders. However, examining
-		the R\sub{nonlin} measures it is seen that the IAP reconstructions of this signal are objectively more
-		similar to the original signal than those reconstructed with the synthesis method. This is possibly
+		the $R_{\textrm{nonlin}}$ measures it is seen that the IAP reconstructions of this signal are objectively
+		more similar to the original signal than those reconstructed with the synthesis method. This is possibly
 		explained by the fact that the synthesised signal is the easiest to reconstruct. It is a purely harmonic
 		signal with no energy at inharmonic frequencies. This makes it easy to isolate the fundamental and produce
 		harmonics with less intermodulation components. As all the reconstructions of the synthesised signal are
