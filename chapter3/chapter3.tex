@@ -225,9 +225,9 @@
 		which employs models of the human hearing system to better approximate the perceived level of distortion.
 		Both the input and output signal of the system under test are split into non-overlapping 30ms frames and
 		spectral analysis applied to each frame. Distortion components which are inaudible due to masking are taken
-		into account by splitting the spectrum of each frame into non-overlapping bands which are one ERB in width.
-		The final metric is calculated from the difference in power between these bands in the input and output
-		signal according to Equation \ref{eq:DistortionScore}.
+		into account by splitting the spectrum of each frame into non-overlapping bands which are one $\mathrm{ERB}$
+		in width. The final metric is calculated from the difference in power between these bands in the input and
+		output signal according to Equation \ref{eq:DistortionScore}.
 
 		\begin{equation}
 			\mathrm{DS} = \frac{1}{N} \sum_{n = 1}^{N} \sum_{m = 1}^{M} 
@@ -239,35 +239,52 @@
 		$R_{\mathrm{nonlin}}$ metric. The first improvement is the inclusion of a filter with a frequency response
 		similar to that of the outer and middle ear. The filter used is described by \citet{glasberg2002a}, it
 		attenuates frequencies at either end of the audible spectrum modelling the decreased perception of
-		distortion at these frequencies as reported by \citet{voishvillo2006assessment}. The input and output signal
-		of the nonlinear system being tested are both processed by this filter prior to further analysis. In place
-		of splitting the spectra into bands as done in the calculation of $DS$ the signals are then split into bands
-		using a parallel bank of 40 gammatone filters each one ERB in width. The outputs of each gammatone filter
-		are then split into non-overlapping 30ms frames and the normalised cross-correlation between the input and
-		output frame is measured. To account for any delay introduced by the system under test a variable lag
-		parameter, $\tau$, is introduced to offset the input and output signals from one another in time. For each
-		frame of audio, $i$, and lag value, $\tau$, the normalised cross-correlation, $r_{j,i,\tau}$, between the
-		input and output signals, $x_{j}[n]$ and $y_{j}[n]$, after processing by gammatone filter $j$ is calculated
-		using Equation \ref{eq:RNonlinCrossCorrelation}.
+		distortion at these frequencies as reported by \citet{voishvillo2006assessment}. The calculation of
+		$R_{\mathrm{nonlin}}$ is split into several steps as follows:
+		
+		\begin{enumerate}
+			\item A signal, $x[n]$, is processed by the system under test producing an output signal, $y[n]$.
 
-		\begin{gather}
-			S_{i,\tau} = \left\{ n | n \in \textbf{Z} 
-				     \land (i-1)L+\tau+1 \leq n \leq iL + \tau \right\} \nonumber \\
-			r_{j,i,\tau} = \frac{\sum_{n \in S_{i,\tau}} x_{j}[n]y_{j}[n-\tau]}
-				{\left( \sum_{n \in S_{i,\tau}} x_{j}[n]^{2} \right) 
-				\left( \sum_{n \in S_{i,\tau}} y_{j}[n-\tau]^{2} \right)}
-			\label{eq:RNonlinCrossCorrelation}
-		\end{gather}
+			\item $x[n]$ and $y[n]$ are time aligned and each filtered using the outer and middle ear filter
+				discussed previously.
 
-		Where $S_{i,\tau}$ is the range of samples from the input signal used in the calculation given the frame
-		number and the value of the lag parameter and $L$ is the number of samples in a 30ms frame given the
-		sampling frequency ($L = \round{0.03f_{s}}$).
+			\item The signals are then processed by a parallel bank of 40 gammatone filters each one
+				$\mathrm{ERB}$ wide. The input and output signals processed by gammatone filter $j$ are
+				denoted $x_j[n]$ and $y_j[n]$ respectively.
 
-		\begin{gather}
-			\mathrm{T} = \round{0.01f_{s}} \nonumber \\
-			M_{j,i} = \max_{-\mathrm{T} \leq \tau \leq \mathrm{T}} r_{j,i,\tau}
-			\label{eq:RNonlinCrossCorrelation}
-		\end{gather}
+			\item The outputs of each gammatone filter are then split into non-overlapping 30ms frames and the
+				normalised cross-correlation between the input and output frame is measured.  To account for
+				any frequency dependent delay introduced by the system under test a variable lag parameter,
+				$\tau$, is introduced to offset the input and output signals from one another in time. For
+				each frame, $i$, band, $j$, and lag value, $\tau$, the normalised cross-correlation between
+				the input and output signals, $r_{i,j,\tau}$, is calculated using Equation
+				\ref{eq:RNonlinCrossCorrelation}.
+
+				\begin{gather}
+					S_{i,\tau} = \left\{ n | n \in \textbf{Z} 
+						     \land (i-1)L+\tau+1 \leq n \leq iL + \tau \right\} \nonumber \\
+					r_{i,j,\tau} = \frac{\sum_{n \in S_{i,\tau}} x_{j}[n]y_{j}[n-\tau]}
+						{\left( \sum_{n \in S_{i,\tau}} x_{j}[n]^{2} \right) 
+						\left( \sum_{n \in S_{i,\tau}} y_{j}[n-\tau]^{2} \right)}
+					\label{eq:RNonlinCrossCorrelation}
+				\end{gather}
+
+				Where $S_{i,\tau}$ is the range of samples from the input signal used in the calculation,
+				given the frame number and the value of the lag parameter, and $L$ is the number of samples
+				in a 30ms frame, given the sampling frequency ($L = \round{0.03f_{s}}$). 
+
+			\item For each frame and band the maximum value of this cross-correlation, $M_{i,j}$, is found for
+				lag times at one sample increments between -10ms and 10ms (Equation
+				\ref{eq:RNonlinMaxCrossCorrelation}).
+
+				\begin{gather}
+					\mathrm{T} = \round{0.01f_{s}} \nonumber \\
+					M_{j,i} = \max_{-\mathrm{T} \leq \tau \leq \mathrm{T}} r_{j,i,\tau}
+					\label{eq:RNonlinMaxCrossCorrelation}
+				\end{gather}
+
+			\item
+		\end{enumerate}
 
 		\citet{tan2004predicting} report greater correlation between $R_{\mathrm{nonlin}}$ and perceived audio
 		quality then \citet{lee2003auditory} do for the GedLee metric. They also demonstrate how accurate the
