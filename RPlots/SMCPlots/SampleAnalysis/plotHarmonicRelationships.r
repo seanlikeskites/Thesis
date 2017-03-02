@@ -308,7 +308,7 @@ nSamples <- length(samples)
 
 lines <- c(lines, "\\begin{tabular}{|c|c|}")
 lines <- c(lines, "\t\\hline")
-lines <- c(lines, "\t\\bf{Signal} & $\\textbf{\\textrm{HV}}$ \\tabularnewline")
+lines <- c(lines, "\t\\bf{Signal} & $\\textbf{\\mathrm{HV}}$ \\tabularnewline")
 lines <- c(lines, "\t\\hline")
 lines <- c(lines, "\t\\hline")
 

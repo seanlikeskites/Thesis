@@ -103,12 +103,12 @@
 			\end{equation}
 
 			When sampling a signal, frequency content above the Nyquist is represented as alias frequencies
-			within the bandwidth allowed by the sampling frequency. The alias frequency, $f_{\textrm{alias}}$,
+			within the bandwidth allowed by the sampling frequency. The alias frequency, $f_{\mathrm{alias}}$,
 			for a given frequency in the input signal, $f$, is the displacement between it and the nearest
 			integer multiple of the sampling frequency (Equation \ref{eq:aliasing}).
 
 			\begin{equation}
-				f_{\textrm{alias}} = \abs{f - f_{s}\floor{\frac{f}{f_{s}} + \frac{1}{2}}}
+				f_{\mathrm{alias}} = \abs{f - f_{s}\round{\frac{f}{f_{s}}}}
 				\label{eq:aliasing}
 			\end{equation}
 
@@ -135,29 +135,29 @@
 		Harmonic Distortion (THD) and Intermodulation Distortion (IMD), are the traditional objective measures of
 		distortion in audio systems \citep{czerwinski2001multitone1}. THD measures the level of harmonic distortion
 		components introduced by a system for a sinusoidal input signal and is calculated using two different
-		methods. These have been denoted $\textrm{THD}_{F}$ and $\textrm{THD}_{R}$ by \citet{shmilovitz2005on} and
+		methods. These have been denoted $\mathrm{THD}_{F}$ and $\mathrm{THD}_{R}$ by \citet{shmilovitz2005on} and
 		are calculated using Equations \ref{eq:thdf} and \ref{eq:thdr} respectively.
 
 		\begin{equation}
-			\textrm{THD}_{F} = \frac{\sqrt{\sum_{n = 2}^{\infty} h_{n}^{2}}}{h_{1}}
+			\mathrm{THD}_{F} = \frac{\sqrt{\sum_{n = 2}^{\infty} h_{n}^{2}}}{h_{1}}
 			\label{eq:thdf}
 		\end{equation}
 
 		\begin{equation}
-			\textrm{THD}_{R} = \sqrt{\frac{\sum_{n = 2}^{\infty} h_{n}^{2}}
+			\mathrm{THD}_{R} = \sqrt{\frac{\sum_{n = 2}^{\infty} h_{n}^{2}}
 			                                       {\sum_{n = 1}^{\infty} h_{n}^{2}}}
 			\label{eq:thdr}
 		\end{equation}
 
 		Where $h_n$ is the amplitude of the $n$\super{th} harmonic. 
 
-		Each of these measures has slightly different properties. $\textrm{THD}_{R}$ measures the proportion of the
+		Each of these measures has slightly different properties. $\mathrm{THD}_{R}$ measures the proportion of the
 		output signal which consists of new harmonic components, producing a value between zero and one.
-		$\textrm{THD}_{F}$ measures the relative levels of new harmonic content and the energy at the frequency of
-		the original sinusoid producing a positive value. \citet{shmilovitz2005on} suggests that $\textrm{THD}_{F}$
+		$\mathrm{THD}_{F}$ measures the relative levels of new harmonic content and the energy at the frequency of
+		the original sinusoid producing a positive value. \citet{shmilovitz2005on} suggests that $\mathrm{THD}_{F}$
 		provides a better measure for signals with high distortion as there is no upper bound on the value which is
 		produced.  Both methods have been used in recent work published in the audio processing field
-		($\textrm{THD}_{F}$ by \citet{fleischmann2014a} and $\textrm{THD}_{R}$ by \citet{dutilleux2011nonlinear}).
+		($\mathrm{THD}_{F}$ by \citet{fleischmann2014a} and $\mathrm{THD}_{R}$ by \citet{dutilleux2011nonlinear}).
 		The lack of standardisation for this metric makes it difficult to compare experimental results reported by
 		different sources.
 
@@ -168,12 +168,12 @@
 		according to Equations \ref{eq:imd2} and \ref{eq:imd3}.
 
 		\begin{equation}
-			\textrm{IMD}_{2} = 100\frac{a_{f_{2} + f_{1}} + a_{f_{2} - f_{1}}}{a_{f_{2}}}
+			\mathrm{IMD}_{2} = 100\frac{a_{f_{2} + f_{1}} + a_{f_{2} - f_{1}}}{a_{f_{2}}}
 			\label{eq:imd2}
 		\end{equation}
 
 		\begin{equation}
-			\textrm{IMD}_{3} = 100\frac{a_{f_{2} + 2f_{1}} + a_{f_{2} - 2f_{1}}}{a_{f_{2}}}
+			\mathrm{IMD}_{3} = 100\frac{a_{f_{2} + 2f_{1}} + a_{f_{2} - 2f_{1}}}{a_{f_{2}}}
 			\label{eq:imd3}
 		\end{equation}
 
@@ -221,7 +221,7 @@
 		frequency dependant or time varying behaviour. While the GedLee metric may provide a good, signal
 		independent, measure of distortion, it is only applicable to a subset of nonlinear systems.
 
-		\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score ($\textrm{DS}$),
+		\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score ($\mathrm{DS}$),
 		which employs models of the human hearing system to better approximate the perceived level of distortion.
 		Both the input and output signal of the system under test are split into non-overlapping 30ms frames and
 		spectral analysis applied to each frame. Distortion components which are inaudible due to masking are taken
@@ -230,26 +230,50 @@
 		signal according to Equation \ref{eq:DistortionScore}.
 
 		\begin{equation}
-			\textrm{DS} = \frac{1}{N} \sum_{n = 1}^{N} \sum_{m = 1}^{M} 
-				\abs{20\log_{10} \left( \frac{\textrm{OP}_{n,m}}{\textrm{IP}_{n,m}} \right) }
+			\mathrm{DS} = \frac{1}{N} \sum_{n = 1}^{N} \sum_{m = 1}^{M} 
+				\abs{10\log_{10} \left( \frac{\mathrm{OP}_{n,m}}{\mathrm{IP}_{n,m}} \right) }
 			\label{eq:DistortionScore}
 		\end{equation}
 		
-		% carry on here
-		\citep{tan2003predicting} suggest improvements to the $\textrm{DS}$ metric leading to the
-		$R_{\textrm{nonlin}}$ metric. The first improvement is the inclusion of a filter with a frequency response
-		similar to that of the outer and middle ear. The filter used is as described by \citet{glasberg2002a}, it
-		attenuates frequencies at either end of the audible spectrum, modelling the decreased perception of
-		distortion at these frequencies as reported by \citet{voishvillo2006assessment}. This filter is applied to
-		the output and input signal before they are split into frames.
+		\citet{tan2004predicting} suggest improvements to the $\mathrm{DS}$ metric leading to the
+		$R_{\mathrm{nonlin}}$ metric. The first improvement is the inclusion of a filter with a frequency response
+		similar to that of the outer and middle ear. The filter used is described by \citet{glasberg2002a}, it
+		attenuates frequencies at either end of the audible spectrum modelling the decreased perception of
+		distortion at these frequencies as reported by \citet{voishvillo2006assessment}. The input and output signal
+		of the nonlinear system being tested are both processed by this filter prior to further analysis. In place
+		of splitting the spectra into bands as done in the calculation of $DS$ the signals are then split into bands
+		using a parallel bank of 40 gammatone filters each one ERB in width. The outputs of each gammatone filter
+		are then split into non-overlapping 30ms frames and the normalised cross-correlation between the input and
+		output frame is measured. To account for any delay introduced by the system under test a variable lag
+		parameter, $\tau$, is introduced to offset the input and output signals from one another in time. For each
+		frame of audio, $i$, and lag value, $\tau$, the normalised cross-correlation, $r_{j,i,\tau}$, between the
+		input and output signals, $x_{j}[n]$ and $y_{j}[n]$, after processing by gammatone filter $j$ is calculated
+		using Equation \ref{eq:RNonlinCrossCorrelation}.
 
-		Both these metrics rely on analysing signals which have been processed, so they may not give results which
-		can be applied as generally as those using the GedLee metric.
+		\begin{gather}
+			S_{i,\tau} = \left\{ n | n \in \textbf{Z} 
+				     \land (i-1)L+\tau+1 \leq n \leq iL + \tau \right\} \nonumber \\
+			r_{j,i,\tau} = \frac{\sum_{n \in S_{i,\tau}} x_{j}[n]y_{j}[n-\tau]}
+				{\left( \sum_{n \in S_{i,\tau}} x_{j}[n]^{2} \right) 
+				\left( \sum_{n \in S_{i,\tau}} y_{j}[n-\tau]^{2} \right)}
+			\label{eq:RNonlinCrossCorrelation}
+		\end{gather}
 
-		\citet{tan2004predicting} report greater correlation between $R_{\textrm{nonlin}}$ and perceived audio
+		Where $S_{i,\tau}$ is the range of samples from the input signal used in the calculation given the frame
+		number and the value of the lag parameter and $L$ is the number of samples in a 30ms frame given the
+		sampling frequency ($L = \round{0.03f_{s}}$).
+
+		\begin{gather}
+			\mathrm{T} = \round{0.01f_{s}} \nonumber \\
+			M_{j,i} = \max_{-\mathrm{T} \leq \tau \leq \mathrm{T}} r_{j,i,\tau}
+			\label{eq:RNonlinCrossCorrelation}
+		\end{gather}
+
+		\citet{tan2004predicting} report greater correlation between $R_{\mathrm{nonlin}}$ and perceived audio
 		quality then \citet{lee2003auditory} do for the GedLee metric. They also demonstrate how accurate the
-		$R_{\textrm{nonlin}}$ metric is in predicting the perceived distortion level introduced to music and speech
-		signals.
+		$R_{\mathrm{nonlin}}$ metric is in predicting the perceived distortion level introduced to music and speech
+		signals. However, both $\mathrm{DS}$ and $R_{\mathrm{nonlin}}$ rely on analysing signals which have been
+		processed, so they may not give results which can be applied as generally as those using the GedLee metric.
 
 		The research discussed in this section has focused on measuring the extent to which unwanted distortion can
 		be perceived. This does not provide enough information for the description of timbre. The listening tests
