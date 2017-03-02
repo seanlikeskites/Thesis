@@ -279,11 +279,37 @@
 
 				\begin{gather}
 					\mathrm{T} = \round{0.01f_{s}} \nonumber \\
-					M_{j,i} = \max_{-\mathrm{T} \leq \tau \leq \mathrm{T}} r_{j,i,\tau}
+					M_{j,i} = \max_{\tau = -\mathrm{T}}^{\mathrm{T}} r_{j,i,\tau}
 					\label{eq:RNonlinMaxCrossCorrelation}
 				\end{gather}
 
-			\item
+			\item The values of $M_{i,j}$ are then weighted according to the power present in the relevant frame
+				and band, $P_{i,j}$, and the maximum power of all bands in that frame, $Q_{i}$. The
+				weighting for each band and frame, $W_{i,j}$ is calculated using Equation
+				\ref{eq:RNonlinWeighting}.
+
+				\begin{gather}
+					P_{i,j} = 10\log_{10} \left( \frac{1}{L} 
+							\sum_{n=(i-1)L+1}^{iL} y_{j}[n]^{2}\right) \nonumber \\
+					Q_{i} = \max_{j = 1}^{40} P_{i,j} \nonumber \\
+					W_{i,j} = \begin{cases}
+						1 & \text{if $Q_{i} - P_{i,j} \leq 40$} \\
+						\frac{P_{i,j} - Q_{i} + 80}{40} & 
+							\text{if $40 < Q_{i} - P_{i,j} \leq 80$} \\
+						0 & \text{otherwise} \\
+					\end{cases}
+					\label{eq:RNonlinWeighting}
+				\end{gather}
+
+				Prior to being applied the weighs are normalised such that the sum of the weights for each
+				frame is equal to 1 giving the normalised weights, $W'_{i,j}$, using equation
+				\ref{eq:RNonlinWeightsNormalisation}.
+
+				\begin{equation}
+					W'_{i,j} = \frac{W_{i, j}}{\sum_{k = 1}^{40} W_{i,k}}
+					\label{eq:RNonlinWeightsNormalisation}
+				\end{equation}
+
 		\end{enumerate}
 
 		\citet{tan2004predicting} report greater correlation between $R_{\mathrm{nonlin}}$ and perceived audio
