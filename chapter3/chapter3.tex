@@ -223,17 +223,22 @@
 
 		\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score ($\mathrm{DS}$),
 		which employs models of the human hearing system to better approximate the perceived level of distortion.
-		Both the input and output signal of the system under test are split into non-overlapping 30ms frames and
+		Both the input and output signal of the system under test are split into $I$ non-overlapping 30ms frames and
 		spectral analysis applied to each frame. Distortion components which are inaudible due to masking are taken
-		into account by splitting the spectrum of each frame into non-overlapping bands which are one $\mathrm{ERB}$
-		in width. The final metric is calculated from the difference in power between these bands in the input and
-		output signal according to Equation \ref{eq:DistortionScore}.
+		into account by splitting the spectrum of each frame into $J$ non-overlapping bands which are one
+		$\mathrm{ERB}$ in width. The final distortion score, $\mathrm{DS}$, is calculated from the difference in
+		power between these bands in the input and output signal according to Equation \ref{eq:DistortionScore}.
 
-		\begin{equation}
-			\mathrm{DS} = \frac{1}{N} \sum_{n = 1}^{N} \sum_{m = 1}^{M} 
-				\abs{10\log_{10} \left( \frac{\mathrm{OP}_{n,m}}{\mathrm{IP}_{n,m}} \right) }
+		\begin{gather}
+			\mathrm{IP}_{i,j} = \sum_{n = 1}^{N_{j}} X_{i,j}[n]^2 \nonumber \\
+			\mathrm{OP}_{i,j} = \sum_{n = 1}^{N_{j}} Y_{i,j}[n]^2 \nonumber \\
+			\mathrm{DS} = \frac{1}{I} \sum_{i = 1}^{I} \sum_{j = 1}^{J} 
+				\abs{10\log_{10} \left( \frac{\mathrm{OP}_{i,j}}{\mathrm{IP}_{i,j}} \right) }
 			\label{eq:DistortionScore}
-		\end{equation}
+		\end{gather}
+
+		Where $X_{i,j}[n]$ and $Y_{i,j}[n]$ are the $j$\super{th} band of the spectra of the $i$\super{th} frame
+		of the input and output signals respectively and $N_{j}$ the number of spectral bins in that band.
 		
 		\citet{tan2004predicting} suggest improvements to the $\mathrm{DS}$ metric leading to the
 		$R_{\mathrm{nonlin}}$ metric. The first improvement is the inclusion of a filter with a frequency response
@@ -309,6 +314,8 @@
 					W'_{i,j} = \frac{W_{i, j}}{\sum_{k = 1}^{40} W_{i,k}}
 					\label{eq:RNonlinWeightsNormalisation}
 				\end{equation}
+
+			\item 
 
 		\end{enumerate}
 
