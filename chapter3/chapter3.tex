@@ -284,7 +284,7 @@
 
 				\begin{gather}
 					\mathrm{T} = \round{0.01f_{s}} \nonumber \\
-					M_{j,i} = \max_{\tau = -\mathrm{T}}^{\mathrm{T}} r_{j,i,\tau}
+					M_{i,j} = \max_{\tau = -\mathrm{T}}^{\mathrm{T}} r_{i,j,\tau}
 					\label{eq:RNonlinMaxCrossCorrelation}
 				\end{gather}
 
@@ -315,7 +315,14 @@
 					\label{eq:RNonlinWeightsNormalisation}
 				\end{equation}
 
-			\item 
+			\item The final metric, $R_{\mathrm{nonlin}}$, is then calculated by summing across all 40 bands and
+				averaging across all $I$ frames using Equation \ref{eq:RNonlin}.
+
+				\begin{equation}
+					R_{\mathrm{nonlin}} = \frac{1}{I} \sum_{i = 1}^{I} \sum_{j = 1}^{40} 
+								W'_{i,j}M_{i,j}
+					\label{eq:RNonlin}
+				\end{equation}
 
 		\end{enumerate}
 
