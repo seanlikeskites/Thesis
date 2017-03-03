@@ -35,7 +35,7 @@
 	nonlinear system is being studied, different approaches are taken in an attempt to summarise the behaviour of
 	nonlinear systems. In the field of audio engineering much of the literature concerning nonlinearities has to do with
 	minimising distortion or measuring the maximum allowable levels of distortion. Several distortion metrics have been
-	developed each with their own uses. A review of many of these metrics is given by \cite{voishvillo2006assessment},
+	developed each with their own uses. A review of many of these metrics is given by \citet{voishvillo2006assessment},
 	some of which will be discussed in Section \ref{sec:Excitation-Analysis-Metrics}. Where more information is needed,
 	nonlinear modelling techniques are used. These typically involve setting the parameters of a generalised nonlinear
 	system such that its behaviour matches that of the system being analysed. The nonlinear modelling techniques
@@ -359,11 +359,11 @@
 	\subsection{Nonlinear Modelling}
 	\label{sec:Excitation-Analysis-Modelling}
 		Various techniques for modelling nonlinear systems have been developed in the mathematics and engineering
-		literature. These models allow for more in depth analysis of a system as well as replicating its effects in
+		literature. These models allow for more in depth analysis of a system as well as replicating it's effects in
 		the digital domain. Summaries of some of these modelling techniques can be found in the work by
 		\citet{janczak2005identification} and \citet{ogunfunmi2007adaptive}.
 
-		Two nonlinear modelling techniques have found use in audio processing:
+		Two nonlinear modelling techniques have found use in audio processing applications:
 
 		\begin{itemize}
 			\item Wave Digital Filters as discussed by \citet{fettweis1986wave}.
@@ -399,12 +399,12 @@
 				\begin{tikzpicture}
 					\node (Sig2) [draw] at (1, 3) {$x[n]^{2}$};
 					\node (Sig3) [draw] at (1, 2) {$x[n]^{3}$};
-					\node (SigN) [draw] at (1, 0.5) {$x[n]^{N}$};
+					\node (SigN) [draw] at (1, 0.5) {$x[n]^{I}$};
 
-					\node (Filter1) [draw] at (3, 4) {$A_{1}(f)$};
-					\node (Filter2) [draw] at (3, 3) {$A_{2}(f)$};
-					\node (Filter3) [draw] at (3, 2) {$A_{3}(f)$};
-					\node (FilterN) [draw] at (3, 0.5) {$A_{N}(f)$};
+					\node (Filter1) [draw] at (3, 4) {$A_{1}[n]$};
+					\node (Filter2) [draw] at (3, 3) {$A_{2}[n]$};
+					\node (Filter3) [draw] at (3, 2) {$A_{3}[n]$};
+					\node (FilterN) [draw] at (3, 0.5) {$A_{I}[n]$};
 
 					\draw (Sig2) -- (Filter2);
 					\draw (Sig3) -- (Filter3);
@@ -452,29 +452,29 @@
 				\label{fig:hammerstein}
 			\end{figure}
 
-			The model is, in effect, an extension of a Taylor Series of order $N$. The input is raised to each
-			individual power, 1 through $N$, and each of these signals is filtered by an individual kernel,
-			$A_{N}(f)$. The resultant signals are then summed to produce the output.
+			The model is, in effect, an extension of a Taylor Series of order $I$. The input is raised to each
+			individual power, 1 through $I$, and each of these signals is filtered by an individual kernel,
+			$A_{i}[n]$. The resultant signals are then summed to produce the output.
 
-			This method is easier to implement than a wave digital filter as no prior knowledge of the system
-			is needed. The amount of computation time needed to process a signal is also considerably less.
-			There are however some disadvantages. There is no account for the dependence of the system on the
+			This method is easier to implement than a wave digital filter as no prior knowledge of the system is
+			needed. The amount of computation time needed to process a signal is also considerably less.  There
+			are some disadvantages however: there is no account for the dependence of the system on the
 			amplitude of the input signal. This is shown by \citet{novak2010analysis} who demonstrate how two
-			different circuits are emulated with different degrees of accuracy. The is also no definite way of
+			different circuits are emulated with different degrees of accuracy. There is also no definite way of
 			deciding what order Hammerstein model to use prior to testing.
 
 			The research discussed in this section has focused on measuring the extent to which unwanted
-			distortion can be perceived. This does not provide enough information for the description of timbre.
-			The listening tests performed to verify the developed metrics asked subjects to rate the quality of
-			audio stimuli. It is possible that nonlinear distortion could alter the timbre of audio without
-			deteriorating its perceived quality. Listeners could be asked to describe the timbre of different
-			nonlinear distortions further rather than ranking them on the same distortion scale. Previous
-			research has been carried out into the timbre of distortion as discussed in Section
-			\ref{sec:Excitation-Timbre}.
+			distortion can be perceived or modelling the operation of a nonlinear system. This does not provide
+			sufficient information for the description of timbre. The listening tests performed to verify the
+			developed metrics asked subjects to rate the quality of audio stimuli. It is possible that nonlinear
+			distortion could alter the timbre of audio without deteriorating its perceived quality. Do
+			investigate this experiments must be conducted in which participants are asked to rate the timbral
+			characteristics of nonlinearly processed stimuli. Section \ref{sec:Excitation-Timbre} reviews
+			literature published in that regard.
 
 \section{Timbre of Nonlinear Distortion}
 \label{sec:Excitation-Timbre}
-	There is a wealth of research into how low level audio features influence timbre as discussed in Chapter
+	There is a wealth of research into how low level audio features influence timbre, as discussed in Chapter
 	\ref{chap:Timbre}. The mappings between low level features and semantic features from the literature can be applied
 	to harmonic excitation effects provided the excitation method used can influence the required low level features.
 	There may be semantic terms used to describe the timbre of nonlinear distortion which are seldom used to describe
@@ -487,10 +487,11 @@
 	descriptors: sharpness and brightness. In order to discover other timbral properties of nonlinear distortion they
 	performed listening tests in which distorted guitar stimuli were assessed. The stimuli were each processed with
 	different nonlinear systems and then further processed so that they had matching Zwicker Sharpnesses (an objective
-	measure of sharpness \cite{fastl2007psychoacoustics}). This sharpness matching was done so that difference in
-	timbre not related to sharpness could be more easily observed. During the listening tests subjects were asked to
-	rate the dissimilarity of stimuli presented in pairs. They were also asked to grade each individual stimulus on the
-	bipolar adjective scales shown in Table \ref{tab:distortionDescriptors}.
+	measure of sharpness \citep{fastl2007psychoacoustics} discussed in Section
+	\ref{sec:Timbre-TimbralFeatures-Sharpness}). This sharpness matching was done so that difference in timbre not
+	related to sharpness could be more easily observed. During the listening tests subjects were asked to rate the
+	dissimilarity of stimuli presented in pairs. They were also asked to grade each individual stimulus on the bipolar
+	adjective scales shown in Table \ref{tab:distortionDescriptors}.
 
 	\begin{table}[h!]
 		\centering
@@ -529,50 +530,42 @@
 
 	Their results suggest that the differences between different nonlinearities can be described by `thickness' and, to
 	a lesser extent, `diffuseness'. These results are also found by a second experiment in which a triadic comparison
-	method is used to assess the dissimilarities between stimuli \citep{marui2005constructing}.
-
-	Both these experiments were conducted in Japanese and the descriptors were translated to English for publication.
-	The descriptors were initially chosen during an experiment by \citet{martens2002relating}. From this experiment it
-	was shown that speakers of Japanese and speakers of Sinhalese disagree on how these terms are used to describe
-	timbre. It is expected that there will be similar differences in presenting the descriptors to English speakers.
+	method is used to assess the dissimilarities between stimuli \citep{marui2005constructing}. Both these experiments
+	were conducted in Japanese and the descriptors were translated to English for publication. The descriptors were
+	initially chosen during an experiment by \citet{martens2002relating}. From this experiment it was shown that
+	speakers of Japanese and speakers of Sinhalese disagree on how these terms are used to describe timbre. It is
+	expected that there will be similar differences in presenting the translated descriptors to English speakers.
 
 	\citet{tsumoto2015investigating} use factor analysis to identify two factors describing the timbre of distorted
 	guitar sounds: `activeness' correlating with attack time and the spectral centroid in the first 30ms of the sound
 	and 'brightness' correlating with the spectral centroid after the first 30ms. Various bipolar adjective scales are
 	assigned to these factors, `activeness' being described as 'light $\Leftrightarrow$ heavy' and `weak
 	$\Leftrightarrow$ strong' and `brightness' being described as `bright $\Leftrightarrow$ dark' and `dull
-	$\Leftrightarrow$ sharp'.
-
-	They also use the term `crunch' is used to describe sounds with a moderate amount of distortion. No evidence is
-	provided that this terminology is used by a wide range of guitar players, it is merely the language used to
-	discriminate certain distortion effects from each other in their paper.
+	$\Leftrightarrow$ sharp'. They also use the term `crunch' to describe sounds with a moderate amount of distortion.
+	No evidence is provided that this terminology is used by a wide range of guitar players, it is merely the language
+	used to discriminate certain distortion effects from each other in their paper.
 
 	\citet{wilson2014characterisation} use a different approach to describe the distortion characteristics of popular
 	music tracks. A panel of expert listeners rated several stimuli on two scales: distortion level and distortion
 	character (hard or soft). These results were then used to train a classifier for identifying distortion character.
 	The features found to best describe the distortion character were various features of the signal's probability mass
-	function.
-
-	These stimuli were then used in a listening test in which participants were asked to choose words which describe
-	the audio quality of the stimuli. The most often used word was `distorted', being used to describe the stimuli
-	which were classified has having high distortion levels. This suggests that the concept if distortion is well known
-	to listeners. The other descriptors elicited (`punchy', `clear', 'harsh' etc.) do not correlate well with any
-	particular group of stimuli as categorised by the classifier.
-
-	This may be to do the method by which the original stimuli were classified by the expert panel. The descriptors
-	which did not correlate may refer to perceptual dimensions other that distortion level and character. Training the
-	classifier to only discriminate stimuli in these two dimensions removes any information about where the stimuli lie
-	on these additional dimensions.
+	function. These stimuli were then used in a listening test in which participants were asked to choose words which
+	describe the audio quality of the stimuli. The most often used word was `distorted', being used to describe the
+	stimuli which were classified has having high distortion levels, suggesting that the concept if distortion is well
+	known to listeners. The other descriptors elicited (`punchy', `clear', 'harsh' etc.) did not correlate well with any
+	particular group of stimuli as categorised by the classifier. This may be to do the method by which the original
+	stimuli were classified by the expert panel. The descriptors which did not correlate may refer to perceptual
+	dimensions other than distortion level and character. Training the classifier to only discriminate stimuli in these
+	two dimensions removes any information about where the stimuli lie on these additional dimensions.
 
 	From discussion of the previous literature it is apparent that the use of nonlinear systems contribute to a variety
 	of aspects of timbre. Distortion effects are widely used as a creative tool in popular music production but the
 	language used to describe their application differs across groups of people. The term `distorted' is used to
 	describe the timbre of signals which have undergone distortion but does not allow for discrimination between the
-	timbres of two distorted signals.
-
-	The other descriptor used in the literature are correlated with features of a systems output signal rather than
-	features of the nonlinearity itself. This warrant a need to harmonic excitation systems which give control over
-	specific features of the output rather than just the parameters of the underlying nonlinearity. 
+	timbres of two distorted signals. The other descriptors used in the literature are correlated with features of a
+	system's output signal rather than features of the nonlinearity itself. This warrants a need for harmonic excitation
+	systems which give control over specific features of the output rather than just the parameters of the underlying
+	nonlinearity. 
 
 \section{Uses of Harmonic Excitation}
 \label{sec:Excitation-Uses}
