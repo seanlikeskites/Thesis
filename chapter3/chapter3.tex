@@ -581,19 +581,18 @@
 		This is done either to reduce the storage space needed or reduce the data rate required to transmit a
 		signal. As a higher data rate is needed to represent high frequencies, these frequencies are removed during
 		the compression process. A lot of research has been carried out to develop methods by which these high
-		frequencies can be estimated during the decoding process. This allows for the bandwidth to be constricted
-		for storage or transmission but the full bandwidth to be restored when required.
+		frequencies can be estimated during the decompression process. This allows for the bandwidth to be
+		constricted for storage or transmission but the full bandwidth to be restored when required.
 
 		When compressing audio data using lossy audio codecs the original signal, along with its high frequency
-		components, is available before compression is applied. Parameters describing the high frequency content
-		of the signal can be recorded and used to aid in the reconstruction of the high frequencies later
+		components, is available before compression is applied. Parameters describing the high frequency content of
+		the signal can be recorded and used to aid in the reconstruction of the high frequencies later
 		\citep{dietz2002spectral, friedrich2007spectral}. The high frequency content is estimated from the low
 		frequency information and then further shaped using these parameters. This leads to a distinction between
 		`blind' and `non-blind' methods for reconstructing the high frequencies. A `blind' method uses only the
-		information present in the low frequency signal, whereas `non-blind' methods make use of recorded
-		parameters to increase the accuracy of the reconstruction.
-
-		In the literature several methods for reconstruction of the higher frequencies are suggested:
+		information present in the low frequency signal, whereas `non-blind' methods make use of recorded parameters
+		to increase the accuracy of the reconstruction. In the literature several methods for reconstruction of the
+		higher frequencies are suggested:
 
 		\begin{itemize}
 			\item Through the use of a nonlinear device \citep{larsen2002efficient, sha2010high}.
@@ -619,35 +618,31 @@
 		Small loudspeakers are incapable of reproducing low frequency signals at sufficient amplitudes. Harmonic
 		excitation can be used to psychoacoustically extend the bandwidth of loudspeakers into the lower end of the
 		spectrum. Harmonic content is added to the signal in order to evoke the perception of lower pitch sounds.
-
-		The pitch of harmonically structured sounds is the same as that of its fundamental frequency. No energy
-		need be present at the fundamental for its pitch to be perceived however. So long as a sufficient
-		proportion of the harmonic structure remains the original pitch can still be perceived. This phenomenon is
-		commonly referred to as the missing fundamental \citep{plack2005the}.
-
-		This technique is implemented in effects such as Waves' MaxxBass \citep{ben-tzur1999the}. Implementation
-		techniques typically involve various filtering stages around a nonlinear stage. Firstly a filter is
-		used to isolate the frequencies which need psychoacoustic reinforcement (those below the cutoff
-		frequency of the reproduction system). A nonlinearity is then used to produce harmonics of these low
-		frequencies which are then possibly shaped by further filtering. 
 		
-		The largest differences between proposed implementations lie in the nonlinear stage. \citet{gan2001virtual}
-		use a psychoacoustically informed amplitude modulation technique to ensure that the harmonics generated
-		produce the desired perceived pitch. \citet{larsen2002reproducing} propose the use of simpler nonlinear
-		stages, relying on further filtering to shape the spectrum such that the desired pitch is achieved.
-
+		The pitch of harmonically structured sounds is the same as that of its fundamental frequency. No energy need
+		be present at the fundamental for its pitch to be perceived however. So long as a sufficient proportion of
+		the harmonic structure remains the original pitch can still be perceived. This phenomenon is commonly
+		referred to as the missing fundamental \citep{plack2005the}. The perception of a low frequency fundamental
+		can then be actualised by introducing a set of higher order harmonics. This technique is implemented in
+		effects such as Waves' MaxxBass \citep{ben-tzur1999the}. Implementation techniques typically involve various
+		filtering stages around a nonlinear stage. Firstly a filter is used to isolate the frequencies which need
+		psychoacoustic reinforcement (those below the cutoff frequency of the reproduction system). A nonlinearity
+		is then used to produce harmonics of these low frequencies which are then possibly shaped by further
+		filtering. The largest differences between proposed implementations lie in the nonlinear stage.
+		\citet{gan2001virtual} use a psychoacoustically informed amplitude modulation technique to ensure that the
+		harmonics generated produce the desired perceived pitch. \citet{larsen2002reproducing} propose the use of
+		simpler nonlinear stages, relying on further filtering to shape the spectrum such that the desired pitch is
+		achieved.
 
 	\subsection{Audio Enhancement}
 	\label{sec:Excitation-Uses-Enhancement}
 		One of the most commonly used enhancement effects is the Aphex Aural Exciter. \citet{shekar2013modeling}
 		states that this effect enhances brightness and clarity of a sound through the application of nonlinear
-		distortion.
-
-		\citet{chalupper2000aural} ran several tests to determine the effects that the Aural Exciter has on
-		different audio stimuli, concluding that it operates as a `sharpness' maximiser. His analysis of the device
-		was very basic, consisting of a frequency response and an analysis of the spectral alterations made to a
-		2kHz sine wave. The frequency response shows the liner processing undertaken by the device, showing that it
-		mainly amplifies high frequency content. The sine wave response analysis is used to demonstrate the
+		distortion. \citet{chalupper2000aural} ran several tests to determine the effects that the Aural Exciter has
+		on different audio stimuli, concluding that it operates as a `sharpness' maximiser. His analysis of the
+		device was very basic, consisting of a frequency response and an analysis of the spectral alterations made
+		to a 2kHz sine wave. The frequency response shows the liner processing undertaken by the device, showing
+		that it mainly amplifies high frequency content. The sine wave response analysis is used to demonstrate the
 		nonlinear elements of the device. 
 
 		\citet{dutilleux2011nonlinear} provides a slightly more in depth analysis of the Aural Exciter showing the
