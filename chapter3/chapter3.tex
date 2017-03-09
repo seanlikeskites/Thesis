@@ -782,9 +782,9 @@
 		frequencies of the those in the two carrier and modulator signals. Single sideband modulation is a method of
 		applying amplitude modulation to a signal and only producing either the sum or difference sideband. This
 		requires the construction of an analytic representation, $x_{a}[n]$, of the input signal, $x[n]$, as
-		discussed in Section \ref{sec:Timbre-LowLevelFeatures-Temoporal}. The analytic signal is then raised to a
-		positive integer power as shown in Equation \ref{eq:SSB}. Taking the real part of the resultant complex
-		valued signal gives only the sum sideband of the modulation.
+		discussed in Section \ref{sec:Timbre-LowLevelFeatures-Temporal}. The analytic signal is then raised to a
+		positive integer power, $h$, as shown in Equation \ref{eq:SSB}. Taking the real part of the resultant
+		complex valued signal gives only the sum sideband of the modulation.
 
 		\begin{equation}
 			y[n] = \Re \left( x_{a}[n]^{h} \right), \quad h \in \textbf{N}
@@ -793,12 +793,13 @@
 
 	\subsection{Instantaneous Amplitude and Phase}
 	\label{sec:Excitation-Methods-IAP}
-		In this method, the instantaneous amplitude and phase (IAP) of the analytic signal are calculated. These
-		values are then used to aid in the construction of harmonics. The instantaneous amplitude of the analytic
-		signal is found by taking its absolute value, $\abs{x_{a}[n]}$. The instantaneous phase is found by taking
-		the complex argument of the analytic signal, $\arg(x_{a}[n])$. The instantaneous phase can then be scaled
-		in order to scale the frequency content of the signal independent of its amplitude. Equation \ref{eq:IAP}
-		shows the $h$\super{th} order instantaneous amplitude and phase modulation of a signal.
+		In this method, the instantaneous amplitude and phase (IAP) of a signal are calculated from its analytic
+		representation. These values are then used to aid in the construction of harmonics. The instantaneous
+		amplitude of the analytic signal is found by taking its absolute value, $\abs{x_{a}[n]}$. The instantaneous
+		phase is found by taking the complex argument of the analytic signal, $\arg(x_{a}[n])$. The instantaneous
+		phase can then be scaled in order to scale the frequency content of the signal independent of its amplitude.
+		Equation \ref{eq:IAP} shows the $h$\super{th} order instantaneous amplitude and phase modulation of a
+		signal.
 
 		\begin{equation}
 			y[n] = \abs{x_{a}[n]} \cos \left( h\arg(x_{a}[n]) \right), \quad h \in \textbf{N}
@@ -807,8 +808,9 @@
 
 	\subsection{Spectral Replication}
 	\label{sec:Excitation-Methods-SpectralReplication}
-		The principle behind spectral replication is to reproduce the spectral structure of a signal at higher
-		frequencies as shown in Figure \ref{fig:SpectralReplication}.
+		Spectral replication is a method proposed for use in audio bandwidth extension applications
+		\citep{nagel2010a}. The principle behind spectral replication is to reproduce the spectral structure of a
+		signal at higher frequencies as shown in Figure \ref{fig:SpectralReplication}.
 
 		\begin{figure}[h!]
 			\centering
@@ -817,30 +819,28 @@
 			\label{fig:SpectralReplication}
 		\end{figure}
 
-		This spectral shift is easily implemented through the use of single sideband modulation with a complex
-		sinusoid as shown in Equation \ref{eq:SpectralReplication}.
+		This shift of energy towards higher frequencies could be adapted for use in harmonic excitation systems.
+		Shifting the spectrum $f$Hz higher in frequency is easily implemented through the use of single sideband
+		modulation with a complex sinusoid as shown in Equation \ref{eq:SpectralReplication}.
 
 		\begin{equation}
 			y[n] = \Re \left( x_{a}[n] e^{2i\pi fn/ f_{s}} \right)
 			\label{eq:SpectralReplication}
 		\end{equation}
 
-		Where $f$ is the amount by which the signals spectrum should be shifted.
-
 	\subsection{Spectral Folding}
 	\label{sec:Excitation-Methods-SpectralFolding}
-		Spectral folding uses upsampling in order to replicate parts of the spectrum at higher frequencies. In
-		order for the output signal to have the same sampling frequency as the input the signal is 
-		downsampled by a factor $k$ before being upsampled by the same factor. 
-		
-		To avoid aliasing during the downsampling phase the signal should have a low pass filter applied
-		with a cutoff frequency of $\frac{f_{s}}{2k}$. Typically upsampling systems apply a low pass filter
-		to remove any high frequency content introduced \citep{oppenheim2014discrete}. This is not needed for
-		spectral folding as the production of high frequency energy is the desired result.
-
-		After filtering, the downsampling and upsampling can be performed at the same time by retaining
-		every $k$\super{th} sample and setting all others to zero. This is shown in Equation
-		\ref{eq:SpectralFolding} where $x_{lf}[n]$ is the filtered input signal.		
+		Spectral folding is another method used in bandwidth extension \citep{friedrich2007spectral} which could be
+		adapted for harmonic excitation. Spectral folding uses upsampling in order to replicate parts of the
+		spectrum at higher frequencies. In order for the output signal to have the same sampling frequency as the
+		input the signal is downsampled by a factor $k$ before being upsampled by the same factor. To avoid aliasing
+		during the downsampling phase the signal should have a low pass filter applied with a cutoff frequency of
+		$\frac{f_{s}}{2k}$. Typically upsampling systems apply a low pass filter to remove any high frequency
+		content introduced \citep{oppenheim2014discrete}. This is not needed for spectral folding as the production
+		of high frequency energy is the desired result. After low pass filtering filtering, the downsampling and
+		upsampling can be performed at the same time by retaining every $k$\super{th} sample and setting all others
+		to zero. This is shown in Equation \ref{eq:SpectralFolding} where $x_{lf}[n]$ is the low pass filtered input
+		signal.
 
 		\begin{equation}
 			y[n] = \begin{cases}
@@ -852,8 +852,10 @@
 
 	\subsection{Spectral Stretching}
 	\label{sec:Excitation-Methods-SpectralStretching}
-		The principle of spectral stretching is to scale the spectrum of a signal along the frequency axis. This
-		effect is shown in Figure \ref{fig:SpectralStretching}.
+		\citet{nagel2009a} propose spectral stretching as a bandwidth extension method. As with other bandwidth
+		extension techniques it is possible to adapt for harmonic excitation purposes .The principle of spectral
+		stretching is to scale the spectrum of a signal along the frequency axis. This effect is shown in Figure
+		\ref{fig:SpectralStretching}.
 
 		\begin{figure}[h!]
 			\centering
@@ -864,38 +866,36 @@
 
 		A typical implementation of this effect utilises a phase vocoder. The phase vocoder is an algorithm which
 		allows for time stretching of a signal. It is applied by calculating the short-time Fourier transform of a
-		signal with a given frame and hop size. The signal is then resynthesised using a different hop size in
-		order to either lengthen or shorten it. This signal can then be resampled back to the length of the
-		original signal scaling the frequency content in the process. 
-		
-		The spectrum is scaled by a factor given in Equation \ref{eq:PhaseVocoderFactor}.
+		signal with a given frame and hop size. The signal is then resynthesised using a different hop size in order
+		to either lengthen or shorten it. This signal can then be resampled back to the length of the original
+		signal, scaling the frequency content in the process. The spectrum is scaled by a factor given in Equation
+		\ref{eq:PhaseVocoderFactor}.
 
 		\begin{equation}
-			s = \frac{h_{s}}{h_{a}}
+			s = \frac{\delta_{s}}{\delta_{a}}
 			\label{eq:PhaseVocoderFactor}
 		\end{equation}
 
-		Where $h_{a}$ is the hop size used when calculating the STFT and $h_{s}$ is the hop size used to
+		Where $\delta_{a}$ is the hop size used when calculating the STFT and $\delta_{s}$ is the hop size used to
 		resynthesise the signal.
 
 	\subsection{Short-Time Time Reversal}
 	\label{sec:Excitation-Methods-STTR}
 		Short-Time time reversal (STTR) is an audio effect proposed by \citet{kim2014shorttime}. The output signal
-		is constructed from overlapping frames of the input signal which have been reversed in time using Equation
-		\ref{eq:STTR}.
+		is constructed by summing overlapping frames of the input signal which have been reversed in time using
+		Equation \ref{eq:STTR}.
 
 		\begin{equation}
-			y[n] = \sum_{m = -\infty}^{\infty} w[n - mR]x[2mR - n]
+			y[n] = \sum_{m = -\infty}^{\infty} w[n - m\delta]x[2m\delta - n]
 			\label{eq:STTR}
 		\end{equation}
 
-		Where $R$ is the step size in samples and $w$ is some window function with constant overlap add (i.e. the
-		sum of the window function translated in time by all integer multiples $R$ is one for all values of $n$
-		(Equation \ref{eq:ConstantOverlapAdd})).
+		Where $\delta$ is the step size between frames in samples and $w$ is an arbitrary window function which
+		exhibits constant overlap add (i.e. the sum of the window function translated in time by all integer
+		multiples of $\delta$ is equal to 1 at all values of $n$ (Equation \ref{eq:ConstantOverlapAdd})).  Constant
+		overlap add ensures that no unwanted amplitude modulation is applied to the signal.
 
 		\begin{equation}
 			\sum_{m = -\infty}^{\infty} w[n - mR] = 1
 			\label{eq:ConstantOverlapAdd}
 		\end{equation}
-
-		Constant overlap add ensures that no unwanted amplitude modulation is applied to the signal.
