@@ -151,9 +151,9 @@
 		altered. 
 
 		Further complexity is introduced where the characteristic curve require some computation such as with
-		exponential distortion and soft clipping. The transition section of the soft clipper given in Equation
-		\ref{eq:SymmetricSoftClipping} requires a considerable number of operations to calculate. In situations
-		where the number of calculations becomes to large the computational load can be decrease using a
+		exponential static nonlinearities and soft clippers. The transition section of the soft clipper given in
+		Equation \ref{eq:SymmetricSoftClipping} requires a considerable number of operations to calculate. In
+		situations where the number of calculations becomes to large the computational load can be decrease using a
 		precomputed lookup table in input and output values.
 
 		As static nonlinearities process each sample individually, the amount of work required per unit time of
@@ -489,7 +489,7 @@
 			If the exponent is allowed to take any positive value, control over the bandwidth of the output
 			signal is lost. Non integer exponents cause higher orders of distortion to be generated. Figures
 			\ref{fig:CubedSpectra} and \ref{fig:TwoAndAHalfSpectra} show the spectral effects of exponential
-			distortion with integer and non-integer exponents. The input signal has a fundamental frequency of
+			static nonlinearities with integer and non-integer exponents. The input signal has a fundamental frequency of
 			1kHz and has energy in the first four harmonics.
 
 			\begin{figure}[h!]
@@ -702,16 +702,16 @@
 			transients are preserved. 
 			
 		\subsubsection*{Multiplier}
-			Exponential distortion has a dynamic compression/expansion effect. For exponents greater than 1 the
-			dynamics of a signal are expanded, the amplitude difference between low and high amplitude portions
-			of the signal is increased. For exponents less that 1 the opposite occurs, compressing the dynamics
-			of the signal. Figure \ref{fig:ExponentiationTemporalEffects} show the effects this can have on the
-			attack and release portions of signals.
+			Exponential static nonlinearities have a dynamic compression/expansion effect. For exponents greater
+			than 1 the dynamics of a signal are expanded, the amplitude difference between low and high
+			amplitude portions of the signal is increased. For exponents less that 1 the opposite occurs,
+			compressing the dynamics of the signal. Figure \ref{fig:ExponentiationTemporalEffects} show the
+			effects this can have on the attack and release portions of signals.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/ExponentiationTemporalEffects.pdf}
-				\caption{The temporal effects of exponential distortion.}
+				\caption{The temporal effects of exponential static nonlinearities.}
 				\label{fig:ExponentiationTemporalEffects}
 			\end{figure}
 

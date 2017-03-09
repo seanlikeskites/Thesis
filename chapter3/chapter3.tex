@@ -657,8 +657,8 @@
 \label{sec:Excitation-Methods}
 	Various different methods have been used to introduce new spectral content in digital audio processing systems. Some
 	of these mimic the behaviour of existing analogue audio effects while others use novel digital signal processing
-	techniques. In this section the operation of several harmonic excitation algorithms is described. The performance
-	of these algorithms is assessed in Chapter \ref{chap:ExcitationEvaluation}.
+	techniques. In this section the operation of several harmonic excitation algorithms is described. More detailed
+	discussion on the performance of these algorithms is given in Chapter \ref{chap:ExcitationEvaluation}.
 
 	\subsection{Static Nonlinearities}
 	\label{sec:Excitation-Methods-Statics}
@@ -718,8 +718,10 @@
 
 	\subsection{Rectification}
 	\label{sec:Excitation-Methods-Rectification}
-		Rectification is a special case of static nonlinearity. Signals can be either half or full wave rectified,
-		as shown in Equations \ref{eq:HalfWaveRectification} and \ref{eq:FullWaveRectification} respectively.
+		Rectification is a special case of static nonlinearity based on analogue methods of producing a unipolar
+		signal from a bipolar one. Half wave rectification (Equation \ref{eq:HalfWaveRectification}) does so by
+		zeroing any negative portions of the input signal while full wave rectification (Equation
+		\ref{eq:FullWaveRectification}) inverts the polarity of negative portions of the input.
 
 		\begin{equation}
 			y[n] = \begin{cases}
@@ -736,7 +738,9 @@
 
 	\subsection{Integrator}
 	\label{sec:Excitation-Methods-Integrator}
-		Equation \ref{eq:Integrator} shows an Integrator adapted from the one described by \citet{larsen2004audio}.
+		An integrator introduces new spectral content by integrating the input signal. \citet{larsen2004audio}
+		describe an integrator which integrates the input signal after full wave rectification (Equation
+		\ref{eq:Integrator}).
 
 		\begin{equation}
 			y[n] = \begin{cases}
@@ -748,20 +752,23 @@
 
 		Where $k$ is the integration constant, effectively setting the output gain of the system. The output signal
 		is reset to 0 ofter every negative to positive zero crossing in order to prevent the sample amplitudes from
-		rising indefinitely.
+		rising indefinitely. For periodic input signals, zeroing the output only on negative to positive zero
+		crossings produces a signal with the same period as the input.
 
 	\subsection{Multiplier}
 	\label{sec:Excitation-Methods-Multiplier}
-		Multipliers are a subset of static nonlinearities in which input samples are raised to a positive integer
-		power as shown in Equation \ref{eq:Multiplier}.
+		Multipliers are a subset of static nonlinearities which apply automodulation to a signal. This is achieved
+		by raising input samples to a positive integer power, $h$, as shown in Equation \ref{eq:Multiplier}.
 
 		\begin{equation}
 			y[n] = x[n]^{h}, \quad h \in \textbf{N}
 			\label{eq:Multiplier}
 		\end{equation}
 
-		Exponential distortion extends this method by relaxing the restriction on the exponent ($h$), allowing it
-		to take any positive value. The advantages and disadvantages of this will be discussed in this section.
+		To be considered a multiplier, a system in which the input signal is multiplied by itself, the restriction
+		that $h$ be a positive integer ($h \in \textbf{N}$) must hold. If this restriction is relaxed to allow $h$
+		to take any positive value ($h > 0$) the resulting system can be referred to as an exponential static
+		nonlinearity.
 
 	\subsection{Single Side Band Automodulation}
 	\label{sec:Excitation-Methods-SSBA}
