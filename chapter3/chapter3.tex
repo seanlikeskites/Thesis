@@ -655,25 +655,33 @@
 
 \section{Harmonic Generation Methods}
 \label{sec:Excitation-Methods}
-	In this section several harmonic excitation algorithms are described. The performance of these algorithms is
-	assessed in Chapter \ref{chap:ExcitationEvaluation}.
+	Various different methods have been used to introduce new spectral content in digital audio processing systems. Some
+	of these mimic the behaviour of existing analogue audio effects while others use novel digital signal processing
+	techniques. In this section the operation of several harmonic excitation algorithms is described. The performance
+	of these algorithms is assessed in Chapter \ref{chap:ExcitationEvaluation}.
 
 	\subsection{Static Nonlinearities}
 	\label{sec:Excitation-Methods-Statics}
-		Static nonlinearities are simple mappings between input value and output value. A very simple class of
-		static nonlinearities is the peak clipper. This class of effects limits the magnitude of samples to being
-		at or below a given clipping threshold value. Peak clippers are typically piecewise functions comprising of
-		three sections:
+		As mentioned in Section \ref{sec:Excitation-Analysis-Metrics}, static nonlinearities are simple mappings
+		between input value and output value described by a characteristic curve. A very simple class of static
+		nonlinearities is the peak clipper. This class of effects limits the magnitude of samples to being at or
+		below a given clipping threshold value. A peak clipper's characteristic curve is typically a piecewise
+		function comprising of three sections:
 
 		\begin{enumerate}
 			\item A linear section. Applied to low magnitude samples.
 			\item A transition section, often called the `knee'. This refers to the nonlinear part of the
-				function for samples with magnitude below the clipping threshold.
+				characteristic curve for samples with magnitude below the clipping threshold.
 			\item A clipping section. Limiting the magnitude of samples above the clipping threshold.
 		\end{enumerate}
-
-		One of the simplest peak clippers is the symmetric hard clipper shown in Equation
-		\ref{eq:SymmetricHardClipping}.
+		
+		Peak clipping functions can be categorised based on their symmetry and the properties of their first
+		derivative. Peak clippers are described as symmetric if their characteristic curve is described by an odd
+		function. Clippers which use non-odd functions are referred to as asymmetric. A peak clipper with no
+		transition section is referred to as a hard clipper, input samples below the clipping threshold are left
+		unaltered while those above it are set to be equal to the threshold. This instantaneous transition produces
+		a discontinuity in the first derivative of the clipper's characteristic curve. Equation
+		\ref{eq:SymmetricHardClipping} describes a symmetric hard clipper with a threshold of $t$.
 
 		\begin{equation}
 			y[n] = \begin{cases}
@@ -682,15 +690,13 @@
 			\end{cases}, \quad t \geq 0
 			\label{eq:SymmetricHardClipping}
 		\end{equation}
-
-		Where $t$ is the threshold value at which to clip the signal. Peak clippers are described as symmetric if
-		the underlying function is odd. Clippers which use non-odd functions are referred to as asymmetric.
-
-		Equation \ref{eq:SymmetricHardClipping} describes a hard clipper due to the lack of a transition section.
+		
 		Soft clippers apply a nonlinear function to medium magnitude samples in order to smooth the transition
-		between linear and clipping sections. Equation \ref{eq:SymmetricSoftClipping} shows a soft clipper adapted
-		from one given by \citet{dutilleux2011nonlinear}. Figure \ref{fig:Clipping} shows the characteristic curves
-		for the clippers given in Equations \ref{eq:SymmetricHardClipping} and \ref{eq:SymmetricSoftClipping}.
+		between the linear and clipping sections. This transition is applied such that the first derivative of the
+		characteristic curve is a continuous function \citep{esqueda2015aliasing}. Equation
+		\ref{eq:SymmetricSoftClipping} shows a soft clipper adapted from one given by
+		\citet{dutilleux2011nonlinear}. A comparison of the characteristic curves of Equations
+		\ref{eq:SymmetricHardClipping} and \ref{eq:SymmetricSoftClipping} is given in Figure \ref{fig:Clipping}.
 
 		\begin{equation}
 			y[n] = \begin{cases}
