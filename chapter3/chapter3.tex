@@ -757,8 +757,12 @@
 
 	\subsection{Multiplier}
 	\label{sec:Excitation-Methods-Multiplier}
-		Multipliers are a subset of static nonlinearities which apply automodulation to a signal. This is achieved
-		by raising input samples to a positive integer power, $h$, as shown in Equation \ref{eq:Multiplier}.
+		Multipliers are a subset of static nonlinearities which apply automodulation to a signal. Automodulation
+		refers to the amplitude modulation of a signal by itself. In amplitude modulation the amplitude of one
+		signal (the carrier) is varied according to another signal (the modulator) by multiplication, automodulation
+		then refers to multiplying a signal by itself. The concept of automodulation can be extended by multiplying
+		a signal by itself several times. This is achieved by raising input samples to a positive integer power,
+		$h$, as shown in Equation \ref{eq:Multiplier}.
 
 		\begin{equation}
 			y[n] = x[n]^{h}, \quad h \in \textbf{N}
@@ -767,16 +771,20 @@
 
 		To be considered a multiplier, a system in which the input signal is multiplied by itself, the restriction
 		that $h$ be a positive integer ($h \in \textbf{N}$) must hold. If this restriction is relaxed to allow $h$
-		to take any positive value ($h > 0$) the resulting system can be referred to as an exponential static
+		to take any positive value ($h > 0$) the resulting system is referred to as an exponential static
 		nonlinearity.
 
 	\subsection{Single Side Band Automodulation}
 	\label{sec:Excitation-Methods-SSBA}
-		Single sideband automodulation (SSBA) utilises the concept of single sideband modulation
-		\citep{corinthios2009signals}. This allows you to apply amplitude modulation to a signal and only produce
-		either the sum or difference sideband. This is easily implemented by constructing an analytic signal
-		$x_{a}[n]$ from the input signal and raising to a given power to generate harmonics. Equation \ref{eq:SSB}
-		shows the $h$\super{th} order single side band automodulation of a signal.
+		Single sideband automodulation (SSBA) combines the automodulation performed in a multiplier with the
+		technique of single sideband modulation \citep{corinthios2009signals}. Regular amplitude modulation produces
+		two sidebands (a sum and difference side band) containing frequency components at the sum and difference
+		frequencies of the those in the two carrier and modulator signals. Single sideband modulation is a method of
+		applying amplitude modulation to a signal and only producing either the sum or difference sideband. This
+		requires the construction of an analytic representation, $x_{a}[n]$, of the input signal, $x[n]$, as
+		discussed in Section \ref{sec:Timbre-LowLevelFeatures-Temoporal}. The analytic signal is then raised to a
+		positive integer power as shown in Equation \ref{eq:SSB}. Taking the real part of the resultant complex
+		valued signal gives only the sum sideband of the modulation.
 
 		\begin{equation}
 			y[n] = \Re \left( x_{a}[n]^{h} \right), \quad h \in \textbf{N}
