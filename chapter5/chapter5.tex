@@ -11,73 +11,82 @@
 %		Individual Harmonic Generation (SMC paper)
 %		Psychoacoustic Enhancers
 
-\chapter{Evaluation of Harmonic Excitation Algorithms}
+\chapter{Harmonic Excitation for Timbral Control}
 \label{chap:ExcitationEvaluation}
+	Harmonic excitation algorithms developed for the applications discussed in the Section
+	\ref{sec:Excitation-Uses} are specialised to perform a particular task. As this work is concerned with
+	the application of harmonic excitation to real time timbral control some algorithms in the literature may
+	not be applicable. In this section a set of criteria for assessing the suitability of a harmonic excitation
+	algorithms for use in this work are suggested. These criteria are then used to asses various algorithms in Section
+	\ref{sec:ExcitationEvaluation-Comparison}. 
 
 \note
 {
 	Cite \citet{esqueda2015aliasing} about reducing aliasing in clippers.
 }
 
-\section{Evaluation Criteria for Assessing Harmonic Excitation Methods} % section name not very clear
+\section{Evaluating Harmonic Excitation Algorithms for Use in Timbral Control}
 \label{sec:ExcitationEvaluation-Evaluation}
-	Harmonic excitation algorithms developed for the applications discussed in the Section
-	\ref{sec:Excitation-Uses} are specialised to perform a particular task. As this work is concerned with
-	the application of harmonic excitation to real time timbral control some algorithms in the literature may
-	not be applicable. In this section a set of criteria for assessing the suitability of a harmonic excitation
-	algorithms for use in this work are suggested.  These criteria are then used to asses various algorithms in Section
-	\ref{sec:ExcitationEvaluation-Comparison}. 
-
 	To prove useful for real time timbral control a harmonic excitation algorithm should provide efficient, intuitive
-	control over where energy is introduced to a signal. This behaviour can be split into the following areas:
+	control over where energy is introduced into a signal's spectrum. The suitability of an algorithm for timbral
+	control use is evaluated against the following criteria:
 
 	\begin{itemize}
-		\item Low Complexity.
+		\item Complexity
 		\item Homogeneity
-		\item Spectral Characteristics.
-		\item Temporal Characteristics.
-		\item Flexibility.
+		\item Spectral Characteristics
+		\item Temporal Characteristics
+		\item Flexibility
 %		\item Naturalness.
 	\end{itemize}
 
-	The following sections will discuss what behaviour is desirable in these areas.
+	The ideal characteristics within these areas are discussed in Sections
+	\ref{sec:ExcitationEvaluation-Evaluation-Complexity} to \ref{sec:ExcitationEvaluation-Evaluation-Flexibility}.
 
 	\subsection{Complexity}
 	\label{sec:ExcitationEvaluation-Evaluation-Complexity}
-		Audio effects are typically required to operate in real time. This speeds up music production as effect
-		parameters can be adjusted while audio is playing and the results heard immediately. In order to achieve
-		this, effects must process audio with minimal latency. 
+		Audio effects can operate either offline or in real time. An offline effect is provided with a prerecorded
+		input signal and processes it, taking as much time as is necessary. A real time effect processes an input
+		signal in a short enough time that the output can be produced at the same rate at which the input is being
+		provided. Real time processing speeds up music production as effect parameters can be adjusted while audio
+		is playing and the results heard immediately. In order to achieve this the algorithms used in the effect
+		must be efficient and operate with minimal latency. 
 
-		In order to ease the computational load on the processor, audio processing if often done in blocks. A
-		certain number of samples are recorded into a buffer and then all processed at once. This introduces some
-		latency into the system, the processing buffer must be filled with samples from the input before an output
+		In order to ease the computational load on the processor, digital audio processing if often done in blocks.
+		A certain number of samples are recorded into a buffer and then all processed at once. This introduces some
+		latency into the system; the processing buffer must be filled with samples from the input before an output
 		can be produced. The larger the processing buffer size the more latency but the less the computational load
 		as the cost of constructing and moving buffers is amortised across a greater number of samples. Any
 		processing applied to the block of audio must be completed within the allowed latency time, if not there
-		will be gaps between blocks during playback causing audible anomalies.
-
-		For real time audio effects it is crucial to keep throughput latency to a minimum. \citet{lester2007the}
-		suggest that, depending on the scenario, latencies as small as 1.4ms could be deemed unacceptable. In order
-		to keep latency to a minimum, processing algorithms should be able to run in real time when using a small
-		buffer size.
+		will be gaps between blocks during playback causing audible anomalies. For real time audio effects it is
+		crucial to keep throughput latency to a minimum. \citet{lester2007the} suggest that, depending on the
+		scenario, latencies as small as 1.4ms could be deemed unacceptable. In order to keep latency to a minimum,
+		processing algorithms should be able to run in real time when using a small buffer size. In a modern music
+		production setting there may be several audio effects operating concurrently, the algorithms used for real
+		time harmonic excitation must not only be efficient enough to run in real time but also to allow any
+		concurrent processing to proceed uninterrupted.
 
 	\subsection{Homogeneity}
 	\label{sec:ExcitationEvaluation-Evaluation-Homogeneity}
-		In order to be intuitive an audio effect it should produce a similar perceptual effect across a wide range
-		of input signals. Often this is not the case with traditional audio signal processing methods. Take the EQ
-		for example. We can set up an EQ to boost some frequencies in a desired range. The spectra of signals with
-		energy in this frequency range will be altered while those of signals with no energy in that band will be
-		unaffected. This problem is compounded when the effect being applied is non-homogeneous.
-		
-		Nonlinear systems are typically non-homogeneous. This is undesirable when using them to achieve timbral
-		control as it means the effects are less easy to predict. Different timbral transforms could be applied to
-		the same signal if its amplitude is changed slightly. From a user's point of view this makes control of the
-		system less intuitive as control parameters can change function depending on signal level.
+		To make the application of an audio effect more intuitive it should produce similar perceived timbral
+		manipulations for all input signals. Often this is not the case with traditional audio signal processing
+		methods. For example, an equaliser can be used to amplify a certain band of frequencies is a signal. The
+		spectra of signals with energy in this frequency range will be altered while those of signals with no energy
+		in that band will be unaffected. This problem is compounded when the effect being applied is non-homogeneous
+		(does not satisfy the condition of homogeneity given by Equation \ref{eq:homogeneity}). Nonlinear systems
+		are typically non-homogeneous, this is undesirable when using them to achieve timbral control as it means
+		the effects are less easy to predict. A non-homogeneous system behaves differently depending on the
+		amplitude of the input signal. Different timbral transforms could be applied to the same signal if
+		its amplitude is changed slightly. From a user's point of view this makes control of the system less
+		intuitive as the perceived function of control parameters can change depending on signal level. The
+		algorithms used in harmonic excitation systems for timbral control should exhibit homogeneous behaviour in
+		order to increase the systems intuitiveness.
 
 	\subsection{Spectral Characteristics}
 	\label{sec:ExcitationEvaluation-Evaluation-SpectralCharacteristics}
-		All the algorithms presented in this Section \ref{sec:Excitation-Methods} introduce new spectral content to
-		a signal. Depending on the algorithm wide bands of energy or individual harmonics can be excited. For
+		% continue here
+		The algorithms presented in Section \ref{sec:Excitation-Methods} all introduce new spectral content to
+		a signal. Depending on the algorithm, wide bands of energy or individual harmonics can be excited. For
 		intuitive timbral control it is desirable that these spectral effects are similar across a wide range of
 		input signals. For example a system designed to only generate harmonic partials should not introduce
 		inharmonicity for any input signal.
