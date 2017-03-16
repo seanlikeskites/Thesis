@@ -109,12 +109,23 @@
 
 	\subsection{Flexibility}
 	\label{sec:ExcitationEvaluation-Evaluation-Flexibility}
-		% combination of the amount of control afforded in the above sections, how many different purposes can the
-		% algorithm be used in?
-		Each excitation method allows for different amounts of control over the spectral content introduced. Finer
-		control of this allows a method to be used in a wider range of situations. The flexibility of a method
-		describes how well it can be adapted for different processing needs and how applicable it is across a wide
-		range of input signals.
+		Different timbral transformations may require vastly different processing to be applied to the signal. The
+		flexibility of a harmonic excitation algorithm refers to its ability to be used for a number of different
+		audio processing tasks. A highly flexibly algorithm will provide a large degree of control over its spectral
+		and temporal characteristics, thereby allowing a user to achieve their desired timbral effect. Users with no
+		knowledge of how a particular harmonic excitation system is constructed will have difficulty setting its
+		parameters to achieve this effect. To combat this, abstracted semantic parameters can be devised which alter
+		the relevant parameters of the underlying harmonic excitation system. The flexibility of an algorithm also
+		takes into account how easily its parameters can be mapped to semantic control parameters. For example, a
+		system which proved parameters for the amplitudes of individual harmonics in the output is more flexible as
+		it can be used for generating both large bands of spectral energy but also in situations where fine control
+		of the spectral structure is required. 
+
+		As in many fields a balance between flexibility and ease of use must be made when deciding which technique
+		to use. If the system is overly generalised it may require a large amount of work to achieve a simple task.
+		In the discussion of the flexibility of each harmonic excitation algorithm (Section
+		\ref{sec:ExcitationEvaluation-Comparison-Flexibility}) the control provided over how they alters the
+		properties of an input signal will be discussed along with processing applications they may be useful for.
 
 \section{Method Comparison}
 \label{sec:ExcitationEvaluation-Comparison}
@@ -132,28 +143,28 @@
 			\centering
 			\begin{tabular}{|c|c|c|c|c|c|c|}
 				\hline
-				\bf{Method} & \bf{Complexity} & \bf{Homogeneity} & \bf{Spectral Properties} & 
-				\bf{Temporal Properties} & \bf{IMD} & \bf{Flexibility} \tabularnewline 
+				\bf{Method} & \bf{Complexity} & \bf{Homogeneity} & \bf{Spectral Characteristics} & 
+				\bf{Temporal Characteristics} & \bf{Flexibility} \tabularnewline 
 				% & \bf{Naturalness}
 				\hline
 				\hline
-				Static Nonlinearity & $\mathcal{O}(n)$ & & & & & \tabularnewline
+				Static Nonlinearity & $\mathcal{O}(n)$ & & & & \tabularnewline
 				\hline
-				Rectifier & $\mathcal{O}(n)$ & & & & & \tabularnewline
+				Rectifier & $\mathcal{O}(n)$ & & & & \tabularnewline
 				\hline
-				Integrator & $\mathcal{O}(n)$ & & & & & \tabularnewline
+				Integrator & $\mathcal{O}(n)$ & & & & \tabularnewline
 				\hline
-				Multiplier & $\mathcal{O}(n)$ & & & & & \tabularnewline
+				Multiplier & $\mathcal{O}(n)$ & & & & \tabularnewline
 				\hline
-				SSBA & $\mathcal{O}(n)$ & & & & & \tabularnewline
+				SSBA & $\mathcal{O}(n)$ & & & & \tabularnewline
 				\hline
-				IAP & $\mathcal{O}(n)$ & & & & & \tabularnewline
+				IAP & $\mathcal{O}(n)$ & & & & \tabularnewline
 				\hline
-				Spectral Replicator & $\mathcal{O}(n)$ & & & & & \tabularnewline
+				Spectral Replicator & $\mathcal{O}(n)$ & & & & \tabularnewline
 				\hline
-				Spectral Mirror & $\mathcal{O}(n)$ & & & & & \tabularnewline
+				Spectral Mirror & $\mathcal{O}(n)$ & & & & \tabularnewline
 				\hline
-				Spectral Stretch & $\mathcal{O}(n\log{n})$ Assuming FFT used & & & & & \tabularnewline
+				Spectral Stretch & $\mathcal{O}(n\log{n})$ Assuming FFT used & & & & \tabularnewline
 				\hline
 			\end{tabular}
 			\caption{A summary of the comparison of excitation methods.}
@@ -458,7 +469,7 @@
 				\label{eq:RectificationFourier}
 			\end{gather}
 
-			This represents all even order harmonics rolling off at approximately 12dB per octave.  As with
+			This represents all even order harmonics rolling off at approximately 12dB per octave. As with
 			other static nonlinearities, rectifiers are susceptible to aliasing. The relatively shallow roll
 			off of the distortion components can lead to a considerable amount of energy present in the aliased
 			components of the output signal. 
