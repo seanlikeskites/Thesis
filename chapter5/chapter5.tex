@@ -166,6 +166,8 @@
 				\hline
 				Spectral Stretch & $\mathcal{O}(n\log{n})$ Assuming FFT used & & & & \tabularnewline
 				\hline
+				STTR & $\mathcal{O}(n)$ & & & & \tabularnewline
+				\hline
 			\end{tabular}
 			\caption{A summary of the comparison of excitation methods.}
 			\label{tab:ComparisonSummary}
@@ -179,58 +181,51 @@
 		of full wave rectification in which a single absolute value operation is applied for each sample. As the
 		characteristic curve of the nonlinearity becomes more complex the computational load increases. Hard
 		clipping and half wave rectification require comparison operations to determine which samples should be
-		altered. 
-
-		Further complexity is introduced where the characteristic curve require some computation such as with
-		exponential static nonlinearities and soft clippers. The transition section of the soft clipper given in
-		Equation \ref{eq:SymmetricSoftClipping} requires a considerable number of operations to calculate. In
-		situations where the number of calculations becomes to large the computational load can be decrease using a
-		precomputed lookup table in input and output values.
-
-		As static nonlinearities process each sample individually, the amount of work required per unit time of
-		audio grows linearly with the sampling rate.
+		altered. Further complexity is introduced where the characteristic curve require some computation such as
+		with exponential static nonlinearities and soft clippers. The transition section of the soft clipper given
+		in Equation \ref{eq:SymmetricSoftClipping} requires a considerable number of operations to calculate. In
+		situations where the number of calculations becomes too large the computational load can be decrease using a
+		precomputed lookup table of input and output values. As static nonlinearities process each sample
+		individually, the amount of work required per unit time of audio grows linearly with the sampling rate.
 
 		Every other algorithm presented in Section \ref{sec:Excitation-Methods} involves some dependence on the
 		previous input and output samples of the system. Implementing these algorithms involves the use of
-		additional memory.
+		additional memory. The simplest algorithm which requires this additional memory is the integrator given in
+		Equation \ref{eq:Integrator}. The previous input sample is needed in order to detect zero crossings in the
+		input and the previous output sample is needed to apply the integration. The amount of computation performed
+		for this system is comparable to that of a simple static nonlinearity, giving a very low computational load.
 
-		The simplest algorithm which requires this additional memory is the integrator given in Equation
-		\ref{eq:Integrator}. The previous input sample is needed in order to detect zero crossings in the input and
-		the previous output sample is needed to apply the integration. The amount computation performed for this
-		system is comparable to that of a simple static nonlinearity, giving a very low computational load.
+		Spectral folding using Equation \ref{eq:SpectralFolding} requires a low pass filter in order to reduce the
+		aliasing introduced by downsampling the signal. This filter comprises the majority of the complexity of the
+		system leading to a trade off between computational complexity and the level of aliasing. Increasing the
+		order of the filter will better reduce aliasing while increasing the overall complexity.
 
-		Spectral folding using Equation \ref{eq:SpectralFolding} require a low pass filter in order to reduce
-		aliasing. This filter comprises the majority of the complexity of the system leading to a trade off between
-		computational complexity and the level of aliasing. Increasing the order of the filter will better reduce
-		aliasing while increasing the overall complexity.
-
-		More complex filtering is required by those algorithms which operate on an analytic signal. The Hilbert
-		transform of the input signal must be computed in order to construct the analytic signal. The Hilbert
-		transform filter used must have a suitably consistent response for a wide range of frequencies so the
-		resulting harmonic excitation gives similar results at different frequencies.
-
-		A high order FIR Hilbert transform filter is required to give a suitably flat magnitude response. As the
-		order of this filter is increased the computation time rises along with the amount of delay needed to make
-		the filter causal. A lower complexity IIR phase splitter can be used in order to reduce the computational
-		load. The implementation given by \citet{niemitalo2003hilbert} consists of eight biquad filters and a one
-		sample delay. This provides a reasonable compromise between accuracy, complexity and introduced delay.
-
-		Once an analytic signal has been constructed, little additional computation is required. SSBA requires the
-		evaluation of a complex exponential for each sample. IAP and spectral replication, however, require the
-		computation of trigonometric functions, be it to calculate the complex argument of the analytic signal or to
-		synthesis a modulating signal.
+		More complex filtering is required by those algorithms which operate on an analytic signal (SSBA, IAP and
+		Spectral Replication). The Hilbert transform of the input signal must be computed in order to construct the
+		analytic signal. The Hilbert transform filter used must have a suitably consistent response for a wide range
+		of frequencies so the resulting harmonic excitation gives similar results at different frequencies. As shown
+		in Section \ref{sec:Timbre-LowLevelFeatures-Temporal} a high order FIR Hilbert transform filter is required
+		to give a suitably flat magnitude response. As the order of this filter is increased the computation time
+		rises along with the amount of delay needed to make the filter causal. A lower complexity IIR phase splitter
+		can be used in order to reduce the computational load. The implementation given by
+		\citet{niemitalo2003hilbert} (also discussed in Section \ref{sec:Timbre-LowLevelFeatures-Temporal}) consists
+		of eight biquad filters and a one sample delay. This provides a reasonable compromise between accuracy,
+		complexity and introduced delay. Once an analytic signal has been constructed, little additional computation
+		is required. SSBA requires the evaluation of a complex exponential for each sample. IAP and spectral
+		replication, however, require the computation of trigonometric functions, be it to calculate the complex
+		argument of the analytic signal or to synthesis a modulating signal.
 
 		Spectral stretching using a phase vocoder requires a large amount of computation. Calculating the STFT
 		involves splitting the signal into frames on which the DFT is then computed. The phase correction for each
 		frame must then be computed and applied before the inverse DFT of each frame is taken and the frames summed
 		back together. The resulting signal then needs to be resampled requiring further operations. If the scaling
 		factor is not an integer value, the resampling process will require additional interpolation calculations.
-	
 		Several steps can be taken to reduce the work needed when using a phase vocoder. The computational
-		complexity of the DFT calculations can be reduced by using the fast Fourier transform
-		\citep{portnoff1976implementation}. When shifting the frequencies upwards, the amount of work can be further
-		reduced by resampling the signal before calculating the STFT \citep{laroche1999new}. This way there are
-		fewer frames for which the DFT need be calculated.
+		complexity of the DFT calculations can be reduced from $\mathcal{O} \left( n^{2} \right)$ to
+		$\mathcal{O}(n\log{n})$ by using the fast Fourier transform \citep{portnoff1976implementation}. When
+		shifting the frequencies upwards, the amount of work can be further reduced by resampling the signal before
+		calculating the STFT \citep{laroche1999new}. This way there are fewer frames for which the DFT need be
+		calculated.
 
 		The computational complexity of STTR depends on the ratio of the step size, $R$, and the length of the
 		window function $L$ in samples. As $\frac{R}{L}$ decreases the number of overlapping frames needed to
