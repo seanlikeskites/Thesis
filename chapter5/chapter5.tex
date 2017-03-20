@@ -57,18 +57,22 @@
 		must be efficient and operate with minimal latency. 
 
 		In order to ease the computational load on the processor, digital audio processing if often done in blocks.
-		A certain number of samples are recorded into a buffer and then all processed at once. This introduces some
-		latency into the system; the processing buffer must be filled with samples from the input before an output
-		can be produced. The larger the processing buffer size the more latency but the less the computational load
-		as the cost of constructing and moving buffers is amortised across a greater number of samples. Any
-		processing applied to the block of audio must be completed within the allowed latency time, if not there
-		will be gaps between blocks during playback causing audible anomalies. For real time audio effects it is
-		crucial to keep throughput latency to a minimum. \citet{lester2007the} suggest that, depending on the
+		A certain number of samples are recorded into a memory buffer and then all processed at once. This
+		introduces some latency into the system; the processing buffer must be filled with samples from the input
+		before an output can be produced. The larger the processing buffer size the more latency but the less the
+		computational load as the cost of constructing and moving buffers is amortised across a greater number of
+		samples. Any processing applied to the block of audio must be completed within the allowed latency time, if
+		not there will be gaps between blocks during playback causing audible anomalies. For real time audio effects
+		it is crucial to keep throughput latency to a minimum. \citet{lester2007the} suggest that, depending on the
 		scenario, latencies as small as 1.4ms could be deemed unacceptable. In order to keep latency to a minimum,
-		processing algorithms should be able to run in real time when using a small buffer size. In a modern music
-		production setting there may be several audio effects operating concurrently, the algorithms used for real
-		time harmonic excitation must not only be efficient enough to run in real time but also to allow any
+		processing algorithms should be able to operate in real time when using a small buffer size. In a modern
+		music production setting there may be several audio effects operating concurrently, the algorithms used for
+		real time harmonic excitation must not only be efficient enough to run in real time but also to allow any
 		concurrent processing to proceed uninterrupted.
+
+		Occasionally it is necessary to introduce a specific amount delay as part of the processing algorithm, such
+		as when applying a non-causal filter. This delay contributes to the overall latency of the effect and as
+		such will be discussed alongside an algorithm's complexity.
 
 	\subsection{Homogeneity}
 	\label{sec:ExcitationEvaluation-Evaluation-Homogeneity}
@@ -185,8 +189,7 @@
 		with exponential static nonlinearities and soft clippers. The transition section of the soft clipper given
 		in Equation \ref{eq:SymmetricSoftClipping} requires a considerable number of operations to calculate. In
 		situations where the number of calculations becomes too large the computational load can be decrease using a
-		precomputed lookup table of input and output values. As static nonlinearities process each sample
-		individually, the amount of work required per unit time of audio grows linearly with the sampling rate.
+		precomputed lookup table of input and output values.
 
 		Every other algorithm presented in Section \ref{sec:Excitation-Methods} involves some dependence on the
 		previous input and output samples of the system. Implementing these algorithms involves the use of
@@ -198,53 +201,54 @@
 		Spectral folding using Equation \ref{eq:SpectralFolding} requires a low pass filter in order to reduce the
 		aliasing introduced by downsampling the signal. This filter comprises the majority of the complexity of the
 		system leading to a trade off between computational complexity and the level of aliasing. Increasing the
-		order of the filter will better reduce aliasing while increasing the overall complexity.
-
-		More complex filtering is required by those algorithms which operate on an analytic signal (SSBA, IAP and
-		Spectral Replication). The Hilbert transform of the input signal must be computed in order to construct the
-		analytic signal. The Hilbert transform filter used must have a suitably consistent response for a wide range
-		of frequencies so the resulting harmonic excitation gives similar results at different frequencies. As shown
-		in Section \ref{sec:Timbre-LowLevelFeatures-Temporal} a high order FIR Hilbert transform filter is required
-		to give a suitably flat magnitude response. As the order of this filter is increased the computation time
-		rises along with the amount of delay needed to make the filter causal. A lower complexity IIR phase splitter
-		can be used in order to reduce the computational load. The implementation given by
-		\citet{niemitalo2003hilbert} (also discussed in Section \ref{sec:Timbre-LowLevelFeatures-Temporal}) consists
-		of eight biquad filters and a one sample delay. This provides a reasonable compromise between accuracy,
-		complexity and introduced delay. Once an analytic signal has been constructed, little additional computation
-		is required. SSBA requires the evaluation of a complex exponential for each sample. IAP and spectral
-		replication, however, require the computation of trigonometric functions, be it to calculate the complex
-		argument of the analytic signal or to synthesis a modulating signal.
+		order of the filter will better reduce aliasing while increasing the overall complexity. More complex
+		filtering is required by those algorithms which operate on an analytic signal (SSBA, IAP and Spectral
+		Replication). The Hilbert transform of the input signal must be computed in order to construct the analytic
+		signal. The Hilbert transform filter used must have a suitably consistent response for a wide range of
+		frequencies so the resulting harmonic excitation gives similar results at different frequencies. As shown in
+		Section \ref{sec:Timbre-LowLevelFeatures-Temporal} a high order FIR Hilbert transform filter is required to
+		give a suitably flat magnitude response. As the order of this filter is increased the computation time rises
+		along with the amount of delay needed to make the filter causal. A lower complexity IIR phase splitter can
+		be used in order to reduce the computational load. The implementation given by \citet{niemitalo2003hilbert}
+		(also discussed in Section \ref{sec:Timbre-LowLevelFeatures-Temporal}) consists of eight biquad filters and
+		a one sample delay. This provides a reasonable compromise between accuracy, complexity and introduced delay.
+		Once an analytic signal has been constructed, little additional computation is required. SSBA requires the
+		evaluation of a complex exponential for each sample. IAP and spectral replication, however, require the
+		computation of trigonometric functions, be it to calculate the complex argument of the analytic signal or to
+		synthesis a modulating signal.
 
 		Spectral stretching using a phase vocoder requires a large amount of computation. Calculating the STFT
-		involves splitting the signal into frames on which the DFT is then computed. The phase correction for each
-		frame must then be computed and applied before the inverse DFT of each frame is taken and the frames summed
-		back together. The resulting signal then needs to be resampled requiring further operations. If the scaling
-		factor is not an integer value, the resampling process will require additional interpolation calculations.
-		Several steps can be taken to reduce the work needed when using a phase vocoder. The computational
-		complexity of the DFT calculations can be reduced from $\mathcal{O} \left( n^{2} \right)$ to
-		$\mathcal{O}(n\log{n})$ by using the fast Fourier transform \citep{portnoff1976implementation}. When
-		shifting the frequencies upwards, the amount of work can be further reduced by resampling the signal before
-		calculating the STFT \citep{laroche1999new}. This way there are fewer frames for which the DFT need be
-		calculated.
+		involves splitting the signal into frames on which the DFT is then computed. The frame size used in the
+		calculation of the STFT must be sufficient enough to represent the detail in the input signal. Larger frame
+		sizes however introduce more latency into the system. The phase correction for each frame must then be
+		computed and applied before the inverse DFT of each frame is taken and the frames summed back together with
+		the new hop size. The resulting signal then needs to be resampled requiring further operations. If the
+		scaling factor is not an integer value, the resampling process will require additional interpolation
+		calculations. Several steps can be taken to reduce the work needed when using a phase vocoder. The
+		computational complexity of the DFT calculations can be reduced from $\mathcal{O} \left( n^{2} \right)$ to
+		$\mathcal{O}(n\log{n})$, where $n$ is the number of samples on which the DFT is being computed, by using the
+		fast Fourier transform \citep{portnoff1976implementation}. When shifting the frequencies upwards, the amount
+		of work can be further reduced by resampling the signal prior to calculating the STFT
+		\citep{laroche1999new}. This way there are fewer frames for which the DFT need be calculated.
 
-		The computational complexity of STTR depends on the ratio of the step size, $R$, and the length of the
-		window function $L$ in samples. As $\frac{R}{L}$ decreases the number of overlapping frames needed to
-		calculate an output sample increases, increasing the computational load. Time reversal of the frames
-		introduces an $L$ sample delay to the signal as the samples at the end of the first frame are needed to form
-		the start of the signal.
+		The computational complexity of STTR depends on the ratio of the step size, $\delta$, and the length of the
+		window function, $L$, in samples. As $\frac{\delta}{L}$ decreases the number of overlapping frames needed to
+		calculate an output sample increases, increasing the computational load. The algorithm's complexity remains
+		relatively low however, requiring a small number of simple operations. The biggest source of latency in STTR
+		is through the time reversal of the frames. This introduces an $L$ sample delay to the signal as the samples
+		at the end of the first frame are needed to form the start of the signal.
 
 	\subsection{Homogeneity}
 	\label{sec:ExcitationEvaluation-Comparison-Homogeneity}
 
 		\subsubsection*{Static Nonlinearities}
-			The homogeneity of a static nonlinearity depends on the nonlinear function used. For different
-			input amplitudes the set of harmonics generated by a given static nonlinearity will change. The
-			ways in which this set of harmonics changes was investigated by \citet{enderby2012harmonic}.
-
-			In that study the effects of several soft clippers on sinusoidal inputs were analysed. The levels
-			of individual harmonics are plotted as a function of input amplitude. Figures
-			\ref{fig:HardClippingHarmonics} and \ref{fig:SoftClippingHarmonics} show these plots for the
-			clipping functions described previously.
+			The homogeneity of a static nonlinearity depends on its characteristic curve. Changing the amplitude
+			of a sinusoidal input changes the amplitudes of each of the harmonics generated in the output. The
+			response of of several different clipping curves to changing input amplitude was investigated by
+			\citet{enderby2012harmonic}. The levels of individual harmonics in the output were plotted as a
+			function of the input signals peak amplitude. Figures \ref{fig:HardClippingHarmonics} and
+			\ref{fig:SoftClippingHarmonics} show these plots for the clipping functions described in Section
+			\ref{sec:Excitation-Methods-Statics}.
 
 			\begin{figure}[h!]
 				\centering
@@ -262,11 +266,10 @@
 				\label{fig:SoftClippingHarmonics}
 			\end{figure}
 
-			The first thing to note is that new harmonic components are only introduced once the input
-			amplitude extends out of the linear section of the characteristic curve. Once input amplitude
-			reaches a sufficient level harmonics are introduced but their amplitudes all vary independently.
-
-			This behaviour can be improved on through the use of a different clipping function. Equation
+			The first thing to note is that new harmonic components are only introduced once the input amplitude
+			extends out of the linear section of the characteristic curve. Once the input amplitude reaches a
+			sufficient level harmonics are introduced but their amplitudes all vary independently. This
+			behaviour can be improved on through the use of a different clipping function. Equation
 			\ref{eq:SymmetricExponentialClipping} shows a function used to apply exponential clipping to a
 			signal.
 			
@@ -515,8 +518,8 @@
 			If the exponent is allowed to take any positive value, control over the bandwidth of the output
 			signal is lost. Non integer exponents cause higher orders of distortion to be generated. Figures
 			\ref{fig:CubedSpectra} and \ref{fig:TwoAndAHalfSpectra} show the spectral effects of exponential
-			static nonlinearities with integer and non-integer exponents. The input signal has a fundamental frequency of
-			1kHz and has energy in the first four harmonics.
+			static nonlinearities with integer and non-integer exponents. The input signal has a fundamental
+			frequency of 1kHz and has energy in the first four harmonics.
 
 			\begin{figure}[h!]
 				\centering
