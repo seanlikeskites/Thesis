@@ -303,42 +303,45 @@
 			always clips the same proportion of the signal, as done by \citet{deman2014adaptive}.
 
 		\subsubsection*{Rectification}
-			One of the main advantages of rectifiers is that they are exhibit positive homogeneity (they
-			satisfy Equation \ref{eq:homogeneity} only for non-negative values of $a$). For full wave
-			rectification this can be summarised using Equation \ref{eq:FullWaveRectificationHomogeneity}.
+			Rectifiers exhibit a less strict form of homogeneity; positive homogeneity. They satisfy Equation
+			\ref{eq:homogeneity} only for non-negative values of $a$. For full wave rectification this can be
+			summarised using Equation \ref{eq:FullWaveRectificationHomogeneity}. For negative values of $a$ the
+			right hand side of the equation is the additive inverse of the left hand side. This has little
+			effect on the use of a full wave rectifier as the output is always positive.
 
 			\begin{equation}
-				\abs{ax[n]} = a\abs{x[n]}, \quad \forall a \in \textbf{R}_{\geq 0}
+				\abs{ax[n]} = a\abs{x[n]}, \quad a \geq 0
 				\label{eq:FullWaveRectificationHomogeneity}
 			\end{equation}
 
-			Half wave rectification is not homogeneous for negative values of $a$ as the negative portions of
-			the input signal are zeroed. If a negative gain is applied prior to this process, what were the
-			positive portions of the input signal will be zeroed.
+			Half wave rectification behaves slightly differently in that the sign of the gain applied to a
+			signal before processing determines which parts of the signal are zeroed. If a negative gain is
+			applied the positive portions of the original input are made negative and are therefore zeroed by
+			the rectification. For simple signals, with similar negative and positive going portions, this is of
+			no concern but for more complex signals the choice of which portions are zeroed may make a
+			perceivable difference.
 
 		\subsubsection*{Integrator}
-			Integration is a homogeneous operation. This is an advantage over certain static nonlinearities as
-			though more operations are needed per sample no further work is needed to make the system
-			homogeneous. If a homogeneous system is required, it may be more efficient to use an integrator
-			over a static nonlinearity.
-		
-			\note
-			{
-				Formal proof?
-			}
+			Integration is a homogeneous operation because of the distributive property of multiplication. The
+			implementation give in Equation \ref{eq:Integrator} however only exhibits positive homogeneity due
+			to the rectification of the signal prior to integration. The sign of the gain applied to the
+			input signal also determines the points at which the output output signal is reset to zero.
+			The signal is reset on positive going zero crossings but a negative gain before in the input
+			reverses the direction of all zero crossings. Similarly to half wave rectification this may have
+			audible effects depending on the nature of the input signal.
 
 		\subsubsection*{Multiplier}
-			Exponentiation is a non-homogeneous operation. Any amplitude applied to a signal before processing
-			is also raised to the exponent, as shown in Equation \ref{eq:MultiplierHomogeneity}.
+			Exponentiation is a non-homogeneous operation. Any gain applied to a signal prior to processing is
+			also raised to the exponent, as shown in Equation \ref{eq:MultiplierHomogeneity}.
 
 			\begin{equation}
 				(ax[n])^{h} = a^{h}x[n]^{h}
 				\label{eq:MultiplierHomogeneity}
 			\end{equation}
 
-			Unlike clippers there is no threshold parameter to change in response to the amplitude of the input
-			signal. Gain stages can be added before and after the nonlinearity in order to make the system's
-			response to different input amplitudes more uniform.
+			Unlike clipping algorithms there is no threshold parameter to change in response to the amplitude of
+			the input signal. Gain stages can be added before and after the nonlinearity in order to make the
+			system's response to different input amplitudes more uniform.
 
 		\subsubsection*{SSBA}
 			As with multipliers, SSBA is a non-homogeneous process. The amplitude envelope of the $h$\super{th}
