@@ -348,15 +348,41 @@
 			order automodulation is the amplitude envelope of the original signal raised to the power $h$. 
 
 		\subsubsection*{IAP}
-			In the IAP method the magnitude and phase information of a signal are separated. The phase
-			information is scaled in order to increase the frequency while the magnitude information is left
-			unaltered. This preservation of magnitude information mean that the IAP method is a homogeneous
-			system.
+			The IAP method is homogeneous when used to generate odd order harmonics but is only positive
+			homogeneous when used to generate even order harmonics. Equation \ref{eq:IAP} is easily shown to be
+			positive homogeneous as application of a non-negative gain will alter only the amplitude of a signal
+			leaving its phase information unchanged (Equation \ref{eq:IAPPositiveHomogeneity}).
 
-			\note
-			{
-				Formal proof?
-			}
+			\begin{gather}
+				\abs{ax_{a}[n]} = a\abs{x_{a}[n]} \nonumber \\
+				\arg(ax_{a}[n]) = \arg(x_{a}[n]), \quad a \geq 0
+				\label{eq:IAPPositiveHomogeneity}
+			\end{gather}
+
+			Application of a negative gain however changes the phase of the signal (Equation
+			\ref{eq:NegativeGainPhase}).
+						
+			\begin{equation}
+				\arg(ax_{a}[n]) = (\arg(x_{a}[n]) \mod 2\pi) - \pi, \quad a < 0
+				\label{eq:NegativeGainPhase}
+			\end{equation}
+
+			When the phase is scaled to increase the frequency the effects depend on the order of the harmonic
+			being generated $h$. The phase of the amplified signal, $ax_{a}[n]$, scaled by $h$ is $h\pi$ radians
+			less than that of the original signal, $x_{a}[n]$, scaled by the same factor (Equation
+			\ref{eq:IAPOrderHomogeneity}).
+
+			\begin{equation}
+				h\arg(ax_{a}[n]) = h(\arg(x_{a}[n]) \mod 2\pi) - h\pi, \quad a < 0
+				\label{eq:IAPOrderHomogeneity}
+			\end{equation}
+
+			To maintain the correct phase information the phase value of a signal which has had negative gain
+			applied should be an odd multiple of $\pi$ away from that of the original signal. Equation
+			\ref{eq:IAPOrderHomogeneity} shows that this is not the case when $h$ is even. If the input signal
+			to a harmonic excitation system using IAP is inverted the odd order harmonics generated will also be
+			inverted while the even order ones will not. This could have dramatic effects if the generated
+			harmonics are being summed with other signals with the same frequency components.
 
 		\subsubsection*{Spectral Replication}
 			Spectral replication using Equation \ref{eq:SpectralReplication} is a homogeneous process.
