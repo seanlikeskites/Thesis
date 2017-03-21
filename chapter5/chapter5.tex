@@ -367,9 +367,9 @@
 				\label{eq:NegativeGainPhase}
 			\end{equation}
 
-			When the phase is scaled to increase the frequency the effects depend on the order of the harmonic
-			being generated $h$. The phase of the amplified signal, $ax_{a}[n]$, scaled by $h$ is $h\pi$ radians
-			less than that of the original signal, $x_{a}[n]$, scaled by the same factor (Equation
+			When the phase is scaled to increase the frequency, the effects depend on the order of the harmonic
+			being generated, $h$. The phase of the amplified signal, $ax_{a}[n]$, scaled by $h$ is $h\pi$
+			radians less than that of the original signal, $x_{a}[n]$, scaled by the same factor (Equation
 			\ref{eq:IAPOrderHomogeneity}).
 
 			\begin{equation}
@@ -377,12 +377,11 @@
 				\label{eq:IAPOrderHomogeneity}
 			\end{equation}
 
-			To maintain the correct phase information the phase value of a signal which has had negative gain
-			applied should be an odd multiple of $\pi$ away from that of the original signal. Equation
-			\ref{eq:IAPOrderHomogeneity} shows that this is not the case when $h$ is even. If the input signal
-			to a harmonic excitation system using IAP is inverted the odd order harmonics generated will also be
-			inverted while the even order ones will not. This could have dramatic effects if the generated
-			harmonics are being summed with other signals with the same frequency components.
+			The $-h\pi$ radian offset in phase introduced by the scaling means that the polarity of the output
+			is changed depending on the parity of $h$. If the input signal to a harmonic excitation system using
+			IAP is inverted the odd order harmonics generated will also be inverted while the even order ones
+			will not. This could have dramatic timbral effects if the generated harmonics are being summed with
+			other signals with the same frequency components.
 
 		\subsubsection*{Spectral Replication}
 			Spectral replication using Equation \ref{eq:SpectralReplication} is a homogeneous process.
