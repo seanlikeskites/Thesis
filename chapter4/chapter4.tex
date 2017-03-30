@@ -968,13 +968,13 @@
 		final reduced dimensionality timbre spaces are then constructed from the first five PCs.
 
 		These timbre spaces are analysed in various steps. Firstly the audio features which correlate most highly
-		with each PC are determined. Features which satisfy a correlation criteria of $r > 0.7$ and $p < 0.01$ are
-		deemed to be the salient features of each timbre space. Next the agreement scores for the relevant
-		descriptors from Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} are calculated. As the
-		timbre space is a product of PCA no additional PCA is needed, the high variance dimensions of the data have
-		already been identified. Each timbre space is standardised and the covariance matrix for each descriptor is
-		calculated. The agreement scores are then calculated from the eigenvalues of these covariance matrices
-		using Equation \ref{eq:BoundedEigenvalueAgreement} as discussed in Section
+		with each PC are determined. Features which satisfy a correlation criteria of $\abs{r} > 0.7$ and $p <
+		0.01$ are deemed to be the salient features of each timbre space. Next the agreement scores for the
+		relevant descriptors from Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} are calculated. As
+		the timbre space is a product of PCA no additional PCA is needed, the high variance dimensions of the data
+		have already been identified. Each timbre space is standardised and the covariance matrix for each
+		descriptor is calculated. The agreement scores are then calculated from the eigenvalues of these covariance
+		matrices using Equation \ref{eq:BoundedEigenvalueAgreement} as discussed in Section
 		\ref{sec:TimbreEvaluation-Analysis-Agreement}.
 		
 		Two types of graph are plotted to identify patterns within each timbre space. The first is a scatter plot
