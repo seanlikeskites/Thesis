@@ -383,31 +383,32 @@
 			will not. This could have dramatic timbral effects if the generated harmonics are being summed with
 			other signals with the same frequency components.
 
-		\subsubsection*{Spectral Replication}
-			Showing that spectral replication using Equation \ref{eq:SpectralReplication} is a homogeneous
-			system is trivial due to the associative property of multiplication.
-			
-		\subsubsection*{Spectral Folding}
-			Both downsampling and upsampling are homogeneous processes making spectral folding also
-			homogeneous.
-
-			\note
-			{
-				Formal proof?
-			}
-			
 		\subsubsection*{Spectral Stretching}
-			The phase vocoder algorithm is a homogeneous system. When processing the signal in the frequency
-			domain only the phase information is altered, leaving magnitude information unchanged. 
+			The phase vocoder algorithm used for spectral stretching is a homogeneous system. When processing
+			the signal in the frequency domain only the phase information is altered, leaving magnitude
+			information unchanged. 
 
-			\note
-			{
-				Formal proof?
-			}
+		\subsubsection*{Linear Time Variant Algorithms}
+			The remaining algorithms (spectral replication using Equation \ref{eq:SpectralReplication}, spectral
+			folding and STTR) are linear time variant systems. As such they all satisfy the principle of
+			homogeneity.
 
-		\subsubsection*{STTR}
-			STTR is a homogeneous process. As the samples in each frame are only multiplied by a constant window
-			and reversed in time none of the amplitude information in the signal is lost. 
+%		\subsubsection*{Spectral Replication}
+%			Spectral replication using Equation \ref{eq:SpectralReplication} linear time variant system, as such
+%			it satisfies the condition of homogeneity.
+%			
+%		\subsubsection*{Spectral Folding}
+%			Both downsampling and upsampling are homogeneous processes making spectral folding also
+%			homogeneous.
+%
+%			\note
+%			{
+%				Formal proof?
+%			}
+%			
+%		\subsubsection*{STTR}
+%			STTR is a homogeneous process. As the samples in each frame are only multiplied by a constant window
+%			and reversed in time none of the amplitude information in the signal is lost. 
 
 	\subsection{Spectral Characteristics}
 	\label{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}
