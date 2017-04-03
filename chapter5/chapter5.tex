@@ -145,32 +145,34 @@
 	\label{sec:ExcitationEvaluation-Comparison-Summary}
 		\begin{table}[h!]
 			\centering
-			\begin{tabular}{|c|c|c|c|c|c|c|}
+			\begin{tabular}{|c|c|C{3cm}|c|c|c|c|}
 				\hline
 				\bf{Method} & \bf{Complexity} & \bf{Homogeneity} & \bf{Spectral Characteristics} & 
 				\bf{Temporal Characteristics} & \bf{Flexibility} \tabularnewline 
 				% & \bf{Naturalness}
 				\hline
 				\hline
-				Static Nonlinearity & $\mathcal{O}(n)$ & & & & \tabularnewline
+				Static Nonlinearity & $\mathcal{O}(n)$ & Non-homogeneous & & & \tabularnewline
 				\hline
-				Rectifier & $\mathcal{O}(n)$ & & & & \tabularnewline
+				Rectifier & $\mathcal{O}(n)$ & Positive Homogeneous & & & \tabularnewline
 				\hline
-				Integrator & $\mathcal{O}(n)$ & & & & \tabularnewline
+				Integrator & $\mathcal{O}(n)$ & Positive Homogeneous & & & \tabularnewline
 				\hline
-				Multiplier & $\mathcal{O}(n)$ & & & & \tabularnewline
+				Multiplier & $\mathcal{O}(n)$ & Non-Homogeneous & & & \tabularnewline
 				\hline
-				SSBA & $\mathcal{O}(n)$ & & & & \tabularnewline
+				SSBA & $\mathcal{O}(n)$ & Non-Homogeneous & & & \tabularnewline
 				\hline
-				IAP & $\mathcal{O}(n)$ & & & & \tabularnewline
+				IAP & $\mathcal{O}(n)$ & Homogeneous when $h$ is odd, positive homogeneous otherwise.
+				& & & \tabularnewline
 				\hline
-				Spectral Replicator & $\mathcal{O}(n)$ & & & & \tabularnewline
+				Spectral Replicator & $\mathcal{O}(n)$ & LTV & & & \tabularnewline
 				\hline
-				Spectral Mirror & $\mathcal{O}(n)$ & & & & \tabularnewline
+				Spectral Folding & $\mathcal{O}(n)$ & LTV & & & \tabularnewline
 				\hline
-				Spectral Stretch & $\mathcal{O}(n\log{n})$ Assuming FFT used & & & & \tabularnewline
+				Spectral Stretch & $\mathcal{O}(n\log{n})$ & Homogeneous &
+				& & \tabularnewline
 				\hline
-				STTR & $\mathcal{O}(n)$ & & & & \tabularnewline
+				STTR & $\mathcal{O}(n)$ & LTV & & & \tabularnewline
 				\hline
 			\end{tabular}
 			\caption{A summary of the comparison of excitation methods.}
@@ -415,10 +417,9 @@
 		\subsubsection*{Static Nonlinearities}
 			The spectral characteristics of a static nonlinearity depend on the function which describes its
 			characteristic curve. If an odd function is used only odd order components will be produced, using
-			an even function only even order components are generated. 
-
-			The symmetric clippers discussed previously all use odd functions. It is evident from the harmonic
-			amplitude plots (Figures \ref{fig:HardClippingHarmonics}, \ref{fig:SoftClippingHarmonics} and
+			an even function only even order components are generated. The symmetric clippers discussed
+			previously are all described by odd functions. It is evident from the harmonic amplitude plots
+			(Figures \ref{fig:HardClippingHarmonics}, \ref{fig:SoftClippingHarmonics} and
 			\ref{fig:ExponentialClippingHarmonics}) that only odd order harmonics have been introduced to the
 			signal. In order to generate even order harmonics these clipping function need to be made
 			asymmetric. This is easily done by clipping negative and positive portions of the input signal at
@@ -435,11 +436,10 @@
 			\end{equation}
 
 			Where $t_{+}$ and $t_{-}$ are the clipping thresholds for positive and negative portions of the
-			signal respectively.	
-
-			Figure \ref{fig:AsymmetricHardClippingHarmonics} show the harmonic amplitude plot for Equation
-			\ref{eq:AsymmetricHardClipping} with $t_{+} = 0.5$ and $t_{-} = -0.3$. While the system is still
-			non-homogeneous, there is a greater amount of new harmonic content.
+			signal respectively. Figure \ref{fig:AsymmetricHardClippingHarmonics} shows the harmonic amplitude
+			plot for Equation \ref{eq:AsymmetricHardClipping} with $t_{+} = 0.5$ and $t_{-} = -0.3$. While the
+			system is still non-homogeneous, the introduced energy consists of both odd and even order
+			distortion components.
 
 			\begin{figure}[h!]
 				\centering
@@ -450,13 +450,12 @@
 			\end{figure}
 
 			The amplitudes of the generated harmonics will roll off at differing rates depending on the
-			properties of the output signal. The spectrum will roll off at $6(n+1)$dB per octave when
-			the $n$\super{th} derivative of the output signal is discontinuous \citep{kraght2000aliasing}.
-
-			Hard clippers introduce discontinuities to the first derivative of a signal and so will introduce
+			properties of the output signal. The spectrum will roll off at $6(n+1)$dB per octave when the
+			$n$\super{th} derivative of the output signal is discontinuous \citep{kraght2000aliasing}.  Hard
+			clippers introduce discontinuities to the first derivative of a signal and so will introduce
 			harmonics whose amplitudes will roll off at 12dB per octave. Signals clipped by Equation
-			\ref{eq:SymmetricSoftClipping} are continuous in the first derivative and so produce harmonics
-			which roll off at a faster rate. This can be seen in Figure \ref{fig:ClippingSpectra}.
+			\ref{eq:SymmetricSoftClipping} are continuous in the first derivative and so produce harmonics whose
+			amplitudes roll off at a faster rate. This can be seen in Figure \ref{fig:ClippingSpectra}.
 
 			\begin{figure}[h!]
 				\centering
@@ -466,17 +465,41 @@
 				\label{fig:ClippingSpectra}
 			\end{figure}
 
-			The large amount of spectral content introduced by static nonlinearities means they are
-			particularly susceptible to aliasing. Through smoothing the characteristic curve of the
-			nonlinearity (making the clipper `softer') the amplitudes of generated frequencies will roll of
-			more quickly. With lower levels of high order distortion the amplitudes of any aliased components
-			will be reduced.
+			The large amount of spectral content introduced by static nonlinearities means they are particularly
+			susceptible to aliasing. Through smoothing the characteristic curve of the nonlinearity (making the
+			clipper `softer') the amplitudes of generated frequencies will roll of more quickly. With lower
+			levels of high order distortion the amplitudes of any aliased components will be reduced. Aliasing
+			can also be reduced by creating bandlimited approximations of a static nonlinearity's characteristic
+			curve. A simple implementation of this is the Harmonic Mixer \citep{schattschneider1999discrete} in
+			which low order polynomial expression approximating the desired characteristic curve is calculated.
+			This could be achieved through linear regression as shown in Figure \ref{fig:ClippingApproximation}.
+			The order of the polynomial used controls the maximum order of the distortion components,
+			effectively eliminating those which would be aliased.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics{chapter5/Images/ClippingApproximation.pdf}
+				\caption{A 7\super{th} order approximation of hard clipping using linear regression.}
+				\label{fig:ClippingApproximation}
+			\end{figure}
+
+			Generating characteristic curves in this way reduces the number of aliased frequencies at the cost
+			of having to evaluate a more complex polynomial to calculate the output value for each sample. A
+			similar approach is used by \citet{fernandez-cid2001distortion} who construct characteristic curves
+			from Chebyshev polynomials in order to control the highest frequencies introduced.
+
+			\citet{esqueda2015aliasing} propose a method for the reduction of aliasing in soft clipping systems,
+			applying bandlimited hard clipping prior to the soft clipping. They show their method to reduced the
+			level of aliased components when processing signals with $f_{0} < 3$kHz. While this method does not
+			fully eliminate aliasing, it applies bandlimiting at the Nyquist ensuring that all orders of
+			distortion which will not alias are left mostly unaffected. With a Harmonic Mixer one would have to
+			select a distortion order based on the $f_{0}$ of the input signal to make the best use of the
+			bandwidth allowed by the sampling frequency.
 
 		\subsubsection*{Rectification}
 			Full wave rectification can be considered as a static nonlinearity with an even characteristic
 			curve, as such it only introduces even order distortion components. The Fourier coefficients of a
 			rectified sine wave are shown in Equation \ref{eq:RectificationFourier}.
-
 
 			\begin{gather}
 				c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \abs{sin(x)}e^{-inx} dx \nonumber \\
@@ -848,21 +871,7 @@
 			orders of distortion.
 
 			Summing multiplier outputs in this way allows for approximation of other static
-			nonlinearities. A low order polynomial expression approximating the desired characteristic curve
-			is calculated by linear regression as shown in Figure \ref{fig:ClippingApproximation}. The
-			order of the polynomial controls the maximum order of the distortion components.
-
-			\begin{figure}[h!]
-				\centering
-				\includegraphics{chapter5/Images/ClippingApproximation.pdf}
-				\caption{A 7\super{th} order approximation of hard clipping using linear regression.}
-				\label{fig:ClippingApproximation}
-			\end{figure}
-
-			Generating characteristic curves in this way reduces the number of aliased frequencies at the cost
-			of having to evaluate a more complex polynomial to calculate the output value for each sample. A
-			similar approach is undertaken by \citet{fernandez-cid2001distortion} who construct characteristic
-			curves from Chebyshev polynomials in order to control the highest frequencies introduced.
+			nonlinearities. \note{Refer back to Section \ref{sec:ExcitationEvaluation-Comparison-Homogeneity}.}
 
 		\subsubsection*{Spectral Folding}
 			Spectral folding is an efficient method by which to create a dense output spectrum but has many
