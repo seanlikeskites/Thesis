@@ -498,8 +498,8 @@
 
 		\subsubsection*{Rectification}
 			Full wave rectification can be considered as a static nonlinearity with an even characteristic
-			curve, as such it only introduces even order distortion components. The Fourier coefficients of a
-			rectified sine wave are shown in Equation \ref{eq:RectificationFourier}.
+			curve, as such it only introduces even order distortion components. The Fourier series coefficients
+			of a full wave rectified sine wave are shown in Equation \ref{eq:RectificationFourier}.
 
 			\begin{gather}
 				c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \abs{sin(x)}e^{-inx} dx \nonumber \\
@@ -528,8 +528,8 @@
 			\end{equation}
 
 		\subsubsection*{Integrator}
-			Applying Equation \ref{eq:Integrator} to a sine wave produces a signal with Fourier coefficients as
-			shown in Equation \ref{eq:IntegratorFourier}.
+			Applying Equation \ref{eq:Integrator} to a sine wave produces a signal with Fourier series
+			coefficients as shown in Equation \ref{eq:IntegratorFourier}.
 
 			\begin{gather}
 				c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1 - cos(x))e^{-inx} dx +
@@ -544,12 +544,10 @@
 			This produces all harmonics with amplitudes rolling off at approximately 6dB per octave. This
 			shallow roll of make integrators very useful when a large amount of new frequency content is
 			desired. Due to the shallow roll off of the distortion component's amplitudes integrators are very
-			prone to aliasing.
-
-			While integrators are homogeneous, they are frequency dependant acting as low pass filters. Using
-			the same integration constant a high frequency input signal will produce a lower amplitude output
-			than a low frequency input. This does not affect the relatives amplitudes of frequencies in the
-			output just the overall amplitude of the signal.
+			prone to aliasing. While integrators are homogeneous, they are frequency dependant acting as low
+			pass filters. Using the same integration constant a high frequency input signal will produce a lower
+			amplitude output than a low frequency input. This does not affect the relatives amplitudes of
+			frequencies in the output just the overall amplitude of the signal.
 
 		\subsubsection*{Multiplier}
 			Nonlinear processing using Equation \ref{eq:Multiplier}, in which the exponent is a positive
@@ -582,15 +580,16 @@
 			The highest frequency component in the original signal is 4kHz. After cubing the signal the highest
 			frequency is three times this (12kHz) as seen in Figure \ref{fig:CubedSpectra}. Figure
 			\ref{fig:TwoAndAHalfSpectra} shows that when the exponent is 2.5 higher frequency components are
-			introduced. 
+			introduced. The lowest frequency component in the output signal is not bound not matter what the
+			exponent used is. For even exponents there will always be some 0Hz (DC offset) energy introduced.
 
 		\subsubsection*{SSBA}
 			SSBA extends the control provided by multipliers as it constrains the minimum frequency introduced
 			as well as the highest. Using Equation \ref{eq:SSB} only the upper sideband (the sum frequencies)
 			of the modulation is produced. The highest and lowest frequency components of the output are that
-			of the input signal multiplied by the exponent. Between these two frequencies lie all the other
-			harmonic and intermodulation components created. This can be seen in figure \ref{fig:SSBA3Spectra},
-			which shows the results of applying $3^{rd}$ order SSBA to the signal used in Figures
+			of the input signal multiplied by the exponent. All other harmonic and intermodulation components
+			created lie between these two frequencies. This can be seen in figure \ref{fig:SSBA3Spectra},
+			which shows the results of applying $3$\super{rd} order SSBA to the signal used in Figures
 			\ref{fig:CubedSpectra} and \ref{fig:TwoAndAHalfSpectra}. 			
 			
 			\begin{figure}[h!]
@@ -607,10 +606,10 @@
 			of any frequency content in the input which will cause aliasing when processed.
 
 		\subsubsection*{IAP}
-			In contrast to the SSBA method, the IAP method is homogeneous but provides little control over the
-			bandwidth of the output when the input has multiple frequency components. Figure
-			\ref{fig:IAP3Spectra} shows the spectral effects of third order IAP processing on the same signal
-			used when discussing previous algorithms.
+			In contrast to the SSBA method, the IAP method provides little control over the bandwidth of the
+			output when the input has multiple frequency components. Figure \ref{fig:IAP3Spectra} shows the
+			spectral effects of third order IAP processing on the same signal used when discussing previous
+			algorithms.
 
 			\begin{figure}[h!]
 				\centering
@@ -625,14 +624,13 @@
 			the signal before processing to avoid aliasing of these frequencies.
 
 		\subsubsection*{Spectral Replication}
-			In spectral replication each frequency component is shifted by the same amount preserving the size
-			of the spacings between them. This is useful for harmonic excitation of simple harmonically
-			structured signals. Providing the spectrum is shifted by an integer multiple of the fundamental
-			frequency any components at harmonic frequencies in the input will remain harmonic frequencies at
-			the output. This process avoids the intermodulation distortion inherent to the systems discussed
-			previously. 
+			In spectral replication each frequency component is shifted by the same amount, preserving the
+			differences between them. This is useful for harmonic excitation of simple harmonically structured
+			signals. Providing the spectrum is shifted by an integer multiple of the fundamental frequency any
+			components at harmonic frequencies in the input will remain harmonic frequencies at the output. This
+			process avoids the intermodulation distortion inherent to the systems discussed previously. 
 
-			Due to every frequency component being shifted by an equal amount the bandwidth of the output is
+			Due to every frequency component being shifted by an equal amount, the bandwidth of the output is
 			equal to that of the input. This predictability allows for easier control of the output spectrum.
 			It also provides a simple method for reduction of aliasing. The highest frequency in the output
 			will be that of the input plus the shift frequency $f$. Applying a low pass filter, with a cutoff
@@ -662,24 +660,25 @@
 
 		\subsubsection*{Spectral Stretching}
 			An ideal spectral stretching system would produce the result shown in Figure
-			\ref{fig:SpectralStretching}. All frequency components are scaled by the same factor. For
-			harmonically structured signals this has the effect of scaling the fundamental frequency.
-
-			The phase vocoder introduces some artefacts during its operation. The process of splitting the
-			signal into frames causes spectral leakage. Energy at a given frequency is spread across the nearby
-			frequencies. In a signal which only has energy at harmonic frequencies, spectral stretching by an
-			integer factor will produce some inharmonic content due to this effect. Spectral leakage can be
-			minimised through the use of windowing functions such as the Hamming or Blackman-Harris windows. 
-
-			Ignoring the effect of spectral leakage, the bandwidth of the output signal will be that of the
-			input multiplied by the stretching factor. This allows for effective minimisation of aliasing as
-			the signal can be low pass filtered before processing as done with single sideband automodulation.
+			\ref{fig:SpectralStretching}. All frequency components are scaled by the same factor preserving the
+			frequency ratios between spectral components. For harmonically structured signals this has the
+			effect of scaling the fundamental frequency, increasing the signals perceived pitch. The phase
+			vocoder introduces some artefacts during its operation. The process of splitting the signal into
+			frames causes spectral leakage; energy at a given frequency is spread across the nearby frequencies.
+			In a signal which only has energy at harmonic frequencies, spectral stretching by an integer factor
+			will produce some inharmonic content due to this effect. Spectral leakage can be minimised through
+			the use of windowing functions such as the Hamming or Blackman-Harris windows.  Ignoring the effect
+			of spectral leakage, the bandwidth of the output signal will be that of the input multiplied by the
+			stretching factor. This allows for effective minimisation of aliasing as the signal can be low pass
+			filtered before processing as done with single sideband automodulation.
 		
 		\subsubsection*{STTR}
-			The spectral effects of STTR depend on factors of the input signal and the window function and
-			step size used. For simple sinusoidal inputs complex output spectra can be generated. For example
-			consider the spectral effects of STTR using the window function defined in Equation
-			\ref{eq:STTRWindow} (shown in Figure \ref{fig:STTRWindow}).
+			The spectral effects of STTR depends on the properties of the input signal and the window function
+			and step size used. For simple sinusoidal inputs complex output spectra can be generated. For
+			example, consider the spectral effects of STTR using the window function defined in Equation
+			\ref{eq:STTRWindow} (shown in Figure \ref{fig:STTRWindow}). This window function exhibits constant
+			overlap add for a step size of $\frac{L}{2}$. Figure \ref{fig:STTRSpectra} shows the output spectra
+			of STTR, using this window with lengths of 1ms and 1.5ms, on a 1kHz sinusoid.
 
 			\begin{equation}
 				w[n] = \begin{cases}
@@ -698,11 +697,6 @@
 				\label{fig:STTRWindow}
 			\end{figure}
 
-			This window function exhibits constant overlap add for a step size of $\frac{L}{2}$.
-
-			Figure \ref{fig:STTRSpectra} shows the output spectra of STTR, using this window with lengths of
-			1ms and 1.5ms, on a 1kHz sinusoid.
-
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/STTRSpectra.pdf}
@@ -717,19 +711,18 @@
 			window shown in Figure \ref{fig:STTRSpectra}, only odd order harmonics are generated retaining the
 			original period of the signal.
 
-			The period of the output signal is the least common multiple of the period of the input signal and
-			the step size. This causes the period of a signal to be increased when the period of the input is
-			not an integer multiple of the step size. The output spectrum for a 1.5ms window shows this. The
-			period of the output becomes 3ms. The lowest frequency in this output is then approximately 333Hz.
+			The period of the output signal is equal to the least common multiple of the period of the input
+			signal and the step size. This causes the period of a signal to be increased when the period of the
+			input is not an integer multiple of the step size. The output spectrum for a 1.5ms window shows
+			this. The period of the output becomes 3ms. The lowest frequency in this output is then
+			approximately 333Hz.
 
 			The exact frequencies of the partials in the output are discussed by \citet{kim2014shorttime}. In
 			effect they are the intermodulation frequencies of the input frequency and the step frequency (1
 			over the step size in seconds). The amplitudes of these partials are influenced by the Fourier
 			transform of the window function used. This allows the spectral characteristics of the output to be
-			loosely controlled through manipulation of the window function and step size.
-
-			There is no upper bound on the frequency of the output so upsampling may need to be used to
-			minimise aliasing.
+			loosely controlled through manipulation of the window function and step size. There is no upper
+			bound on the frequency of the output so upsampling may need to be used to minimise aliasing.
 
 	\subsection{Temporal Characteristics}
 	\label{sec:ExcitationEvaluation-Comparison-TemporalCharacteristics}
