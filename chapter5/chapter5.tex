@@ -145,34 +145,43 @@
 	\label{sec:ExcitationEvaluation-Comparison-Summary}
 		\begin{table}[h!]
 			\centering
-			\begin{tabular}{|c|c|C{3cm}|c|c|c|c|}
+			\begin{tabular}{|c|c|C{3cm}|C{3cm}|c|c|c|}
 				\hline
 				\bf{Method} & \bf{Complexity} & \bf{Homogeneity} & \bf{Spectral Characteristics} & 
 				\bf{Temporal Characteristics} & \bf{Flexibility} \tabularnewline 
 				% & \bf{Naturalness}
 				\hline
 				\hline
-				Static Nonlinearity & $\mathcal{O}(n)$ & Non-homogeneous & & & \tabularnewline
+				Static Nonlinearity & $\mathcal{O}(n)$ & Non-homogeneous &
+				Order (odd /  even) and roll off, can be bandlimited & & \tabularnewline
 				\hline
-				Rectifier & $\mathcal{O}(n)$ & Positive Homogeneous & & & \tabularnewline
+				Rectifier & $\mathcal{O}(n)$ & Positive Homogeneous & 
+				Even order only (+ $f_{0}$ for half wave) & & \tabularnewline
 				\hline
-				Integrator & $\mathcal{O}(n)$ & Positive Homogeneous & & & \tabularnewline
+				Integrator & $\mathcal{O}(n)$ & Positive Homogeneous & 
+				All orders, shallow roll off, acts as low pass filter & & \tabularnewline
 				\hline
-				Multiplier & $\mathcal{O}(n)$ & Non-Homogeneous & & & \tabularnewline
+				Multiplier & $\mathcal{O}(n)$ & Non-Homogeneous & 
+				Integer exponents control maximum order of distortion & & \tabularnewline
 				\hline
-				SSBA & $\mathcal{O}(n)$ & Non-Homogeneous & & & \tabularnewline
+				SSBA & $\mathcal{O}(n)$ & Non-Homogeneous & 
+				Individuals, Max and min frequencies of output are controlled for complex signals & 
+				& \tabularnewline
 				\hline
-				IAP & $\mathcal{O}(n)$ & Homogeneous when $h$ is odd, positive homogeneous otherwise.
-				& & & \tabularnewline
+				IAP & $\mathcal{O}(n)$ & Homogeneous when $h$ is odd, positive homogeneous otherwise. & 
+				Individuals, dense spectra for more complex signals & & \tabularnewline
 				\hline
-				Spectral Replicator & $\mathcal{O}(n)$ & LTV & & & \tabularnewline
+				Spectral Replicator & $\mathcal{O}(n)$ & LTV & 
+				Same bandwidth as input just shifted up, retains $f_{0}$ & & \tabularnewline
 				\hline
-				Spectral Folding & $\mathcal{O}(n)$ & LTV & & & \tabularnewline
+				Spectral Folding & $\mathcal{O}(n)$ & LTV & 
+				Little control, fills entire output spectrum & & \tabularnewline
 				\hline
 				Spectral Stretch & $\mathcal{O}(n\log{n})$ & Homogeneous &
-				& & \tabularnewline
+				Scaling of input bandwidth, shifts $f_{0}$ & & \tabularnewline
 				\hline
-				STTR & $\mathcal{O}(n)$ & LTV & & & \tabularnewline
+				STTR & $\mathcal{O}(n)$ & LTV & 
+				Depends on $f_{0}$ of input, not bounds on distortion components & & \tabularnewline
 				\hline
 			\end{tabular}
 			\caption{A summary of the comparison of excitation methods.}
@@ -605,11 +614,17 @@
 			filter with a cutoff frequency of $\frac{f_{s}}{2h}$ prior to processing will reduce the amplitude
 			of any frequency content in the input which will cause aliasing when processed.
 
+			The bounding of the frequencies in the output signal means that SSBA will produce a single harmonic
+			if the input is a sinusoid. This is useful in situations when fine control is required over the
+			content of the output spectrum. An output signal can be constructed through the generation of
+			several individual harmonics.
+
 		\subsubsection*{IAP}
-			In contrast to the SSBA method, the IAP method provides little control over the bandwidth of the
-			output when the input has multiple frequency components. Figure \ref{fig:IAP3Spectra} shows the
-			spectral effects of third order IAP processing on the same signal used when discussing previous
-			algorithms.
+			Like the SSBA method, if the input is sinusoidal the IAP method will generate a single harmonic. In
+			contrast to the SSBA method, for more complex input signals the IAP method provides little control
+			over the bandwidth of the output when the input has multiple frequency components. Figure
+			\ref{fig:IAP3Spectra} shows the spectral effects of third order IAP processing on the same signal
+			used when discussing previous algorithms.
 
 			\begin{figure}[h!]
 				\centering
