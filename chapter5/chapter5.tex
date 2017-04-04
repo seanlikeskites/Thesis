@@ -153,35 +153,44 @@
 				\hline
 				\hline
 				Static Nonlinearity & $\mathcal{O}(n)$ & Non-homogeneous &
-				Order (odd /  even) and roll off, can be bandlimited & \tabularnewline
+				Order (odd /  even) and roll off, can be bandlimited & 
+				Possible effects of attack / release time \tabularnewline
 				\hline
 				Rectifier & $\mathcal{O}(n)$ & Positive Homogeneous & 
-				Even order only (+ $f_{0}$ for half wave) & \tabularnewline
+				Even order only (+ $f_{0}$ for half wave) & 
+				No perceptible effects, half wave rectification might delay onsets slightly \tabularnewline
 				\hline
 				Integrator & $\mathcal{O}(n)$ & Positive Homogeneous & 
-				All orders, shallow roll off, acts as low pass filter & \tabularnewline
+				All orders, shallow roll off, acts as low pass filter &
+				Low pass filter smears transients \tabularnewline
 				\hline
 				Multiplier & $\mathcal{O}(n)$ & Non-Homogeneous & 
-				Integer exponents control maximum order of distortion & \tabularnewline
+				Integer exponents control maximum order of distortion & 
+				Dynamic compression / expansion \tabularnewline
 				\hline
 				SSBA & $\mathcal{O}(n)$ & Non-Homogeneous & 
 				Individuals, Max and min frequencies of output are controlled for complex signals & 
-				\tabularnewline
+				Dynamic compression / expansion \tabularnewline
 				\hline
 				IAP & $\mathcal{O}(n)$ & Homogeneous when $h$ is odd, positive homogeneous otherwise. & 
-				Individuals, dense spectra for more complex signals & \tabularnewline
+				Individuals, dense spectra for more complex signals & 
+				No effects on temporal envelope \tabularnewline
 				\hline
 				Spectral Replicator & $\mathcal{O}(n)$ & LTV & 
-				Same bandwidth as input just shifted up, retains $f_{0}$ & \tabularnewline
+				Same bandwidth as input just shifted up, retains $f_{0}$ & 
+				No effects on temporal envelope \tabularnewline
 				\hline
 				Spectral Folding & $\mathcal{O}(n)$ & LTV & 
-				Little control, fills entire output spectrum & \tabularnewline
+				Little control, fills entire output spectrum & 
+				Low pass filter smears transients \tabularnewline
 				\hline
 				Spectral Stretch & $\mathcal{O}(n\log{n})$ & Homogeneous &
-				Scaling of input bandwidth, shifts $f_{0}$ & \tabularnewline
+				Scaling of input bandwidth, shifts $f_{0}$ & 
+				Phase vocoder can smear transients \tabularnewline
 				\hline
 				STTR & $\mathcal{O}(n)$ & LTV & 
-				Depends on $f_{0}$ of input, not bounds on distortion components & \tabularnewline
+				Depends on $f_{0}$ of input, not bounds on distortion components &
+				Complex due to time reversal \tabularnewline
 				\hline
 			\end{tabular}
 			\caption{A summary of the comparison of excitation methods.}
