@@ -145,43 +145,43 @@
 	\label{sec:ExcitationEvaluation-Comparison-Summary}
 		\begin{table}[h!]
 			\centering
-			\begin{tabular}{|c|c|C{3cm}|C{3cm}|c|c|c|}
+			\begin{tabular}{|c|c|C{4cm}|C{5cm}|C{5cm}|}
 				\hline
 				\bf{Method} & \bf{Complexity} & \bf{Homogeneity} & \bf{Spectral Characteristics} & 
-				\bf{Temporal Characteristics} & \bf{Flexibility} \tabularnewline 
+				\bf{Temporal Characteristics} \tabularnewline 
 				% & \bf{Naturalness}
 				\hline
 				\hline
 				Static Nonlinearity & $\mathcal{O}(n)$ & Non-homogeneous &
-				Order (odd /  even) and roll off, can be bandlimited & & \tabularnewline
+				Order (odd /  even) and roll off, can be bandlimited & \tabularnewline
 				\hline
 				Rectifier & $\mathcal{O}(n)$ & Positive Homogeneous & 
-				Even order only (+ $f_{0}$ for half wave) & & \tabularnewline
+				Even order only (+ $f_{0}$ for half wave) & \tabularnewline
 				\hline
 				Integrator & $\mathcal{O}(n)$ & Positive Homogeneous & 
-				All orders, shallow roll off, acts as low pass filter & & \tabularnewline
+				All orders, shallow roll off, acts as low pass filter & \tabularnewline
 				\hline
 				Multiplier & $\mathcal{O}(n)$ & Non-Homogeneous & 
-				Integer exponents control maximum order of distortion & & \tabularnewline
+				Integer exponents control maximum order of distortion & \tabularnewline
 				\hline
 				SSBA & $\mathcal{O}(n)$ & Non-Homogeneous & 
 				Individuals, Max and min frequencies of output are controlled for complex signals & 
-				& \tabularnewline
+				\tabularnewline
 				\hline
 				IAP & $\mathcal{O}(n)$ & Homogeneous when $h$ is odd, positive homogeneous otherwise. & 
-				Individuals, dense spectra for more complex signals & & \tabularnewline
+				Individuals, dense spectra for more complex signals & \tabularnewline
 				\hline
 				Spectral Replicator & $\mathcal{O}(n)$ & LTV & 
-				Same bandwidth as input just shifted up, retains $f_{0}$ & & \tabularnewline
+				Same bandwidth as input just shifted up, retains $f_{0}$ & \tabularnewline
 				\hline
 				Spectral Folding & $\mathcal{O}(n)$ & LTV & 
-				Little control, fills entire output spectrum & & \tabularnewline
+				Little control, fills entire output spectrum & \tabularnewline
 				\hline
 				Spectral Stretch & $\mathcal{O}(n\log{n})$ & Homogeneous &
-				Scaling of input bandwidth, shifts $f_{0}$ & & \tabularnewline
+				Scaling of input bandwidth, shifts $f_{0}$ & \tabularnewline
 				\hline
 				STTR & $\mathcal{O}(n)$ & LTV & 
-				Depends on $f_{0}$ of input, not bounds on distortion components & & \tabularnewline
+				Depends on $f_{0}$ of input, not bounds on distortion components & \tabularnewline
 				\hline
 			\end{tabular}
 			\caption{A summary of the comparison of excitation methods.}
@@ -742,17 +742,14 @@
 	\subsection{Temporal Characteristics}
 	\label{sec:ExcitationEvaluation-Comparison-TemporalCharacteristics}
 		\subsubsection*{Static Nonlinearities}
-			As static nonlinearities are memoryless they can not influence the temporal evolution of signals at
-			a large scale. There is a possibility to affect the attack and release times of signals slightly
-			through increasing the gradient of the low amplitude section characteristic curve. As an extreme
-			example consider the infinite peak clipper shown in Equation \ref{eq:InfinitePeakClipper}.
+			As static nonlinearities are memoryless they can not easily be used to control the temporal
+			evolution of a signal. The amplitude of the characteristic curve for low amplitude samples can be
+			manipulated to alter the attack and release times of signals. Increasing this amplitude will
+			shortening attack and release times. As an extreme example consider the infinite peak clipper shown
+			in Equation \ref{eq:InfinitePeakClipper}.
 
 			\begin{equation}
-				y[n] = \begin{cases}
-					-1 & \text{if $x[n] < 0$} \\
-					0 & \text{if $x[n] = 0$} \\
-					1 & \text{if $x[n] > 1$}
-				\end{cases}
+				y[n] = \sgn(x[n])
 				\label{eq:InfinitePeakClipper}
 			\end{equation}
 			
@@ -768,22 +765,30 @@
 				\label{fig:InfinitePeakClipping}
 			\end{figure}
 
+			The exact change in attack / release time is dependant on both the characteristic curve of the
+			nonlinearity and the existing temporal features of the input signal. For the infinite peak clipper
+			all dynamic information in a signal is lost and all attack and release times are made instantaneous.
+			Other static nonlinearities, such as soft peak clippers, have less predictable effects on temporal
+			envelopes. 
+
 		\subsubsection*{Rectification}
-			Full wave rectifiers have no effect on the temporal characteristics of signals as all the magnitude
-			of each sample is preserved. It is possible that a half wave rectifier could change the position of
-			the onset of a signal by a small amount. Considering a signal which starts with a negative
-			displacement. This first section of the signal would be removed, moving the onset to wherever the
-			first positive displacement occurs.
+			Full wave rectifiers have no effect on the temporal characteristics of signals as the magnitude
+			information of each sample is preserved. It is possible that a half wave rectifier could change the
+			position of the onset / offset of a signal by a small amount. Considering a signal which starts with
+			a negative displacement. This first section of the signal would be removed, moving the onset to the
+			position of the first positive displacement occurs. This possible delay in onset is highly dependant
+			on the input signal and will most likely be imperceptible.
 			
 		\subsubsection*{Integrator}
-			Due to the inherent low pass filtering behaviour of integrators the temporal properties of
-			transient signals will be altered. Attacks times will be lengthened by the attenuation of their
-			high frequency components. This prevents these methods being used where it is essential that
-			transients are preserved. 
+			Due to the inherent low pass filtering behaviour of integrators (see Section
+			\ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}) the temporal properties of
+			transient signals will be altered. Fast attacks times will be lengthened by the attenuation of their
+			high frequency components. This prevents integrators being used for harmonic excitation in
+			applications where it is essential that transients are preserved. 
 			
 		\subsubsection*{Multiplier}
-			Exponential static nonlinearities have a dynamic compression/expansion effect. For exponents greater
-			than 1 the dynamics of a signal are expanded, the amplitude difference between low and high
+			Exponential static nonlinearities have a dynamic compression / expansion effect. For exponents
+			greater than 1 the dynamics of a signal are expanded, the amplitude difference between low and high
 			amplitude portions of the signal is increased. For exponents less that 1 the opposite occurs,
 			compressing the dynamics of the signal. Figure \ref{fig:ExponentiationTemporalEffects} show the
 			effects this can have on the attack and release portions of signals.
@@ -796,7 +801,11 @@
 			\end{figure}
 
 			While the time taken for the signal to rise to or decay from maximum amplitude is not changed, the
-			shape of the amplitude envelope during the attack and release portions is. 
+			shape of the amplitude envelope during the attack and release portions is. Exponents greater than 1
+			cause the amplitude to rise more slowly initially and then rapidly rise, while exponents less than
+			one increase the initial gradient of the attack and then slowly rise to full amplitude. As with
+			other static nonlinearities these effects are dependant on the input signal and are not predictable
+			enough to give intuitive control.
 
 		\subsubsection*{SSBA}
 			SSBA has similar temporal effects to a multiplier using an exponent greater that 1. The signal
