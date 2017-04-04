@@ -826,10 +826,9 @@
 			no longer sinusoidal.
 
 		\subsubsection*{IAP}
-			The homogeneity of the system preserves the input signals amplitude envelope. Due to this the
-			temporal characteristics of signals are unaffected. This can be seen in Figure
-			\ref{fig:IAPTemporalEffects}, it is apparent that the frequency of the sinusoid has been altered
-			and its amplitude envelope not.
+			The IAP system preserves the input signal's amplitude envelope. Due to this the temporal
+			characteristics of signals are unaffected. This can be seen in Figure \ref{fig:IAPTemporalEffects},
+			it is apparent that the frequency of the sinusoid has been altered and its amplitude envelope not.
 
 			\begin{figure}[h!]
 				\centering
@@ -839,13 +838,15 @@
 			\end{figure}
 			
 		\subsubsection*{Spectral Replication}
-			Spectral replication does not affect the temporal properties of a signal.
+			As with IAP, spectral replication preserves the amplitude envelope of a signal, leaving its temporal
+			characteristics unchanged.
 
 		\subsubsection*{Spectral Folding}
-			The low pass filter applied as part of the downsampling phase removes the high frequency content
-			which contributes to transients in the signal. This has the effect of lengthening attack times
-			similar to the effect seen in the integrator system (Section
-			\ref{sec:Excitation-Methods-Integrator}).
+			When using spectral folding, the low pass filter applied prior to the downsampling and upsampling
+			process removes the high frequency content which contributes to transients in the signal. This has
+			the effect of lengthening attack times similar to the effect seen in the integrator system. The
+			degree, $k$, of spectral folding determines the cutoff frequency of the filter; higher values
+			of $k$ removing more high frequency energy, causing longer attack times.
 
 		\subsubsection*{Spectral Stretching}
 			A simple phase vocoder implementation produces artefacts when processing transients in a signal.
