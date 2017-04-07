@@ -685,15 +685,17 @@
 			An ideal spectral stretching system would produce the result shown in Figure
 			\ref{fig:SpectralStretching}. All frequency components are scaled by the same factor preserving the
 			frequency ratios between spectral components. For harmonically structured signals this has the
-			effect of scaling the fundamental frequency, increasing the signals perceived pitch. The phase
-			vocoder introduces some artefacts during its operation. The process of splitting the signal into
-			frames causes spectral leakage; energy at a given frequency is spread across the nearby
-			frequencies.  In a signal which only has energy at harmonic frequencies, spectral stretching by an
+			effect of scaling the fundamental frequency, increasing the signals perceived pitch. For sinusoidal
+			input this results in the generation of individual harmonics as with the SSBA and IAP techniques.
+			
+			The phase vocoder introduces some artefacts during its operation. The process of splitting the
+			signal into frames causes spectral leakage; energy at a given frequency is spread across the nearby
+			frequencies. In a signal which only has energy at harmonic frequencies, spectral stretching by an
 			integer factor will produce some inharmonic content due to this effect. Spectral leakage can be
 			minimised through the use of windowing functions such as the Hamming or Blackman-Harris windows.
 			Ignoring the effect of spectral leakage, the bandwidth of the output signal will be that of the
-			input multiplied by the stretching factor. This allows for effective minimisation of aliasing as
-			the signal can be low pass filtered before processing as done with single sideband automodulation.
+			input multiplied by the stretching factor. This allows for effective minimisation of aliasing as the
+			signal can be low pass filtered before processing as done with single sideband automodulation.
 		
 		\subsubsection*{STTR}
 			The spectral effects of STTR depends on the properties of the input signal and the window function
@@ -960,10 +962,36 @@
 			the uniform response across input signals required for timbral control.
 
 \section{Conclusion}
-	\note
-	{
-		Rectifiers / integrators are probably best when introducing generating bands of distortion components.
-		
-		SSBA or IAP are both useful for generating individual harmonics. In Section
-		\ref{sec:PerceptualExperiments-Reconstruction} they are tested against each other.
-	}
+	This chapter has discussed the characteristics of the harmonic generation algorithms presented in Chapter
+	\ref{chap:Excitation}, highlighting their desirable / undesirable traits when applied to timbral control. Two
+	broad classes of harmonic generators are identified; those which generate large numbers of distortion components
+	with little control over their frequencies / amplitudes and those which provide control over the orders of
+	distortion introduced, sometimes allowing for the generation of individual harmonics. There is typically a
+	compromise made between control and computational complexity, algorithms providing more control over the resulting
+	spectrum requiring more computation.
+
+	Static nonlinearities and integrators are the best choice where a large series of distortion components need be
+	created efficiently. The traditionally used peak clipper might not be the most suitable for intuitive timbral
+	control due to its non-homogeneity. Rectifiers and integrators however, are both positive homogeneous systems.
+	Selecting between rectification and integration depends on the characteristics required for a timbral manipulation.
+	Rectification will only generate even order distortion but well have negligible effect on any temporal properties of
+	a signal. Integration generates all orders of distortion but has a low pass filter response which will increase the
+	attack times of input transients. Neither of these methods provide any control over the maximum order of distortion
+	introduced leading to possible problems with aliasing. Rectification, as a static nonlinearity, can be bandlimited
+	through approximation with a harmonic mixer while no bandlimiting methods are provided for integrators.
+
+	Where finer control over the spectral structure of the output is desired, more complex algorithms are needed. Here
+	SSBA and IAP and spectral stretching have desirable characteristics. Each of these algorithms are able to generate
+	individual harmonics from a sinusoidal input and each have their own advantages and disadvantages. Spectral
+	stretching is the more computationally intensive of the three and the phase vocoder approach is prone to the
+	introduction of artefacts. SSBA and IAP are both simpler systems but each has a particular advantage. For purely
+	sinusoidal input, IAP outperforms SSBA in that in it homogeneous, having no effect on the amplitude envelope of a
+	signal. For more complex inputs however, SSBA may be preferential as it provides more control over the range of
+	frequencies in the output, bounding the orders of intermodulation components generated.	In Section
+	\ref{sec:PerceptualExperiments-Reconstruction} perceptual listening tests are carried out in order to evaluate the
+	perceived quality of individual harmonics generated using both SSBA and IAP.
+
+	In Chapter \ref{chap:FeatureControl} the analysis of harmonic generation algorithms discussed in this chapter is
+	used to inform the design of harmonic excitation systems. The properties of the algorithms identified allow these
+	systems to be configured to control specific audio features (defined in Chapter \ref{chap:Timbre}) of an input
+	signal.
