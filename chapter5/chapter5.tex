@@ -140,7 +140,7 @@
 	\label{sec:ExcitationEvaluation-Comparison-Summary}
 		\begin{table}[h!]
 			\centering
-			\begin{tabular}{|c|c|C{4cm}|C{5cm}|C{5cm}|}
+			\begin{tabular}{|c|c|C{4cm}|C{7cm}|C{6cm}|}
 				\hline
 				\bf{Method} & \bf{Complexity} & \bf{Homogeneity} & \bf{Spectral Characteristics} & 
 				\bf{Temporal Characteristics} \tabularnewline 
@@ -148,44 +148,47 @@
 				\hline
 				\hline
 				Static Nonlinearity & $\mathcal{O}(n)$ & Non-homogeneous &
-				Order (odd /  even) and roll off, can be bandlimited & 
-				Possible effects of attack / release time \tabularnewline
+				Introduction of a large band of distortion components, orders and roll off are determined by
+				properties of the characteristic curve. & 
+				Possible effects on attack / release time. \tabularnewline
 				\hline
 				Rectifier & $\mathcal{O}(n)$ & Positive Homogeneous & 
-				Even order only (+ $f_{0}$ for half wave) & 
-				No perceptible effects, half wave rectification might delay onsets slightly \tabularnewline
+				Even order components only, rolling off at 12dB per octave. Half wave rectification also
+				includes 1\super{st} order components (the original signal). & 
+				No perceptible effects, half wave rectification might delay onsets slightly. \tabularnewline
 				\hline
 				Integrator & $\mathcal{O}(n)$ & Positive Homogeneous & 
-				All orders, shallow roll off, acts as low pass filter &
-				Low pass filter smears transients \tabularnewline
+				All order components, rolling off at 6dB per octave. Acts as a low pass filter. &
+				Low pass filter smears transients. \tabularnewline
 				\hline
 				Multiplier & $\mathcal{O}(n)$ & Non-Homogeneous & 
-				Integer exponents control maximum order of distortion & 
-				Dynamic compression / expansion \tabularnewline
+				Control over exact orders of components, bounding the maximum frequency in the output. & 
+				Dynamic compression / expansion. \tabularnewline
 				\hline
 				SSBA & $\mathcal{O}(n)$ & Non-Homogeneous & 
-				Individuals, Max and min frequencies of output are controlled for complex signals & 
-				Dynamic compression / expansion \tabularnewline
+				Sum sideband of a particular order of intermodulation, bounding maximum and minimum
+				frequency in output. Individual harmonic output for sinusoidal input. & 
+				Dynamic compression / expansion. \tabularnewline
 				\hline
 				IAP & $\mathcal{O}(n)$ & Homogeneous when $h$ is odd, positive homogeneous otherwise. & 
-				Individuals, dense spectra for more complex signals & 
-				No effects on temporal envelope \tabularnewline
+				Individuals harmonic output for sinusoidal input, dense spectra for more complex signals. & 
+				No effects. \tabularnewline
 				\hline
 				Spectral Replication & $\mathcal{O}(n)$ & LTV & 
-				Same bandwidth as input just shifted up, retains $f_{0}$ & 
-				No effects on temporal envelope \tabularnewline
+				Same bandwidth as input only shifted in frequency, retains $f_{0}$. & 
+				No effects. \tabularnewline
 				\hline
 				Spectral Folding & $\mathcal{O}(n)$ & LTV & 
-				Little control, fills entire output spectrum & 
-				Low pass filter smears transients \tabularnewline
+				Little control, fills entire output spectrum. & 
+				Low pass filter smears transients. \tabularnewline
 				\hline
 				Spectral Stretching & $\mathcal{O}(n\log{n})$ & Homogeneous &
-				Scaling of input bandwidth, shifts $f_{0}$ & 
-				Phase vocoder can smear transients \tabularnewline
+				Scaling of input bandwidth, scales $f_{0}$. & 
+				Phase vocoder can smear transients. \tabularnewline
 				\hline
 				STTR & $\mathcal{O}(n)$ & LTV & 
-				Depends on $f_{0}$ of input, not bounds on distortion components &
-				Complex due to time reversal \tabularnewline
+				Depends on $f_{0}$ of input, not bounds on distortion components. &
+				Complex due to time reversal. \tabularnewline
 				\hline
 			\end{tabular}
 			\caption{A summary of the comparison of excitation methods.}
@@ -956,7 +959,7 @@
 			depending on the input frequency. While this is useful as a compositional tool it does not provide
 			the uniform response across input signals required for timbral control.
 
-\section{Key Findings}
+\section{Conclusion}
 	\note
 	{
 		Rectifiers / integrators are probably best when introducing generating bands of distortion components.
