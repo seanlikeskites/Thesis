@@ -34,15 +34,14 @@
 		The majority of the methods discussed in Section \ref{sec:Excitation-Methods} will cause intermodulation
 		distortion when used on signals with multiple frequency components. As the effects of this intermodulation
 		distortion can be difficult to predict it can be useful to eliminate it altogether. This should make the
-		effects of a system more predictable allowing it to be used in more situations.
-
-		A simple way to achieve this is to process only the $f_{0}$ of a signal. The $f_{0}$ can be isolated with a
-		filter, producing a narrowband signal with the majority of its energy concentrated at the $f_{0}$. In the
-		following discussion this filtered signal will be referred to as the `isolated $f_{0}$'.  Applying a
-		harmonic excitation algorithm to the isolated $f_{0}$ will produce a signal with a lower level of
-		intermodulation components than processing the original input signal. The `excited' isolated $f_{0}$ signal
-		can then be summed with the original signal to produce the output. A diagram of this system is shown in
-		Figure \ref{fig:F0Tracking}.
+		effects of a system more predictable allowing it to be used in more situations.	A simple way to achieve
+		this is to ensure the input signal is as sinusoidal as possible. This can be achieved by only processing
+		the $f_{0}$ of a signal. The $f_{0}$ can be isolated with a filter, producing a narrowband signal with the
+		majority of its energy concentrated at the $f_{0}$. In the following discussion this filtered signal will
+		be referred to as the `isolated $f_{0}$'.  Applying a harmonic excitation algorithm to the isolated $f_{0}$
+		will produce a signal with a lower level of intermodulation components than processing the original input
+		signal. The `excited' isolated $f_{0}$ signal can then be summed with the original signal to produce the
+		output. A diagram of this system is shown in Figure \ref{fig:F0Tracking}.
 
 		\begin{figure}[h!]
 			\centering

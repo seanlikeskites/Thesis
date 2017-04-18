@@ -621,13 +621,13 @@
 		excitation can be used to psychoacoustically extend the bandwidth of loudspeakers into the lower end of the
 		spectrum. Harmonic content is added to the signal in order to evoke the perception of lower pitch sounds.
 		
-		The pitch of harmonically structured sounds is the same as that of its fundamental frequency. No energy need
-		be present at the fundamental for its pitch to be perceived however. So long as a sufficient proportion of
-		the harmonic structure remains the original pitch can still be perceived. This phenomenon is commonly
-		referred to as the missing fundamental \citep{plack2005the}. The perception of a low frequency fundamental
-		can then be actualised by introducing a set of higher order harmonics. This technique is implemented in
-		effects such as Waves' MaxxBass \citep{ben-tzur1999the}. Implementation techniques typically involve various
-		filtering stages around a nonlinear stage. Firstly a filter is used to isolate the frequencies which need
+		The pitch of harmonically structured sounds is the same as that of its $f_{0}$. No energy need be present at
+		this frequency for its pitch to be perceived however, as long as a sufficient proportion of the harmonic
+		structure remains the original pitch can still be perceived. This phenomenon is commonly referred to as the
+		missing fundamental \citep{plack2005the}. The perception of a low frequency $f_{0}$ can then be
+		actualised by introducing a set of higher order harmonics. This technique is implemented in effects such as
+		Waves' MaxxBass \citep{ben-tzur1999the}. Implementation techniques typically involve various filtering
+		stages around a nonlinear stage. Firstly a filter is used to isolate the frequencies which need
 		psychoacoustic reinforcement (those below the cutoff frequency of the reproduction system). A nonlinearity
 		is then used to produce harmonics of these low frequencies which are then possibly shaped by further
 		filtering. The largest differences between proposed implementations lie in the nonlinear stage.
