@@ -34,14 +34,17 @@
 		The majority of the methods discussed in Section \ref{sec:Excitation-Methods} will cause intermodulation
 		distortion when used on signals with multiple frequency components. As the effects of this intermodulation
 		distortion can be difficult to predict it can be useful to eliminate it altogether. This should make the
-		effects of a system more predictable allowing it to be used in more situations.	A simple way to achieve
-		this is to ensure the input signal is as sinusoidal as possible. This can be achieved by only processing
-		the $f_{0}$ of a signal. The $f_{0}$ can be isolated with a filter, producing a narrowband signal with the
-		majority of its energy concentrated at the $f_{0}$. In the following discussion this filtered signal will
-		be referred to as the `isolated $f_{0}$'.  Applying a harmonic excitation algorithm to the isolated $f_{0}$
-		will produce a signal with a lower level of intermodulation components than processing the original input
-		signal. The `excited' isolated $f_{0}$ signal can then be summed with the original signal to produce the
-		output. A diagram of this system is shown in Figure \ref{fig:F0Tracking}.
+		effects of a system more predictable allowing it to be used in more situations.	Intermodulation distortion
+		can be reduced by reducing the number of frequency components in the input signal. For a sinusoidal input
+		(one frequency component) no intermodulation distortion occurs. The intermodulation introduced by a
+		harmonic excitation system can then be reduced by pre-processing a signal to make it as sinusoidal as
+		possible. This can be achieved by only processing the $f_{0}$ of a signal, the $f_{0}$ can be isolated with
+		a filter producing a narrowband signal with the majority of its energy concentrated at the $f_{0}$. In the
+		following discussion this filtered signal will be referred to as the `isolated $f_{0}$'. Applying a
+		harmonic excitation algorithm to the isolated $f_{0}$ will produce a signal with a lower level of
+		intermodulation components than processing the original input signal. The `excited' isolated $f_{0}$ signal
+		can then be summed with the original signal to produce the output. A diagram of this system is shown in
+		Figure \ref{fig:F0Tracking}.
 
 		\begin{figure}[h!]
 			\centering
@@ -84,34 +87,30 @@
 		For this system to operate in real time the $f_{0}$ of the signal must be calculated in real time. This is
 		achieved using the $f_{0}$ tracker shown in the diagram. $f_{0}$ tracking is a widely researched field and
 		several algorithms have been presented in the literature, several of which are reviewed by
-		\citet{cuadra2001efficient} and \citet{gerhard2003pitch}.
-
-		$f_{0}$ tracking can be done in both the time and frequency domains. The simplest method being to count
-		the number of instances of a particular event in a given time period. This even could be a zero crossing or
-		a peak or any other easily identifiable feature of the signal. As signals get more complex this method
-		becomes more difficult to apply as higher frequency content will produce more instances of the event being
-		counted. More advanced time domain methods include the Average Magnitude Difference Function (AMDF) and
-		autocorrelation methods. Many modern $f_{0}$ tracking systems are based on these, such as the VT-AMDF
-		algorithm proposed by \citet{prukkanon2009vt-amdf}.
-
-		These methods require frame based processing which reduces the time resolution of the system. If analysing
-		real time audio the current estimate of the $f_{0}$ will lag behind the audio signal.
-		\citet{larsen2004audio} describe a time domain frequency tracker which uses a simple recursive formula.
-		While this is not as precise as the more advanced techniques it takes considerably less time to compute.
-
-		Frequency domain methods require the DFT of the signal to be calculated introducing considerable
-		complexity. Widely used frequency domain techniques include the Harmonic Product Spectrum (HPS) and maximum
-		likelihood methods.
+		\citet{cuadra2001efficient} and \citet{gerhard2003pitch}.  $f_{0}$ tracking can be done in both the time
+		and frequency domains. The simplest method being to count the number of instances of a particular event in
+		a given time period. This even could be a zero crossing or a peak or any other easily identifiable feature
+		of the signal. As signals get more complex this method becomes more difficult to apply as higher frequency
+		content will produce more instances of the event being counted. More advanced time domain methods include
+		the Average Magnitude Difference Function (AMDF) and autocorrelation methods. Many modern $f_{0}$ tracking
+		systems are based on these, such as the VT-AMDF algorithm proposed by \citet{prukkanon2009vt-amdf}.  These
+		methods require frame based processing which reduces the time resolution of the system. If analysing real
+		time audio the current estimate of the $f_{0}$ will lag behind the audio signal.  \citet{larsen2004audio}
+		describe a time domain frequency tracker which uses a simple recursive formula. While this is not as
+		precise as the more advanced techniques it takes considerably less time to compute. Frequency domain
+		methods require the DFT of the signal to be calculated introducing considerable complexity. Widely used
+		frequency domain techniques include the Harmonic Product Spectrum (HPS) and maximum likelihood
+		estimate methods \citep{noll1969pitch}.
 
 		For real time harmonic excitation, the accuracy of the $f_{0}$ tracking algorithm is not as important as it
-		is in other fields, such as automatic music transcription. The aim of the system in Figure
+		is in other fields such as automatic music transcription. The aim of the system in Figure
 		\ref{fig:F0Tracking} is to reduce the level of higher harmonics compared to the $f_{0}$. Using a low pass
 		filter with a cutoff frequency close to the $f_{0}$ will achieve this. The lag between the audio and the
 		estimate of the $f_{0}$ is of greater concern. The system needs to respond quickly to changes in $f_{0}$ in
 		order to better isolate it for processing.
 
 		A problem is posed by signals with little energy at their $f_{0}$, such as those produced in the lower
-		register of a Double Bass \citep{askenfelt2010double}. A $f_{0}$ tracking algorithm will still return the
+		register of a Double Bass \citep{askenfelt2010double}. An $f_{0}$ tracking algorithm will still return the
 		frequency of the $f_{0}$ despite its low magnitude. The isolated $f_{0}$ may then have too little amplitude
 		to be of any use for harmonic excitation. A frequency domain approach to $f_{0}$ tracking may be more
 		robust in this situation as it is easier to check whether there is sufficient energy at the detected
