@@ -12,18 +12,22 @@
 	controlling specific audio features. This chapter will identify the audio features which can be controlled through
 	harmonic excitation and which excitation algorithms are the most suitable for given feature changes. Firstly, in
 	Section \ref{sec:FeatureControl-Systems}, various challenges which arise when building harmonic excitation systems
-	are discusses and methods to counteract them are suggested. A number of different systems are proposed which
-	provide precise control over the distortion components introduced to a signal. In Section
+	are discussed and methods to counteract them are suggested. A number of different systems are proposed which
+	provide control over the nature of the new frequency components introduced to the signal. In Section
 	\ref{sec:FeatureControl-Parameterisation} methods by which these systems can be configured to control specific
 	audio features are proposed and tested.
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
-	Section \ref{sec:Excitation-Methods} covered several different methods of introducing new frequency content to a
-	signal. Systems which combine these techniques with filtering afford a lot of control over the shape of a signal's
-	spectrum. This section discusses the construction of these harmonic excitation systems. The systems discussed aim
-	to give the user more control over the new content added to the spectrum, allowing them to be utilised in a wide
-	range of use cases.
+	In Section \ref{sec:Excitation-Methods} several different methods of introducing new frequency content to a signal
+	were introduced. In Section \ref{sec:ExcitationEvaluation-Comparison} these methods were discussed further and the
+	degree to which their effect can be controlled evaluated. From that analysis this is know that better control over
+	the output is gained through meeting certain input requirements, for instance the SSBA and IAP techniques will
+	produce sinusoidal outputs for sinusoidal inputs. It is also noted that further filtering may be needed after the
+	use of a harmonic excitation algorithms in order to shape the spectrum as desired, such as after a peak clipper has
+	been applied. Harmonic excitation systems can be constructed which apply these pre and post-processing before and
+	after a giver harmonic excitation algorithm. This section discusses the design of these systems, aiming to give
+	users precise control over the new spectral content added to a wide range of input signals.
 
 	\subsection{$f_{0}$ Tracking}
 	\label{sec:FeatureControl-Systems-Fundamental}
