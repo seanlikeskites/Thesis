@@ -1,4 +1,4 @@
-CHAPTERS = chapter1.pdf chapter2.pdf chapter3.pdf chapter4.pdf chapter5.pdf chapter6.pdf chapter7.pdf
+CHAPTERS = chapter1.pdf chapter2.pdf chapter3.pdf chapter4.pdf chapter5.pdf chapter6.pdf chapter7.pdf chapter8.pdf
 
 all: chapters combined $(CHAPTERS) story contributions proofs
 
