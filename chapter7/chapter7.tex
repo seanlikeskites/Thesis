@@ -65,7 +65,7 @@
 				\node (Synth) [draw] at (7.5, 1) {Sine Wave Synthesiser};
 				\draw (Amp) -- (Synth);
 
-				\node (Out) at (10.05, 1) {$h[n]$};
+				\node (Out) at (10.05, 1) {$y[n]$};
 				\draw (Synth) -- (Out);
 			\end{tikzpicture}
 			\caption{The system used to generate new harmonics through synthesis.}
@@ -87,7 +87,7 @@
 				\node (Exciter) [draw] at (4.75, 1) {Frequency Shifter};
 				\draw (Filter) -- (Exciter);
 
-				\node (Out) at (6.95, 1) {$h[n]$};
+				\node (Out) at (6.95, 1) {$y[n]$};
 				\draw (Exciter) -- (Out);
 			\end{tikzpicture}
 			\caption{The system used to generate new harmonics using the SSBA and IAP techniques.}
