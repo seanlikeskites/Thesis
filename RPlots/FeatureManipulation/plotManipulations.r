@@ -36,9 +36,10 @@ plotManipulation <- function(x, y, lims, legendText, legendPos, xlab, ylab, mar,
 ########################################################
 gains <- seq(0, 1, 0.01)
 centroids <- read.octave("MoveCentroids.mat")$centroids[c(1, 2, 4, 3),] / 1000
-pdf("MoveCentroids.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotManipulation(gains, centroids, c(0, 1, 0, 6), signals, "topleft", "Parameter Setting", "Spectral Centroid (kHz)",
+pdf("MoveCentroids.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
+plotManipulation(gains, centroids, c(0, 1, 0, 6), signals, "topleft", "", "Spectral Centroid (kHz)",
 		 bigMar)
+mtext(expression(italic(P)), side=1, line=3, family="CM Roman")
 dev.off()
 embed_fonts("MoveCentroids.pdf")
 

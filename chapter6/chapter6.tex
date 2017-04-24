@@ -172,7 +172,7 @@
 		
 	\subsection{Spectral Shaping}
 	\label{sec:FeatureControl-Systems-SpectralShaping}
-		As seen in Section \ref{sec:ExcitationEvaluation-Comparison-SpectralFeatures}, static nonlinearities
+		As seen in Section \ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}, static nonlinearities
 		provide an efficient way to generate large numbers of harmonics for sinusoidal inputs. The characteristic
 		curve of the nonlinearity can be designed to produce a set of harmonics with the desired qualities, the
 		parity of the characteristic curve can be used to control whether odd or even harmonics are generated and
@@ -181,7 +181,7 @@
 
 		A spectral shaping system can be constructed in which a static nonlinearity and filter are used to excite a
 		large band of harmonics and finer control is provided using the individual harmonic generation method shown
-		in Figure \ref{fig:HarmonicGenerationSystems}. This allows the majority of the harmonics to be excited in
+		in Figure \ref{fig:HarmonicGenerationSystem}. This allows the majority of the harmonics to be excited in
 		an efficient manner, only using more complex processing where it is needed. \citet{howard2009acoustics}
 		discusses how low order harmonics sit in separate critical bands, whereas high order harmonics are within
 		one critical bandwidth of one another. This means that lower order harmonics are resolved separately by the
@@ -658,29 +658,30 @@
 	\subsection{Spectral Moments}
 	\label{sec:FeatureControl-Parameterisation-SpectralMoments}
 		\subsubsection*{Parameterisation of The Spectral Centroid}
-			A crude method of causing the spectral centroid to move towards a particular frequency is the
+			A crude method of causing the spectral centroid to move towards a particular frequency is to
 			increase the energy at that frequency. While this works conceptually, it is destructive to the
 			original structure of the spectrum. As the centroid is moved towards the desired frequency the
 			spectrum is dominated by a sinusoid at that frequency.
 
 			Less destructive methods include that used by \citet{zacharakis2011an} who split the signal into
 			two bands, one above and one below the spectral centroid. The relative amplitudes of these bands
-			can then be altered to adjust the spectral centroid. This preserves more of the original signals
+			can then be altered to adjust the spectral centroid. This preserves more of the original signal's
 			structure, the relative levels of partials within each band remaining the same. Using this method
 			the new spectral centroid will lie somewhere between the respective centroids of the two bands. The
-			relative amplitudes of the two bands required to give a certain spectral centroid, $\mu$, can be
-			calculated using Equation \ref{eq:SpectralCentroidManipulation}.
+			relative amplitudes of the two bands required to give a certain spectral centroid, $\mu_{s}$, can
+			be calculated using Equation \ref{eq:SpectralCentroidManipulation}.
 
 			\begin{equation}
 				\frac{\sum_{n = c + 1}^{N} a_{n}}
 				     {{\sum_{n = 1}^{c} a_{n}}} = 
-				\frac{\mu_{l} - \mu}{\mu - \mu_{u}}, 
-				\quad \mu_{l} \leq \mu < \mu_{u} \quad \text{or} \quad \mu_{u} < \mu \leq \mu_{l}
+				\frac{\mu_{s_{l}} - \mu_{s}}{\mu_{s} - \mu_{s_{u}}}, 
+				\quad \mu_{s_{l}} \leq \mu_{s} < \mu_{s_{u}} \quad \text{or} 
+					\quad \mu_{s_{u}} < \mu_{s} \leq \mu_{s_{l}}
 				\label{eq:SpectralCentroidManipulation}
 			\end{equation}
 
-			Where $\mu_{l}$ and $\mu_{r}$ are the spectral centroid of the upper and lower band, and $c$ is the
-			order highest frequency spectral component in the lower band.
+			Where $\mu_{s_{l}}$ and $\mu_{s_{u}}$ are the spectral centroid of the lower and upper bands
+			respectively, and $c$ is the order of the highest frequency spectral component in the lower band.
 
 			\citet{williams2007perceptually} employ a spectral tilt to manipulate spectral centroid, applying
 			gain to the partials of a signal as a linear function of their frequency. This allows the spectral
@@ -694,7 +695,11 @@
 			centroid can be moved by adjusting the relative amplitudes of the original signal and the new band
 			of energy. To facilitate precise control of the spectral centroid these bands should not share any
 			frequency components. Figure \ref{fig:TwoBandSpectralCentroidSystem} shows a system which
-			separately controls the gains of two bands.
+			separately controls the gains of two bands. The lower band is generated via a low pass filter on
+			the input signal while the high band is created using a nonlinear device. The bands are filtered
+			with corresponding low and high pass filters to ensure they share no frequency components. The
+			spectral centroid of the output can be moved between the centroids of these two bands by changing
+			their relative amplitudes according to Equation \ref{eq:SpectralCentroidManipulation}.
 
 			\begin{figure}[h!]
 				\centering
@@ -741,26 +746,21 @@
 				\label{fig:TwoBandSpectralCentroidSystem}
 			\end{figure}
 
-			The lower band is generated via a low pass filter on the input signal while the high band is
-			created using a nonlinear device. The bands are filtered with corresponding low and high pass
-			filters to ensure they share no frequency components. The spectral centroid of the output can be
-			moved between the centroids of these two bands by changing their relative gains according to
-			Equation \ref{eq:SpectralCentroidManipulation}.
-
 			This method has some advantages over manipulating the amplitudes of two bands using only linear
 			filters. The centroid can be manipulated in various manners. The nonlinear device can be used to
 			reconstruct the high frequency portion of the signal and the relative gains adjusted similarly to
 			if two filters were used.  Alternatively the properties of the nonlinear device can be altered to
 			change the upper band's centroid. This provides more flexibility allowing the centroid to be
 			changed independently of some other features. For example, changing the gains of two bands will
-			change the spectral slope of the signal. If instead additional partials are introduced to the
-			upper, with amplitudes which are determined by the signals current slope, the centroid can be move
-			while the slope is unaltered.
+			change the spectral slope of the signal. If instead additional partials are introduced to the upper
+			band, with amplitudes which are determined by the signals current slope, the centroid can be moved
+			while the slope is left unaltered.
 
 			Figure \ref{fig:MoveCentroids} shows the effect of this system on the test signals. The low and
 			high pass filters used to separate the bands were set to have a cutoff frequency equal to
-			$9.5f_{0}$. The gains applied to the bands are parameterised as $P$, the low band is multiplied by
-			a gain of $1 - P$ and the high band by a gain of $P$.
+			$9.5f_{0}$ and the nonlinear device used was a symmetric hard peak clipper. The gains applied to
+			the bands are parameterised as $P$, the low band is multiplied by a gain of $1 - P$ and the high
+			band by a gain of $P$.
 
 			\begin{figure}[h!]
 				\centering
@@ -771,7 +771,7 @@
 
 			When $P$ is set to zero the input signal is effectively processed by only a low pass filter,
 			reducing its spectral centroid. As $P$ is increased a more energy is introduced in the higher
-			harmonics until the maximum spectral centroid is reached at $P = 1$. For each single the range of
+			harmonics until the maximum spectral centroid is reached at $P = 1$. For each signal the range of
 			values the spectral centroid can take covers approximately two octaves. The spectral structure of
 			the two bands determines how the spectral centroid changes within this range.
 
