@@ -87,21 +87,24 @@ irregKs <- t(irregs[1,,c(1, 2, 4, 3)])
 irregJs <- t(irregs[2,,c(1, 2, 4, 3)])
 irregBs <- t(irregs[3,,c(1, 2, 4, 3)])
 
-pdf("MoveIrregularitiesK.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
-plotManipulation(m, irregKs, c(-1, 1, 0, 0.4), signals, "topright", "Parameter Setting",
+pdf("MoveIrregularitiesK.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=2.94, height=2.1)
+plotManipulation(m, irregKs, c(-1, 1, 0, 0.4), signals, "topright", "",
 		 "Krimphoff Irregularity", littleMar)
+mtext(expression(italic(P)), side=1, line=3, family="CM Roman")
 dev.off()
 embed_fonts("MoveIrregularitiesK.pdf")
 
-pdf("MoveIrregularitiesJ.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
-plotManipulation(m, irregJs, c(-1, 1, 0, 1), signals, "bottomleft", "Parameter Setting",
+pdf("MoveIrregularitiesJ.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=2.94, height=2.1)
+plotManipulation(m, irregJs, c(-1, 1, 0, 1), signals, "bottomleft", "",
 		 "Jensen Irregularity", littleMar)
+mtext(expression(italic(P)), side=1, line=3, family="CM Roman")
 dev.off()
 embed_fonts("MoveIrregularitiesJ.pdf")
 
-pdf("MoveIrregularitiesB.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
-plotManipulation(m, irregBs, c(-1, 1, 0, 0.4), signals, "topright", "Parameter Setting",
+pdf("MoveIrregularitiesB.pdf", pointsize=8, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=2.94, height=2.1)
+plotManipulation(m, irregBs, c(-1, 1, 0, 0.4), signals, "topright", "",
 		 "Beauchamp Irregularity", littleMar)
+mtext(expression(italic(P)), side=1, line=3, family="CM Roman")
 dev.off()
 embed_fonts("MoveIrregularitiesB.pdf")
 
