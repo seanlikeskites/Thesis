@@ -627,27 +627,33 @@
 \label{sec:FeatureControl-Parameterisation}
 	The systems discussed in Section \ref{sec:FeatureControl-Systems} provide control over where energy is introduced
 	in a signal's spectrum. Large bands of energy can be introduced or finer control over specific harmonics can be
-	provided. Each system has a set of control parameters controlling gains applied to specific harmonics and filtering
-	/ frequency shifting options. This section discusses how these control parameters can be configured to alter
-	specific audio features. This process is referred to as parameterisation of the feature changes, defining systems
-	whereby a single control parameter is mapped to the parameters of a harmonic excitation system in order to change
-	the value of an audio feature.
+	provided. Each system has a set of control parameters controlling gains applied to specific bands of energy and
+	filtering / frequency shifting options. This section discusses how these control parameters can be configured to
+	alter specific audio features. This process is referred to as parameterisation of the feature changes, defining
+	systems whereby a single control parameter is mapped to the parameters of a harmonic excitation system in order to
+	change the value of an audio feature.
 
-	% COH
 	Assuming perfect detection of $f_{0}$ and perfect filters, the systems shown in Section
-	\ref{sec:FeatureControl-Systems}, along with the methods discussed in this Section, would provide precise control
-	over the audio features. In a `real world' implementation, the properties of the input signal and filters used will
-	affect how the features are manipulated. To examine these effects, each method for manipulating a feature is tested
-	on four harmonic audio signals produced by, a bowed cello, a clarinet, an additive synthesiser and a piano
-	respectively.
+	\ref{sec:FeatureControl-Systems} will provide analogous manipulations for all harmonically structured input
+	signals. For example, the system in Figure \ref{fig:HarmonicGenerationSystem} will always generate a harmonic with
+	the same amplitude relationship to the $f_{0}$ of the input. In actual implementations the inaccuracies in $F_{0}$
+	tracking and the properties of the input signal and filters used will affect how the system operates. To examine
+	these effects, each of the methods proposed for manipulating an audio feature in this section are tested on four
+	harmonic audio signals. These signals constitute a bowed cello, a clarinet, an additive synthesiser and a piano
+	respectively. To investigate only the effects of filter implementations and the feature manipulation methods, the
+	$f_{0}$ of each of these signals is calculated accurately before testing and the $f_{0}$ tracking elements of the
+	systems eliminated.
 
 	The cello and clarinet signals both represent typical recorded harmonic sounds. Both are composed of harmonic
 	partials and noise. The fundamental difference between the two is that the cello signal contains energy at all
 	harmonics while clarinet signal has the majority of its energy in the odd order harmonics. The synthesised sound
 	has perfectly harmonic partials and zero noise energy. This signal is included to examine how the excitation
-	systems perform in an ideal situation. The piano signal poses a problem to the systems discussed in Section
-	\ref{sec:FeatureControl-Systems} as it has a damped $f_{0}$, its second harmonic has considerably more energy than
-	its $f_{0}$. This signal is included to examine to extent to which the systems are affected by these problems.
+	systems perform for the ideal case of a harmonic signal with zero noise. The piano signal poses a problem to the
+	systems discussed in Section \ref{sec:FeatureControl-Systems} as the $f_{0}$ has been physically damped through
+	alteration to the instrument. This reduces the amplitude of the $f_{0}$ compared to the remaining harmonic partials
+	as well as changing the shape of its amplitude envelope. As the systems all rely on isolating the $f_{0}$ before
+	generating harmonics this is likely to cause inaccuracies. This signal is included to examine to extent to which
+	the systems are affected by these problems.
 
 	\subsection{Spectral Moments}
 	\label{sec:FeatureControl-Parameterisation-SpectralMoments}
