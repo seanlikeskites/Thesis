@@ -113,9 +113,10 @@ embed_fonts("MoveIrregularitiesB.pdf")
 ########################################################
 args <- seq(0, 1.5, 0.01)
 flatnesses <- read.octave("MoveFlatnesses.mat")$flatnesses[c(1, 2, 4, 3),]
-pdf("MoveFlatnesses.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotManipulation(args, flatnesses, c(0, 1.5, 0, 0.1), signals, "topright", "Parameter Setting", "Spectral Flatness",
+pdf("MoveFlatnesses.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
+plotManipulation(args, flatnesses, c(0, 1.5, 0, 0.1), signals, "topright", "", "Spectral Flatness",
 		 bigMar)
+mtext(expression(italic(P)), side=1, line=3, family="CM Roman")
 dev.off()
 embed_fonts("MoveFlatnesses.pdf")
 
@@ -123,11 +124,11 @@ embed_fonts("MoveFlatnesses.pdf")
 # slopes
 ########################################################
 gains <- seq(-10, 10, 0.5)
-slopes <- read.octave("MoveSlopes.mat")$slopes[c(1, 2, 4, 3),]*100
-pdf("MoveSlopes.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotManipulation(gains, slopes, c(-10, 10, -1, 0), signals, "bottomright", "Tilt Gradient", "Spectral Slope",
-		 bigMar)
-mtext(expression(x10^-2), side=2, line=2, at=0)
+slopes <- read.octave("MoveSlopes.mat")$slopes[c(1, 2, 4, 3),]
+pdf("MoveSlopes.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
+plotManipulation(gains, slopes, c(-10, 10, -12, 0), signals, "bottomright", 
+		 "", "Spectral Slope (dB per octave)", bigMar)
+mtext(expression(italic(k)), side=1, line=3, family="CM Roman")
 dev.off()
 embed_fonts("MoveSlopes.pdf")
 
