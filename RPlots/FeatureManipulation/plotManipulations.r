@@ -140,8 +140,7 @@ tri1s <- read.octave("MoveTristimulus1.mat")$tri1s[c(1, 2, 4, 3),]
 pdf("MoveTristimulus1.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
 plotManipulation(gains, tri1s, c(0, 5, 0, 0.9), signals, "topleft", "", 
 		 "First Tristimulus", bigMar)
-mtext(expression(italic(f)[0]), side=1, line=3, at=2.3, family="CM Roman")
-mtext("Gain", side=1, line=2.85, at=2.65)
+mtext(expression(italic(m)), side=1, line=3, family="CM Roman")
 dev.off()
 embed_fonts("MoveTristimulus1.pdf")
 
@@ -151,8 +150,9 @@ embed_fonts("MoveTristimulus1.pdf")
 gains <- seq(0, 5, 0.1)
 tri2s <- read.octave("MoveTristimulus2.mat")$tri2s[c(1, 2, 4, 3),]
 pdf("MoveTristimulus2.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
-plotManipulation(gains, tri2s, c(0, 5, 0, 0.8), signals, "topleft", "Band Gain", 
+plotManipulation(gains, tri2s, c(0, 5, 0, 0.8), signals, "topleft", "", 
 		 "Second Tristimulus", bigMar)
+mtext(expression(italic(m)), side=1, line=3, family="CM Roman")
 dev.off()
 embed_fonts("MoveTristimulus2.pdf")
 
@@ -162,8 +162,9 @@ embed_fonts("MoveTristimulus2.pdf")
 gains <- seq(0, 5, 0.1)
 tri3s <- read.octave("MoveTristimulus3.mat")$tri3s[c(1, 2, 4, 3),]
 pdf("MoveTristimulus3.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
-plotManipulation(gains, tri3s, c(0, 5, 0, 0.9), signals, "topleft", "Band Gain", 
+plotManipulation(gains, tri3s, c(0, 5, 0, 0.9), signals, "topleft", "", 
 		 "Third Tristimulus", bigMar)
+mtext(expression(italic(m)), side=1, line=3, family="CM Roman")
 dev.off()
 embed_fonts("MoveTristimulus3.pdf")
 

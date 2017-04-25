@@ -1063,9 +1063,8 @@
 			\label{eq:GeneralTristimulus}
 		\end{gather}
 
-		This ration can be adjusted by applying gain to the spectral components in $S$. To attain a particular
-		value of $R$ the required gain, $m$, can be calculated using Equation
-		\ref{eq:GeneralTristimulusManipulation}.
+		This ratio can be adjusted by applying gain to the spectral components in $S$. To attain a particular value
+		of $R$ the required gain, $m$, can be calculated using Equation \ref{eq:GeneralTristimulusManipulation}.
 
 		\begin{equation}
 			m = \frac{R(B - A)}{B(R - 1)}, \quad 0 \leq R < 1
@@ -1082,13 +1081,13 @@
 		other two measures can be controlled in different ways depending on the requirements of the system.
 		Individually controlling the levels of the second through fourth harmonics allows the second tristimulus
 		measure to be manipulated while a more general nonlinear device can be used to generate higher order
-		harmonics. As with the spectral centroid, using excitation to achieve this provides more flexibility as the
-		tristimulus can be changed while preserving other features. For example, if the odd to even harmonic ratio
-		needs to remain the same, but the second tristimulus change, different amounts of excitation can be applied
-		to the second through fourth harmonics.
+		harmonics, changing the third tristimulus. As with the spectral centroid, using excitation to achieve this
+		provides more flexibility as the tristimulus can be changed while preserving other features. For example,
+		if the odd to even harmonic ratio needs to remain the same, but the second tristimulus change, different
+		amounts of excitation can be applied to the second through fourth harmonics.
 
-		Figure \ref{fig:MoveTristimulus1} shows how the first tristimuli of the test signals change when the gain
-		is applied at their $f_{0}$ using the system shown in Figure \ref{fig:SuperpositionSystem}.
+		Figure \ref{fig:MoveTristimulus1} shows how the first tristimuli of the test signals changes when the gain,
+		$m$, is applied at their isolated $f_{0}$s using the system shown in Figure \ref{fig:SuperpositionSystem}.
 
 		\begin{figure}[h!]
 			\centering
@@ -1104,18 +1103,16 @@
 		$f_{0}$ has significantly less amplitude than subsequent spectral partials this is particularly
 		problematic. The piano signal used for testing illustrates this. In this case the isolated $f_{0}$ signal
 		has more energy in the second harmonic than at the $f_{0}$, severely reducing the maximum value which the
-		first tristimulus can be altered to.  Using higher order filters will alleviate this problem at the cost of
-		increased processing complexity.
+		first tristimulus can attain. Using higher order filters will alleviate this problem at the cost of
+		increased processing complexity. The order of the filters is also responsible for the initial decrease in
+		tristimulus value for small values of $m$. The $f_{0}$ is removed from the original signal using a high
+		pass filter. The lower order this filter is, the more of a remnant of the $f_{0}$ remains. This initial
+		decrease in the first tristimulus is due to destructive superposition between the isolated $f_{0}$ and this
+		remnant.  Again, increasing the order of the filters used in the system will reduce these effects.
 
-		The order of the filters is also responsible for the initial decrease in tristimulus value with increasing
-		gain. The $f_{0}$ is removed from the original signal using a high pass filter. The lower order this filter
-		the more of a remnant of the $f_{0}$ remains. This initial decrease in the first tristimulus is due to
-		destructive superposition between the isolated $f_{0}$ and this remnant. Again, increasing the order of the
-		filters used in the system will reduce these effects.
-
-		Control of the second tristimulus can be achieved with the same system, this time applying gain at to the
-		second third and fourth excited harmonics. Figure \ref{fig:MoveTristimulus2} how the tristimulus value
-		changes with increasing gain.
+		Control of the second tristimulus can be achieved with the same system, this time applying a gain, $m$, to
+		the second, third and fourth excited harmonics. Figure \ref{fig:MoveTristimulus2} shows how the second
+		tristimulus value changes with $m$.
 
 		\begin{figure}[h!]
 			\centering
@@ -1134,7 +1131,7 @@
 		The third tristimulus is more easily controlled using the same system as used for controlling the spectral
 		centroid (Figure \ref{fig:TwoBandSpectralCentroidSystem}). A band of high order harmonics is generated from
 		the isolated $f_{0}$ using a static nonlinearity and a high pass filter.  Figure \ref{fig:MoveTristimulus3}
-		shows how changing the gain of this band effects the third tristimulus of the test signals.
+		shows how changing the gain, $m$, of this band effects the third tristimulus of the test signals.
 
 		\begin{figure}[h!]
 			\centering
