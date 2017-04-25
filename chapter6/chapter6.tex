@@ -818,7 +818,7 @@
 			with a positive gradient will decrease the skewness, whereas a negative gradient will increase the
 			skewness. While the simplest system to achieve this would be a linear filter, an excitation based
 			approach can provide a more flexible system in terms of manipulation or preservation of other
-			features. Using the system shown in Figure \ref{fig:InharmonicitySystem} a spectral tilt of $k$ dB
+			features. Using the system shown in Figure \ref{fig:SuperpositionSystem} a spectral tilt of $k$ dB
 			per octave can be applied to the first nine harmonics. This is done by multiplying each harmonic's
 			amplitude by $10^{\frac{k}{20}\log_{2} \left( \frac{\nu_{n}}{\mu_{s}} \right)}$. Increasing the
 			value of $k$ increases the gradient of the tilt applied and thereby lowers the signal's spectral
@@ -869,7 +869,7 @@
 		\ref{eq:BeauchampIrregularity}) are based on taking the differences between each partial's amplitude and
 		the mean amplitude of itself and the two partials surrounding it. Intuitively this value can be increased
 		or reduced by moving the amplitudes of the partials away or towards their mean. To implement this using the
-		system shown in Figure \ref{fig:InharmonicitySystem} the new amplitudes of the first nine harmonics can be
+		system shown in Figure \ref{fig:SuperpostionSystem} the new amplitudes of the first nine harmonics can be
 		calculated using Equation \ref{eq:PartialSmoothing}
 
 		\begin{equation}
@@ -941,7 +941,7 @@
 		Section \ref{sec:FeatureControl-Parameterisation-Irregularity}, using a low pass filter on the amplitudes
 		of the spectral components will increase the flatness of the spectrum.
 
-		As the measure of spectral flatness (Equation \ref{eq:SpectralFlatness}) is the ratio of the geometric and
+		As the measure of spectral flatness (Equation \ref{eq:Flatness}) is the ratio of the geometric and
 		arithmetic means of the power spectrum, a greater degree of control can be achieved over it by altering one
 		of the means while the other remains constant. The method discussed here changes the arithmetic mean while
 		preserving the geometric mean. Consider two disjoint sets, $L$ and $H$, which are each composed of the
@@ -1016,9 +1016,9 @@
 		slope of the band of distortion components generated using a static nonlinearity depends on the continuity
 		of the nonlinearity's characteristic curve and its derivatives. Using a simple system, similar to that in
 		Figure \ref{fig:F0Tracking}, the characteristic curve of the nonlinearity can be changed to influence the
-		spectral slope of the output signal.
+		spectral slope of the output signal. While this 
 
-		The system shown in Figure \ref{fig:InharmonicitySystem} provides more control, allowing for slopes other
+		The system shown in Figure \ref{fig:SuperpositionSystem} provides more control, allowing for slopes other
 		than multiples of 6dB per octave. As with the discussions on spectral irregularity and flatness, an
 		analysis / resynthesis approach provides finer control.  To increase the spectral slope by $k$ dB per Hz,
 		each spectral component in the signal should have its amplitude, $a_{n}$, multiplied by the value
@@ -1071,7 +1071,7 @@
 
 		Similar to the method discussed for controlling spectral centroid, control of tristimulus metrics involves
 		altering the energy in specific bands. A reduced version of the system shown in Figure
-		\ref{fig:InharmonicitySystem} can be used to control this. The system need only have individual control
+		\ref{fig:SuperpositionSystem} can be used to control this. The system need only have individual control
 		over the levels of the first four harmonics so the exciters for the fifth through ninth harmonics can be
 		removed.
 
@@ -1085,7 +1085,7 @@
 		to the second through fourth harmonics.
 
 		Figure \ref{fig:MoveTristimulus1} shows how the first tristimuli of the test signals change when the gain
-		is applied at their $f_{0}$ using the system shown in Figure \ref{fig:InharmonicitySystem}.
+		is applied at their $f_{0}$ using the system shown in Figure \ref{fig:SuperpositionSystem}.
 
 		\begin{figure}[h!]
 			\centering
