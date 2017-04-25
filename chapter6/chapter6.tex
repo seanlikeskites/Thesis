@@ -936,20 +936,20 @@
 	\subsection{Spectral Flatness}
 	\label{sec:FeatureControl-Parameterisation-Flatness}
 		Spectral flatness is related to spectral irregularity. Many of the techniques to reduce the irregularity
-		will also increase the flatness. More precisely any manipulation which moves the amplitudes of all spectral
-		components closer to each other will increase the spectral flatness. To take an example from Section
-		\ref{sec:FeatureControl-Parameterisation-Irregularity}, using a low pass filter on the amplitudes of the
-		spectral components will increase the flatness of the spectrum.
+		will also increase the flatness. More precisely, any manipulation which moves the amplitudes of all
+		spectral components closer to each other will increase the spectral flatness. To take an example from
+		Section \ref{sec:FeatureControl-Parameterisation-Irregularity}, using a low pass filter on the amplitudes
+		of the spectral components will increase the flatness of the spectrum.
 
-		A greater degree of control can be achieved over the spectral flatness by altering the power spectrum such
-		that one of the means changes while the other remains the same. The method discussed here changes the
-		arithmetic mean but preserves the geometric mean. 
-
-		Consider two disjoint sets, $L$ and $H$, which are each composed of the indices of $k$ spectral components
-		of the signal such that the total energy in the spectral components denoted by $L$ is less than that of the
-		spectral components denoted by $H$. A gain $m$ is applied to the spectral components denoted by set $H$ and
-		the reciprocal gain $\frac{1}{m}$ applied to the spectral components denoted by set $L$. The resulting
-		spectral flatness is calculated using Equation \ref{eq:FlatnessManipulation}.
+		As the measure of spectral flatness (Equation \ref{eq:SpectralFlatness}) is the ratio of the geometric and
+		arithmetic means of the power spectrum, a greater degree of control can be achieved over it by altering one
+		of the means while the other remains constant. The method discussed here changes the arithmetic mean while
+		preserving the geometric mean. Consider two disjoint sets, $L$ and $H$, which are each composed of the
+		indices of $k$ spectral components of the signal, such that the total energy in the spectral components
+		denoted by $L$ is less than that of the spectral components denoted by $H$. A gain $m$ is applied to the
+		spectral components denoted by set $H$ and the reciprocal gain $\frac{1}{m}$ applied to the spectral
+		components denoted by set $L$. The resulting spectral flatness is calculated using Equation
+		\ref{eq:FlatnessManipulation}.
 
 		\begin{gather}
 			P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \nonumber \\
@@ -973,7 +973,7 @@
 		Values of $P$ between 0 and 1 will increase the spectral flatness, with the maximum flatness being achieved
 		at $P = 0.5$. Finally, when $P > 1$ the spectral flatness will decrease.  Figure \ref{fig:MoveFlatnesses}
 		shows the effects of altering this parameter on the spectral flatness of the test signals when both sets,
-		$L$ and $H$, are comprised of three partials.
+		$L$ and $H$, are comprised of the indices of three spectral partials.
 
 		\begin{equation}
 			m = \sqrt{ \left( \frac{A_L}{A_H} \right) ^{1 - P}}
@@ -989,28 +989,26 @@
 
 		The maximum flatness which can be achieved depends on the flatnesses of the two sets $L$ and $H$.  If these
 		sets are themselves flat (i.e. all partials in them have similar amplitudes) the maximum possible flatness
-		will be large. If amplitudes of partials within each set have high variance the capacity for increasing the
-		overall flatness is reduced.
+		will be large. If the amplitudes of partials within each set have high variance the capacity for increasing
+		the overall flatness is reduced.
 
 		Equation \ref{eq:FlatnessManipulation} provides control over the spectral flatness in a signal where the
-		amplitudes of the spectral components are known. As with control of spectral irregularity an analysis /
+		amplitudes of the spectral components are known. As with control of spectral irregularity, an analysis /
 		resynthesis technique could be utilised to implement this using harmonic excitation.  Again it is desirable
 		to remove the analysis step in order to reduce the complexity of the system.  This can be done by replacing
-		a band of spectral components with excited ones.
+		a band of spectral components with excited ones. Once a band has been replaced with excited components, the
+		levels of these components can then be manipulated to change the flatness of the entire signal. Altering
+		the flatness of the excited band using the method in Equation \ref{eq:FlatnessManipulation} allows the
+		overall flatness of the output to be influenced. Reducing the arithmetic mean of the power spectrum of the
+		excited band also reduces the arithmetic mean of the power spectrum of the output signal. Thus, increasing
+		the flatness of the excited band will also increase the flatness of the output signal and decreasing the
+		flatness of the band decreases the flatness of the output signal.
 
-		Once a band has been replaced with excited components, the levels of these components can then be
-		manipulated to change the flatness of the entire signal. Altering the flatness of the excited band using
-		the method in Section \ref{sec:FeatureControl-Parameterisation-Flatness} changes the arithmetic mean of the
-		components' amplitudes in the excited band while keeping their geometric mean the same. This causes the
-		arithmetic mean of the amplitudes in the entire signal to change in the same direction while the geometric
-		mean is unchanged. In short, increasing the flatness of the excited band will also increase the flatness of
-		the entire signal and decreasing the flatness of the band decreases the flatness of the signal.
-
-		As the spectral flatness measure doesn't depend on the frequencies of the spectral components deciding what
-		two groups of components to apply reciprocal gains to will depend on the desired effect on other spectral
-		features. For instance, to have a maximal effect on the odd to even harmonic ratio one could select two
-		groups which consist of odd and even harmonics respectively. To have a minimal effect on this feature the
-		two groups can both consist of one parity of harmonic.
+		As the spectral flatness measure doesn't depend on the frequencies of the spectral components, deciding
+		what two groups of components to apply reciprocal gains to will depend on the desired effect on other
+		spectral features. For instance, to have a maximal effect on the odd to even harmonic ratio one could
+		select two groups which consist of odd and even harmonics respectively. To have a minimal effect on this
+		feature the two groups can both consist of one parity of harmonic.
 
 	\subsection{Spectral Slope}
 	\label{sec:FeatureControl-Parameterisation-Slope}
