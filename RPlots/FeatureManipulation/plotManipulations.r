@@ -186,8 +186,9 @@ embed_fonts("MoveParities.pdf")
 gains <- seq(0, 0.001, 0.00005)
 inharms <- read.octave("MoveInharmonicities.mat")$inharms[c(1, 2, 4, 3),]
 pdf("MoveInharmonicities.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
-plotManipulation(1000*gains, inharms, c(0, 1, 0, 0.08), signals, "topleft", "Inharmonicity Factor", 
+plotManipulation(1000*gains, inharms, c(0, 1, 0, 0.08), signals, "topleft", "", 
 		 "Inharmonicity", bigMar)
+mtext(expression(italic(A)), side=1, line=3, family="CM Roman")
 mtext(expression(x10^-3), side=1, line=2, at=1)
 dev.off()
 embed_fonts("MoveInharmonicities.pdf")
