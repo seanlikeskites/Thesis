@@ -174,8 +174,9 @@ embed_fonts("MoveTristimulus3.pdf")
 gains <- seq(0, 1, 0.01)
 parities <- read.octave("MoveParities.mat")$parities[c(1, 2, 4, 3),]
 pdf("MoveParities.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", width=4.2, height=3)
-plotManipulation(gains, parities, c(0, 1, 0, 50), signals, "topleft", "Parameter Setting", 
+plotManipulation(gains, parities, c(0, 1, 0, 50), signals, "topleft", "", 
 		 "Odd to Even Harmonic Ratio", bigMar)
+mtext(expression(italic(P)), side=1, line=3, family="CM Roman")
 dev.off()
 embed_fonts("MoveParities.pdf")
 
