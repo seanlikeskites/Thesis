@@ -647,7 +647,7 @@
 	The cello and clarinet signals both represent typical recorded harmonic sounds. Both are composed of harmonic
 	partials and noise. The fundamental difference between the two is that the cello signal contains energy at all
 	harmonics while clarinet signal has the majority of its energy in the odd order harmonics. The synthesised sound
-	has perfectly harmonic partials and zero noise energy. This signal is included to examine how the excitation
+	has almost perfectly harmonic partials and zero noise energy. This signal is included to examine how the excitation
 	systems perform for the ideal case of a harmonic signal with zero noise. The piano signal poses a problem to the
 	systems discussed in Section \ref{sec:FeatureControl-Systems} as the $f_{0}$ has been physically damped through
 	alteration to the instrument. This reduces the amplitude of the $f_{0}$ compared to the remaining harmonic partials
@@ -1153,7 +1153,7 @@
 		\begin{equation}
 			m = \sqrt{\frac{\mathrm{OER}\sum_{1 \leq n \leq N, n \text{ is even}} h_{n}^{2}}
 				       {\sum_{1 \leq n \leq N, n \text{ is odd}} h_{n}^{2}}},
-				       \quad \mathrm{OER} \geq 0;
+				       \quad \mathrm{OER} \geq 0
 		       \label{eq:HarmonicParityRatioManipulation}
 		\end{equation}
 
@@ -1338,7 +1338,7 @@
 		arbitrarily set.
 
 		\begin{equation}
-			a_{n} = nf_{0} \left( 1 + \left( n^{2} - 1 \right) A \right);
+			a_{n} = nf_{0} \left( 1 + \left( n^{2} - 1 \right) A \right)
 			\label{eq:PianoInharmonicity}
 		\end{equation}
 
@@ -1354,19 +1354,52 @@
 		\end{figure}
 
 		As only the first nine harmonics are being altered, the degree to which the inharmonicity can be
-		manipulated depends on the spectral content of the input signal. In the synthesised signal all of the
-		spectral partials are at perfectly harmonic frequencies and there is significant energy in the harmonics
-		with higher order than the ninth. The inharmonic signal generated from the synthesised signal then still
-		has a significant amount of energy at perfectly harmonic partials giving it a low inharmonicity. This
-		reduces the range of values which the resulting inharmonicity can take. The other three signals all have
-		higher spectral roll off, such that the influence of their existing high order partials has a smaller
-		effect on the overall inharmonicity. The issue of higher order harmonics reducing the maximum inharmonicity
-		could be counteracted by adding an addition frequency shifter to the system. This shifter would operate on
-		the filtered input signal and shift all the higher order partials by the same amount.
+		manipulated depends on the spectral content of the input signal. The partials of the synthesised signal
+		have amplitudes which roll off at a very low rate, meaning there is significant energy in the partials
+		above the ninth order. The frequencies of these partials will then have a more significant impact on the
+		inharmonicity of the signal. Because the frequencies of these partials is not being altered this reduces
+		the range of values which the resulting inharmonicity can take. The other three signals all have higher
+		spectral roll off, such that the influence of their existing high order partials has a smaller effect on
+		the overall inharmonicity. The issue of higher order harmonics reducing the maximum inharmonicity could be
+		counteracted by adding an addition frequency shifter to the system. This shifter would operate on the
+		filtered input signal and shift all the higher order partials by the same amount.
 
 \section{Conclusions}
 \label{sec:FeatureControl-Conclusions}
-	\note
-	{
-		Write some kind of summary of the chapter here.
-	}
+	This section has presented and discussed how harmonic excitation can be used to control specific audio features in
+	harmonically structured signals. Methods have been suggested by which a single parameter can be mapped to the
+	parameters of the harmonic excitation systems proposed in Section \ref{sec:FeatureControl-Systems} to control the
+	value of a particular audio feature in the output. Where possible the parameter has been defined such that with a
+	little analysis of the input signal, the value of the feature in the output can be precisely set. In other cases
+	the parameter is defined such that the function describing the relationship between the parameter and feature
+	values is monotonic. In the case of spectral flatness this was not possible, but the parameter values at which the
+	maximum spectral flatness occurs is defined. The function describing spectral flatness as the parameter is moved
+	away from this value is monotonically decreasing. While these parameterisations do not allow for the absolute value
+	of an audio feature to be defined, the user is given control over the direction in which the feature is altered.
+	This allows them to be used for timbral transformations in which the semantic descriptor is defined by a particular
+	change in feature values, such as for `bright' and `warm' (Chapter \ref{chap:TimbreEvaluation}).
+
+	In implementing these methods further challenges are met. The parameterisations all rely on the $f_{0}$ of the
+	input signal being perfectly isolated and the elimination of superposition for any of the excited harmonics
+	(Section \ref{sec:FeatureControl-Systems-Superposition}). In real time systems this will not always be possible.
+	The implementations used when processing the test signals used second order IIR filters for these tasks to
+	investigate the effects this would have when processing different signals. As seen the Figures in Section
+	\ref{sec:FeatureControl-Parameterisation} this less than ideal filter performance produces non-monotonic behaviour
+	for some of the systems. This is especially notable when controlling the odd to even harmonic ratio of the piano
+	signal, due to the nature of the damped fundamental the system was only able to produce even order harmonics when
+	using a low order filter. In most of these cases increasing the order of the filters will improve the control over
+	the audio feature at the expense of increasing computational complexity.
+
+	Other nonlinearities and deviations from monotonic behaviour in the parameterisations can be accounted for by the
+	fact that only the first nine harmonics are being controlled individually. While this is based on psychoacoustic
+	principles, as discussed in Section \ref{sec:FeatureControl-Systems-SpectralShaping}, the audio features
+	manipulated are not. Equal magnitude changes in an audio feature due to spectral changes at different frequencies
+	will not have the same perceived effect. Individual control of the first nine harmonics give control over the most
+	perceptually relevant portion of the spectrum. Inaccuracies in the control of features due to lack of control over
+	higher order harmonics are deemed to be less important than those due to filtering of signals to isolate the
+	$f_{0}$ and avoid superposition.
+
+	In the following chapter perceptual listening tests are undertaken to asses how well the methods proposed in this
+	chapter can be used to provide perceptually control of audio. Firstly the best method are exciting individual
+	harmonics is determined. Then the systems discussed here are specialised to apply the same feature manipulations as
+	those described by a particular descriptor in the SAFE dataset (Chapter \ref{chap:TimbreEvaluation}).
