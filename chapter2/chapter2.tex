@@ -208,7 +208,7 @@
 
 	\subsection{Spectral Features}
 	\label{sec:Timbre-LowLevelFeatures-Spectral}
-		In existing timbral research is is widely reported that features describing a sound's spectrum produce the
+		In existing timbral research it is widely reported that features describing a sound's spectrum produce the
 		largest effects on timbre. To calculate these features the signal is first converted into a frequency
 		domain representation. This is most commonly done using either the Discrete Fourier Transform (DTF) or a
 		parallel filter bank. The calculation of many spectral features is done directly from these spectral
@@ -237,13 +237,11 @@
 		spectral partials, $a_{n}$ and $\nu_{n}$ giving the amplitude and frequency of the partial. Several of the
 		features discussed in this section can be calculated from any type of spectral components so this uniform
 		notation proves very useful. Where the calculation of a feature requires a particular spectral
-		representation this will be noted.
-
-		Some features are calculated using the energy at harmonic frequencies within a signal. This is different to
-		using the harmonic partials as the energy at harmonics which are not considered partials should still be
-		included. The equations for calculating these features use a slightly different notation. Features are
-		calculated from the amplitudes of the first $N$ harmonics in a signal, denoted $h_{n}$. No additional
-		notation is required for the frequency of the harmonic as it is implicitly equal to $nf_{0}$Hz.
+		representation this will be noted. Some features are calculated using only the energy at the harmonic
+		frequencies of a signal. The equations for calculating these features use a slightly different notation.
+		Features are calculated from the amplitudes of the first $N$ harmonics of a signal, the amplitude of the
+		$n$\super{th} harmonic being denoted $h_{n}$. No additional notation is required for the frequency of the
+		harmonic as it is implicitly equal to $nf_{0}$Hz.
 
 		\subsubsection*{Spectral Moments}
 			The spectral moments are the statistical moments of a signal's spectrum. They describe how the
@@ -297,7 +295,7 @@
 			\end{equation}
 
 			The kurtosis measures the length of a distribution's tails. A low kurtosis describes a spectrum
-			where the energy in evenly distributed in a band around the centroid. A high kurtosis describes a
+			where the energy is evenly distributed in a band around the centroid. A high kurtosis describes a
 			spectrum in which small amounts of energy lies at frequencies far away from the central band.
 
 			The kurtosis of a normal distribution is 3. This gives rise to a different measure, the excess
@@ -307,7 +305,7 @@
 
 		\subsubsection*{Spectral Irregularity}
 			Spectral irregularity measures the smoothness of a magnitude spectrum. It is typically measured
-			using the amplitudes of spectral partials as the spectral of pitched signals are characteristically
+			using the amplitudes of spectral partials as the spectra of pitched signals are characteristically
 			`unsmooth', having sharp amplitude peaks at each partial. Various different methods of measuring
 			this are often cited in the literature. The first being that proposed by
 			\citet{krimphoff1994caracterisation}, shown in Equation \ref{eq:KrimphoffIrregularity} and
@@ -461,13 +459,14 @@
 			numerator, meaning the tristimulus takes values from zero to one. Zero meaning there is no energy
 			in that set of harmonics, one meaning the signal is entirely composed of those harmonics.
 
-			In this work the tristimulus metrics are generalised to include inharmonic partials of a signal,
-			giving the peak tristimulus measures $T_{\mathrm{p}1}$, $T_{\mathrm{p}2}$ and $T_{\mathrm{p}3}$.
-			The spectrum is still split into three bands but the number of partials within these bands depends
-			on the content of the signal. The bands include all partials with a frequency within $0.5f_{0}$Hz
-			of the harmonics in the equivalent band used in the calculation of tristimulus. The peak
-			tristimulus measures are given by Equations \ref{eq:PeakTristimulus1}, \ref{eq:PeakTristimulus2}
-			and \ref{eq:PeakTristimulus3}.
+			In this work a generalisation of the tristimulus metrics is proposed which includes the inharmonic
+			partials of a signal. These are called the peak tristimulus measures ($T_{\mathrm{p}1}$,
+			$T_{\mathrm{p}2}$ and $T_{\mathrm{p}3}$) and give a measure analogous to the tristimulus which can
+			be used on more inharmonically structured signals. The spectrum is still split into three bands but
+			the number of partials within these bands depends on the content of the signal. The bands include
+			all partials with a frequency within $0.5f_{0}$Hz of the harmonics in the equivalent band used in
+			the calculation of tristimulus.  The peak tristimulus measures are given by Equations
+			\ref{eq:PeakTristimulus1}, \ref{eq:PeakTristimulus2} and \ref{eq:PeakTristimulus3}.
 
 			\begin{gather}
 				P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \nonumber \\
@@ -490,11 +489,10 @@
 
 		\subsubsection*{Odd to Even Harmonic Ratio}
 			The odd to even harmonic ratio, $\mathrm{OER}$, measures the ratio of energy between odd and even
-			order harmonics in a signal describing how much of the signal's energy is made up of odd or even
-			order harmonics. It was found to be a salient feature in timbral recognition by
-			\citet{hall2010importance} allowing for distinction between signals which consist only of odd
-			harmonics or of even harmonics. The ratio is calculated from the squared amplitudes of the harmonic
-			partials in a signal according to Equation \ref{eq:HarmonicParityRatio}.
+			order harmonics in a signal. It was found to be a salient feature in timbral recognition by
+			\citet{hall2010importance}, allowing for distinction between signals which consist of only a single
+			parity of harmonic. The ratio is calculated from the squared amplitudes of the harmonic partials in
+			a signal according to Equation \ref{eq:HarmonicParityRatio}.
 			
 			\begin{equation}
 				\mathrm{OER} = \frac{\sum_{1 \leq n \leq N, n \text{ is odd}} h_{n}^{2}}
@@ -502,17 +500,15 @@
 				\label{eq:HarmonicParityRatio}
 			\end{equation}
 
-			Measuring the proportion of odd and even harmonics in a signal using Equation
-			\ref{eq:HarmonicParityRatio} produces an asymmetric scale which may be difficult to interpret.
-			Signals with most of their energy at even harmonics produce values between zero and one.  Signals
-			with more energy at the odd harmonics can produce any value greater then one. Another problem
-			arises for signals with no energy at even harmonics where a division by zero will occur.
-
-			A more robust measure is to have separate measures for the proportion of odd harmonics in a signal
-			and the proportion of even harmonics in a signal. \citet{lukasik2005towards} describes two metrics
-			which measure the oddness, $O$, and the evenness, $E$, of a signal producing more easilty
-			interpreted values of 0 and 1. Formulae for the oddness and evenness are given in Equations
-			\ref{eq:Oddness} and \ref{eq:Evenness}.
+			Measuring the $\mathrm{OER}$ of a signal using Equation \ref{eq:HarmonicParityRatio} produces an
+			asymmetric scale which may be difficult to interpret.  Signals with most of their energy at even
+			harmonics produce values between zero and one.  Signals with more energy at the odd harmonics can
+			produce any value greater then one. Another problem arises for signals with no energy at even
+			harmonics where a division by zero will occur. A more robust method is to use separate measures for
+			the proportion of odd harmonics in a signal and the proportion of even harmonics in a signal.
+			\citet{lukasik2005towards} describes two metrics which measure the oddness, $O$, and the evenness,
+			$E$, of a signal producing more easily interpreted values of 0 and 1. Formulae for the oddness and
+			evenness are given in Equations \ref{eq:Oddness} and \ref{eq:Evenness}.
 
 			\begin{equation}
 				O = \sqrt{\frac{\sum_{1 \leq n \leq N, n \text{ is odd}} h_{n}^{2}}
@@ -543,11 +539,6 @@
 			This produces values between zero and one. Zero describing a signal in which all partials have
 			perfectly harmonic frequencies and one describing a signal where all partials have frequencies
 			lying $\frac{f_{0}}{2}$Hz from harmonic frequencies.
-
-		\note
-		{
-			Spectro-temporal features exist such as spectral flux.
-		}
 
 \section{Psychoacoustic Principles}
 \label{sec:Timbre-PsychoacousticPrinciples}
