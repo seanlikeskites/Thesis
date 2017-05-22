@@ -7,43 +7,51 @@
 \chapter{Timbre}
 \label{chap:Timbre}
 
+	\note
+	{
+		Why do we need to discuss timbre?
+	}
+
 \section{Introduction}
 \label{sec:Timbre-Introduction}
-	There are three properties which describe how a sound is perceived, these being loudness, pitch and timbre.
+	There are three properties that describe the way a sound is perceived, these being loudness, pitch and timbre.
 	Loudness describes the perceived intensity of a sound and pitch its perceived frequency. Timbre then describes any
 	other properties of a sound, besides loudness and pitch, which allow it to be distinguished from other sounds
-	\citep{mathews1999introduction}. Loudness and pitch are both one dimensional properties allowing sounds to be
-	ordered from quiet to loud or low to high pitch. Timbre is a more complex property consisting of multiple
+	\citep{mathews1999introduction}. The relationship between perceived loudness and the statistical properties of a
+	signal is nonlinear. Despite this, loudness can be expressed using a single dimension: from quiet to loud. For a
+	given listener an audio stimulus can only be perceived as quieter than, equally loud as or louder than another
+	stimuli. The description of pitch is more complicated as not all stimuli have a single perceived pitch. Some
+	stimuli contain several perceived pitches (such as a chord played on a piano) while others do not have a pitch
+	(such as white noise). Once the pitches present in a stimuli have been determined they can be compared using a
+	single dimension: from low to high pitch. The perception of timbre is more complex still, consisting of multiple
 	dimensions \citep{rossing2002the}. There is a large body of research concerning the analysis of timbre, identifying
 	these dimensions and their relationships with the acoustic features of a sound.
 
-	\note
-	{
-		better introduce this paragraph (layman's description)
-	}
+	A simple interpretation of timbre is that of instrument identification. One can identify the instrument which
+	produced a sound from the sound's timbre. This concept can be used to describe the timbre of other sounds, a sound
+	could be described as `cello-like' or `flute-like'. More broadly, the class of instrument (e.g. string or woodwind)
+	could be used to describe the timbre of a sound. While these terms are useful for discussing the instrumentation of
+	pieces of music they can not be applied generally to a wide range of timbres. It is not very useful to describe the
+	timbre of a xylophone as being `not flute-like'. More general timbral descriptors directly describe the sound
+	itself rather than the source which produced it. These include terms such as bright, rough and sharp. The timbre of
+	different sounds can then be compared using these terms \citep{howard2009acoustics}. Sounds can also be ordered in
+	respect to these criteria much like with loudness and pitch. For example one could order a set of sounds by how
+	bright they sound.
 
-	Simple descriptions of a sounds timbre involve instrument identification. A sound could be described as
-	`cello-like' or `flute-like'. More broadly the class of instrument, string or woodwind, could be used to describe
-	the timbre of a sound. While these terms are useful for discussing the instrumentation of pieces they can not be
-	applied generally to a wide range of timbres. It is not very useful to describe the timbre of a xylophone as being
-	`not flute-like'.
-
-	More general timbral descriptors directly describe the sound itself rather than the source which produced it. These
-	include terms such as bright, rough and sharp. This allows the timbre of different sounds to be compared according
-	to these terms \citep{howard2009acoustics}. Sounds can also be ordered in respect to these criteria much like with
-	loudness and pitch. For example one could order a set of sounds by how bright they sound.
-
-	Early research into timbre was performed by \citet{helmholtz1875on}. More recent work involves research from
-	various fields. Low level features of audio segments can be found using signal analysis techniques. More
-	complicated information about the perception of a signal can be discovered through modelling the behaviour of the
-	human hearing system. Lastly experiments can be undertaken in which participants listen to audio stimuli and
-	provide responses regarding the their timbre. These responses are then analysed to uncover any correlations between
-	the participants responses and lower level features of the stimuli.
-
-	This chapter will review the existing body of timbral research. Section \ref{sec:Timbre-LowLevelFeatures} discusses
-	metric which are used to describe the low level features of audio signals. Section
-	\ref{sec:Timbre-PsychoacousticPrinciples} covers various models which describe the perception of various auditory
-	phenomena. \note{Put in what the rest of the sections are about}.
+	This chapter will review the existing body of timbral research. Early research into timbre was performed by
+	\citet{helmholtz1875on} who investigated the perceived nature of sounds composed of various simple tones. The
+	composition of the sound being a feature which contributes to its perceived timbre. In more recent work several
+	other features of signals have been defined which are also found to contribute to the perceived timbre of a sound.
+	These low level audio features are discussed in Section \ref{sec:Timbre-LowLevelFeatures}. Research into how these
+	feature contribute to the perception of timbre is typically approached in two ways. The behaviour of the human
+	hearing system can be analysed and used to inform models of particular timbral attributes. This approach is
+	discussed in Sections \ref{sec:Timbre-PsychoacousticPrinciples} and \ref{sec:Timbre-TimbralFeatures}. The second
+	approach, discussed in Sections \ref{sec:Timbre-ListeningTests} and \ref{sec:Timbre-Parameterisation}, involves the
+	use of experiments in which participants listen to audio stimuli and provide responses regarding the their timbre.
+	These responses are then analysed to uncover any correlations between the participants responses and lower level
+	features of the stimuli. Lastly the systems used to control timbre are discussed, Section \ref{sec:Timbre-Control}
+	discussing proposed methods of controlling timbral aspects from the research literature and Section
+	\ref{sec:Timbre-AudioProcessing} discussing the systems traditionally used by audio engineers to modify timbre.
 
 	\note
 	{
@@ -54,29 +62,30 @@
 
 \section{Low Level Audio Features}
 \label{sec:Timbre-LowLevelFeatures}
-	A widely cited definition of timbre \citep{ASA1960american} suggests that timbre in influenced by various low level
+	A widely cited definition of timbre \citep{ASA1960american} suggests that timbre is influenced by various low level
 	features of an audio signal. The spectral content, waveform and temporal characteristics all effect the perceived
 	timbre of a sound. Signal analysis techniques can be used to extract information about these elements of a signal.
 	A large list of such feature extraction techniques is given by \citet{peeters2004a} and
 	\citet{bullock2008implementing}. These features can be separated into three categories. Features which describe the
-	properties of a signal's waveform and how it evolves with time (temporal features), features which describe the
-	frequency content of a signal (spectral features) and features which describe how the frequency content of a signal
-	evolves with time (spectro-temporal features). In the later part of this work (Chapters \ref{chap:TimbreEvaluation}
-	and \ref{chap:FeatureControl}) several of these features are discussed in the analysis of timbre and operation of
-	audio effects. Definitions for the features discussed in those chapters are given in this section, for definitions
-	of other audio features refer to the previously published literature \citep{peeters2004a, bullock2008implementing}.
+	properties of the temporal representation of a signal (the waveform) and how it evolves with time (temporal
+	features), features which describe the frequency content of a signal (spectral features) and features which
+	describe how the frequency content of a signal evolves with time (spectro-temporal features). In the later part of
+	this work (Chapters \ref{chap:TimbreEvaluation} and \ref{chap:FeatureControl}) several of these features are
+	discussed in the analysis of timbre and operation of audio effects. Definitions for the features discussed in those
+	chapters are given in this section, for definitions of other audio features refer to the previously published
+	literature.
 
 	\subsection{Temporal Features}
 	\label{sec:Timbre-LowLevelFeatures-Temporal}
 		Simple temporal features involve taking statistical measurements, such as mean and variance, of the audio
-		samples in a signal. These measures give basic information about the amplitude of samples in a signal vary,
-		but in many cases they do not represent a signals properties very well. For example, the mean value of a
-		sinusoidal signal over a whole number of cycles is zero. A common technique to extract more meaningful
-		information about a signals level is to use an envelope detector. An envelope detector produces an envelope
-		for a signal: a smooth line which describes the peaks or troughs in a signal, ignoring the oscillatory
-		changes in amplitude due to its frequency. Applying an envelope detector to the temporal representation of
-		a signal produces an amplitude envelope describing the level of the signal over time. Figure
-		\ref{fig:AmplitudeEnvelope} illustrates the amplitude envelope of a simple signal.
+		samples in a signal. These measures give basic information about the ways in which the amplitude of samples
+		in a signal vary, but in many cases they do not provide a good description of a signal. For example, the
+		mean value of a sinusoidal signal over a whole number of cycles is zero. A common technique to extract more
+		meaningful information about a signals level is to use an envelope detector. An envelope detector produces
+		an envelope for a signal: a smooth line which describes the peaks or troughs in a signal, ignoring the
+		oscillatory changes in amplitude due to its frequency. Applying an envelope detector to the temporal
+		representation of a signal produces an amplitude envelope describing the level of the signal over time.
+		Figure \ref{fig:AmplitudeEnvelope} illustrates the amplitude envelope of a simple signal.
 
 		\begin{figure}[h!]
 			\centering
@@ -155,7 +164,7 @@
 		\subsubsection*{Amplitude Envelope Analysis}
 			The amplitude envelope of a signal can be used to extract more meaningful information about it's
 			temporal evolution. This is often done by splitting the sound into different sections according to
-			the properties of its amplitude envelope. \citet{howard2009acoustics} separates the amplitude
+			the properties of its amplitude envelope. \citet{howard2009acoustics} separate the amplitude
 			envelope of a sound into three sections: the steady state section being the middle portion in which
 			the timbre of the sound only varies slightly and the onset and offset sections which describe the
 			way the sound rises from silence to the steady state and returns to silence afterwards. Further
@@ -177,11 +186,11 @@
 			Properties of the amplitude envelope can be used to describe the temporal features of a signal's
 			amplitude. The attack time of sounds is important in the distinction of different timbres
 			\citep{ilmoniemi2004subjective} and is often scaled logarithmically giving the log attack time.
-			Other temporal features measure the amplitude envelope in its entirely, such and the temporal
-			centroid which is the mean time of the signals duration weighted by the amplitude at each instant
+			Other temporal features measure the amplitude envelope in its entirely, such as the temporal
+			centroid which is the mean time of the signal's duration weighted by the amplitude at each instant
 			\citep{peeters2000instrument}. The temporal evolution of the amplitude envelope can have a distinct
-			effect of the perceived timbre of a sound. \citet{patterson1994the} show that signals with similar
-			spectral content but different amplitude envelopes had be differentiated.
+			effect on the perceived timbre of a sound. \citet{patterson1994the} show that signals with similar
+			spectral content but different amplitude envelopes can be differentiated by listeners.
 
 		\subsubsection*{Other Temporal Audio Features}
 			Basic frequency information can be attained trough temporal analysis by enumerating the number of
@@ -190,11 +199,12 @@
 			(the zero crossing rate). The temporal distance between similar events in a signal can also be
 			found through autocorrelation and used as an estimate of pitch / frequency \citep{mcleod2005a}.
 
-			Larger scale temporal feature measure the properties of passages of music rather than individual
-			notes, such as the measure used by \citet{wilson2014profiling} in which probability mass function
-			(PMF) of sample amplitudes in a segment of audio is used as a measure of distortion present.
-			Temporal features on this scale are outside of the scope of this work as they no longer relate to
-			the timbre of individual sounds but rather the perceived nature of a musical piece.
+			Larger scale temporal features measure the properties of passages of music rather than individual
+			notes, such as the measure used by \citet{wilson2014profiling} in which the probability mass
+			function (PMF) of sample amplitudes in a segment of audio is used as a measure of the distortion
+			present in the signal.  Temporal features on this scale are outside of the scope of this work as
+			they no longer relate to the timbre of individual sounds but rather the perceived nature of a
+			musical piece.
 
 	\subsection{Spectral Features}
 	\label{sec:Timbre-LowLevelFeatures-Spectral}
@@ -989,7 +999,7 @@
 	techniques to produce a timbre space in which the differences between the stimuli are described by a small set of
 	orthogonal dimensions.
 
-	\section{Dimensionality Reduction}
+	\subsection{Dimensionality Reduction}
 	\label{sec:Timbre-Parameterisation-DimensionalityReduction}
 		Dimensionality reduction techniques are used to take multidimensional data and reduce the number of
 		dimensions while maintaining the relationships between the data. In timbral research they are used to
