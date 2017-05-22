@@ -53,13 +53,6 @@
 	discussing proposed methods of controlling timbral aspects from the research literature and Section
 	\ref{sec:Timbre-AudioProcessing} discussing the systems traditionally used by audio engineers to modify timbre.
 
-	\note
-	{
-		discuss where the current vocabulary comes from and the general world of timbre description
-
-		discuss state of the art and where this thesis takes on from that
-	}
-
 \section{Low Level Audio Features}
 \label{sec:Timbre-LowLevelFeatures}
 	A widely cited definition of timbre \citep{ASA1960american} suggests that timbre is influenced by various low level
@@ -736,16 +729,16 @@
 
 \section{Listening Tests}
 \label{sec:Timbre-ListeningTests}
-	In order to collect information about the perception of sound, subjective listening test need to be carried out.
+	In order to collect information about the perception of sound, subjective listening tests need to be carried out.
 	Depending on the nature of the experiment there are several different testing methodologies which have been
 	proposed \citep{bech2006perceptual}. Those most prevalent in timbral research will be discussed here.
 
-	\subsection{Testing Methodologies}
+	\subsection{Testing Methodologies for Timbral Analysis}
 	\label{sec:Timbre-ListeningTests-Methods}
-		Two different classes of listening test are common in timbral studies. In one participants are asked to
-		judge the dissimilarity of small sets of audio stimuli. In the other the participants are asked to rate
-		each audio stimulus on various scales which relate to attributes of the timbre. In this report these
-		methods will be referred to as dissimilarity tests and attribute scale tests respectively.
+		Two different classes of listening test are common in timbral studies. In one, participants are asked to
+		judge the dissimilarity of small sets of audio stimuli. In the other participants are asked to rate each
+		audio stimulus on various scales which relate to attributes of the timbre. In this report these methods
+		will be referred to as dissimilarity tests and attribute scale tests respectively.
 
 		\subsubsection*{Dissimilarity Tests}
 			\citet{grey1977multidimensional} utilises a pairwise dissimilarity methodology to gather similarity
@@ -765,12 +758,12 @@
 			Another method of capturing similarity data is that of triadic comparisons
 			\citep{wickelmaier2007deriving}. In this method audio stimuli are presented in triads (three at a
 			time). Participants are asked to identify the most similar pair of stimuli in the triad as well as
-			the least similar. This method helps removed inconsistent use of a rating scale. In pairwise
+			the least similar. This method helps remove inconsistent use of a rating scale. In pairwise
 			dissimilarity tests, participants may reinterpret the range of the scale they are given to rate
-			dissimilarity on during the experiment. Triadic comparisons asks which pair is most similar and
-			which the least avoiding the elicitation of a value on a scale.
+			dissimilarity on during the experiment. Triadic comparison asks which pair is most similar and
+			which is the least, avoiding the elicitation of a value on a scale.
 
-			Another popular testing technique is to carry out multiple stimulus tests. In a multiple stimuli
+			Another popular testing technique is to carry out multiple stimulus tests. In a multiple stimulus
 			test participants are presented with several stimuli at once and asked to rate each against a given
 			criteria. A multiple stimuli methodology often used in perceptual audio tests is MUSHRA (Multiple
 			Stimuli with Hidden Reference and Anchor) \citep{mushra2014}. MUSHRA was developed for grading the
@@ -790,8 +783,8 @@
 			
 		\subsubsection*{Attribute Scale Tests}
 			Attribute scale tests require participants to rate each stimulus against several scales which each
-			relate to an attribute of their timbre. This is often done using a set of semantic differentials
-			(scale with opposing descriptors on each end). They are popular for timbral research as it provides
+			relate to an attribute of their timbre. This is often done using a set of semantic differentials (a
+			scale with opposing descriptors on each end). This is popular for timbral research as it provides
 			rankings of audio stimuli against timbral descriptors. This not only allows for inference of the
 			perceptual differences between stimuli but also for descriptors to be applied to describe these
 			differences as done by \citet{zacharakis2014an}. 			
@@ -803,8 +796,8 @@
 			keep several scales (one for each descriptor) in mind throughout the duration of the test. This may
 			cause them to use the extremes of the scales too early in the test so when presented with a
 			stimulus they wish to rate closer the extremes they cannot. In a multiple stimulus test all the
-			stimuli are available at once allowing participants to find the stimuli which lie at the extremes
-			and rate the rest accordingly, better utilising the range of the scale. 
+			stimuli being compared are available at once, allowing participants to find the stimuli which lie
+			at the extremes and rate the rest accordingly. This better utilises the range of the scale. 
 			
 			Issues with the use of semantic differentials were shown by \citet{kendall1993verbal1}. Their first
 			experiment was an attribute scale test in which participants are asked to rate each audio stimulus
@@ -859,24 +852,24 @@
 			presented. The adjectives need to be meaningful to the test participants and also applicable to the
 			audio stimuli used. The adjectives are often selected using a preliminary verbal elicitation
 			experiment. \citet{namba1991verbal} presented participants with the test stimuli in a random order
-			and asked them to provide any descriptive terms they would apply to their timbre. These terms were
-			then used as the adjectives for the test. The adjectives used by \citet{kendall1993verbal1}, shown
-			in Table \ref{tab:vonBismarcksDescriptors} were taken from earlier work performed by
+			and asked them to provide any terms they would use to describe them. These terms were then used as
+			the adjectives for the test. The adjectives used by \citet{kendall1993verbal1}, shown in Table
+			\ref{tab:vonBismarcksDescriptors} were taken from earlier work performed by
 			\citet{vonbismarck1974timbre}. In a second set of experiments \citet{kendall1993verbal2} use a
 			different set of adjectives taken from work on orchestration for composition
 			\citet{piston1955orchestration}. The selection of adjectives was further refined through a simple
 			elicitation experiment in which participants were asked to select those which were most applicable
 			to the audio stimuli. It is reported that using this method produces better results in the timbral
-			experiment then when merely selecting the adjectives as in the first experiment.
+			experiment than when the adjectives were selected by the experimenter, as in the first experiment.
 
 	\subsection{Testing Environments}
 	\label{sec:Timbre-ListeningTests-Environments}
-		Once a testing methodology has been decided upon, the task remains to recruit participants and have them
+		Once a testing methodology has been chosen, the task remains to recruit participants and have them
 		undergo the test. Perceptual audio tests necessarily involve the use of audio reproduction equipment and a
 		means of recording the participants' responses. The reproduction system and response method chosen has
 		impacts on the reliability of the results and the sample size of participants. Two common approaches are to
-		run supervised listening tests with specific reproduction equipment in a laboratory, or to distribute tests
-		over the internet.
+		run supervised listening tests with specific reproduction equipment in a laboratory, or to produce a web
+		interface to the experiment allowing participants to take part using their own equipment.
 
 		\subsubsection*{Laboratory Listening Tests}
 			Traditionally, listening tests are carried out in a controlled listening environment, ensuring that
@@ -901,51 +894,50 @@
 			When running a distributed listening test the test is developed and distributed to a wide audience
 			of participants. Participants carry out the test using their own equipment and return the results
 			to the researcher. This is most easily implemented over the internet via a web interface which runs
-			the test and automatically return the results to the server. Distribution of the testing interface
-			facilitates easier collection data from a large sample of people as participants are able to take
-			the test at a time which suits them. For laboratory tests the participants, experimenter and
+			the test and automatically returns the results to the server. Distribution of the testing interface
+			facilitates easier collection of data from a large sample of people as participants are able to
+			take the test at a time which suits them. For laboratory tests the participants, experimenter and
 			testing equipment all need to be available at the same time in order to carry out a test.
 
 			There are several downsides to this type of testing, but for certain experiments they may not be
 			detrimental. In a laboratory environment the experimenter is present to supervise the tests and
 			ensure that participants are able to complete the tasks they are given.  With distributed testing
-			no such supervision is given so participants which have trouble may produce anomalous results or
+			no such supervision is given so participants who have trouble may produce anomalous results or
 			fail to complete the entire test. These problems can be minimised by using a clear testing
 			interface and provision of sufficient documentation / instruction. The additional time required for
 			interface design and writing documentation increases the time taken before testing can commence.
 			After this initial investment of time the tests can be run without supervision allowing the
-			experimenter to work on other tasks. Once enough data has been collected it can be analysed while
-			additional participants are still undertaking the tests. With a well designed experiment
-			researchers can draw conclusions from the first results collected while the tests continue to build
-			a larger dataset for further study.
+			experimenter to work on other tasks.
 
 			Lack of control over the listening environment can be a considerable downside for certain listening
 			tests such as those intended to provide information for the modelling of the human hearing system
-			\citep{moore1990auditory}. For timbral research this is not critical if the test can be designed in
-			such a way that the effects of the participant's reproduction equipment have little influence on
-			the results. This influence can never be completely removed but steps can be taken to minimise it.
-			One way to reduce the influence is to have participants rate the relative timbral difference
-			between stimuli rather than give absolute ratings on a timbral scale. For this reason multiple
-			stimulus style tests are more favorable than VAME tests. While the results of the tests will have
-			been influenced by the differences in listening conditions it may lead to more easily producible
+			\citep{moore1990auditory}. For timbral research this is not always critical if the test can be
+			designed in such a way that the effects of the participant's reproduction equipment have little
+			influence on the results. This influence can never be completely removed but steps can be taken to
+			minimise it.  One way to reduce the influence is to ask participants to rate the relative timbral
+			difference between stimuli rather than give absolute ratings on a timbral scale. For this reason
+			multiple stimulus style tests are more favorable than VAME tests as all the stimuli being compared
+			are available to the participant at the same time. While the results of the tests will have been
+			influenced by the differences in listening conditions it may lead to more easily producible
 			results. The difference in listening conditions will cause higher variance in the data reducing the
 			confidence of any correlations found. Any correlations found with sufficiently high confidence
-			however will be those which are not affected as much by the reproduction system used. These
+			however will be those which are not affected as much by the reproduction system used.  These
 			correlations will then be easier to reproduce on other systems leading to a more robust timbral
 			manipulation.
 
-			If the confidence of correlations found in the entire dataset are not high enough the data could be
-			partitioned into groups depending on the listening environment the tests were taken in. This allows
-			for the removal of results which are causing anomalous results. Perhaps a certain effect is more
-			audible when listening on loudspeakers rather than headphones. In order to segment the data in this
-			way additional data should be collected from the test participants. \citet{wilmering2013audio} have
-			participants select an option from a drop down list which best describes their listening
-			environment prior to beginning the test. They find that there was little variance between the
-			results across the different groups although the majority of the participants assigned themselves
-			to the same group. \citet{seetharaman2014crowdsourcing} prompt participants for information about
-			their listing environment but also include an extra testing section to ensure a participants
-			reproduction system is suitable for the tests. This extra section assesses the range of frequencies
-			a participant's system can reproduce and excludes those which do not meet the required criteria.
+			If the significance of correlations found in the entire dataset are not high enough the data could
+			be partitioned into groups depending on the listening environment the tests were taken in. This
+			allows for the removal of test data collected in listening environments which are causing anomalous
+			results. Perhaps a certain effect is more audible when listening on loudspeakers rather than
+			headphones. In order to segment the data in this way additional data should be collected from the
+			test participants.  \citet{wilmering2013audio} have participants select an option from a drop down
+			list which best describes their listening environment prior to beginning the test. They find that
+			there was little variance between the results across the different groups although the majority of
+			the participants assigned themselves to the same group. \citet{seetharaman2014crowdsourcing} prompt
+			participants for information about their listing environment but also include an extra testing
+			section to ensure a participants reproduction system is suitable for the tests. This extra section
+			assesses the range of frequencies a participant's system can reproduce and excludes those which do
+			not meet the required criteria.
 			
 			A popular method of distributing listening tests is to build a web interface in which the testing
 			is carried out \citep{wilmering2013audio, cartwright2013socialeq, seetharaman2014crowdsourcing}.
@@ -966,8 +958,8 @@
 			\citet{huq2010crowdsourcing}. Secondly, the participants need to be motivated to complete the test.
 			\citet{cartwright2013socialeq} provide a small monetary reward for completing the test to motivate
 			people to participate. Other researchers motivate participants by designing their interfaces as a
-			``game with a purpose'' \citep{law2007tagatune, huq2010crowdsourcing, burgoyne2013hooked} making
-			the testing procedure more enjoyable.
+			``game with a purpose'' \citep{law2007tagatune, huq2010crowdsourcing, burgoyne2013hooked,
+			wolff2014spot} making the testing procedure more enjoyable.
 
 \section{Parameterisation of Timbre}
 \label{sec:Timbre-Parameterisation}
@@ -989,7 +981,7 @@
 		Dimensionality reduction techniques are used to take multidimensional data and reduce the number of
 		dimensions while maintaining the relationships between the data. In timbral research they are used to
 		reduce the number of dimensions needed to describe the timbre of a sound. For example, the results from a
-		VAME experiment where $N$ adjective scales are used consists of an $N$ dimensional space in which each
+		VAME experiment where $N$ adjective scales are used consist of an $N$ dimensional space in which each
 		audio stimulus sits at the point denoted by its gradings on those scales. Dimensionality reduction is
 		applied to reduce the number of dimensions while preserving information relating to the differences between
 		stimuli (such as the euclidean distances between them). The dimensionality reduction method used depends on
@@ -1019,11 +1011,6 @@
 		\citet{zacharakis2012analysis} also performed a VAME test but choose to use EFA over PCA stating that EFA
 		better explains the relationships between the separate attribute scales.
 
-		\note
-		{
-			Do we need more depth?
-		}
-
 	\subsection{Correlation of Dimensions with Audio Features}
 	\label{sec:Timbre-DimensionalityReduction-DimensionCorrelations}
 		Once a timbre space has been constructed, the relationship between the timbre space dimensions and audio
@@ -1051,14 +1038,14 @@
 
 \section{Controlling Timbre}
 \label{sec:Timbre-Control}
-	\subsection{Control Timbre in Timbre Spaces}
+	\subsection{Control Timbre via Audio Features}
 	\label{sec:Timbre-Control-TimbreSpaces}
-		Measuring the correlations of audio features with the timbre space dimensions provides information on which
-		features need be manipulated to move sounds around within the timbre space. Measuring the correlations of
-		semantic descriptors with the timbre space dimensions allows the space to be partitioned into regions which
-		correspond to particular descriptors. With this information systems can be created to synthesise sounds at
-		particular positions within a timbre space or manipulate existing sounds to alter their location in the
-		timbre space.
+		Measuring the correlations of audio features with the timbre space dimensions provides information
+		regarding which features need be manipulated to alter the position of a sound in the timbre space.
+		Measuring the correlations of semantic descriptors with the timbre space dimensions allows the space to be
+		partitioned into regions which correspond to particular descriptors. With this information systems can be
+		created to synthesise sounds at particular positions within a timbre space or manipulate existing sounds to
+		alter their location in the timbre space.
 
 		Early work in this area was performed by \citet{wessel1979timbre} who suggests that a timbre space can be
 		used as an intuitive control system for audio. \citet{vertegaal1994isee} use this concept to produce a
@@ -1083,7 +1070,7 @@
 		they also find evidence, through listening tests, that the perception of each of these attributes overlaps
 		and that spectral centroid is not the only contributing factor to perceived brightness.
 
-	\subsection{Controlling Timbre in Parameter Space}
+	\subsection{Controlling Timbre via Audio Effect Parameters}
 	\label{sec:Timbre-Control-ParameterSpaces}
 		A different approach to controlling timbre is based around analysing the parameter settings of effects used
 		to produce a given semantic effect. One way of doing this is to construct parameter spaces by performing
@@ -1096,39 +1083,48 @@
 
 		Similar work was carried out by \citet{sabin2011weighting} who run experiments to determine which
 		parameters of certain audio effects contribute most to particular timbral attributes. This is done by
-		having listening test participants rank how well given semantic descriptors describe an audio stimulus
+		asking listening test participants to rank how well given semantic descriptors describe an audio stimulus
 		processed with several different parameter configurations. Weightings for each effect parameter can then be
-		deduced by looking at the correlations of parameter values and these rankings. \citet{huang2014active} use
-		a more computational method, using the machine learning method of Gaussian processes in order to `learn' a
+		deduced by looking at the correlations of parameter values and their respective rankings.
+		\citet{huang2014active} use a more computational method, using Gaussian processes in order to `learn' a
 		function $f(x)$ which maps between the parameters of a synthesiser and the perception of a particular
 		descriptor.
 
-		One downside of this analysing timbral manipulations in the parameter space is that it does not take
-		account of the audio being processed by the effect. For example, consider a situation in which it was found
-		that increasing the amplitude of frequencies around 2kHz, with an equaliser, increased the brightness of a
-		sound. This would have no effect on signals which have no energy at that frequency.
+		One downside of analysing timbral manipulations in the parameter space is that it does not take account of
+		the audio being processed by the effect. For example, consider a situation in which it was found that using
+		an equaliser to increase the amplitude of frequencies around 2kHz increased the brightness of a sound. This
+		finding is not generalisable to all input signals, the equaliser parameter settings associated with
+		increasing the brightness will have no effect on signals which have no energy at 2kHz. This problem is
+		avoided by analysing the audio features of the signals as discussed in Section
+		\ref{sec:Timbre-Control-TimbreSpaces}. Using this method, the necessary audio feature manipulation is
+		determined and then the parameters of the audio effect are set accordingly.
 
 \section{Audio Processing}
 \label{sec:Timbre-AudioProcessing}
-	In the field of audio production various different processing devices are used to alter the perceived sound of a
-	piece of audio. These devices can be applied for corrective purposes (e.g. noise removal), to meet technical
-	requirements (e.g. broadcast limiting) or as creative effects as additional tools in music production. Regardless
-	of the intended use case, these devices are typically referred to as audio effects, an audio effect being any
-	device which applies a transformation to the input signal. There are numerous ways to classify audio effects based
-	on their mathematical properties, operation or timbral characteristics. \citet{verfaille2006an} suggest that these
-	different classifications are each more appropriate for different tasks involving audio effects. When considering
-	the development of audio effects it is meaningful to group effects based on the signal processing techniques used
-	in their construction. In contrast, end users of the effects (music producers, musicians etc.) may find it more
-	convenient to classify effect by the perceptual characteristics they impart on a signal.
-
-	\citet{eichas2015feature} classify audio effects using the mathematical properties of the underlying system:
-	whether the system is linear and whether or not the output is dependant on time. This classification provides a
-	compromise between the previous two methods, grouping effects into classes which are similarly implemented and also
-	have similar timbral effects. In this section the most commonly used audio effects are listed and their properties
-	and usages discussed. The effects are split into three categories: linear time invariant, linear time variant and
-	nonlinear as is done by \citet{eichas2015feature}. Popular terms used to describe the timbral effects of the most
-	commonly used audio effects are gathered from the dataset collected by the SAFE project (discussed in detail in
-	Section \ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}).
+	In the field of audio production various processing devices are used to alter the perceived sound of a piece of
+	audio. These devices can be applied for corrective purposes (e.g. noise removal), to meet technical requirements
+	(e.g. broadcast limiting) or as creative effects used as additional tools in music production. Regardless of the
+	intended use case, these devices are typically referred to as audio effects, an audio effect being any device which
+	applies a transformation to the input signal.
+	
+	\subsection{Audio Effect Classification}
+	\label{sec:Timbre-AudioProcessing-Classification}
+		There are numerous methods of classify audio effects, such as by their mathematical properties, operation
+		or timbral characteristics. \citet{verfaille2006an} suggest that each of these methods are each appropriate
+		when discussing different tasks involving audio effects. When considering the development of audio effects
+		it is meaningful to group effects based on the signal processing techniques used in their construction. In
+		contrast, end users of the effects (music producers, musicians etc.) may find it more convenient to
+		classify effect by the perceptual characteristics they impart on a signal. \citet{eichas2015feature}
+		classify audio effects using the mathematical properties of the underlying system: whether the system is
+		linear and whether or not the output is dependant on time. This classification provides a compromise
+		between the previous two methods, grouping effects into classes which are similarly implemented and also
+		have similar timbral effects.
+		
+		In the following sections the most commonly used audio effects are listed and their properties and usages
+		discussed. The effects are split into three categories: linear time invariant, linear time variant and
+		nonlinear. Popular terms used to describe the timbral characteristics of the most commonly used audio
+		effects are gathered from the dataset collected by the SAFE project (discussed in detail in Section
+		\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}).
 
 	\subsection{Linear Time Invariant Effects}
 	\label{sec:Timbre-AudioProcessing-LTI}
@@ -1150,16 +1146,14 @@
 
 		\begin{equation} f(g(x)) = g(f(x)) \label{eq:commutativity} \end{equation}
 
-		Where $f$ and $g$ are both functions representing LTI systems and $x$ is an input signal.
-
-		From the corpus of audio effects used by audio engineers equalisation, delay and reverb are based on LTI
-		systems.
+		Where $f$ and $g$ are both functions representing LTI systems and $x$ is an input signal. From the corpus
+		of audio effects used by audio engineers equalisation, delay and reverb are based on LTI systems.
 
 		\subsubsection*{Equalisation}
 			Equalisation is the process of applying filters to a signal to accentuate / attenuate certain
 			frequency ranges. An equaliser (EQ) is the audio effect used to apply these spectral manipulations.
 			Equalisers were first developed as specific electronic circuits used for corrective tasks
-			associated with signal transmission. As the field of audio production has evolved more flexible
+			associated with signal transmission. As the field of audio production has evolved, more flexible
 			equalisers with more control parameters have been introduced \citep{gottlieb2007shaping}. Modern
 			equalisers are still used for corrective purposes but also provide more opportunities for the
 			creative shaping of timbre. Responses from the SAFE project (Section
