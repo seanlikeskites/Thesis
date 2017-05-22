@@ -550,17 +550,17 @@
 
 	As discussed in Section \ref{sec:Timbre-LowLevelFeatures-Spectral} there are several metrics which describe the
 	spectral content of a signal. While it may be possible to measure changes in values of these features, the changes
-	may not be detectable by the human hearing system. Psychoacoustic models allow us to determine how audio signals
-	are interpreted by the human hearing system and the perceptibility of such changes.
+	may not be detectable by or linearly related to the human hearing system. Psychoacoustic models allow us to
+	determine how audio signals are interpreted by the human hearing system and the perceptibility of such changes.
 
 	\subsection{Psychoacoustic Frequency}
 	\label{sec:Timbre-PsychoacousticPrinciples-Frequency}
 		In scientific work frequency is typically discussed as an absolute number of cycles per second in units of
-		hertz. In music theory the frequency difference between two sounds is described in terms of tones and
-		octaves.  This musical notation assumes that the ratio of between two frequencies defines the perceived
+		Hertz. In music theory the frequency difference between two sounds is described in terms of tones and
+		octaves.  This musical notation assumes that the ratio of two frequencies defines the perceived
 		interval between them: the perceived difference between 50 and 75Hz is the same as that between 1kHz and
 		1.5kHz.  While this model suffices for musical composition and performance it does not accurately describe
-		the perception of frequency by human listeners. \citep{stevens1937a} propose a new frequency scale, the mel
+		the perception of frequency by human listeners. \citet{stevens1937a} propose a new frequency scale, the mel
 		scale, on which a given change in frequency produces the same perceived interval. This scaled was devised
 		through a series of listening tests in which participants were asked to adjust the frequency of a tone such
 		that it had a pitch which what half that of a reference tone. This was repeated for ten individual
@@ -569,34 +569,34 @@
 		by \citet{oshaughnessy2000speech} and shown in Equation \ref{eq:mel}.
 
 		\begin{equation}
-			2595 \log_{10} \left(1 + \frac{f}{700} \right)
+			m = 2595 \log_{10} \left(1 + \frac{f}{700} \right)
 			\label{eq:mel}
 		\end{equation}
 
 		This perceptual frequency scale allows audio feature metrics to analyse audio in more perceptually relevant
 		bands. One such metric is the Mel Frequency Cepstral Coefficients (MFCCs) developed for use in speech
-		recognition \citep{davis1980comparison}. These provide more detailed about the shape of the spectrum than
-		the spectral moments discussed in Section \ref{sec:Timbre-LowLevelFeatures-Spectral}. In brief the power
-		spectrum of a signal is partitioned into bands which are equally spaced on the mel scale. The DCT of the
-		log powers of these bands is then calculated to produce the MFCCs. From their first use in speech
-		recognition MFCCs have been added to the corpus of audio features used by researchers investigating timbre
-		\citep{depoli1997sonological}. 
+		recognition \citep{davis1980comparison}. These provide more detailed information about the shape of the
+		spectrum than the spectral moments discussed in Section \ref{sec:Timbre-LowLevelFeatures-Spectral}. In
+		brief the power spectrum of a signal is partitioned into bands which are equally spaced on the mel scale.
+		The discrete cosine transform (DCT) of the log powers of these bands is then calculated to produce the
+		MFCCs. From their first use in speech recognition MFCCs have been added to the corpus of audio features
+		used by researchers investigating timbre \citep{depoli1997sonological}. 
 
 		Investigating the perception of frequency allows us to build models of how the human hearing system detects
 		and processes frequency information. This not only allows for the description of the perception of
-		individual tones but also the perception of simultaneously sounded tones. In certain situations a sound
-		will mask the perception of another sound causing it to become inaudible. The degree of masking between two
+		individual tones but also the perception of tones played simultaneously. In certain situations a sound will
+		mask the perception of another sound, causing it to become inaudible. The degree of masking between two
 		sounds depends on the amplitude, frequency and temporal relationships between them. Two sounds which are
-		perceptually close in frequency are more likely to interact with each others perception causing one to be
+		perceptually close in frequency are more likely to perceptually interact with each other causing one to be
 		masked. More detailed examination of the human hearing system reveals the maximum difference in frequency
-		between two tones for which masking will occur.
+		between two tones for which masking will occur, the critical bandwidth.
 
 	\subsection{Critical Bands}
 	\label{sec:Timbre-PsychoacousticPrinciples-CriticalBands}
-		The part of the inner ear which deals with frequency separation is known as the basilar membrane. This is a
+		The part of the inner ear that deals with frequency separation is known as the basilar membrane. This is a
 		structure which resonates at different frequencies along its length. Low frequencies at one end to high at
 		the other. A sinusoidal tone excites a portion of the basilar membrane corresponding to a narrow band of
-		frequencies. A tone whose excitation band overlaps with another will interfere with how other tone is
+		frequencies. A tone whose excitation band overlaps with another will interfere with how the other tone is
 		perceived by a listener. The basilar membrane can be modelled as a parallel filter bank comprised of band
 		pass filters, each of these auditory filters representing the region of the membrane excited by a
 		sinusoidal tone at its centre frequency. The bandwidth of these filters is known as the critical bandwidth.
@@ -613,15 +613,14 @@
 		Where $f_{c}$ is the center frequency of the auditory filter in kHz and $\mathrm{ERB}(f_{c})$ is the
 		equivalent rectangular bandwidth, in Hz, at that frequency.
 
-		\citet{howard2009acoustics} discusses the perception of two tones sounded simultaneously as they get
-		further apart in frequency. When within 15Hz of one another the two tones are perceived as a single sound
-		with a sinusoidally varying amplitude. The frequency of this variation is equal to the difference in
-		frequency between the tones. As the difference in frequencies gets greater than 15Hz this amplitude
-		modulation becomes fast enough for it to be perceived as a roughness in texture rather than `beats' in the
-		amplitude. In between 15Hz and the critical bandwidth the perceived sound transitions from a single sound
-		to two separate sounds but still with a rough texture. Once the difference in frequencies exceeds the
-		critical bandwidth the two tones are perceived as separate smooth tones. These effects are summarised in
-		Figure \ref{fig:ToneSeparation}.
+		\citet{howard2009acoustics} discusses the perception of two tones played simultaneously as they get further
+		apart in frequency. When within 15Hz of one another the two tones are perceived as a single sound with a
+		sinusoidally varying amplitude. The frequency of this variation is equal to the difference in frequency
+		between the tones. As the difference in frequency increases beyond 15Hz this amplitude modulation becomes
+		fast enough for it to be perceived as a roughness in texture rather than `beats' in the amplitude. In
+		between 15Hz and the critical bandwidth the perceived sound transitions from a single sound to two separate
+		sounds but still with a rough texture. Once the difference in frequency exceeds the critical bandwidth the
+		two tones are perceived as separate tones. These effects are summarised in Figure \ref{fig:ToneSeparation}.
 
 		\begin{figure}[h!]
 			\centering
@@ -648,8 +647,8 @@
 				\node at (5, -1) {Frequency Difference (Hz)};
 
 			\end{tikzpicture}
-			\caption{The perceived of two tones as they move further apart in frequency. Hashed areas represent
-				 the transition between perceived effects. CB denotes the critical bandwidth.}
+			\caption{The perception of two tones as they move further apart in frequency. Hashed areas
+				 represent the transition between perceived effects. CB denotes the critical bandwidth.}
 			\label{fig:ToneSeparation}
 		\end{figure}
 
@@ -661,23 +660,19 @@
 	\subsection{Specific Loudness}
 	\label{sec:Timbre-PsychoacousticPrinciples-SpecificLoudness}
 		In hearing models for measuring loudness it is common to split the audible spectrum into bands which all
-		have the same perceived width. Before calculating the total loudness the specific loudness for each of
-		these bands is calculated. The procedure for doing this is beyond the scope of this work, a description of
-		the process is provided by \citet{moore1997a}. The specific loudness measures the perceived loudness of a
-		signal in a given frequency range. For the analysis of the perception of timbre this allows for better
-		modelling of what portions of a signal's spectrum are audible. While the spectrum describes what frequency
-		content is present in the signal, the specific loudness describes how much of each frequency is perceived
-		by a listener.
+		have the same perceived width. The specific loudness measures the perceived loudness of a signal in each of
+		these bands. For the analysis of the perception of timbre this allows for better modelling of what portions
+		of a signal's spectrum are audible. While the spectrum describes what frequency content is present in the
+		signal, the specific loudness describes how much of each frequency is perceived by a listener.  The total
+		loudness of a signal is calculated as the sum of the specific loudnesses of each frequency band. The full
+		procedure for calculating loudness is beyond the scope of this work, a description of the process is
+		provided by \citet{moore1997a}. 
 
-		A widely used set of psychoacoustic bands was proposed by \citet{zwicker1961subdivision} who spilt the
-		spectrum into 24 bands, each one critical bandwidth wide. These bands are known as the bark bands and
-		provide another perceptual unit of frequency, the bark. Integer values of barks occur at the boundaries
-		between two bark bands. A change in frequency of one bark is equal to one critical bandwidth.
-
-	\note
-	{
-		Perhaps some more on masking. Although it may be wasted space.
-	}
+		A widely used set of psychoacoustically spaced frequency bands was proposed by
+		\citet{zwicker1961subdivision} who spilt the spectrum into 24 parts, each one critical bandwidth wide.
+		These bands are known as the bark bands and provide another perceptual unit of frequency, the bark. Integer
+		values of barks occur at the boundaries between two bark bands. A change in frequency of one bark is equal
+		to one critical bandwidth.
 
 \section{Timbral Features}
 \label{sec:Timbre-TimbralFeatures}
@@ -693,15 +688,15 @@
 		of a signal depends on the ratio of high and low frequency content. Increasing the amount of high frequency
 		content increases the sharpness of a signal. The sharpness can also be reduced by adding more low frequency
 		content to a signal. They produce a metric from this information for the measurement of perceived
-		sharpness.  The sharpness is calculated using Equation \ref{eq:Sharpness}.
+		sharpness. The sharpness, $S$, is calculated using Equation \ref{eq:Sharpness}.
 
 		\begin{equation}
-			S = 0.11\frac{\int_{0}^{24Bark} N'g(z)zdz}{\int_{0}^{24Bark}N'dz}
+			S = 0.11\frac{\sum_{b = 1}^{24} N'_{b}g(b)b}{\sum_{b = 1}^{24}N'_{b}}
 			\label{eq:Sharpness}
 		\end{equation}
 
-		Where $S$ is the sharpness, $N'$ is the specific loudness, $z$ is frequency in barks, and $g(z)$ is a
-		weighting function designed to emphasise the presence of high frequency content.
+		Where $N'$ is the specific loudness of bark band $b$ and $g(b)$ is a weighting function designed to
+		emphasise the presence of high frequency content.
 
 		\citet{marui2006predicting} run listening experiments to test how well perceived sharpness can be predicted
 		using this metric. They find that it does not predict the sharpness of broadband noise accurately and
@@ -711,13 +706,13 @@
 	\subsection{Roughness}
 	\label{sec:Timbre-TimbralFeatures-Roughness}
 		A sensation of roughness was discussed in Section \ref{sec:Timbre-PsychoacousticPrinciples-CriticalBands}.
-		Here the roughness was due to the rapid amplitude modulation produces as a result of summing two sinusoids
+		Here the roughness was due to the rapid amplitude modulation produced as a result of summing two sinusoids
 		which are close in frequency. A lot of early research into this effect concerns the study of consonance or
-		dissonance of tones. The history of this work is summarised by \citet{plomp1965tonal}. On review of this
-		work and the results of listening experiments they conclude that dissonance is manifested as a sensation of
-		roughness due to amplitude fluctuations. They also suggest a relationship to critical bandwidth, stating
+		dissonance of tones. The history of this work is summarised by \citet{plomp1965tonal}. In review of this
+		work and the results of listening experiments, they conclude that dissonance is manifested as a sensation
+		of roughness due to amplitude fluctuations. They also suggest a relationship to critical bandwidth, stating
 		that the most dissonant (roughest) interval between tones is one quarter of the critical bandwidth.
-		\citet{vassilakis2010psychoacoustic} suggest that the sensation of roughness depends of more of the
+		\citet{vassilakis2010psychoacoustic} suggest that the sensation of roughness depends on more of the
 		attributes of a signal, listing four characteristics:
 
 		\begin{itemize}
@@ -727,11 +722,10 @@
 			\item The frequency of the modulated signal.
 		\end{itemize}
 
-		The frequency dependence discussed agrees with that shown in Figure \ref{fig:ToneSeparation}. Amplitude
-		fluctuations above approximately 15Hz produce a rough texture to the sound. As this frequency increases the
-		roughness also increases to a maximum before decreasing again. At some frequency between 75Hz and 150Hz,
-		depending on the frequency content of the modulated signal, the sensation of roughness ceases to be
-		audible.
+		This frequency dependence agrees with that shown in Figure \ref{fig:ToneSeparation}. Amplitude fluctuations
+		above approximately 15Hz produce a rough texture to the sound. As this frequency increases the roughness
+		also increases to a maximum before decreasing again. At some frequency between 75Hz and 150Hz, depending on
+		the frequency content of the modulated signal, the sensation of roughness ceases to be audible.
 
 		Using these criteria a method is proposed for calculating the roughness of a signal consisting of two
 		sinusoidal tones. The method uses only the frequencies and amplitudes of the two tones in order to
