@@ -5,43 +5,53 @@
 \label{sec:Excitation-Introduction}
 	Nonlinear distortion is an inherent part of an analogue signal path. It alters the dynamic variation of signals and
 	introduces new spectral components. Its use as a creative effect is best known by guitar players due to the use of
-	values in early guitar amplifiers imparting nonlinear transforms onto the audio signal
+	valves in early guitar amplifiers imparting nonlinear transforms onto the audio signal
 	\citep{dutilleux2011nonlinear}. This distorted sound became desirable and several electronic circuits were developed
 	with the purpose of inducing nonlinear distortion. More recently, research into modelling these distortion circuits
 	in the digital domain has been carried out, such as that done by \citet{pakarinen2009a}. Several researchers have
 	also worked on creating novel digital distortion techniques \citep{fernandez-cid2001distortion, puckette2007patch,
 	pekonen2008coefficient}.
 
-	Distortion is a very broad term which is often used to describe unwanted effects. For this work a better defined
-	term, harmonic excitation, will be used to refer to the deliberate and controlled application of nonlinear or time
-	variant systems in order to introduce new frequency components to a signal. \citet{dutilleux2011nonlinear} defines
-	excitation as the process of controlling timbre through the emphasis of certain frequencies. While this is possible
-	with linear systems such as equalisers, nonlinear and time variant systems provide more flexibility as they can add
-	energy in areas of the spectrum where the original signal had none.
+	Historically distortion is a very broad term which is often used to describe unwanted effects. For this work a more
+	strictly defined term, harmonic excitation, will be used to refer to the deliberate and controlled application of
+	nonlinear or time variant systems in order to introduce new frequency components to a signal.
+	\citet{dutilleux2011nonlinear} defines excitation as the process of controlling timbre through the emphasis of
+	certain frequencies. While this is possible with linear systems such as equalisers, nonlinear and time variant
+	systems provide more flexibility as they can add energy in areas of the spectrum where the original signal had none.
 
-	This chapter will review how nonlinear systems have been analysed in previous audio research, how their effects are
-	quantified and the timbral transforms they impart. Firstly the analysis of nonlinear systems is discussed in Section
-	\ref{sec:Excitation-AnalysisOfNonlinearSystems}. Existing research into the perceived timbral effects of these
-	systems is then discussed in Section \ref{sec:Excitation-Timbre}. Section \ref{sec:Excitation-Uses} describes the
-	common uses for nonlinear distortion by audio engineers. Section \ref{sec:Excitation-Methods} then explains the
+	This chapter will review previous analysis of nonlinear systems as applied to audio processing, how their effects
+	are quantified and the timbral transforms they impart. Firstly the analysis of nonlinear systems is discussed in
+	Section \ref{sec:Excitation-AnalysisOfNonlinearSystems}. Existing research into the perceived timbral effects of
+	these systems is then discussed in Section \ref{sec:Excitation-Timbre}. Section \ref{sec:Excitation-Uses} describes
+	the common uses for nonlinear distortion by audio engineers. Section \ref{sec:Excitation-Methods} then explains the
 	operation of various nonlinear systems used, or proposed for use, in audio processing.
 
 \section{Analysis of Nonlinear Systems}
 \label{sec:Excitation-AnalysisOfNonlinearSystems}
-	The behaviour of an LTI system can be entirely summarised by its response to an impulse signal
-	\citep{phillips2007signals}. Once the impulse response of the system has been measured, the system's response to any
-	arbitrary input is known. Analysis of nonlinear systems is more complicated, unlike LTI systems the properties of
-	the system cannot be summarised by the system's response to a single input signal. Depending on the field in which a
-	nonlinear system is being studied, different approaches are taken in an attempt to summarise the behaviour of
-	nonlinear systems. In the field of audio engineering much of the literature concerning nonlinearities has to do with
-	minimising distortion or measuring the maximum allowable levels of distortion. Several distortion metrics have been
-	developed each with their own uses. A review of many of these metrics is given by \citet{voishvillo2006assessment},
-	some of which will be discussed in Section \ref{sec:Excitation-Analysis-Metrics}. Where more information is needed,
-	nonlinear modelling techniques are used. These typically involve setting the parameters of a generalised nonlinear
-	system such that its behaviour matches that of the system being analysed. The nonlinear modelling techniques
-	utilised in the audio processing literature are discussed in Section \ref{sec:Excitation-Analysis-Modelling}. Prior
-	to discussing how the effects of nonlinear systems are measures / modelled the concept of distortion components (the
-	artefacts introduced by nonlinear systems) is introduced in Section \ref{sec:Excitation-Analysis-Components}.
+	The behaviour of an LTI system can be entirely summarised by its response to a unit impulse signal (the Kronecker
+	delta function) \citep{phillips2007signals}. This is know as the system's impulse response, $A[n]$, and can be used
+	to calculate the response of the system to an arbitrary input signal, $x[n]$, via convolution (Equation
+	\ref{eq:Convolution}).
+
+	\begin{equation}
+		y[n] = \sum_{m = 0}^{M - 1} A[m]x[n-m]
+		\label{eq:Convolution}
+	\end{equation}
+
+	Where $M$ is the length of the system's impulse response.
+	
+	Analysis of nonlinear systems is more complicated, unlike LTI systems the properties of the system cannot be
+	summarised by the system's response to a single input signal. Depending on the field in which a nonlinear system is
+	being studied, different approaches are taken in an attempt to summarise the behaviour of nonlinear systems. In the
+	field of audio engineering much of the literature concerning nonlinearities has to do with minimising distortion or
+	measuring the maximum allowable levels of distortion. Several distortion metrics have been developed each with their
+	own uses. A review of many of these metrics is given by \citet{voishvillo2006assessment}, some of which will be
+	discussed in Section \ref{sec:Excitation-Analysis-Metrics}.  Where more information is needed, nonlinear modelling
+	techniques are used.  These typically involve setting the parameters of a generalised nonlinear system such that its
+	behaviour matches that of the system being analysed. The nonlinear modelling techniques utilised in the audio
+	processing literature are discussed in Section \ref{sec:Excitation-Analysis-Modelling}. Prior to discussing how the
+	effects of nonlinear systems are measured / modelled, the concept of distortion components (the artefacts introduced
+	by nonlinear systems) is introduced in Section \ref{sec:Excitation-Analysis-Components}.
 
 	\subsection{Distortion Components}
 	\label{sec:Excitation-Analysis-Components}
@@ -57,8 +67,8 @@
 		\end{equation}
 
 		Where $\nu_{n}$ is the frequency of the $n$\super{th} frequency component of the input signal and each
-		$k_{n}$ an arbitrary integer scaling factor. The order of the distortion component, $O$, is calculated as
-		the sum of the absolute values of these scaling factors (Equation \ref{eq:IntermodulationOrder}).
+		$k_{n}$ an integer scaling factor. The order of the distortion component, $O$, is calculated as the sum of
+		the absolute values of these scaling factors (Equation \ref{eq:IntermodulationOrder}).
 
 		\begin{equation}
 			O = \sum_{n = 1}^{N} \abs{k_{n}}
@@ -83,18 +93,18 @@
 			spectral components in a signal modulate each other. If all the components in the input are
 			harmonically related the intermodulation components will also lie at harmonic frequencies. A signal
 			with slight inharmonicities in it will produce intermodulation components which amplify these
-			inharmonicities. Due to this possible increase in inharmonicity intermodulation distortion
+			inharmonicities. Due to this possible increase in inharmonicity, intermodulation distortion
 			components are often considered to be less audibly pleasant than those of harmonic distortion
 			\citep{rumsey2009sound}. The number of intermodulation components grows exponentially as the number
 			of frequency components in the input increases. This makes it more difficult to predict the
-			intermodulation characteristics of a system.
+			intermodulation characteristics of a system for arbitrary input signals.
 
 		\subsubsection*{Aliasing}
-			In a digital system continuous signals must be represented by discrete signals. This is achieved
+			In a digital system, continuous signals must be represented by discrete signals. This is achieved
 			through sampling, each sample representing the amplitude of the original signal at a particular
-			time. The number of samples of the signal's amplitude measured per second is referred to as the
-			sampling frequency, $f_{s}$. The sampling frequency of a discrete signal imposes a restriction on
-			the highest frequency which can be represented within it. This frequency is known as the Nyquist
+			point in time. The number of samples of the signal's amplitude measured per second is referred to as
+			the sampling frequency, $f_{s}$. The sampling frequency of a discrete signal imposes a restriction
+			on the highest frequency which can be represented within it. This frequency is known as the Nyquist
 			frequency, $f_{N}$, and is calculated using Equation \ref{eq:nyquist}.
 
 			\begin{equation}
@@ -102,10 +112,10 @@
 				\label{eq:nyquist}
 			\end{equation}
 
-			When sampling a signal, frequency content above the Nyquist is represented as alias frequencies
-			within the bandwidth allowed by the sampling frequency. The alias frequency, $f_{\mathrm{alias}}$,
-			for a given frequency in the input signal, $f$, is the displacement between it and the nearest
-			integer multiple of the sampling frequency (Equation \ref{eq:aliasing}).
+			When sampling a signal, frequency content above $f_{N}$ is represented as aliased frequencies
+			between 0Hz and $f_{N}$. The alias frequency, $f_{\mathrm{alias}}$, for a given frequency in the
+			input signal, $f$, is the displacement between it and the nearest integer multiple of the sampling
+			frequency (Equation \ref{eq:aliasing}).
 
 			\begin{equation}
 				f_{\mathrm{alias}} = \abs{f - f_{s}\round{\frac{f}{f_{s}}}}
@@ -113,11 +123,11 @@
 			\end{equation}
 
 			The new frequency content introduced to a discrete signal via nonlinear processing is also subject
-			to aliasing. This can cause problems in the uniformity of behaviour of a system in different
-			scenarios as the spectral content introduced will depend on the sampling frequency of the signal
-			being processed. Thus, the perceived timbral transform may also depend on the sampling frequency.
-			Steps can be taken to reduce the impact of aliasing on the performance of nonlinear effects,
-			\citep{vetter2013estimation} upsample signals by a factor of 32 prior to applying nonlinear
+			to aliasing. This can cause problems when predicting the behaviour of a nonlinear system in
+			different scenarios as the spectral content introduced will depend on the sampling frequency of the
+			signal being processed. Thus, the perceived timbral transform may also depend on the sampling
+			frequency. Steps can be taken to reduce the impact of aliasing on the performance of nonlinear
+			effects, \citep{vetter2013estimation} upsample signals by a factor of 32 prior to applying nonlinear
 			processing. Afterwards the signal is downsampled to the original sampling frequency. This method
 			relies on the use of a nonlinearity which produces harmonics whose amplitudes decrease as their
 			frequencies increase. This way upsampling can be applied such that only the low amplitude, high
@@ -163,11 +173,12 @@
 			\citet{dutilleux2011nonlinear}).  The lack of standardisation for this metric makes it difficult to
 			compare experimental results reported by different sources.
 
-			Various standards exists for the measurement of IMD. Typically the systems response to a signal
+			Various standards exist for the measurement of IMD. Typically the system's response to a signal
 			consisting of two sinusoids is measured. According to the \citet{IEC2001amplifiers} standard, a
 			signal comprising two frequency components, $f_{1}$ and $f_{2}$ (where $f_{2} > f_{1}$), with an
 			amplitude ratio of 4:1 is used.  The levels of the second and third order intermodulation components
-			present is then measured separately according to Equations \ref{eq:imd2} and \ref{eq:imd3}.
+			present in the output is then measured separately according to Equations \ref{eq:imd2} and
+			\ref{eq:imd3}.
 
 			\begin{equation}
 				\mathrm{IMD}_{2} = 100\frac{a_{f_{2} + f_{1}} + a_{f_{2} - f_{1}}}{a_{f_{2}}}
@@ -184,15 +195,15 @@
 			THD and IMD give very limited information about the response of nonlinear systems. They are
 			typically measured using simple input signals which are not representative of the signals a system
 			would process in actual use. Given that nonlinear systems may not satisfy the condition of
-			superposition a system may process simple and complex signals in vastly differing manners. These
+			superposition, a system may process simple and complex signals in vastly differing manners. These
 			metrics also give no indication of the perceived degradation in audio quality a system introduces. A
-			signal with a high THD value may potentially sound less distorted that one with a small THD. To
-			measure the perceived levels of distortion a system produces metrics which are based around
+			signal with a high THD value may potentially sound less distorted than one with a small THD. To
+			measure the perceived levels of distortion a system produces, metrics which are based around
 			psychoacoustic principles are required.
 
 		\subsubsection*{Psychoacoustically Influenced Metrics}
 			Several researchers have developed new distortion metrics which indicate the perceived amount of
-			distortion. \citet{geddes2003auditory} suggest some psychoacoustic principles which may be
+			distortion. \citet{geddes2003auditory} suggest three psychoacoustic principles which may be
 			applicable to the analysis of nonlinear distortion:
 
 			\begin{itemize}
@@ -232,16 +243,17 @@
 
 			\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score
 			($\mathrm{DS}$), which employs models of the human hearing system to better approximate the
-			perceived level of distortion.  Both the input and output signal of the system under test are split
-			into $I$ non-overlapping 30ms frames and spectral analysis applied to each frame. Distortion
-			components which are inaudible due to masking are taken into account by splitting the spectrum of
-			each frame into $J$ non-overlapping bands which are one $\mathrm{ERB}$ in width. The final
-			distortion score, $\mathrm{DS}$, is calculated from the difference in power between these bands in
-			the input and output signal according to Equation \ref{eq:DistortionScore}.
+			perceived level of distortion. Firstly, both the input and output signal of the system under test
+			are split into $I$ non-overlapping frames, each 30ms long. Then the spectrum of each frame is
+			calculated using the DFT. Distortion components which are inaudible due to masking are taken into
+			account by splitting the spectrum of each frame into $J$ non-overlapping bands which are each one
+			$\mathrm{ERB}$ in width. The final distortion score, $\mathrm{DS}$, is calculated from the
+			difference in power between these bands in the input and output signal according to Equation
+			\ref{eq:DistortionScore}.
 
 			\begin{gather}
-				\mathrm{IP}_{i,j} = \sum_{n = 1}^{N_{j}} X_{i,j}[n]^2 \nonumber \\
-				\mathrm{OP}_{i,j} = \sum_{n = 1}^{N_{j}} Y_{i,j}[n]^2 \nonumber \\
+				\mathrm{IP}_{i,j} = \sum_{n = 1}^{N_{j}} X_{i,j}^{2}[n] \nonumber \\
+				\mathrm{OP}_{i,j} = \sum_{n = 1}^{N_{j}} Y_{i,j}^{2}[n] \nonumber \\
 				\mathrm{DS} = \frac{1}{I} \sum_{i = 1}^{I} \sum_{j = 1}^{J} 
 					\abs{10\log_{10} \left( \frac{\mathrm{OP}_{i,j}}{\mathrm{IP}_{i,j}} \right) }
 				\label{eq:DistortionScore}
@@ -282,8 +294,8 @@
 						S_{i,\tau} = \left\{ n | n \in \textbf{Z} 
 							     \land (i-1)L+\tau+1 \leq n \leq iL + \tau \right\} \nonumber \\
 						r_{i,j,\tau} = \frac{\sum_{n \in S_{i,\tau}} x_{j}[n]y_{j}[n-\tau]}
-							{\left( \sum_{n \in S_{i,\tau}} x_{j}[n]^{2} \right) 
-							\left( \sum_{n \in S_{i,\tau}} y_{j}[n-\tau]^{2} \right)}
+							{\left( \sum_{n \in S_{i,\tau}} x_{j}^{2}[n] \right) 
+							\left( \sum_{n \in S_{i,\tau}} y_{j}^{2}[n-\tau] \right)}
 						\label{eq:RNonlinCrossCorrelation}
 					\end{gather}
 
@@ -309,7 +321,7 @@
 
 					\begin{gather}
 						P_{i,j} = 10\log_{10} \left( \frac{1}{L} 
-								\sum_{n=(i-1)L+1}^{iL} y_{j}[n]^{2}\right) \nonumber \\
+							\sum_{n=(i-1)L+1}^{iL} y_{j}^{2}[n]\right) \nonumber \\
 						Q_{i} = \max_{j = 1}^{40} P_{i,j} \nonumber \\
 						W_{i,j} = \begin{cases}
 							1 & \text{if $Q_{i} - P_{i,j} \leq 40$} \\
@@ -358,15 +370,15 @@
 
 	\subsection{Nonlinear Modelling}
 	\label{sec:Excitation-Analysis-Modelling}
-		Various techniques for modelling nonlinear systems have been developed in the mathematics and engineering
-		literature. These models allow for more in depth analysis of a system as well as replicating it's effects in
-		the digital domain. Summaries of some of these modelling techniques can be found in the work by
-		\citet{janczak2005identification} and \citet{ogunfunmi2007adaptive}.
-
-		Two nonlinear modelling techniques have found use in audio processing applications:
+		Various techniques for modelling nonlinear systems have been proposed and developed the fields of
+		mathematics and engineering. These models allow for more in depth analysis of a nonlinear system as well as
+		replicating its effects in the digital domain. Summaries of some of these modelling techniques can be found
+		in the work by \citet{janczak2005identification} and \citet{ogunfunmi2007adaptive}. Several of these models
+		have been used to model the operation of nonlinear audio effects including:
 
 		\begin{itemize}
 			\item Wave Digital Filters as discussed by \citet{fettweis1986wave}.
+			\item Volterra series as discussed by \citet{reed1996practical}.
 			\item The Synchronised Swept Sine Method as described by \citet{novak2010nonlinear}.
 		\end{itemize}
 
@@ -387,24 +399,84 @@
 			domain \citep{valimaki2011virtual}. Another consideration is that knowledge of the circuitry inside
 			a system being modelled is needed. This might not always be available.
 
+		\subsubsection{Volterra Series}
+			\begin{equation}
+				y[n] = k_{0} + \sum_{p = 1}^{P} 
+					\sum_{m_{1} = 0}^{M - 1} \dotsi \sum_{m_{p} = 0}^{M - 1}
+					k_{p}[m_{1}, \dotsc , m_{p}]
+					\prod_{j = 1}^{p} x[n - m_{j}]
+				\label{eq:VolterraSeries}
+			\end{equation}
+
+			\begin{figure}[h!]
+				\centering
+				\begin{tikzpicture}
+					\node (Kernel0) at (4, 3) {$k_{0}$};
+					\node (Kernel1) [draw] at (1.5, 3) {$k_{1}[m_{1}]$};
+					\node (Kernel2) [draw] at (1.5, 2) {$k_{2}[m_{1}, m_{2}]$};
+					\node (KernelN) [draw] at (1.5, 0.5) {$k_{P}[m_{1}, \dotsc , m_{P}]$};
+
+					\draw [dots] (Kernel2) -- (KernelN);
+
+					\coordinate (Out1) at (3.5, 3);
+					\coordinate (Out2) at (3.5, 2);
+					\coordinate (OutN) at (3.5, 0.5);
+
+					\draw (Kernel1) -- (Out1);
+					\draw (Kernel2) -- (Out2);
+					\draw (KernelN) -- (OutN);
+
+					\node (Add) [operator] at (4, 1.75) {+};
+					\draw (Kernel0) -- (Add);
+					\draw (Out1) -- (Add);
+					\draw (Out2) -- (Add);
+					\draw (OutN) -- (Add);
+
+					\coordinate (In1) at (-0.5, 3);
+					\coordinate (In2) at (-0.5, 2);
+					\coordinate (InN) at (-0.5, 0.5);
+
+					\draw (In1) -- (Kernel1);
+					\draw (In2) -- (Kernel2);
+					\draw (InN) -- (KernelN);
+					\draw (InN) -- (In1);
+
+					\node (In) at (-1.25, 1.75) {$x[n]$};
+					\coordinate (InMid) at (-0.5, 1.75);
+					\draw (In) -- (InMid);
+
+					\node (Out) at (5, 1.75) {$y[n]$};
+					\draw (Add) -- (Out);
+
+				\end{tikzpicture}
+				\caption{The Volterra model.}
+				\label{fig:VolterraModel}
+			\end{figure}
+
 		\subsubsection{The Synchronised Swept Sine Method}
 			The synchronised swept sine method is a technique for identifying nonlinear systems without prior
 			knowledge of their operation. A nonlinear impulse response is generated by analysing the system's
 			response to a signal with exponentially increasing frequency as described by
 			\citet{novak2010nonlinear}. The result of the analysis is a series of filter kernels to be used in
-			the model shown in Figure \ref{fig:hammerstein}.
+			the model shown in Figure \ref{fig:HammersteinModel}.
+
+			\begin{equation}
+				y[n] = \sum_{p = 1}^{P}
+					\sum_{m = 0}^{M - 1} A_{p}[m]x^{p}[n-m]
+				\label{eq:HammersteinSeries}
+			\end{equation}
 
 			\begin{figure}[h!]
 				\centering
 				\begin{tikzpicture}
-					\node (Sig2) [draw] at (1, 3) {$x[n]^{2}$};
-					\node (Sig3) [draw] at (1, 2) {$x[n]^{3}$};
-					\node (SigN) [draw] at (1, 0.5) {$x[n]^{I}$};
+					\node (Sig2) [draw] at (1, 3) {$x^{2}[n]$};
+					\node (Sig3) [draw] at (1, 2) {$x^{3}[n]$};
+					\node (SigN) [draw] at (1, 0.5) {$x^{p}[n]$};
 
 					\node (Filter1) [draw] at (3, 4) {$A_{1}[n]$};
 					\node (Filter2) [draw] at (3, 3) {$A_{2}[n]$};
 					\node (Filter3) [draw] at (3, 2) {$A_{3}[n]$};
-					\node (FilterN) [draw] at (3, 0.5) {$A_{I}[n]$};
+					\node (FilterN) [draw] at (3, 0.5) {$A_{p}[n]$};
 
 					\draw (Sig2) -- (Filter2);
 					\draw (Sig3) -- (Filter3);
@@ -448,13 +520,13 @@
 					\draw (Add) -- (Out);
 
 				\end{tikzpicture}
-				\caption{Generalised polynomial Hammerstein model.}
-				\label{fig:hammerstein}
+				\caption{The generalised polynomial Hammerstein model.}
+				\label{fig:HammersteinModel}
 			\end{figure}
 
-			The model is, in effect, an extension of a Taylor Series of order $I$. The input is raised to each
-			individual power, 1 through $I$, and each of these signals is filtered by an individual kernel,
-			$A_{i}[n]$. The resultant signals are then summed to produce the output.
+			The model is, in effect, an extension of a Taylor Series of order $P$. The input is raised to each
+			individual power, 1 through $P$, and each of these signals is filtered by an individual kernel,
+			$A_{p}[n]$. The resultant signals are then summed to produce the output.
 
 			This method is easier to implement than a wave digital filter as no prior knowledge of the system is
 			needed. The amount of computation time needed to process a signal is also considerably less.  There
@@ -767,7 +839,7 @@
 		$h$, as shown in Equation \ref{eq:Multiplier}.
 
 		\begin{equation}
-			y[n] = x[n]^{h}, \quad h \in \textbf{N}
+			y[n] = x^{h}[n], \quad h \in \textbf{N}
 			\label{eq:Multiplier}
 		\end{equation}
 
@@ -789,7 +861,7 @@
 		complex valued signal gives only the sum sideband of the modulation.
 
 		\begin{equation}
-			y[n] = \Re \left( x_{a}[n]^{h} \right), \quad h \in \textbf{N}
+			y[n] = \Re \left( x_{a}^{h}[n] \right), \quad h \in \textbf{N}
 			\label{eq:SSB}
 		\end{equation}
 
