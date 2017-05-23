@@ -162,7 +162,7 @@
 				\label{eq:thdr}
 			\end{equation}
 
-			Where $h_n$ is the amplitude of the $n$\super{th} harmonic. 
+			Where $h_{n}$ is the amplitude of the $n$\super{th} harmonic. 
 
 			Each of these measures has slightly different properties. $\mathrm{THD}_{R}$ measures the
 			proportion of the output signal which consists of new harmonic components, producing a value
@@ -411,26 +411,26 @@
 			(shown graphically in Figure \ref{fig:VolterraModel}.
 
 			\begin{equation}
-				y[n] = k_{0} + \sum_{p = 1}^{P} 
+				y[n] = g_{0} + \sum_{p = 1}^{P} 
 					\sum_{m_{1} = 0}^{M - 1} \dotsi \sum_{m_{p} = 0}^{M - 1}
-					k_{p}[m_{1}, \dotsc , m_{p}]
+					g_{p}[m_{1}, \dotsc , m_{p}]
 					\prod_{j = 1}^{p} x[n - m_{j}]
 				\label{eq:VolterraSeries}
 			\end{equation}
 
-			Where $P$ is the order of the Volterra series and $k_{p}[m_{1}, \dotsc , m_{p}]$ is the
+			Where $P$ is the order of the Volterra series and $g_{p}[m_{1}, \dotsc , m_{p}]$ is the
 			$p$\super{th} order Volterra kernel. The order of a Volterra kernel defines its dimensionality,
-			$k_{0}$ being a constant, $k_{1}[m_{1}]$ being a one dimensional array of length $M$, $k_{2}[m_{1},
+			$g_{0}$ being a constant, $g_{1}[m_{1}]$ being a one dimensional array of length $M$, $g_{2}[m_{1},
 			m{2}]$ being an $M \times M$ two dimensional array and so on. When $P = 1$ the Volterra series is
-			equivalent to convolution by $k_{1}[m_{1}]$ and an offset by $k_{0}$.
+			equivalent to convolution by $g_{1}[m_{1}]$ and an offset by $g_{0}$.
 
 			\begin{figure}[h!]
 				\centering
 				\begin{tikzpicture}
-					\node (Kernel0) at (4, 3) {$k_{0}$};
-					\node (Kernel1) [draw] at (1.5, 3) {$k_{1}[m_{1}]$};
-					\node (Kernel2) [draw] at (1.5, 2) {$k_{2}[m_{1}, m_{2}]$};
-					\node (KernelN) [draw] at (1.5, 0.5) {$k_{P}[m_{1}, \dotsc , m_{P}]$};
+					\node (Kernel0) at (4, 3) {$g_{0}$};
+					\node (Kernel1) [draw] at (1.5, 3) {$g_{1}[m_{1}]$};
+					\node (Kernel2) [draw] at (1.5, 2) {$g_{2}[m_{1}, m_{2}]$};
+					\node (KernelN) [draw] at (1.5, 0.5) {$g_{P}[m_{1}, \dotsc , m_{P}]$};
 
 					\draw [dots] (Kernel2) -- (KernelN);
 
@@ -571,8 +571,6 @@
 
 \section{Timbre of Nonlinear Distortion}
 \label{sec:Excitation-Timbre}
-	\note{New Marui paper \citep{tsumoto2016the}}
-
 	The research discussed thus far in this chapter has focused on measuring the extent to which unwanted distortion
 	can be perceived, or on modelling the operation of a nonlinear system. This does not provide sufficient information
 	for the description of the timbral effect of nonlinear systems. The listening tests performed to verify the
@@ -584,10 +582,10 @@
 	There is a wealth of research into how low level audio features influence timbre, as discussed in Chapter
 	\ref{chap:Timbre}. The mappings between low level features and semantic features from the literature can be applied
 	to harmonic excitation effects provided the excitation method used can influence the required low level features.
-	There may be semantic terms used to describe the timbre of nonlinear distortion which are seldom used to describe
-	other timbres. The majority of timbral research does not focus on nonlinear distortion and as such does not
-	highlight these semantic terms. There have been some publications specifically discussing the timbral effects of
-	nonlinear distortion. Their findings are discussed in this section.
+	It is possible that there are semantic terms used to describe the timbre of nonlinear distortion which are seldom
+	used to describe other timbres. The majority of timbral research does not focus on nonlinear distortion and as such
+	does not highlight these semantic terms. There have been some publications specifically discussing the timbral
+	effects of nonlinear distortion. Their findings are discussed in this section.
 
 	\citet{marui2005predicting} suggest that one of the primary outcomes of nonlinear distortion is the moving of
 	spectral energy between low and high frequencies. They propose that aspects of this effect correlate with the
@@ -595,7 +593,7 @@
 	performed listening tests in which distorted guitar stimuli were assessed. The stimuli were each processed with
 	different nonlinear systems and then further processed so that they had matching Zwicker Sharpnesses (an objective
 	measure of sharpness \citep{fastl2007psychoacoustics} discussed in Section
-	\ref{sec:Timbre-TimbralFeatures-Sharpness}). This sharpness matching was done so that difference in timbre not
+	\ref{sec:Timbre-TimbralFeatures-Sharpness}). This sharpness matching was done so that the difference in timbre not
 	related to sharpness could be more easily observed. During the listening tests subjects were asked to rate the
 	dissimilarity of stimuli presented in pairs. They were also asked to grade each individual stimulus on the bipolar
 	adjective scales shown in Table \ref{tab:distortionDescriptors}.
@@ -651,6 +649,16 @@
 	$\Leftrightarrow$ sharp'. They also use the term `crunch' to describe sounds with a moderate amount of distortion.
 	No evidence is provided that this terminology is used by a wide range of guitar players, it is merely the language
 	used to discriminate certain distortion effects from each other in their paper.
+	
+	In a second paper \citep{tsumoto2016the} the same authors investigate the relationship between the `brightness' and
+	Zwicker sharpness of distorted guitar signals. They show that for a given parameter setting on a distortion effect,
+	the function describing the relationship between the perceived `brightness' and Zwicker sharpness of output signals
+	is monotonically increasing. As the parameter of the effect is changed the number of distortion components
+	introduced to the signal is changed. Conversely to their predictions it is shown that if the output signals are
+	processed to have matching Zwicker sharpness those to which greater levels of distortion have been introduced are
+	perceived to be less `bright' then those which are less distorted. This is explained by examining the relative
+	levels of different orders of distortion in the output, suggesting that the perception of distortion depends on the
+	individual levels of orders of distortion.
 
 	\citet{wilson2014characterisation} use a different approach to describe the distortion characteristics of popular
 	music tracks. A panel of expert listeners rated several stimuli on two scales: distortion level and distortion
@@ -660,7 +668,7 @@
 	describe the audio quality of the stimuli. The most often used word was `distorted', being used to describe the
 	stimuli which were classified has having high distortion levels, suggesting that the concept if distortion is well
 	known to listeners. The other descriptors elicited (`punchy', `clear', 'harsh' etc.) did not correlate well with
-	any particular group of stimuli as categorised by the classifier. This may be to do the method by which the
+	any particular group of stimuli as categorised by the classifier. This may be to do with the method by which the
 	original stimuli were classified by the expert panel. The descriptors which did not correlate may refer to
 	perceptual dimensions other than distortion level and character. Training the classifier to only discriminate
 	stimuli in these two dimensions removes any information about where the stimuli lie on these additional dimensions.
@@ -676,7 +684,7 @@
 
 \section{Uses of Harmonic Excitation}
 \label{sec:Excitation-Uses}
-	While harmonic excitation algorithms are best know as a creative effect used by guitarist, they find used is
+	While harmonic excitation algorithms are best know as a creative effect used by guitarists, they find use in
 	several other areas of audio processing. These areas are summarised in Sections
 	\ref{sec:Excitation-Uses-Reconstruction} through \ref{sec:Excitation-Uses-Enhancement}. While popular creative
 	distortion algorithms are based on simple analogue electronic circuits, algorithms designed for these applications
@@ -747,7 +755,7 @@
 		distortion. \citet{chalupper2000aural} ran several tests to determine the effects that the Aural Exciter
 		has on different audio stimuli, concluding that it operates as a `sharpness' maximiser. His analysis of the
 		device was very basic, consisting of a frequency response and an analysis of the spectral alterations made
-		to a 2kHz sine wave. The frequency response shows the liner processing undertaken by the device, showing
+		to a 2kHz sine wave. The frequency response shows the linear processing undertaken by the device, showing
 		that it mainly amplifies high frequency content. The sine wave response analysis is used to demonstrate the
 		nonlinear elements of the device. 
 
@@ -761,10 +769,10 @@
 
 \section{Harmonic Generation Methods}
 \label{sec:Excitation-Methods}
-	Various different methods have been used to introduce new spectral content in digital audio processing systems.
-	Some of these mimic the behaviour of existing analogue audio effects while others use novel digital signal
-	processing techniques. In this section the operation of several harmonic excitation algorithms is described. More
-	detailed discussion on the performance of these algorithms is given in Chapter \ref{chap:ExcitationEvaluation}.
+	Various methods have been used to introduce new spectral content in digital audio processing systems.  Some of
+	these mimic the behaviour of existing analogue audio effects while others use novel digital signal processing
+	techniques. In this section the operation of several harmonic excitation algorithms is described. More detailed
+	discussion on the performance of these algorithms is given in Chapter \ref{chap:ExcitationEvaluation}.
 
 	\subsection{Static Nonlinearities}
 	\label{sec:Excitation-Methods-Statics}
@@ -783,11 +791,11 @@
 		
 		Peak clipping functions can be categorised based on their symmetry and the properties of their first
 		derivative. Peak clippers are described as symmetric if their characteristic curve is described by an odd
-		function. Clippers which use non-odd functions are referred to as asymmetric. A peak clipper with no
-		transition section is referred to as a hard clipper, input samples below the clipping threshold are left
-		unaltered while those above it are set to be equal to the threshold. This instantaneous transition produces
-		a discontinuity in the first derivative of the clipper's characteristic curve. Equation
-		\ref{eq:SymmetricHardClipping} describes a symmetric hard clipper with a threshold of $t$.
+		function (a function for which $f(-x) = -f(x)$). Clippers which use non-odd functions are referred to as
+		asymmetric. A peak clipper with no transition section is referred to as a hard clipper, input samples below
+		the clipping threshold are left unaltered while those above it are set to be equal to the threshold. This
+		instantaneous transition produces a discontinuity in the first derivative of the clipper's characteristic
+		curve. Equation \ref{eq:SymmetricHardClipping} describes a symmetric hard clipper with a threshold of $t$.
 
 		\begin{equation}
 			y[n] = \begin{cases}
@@ -797,9 +805,9 @@
 			\label{eq:SymmetricHardClipping}
 		\end{equation}
 		
-		Soft clippers apply a nonlinear function to medium magnitude samples in order to smooth the transition
-		between the linear and clipping sections. This transition is applied such that the first derivative of the
-		characteristic curve is a continuous function \citep{esqueda2015aliasing}. Equation
+		The characteristic curve of soft clipper has a nonlinear transition section in order to smooth the
+		transition between the linear and clipping sections. This transition is applied such that the first
+		derivative of the characteristic curve is a continuous function \citep{esqueda2015aliasing}. Equation
 		\ref{eq:SymmetricSoftClipping} shows a soft clipper adapted from one given by
 		\citet{dutilleux2011nonlinear}. A comparison of the characteristic curves of Equations
 		\ref{eq:SymmetricHardClipping} and \ref{eq:SymmetricSoftClipping} is given in Figure \ref{fig:Clipping}.
@@ -884,9 +892,9 @@
 	\label{sec:Excitation-Methods-SSBA}
 		Single sideband automodulation (SSBA) combines the automodulation performed in a multiplier with the
 		technique of single sideband modulation \citep{corinthios2009signals}. Regular amplitude modulation
-		produces two sidebands (a sum and difference side band) containing frequency components at the sum and
-		difference frequencies of the those in the two carrier and modulator signals. Single sideband modulation is
-		a method of applying amplitude modulation to a signal and only producing either the sum or difference
+		produces two sidebands (a sum and difference side band) containing frequency components at the sums and
+		differences in frequency of the those in the carrier and modulator signals. Single sideband modulation is a
+		method of applying amplitude modulation to a signal and only producing either the sum or difference
 		sideband. This requires the construction of an analytic representation, $x_{a}[n]$, of the input signal,
 		$x[n]$, as discussed in Section \ref{sec:Timbre-LowLevelFeatures-Temporal}. The analytic signal is then
 		raised to a positive integer power, $h$, as shown in Equation \ref{eq:SSB}. Taking the real part of the
@@ -896,6 +904,29 @@
 			y[n] = \Re \left( x_{a}^{h}[n] \right), \quad h \in \textbf{N}
 			\label{eq:SSB}
 		\end{equation}
+
+		The generation of only a single sideband can be illustrated by considering a sinusoidal input $\cos(x)$.
+		Simply squaring the input produces two frequency components which are the sum and difference of the inputs
+		frequency and itself. These sum and difference sidebands are a sinusoid with twice the frequency of the
+		input and a DC offset (0Hz) as seen in Equation \ref{eq:TwoSidebands}.
+
+		\begin{equation}
+			\cos^{2}(x) = 0.5 + 0.5 \cos(2x)
+			\label{eq:TwoSidebands}
+		\end{equation}
+
+		The analytic representation of our input signal is $\cos(x) + i\sin(x)$. Using De Moivre's formula it can
+		be shown that squaring this signal and taking the real part only produces the sum sideband (the signal with
+		twice the frequency). This is shown in Equation \ref{eq:OneSideband}.
+
+		\begin{equation}
+			\left( \cos(x) + i\sin(x) \right)^{2} = \cos(2x) + i\sin(2x)
+			\label{eq:OneSideband}
+		\end{equation}
+
+		With more thorough analysis it can be shown that the intermodulation components produced through single
+		sideband modulation all take the same form as shown in Equation \ref{eq:IntermodulationComponents} but
+		where the scaling factors, $k_{n}$, are all positive integers.
 
 	\subsection{Instantaneous Amplitude and Phase}
 	\label{sec:Excitation-Methods-IAP}
@@ -943,10 +974,10 @@
 		aliasing during the downsampling phase the signal should have a low pass filter applied with a cutoff
 		frequency of $\frac{f_{s}}{2k}$. Typically upsampling systems apply a low pass filter to remove any high
 		frequency content introduced \citep{oppenheim2014discrete}. This is not needed for spectral folding as the
-		production of high frequency energy is the desired result. After low pass filtering filtering, the
-		downsampling and upsampling can be performed at the same time by retaining every $k$\super{th} sample and
-		setting all others to zero. This is shown in Equation \ref{eq:SpectralFolding} where $x_{lf}[n]$ is the low
-		pass filtered input signal.
+		production of high frequency energy is the desired result. After low pass filtering, the downsampling and
+		upsampling can be performed at the same time by retaining every $k$\super{th} sample and setting all others
+		to zero. This is shown in Equation \ref{eq:SpectralFolding} where $x_{lf}[n]$ is the low pass filtered
+		input signal.
 
 		\begin{equation}
 			y[n] = \begin{cases}
