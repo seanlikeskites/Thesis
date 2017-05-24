@@ -1460,8 +1460,13 @@
 			applied to cause this. As such, the signals must have been `deep' prior to processing.
 
 \section{Conclusion}
-	From the analysis of the individual effects feature and timbre spaces several conclusions have been drawn.
-	Clustering identified four main groups of descriptors, consisting of:
+	In this chapter we developed a system for the retrieval of timbral data as part of the typical music production
+	workflow. This allows `real world' usage of timbral descriptors to be investigated in comparison to laboratory test
+	which require sets of audio stimuli to be predefined by the experimenter. A dataset of 1787 audio transforms,
+	applied using either a distortion or equaliser, was collected using this system. By analysing the frequency with
+	which terms were used to describe these transforms, 17 commonly used timbral descriptors are identified.
+	Hierarchical clustering applied to the audio feature values associated with the transforms identified four main
+	timbral groups consisting of related descriptors:
 
 	\begin{itemize}
 		\item Warmth: warm, cream, fuzz, deep and full.
@@ -1469,6 +1474,17 @@
 		\item Crunchiness: crunch.
 		\item Muddiness: mud, boom and box.
 	\end{itemize}
+
+	It was shown that metrics used to measure agreement between test participants in previous timbral studies are
+	problematic, interpreting high variance in features which do not contribute to a timbral effect as disagreement
+	between participants. A new agreement score was proposed which is shown to produce more descriptive results when
+	applied to synthetic data. This new metric is used to identify the most agreed upon descriptors in the dataset,
+	these being `warm', `bright' and `crunch'.
+
+	Low dimensional timbre spaces are then constructed by applying PCA to the audio features associated with each
+	transform. The audio features which correlate est with each principal component are identified allowing the
+	meanings of timbral descriptors to be determined. For the timbral groups associated in the clustering analysis
+	these acoustic correlated are as follows.
 
 	`Warmth' is used in a similar manner when describing distortion and equaliser transforms. It is used to describe a
 	shift in energy towards the lower end of the spectrum, decreasing the spectral centroid and spectral roll off. This
