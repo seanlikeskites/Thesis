@@ -101,11 +101,11 @@
 		audio at its inputs and outputs. When the analysis is completed the results are stored, containing:
 
 		\begin{itemize}
-			\item The users semantic description of the effect's application (Entered into the text box seen in
+			\item The users semantic description of the effect's application (entered into the text box seen in
 				Figure \ref{fig:SAFE-Distortion}).
 			\item The plug-in's current parameter settings.
-			\item The features of the audio before and after processing.
-			\item Some additional metadata about the user and the track being worked on (Entered into the panel
+			\item The features of the audio both before and after processing.
+			\item Some additional metadata about the user and the track being worked on (entered into the panel
 				shown in Figure \ref{fig:SAFE-Metadata}).
 			\begin{itemize}
 				\item The genre.
@@ -131,9 +131,9 @@
 			\label{fig:SAFE-Metadata}
 		\end{figure}
 
-		The audio is analysed in frames of 4096 samples using the LibXtract software library
-		\citep{bullock2007libxtract}, calculating 80 different audio features for each frame. These features are
-		split into five groups as follows:
+		The input and output signals of the plug-in are analysed in frames 4096 samples in length using the
+		LibXtract software library \citep{bullock2007libxtract}. In total 80 different audio features are
+		calculated for each frame. These features are split into five groups and given symbols as follows:
 
 		\begin{itemize}
 			\item {\bf{Temporal Features:}} Features calculated from the temporal representation of the signal.
@@ -179,8 +179,13 @@
 
 		One disadvantage in using plug-ins is that they cannot gather information about the processing chain they
 		may be a part of. The timbral transform the user is describing may be the result of several effects working
-		together. This can be mitigated somewhat by asking users to describe only the effect the plug-in in
-		question is providing.
+		together. One solution to this is to implement the feature extraction and metadata collection as a plug-in
+		which host other plug-ins. The user would use this plug-in on the channel they wish to process and build a
+		processing chain from other plug-ins within it. In this manner the feature extraction process sees the
+		input and out put signals of every effect in the processing chain. This was deemed to be too much of an
+		interruption to the normal music production workflow which would reduce the number of people who would use
+		the plug-in. Instead the problem is mitigated somewhat by asking users to ensure that the semantic terms
+		they provide describe only the effect the plug-in being used.
 
 		The SAFE plug-ins suffer from the same issues other distributed tests do. The researcher forfeits control
 		over the listening environment in order to gather results from a much larger sample of people. In fact they
@@ -189,10 +194,10 @@
 		subject. This control is relinquished in order to access a greater user base. The metadata fields allow the
 		collected data to be categorised if information about a particular genre or instrument is desired.
 
-		\note{Probably explain the need to use an ontology, something about being machine navigable or something.}
-
 	\subsection{SAFE Ontology}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFEOntology}
+		\note{Probably explain the need to use an ontology, something about being machine navigable or something.}
+
 		The data collected using the SAFE plug-ins is stored as RDF triples using the SAFE ontology.  The SAFE
 		Ontology was designed to describe the semantics relating to the application of an audio effect and the
 		audio features of the signals involved. It acts as an extension to the Audio Effects Ontology
