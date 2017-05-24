@@ -317,35 +317,43 @@
 	which can be applied using harmonic excitation. The distortion demonstrating the effects of introducing new
 	spectral content and the equaliser demonstrating the effects of manipulating the existing spectral content.
 
-	Firstly, the terms used to describe transforms using each plug-in are investigated (Section
-	\ref{sec:TimbreEvaluation-Analysis-TermUsage}). This provides insight into the language used to describe audio in
-	the production environment, also showing what terms are shared across processing techniques and those which are
-	reserved for particular effect. Secondly, clustering techniques are used in order to group these terms into groups
-	which describe similar audio signals / transforms, finding terms which are synonymous when used to describe
-	timbre (Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}). Finally, timbre spaces are constructed using
-	PCA in order to find the most salient audio features which contribute to the differences in timbral description.
+	Firstly, the data is cleaned up through the preprocessing described in Section
+	\ref{sec:TimbreEvaluation-Analysis-Preprocessing}. Then the terms used to describe transforms applied by each
+	plug-in are investigated (Section \ref{sec:TimbreEvaluation-Analysis-TermUsage}). This provides insight into the
+	language used to describe audio in the production environment, also showing which terms are shared across
+	processing techniques and which are reserved for a particular effect. Following this, clustering techniques are
+	used in order to identify group of terms which describe similar audio signals / transforms, finding terms which are
+	synonymous when used to describe timbre (Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}). Finally,
+	timbre spaces are constructed using PCA in order to find the most salient audio features which contribute to the
+	differences in timbral description (Section \ref{sec:TimbreEvaluation-Analysis-TimbreSpaces}).
+
+	\subsection{Preprocessing}
+	\label{sec:TimbreEvaluation-Analysis-Preprocessing}
+		The dataset used for this work totals 304 transforms saved using the SAFE Distortion and 1483 transforms
+		saved using the SAFE Equaliser. Several of these have descriptive terms which are application details
+		rather than timbral descriptors (e.g. ``Drum Bus'') while others are not recognisable words (e.g.
+		``cp-1''). These transforms are removed from the dataset prior to further processing.
+
+		Of the remaining transforms, several have terms which are derived from the same root word, with the
+		addition of suffixes such as `y' or `er' (e.g. `crunch' and `crunchy' or `bright' and `brighter'). It is
+		assumed that the addition of such suffixes has no effect over how a term is used to describe timbre. As
+		such, a stemming algorithm \citep{porter1980an} is used in order to reduce all descriptors in the dataset
+		to their root words.  Additional processing is required after stemming so that all descriptors with the
+		same root can be combined.  The Porter stemming algorithm replaces the letter `y' at the end of a word with
+		the letter `i', for this analysis these tailing `i's are removed so that terms such as `fuzz' and `fuzzy'
+		are reduced to the same root. In some cases the output must be further reduced, for example the term
+		`muddy' is reduced to `mudd' which must have the tailing d removed to give the correct root `mud'.
 
 	\subsection{Term Usage}
 	\label{sec:TimbreEvaluation-Analysis-TermUsage}
-		The dataset used for this work totals 304 transforms saved using the SAFE Distortion and 1483 transforms
-		saved using the SAFE Equaliser. Several of the terms which describe these transforms are derived from the
-		same root word, with the addition of suffixes such as `y' or `er' (e.g. `crunch' and `crunchy' or `bright'
-		and `brighter'). It is assumed that the addition of such suffixes has no effect over how a term is used to
-		describe timbre. As such, a stemming algorithm \citep{porter1980an} is used in order to reduce all
-		descriptors in the dataset to their root words.  Additional processing is required after stemming so that
-		all descriptors with the same root can be combined.  The Porter stemming algorithm replaces the letter y at
-		the end of a word with the letter i, for this analysis these tailing i's are removed so that terms such as
-		`fuzz' and `fuzzy' are reduced to the same root. In some cases the output must be further reduced, for
-		example the term `muddy' is reduced to `mudd' which must have the tailing d removed to give the correct
-		root `mud'.
-
-		Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} show the terms most frequently used to
-		describe transforms applied by the distortion and equaliser respectively. The frequency of each term
-		indicates how many transforms it is used to describe. In some cases multiple descriptors are used to
-		describe a transform. The numbers of transforms which share certain combinations of descriptors are shown
-		in Tables \ref{tab:DistortionTermCombinations} and \ref{tab:EqualiserTermCombinations}. In total 85 of the
-		distortion transforms are described by the 8 most popular distortion terms and 947 equaliser transforms are
-		described by the 12 most popular equaliser descriptors.
+		Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} show the terms (after preprocessing) which
+		are most frequently used to describe transforms applied by the distortion and equaliser respectively. The
+		frequency of each term indicates how many transforms it is used to describe. In some cases multiple
+		descriptors are used to describe a transform. The numbers of transforms which share certain combinations of
+		descriptors are shown in Tables \ref{tab:DistortionTermCombinations} and
+		\ref{tab:EqualiserTermCombinations}. In total 85 of the distortion transforms are described by the 8 most
+		popular distortion terms and 947 equaliser transforms are described by the 12 most popular equaliser
+		descriptors.
 
 		\begin{table}[h!]
 			\centering
@@ -515,8 +523,18 @@
 		To identify groups of semantically similar descriptors, hierarchical clustering is applied to these feature
 		spaces. Prior to clustering, each dimension of the feature space is standardised (i.e. scaled and offset
 		such that is has a mean of zero and a standard deviation of one) to mitigate any effect the range of a
-		particular audio feature might have on the clustering. Clusters are determined using the ward linkage
-		criterion \citep{ward1963hierarchical} in order to minimise the variance within each cluster.
+		particular audio feature might have on the clustering. Clusters are constructed iteratively. Each term
+		initially sits in a cluster on it's own, on each iteration the two closest clusters are combined to create
+		a new cluster. The distance between clusters is calculated using the Ward linkage criterion
+		\citep{ward1963hierarchical} in order to minimise the variance within each cluster. This distance between
+		two clusters ($a$ and $b$), $d(a, b)$, is calculated using Equation \ref{eq:WardsCriterion}.
+
+		\begin{equation}
+			d(a, b) = \frac{N_{a}N_{b}}{N_{a} + N_{b}} \euclidian{\mu_{a} - \mu_{b}}^{2}
+			\label{eq:WardsCriterion}
+		\end{equation}
+
+		Where $N_{a}$ and $\mu_{a}$ and the number of points in and centroid of cluster $a$ respectively.
 
 		\subsubsection*{Clustering of Distortion Terms}
 			Figure \ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
