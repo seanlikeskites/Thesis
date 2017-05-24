@@ -1,27 +1,28 @@
 \chapter{Subjective Timbre Evaluation}
 \label{chap:TimbreEvaluation}
-	\todo{Come up with a better name for this chapter.}
 
 \section{Introduction}
 \label{sec:TimbreEvaluation-Introduction}
 	In order to manipulate the perceptual characteristics of a sound it is necessary to know the relationships between
 	low level audio features and semantic descriptions. In Chapter \ref{chap:Timbre} several different methods for
-	obtaining this information were discussed.  In this chapter a new method of collecting semantically annotated audio
-	feature data is presented (Section \ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation}). Data gathered using this
-	method is then analysed, producing a list of semantic descriptors and the low level audio features which contribute
-	to them (Section \ref{sec:TimbreEvaluation-Analysis}).
+	obtaining this information were discussed. In this chapter, we present a model for collecting timbral data from
+	within the audio production environment (\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation}). Data collected using
+	this method is then analysed using various techniques. In Section \ref{sec:TimbreEvaluation-Analysis-TermUsage} the
+	frequency with which certain descriptive terms are used to describe timbral transforms is discussed. In Section
+	\ref{sec:TimbreEvaluation-Analysis-TermClustering} clustering techniques are used to identify synonymous terms
+	within the data and in Section \ref{sec:TimbreEvaluation-Analysis-TimbreSpaces} low dimensional timbre spaces are
+	constructed and analysed.
 
 \section{Production Environment Timbre Evaluation} % this name will probably change
 \label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation}
 	The perceptual listening test methodologies discussed in Section \ref{sec:Timbre-ListeningTests} rely on the
 	participants performing a certain set of tasks. While this structure helps to reduce the number of variables in an
-	experiment, it does not necessarily reflect the way audio is treated in a production environment.
-
-	A new methodology has been developed in which the analysis of timbre is introduced into a typical music production
-	workflow, causing minimal interruption to the producer. This methodology aims to answer the question "What terms do
-	music producers use to describe the timbral transforms they apply to audio during the creation of music?". 
-
-	This section will detail a typical production workflow is and how semantic information can be gathered.
+	experiment, it does not necessarily reflect the way audio is treated in a production environment. A new methodology
+	has been developed in which the analysis of timbre is introduced into a typical music production workflow, causing
+	minimal interruption to the producer. This methodology aims to answer the question "What terms do music producers
+	use to describe the timbral transforms they apply to audio during the creation of music?". This section will
+	detail a typical music production workflow and discuss how the collection of timbral information can be
+	incorporated into it.
 
 	\subsection{Music Production Workflow}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-Workflow}
@@ -100,10 +101,12 @@
 		audio at its inputs and outputs. When the analysis is completed the results are stored, containing:
 
 		\begin{itemize}
-			\item The users semantic description of the effect's application.
+			\item The users semantic description of the effect's application (Entered into the text box seen in
+				Figure \ref{fig:SAFE-Distortion}).
 			\item The plug-in's current parameter settings.
 			\item The features of the audio before and after processing.
-			\item Some additional data about the user and the track being worked on.
+			\item Some additional metadata about the user and the track being worked on (Entered into the panel
+				shown in Figure \ref{fig:SAFE-Metadata}).
 			\begin{itemize}
 				\item The genre.
 				\item The instrument.
@@ -119,6 +122,13 @@
 			\includegraphics[width=0.8\textwidth]{chapter4/Images/SAFEDistortion.png}
 			\caption{The interface for the SAFE distortion plug-in.}
 			\label{fig:SAFE-Distortion}
+		\end{figure}
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.8\textwidth]{chapter4/Images/SAFEMetadata.png}
+			\caption{The metadata entry panel in the SAFE distortion plug-in.}
+			\label{fig:SAFE-Metadata}
 		\end{figure}
 
 		The audio is analysed in frames of 4096 samples using the LibXtract software library
