@@ -104,21 +104,17 @@
 	\subsection{Methodology}
 	\label{sec:PerceptualExperiments-Reconstruction-Methodology}
 		\subsubsection*{Stimuli Generation}
-			\note
-			{
-				Degradation filter params?
-			}
-
 			The harmonic reconstruction systems were evaluated using the same four audio signals used in
 			Section \ref{sec:FeatureControl-Parameterisation} to assess audio feature parameterisation
 			techniques (cello, clarinet, synthesised and piano). For each signal the third through ninth
-			harmonics were removed. This was in order to cause significant degradation in the quality of the
-			signal such that the difference is plainly audible to the majority of listeners. The second
-			harmonic was left in the signal to pose a challenge to the SSBA and IAP methods. As mentioned
-			previously, the performance of these methods depends on how well the $f_{0}$ is isolated.
-			Retaining the second harmonic allows for the effect of filter order on the performance of the
-			system to be assessed. Spectrograms of the cello signal before and after this process are shown in
-			Figures \ref{fig:CelloSpectrogram} and \ref{fig:CelloFilteredSpectrogram}. 
+			harmonics were removed using a 2001\super{st} order FIR band reject filter with the stopband
+			starting at 2.5$f_{0}$ and ending at 9.5$f_{0}$. This was in order to cause significant degradation
+			in the quality of the signal such that the difference is plainly audible to the majority of
+			listeners. The second harmonic was left in the signal to pose a challenge to the SSBA and IAP
+			methods. As mentioned previously, the performance of these methods depends on how well the $f_{0}$
+			is isolated.  Retaining the second harmonic allows for the effect of filter order on the
+			performance of the system to be assessed. Spectrograms of the cello signal before and after this
+			process are shown in Figures \ref{fig:CelloSpectrogram} and \ref{fig:CelloFilteredSpectrogram}. 
 
 			\begin{figure}[h!]
 				\centering
@@ -142,10 +138,10 @@
 			signals using the systems described in Section
 			\ref{sec:PerceptualExperiments-Reconstruction-Systems}. In order to reduce the number of variables,
 			each of the unprocessed signals was analysed prior to the creation of the test stimuli. The $f_{0}$
-			of each signal was measured along with the amplitudes of the third through ninth harmonics. This
-			information was then used in the reconstruction of the signal, mitigating any inaccuracies which
-			may be introduced by calculating it in real time and allowing the naturalness of the generated
-			harmonics to be assessed more thoroughly.
+			of each signal was measured along with the mean amplitudes of the third through ninth harmonics.
+			This information was then used in the reconstruction of the signal, mitigating any inaccuracies
+			which may be introduced by calculating it in real time and allowing the naturalness of the
+			generated harmonics to be assessed more thoroughly.
 
 			Eleven test stimuli were created from each of the original four signals. The first two being the
 			unprocessed signal and the filtered signal. The remaining nine were reconstructions of the original
@@ -158,8 +154,16 @@
 			this smoothing starts to reduce the accuracy of the extracted amplitude envelope.  For the SSBA and
 			IAP methods a different order FIR filter was used to isolate the $f_{0}$. The filters used were
 			windowed sinc filters with orders of 50, 100 and 500 and using the Blackman window to maximise
-			stopband attenuation \citep{schlichtharle2011digital}. As the filter order increases the $f_{0}$ is
-			better isolated reducing the level of any intermodulation components.
+			stopband attenuation \citep{schlichtharle2011digital}. As the filter order is increased, the
+			level of the second harmonic in the isolated $f_{0}$ decreases. This leads to a more sinusoidal
+			input to the harmonic generation systems, reducing the amount of intermodulation distortion
+			introduced.
+
+			The generation of samples using the synthesis method is not directly comparable to that using the
+			SSBA and IAP methods because the STFT window length is not comparable with filter order. The values
+			for these parameters were chosen such that the differences between the reconstructions were easily
+			audible. Increasing either of the parameters results in a more computationally complex system which
+			should increase the quality of the resulting reconstruction.
 
 		\subsubsection*{Objective Evaluation}
 			An approximation of the perceptual difference between the stimuli and the relevant audio signal is
@@ -213,7 +217,8 @@
 			signal and as such should be given a grade of 100 as there is no difference between it and the
 			reference. The anchor is the degraded signal and should be graded worse than the all the other
 			stimuli as no attempt has been made to reconstruct the signal. If a participant does not grade the
-			hidden reference and anchor in this way their results may not be reliable.
+			hidden reference and anchor in this way their results may not be reliable and should be removed
+			from the dataset.
 
 			\begin{figure}[h!]
 				\centering
