@@ -26,29 +26,33 @@
 	As discussed in Chapter \ref{chap:ExcitationEvaluation} the most control over the shape of a signal's spectrum is
 	attained by using systems which allow control over the levels of individual harmonics in the output. This
 	flexibility is not only useful for building creative effects, it can also be used for the reconstruction of
-	degraded signals; a process known as audio inpainting \citep{adler2012audio}.
-
-	\note
-	{
-		This work is from \citet{enderby2013methods}.
-	}
+	degraded signals; a process known as audio inpainting \citep{adler2012audio}. These processes use a variety of
+	techniques to reintroduce portions of audio which have been lost / degraded by interference or the limitations of
+	recording equipment. Individual harmonic generation methods are particularly useful where a harmonically structured
+	spectrum needs to be reconstructed such are when audio has been bandlimited to reduce its storage / transmission
+	size.
 
 	Several of the harmonic excitation systems discussed in Section \ref{sec:FeatureControl-Systems} rely on the
-	generation of individual harmonics of the input signal. Ideally, when a new harmonic is added to a signal using one
-	of these systems it should sound natural. The resulting signal should sound as though it came from a single source.
-	A poorly generated harmonic may be perceived as a new sinusoid completely separate from the original input signal.
-	Harmonic generation methods can be evaluated by how naturally they can reconstruct signals from which harmonics
-	have been removed. In this section we present an experiment evaluating the performance of three different harmonic
-	generation methods.
+	generation of individual harmonics of the input signal.  Ideally, when a new harmonic is added to a signal using
+	one of these systems it should sound natural: the resulting signal should sound as though it came from a single
+	source. A poorly generated harmonic may be perceived as a new sinusoid completely separate from the original input
+	signal as discussed in Section \ref{sec:FeatureControl-Systems-Individuals}.  Harmonic generation methods can be
+	evaluated by how naturally they can reconstruct signals from which harmonics have been removed. In this section we
+	present an experiment evaluating the performance of three different harmonic generation methods, originally
+	presented in \citet{enderby2013methods}.
 
 	\subsection{Harmonic Reconstruction Systems}
 	\label{sec:PerceptualExperiments-Reconstruction-Systems}
 		Missing harmonics can be reintroduced by generating them from the information remaining in a degraded
 		signal. This can be achieved using a spectral shaping system similar to that shown in Figure
-		\ref{fig:SpectralShapingSystem}. Rather than shaping the spectrum to achieve a musical effect it is used to
-		reconstruct the shape of the original spectrum. The missing harmonics are generated individually with the
-		amplitudes they had in the original (non-degraded) signal. In this section three methods of generating
-		these individual harmonics are discussed.
+		\ref{fig:SpectralShapingSystem}. Each harmonic, $h_{i}[n]$, is generated individually and then summed to
+		create the final output, $y[n]$. Rather than shaping the spectrum to achieve a musical effect the gains for
+		each harmonic are set to reconstruct the shape of the original spectrum. The amplitude ratio between the
+		$f_{0}$ and a particular harmonic in a signal may vary with time. This system reconstructs harmonics with a
+		constant amplitude ratio to the $f_{0}$ introducing error to the reconstruction. Depending on the
+		excitation method used to generate the individual harmonics, further errors will be introduced as discussed
+		in Section \ref{sec:ExcitationEvaluation-Comparison}. In this section three methods of generating
+		individual harmonics are assessed to determine the audibility of these errors.
 
 		The first method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated
 		in Figure \ref{fig:Synthesise}. The STFT of the input signal is calculated and used to generate an
@@ -68,7 +72,7 @@
 				\node (Synth) [draw] at (7.5, 1) {Sine Wave Synthesiser};
 				\draw (Amp) -- (Synth);
 
-				\node (Out) at (10.05, 1) {$y[n]$};
+				\node (Out) at (10.05, 1) {$h_{i}[n]$};
 				\draw (Synth) -- (Out);
 			\end{tikzpicture}
 			\caption{The system used to generate new harmonics through synthesis.}
@@ -90,7 +94,7 @@
 				\node (Exciter) [draw] at (4.75, 1) {Frequency Shifter};
 				\draw (Filter) -- (Exciter);
 
-				\node (Out) at (6.95, 1) {$y[n]$};
+				\node (Out) at (6.95, 1) {$h_{i}[n]$};
 				\draw (Exciter) -- (Out);
 			\end{tikzpicture}
 			\caption{The system used to generate new harmonics using the SSBA and IAP techniques.}
