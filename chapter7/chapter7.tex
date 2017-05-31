@@ -242,12 +242,6 @@
 		In the results figures presented in this section (Figures \ref{fig:SMCRNonlin} and \ref{fig:SMCResults})
 		the eleven stimuli created from each test signal are numerated 1 to 11 as follows:
 
-		\note
-		{
-			Explain that they are not comparable, but we demonstrate changes in processing accuracy through
-			changes in parameters. Clarify that there is no relation between window size and filter order.
-		}
-
 		\begin{tabular}{>{\bfseries}rl}
 			1. & The reference stimulus. \tabularnewline
 			2. & Stimulus reconstructed using the synthesis method with an STFT window length of 50
@@ -456,9 +450,9 @@
 		expected. Across the majority of the stimuli there is an increase in the perceived quality of the
 		reconstruction as the STFT window length / filter order is increased. The $R_{\mathrm{nonlin}}$
 		measurements confirm that as these parameters are increased the resulting reconstructed signal is
-		objectively more similar to the original signal. For each of the original signals the reconstruction with a
-		window length / filter order of 500 receive similar grades, it is in the lower setting of these parameters
-		that differences between the methods become noticeable.
+		objectively more similar to the original signal. For each of the original signals the highest quality
+		reconstructions receive similar grades, it is in the lower setting of these parameters that differences
+		between the methods become noticeable.
 
 		For each of the acoustic signals (cello, clarinet and piano) the synthesis method with an STFT window
 		length of 50 samples was given the lowest mean grade by participants. This is most likely because of the
@@ -469,17 +463,13 @@
 		$R_{\mathrm{nonlin}}$ measures it is seen that the IAP reconstructions of this signal are objectively more
 		similar to the original signal than those reconstructed with the synthesis method. This is possibly
 		explained by the fact that the synthesised signal is the easiest to reconstruct. It is a purely harmonic
-		signal with no energy at inharmonic frequencies. This makes it easy to isolate the $f_{0}$ and produce
-		harmonics with less intermodulation components. As all the reconstructions of the synthesised signal are
-		similar to each other it is more difficult for test participants to decide where to grade them on the
-		scale.  Where there is more variability between the stimuli, as for the acoustic signals, it becomes easier
-		for test participants to grade stimuli on the scale as they will need to be spread over a wider / larger
-		range.
-
-		\note
-		{
-			Link into further work, we need to model the relationships between harmonic amplitudes.
-		}
+		signal with no energy at inharmonic frequencies. This makes it easy to isolate the $f_{0}$ as the
+		transition band of the filter can occupy the entire frequency range between the $f_{0}$ and second harmonic
+		without affecting performance. This in turn reduces the number of unwanted intermodulation components
+		present in the generated harmonics. As all the reconstructions of the synthesised signal are similar to
+		each other it is more difficult for test participants to decide where to grade them on the scale. Where
+		there is more variability between the stimuli, as for the acoustic signals, it becomes easier for test
+		participants to grade stimuli on the scale as they will need to be spread over a wider / larger range.
 
 		All the systems evaluated in this section use the amplitude envelope of the $f_{0}$ to inform the amplitude
 		envelopes of the generated harmonics. This assumes that the amplitude envelopes of the harmonics in a
@@ -495,9 +485,12 @@
 		combinations are better matched as seen in Figure \ref{fig:CelloSpectrogram}. Building a system like this
 		however, requires knowledge of which harmonics in the input signal will be the best choice for
 		reconstructing a given harmonic. This will be different depending on the source of the signal and is not
-		calculable from a degraded input signal. Furthermore, the SSBA and IAP techniques are only able apply
-		frequency shifts at integer multiples of the frequency of the input signal. In order to generate all orders
-		of harmonic using these techniques the $f_{0}$ must be used as the input to the frequency shifter.
+		calculable from a degraded input signal. It is possible that models could be build describing the
+		relationship between the $f_{0}$ and harmonic's amplitudes for different classes of sound source. This
+		would require different processing algorithms for different inputs, increasing the complexity of using the
+		system. Furthermore, the SSBA and IAP techniques are only able apply frequency shifts at integer multiples
+		of the frequency of the input signal. In order to generate all orders of harmonic using these techniques
+		the $f_{0}$ must be used as the input to the frequency shifter.
 		
 		The degree of inaccuracy introduced can be estimated by examining the relationships of the harmonics'
 		amplitudes in the unprocessed test signals. As the systems rely on the amplitude envelope of the $f_{0}$
@@ -639,8 +632,11 @@
 		\end{gather}
 
 		Where $h_{n,f}$ is the amplitude of the $n$\super{th} harmonic in the $f$\super{th} frame of the STFT of
-		the signal and $F$ the total number of frames in the STFT. Harmonic variability values for the four test
-		signals used in this experiment are shown in Table \ref{tab:HarmonicVariabilities}.
+		the signal and $F$ the total number of frames in the STFT. This metric has a minimum value of zero,
+		describing a signal in which the amplitudes of the third through ninth harmonics are all linearly related
+		to that of the $f_{0}$. Higher values of harmonic variability describe signals in which these amplitude
+		ratios change more with time. Harmonic variability values for the four test signals used in this experiment
+		are shown in Table \ref{tab:HarmonicVariabilities}.
 
 		\begin{table}[h!]
 			\centering
