@@ -1312,16 +1312,27 @@
 			applied to produce these signals are less similar to those in the SAFE dataset, as seen in Figure
 			\ref{fig:CrunchDiffJeff}. This is possibly explained by the simplifications made to reduce the
 			effect's computational complexity. Using lower order filters increases the level of intermodulation
-			components in the individually generated harmonics. Controlling the relative levels of these
-			generated harmonics no longer has the expected effect on spectral irregularity as each generated
-			harmonic contains several spectral partials with unknown amplitudes.
-
+			components in the individually generated harmonics. This is illustrated in Figure
+			\ref{fig:CelloFilterOrderSpectra} which shows the spectra of two sixth order harmonics, each
+			generated from the $f_{0}$ isolated with a different filter. That generated using a second order
+			IIR filter, as done in the brightness / crunchiness effect, has greater levels of intermodulation
+			distortion than that using a high order FIR filter. 
+			
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter7/Images/CelloFilterOrderSpectra.pdf}
-				\caption{}
+				\caption{Spectra of sixth order IAP applied to the $f_{0}$ isolated with two different
+					 filters.}
 				\label{fig:CelloFilterOrderSpectra}
 			\end{figure}
+
+			If the generated harmonics are perfectly sinusoidal then the amplitude of each of the first six
+			harmonics in the output can be set precisely, allowing accurate control over the irregularity.
+			Higher levels of intermodulation distortion make the irregularity of the spectrum more difficult to
+			control as each of the generated harmonics is made up of several spectral partials. We are no
+			longer controlling the irregularity of only the first six harmonics but also that of the
+			intermodulation components. As the individual levels of these is not controllable, the amount of
+			control over the irregularity is reduced.
 
 			For the brightness / crunchiness effect's `bright' and `harsh' parameter settings only the measures
 			of Mahalanobis distance in the feature difference space are relevant (is in the analysis of the
