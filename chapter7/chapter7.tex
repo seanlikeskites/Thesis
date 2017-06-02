@@ -1202,11 +1202,11 @@
 			maps comparing the usage of terms by test participants and the terms the effects were designed to
 			control. Figure \ref{fig:HarshConfusion} for the results collected from the warmth / brightness
 			effect, Figure \ref{fig:CrunchConfusion} for the brightness / crunchiness effect and
-			\ref{fig:CombConfusion} the combination of data from both effects. Each cell in the figures
+			\ref{fig:CombConfusion} the combination of data from both effects. Each cell in the heat maps
 			represents the frequency with which one of the available descriptors (bottom) was used to describe
 			the timbral effect at the parameter position which was intended to produce a particular timbral
-			result (right). Above the figure is a dendrogram representing the clustering of terms based on
-			their frequency of usage.
+			result (right). Above the heat map is a dendrogram representing the clustering of terms based on
+			the frequency with which they were used to describe each of the parameter settings.
 
 			\begin{figure}[h!]
 				\centering
@@ -1255,17 +1255,14 @@
 			described as harsh, making it more difficult to design a transform which will sit in that region
 			for a wide range of input signals.
 			
-			Examining the mean cophenetic distances in Figure \ref{fig:HarshDiffCoph} could lead to the
-			conclusion that while listening test participants do not always use the terms which the warmth /
-			brightness effect was designed to elicit, on average they use terms which lie in the same cluster.
-			Referring to Figure \ref{fig:CombinedDifferenceClusters} we find three main clusters, which could
-			be described as `warmth' (containing the terms `mud', `boom', `smooth', `crunch', `full', `deep',
-			`warm' and `cream'), `distorted brightness' (containing the terms `fuzz', `bright', `harsh', `box'
-			and `rasp') and `equalised brightness' (containing the terms 'clear', `bright', `tin', `thin',
-			`air' and `harsh'). These three clusters have heights of 17.3, 13.5 and 16.5 respectively. The mean
-			cophenetic for each of the test signals all lie close to or below these cluster heights. Further
-			analysis is required to determine whether this indicates that participants are using terms in the
-			relevant clusters.
+			Comparing the mean cophenetic distances in Figure \ref{fig:HarshDiffCoph} and the heights of the
+			clusters discussed in Section \ref{sec:PerceptualExperiments-SemanticControl-Results} can give
+			insight into the effects perceptual performance. It is apparent that, for the majority of input
+			signals, the cophenetic distance between the given and intended descriptors lies below the height
+			of the cluster the intended descriptor belongs to. This could lead to the conclusion that, while
+			listening test participants do not always use the terms which the warmth / brightness effect was
+			designed to elicit, on average they use terms which lie in the same cluster. Further analysis of
+			the results shows that this is not always the case. 
 
 			The heat map in Figure \ref{fig:HarshConfusion} shows that `warm' was the most commonly used term
 			when describing the effect of the warmth / brightness effect with its parameter set to `warm',
@@ -1301,8 +1298,9 @@
 			Chapter \ref{chap:TimbreEvaluation}. Both the `bright' and `harsh' positions of the warmth /
 			brightness effect's parameter were labelled as `fuzzy' the most often. The `harsh' position was
 			labelled as `harsh' more often than the `bright' position, suggesting that the `harsh' position on
-			the slider produces `harsher' transforms than the `bright' position, but not that `harsh' does not
-			apply when describing signals processed with the parameter set to the `bright' position.
+			the slider produces `harsher' transforms than the `bright' position. This however, does not imply
+			that `harsh' cannot be applied when describing signals processed with the parameter set to the
+			`bright' position.
 			
 		\subsubsection*{Brightness / Crunchiness Effect}
 			In Chapter \ref{chap:TimbreEvaluation} it was concluded that `crunchiness' is defined by an output
@@ -1327,16 +1325,16 @@
 			dataset.
 
 			In Figure \ref{fig:CombinedClusters} the term `crunch' sits in different clusters depending on the
-			features used for clustering. When using the processed features it sits alongside `tin', `harsh',
-			`full', `thin', `air' and `clear', whereas using the feature differences it is part of the `warmth'
-			cluster described previously. Examining the mean cophenetic distances from the listening test
-			(Figure \ref{fig:CrunchCophs}) it appears that participants used terms which cluster closer to
-			`crunch' in the feature difference space when labelling the brightness / crunchiness effect's
-			`crunch' parameter position. Summing the relevant cells in the heat map shown in Figure
-			\ref{fig:CrunchConfusion} is is seen that using the clusters calculated from processed features,
-			participants only used terms in the same cluster as `crunch' 17\% of the time. Whereas when using
-			the feature difference this figure rises to 51\%. This might suggest that `crunch' is better
-			defined by properties of the transform rather than of the output signal.
+			features used for clustering. When using the processed features it is part of the `air' cluster,
+			whereas using the feature differences it is part of the `warmth' cluster. Examining the mean
+			cophenetic distances from the listening test (Figure \ref{fig:CrunchCophs}) it appears that
+			participants used terms which cluster closer to `crunch' in the feature difference space when
+			labelling the brightness / crunchiness effect's `crunch' parameter position. Summing the relevant
+			cells in the heat map shown in Figure \ref{fig:CrunchConfusion} is is seen that using the clusters
+			calculated from processed features, participants only used terms in the same cluster as `crunch'
+			17\% of the time. Whereas when using the feature difference this figure rises to 51\%. This might
+			suggest that `crunch' is better defined by properties of the transform rather than of the output
+			signal as initially concluded in Chapter \ref{chap:TimbreEvaluation}.
 
 			The performance of the brightness / crunchiness effect in its `bright' and `harsh' parameter
 			settings is similar to that of the warmth / brightness effect. The mean cophenetic distances in the
@@ -1357,35 +1355,41 @@
 			heat maps in Figures \ref{fig:HarshConfusion}, \ref{fig:CrunchConfusion} and
 			\ref{fig:CombConfusion}.
 
-			Across all three heat maps the terms group into two main clusters. A `fuzziness' cluster
-			(containing terms such as `fuzz', `rasp', `crunch' and `harsh') and a `warmth' cluster (containing
-			terms such as `warm', `mud', `full' and `cream'). This can be seen as a lower resolution version of
-			the clustering performed in Chapter \ref{chap:TimbreEvaluation} combining the warmth and muddiness
-			clusters and the brightness and crunchiness clusters. The two clusters identified represent
-			transforms which introduce a larger proportion of high frequency energy and those which introduce a
-			larger proportion of lower frequency energy.
+			Across all three heat maps the terms group into two main clusters, named for the most commonly used
+			term within them. A `fuzziness' cluster, , containing terms such as `fuzz', `rasp', `crunch' and
+			`harsh'; and a `warmth' cluster, containing terms such as `warm', `mud', `full' and `cream'. This
+			can be seen as a lower resolution version of the clustering performed in Chapter
+			\ref{chap:TimbreEvaluation} combining the warmth and muddiness clusters and the brightness and
+			crunchiness clusters. The two clusters identified represent transforms which introduce a larger
+			proportion of high frequency energy and those which introduce a larger proportion of lower
+			frequency energy.
 
 	\subsection{Conclusion}
 	\label{sec:PerceptualExperiments-SemanticControl-Conclusion}
 		This experiment has shown that, using information collected from the SAFE data and the harmonic excitation
 		systems developed in Chapter \ref{chap:FeatureControl}, harmonic excitation can be easily used to introduce
-		brightness and harshness to an audio signal while crunchiness is a more timbral adjective to isolate.
+		brightness and harshness to an audio signal while crunchiness is a difficult timbral adjective to isolate.
 
-		Both the warmth / brightness and brightness / crunchiness effects are successful in producing effect which
+		Both the warmth / brightness and brightness / crunchiness effects are successful in producing effects which
 		are described as `bright' and `harsh' by isolating the $f_{0}$, applying full wave rectification and high
 		pass filtering. `Hash' is confirmed to be a more exaggerated version of `bright', describing signals with
 		higher proportions of high frequency content. Due to the nature of the processing however, other terms are
-		also used to describe these effects such as `fuzzy' and `raspy'. These terms were associated with the SAFE
-		distortion effect in Chapter \ref{chap:TimbreEvaluation}, and so we expect that they may get used to
-		describe a harmonic excitation system.
+		also used to describe these effects such as `fuzzy' and `raspy'. These terms were only used to describe the
+		effects of the SAFE distortion in Chapter \ref{chap:TimbreEvaluation} indicating that they describe
+		features of distorted signals other than the proportion of energy at each end of the spectrum. The full
+		wave rectification used to generate high order harmonics is a static nonlinearity with a characteristic
+		curve which is discontinuous in its first derivative. This is similar to the hard peak clipper used in the
+		SAFE distortion, suggesting that these distortion descriptors are being used to describe the harmonics
+		introduced by the rectifier.
 
 		The results of the listening test with the warmth / brightness effect show that applying a low pass filter
 		with a cutoff frequency at the input's spectral centroid is not sufficient to produce a `warmer' sound.
 		Further analysis of the input signal may be necessary in order to ensure the resulting output is `warmer'
 		than it, ensuring that the low pass filter will give the correct proportion of low and high frequency
-		energy in the output. Crunchiness is also difficult to achieve despite being well defined in the timbre
-		spaces shown in Chapter \ref{chap:TimbreEvaluation}, where the `crunchy' and `warm' regions have an overlap
-		suggesting that there may be other factors which could be used by audio effects to better differentiate the
+		energy in the output. Crunchiness is also difficult to achieve, despite being give a high agreement score
+		in Chapter \ref{chap:TimbreEvaluation}. In the distortion effects timbre spaces it was shown that the
+		`crunchy' and `warm' regions have an overlap each other. More data and further analysis is need to
+		determine whether there are other factors which could be used by audio effects to better differentiate the
 		two.
 
 \section{Summary}
@@ -1400,11 +1404,12 @@
 	\ref{sec:PerceptualExperiments-Reconstruction}, when using a suitable harmonic generation method and sufficiently
 	selective filters these systems can produce reconstructions which are objectively similar to the non-degraded
 	signal and also perform well in subjective listening tests. One disadvantage of these systems is their reliance on
-	using the amplitude envelope of the $f_{0}$ in the reconstruction of harmonics. It has been shown that the degree
-	to which the amplitude envelopes of the harmonics in a signal differ from that of the $f_{0}$ dictates the
-	perceived quality of a reconstruction using these systems. If prior information is known about the relationships
-	between the harmonics in the signal being reconstructed the quality of the reconstruction could be improved by
-	selecting different harmonics to base the reconstructed amplitude envelopes on.
+	using the amplitude envelope of the $f_{0}$ in the reconstruction of harmonics. In Section
+	\ref{sec:PerceptualExperiments-Reconstruction-Discussion} it was shown that the degree to which the amplitude
+	envelopes of the harmonics in a signal differ from that of the $f_{0}$ dictates the perceived quality of a
+	reconstruction using these systems. If prior information is known about the relationships between the harmonics in
+	the signal being reconstructed the quality of the reconstruction could be improved by selecting different harmonics
+	to base the reconstructed amplitude envelopes on.
 
 	The parameters of these systems (individual harmonic gain and frequency shifts) can be mapped onto higher lever
 	`perceptual control' parameters which control particular audio features of a signal. The mappings between perceived
