@@ -1063,12 +1063,13 @@
 			the DAW session was also randomised to mitigate any effect the order of tracks may have had on
 			results.
 
-			For each effect, on each signal, participants were asked to first take a short time to audition the
-			effect to become accustomed to how changing the parameter value affects that particular input
-			signal. Once they had investigated the operation of the effect, they were asked to label the
+			Participants were asked to go through each test signal (DAW channel) in order and describe
+			operation of each of the plug-ins on that signal. First they were asked to take a short time to
+			audition each plug-in to become accustomed to how changing the parameter value affects the current
+			signal. Once they had investigated the operation of the plug-in, they were asked to label its
 			parameter slider at three positions (parameter values of 0, 0.5 and 1) with a term they felt best
-			described the timbral effect of the effect at that parameter setting. A list of available terms was
-			provided in a drop down list at each parameter value to be labelled as seen in Figure
+			described the timbral effect of the plug-in at that parameter setting. A list of available terms
+			was provided in a drop down list at each parameter value to be labelled as seen in Figure
 			\ref{fig:TestPlugInterface}. The available terms were the 17 unique terms from the SAFE dataset
 			discussed in Chapter \ref{chap:TimbreEvaluation} (airy, boomy, boxy, bright, clear, creamy,
 			crunchy, deep, full, fuzzy, harsh, muddy, raspy, smooth, thin, tinny and warm).
@@ -1146,7 +1147,15 @@
 			Cophenetic distances in both the processed feature dendrogram (Figure
 			\ref{fig:CombinedProcessedClusters}) and the feature difference dendrogram (Figure
 			\ref{fig:CombinedDifferenceClusters}) are shown in Figures \ref{fig:HarshProcCoph} and
-			\ref{fig:HarshDiffCoph} respectively.
+			\ref{fig:HarshDiffCoph} respectively. Coloured tick marks on the cophenetic distance axis represent
+			the heights of clusters identified in the relevant dendrogram. In the processed feature space there
+			are two clusters: `air', containing the terms `tin', `harsh', `full', `crunch', `thin', `air' and
+			`clear'; and `warmth' ,containing the terms `mud', `boom', `box', `smooth', `warm', `fuzz',
+			`cream', `rasp' and `bright'. In the feature difference space there are three clusters: `warmth',
+			containing the terms `mud', `boom', `smooth', `crunch', `full', `deep', `warm' and `cream';
+			`distorted brightness' (D:bright), containing the terms `fuzz', `bright', `harsh', `box' and
+			`rasp'; and `equalised brightness' (E:bright), containing the terms 'clear', `bright', `tin',
+			`thin', `air' and `harsh'.
 
 			\begin{figure}[h!]
 				\centering
@@ -1246,29 +1255,30 @@
 			described as harsh, making it more difficult to design a transform which will sit in that region
 			for a wide range of input signals.
 			
-			Examining the mean cophenetic distances in Figure \ref{fig:HarshDiffCoph} it might appear that
-			while listening test participants do not always use the terms which the warmth / brightness effect
-			was designed to elicit, on average they use terms which lie in the same cluster. Referring to
-			Figure \ref{fig:CombinedDifferenceClusters} we find three main clusters, which could be described
-			as `warmth' (containing the terms `mud', `boom', `smooth', `crunch', `full', `deep', `warm' and
-			`cream'), `distorted brightness' (containing the terms `fuzz', `bright', `harsh', `box' and `rasp')
-			and `equalised brightness' (containing the terms 'clear', `bright', `tin', `thin', `air' and
-			`harsh'). These three clusters have heights of 17.3, 13.5 and 16.5 respectively. The mean
+			Examining the mean cophenetic distances in Figure \ref{fig:HarshDiffCoph} could lead to the
+			conclusion that while listening test participants do not always use the terms which the warmth /
+			brightness effect was designed to elicit, on average they use terms which lie in the same cluster.
+			Referring to Figure \ref{fig:CombinedDifferenceClusters} we find three main clusters, which could
+			be described as `warmth' (containing the terms `mud', `boom', `smooth', `crunch', `full', `deep',
+			`warm' and `cream'), `distorted brightness' (containing the terms `fuzz', `bright', `harsh', `box'
+			and `rasp') and `equalised brightness' (containing the terms 'clear', `bright', `tin', `thin',
+			`air' and `harsh'). These three clusters have heights of 17.3, 13.5 and 16.5 respectively. The mean
 			cophenetic for each of the test signals all lie close to or below these cluster heights. Further
 			analysis is required to determine whether this indicates that participants are using terms in the
 			relevant clusters.
 
-			Figure \ref{fig:HarshConfusion} shows that `warm' was the most commonly used term when describing
-			the effect of the warmth / brightness effect when its parameter is set to `warm', followed by
-			`clear', `box' and `mud'. These descriptors lie across all three of the clusters identified in
-			Figure \ref{fig:CombinedDifferenceClusters}. Summing the cells of this figure shows that
-			participants only used descriptors in the same cluster as `warm' 54\% of the time. The mean
-			cophenetic distances for the `warm' transform in Figure \ref{fig:HarshDiffCoph} do not represent
-			participants using descriptors from the correct cluster. The failure of the effect to elicit terms
-			related to warmth from participants may indicate that warmth is not only defined by a shift in
-			spectral energy towards lower frequencies. Examining figure \ref{fig:HarshProcJeff} it is seen
-			that, for approximately half the test signals, the processed signals are significantly distant from
-			the region described as `warm' in the processed feature space constructed from the SAFE dataset.
+			The heat map in Figure \ref{fig:HarshConfusion} shows that `warm' was the most commonly used term
+			when describing the effect of the warmth / brightness effect with its parameter set to `warm',
+			followed by `clear', `box' and `mud'. These descriptors lie across all three of the clusters
+			identified in Figure \ref{fig:CombinedDifferenceClusters}. Summing the cells of the heat map shows
+			that participants only used descriptors in the same cluster as `warm' 54\% of the time. Thus the
+			mean cophenetic distances for the `warm' transform in Figure \ref{fig:HarshDiffCoph} do not
+			represent participants using descriptors from the correct cluster. The failure of the effect to
+			elicit terms related to warmth from participants may indicate that warmth is not only defined by a
+			shift in spectral energy towards lower frequencies. Examining figure \ref{fig:HarshProcJeff} it is
+			seen that, for approximately half the test signals, the processed signals are significantly distant
+			from the region described as `warm' in the processed feature space constructed from the SAFE
+			dataset.
 			
 			Considering only the changes in audio features described by transforms, the terms `bright' and
 			`harsh' seem to have different definitions depending on the type of processing applied, as seen in
