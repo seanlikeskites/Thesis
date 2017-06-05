@@ -11,24 +11,30 @@
 %		Individual Harmonic Generation (SMC paper)
 %		Psychoacoustic Enhancers
 
-\chapter{Harmonic Excitation for Timbral Control}
+\chapter{Comparative Evaluation of Harmonic Excitation Algorithms}
 \label{chap:ExcitationEvaluation}
 	Harmonic excitation algorithms developed for the applications discussed in the Section \ref{sec:Excitation-Uses}
 	are specialised to perform a particular task. As this work is concerned with the application of harmonic excitation
-	to real time timbral control some algorithms in the literature may not be applicable. In Section
+	to real time timbral control, some algorithms in the literature may not be suitable due to the predictability of
+	their effects on a signal or their inability to operate in real time. In Section
 	\ref{sec:ExcitationEvaluation-Evaluation} a set of criteria for assessing the suitability of a harmonic excitation
 	algorithms for use in this work are suggested. These criteria are then used to asses various algorithms in Section
 	\ref{sec:ExcitationEvaluation-Comparison}, a summary of each algorithms performance shown in Table
-	\ref{tab:ComparisonSummary}. Techniques for improving the performance of algorithms with respect to these criteria
-	are discussed where appropriate.
+	\ref{tab:ComparisonSummary}. Techniques by which the performance of several algorithms can be improved, with
+	respect to these criteria, are also discussed.
 
 \section{Evaluating Harmonic Excitation Algorithms for Use in Timbral Control}
 \label{sec:ExcitationEvaluation-Evaluation}
-	To prove useful for real time timbral control a harmonic excitation algorithm should provide efficient, intuitive
+	\note
+	{
+		Clarify that we are only considering control of timbre for tonal sounds with a single pitch.
+	}
+
+	To prove useful for real time timbral control, a harmonic excitation algorithm should provide efficient, intuitive
 	control over where energy is introduced into a signal's spectrum. \citet{larsen2004audio} evaluate a number of
 	algorithms for their use in bandwidth extension applications, discussing the spectral and temporal characteristics
-	of the systems. Similar properties are required of algorithms used for real time timbral control which will be
-	assessed again the following criteria:
+	of the systems. Similar properties are required for algorithms used in real time timbral control which will be
+	assessed against the following criteria:
 
 	\begin{itemize}
 		\item Complexity
@@ -51,51 +57,60 @@
 		is playing and the results heard immediately. In order to achieve this the algorithms used in the effect
 		must be efficient and operate with minimal latency. 
 
-		In order to ease the computational load on the processor, digital audio processing if often done in blocks.
-		A certain number of samples are recorded into a memory buffer and then all processed at once. This
-		introduces some latency into the system; the processing buffer must be filled with samples from the input
-		before an output can be produced. The larger the processing buffer size the more latency but the less the
+		In order to ease the computational load on the processor, digital audio is often processed in blocks.  A
+		certain number of samples are recorded into a memory buffer and then all processed at once. This introduces
+		some latency into the system; the processing buffer must be filled with samples from the input before an
+		output can be produced. The larger the processing buffer size the more latency but the less the
 		computational load as the cost of constructing and moving buffers is amortised across a greater number of
-		samples. Any processing applied to the block of audio must be completed within the allowed latency time, if
-		not there will be gaps between blocks during playback causing audible anomalies. For real time audio
-		effects it is crucial to keep throughput latency to a minimum. \citet{lester2007the} suggest that,
-		depending on the scenario, latencies as small as 1.4ms could be deemed unacceptable. In order to keep
-		latency to a minimum, processing algorithms should be able to operate in real time when using a small
-		buffer size. In a modern music production setting there may be several audio effects operating
-		concurrently, the algorithms used for real time harmonic excitation must not only be efficient enough to
-		run in real time but also to allow any concurrent processing to proceed uninterrupted.
-
-		Occasionally it is necessary to introduce a specific amount delay as part of the processing algorithm, such
-		as when applying a non-causal filter. This delay contributes to the overall latency of the effect and as
-		such will be discussed alongside an algorithm's complexity.
+		samples. Any processing applied to the block of audio must be completed within the latency time allowed by
+		the buffer size, if not there will be gaps between blocks during playback causing audible anomalies. For
+		real time audio effects it is crucial to keep throughput latency to a minimum. \citet{lester2007the}
+		suggest that, depending on the scenario, latencies as small as 1.4ms could be deemed unacceptable. In order
+		to keep latency to a minimum, processing algorithms should be able to operate in real time when using a
+		small buffer size.  Occasionally it is necessary to introduce a specific amount of delay as part of the
+		processing algorithm, such as when applying a non-causal filter. This delay contributes to the overall
+		latency of the effect and as such will be discussed alongside an algorithm's complexity.  In a modern music
+		production setting there may be several audio effects operating concurrently, therefore the algorithms used
+		for real time harmonic excitation must not only be efficient enough to run in real time but also to allow
+		any concurrent processing to proceed uninterrupted.
 
 	\subsection{Homogeneity}
 	\label{sec:ExcitationEvaluation-Evaluation-Homogeneity}
 		To make the application of an audio effect more intuitive it should produce similar perceived timbral
 		manipulations for all input signals. Often this is not the case with traditional audio signal processing
-		methods. For example, an equaliser can be used to amplify a certain band of frequencies is a signal. The
-		spectra of signals with energy in this frequency range will be altered while those of signals with no
-		energy in that band will be unaffected. This problem is compounded when the effect being applied is
-		non-homogeneous (does not satisfy the condition of homogeneity given by Equation \ref{eq:homogeneity}).
-		Nonlinear systems are typically non-homogeneous, this is undesirable when using them to achieve timbral
-		control as it means the effects are less easy to predict. A non-homogeneous system behaves differently
-		depending on the amplitude of the input signal. Different timbral transforms could be applied to the same
-		signal if its amplitude is changed slightly. From a user's point of view this makes control of the system
-		less intuitive as the perceived function of control parameters can change depending on signal level. The
-		algorithms used in harmonic excitation systems for timbral control should exhibit homogeneous behaviour in
-		order to increase the systems intuitiveness.
+		methods. For example, an equaliser can be used to amplify a certain band of frequencies is a signal. This
+		will have different effects depending on whether the input contain energy at these frequencies. The spectra
+		of signals with energy in this frequency range will be altered while those of signals with no energy in
+		that band will be unaffected. This problem is compounded when the effect being applied is non-homogeneous
+		(does not satisfy the condition of homogeneity given by Equation \ref{eq:homogeneity}).  Nonlinear systems
+		are typically non-homogeneous, this is undesirable when using them to achieve timbral control as it means
+		the effects are less easy to predict. A non-homogeneous system behaves differently depending on the
+		amplitude of the input signal. Different timbral transforms could be applied to the same signal if its
+		amplitude is changed slightly. From a user's point of view this makes control of the system less intuitive
+		as the perceived function of control parameters can change depending on signal level. The algorithms used
+		in harmonic excitation systems for timbral control should exhibit homogeneous behaviour in order to
+		increase the systems intuitiveness.
+
+		In the summary shown in Table \ref{tab:ComparisonSummary} the homogeneity of the algorithms evaluated in
+		this section is identified using four different terms. Homogeneous and non-homogeneous identify systems
+		which do and don't satisfy the principle of homogeneity. Positive homogeneous refers to systems which are
+		homogeneous for positive gain applied to the input signal (satisfying Equation \ref{eq:homogeneity} for
+		positive values of $a$). A number of the systems evaluates are linear time variant and therefore
+		homogeneous, these are identified as LTV systems.
 
 	\subsection{Spectral Characteristics}
 	\label{sec:ExcitationEvaluation-Evaluation-SpectralCharacteristics}
 		The algorithms presented in Section \ref{sec:Excitation-Methods} all introduce new spectral content to a
-		signal. Depending on the algorithm and the input signal the nature of this this new content can vary
-		greatly, ranging from wide bands comprising both harmonic and inharmonic partials to an individual harmonic
-		partial. To provide intuitive timbral control it is desirable that these spectral effects can be controlled
-		reliably for a wide range of input signals. An ideal algorithm would allow for control over the position,
-		width and content of the band of energy introduced. For example a system designed to only generate harmonic
-		partials should not introduce inharmonicity for any input signal. The system must be configured such that
-		none of the distortion components will lie at inharmonic frequencies and a limit should be set on the
-		maximum frequency generated to avoid aliasing being a potential source of inharmonicity.
+		signal. Depending on the algorithm and the input signal, the nature of this this new content can vary
+		greatly, ranging from wide bands comprising both harmonic and inharmonic partials to individual harmonic
+		partials. To provide intuitive timbral control a system should produce similar spectral effects despite the
+		content of the input signal. The degree to which these spectral effects can be manipulated using a system's
+		parameters also contributes to its usefulness. An ideal algorithm would allow for precise control over
+		where energy in introduced in the output spectrum. Several considerations must be made depending on the
+		desired spectral result. For example, a system designed to only generate harmonic partials should not
+		introduce inharmonicity for any input signal. The system must be configured such that none of the
+		distortion components lie at inharmonic frequencies and a limit should be set on the maximum frequency
+		generated to avoid aliasing being a potential source of inharmonicity.
 
 	\subsection{Temporal Characteristics}
 	\label{sec:ExcitationEvaluation-Evaluation-TemporalCharacteristics}		
@@ -103,8 +118,13 @@
 		primary concern however is ensuring that as little alteration is made to the temporal properties of a
 		signal's amplitude envelope as possible. For timbral manipulation it is not necessary to be this
 		restrictive, systems which change a signal's temporal properties may prove useful for controlling certain
-		aspects of timbre. As with a system's spectral characteristics the temporal characteristics of a system
-		used to timbral control should be predictable and similar across a large range of input signals.
+		aspects of timbre. The algorithms evaluated in the chapter exhibit a number of different temporal effects
+		on the amplitude envelopes of input signals. These mostly involve the lengthening or shortening of attack
+		and release times.  Certain algorithms are described as having a smearing effect on transients (rapid
+		changes in energy) in the signal. This refers to spreading out the time taken for a transient to occur over
+		a longer period. As with spectral characteristics, to provide intuitive timbral control the temporal
+		characteristics of a system used should produce the same result despite the properties of the input signal.
+		Again control over these properties provides another advantage.
 
 	\subsection{Flexibility}
 	\label{sec:ExcitationEvaluation-Evaluation-Flexibility}
@@ -148,8 +168,8 @@
 				\hline
 				\hline
 				Static Nonlinearity & $\mathcal{O}(n)$ & Non-homogeneous &
-				Introduction of a large band of distortion components, orders and roll off are determined by
-				properties of the characteristic curve. & 
+				Introduction of a large band of distortion components, orders and roll off are determined
+				by properties of the characteristic curve. & 
 				Possible effects on attack / release time. \tabularnewline
 				\hline
 				Rectifier & $\mathcal{O}(n)$ & Positive Homogeneous & 
@@ -344,8 +364,8 @@
 			Integration is a linear operation meaning that it satisfies the homogeneity principle. The
 			implementation give in Equation \ref{eq:Integrator} however only exhibits positive homogeneity due
 			to the rectification of the signal prior to integration. The sign of the gain applied to the input
-			signal also determines the points at which the output output signal is reset to zero. The signal
-			is reset on positive going zero crossings but a negative gain before in the input reverses the
+			signal also determines the points at which the output output signal is reset to zero. The signal is
+			reset on positive going zero crossings but a negative gain before in the input reverses the
 			direction of all zero crossings. Similarly to half wave rectification this may have audible effects
 			depending on the nature of the input signal.
 
@@ -694,8 +714,8 @@
 			integer factor will produce some inharmonic content due to this effect. Spectral leakage can be
 			minimised through the use of windowing functions such as the Hamming or Blackman-Harris windows.
 			Ignoring the effect of spectral leakage, the bandwidth of the output signal will be that of the
-			input multiplied by the stretching factor. This allows for effective minimisation of aliasing as the
-			signal can be low pass filtered before processing as done with single sideband automodulation.
+			input multiplied by the stretching factor. This allows for effective minimisation of aliasing as
+			the signal can be low pass filtered before processing as done with single sideband automodulation.
 		
 		\subsubsection*{STTR}
 			The spectral effects of STTR depends on the properties of the input signal and the window function
@@ -963,22 +983,22 @@
 
 \section{Conclusion}
 	This chapter has discussed the characteristics of the harmonic generation algorithms presented in Chapter
-	\ref{chap:Excitation}, highlighting their desirable / undesirable traits when applied to timbral control. Two
-	broad classes of harmonic generators are identified; those which generate large numbers of distortion components
-	with little control over their frequencies / amplitudes and those which provide control over the orders of
-	distortion introduced, sometimes allowing for the generation of individual harmonics. There is typically a
-	compromise made between control and computational complexity, algorithms providing more control over the resulting
-	spectrum requiring more computation.
+	\ref{chap:Excitation}, highlighting their desirable / undesirable traits when applied to timbral control. Two broad
+	classes of harmonic generators are identified; those which generate large numbers of distortion components with
+	little control over their frequencies / amplitudes and those which provide control over the orders of distortion
+	introduced, sometimes allowing for the generation of individual harmonics. There is typically a compromise made
+	between control and computational complexity, algorithms providing more control over the resulting spectrum
+	requiring more computation.
 
 	Static nonlinearities and integrators are the best choice where a large series of distortion components need be
 	created efficiently. The traditionally used peak clipper might not be the most suitable for intuitive timbral
 	control due to its non-homogeneity. Rectifiers and integrators however, are both positive homogeneous systems.
 	Selecting between rectification and integration depends on the characteristics required for a timbral manipulation.
-	Rectification will only generate even order distortion but well have negligible effect on any temporal properties of
-	a signal. Integration generates all orders of distortion but has a low pass filter response which will increase the
-	attack times of input transients. Neither of these methods provide any control over the maximum order of distortion
-	introduced leading to possible problems with aliasing. Rectification, as a static nonlinearity, can be bandlimited
-	through approximation with a harmonic mixer while no bandlimiting methods are provided for integrators.
+	Rectification will only generate even order distortion but well have negligible effect on any temporal properties
+	of a signal. Integration generates all orders of distortion but has a low pass filter response which will increase
+	the attack times of input transients. Neither of these methods provide any control over the maximum order of
+	distortion introduced leading to possible problems with aliasing. Rectification, as a static nonlinearity, can be
+	bandlimited through approximation with a harmonic mixer while no bandlimiting methods are provided for integrators.
 
 	Where finer control over the spectral structure of the output is desired, more complex algorithms are needed. Here
 	SSBA and IAP and spectral stretching have desirable characteristics. Each of these algorithms are able to generate
@@ -995,3 +1015,28 @@
 	used to inform the design of harmonic excitation systems. The properties of the algorithms identified allow these
 	systems to be configured to control specific audio features (defined in Chapter \ref{chap:Timbre}) of an input
 	signal.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
