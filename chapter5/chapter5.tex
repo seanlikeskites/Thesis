@@ -385,11 +385,10 @@
 			\end{figure}
 
 		\subsubsection*{Rectification}
-			Rectifiers exhibit a less strict form of homogeneity; positive homogeneity. They satisfy Equation
-			\ref{eq:homogeneity} only for non-negative values of $a$. For full wave rectification this can be
-			summarised using Equation \ref{eq:FullWaveRectificationHomogeneity}. For negative values of $a$ the
-			right hand side of the equation is the additive inverse of the left hand side. This has little
-			effect on the use of a full wave rectifier as the output is always positive.
+			Both half and full wave rectifiers exhibit positive homogeneity. For full wave rectification this
+			can be summarised using Equation \ref{eq:FullWaveRectificationHomogeneity}. For negative values of
+			$a$ the right hand side of the equation is the additive inverse of the left hand side. This has
+			little effect on the use of a full wave rectifier as the output is always positive.
 
 			\begin{equation}
 				\abs{ax[n]} = a\abs{x[n]}, \quad a \geq 0
@@ -399,18 +398,18 @@
 			Half wave rectification behaves slightly differently in that the sign of the gain applied to a
 			signal before processing determines which parts of the signal are zeroed. If a negative gain is
 			applied the positive portions of the original input are made negative and are therefore zeroed by
-			the rectification. For simple signals, with similar negative and positive going portions, this is
-			of no concern but for more complex signals the choice of which portions are zeroed may make a
-			perceivable difference.
+			the rectification. For simple signals, with similar negative and positive portions, this is of no
+			concern but for more complex signals the choice of which portions are zeroed may make a perceivable
+			difference.
 
 		\subsubsection*{Integrator}
 			Integration is a linear operation meaning that it satisfies the homogeneity principle. The
-			implementation give in Equation \ref{eq:Integrator} however only exhibits positive homogeneity due
+			implementation given in Equation \ref{eq:Integrator} however only exhibits positive homogeneity due
 			to the rectification of the signal prior to integration. The sign of the gain applied to the input
-			signal also determines the points at which the output output signal is reset to zero. The signal is
-			reset on positive going zero crossings but a negative gain before in the input reverses the
-			direction of all zero crossings. Similarly to half wave rectification this may have audible effects
-			depending on the nature of the input signal.
+			signal also determines the points at which the output signal is reset to zero. The signal is reset
+			on positive zero crossings but a negative gain before in the input reverses the direction of all
+			zero crossings. Similarly to half wave rectification this may have audible effects depending on the
+			nature of the input signal.
 
 		\subsubsection*{Multiplier}
 			Exponentiation is a non-homogeneous operation. Any gain applied to a signal prior to processing is
@@ -421,13 +420,20 @@
 				\label{eq:MultiplierHomogeneity}
 			\end{equation}
 
-			Unlike clipping algorithms there is no threshold parameter to change in response to the amplitude
-			of the input signal. Gain stages can be added before and after the nonlinearity in order to make
-			the system's response to different input amplitudes more uniform.
+			As with peak clipping systems, multipliers can be made homogeneous by the addition of a gain stage
+			either side of the nonlinearity (as in Figure \ref{fig:HomogeneousClipping}). For multipliers this
+			effect can only be achieved using gain stages as there is no threshold parameter to change in
+			response to the amplitude of the input signal.
 
 		\subsubsection*{SSBA}
 			As with multipliers, SSBA is a non-homogeneous process. The amplitude envelope of the $h$\super{th}
-			order automodulation is the amplitude envelope of the original signal raised to the power $h$. 
+			order automodulation is the amplitude envelope of the original signal raised to the power $h$ as
+			shown in Equation \ref{eq:SSBAHomogeneity}.
+
+			\begin{equation}
+				\Re \left( (ax_{a}[n])^{h} \right) = a^{h} \Re \left( x_{a}^{h}[n] \right)
+				\label{eq:SSBAHomogeneity}
+			\end{equation}
 
 		\subsubsection*{IAP}
 			The IAP method is homogeneous when used to generate odd order harmonics but is only positive
