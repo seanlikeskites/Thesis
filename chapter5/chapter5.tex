@@ -222,11 +222,14 @@
 		of full wave rectification in which a single absolute value operation is applied for each sample. As the
 		characteristic curve of the nonlinearity becomes more complex the computational load increases. Hard
 		clipping and half wave rectification require comparison operations to determine which samples should be
-		altered. Further complexity is introduced where the characteristic curve require some computation such as
-		with exponential static nonlinearities and soft clippers. The transition section of the soft clipper given
-		in Equation \ref{eq:SymmetricSoftClipping} requires a considerable number of operations to calculate. In
-		situations where the number of calculations becomes too large the computational load can be decreased by
-		using a precomputed lookup table of input and output values.
+		altered. Further complexity is introduced for soft clippers where the characteristic curve is described by
+		a polynomial or trigonometric function. The transition section of the soft clipper given in Equation
+		\ref{eq:SymmetricSoftClipping} requires a considerable number of operations to calculate. In situations
+		where the number of calculations becomes too large, the computational load can be decreased using a
+		precomputed lookup table of input and output values. A certain number of points on the characteristic curve
+		are precomputed and stored as a table in memory. The output value for a given input is then looked up in
+		this table rather than being calculated. For input values which are not in the precomputed table
+		interpolation methods can be used to predict the output value.
 
 		Every other algorithm presented in Section \ref{sec:Excitation-Methods} involves some dependence on the
 		previous input and output samples of the system. Implementing these algorithms involves the use of
@@ -239,8 +242,8 @@
 		Spectral folding using Equation \ref{eq:SpectralFolding} requires a low pass filter in order to reduce the
 		aliasing introduced by downsampling the signal. This filter comprises the majority of the complexity of the
 		system leading to a trade off between computational complexity and the level of aliasing. Increasing the
-		order of the filter will better reduce aliasing while increasing the overall complexity. More complex
-		filtering is required by those algorithms which operate on an analytic signal (SSBA, IAP and Spectral
+		order of the filter will better reduce aliasing while increasing the overall complexity. Additional
+		filtering is also required by those algorithms which operate on an analytic signal (SSBA, IAP and Spectral
 		Replication). The Hilbert transform of the input signal must be computed in order to construct the analytic
 		signal. The Hilbert transform filter used must have a suitably consistent response for a wide range of
 		frequencies so the resulting harmonic excitation gives similar results at different frequencies. As shown
@@ -253,21 +256,25 @@
 		accuracy, complexity and introduced delay.  Once an analytic signal has been constructed, little additional
 		computation is required. SSBA requires the evaluation of a complex exponential for each sample. IAP and
 		spectral replication, however, require the computation of trigonometric functions, be it to calculate the
-		complex argument of the analytic signal or to synthesis a modulating signal.
+		complex argument of the analytic signal or to synthesise a modulating signal.
 
 		Spectral stretching using a phase vocoder requires a large amount of computation. Calculating the STFT
 		involves splitting the signal into frames on which the DFT is then computed. The frame size used in the
-		calculation of the STFT must be sufficient enough to represent the detail in the input signal. Larger frame
-		sizes however introduce more latency into the system. The phase correction for each frame must then be
-		computed and applied before the inverse DFT of each frame is taken and the frames summed back together with
-		the new hop size. The resulting signal then needs to be resampled requiring further operations. If the
-		scaling factor is not an integer value, the resampling process will require additional interpolation
-		calculations. Several steps can be taken to reduce the work needed when using a phase vocoder. The
-		computational complexity of the DFT calculations can be reduced from $\mathcal{O} \left( n^{2} \right)$ to
-		$\mathcal{O}(n\log{n})$, where $n$ is the number of samples on which the DFT is being computed, by using
-		the fast Fourier transform \citep{portnoff1976implementation}. When shifting the frequencies upwards, the
-		amount of work can be further reduced by resampling the signal prior to calculating the STFT
-		\citep{laroche1999new}. This way there are fewer frames for which the DFT need be calculated.
+		calculation of the STFT must be sufficient enough to represent the detail in the input signal. Frames of
+		size $N$ represent the spectrum in frequency bins $\frac{f_{s}}{N}$Hz apart. Larger frame sizes give finer
+		spectral detail while introducing more latency into the system, as $N$ samples of input must have been
+		produced before a frame of the STFT can be calculated. When building a phase vocoder a balance must be made
+		between the frequency resolution of the STFT and the desired amount of latency. After calculation of the
+		STFT, the phase correction for each frame is computed and applied before the inverse DFT of each frame is
+		taken and the frames summed back together with the new hop size. The resulting signal then needs to be
+		resampled requiring further operations. If the scaling factor is not an integer value, the resampling
+		process will require additional interpolation calculations. Several steps can be taken to reduce the work
+		needed when using a phase vocoder. The computational complexity of the DFT calculations can be reduced from
+		$\mathcal{O} \left( n^{2} \right)$ to $\mathcal{O}(n\log{n})$, where $n$ is the number of samples on which
+		the DFT is being computed, by using the fast Fourier transform \citep{portnoff1976implementation}. When
+		shifting the frequencies upwards, the amount of work can be further reduced by resampling the signal prior
+		to calculating the STFT \citep{laroche1999new}. This way there are fewer frames for which the DFT need be
+		calculated.
 
 		The computational complexity of STTR depends on the ratio of the step size, $\delta$, and the length of the
 		window function, $L$, in samples. As $\frac{\delta}{L}$ decreases the number of overlapping frames needed
