@@ -285,38 +285,43 @@
 
 	\subsection{Homogeneity}
 	\label{sec:ExcitationEvaluation-Comparison-Homogeneity}
-
 		\subsubsection*{Static Nonlinearities}
 			The homogeneity of a static nonlinearity depends on its characteristic curve. Changing the
 			amplitude of a sinusoidal input changes the amplitudes of each of the harmonics generated in the
 			output. The response of of several different clipping curves to changing input amplitude was
 			investigated by \citet{enderby2012harmonic}. The levels of individual harmonics in the output were
-			plotted as a function of the input signals peak amplitude. Figures \ref{fig:HardClippingHarmonics}
-			and \ref{fig:SoftClippingHarmonics} show these plots for the clipping functions described in
-			Section \ref{sec:Excitation-Methods-Statics}.
+			plotted as a function of the input sinusoid's peak amplitude. Figures
+			\ref{fig:HardClippingHarmonics} and \ref{fig:SoftClippingHarmonics} show these plots for the
+			clipping functions described in Section \ref{sec:Excitation-Methods-Statics}.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/HardClippingHarmonics.pdf}
-				\caption{Individual harmonic distortion levels for Equation \ref{eq:SymmetricHardClipping}
-					 with a threshold of 0.5.}
+				\caption{Individual harmonic distortion levels for a symmetric hard peak clipper (Equation
+					 \ref{eq:SymmetricHardClipping}) with a threshold of 0.5.}
 				\label{fig:HardClippingHarmonics}
 			\end{figure}
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/SoftClippingHarmonics.pdf}
-				\caption{Individual harmonic distortion levels for Equation \ref{eq:SymmetricSoftClipping}
-					 with a threshold of 0.5.}
+				\caption{Individual harmonic distortion levels for a symmetric soft peak clipper (Equation
+					 \ref{eq:SymmetricSoftClipping}) with a threshold of 0.5.}
 				\label{fig:SoftClippingHarmonics}
 			\end{figure}
 
-			The first thing to note is that new harmonic components are only introduced once the input
-			amplitude extends out of the linear section of the characteristic curve. Once the input amplitude
-			reaches a sufficient level harmonics are introduced but their amplitudes all vary independently.
-			This behaviour can be improved on through the use of a different clipping function. Equation
-			\ref{eq:SymmetricExponentialClipping} shows a function used to apply exponential clipping to a
-			signal.
+			For both hard and soft peak clippers, the levels of harmonics produced depends on the proportion of
+			the input signal which is processed nonlinearly. For signals with amplitudes within the linear
+			section of a clipper's characteristic curve no harmonics are produced. This is evidenced by the
+			blank sections of Figures \ref{fig:HardClippingHarmonics} and \ref{fig:SoftClippingHarmonics} for
+			low input amplitudes. When the input amplitude exceeds the linear section of the characteristic
+			curve additional harmonics are created. As the input amplitude increases further the amplitudes of
+			each of these harmonics vary independently of one another. Furthermore, the way in which the
+			amplitude of a particular order of harmonic varies is dependent on the characteristic curve of the
+			nonlinearity. These characteristics cause clippers to have vastly different perceived effects
+			depending on input amplitude. This behaviour can be improved on through the use of a different
+			clipping function. Equation \ref{eq:SymmetricExponentialClipping} shows a function used to apply
+			exponential clipping to a signal.
 			
 			\begin{equation}
 				y[n] = \begin{cases}
@@ -327,10 +332,11 @@
 				\label{eq:SymmetricExponentialClipping}
 			\end{equation}
 
-			Where $E$ is a second parameter called the exponent. One advantage of this clipper is that it has
-			no linear section. This means that harmonics are generated for input signals of any amplitude.
-			Another advantage is that the levels of the generated harmonics vary more uniformly with input
-			amplitude as shown in Figure \ref{fig:ExponentialClippingHarmonics}.
+			Where $E$ is a second parameter defining the exponent of the system. One advantage of this clipper
+			is that it has no linear section meaning that harmonics are generated for input signals of any
+			amplitude. Another advantage is that while the system is still non-homogeneous, the levels of the
+			generated harmonics vary monotonically with input amplitude as shown in Figure
+			\ref{fig:ExponentialClippingHarmonics}.
 
 			\begin{figure}[h!]
 				\centering
@@ -341,11 +347,42 @@
 				\label{fig:ExponentialClippingHarmonics}
 			\end{figure}
 
-			The non-homogeneity of simple clipping systems can be counteracted by introducing gain stages
-			either side of the clipping stage. The first gain stage scales the signal so that the clipping
-			stage will always clip the same proportion of the signal. The second gain stage scales the signal
-			back to the original input amplitude. Analogously the clipping function can be scaled so it always
-			clips the same proportion of the signal, as done by \citet{deman2014adaptive}.
+			Simple peak clipping systems can be made homogeneous by introducing gain stages either side of the
+			clipping stage as shown in Figure \ref{fig:HomogeneousClipping}. The first gain stage scales the
+			signal such that the clipping stage will always clip the same proportion of the signal. To achieve
+			this the amplitude of the input signal must be tracked in order to adjust the gain correctly. The
+			second gain stage then scales the signal back to the original input amplitude. In an analogous
+			manner the characteristic curve of the clipper can be scaled so it always clips the same proportion
+			of the signal, as suggested by \citet{deman2014adaptive}.
+
+			\begin{figure}[h!]
+				\centering
+				\begin{tikzpicture}
+					\node (In) at (0, 1) {$x[n]$};
+					\node (InGain) [gain] at (2.5, 1) {};
+					\draw (In) -- (InGain);
+
+					\coordinate (MidIn) at (0.75, 1);
+					\coordinate (AmpIn) at (0.75, 2);
+					\node (Amp) [draw] at (2.5, 2) {Amplitude Follower};
+					\draw (MidIn) -- (AmpIn);
+					\draw (AmpIn) -- (Amp);
+					\draw (Amp) -- (InGain);
+
+					\node (Clip) [draw] at (4.5, 1) {Peak Clipper};
+					\draw (InGain) -- (Clip);
+
+					\coordinate (MidOut) at (6.5, 2);
+					\node (OutGain) [gain] at (6.5, 1) {};
+					\draw (Clip) -- (OutGain);
+					\draw (Amp) -- (MidOut) -- (OutGain);
+
+					\node (Out) at (7.5, 1) {$y[n]$};
+					\draw (OutGain) -- (Out);
+				\end{tikzpicture}
+				\caption{Gain stages introduced to make a peak clipping system homogeneous.}
+				\label{fig:HomogeneousClipping}
+			\end{figure}
 
 		\subsubsection*{Rectification}
 			Rectifiers exhibit a less strict form of homogeneity; positive homogeneity. They satisfy Equation
