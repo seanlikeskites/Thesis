@@ -426,13 +426,32 @@
 			response to the amplitude of the input signal.
 
 		\subsubsection*{SSBA}
-			As with multipliers, SSBA is a non-homogeneous process. The amplitude envelope of the $h$\super{th}
-			order automodulation is the amplitude envelope of the original signal raised to the power $h$ as
-			shown in Equation \ref{eq:SSBAHomogeneity}.
+			As with multipliers, SSBA is a non-homogeneous process: the gain applied to the input signal is
+			raised to the same power as the signal as shown in Equation \ref{eq:SSBAHomogeneity}.
 
 			\begin{equation}
 				\Re \left( (mx_{a}[n])^{h} \right) = m^{h} \Re \left( x_{a}^{h}[n] \right)
 				\label{eq:SSBAHomogeneity}
+			\end{equation}
+			
+			Expressing the analytic signal in polar form it can be shown that the amplitude envelope of the
+			$h$\super{th} order SSBA is the amplitude envelope of the original signal raised to the power $h$
+			as seen in Equation \ref{eq:PolarSSBA}.
+
+			\begin{gather}
+				x_{a}^{h}[n] = \abs{x_{a}[n]}^{h} e^{ih\arg (x_{a}[n])}
+				\label{eq:PolarSSBA}
+			\end{gather}
+
+			As the output's amplitude envelope is know in terms of the input's, the output can be normalised in
+			an attempt to make the system homogeneous. Multiplying the output of the $h$\super{th} order SSBA
+			by $\abs{x_{a}[n]}^{1-h}$ is equivalent to applying $h$\super{th} order IAP as shown by equation
+			\ref{eq:SSBAandIAP}. The homogeneity of this system is discussed in the following section.
+
+			\begin{equation}
+				\abs{x_{a}[n]}^{1-h} \Re \left( x_{a}^{h}[n] \right) = 
+				\abs{x_{a}[n]} \cos \left( h\arg(x_{a}[n]) \right)
+				\label{eq:SSBAandIAP}
 			\end{equation}
 
 		\subsubsection*{IAP}
@@ -441,13 +460,16 @@
 			positive homogeneous as application of a non-negative gain will alter only the amplitude of a
 			signal leaving its phase information unchanged (Equation \ref{eq:IAPPositiveHomogeneity}).
 
-			\begin{gather}
-				\abs{mx_{a}[n]} = m\abs{x_{a}[n]} \nonumber \\
-				\arg(mx_{a}[n]) = \arg(x_{a}[n]), \quad m \geq 0
+			\begin{equation}
+				\begin{array}{c}
+					\abs{mx_{a}[n]} = m\abs{x_{a}[n]} \\
+					\arg(mx_{a}[n]) = \arg(x_{a}[n])
+				\end{array}
+				, \quad m \geq 0
 				\label{eq:IAPPositiveHomogeneity}
-			\end{gather}
+			\end{equation}
 
-			Application of a negative gain however changes the phase of the signal (Equation
+			Application of a negative gain however, changes the phase of the signal (Equation
 			\ref{eq:NegativeGainPhase}).
 						
 			\begin{equation}
@@ -466,15 +488,22 @@
 			\end{equation}
 
 			The $-h\pi$ radian offset in phase introduced by the scaling means that the polarity of the output
-			is changed depending on the parity of $h$. If the input signal to a harmonic excitation system
-			using IAP is inverted the odd order harmonics generated will also be inverted while the even order
-			ones will not. This could have dramatic timbral effects if the generated harmonics are being summed
-			with other signals with the same frequency components.
+			is changed depending on the parity of $h$. Odd values of $h$ result in a phase difference of an odd
+			multiple of $\pi$ radians, corresponding to an additive inversion of the signal. Even values of $h$
+			produce a phase difference of an even multiple of $pi$ radians, having no effect on the signal. If
+			the input signal to a harmonic excitation system using IAP is inverted the odd order harmonics
+			generated will also be inverted while the even order ones will not. This could have dramatic
+			timbral effects if the generated harmonics are being summed with other signals that include the
+			same frequency components.
 
 		\subsubsection*{Spectral Stretching}
 			The phase vocoder algorithm used for spectral stretching is a homogeneous system. When processing
-			the signal in the frequency domain only the phase information is altered, leaving magnitude
-			information unchanged. 
+			the signal in the frequency domain only the phase information is altered, leaving the magnitude
+			information unchanged. As seen with the analysis of the IAP system it is possible that phase shifts
+			of odd multiples of $\pi$ radians will cause non-homogeneous behaviour. As the phase corrections
+			for each new frame of the STFT are calculated iteratively from previous frames this should not
+			occur. When processing the first frame the output signal should have the same phase information as
+			the input signal avoiding any unwanted signal inversions.
 
 		\subsubsection*{Linear Time Variant Algorithms}
 			The remaining algorithms (spectral replication using Equation \ref{eq:SpectralReplication},
