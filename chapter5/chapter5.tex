@@ -670,17 +670,14 @@
 			amplitudes of frequencies in the output just the overall amplitude of the signal.
 
 		\subsubsection*{Multiplier}
-			Nonlinear processing using Equation \ref{eq:Multiplier}, in which the exponent is a positive
-			integer, allows for control over the maximum order of distortion generated. The highest frequency
-			present among those generated will be equal to the highest frequency in the input signal multiplied
-			by the exponent. This facilitates more control over the bandwidth of the generated signal providing
-			greater flexibility and minimisation of aliasing.
-
-			If the exponent is allowed to take any positive value, control over the bandwidth of the output
-			signal is lost. Non integer exponents cause higher orders of distortion to be generated. Figures
-			\ref{fig:CubedSpectra} and \ref{fig:TwoAndAHalfSpectra} show the spectral effects of exponential
-			static nonlinearities with integer and non-integer exponents. The input signal has an $f_{0}$ of
-			1kHz and has energy in the first four harmonics.
+			Nonlinear processing using a multiplier (Equation \ref{eq:Multiplier}) in which the exponent is a
+			positive integer, allows for control over the maximum order of distortion generated. The highest
+			frequency present among those generated will be equal to the highest frequency in the input signal
+			multiplied by the exponent, $h$. This effect is illustrated in Figure \ref{fig:CubedSpectra} which
+			shows the spectral effects of cubing an arbitrary compound signal. The input signal has an $f_{0}$
+			of 1kHz and has energy in its first four harmonics making the highest frequency present 4kHz. After
+			cubing the signal the highest frequency is three times this (12kHz) as seen in Figure
+			\ref{fig:CubedSpectra}.
 
 			\begin{figure}[h!]
 				\centering
@@ -688,6 +685,18 @@
 				\caption{The spectral effects of cubing a signal with energy in its first four harmonics.}
 				\label{fig:CubedSpectra}
 			\end{figure}
+
+			This upper bound on the order of distortion introduced allows for effective reduction / elimination
+			of aliasing. As the highest frequency in the output is $h$ times that in the input, ensuring the
+			input has no frequency components over $\frac{f_{s}}{2h}$Hz ensures that all frequency components
+			in the output will be below the Nyquist. Low pass filtering the input at this frequency is an
+			effective means of reducing the aliasing introduced.
+
+			For an exponential static nonlinearity (one in which the exponent is can take any positive value)
+			control over the bandwidth of the output signal is lost. Non integer exponents cause higher orders
+			of distortion to be generated. Figure \ref{fig:TwoAndAHalfSpectra} shows the spectral effects of
+			raising the same input signal to the power 2.5. Here it is evident that there is no upper bound on
+			the order of distortion components generated.
 
 			\begin{figure}[h!]
 				\centering
@@ -697,20 +706,18 @@
 				\label{fig:TwoAndAHalfSpectra}
 			\end{figure}
 
-			The highest frequency component in the original signal is 4kHz. After cubing the signal the highest
-			frequency is three times this (12kHz) as seen in Figure \ref{fig:CubedSpectra}. Figure
-			\ref{fig:TwoAndAHalfSpectra} shows that when the exponent is 2.5 higher frequency components are
-			introduced. The lowest frequency component in the output signal is not bound not matter what the
-			exponent used is. For even exponents there will always be some 0Hz (DC offset) energy introduced.
+			The lowest frequency component in the output signal is not bound regardless of the exponent used.
+			For even exponents the output will always be positive meaning there will always be some 0Hz (DC
+			offset) energy introduced.
 
 		\subsubsection*{SSBA}
 			SSBA extends the control provided by multipliers as it constrains the minimum frequency introduced
 			as well as the highest. Using Equation \ref{eq:SSB} only the upper sideband (the sum frequencies)
-			of the modulation is produced. The highest and lowest frequency components of the output are that
-			of the input signal multiplied by the exponent. All other harmonic and intermodulation components
-			created lie between these two frequencies. This can be seen in figure \ref{fig:SSBA3Spectra}, which
-			shows the results of applying $3$\super{rd} order SSBA to the signal used in Figures
-			\ref{fig:CubedSpectra} and \ref{fig:TwoAndAHalfSpectra}. 			
+			of the modulation is produced. The highest and lowest frequency components of the output are those
+			of the input signal multiplied by the exponent, $h$. All other harmonic and intermodulation
+			components created lie between these two frequencies. This can be seen in figure
+			\ref{fig:SSBA3Spectra}, which shows the results of applying $3$\super{rd} order SSBA to the signal
+			used in Figures \ref{fig:CubedSpectra} and \ref{fig:TwoAndAHalfSpectra}. 			
 			
 			\begin{figure}[h!]
 				\centering
@@ -720,22 +727,21 @@
 				\label{fig:SSBA3Spectra}
 			\end{figure}
 
-			If aliasing does occur it is possible for the aliased frequency to lie outside of this bandwidth.
-			The amplitude of aliased frequencies can be greatly reduced through filtering. Applying a low pass
-			filter with a cutoff frequency of $\frac{f_{s}}{2h}$ prior to processing will reduce the amplitude
-			of any frequency content in the input which will cause aliasing when processed.
+			As with a multiplier, the bound SSBA gives on the maximum frequency in the output allows for
+			effective control of aliasing. Again, low pass filtering the input at $\frac{fs}{2h}$Hz prior to
+			processing will remove those components in the inputs that will be aliased when processed.
 
 			The bounding of the frequencies in the output signal means that SSBA will produce a single harmonic
-			if the input is a sinusoid. This is useful in situations when fine control is required over the
-			content of the output spectrum. An output signal can be constructed through the generation of
-			several individual harmonics.
+			if the input is a sinusoid as shown in Equation \ref{eq:OneSideband}. This is useful in situations
+			in which fine control is required over the content of the output spectrum. An output signal can be
+			constructed through the generation of several individual harmonics.
 
 		\subsubsection*{IAP}
 			Like the SSBA method, if the input is sinusoidal the IAP method will generate a single harmonic. In
-			contrast to the SSBA method, for more complex input signals the IAP method provides little control
-			over the bandwidth of the output when the input has multiple frequency components. Figure
-			\ref{fig:IAP3Spectra} shows the spectral effects of third order IAP processing on the same signal
-			used when discussing previous algorithms.
+			contrast to the SSBA method, the IAP method provides little control over the bandwidth of the
+			output when the input has multiple frequency components. Figure \ref{fig:IAP3Spectra} shows the
+			spectral effects of third order IAP processing on the same signal used when discussing previous
+			algorithms.
 
 			\begin{figure}[h!]
 				\centering
@@ -746,26 +752,29 @@
 			\end{figure}
 
 			When multiple frequency components are present in the input signal, IAP processing produces energy
-			at high order distortion components. As with previous algorithms, it may be necessary to upsample
-			the signal before processing to avoid aliasing of these frequencies.
+			at high order distortion components. The exact orders and amplitudes of the distortion components
+			produces are dependant on the content of the input signal and the order of IAP applied. As with
+			previous algorithms, it may be necessary to upsample the signal before processing to avoid aliasing
+			of these frequencies.
 
 		\subsubsection*{Spectral Replication}
 			In spectral replication each frequency component is shifted by the same amount, preserving the
 			differences between them. This is useful for harmonic excitation of simple harmonically structured
-			signals. Providing the spectrum is shifted by an integer multiple of the $f_{0}$ any components at
-			harmonic frequencies in the input will remain harmonic frequencies at the output.  This process
-			avoids the intermodulation distortion inherent to the systems discussed previously. 
+			signals. Providing the spectrum is shifted by an integer multiple of the $f_{0}$, any components at
+			harmonic frequencies in the input will remain harmonic frequencies at the output. Being an LTV
+			system, spectral replication avoids the intermodulation distortion inherent to the systems
+			discussed previously. 
 
 			Due to every frequency component being shifted by an equal amount, the bandwidth of the output is
 			equal to that of the input. This predictability allows for easier control of the output spectrum.
-			It also provides a simple method for reduction of aliasing. The highest frequency in the output
+			It also provides a simple method for the reduction of aliasing. The highest frequency in the output
 			will be that of the input plus the shift frequency $f$. Applying a low pass filter, with a cutoff
-			frequency of $f_{s} - f$Hz to the input will help minimise the amplitude of any aliased frequency
+			frequency of $f_{s} - f$Hz to the input signal will minimise the amplitude of any aliased frequency
 			components.
 
 		\subsubsection*{Spectral Folding}
 			Spectral folding with a factor $k$ results in the lowest $\frac{1}{k}$ of the input spectrum being
-			repeated $k$ times in the output spectrum. Every second repetition is a mirror image of the
+			repeated $k$ times in the output spectrum. Every second repetition being a mirror image of the
 			original. This effect is shown in Figure \ref{fig:SpectralFolding}. 
 			
 			\begin{figure}[h!]
@@ -777,12 +786,11 @@
 
 			The new frequencies introduced in the output depend on the sampling rate of the signal. Unless
 			$\frac{f_{s}}{2k}$ is a harmonic of the input signal, there is little chance that the new
-			frequencies will be harmonically related to the input.
-
-			Other than changing the downsampling / upsampling factor, the user is given little control over the
-			content of the output spectrum. The bandwidth of the output is not constricted, possibly taking up
-			the entirety of the spectrum. Additional filtering is needed to shape the output spectrum as
-			desired, increasing the overall complexity of the system.
+			frequencies will be harmonically related to the input. Other than changing the downsampling /
+			upsampling factor $k$, the user is given little control over the content of the output spectrum.
+			The bandwidth of the output is not constricted, possibly taking up the entirety of the spectrum.
+			Additional filtering is needed to shape the output spectrum as desired, increasing the overall
+			complexity of the system.
 
 		\subsubsection*{Spectral Stretching}
 			An ideal spectral stretching system would produce the result shown in Figure
@@ -791,18 +799,22 @@
 			effect of scaling the $f_{0}$, increasing the signals perceived pitch. For sinusoidal input this
 			results in the generation of individual harmonics as with the SSBA and IAP techniques.
 			
-			The phase vocoder introduces some artefacts during its operation. The process of splitting the
+			The phase vocoder introduces frequency artefacts during its operation. The process of splitting the
 			signal into frames causes spectral leakage; energy at a given frequency is spread across the nearby
-			frequencies. In a signal which only has energy at harmonic frequencies, spectral stretching by an
-			integer factor will produce some inharmonic content due to this effect. Spectral leakage can be
-			minimised through the use of windowing functions such as the Hamming or Blackman-Harris windows.
-			Ignoring the effect of spectral leakage, the bandwidth of the output signal will be that of the
+			frequencies. This can cause inharmonic partials to be generated for input signals which are
+			perfectly harmonic. To counteract this, a window function can be applied to the frames prior to
+			calculating their DFT. Various different window functions have been proposed, each having different
+			effect in reducing the spectral leakage. The selection of a window function is application
+			specific, the performance and use of several different functions is discussed by
+			\citet{harris1978on}.
+			
+			Ignoring the effects of spectral leakage, the bandwidth of the output signal will be that of the
 			input multiplied by the stretching factor. This allows for effective minimisation of aliasing as
-			the signal can be low pass filtered before processing as done with single sideband automodulation.
+			the signal can be low pass filtered prior to processing as done with multipliers and SSBA.
 		
 		\subsubsection*{STTR}
 			The spectral effects of STTR depends on the properties of the input signal and the window function
-			and step size used. For simple sinusoidal inputs complex output spectra can be generated. For
+			and step size used. For simple sinusoidal inputs, complex output spectra can be generated. For
 			example, consider the spectral effects of STTR using the window function defined in Equation
 			\ref{eq:STTRWindow} (shown in Figure \ref{fig:STTRWindow}). This window function exhibits constant
 			overlap add for a step size of $\frac{L}{2}$. Figure \ref{fig:STTRSpectra} shows the output spectra
@@ -833,16 +845,13 @@
 				\label{fig:STTRSpectra}
 			\end{figure}
 
-			The complexity of the output spectrum depends on the relationship of the input frequency and the
-			step size used for processing. If the period of the input signal is an integer multiple of the step
-			size, it will remain unchanged by the processing. This is evidenced by the output spectrum for 1ms
-			window shown in Figure \ref{fig:STTRSpectra}, only odd order harmonics are generated retaining the
-			original period of the signal.
-
-			The period of the output signal is equal to the least common multiple of the period of the input
-			signal and the step size. This causes the period of a signal to be increased when the period of the
-			input is not an integer multiple of the step size. The output spectrum for a 1.5ms window shows
-			this. The period of the output becomes 3ms. The lowest frequency in this output is then
+			The period of the output signal is equal to the least common multiple of the input signal's period
+			and the step size. If the period of the input signal is an integer multiple of the step size this
+			means the period will remain unchanged by the processing. This is evidenced by the output spectrum
+			produced by use of a 1ms window, shown in Figure \ref{fig:STTRSpectra}. Only odd order harmonics
+			are generated retaining the original period of the signal. When a signal's period is not an integer
+			multiple of the step size it is increased by STTR. The output spectrum for a 1.5ms window shows
+			this, the period of the signal being increased to 3ms. The lowest frequency in this output is then
 			approximately 333Hz.
 
 			The exact frequencies of the partials in the output are discussed by \citet{kim2014shorttime}. In
