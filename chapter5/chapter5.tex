@@ -93,7 +93,7 @@
 		this section is identified using four different terms. Homogeneous and non-homogeneous identify systems
 		which do and don't satisfy the principle of homogeneity. Positive homogeneous refers to systems which are
 		homogeneous for positive gain applied to the input signal (satisfying Equation \ref{eq:homogeneity} for
-		positive values of $a$). A number of the systems evaluates are linear time variant and therefore
+		positive values of $m$). A number of the systems evaluates are linear time variant and therefore
 		homogeneous, these are identified as LTV systems.
 
 	\subsection{Spectral Characteristics}
@@ -387,11 +387,11 @@
 		\subsubsection*{Rectification}
 			Both half and full wave rectifiers exhibit positive homogeneity. For full wave rectification this
 			can be summarised using Equation \ref{eq:FullWaveRectificationHomogeneity}. For negative values of
-			$a$ the right hand side of the equation is the additive inverse of the left hand side. This has
+			$m$ the right hand side of the equation is the additive inverse of the left hand side. This has
 			little effect on the use of a full wave rectifier as the output is always positive.
 
 			\begin{equation}
-				\abs{ax[n]} = a\abs{x[n]}, \quad a \geq 0
+				\abs{mx[n]} = m\abs{x[n]}, \quad m \geq 0
 				\label{eq:FullWaveRectificationHomogeneity}
 			\end{equation}
 
@@ -416,7 +416,7 @@
 			also raised to the exponent, as shown in Equation \ref{eq:MultiplierHomogeneity}.
 
 			\begin{equation}
-				(ax[n])^{h} = a^{h}x^{h}[n]
+				(mx[n])^{h} = m^{h}x^{h}[n]
 				\label{eq:MultiplierHomogeneity}
 			\end{equation}
 
@@ -431,7 +431,7 @@
 			shown in Equation \ref{eq:SSBAHomogeneity}.
 
 			\begin{equation}
-				\Re \left( (ax_{a}[n])^{h} \right) = a^{h} \Re \left( x_{a}^{h}[n] \right)
+				\Re \left( (mx_{a}[n])^{h} \right) = m^{h} \Re \left( x_{a}^{h}[n] \right)
 				\label{eq:SSBAHomogeneity}
 			\end{equation}
 
@@ -442,8 +442,8 @@
 			signal leaving its phase information unchanged (Equation \ref{eq:IAPPositiveHomogeneity}).
 
 			\begin{gather}
-				\abs{ax_{a}[n]} = a\abs{x_{a}[n]} \nonumber \\
-				\arg(ax_{a}[n]) = \arg(x_{a}[n]), \quad a \geq 0
+				\abs{mx_{a}[n]} = m\abs{x_{a}[n]} \nonumber \\
+				\arg(mx_{a}[n]) = \arg(x_{a}[n]), \quad m \geq 0
 				\label{eq:IAPPositiveHomogeneity}
 			\end{gather}
 
@@ -451,17 +451,17 @@
 			\ref{eq:NegativeGainPhase}).
 						
 			\begin{equation}
-				\arg(ax_{a}[n]) = (\arg(x_{a}[n]) \mod 2\pi) - \pi, \quad a < 0
+				\arg(mx_{a}[n]) = (\arg(x_{a}[n]) \mod 2\pi) - \pi, \quad m < 0
 				\label{eq:NegativeGainPhase}
 			\end{equation}
 
 			When the phase is scaled to increase the frequency, the effects depend on the order of the harmonic
-			being generated, $h$. The phase of the amplified signal, $ax_{a}[n]$, scaled by $h$ is $h\pi$
+			being generated, $h$. The phase of the amplified signal, $mx_{a}[n]$, scaled by $h$ is $h\pi$
 			radians less than that of the original signal, $x_{a}[n]$, scaled by the same factor (Equation
 			\ref{eq:IAPOrderHomogeneity}).
 
 			\begin{equation}
-				h\arg(ax_{a}[n]) = h(\arg(x_{a}[n]) \mod 2\pi) - h\pi, \quad a < 0
+				h\arg(mx_{a}[n]) = h(\arg(x_{a}[n]) \mod 2\pi) - h\pi, \quad m < 0
 				\label{eq:IAPOrderHomogeneity}
 			\end{equation}
 
@@ -1067,28 +1067,3 @@
 	used to inform the design of harmonic excitation systems. The properties of the algorithms identified allow these
 	systems to be configured to control specific audio features (defined in Chapter \ref{chap:Timbre}) of an input
 	signal.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
