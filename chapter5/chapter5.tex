@@ -531,15 +531,16 @@
 	\label{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}
 		\subsubsection*{Static Nonlinearities}
 			The spectral characteristics of a static nonlinearity depend on the function which describes its
-			characteristic curve. If an odd function is used only odd order components will be produced, using
-			an even function only even order components are generated. The symmetric clippers discussed
-			previously are all described by odd functions. It is evident from the harmonic amplitude plots
-			(Figures \ref{fig:HardClippingHarmonics}, \ref{fig:SoftClippingHarmonics} and
-			\ref{fig:ExponentialClippingHarmonics}) that only odd order harmonics have been introduced to the
-			signal. In order to generate even order harmonics these clipping function need to be made
-			asymmetric. This is easily done by clipping negative and positive portions of the input signal at
-			different thresholds. For example, Equation \ref{eq:SymmetricHardClipping} can be modified to allow
-			for asymmetric clipping giving Equation \ref{eq:AsymmetricHardClipping}.
+			characteristic curve. If an odd function is used only odd order distortion components will be
+			produced, using an even function only even order distortion components are generated. A function
+			which is neither odd nor even can produce all orders of distortion component. The symmetric
+			clippers discussed previously are all described by odd functions. It is evident from the harmonic
+			amplitude plots (Figures \ref{fig:HardClippingHarmonics}, \ref{fig:SoftClippingHarmonics} and
+			\ref{fig:ExponentialClippingHarmonics}) that only odd order harmonics have been introduced to a
+			sinusoidal input. In order to generate even order distortion components these clipping function can
+			be made asymmetric. This is easily done by clipping negative and positive portions of the input
+			signal at different thresholds. For example, Equation \ref{eq:SymmetricHardClipping} can be
+			modified to allow for asymmetric clipping giving Equation \ref{eq:AsymmetricHardClipping}.
 			
 			\begin{equation}
 				y[n] = \begin{cases}
@@ -559,18 +560,19 @@
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/AsymmetricHardClippingHarmonics.pdf}
-				\caption{Individual harmonic distortion levels for Equation
-					 \ref{eq:AsymmetricHardClipping} with thresholds of -0.3 and 0.5.}
+				\caption{Individual harmonic distortion levels for asymmetric hard clipping (Equation
+					 \ref{eq:AsymmetricHardClipping}) with thresholds of -0.3 and 0.5.}
 				\label{fig:AsymmetricHardClippingHarmonics}
 			\end{figure}
 
-			The amplitudes of the generated harmonics will roll off at differing rates depending on the
-			properties of the output signal. The spectrum will roll off at $6(n+1)$dB per octave when the
-			$n$\super{th} derivative of the output signal is discontinuous \citep{kraght2000aliasing}.  Hard
-			clippers introduce discontinuities to the first derivative of a signal and so will introduce
-			harmonics whose amplitudes will roll off at 12dB per octave. Signals clipped by Equation
-			\ref{eq:SymmetricSoftClipping} are continuous in the first derivative and so produce harmonics
-			whose amplitudes roll off at a faster rate. This can be seen in Figure \ref{fig:ClippingSpectra}.
+			For sinusoidal inputs the amplitudes of the generated harmonics will roll off at differing rates
+			depending on the properties of the output signal. The spectrum will roll off at $6(n+1)$dB per
+			octave when the $n$\super{th} derivative of the output signal is discontinuous
+			\citep{kraght2000aliasing}.  Hard clippers introduce discontinuities to the first derivative of a
+			signal and so will introduce harmonics whose amplitudes will roll off at 12dB per octave. Signals
+			clipped by Equation \ref{eq:SymmetricSoftClipping} are continuous in the first derivative and so
+			produce harmonics whose amplitudes roll off at a faster rate. This can be seen in Figure
+			\ref{fig:ClippingSpectra}.
 
 			\begin{figure}[h!]
 				\centering
@@ -588,8 +590,9 @@
 			nonlinearity's characteristic curve. A simple implementation of this is the harmonic mixer
 			\citep{schattschneider1999discrete} in which low order polynomial expression approximating the
 			desired characteristic curve is calculated.  This could be achieved through linear regression as
-			shown in Figure \ref{fig:ClippingApproximation}.  The order of the polynomial used controls the
-			maximum order of the distortion components, effectively eliminating those which would be aliased.
+			shown in Figure \ref{fig:ClippingApproximation}. The order of the polynomial used controls the
+			maximum order of the distortion components generated, effectively eliminating those which would be
+			aliased.
 
 			\begin{figure}[h!]
 				\centering
@@ -605,7 +608,7 @@
 
 			\citet{esqueda2015aliasing} propose a method for the reduction of aliasing in soft clipping
 			systems, applying bandlimited hard clipping prior to the soft clipping. They show their method to
-			reduced the level of aliased components when processing signals with $f_{0} < 3$kHz. While this
+			reduce the level of aliased components when processing signals with $f_{0} < 3$kHz. While this
 			method does not fully eliminate aliasing, it applies bandlimiting at the Nyquist ensuring that all
 			orders of distortion which will not alias are left mostly unaffected. With a harmonic mixer one
 			would have to select a distortion order based on the $f_{0}$ of the input signal to make the best
@@ -613,8 +616,9 @@
 
 		\subsubsection*{Rectification}
 			Full wave rectification can be considered as a static nonlinearity with an even characteristic
-			curve, as such it only introduces even order distortion components. The Fourier series coefficients
-			of a full wave rectified sine wave are shown in Equation \ref{eq:RectificationFourier}.
+			curve, as such it only introduces even order distortion components. Examining the Fourier series of
+			a full wave rectified sine wave (Equation \ref{eq:RectificationFourier}) shows the amplitudes of
+			each harmonic produced, $c_{n}$ being the amplitude of the $n$\super{th} order harmonic.
 
 			\begin{gather}
 				c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \abs{sin(x)}e^{-inx} dx \nonumber \\
@@ -625,10 +629,11 @@
 				\label{eq:RectificationFourier}
 			\end{gather}
 
-			This represents all even order harmonics rolling off at approximately 12dB per octave. As with
-			other static nonlinearities, rectifiers are susceptible to aliasing. The relatively shallow roll
-			off of the distortion components can lead to a considerable amount of energy present in the aliased
-			components of the output signal. 
+			The continuous domain represented by the Fourier series indicates that energy will exist in the
+			output at all even order harmonic frequencies. Examining the coefficients it is apparent that the
+			amplitudes of these harmonics roll off at approximately 12dB per octave with no upper bound setting
+			the highest frequency generated. In the discrete domain, aliasing will likely occur as there is a
+			high probability that significant energy sits at frequencies above the Nyquist.
 
 			The output from a half wave rectifier has the same spectrum as that of a full wave rectifier but
 			with the content of the original signal included. This can easily be shown by considering how a
@@ -643,8 +648,8 @@
 			\end{equation}
 
 		\subsubsection*{Integrator}
-			Applying Equation \ref{eq:Integrator} to a sine wave produces a signal with Fourier series
-			coefficients as shown in Equation \ref{eq:IntegratorFourier}.
+			Applying the integrator described in Equation \ref{eq:Integrator} to a sine wave produces a signal
+			with Fourier series coefficients as shown in Equation \ref{eq:IntegratorFourier}.
 
 			\begin{gather}
 				c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1 - cos(x))e^{-inx} dx +
@@ -659,10 +664,10 @@
 			This produces all harmonics with amplitudes rolling off at approximately 6dB per octave. This
 			shallow roll of make integrators very useful when a large amount of new frequency content is
 			desired. Due to the shallow roll off of the distortion component's amplitudes integrators are very
-			prone to aliasing. While integrators are homogeneous, they are frequency dependant acting as low
-			pass filters. Using the same integration constant a high frequency input signal will produce a
-			lower amplitude output than a low frequency input. This does not affect the relatives amplitudes of
-			frequencies in the output just the overall amplitude of the signal.
+			prone to aliasing. While integrators are homogeneous, they are frequency dependent, exhibiting low
+			pass filter characteristics. Using the same integration constant a high frequency input signal will
+			produce a lower amplitude output than a low frequency input. This does not affect the relatives
+			amplitudes of frequencies in the output just the overall amplitude of the signal.
 
 		\subsubsection*{Multiplier}
 			Nonlinear processing using Equation \ref{eq:Multiplier}, in which the exponent is a positive
