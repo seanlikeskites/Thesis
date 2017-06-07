@@ -753,7 +753,7 @@
 
 			When multiple frequency components are present in the input signal, IAP processing produces energy
 			at high order distortion components. The exact orders and amplitudes of the distortion components
-			produces are dependant on the content of the input signal and the order of IAP applied. As with
+			produces are dependent on the content of the input signal and the order of IAP applied. As with
 			previous algorithms, it may be necessary to upsample the signal before processing to avoid aliasing
 			of these frequencies.
 
@@ -864,11 +864,12 @@
 	\subsection{Temporal Characteristics}
 	\label{sec:ExcitationEvaluation-Comparison-TemporalCharacteristics}
 		\subsubsection*{Static Nonlinearities}
-			As static nonlinearities are memoryless they can not easily be used to control the temporal
-			evolution of a signal. The amplitude of the characteristic curve for low amplitude samples can be
-			manipulated to alter the attack and release times of signals. Increasing this amplitude will
-			shortening attack and release times. As an extreme example consider the infinite peak clipper shown
-			in Equation \ref{eq:InfinitePeakClipper}.
+			As static nonlinearities are memoryless (i.e. non of the previous input and output samples are
+			needed for the calculation of the current output sample) they can not easily be used to control the
+			temporal evolution of a signal. The amplitude of the characteristic curve for low amplitude samples
+			can be manipulated to alter the attack and release times of signals. Increasing this amplitude will
+			shorten attack and release times. As an extreme example consider the infinite peak clipper shown in
+			Equation \ref{eq:InfinitePeakClipper}.
 
 			\begin{equation}
 				y[n] = \sgn(x[n])
@@ -887,7 +888,7 @@
 				\label{fig:InfinitePeakClipping}
 			\end{figure}
 
-			The exact change in attack / release time is dependant on both the characteristic curve of the
+			The exact change in attack / release time is dependent on both the characteristic curve of the
 			nonlinearity and the existing temporal features of the input signal. For the infinite peak clipper
 			all dynamic information in a signal is lost and all attack and release times are made
 			instantaneous.  Other static nonlinearities, such as soft peak clippers, have less predictable
@@ -895,11 +896,11 @@
 
 		\subsubsection*{Rectification}
 			Full wave rectifiers have no effect on the temporal characteristics of signals as the magnitude
-			information of each sample is preserved. It is possible that a half wave rectifier could change the
-			position of the onset / offset of a signal by a small amount. Considering a signal which starts
-			with a negative displacement. This first section of the signal would be removed, moving the onset
-			to the position of the first positive displacement occurs. This possible delay in onset is highly
-			dependant on the input signal and will most likely be imperceptible.
+			information of each sample is preserved, however it is possible that a half wave rectifier could
+			change the position of the onset / offset of a signal by a small amount. If a signal starts with a
+			negative displacement, the first section of the signal would be removed, moving the onset to the
+			position at which the first positive displacement occurs. This possible delay in onset however, is
+			highly dependent on the input signal and will most likely be imperceptible.
 			
 		\subsubsection*{Integrator}
 			Due to the inherent low pass filtering behaviour of integrators (see Section
@@ -923,11 +924,11 @@
 			\end{figure}
 
 			While the time taken for the signal to rise to or decay from maximum amplitude is not changed, the
-			shape of the amplitude envelope during the attack and release portions is. Exponents greater than 1
-			cause the amplitude to rise more slowly initially and then rapidly rise, while exponents less than
-			one increase the initial gradient of the attack and then slowly rise to full amplitude. As with
-			other static nonlinearities these effects are dependant on the input signal and are not predictable
-			enough to give intuitive control.
+			shape of the amplitude envelope during the attack and release portions is. Exponents greater than
+			one cause the amplitude to rise more slowly initially and then rapidly rise, while exponents less
+			than one increase the initial gradient of the attack and then slowly rise to full amplitude. As
+			with other static nonlinearities these effects are dependent on the input signal and are not
+			predictable enough to give intuitive control.
 
 		\subsubsection*{SSBA}
 			SSBA has similar temporal effects to a multiplier using an exponent greater that 1. The signal
@@ -981,9 +982,9 @@
 
 		\subsubsection*{STTR}
 			Due to the time reversal STTR can have complicated effects on a signal's amplitude envelope.  For
-			instance, the attack and release portion of a sound may be switched. While possible, this is highly
-			dependent on the window length, step size and content of the input frequency. Controlling these
-			aspects for general input signals proves a very difficult task.
+			instance, the attack and release portion of a sound may be switched. Whilst possible, this is
+			highly dependent on the window length, step size and content of the input frequency. Controlling
+			these aspects for general input signals proves a very difficult task.
 
 	\subsection{Use Cases}
 	\label{sec:ExcitationEvaluation-Comparison-UseCases}
@@ -1056,7 +1057,7 @@
 		\subsubsection*{Spectral Folding}
 			Spectral folding is an efficient method of producing energy throughout the output spectrum.
 			However, it does not provide sufficient control to ensure that the new spectral partials are
-			harmonically related to those in the input. The effects are highly dependant on the content of the
+			harmonically related to those in the input. The effects are highly dependent on the content of the
 			input signal as well as the sampling frequency.
 
 		\subsubsection*{Spectral Stretching}
