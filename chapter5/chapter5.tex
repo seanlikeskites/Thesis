@@ -13,14 +13,14 @@
 
 \chapter{Comparative Evaluation of Harmonic Excitation Algorithms}
 \label{chap:ExcitationEvaluation}
-	Harmonic excitation algorithms developed for the applications discussed in the Section \ref{sec:Excitation-Uses}
+	Harmonic excitation algorithms developed for the applications discussed in the Section~\ref{sec:Excitation-Uses}
 	are specialised to perform a particular task. As this work is concerned with the application of harmonic excitation
 	to real time timbral control, some algorithms in the literature may not be suitable due to the predictability of
-	their effects on a signal or their inability to operate in real time. In Section
-	\ref{sec:ExcitationEvaluation-Evaluation} a set of criteria for assessing the suitability of a harmonic excitation
-	algorithms for use in this work are suggested. These criteria are then used to asses various algorithms in Section
-	\ref{sec:ExcitationEvaluation-Comparison}, a summary of each algorithm's performance shown in Table
-	\ref{tab:ComparisonSummary}. Techniques by which the performance of several algorithms can be improved, with
+	their effects on a signal or their inability to operate in real time. In
+	Section~\ref{sec:ExcitationEvaluation-Evaluation} a set of criteria for assessing the suitability of a harmonic
+	excitation algorithms for use in this work are suggested. These criteria are then used to asses various algorithms
+	in Section~\ref{sec:ExcitationEvaluation-Comparison}, a summary of each algorithm's performance shown in
+	Table~\ref{tab:ComparisonSummary}. Techniques by which the performance of several algorithms can be improved, with
 	respect to these criteria, are also discussed.
 
 \section{Evaluating Harmonic Excitation Algorithms for Use in Timbral Control}
@@ -80,7 +80,7 @@
 		will have different effects depending on whether the input contain energy at these frequencies. The spectra
 		of signals with energy in this frequency range will be altered while those of signals with no energy in
 		that band will be unaffected. This problem is compounded when the effect being applied is non-homogeneous
-		(does not satisfy the condition of homogeneity given by Equation \ref{eq:homogeneity}).  Nonlinear systems
+		(does not satisfy the condition of homogeneity given by Equation~\ref{eq:homogeneity}).  Nonlinear systems
 		are typically non-homogeneous, this is undesirable when using them to achieve timbral control as it means
 		the effects are less easy to predict. A non-homogeneous system behaves differently depending on the
 		amplitude of the input signal. Different timbral transforms could be applied to the same signal if its
@@ -89,16 +89,16 @@
 		in harmonic excitation systems for timbral control should exhibit homogeneous behaviour in order to
 		increase the systems intuitiveness.
 
-		In the summary shown in Table \ref{tab:ComparisonSummary} the homogeneity of the algorithms evaluated in
+		In the summary shown in Table~\ref{tab:ComparisonSummary} the homogeneity of the algorithms evaluated in
 		this section is identified using four different terms. Homogeneous and non-homogeneous identify systems
 		which do and don't satisfy the principle of homogeneity. Positive homogeneous refers to systems which are
-		homogeneous for positive gain applied to the input signal (satisfying Equation \ref{eq:homogeneity} for
+		homogeneous for positive gain applied to the input signal (satisfying Equation~\ref{eq:homogeneity} for
 		positive values of $m$). A number of the systems evaluates are linear time variant and therefore
 		homogeneous, these are identified as LTV systems.
 
 	\subsection{Spectral Characteristics}
 	\label{sec:ExcitationEvaluation-Evaluation-SpectralCharacteristics}
-		The algorithms presented in Section \ref{sec:Excitation-Methods} all introduce new spectral content to a
+		The algorithms presented in Section~\ref{sec:Excitation-Methods} all introduce new spectral content to a
 		signal. Depending on the algorithm and the input signal, the nature of this this new content can vary
 		greatly, ranging from wide bands comprising both harmonic and inharmonic partials to individual harmonic
 		partials. To provide intuitive timbral control a system should produce similar spectral effects despite the
@@ -126,7 +126,7 @@
 
 	\subsection{Use Cases}
 	\label{sec:ExcitationEvaluation-Evaluation-UseCases}
-		As discussed in Chapter \ref{chap:Timbre} there are several features of a signal which contribute to its
+		As discussed in Chapter~\ref{chap:Timbre} there are several features of a signal which contribute to its
 		perceived timbre. In order to provide control over timbre, a system must provide control over one or more
 		of these features. The more low level features a system is able control the greater the number of timbral
 		transforms for which it can be used. Each of the harmonic excitation algorithms evaluated in this chapter
@@ -147,12 +147,12 @@
 
 \section{Method Comparison}
 \label{sec:ExcitationEvaluation-Comparison}
-	In this section the algorithms discussed in Section \ref{sec:Excitation-Methods} are evaluated against the criteria
-	given in Section \ref{sec:ExcitationEvaluation-Evaluation}. For each criteria the relevant characteristics of each
+	In this section the algorithms discussed in Section~\ref{sec:Excitation-Methods} are evaluated against the criteria
+	given in Section~\ref{sec:ExcitationEvaluation-Evaluation}. For each criteria the relevant characteristics of each
 	algorithm are discussed in Sections \ref{sec:ExcitationEvaluation-Comparison-Complexity} to
-	\ref{sec:ExcitationEvaluation-Comparison-UseCases}. Where appropriate techniques for improving the performance
-	of an algorithm in a particular area are suggested and discussed. A summary of each of the algorithm's performance
-	in each area is given in Table \ref{tab:ComparisonSummary}.
+	\ref{sec:ExcitationEvaluation-Comparison-UseCases}. Where appropriate techniques for improving the performance of
+	an algorithm in a particular area are suggested and discussed. A summary of each of the algorithm's performance in
+	each area is given in Table~\ref{tab:ComparisonSummary}.
 
 	\begin{landscape}
 	\subsection{Comparison Summary}
@@ -223,23 +223,23 @@
 		characteristic curve of the nonlinearity becomes more complex the computational load increases. Hard
 		clipping and half wave rectification require comparison operations to determine which samples should be
 		altered. Further complexity is introduced for soft clippers where the characteristic curve is described by
-		a polynomial or trigonometric function. The transition section of the soft clipper given in Equation
-		\ref{eq:SymmetricSoftClipping} requires a considerable number of operations to calculate. In situations
-		where the number of calculations becomes too large, the computational load can be decreased using a
-		precomputed lookup table of input and output values. A certain number of points on the characteristic curve
-		are precomputed and stored as a table in memory. The output value for a given input is then looked up in
-		this table rather than being calculated. For input values which are not in the precomputed table
-		interpolation methods can be used to predict the output value.
+		a polynomial or trigonometric function. The transition section of the soft clipper given in
+		Equation~\ref{eq:SymmetricSoftClipping} requires a considerable number of operations to calculate. In
+		situations where the number of calculations becomes too large, the computational load can be decreased
+		using a precomputed lookup table of input and output values. A certain number of points on the
+		characteristic curve are precomputed and stored as a table in memory. The output value for a given input is
+		then looked up in this table rather than being calculated. For input values which are not in the
+		precomputed table interpolation methods can be used to predict the output value.
 
-		Every other algorithm presented in Section \ref{sec:Excitation-Methods} involves some dependence on the
+		Every other algorithm presented in Section~\ref{sec:Excitation-Methods} involves some dependence on the
 		previous input and output samples of the system. Implementing these algorithms involves the use of
 		additional memory. The simplest algorithm which requires this additional memory is the integrator given in
-		Equation \ref{eq:Integrator}. The previous input sample is needed in order to detect zero crossings in the
+		Equation~\ref{eq:Integrator}. The previous input sample is needed in order to detect zero crossings in the
 		input and the previous output sample is needed to apply the integration. The amount of computation
 		performed for this system is comparable to that of a simple static nonlinearity, giving a very low
 		computational load.
 
-		Spectral folding using Equation \ref{eq:SpectralFolding} requires a low pass filter in order to reduce the
+		Spectral folding using Equation~\ref{eq:SpectralFolding} requires a low pass filter in order to reduce the
 		aliasing introduced by downsampling the signal. This filter comprises the majority of the complexity of the
 		system leading to a trade off between computational complexity and the level of aliasing. Increasing the
 		order of the filter will better reduce aliasing while increasing the overall complexity. Additional
@@ -247,11 +247,11 @@
 		Replication). The Hilbert transform of the input signal must be computed in order to construct the analytic
 		signal. The Hilbert transform filter used must have a suitably consistent response for a wide range of
 		frequencies so the resulting harmonic excitation gives similar results at different frequencies. As shown
-		in Section \ref{sec:Timbre-LowLevelFeatures-Temporal} a high order FIR Hilbert transform filter is required
+		in Section~\ref{sec:Timbre-LowLevelFeatures-Temporal} a high order FIR Hilbert transform filter is required
 		to give a suitably flat magnitude response. As the order of this filter is increased the computation time
 		rises along with the amount of delay needed to make the filter causal. A lower complexity IIR phase
 		splitter can be used in order to reduce the computational load. The implementation given by
-		\citet{niemitalo2003hilbert} (also discussed in Section \ref{sec:Timbre-LowLevelFeatures-Temporal})
+		\citet{niemitalo2003hilbert} (also discussed in Section~\ref{sec:Timbre-LowLevelFeatures-Temporal})
 		consists of eight biquad filters and a one sample delay. This provides a reasonable compromise between
 		accuracy, complexity and introduced delay.  Once an analytic signal has been constructed, little additional
 		computation is required. SSBA requires the evaluation of a complex exponential for each sample. IAP and
@@ -292,21 +292,21 @@
 			investigated by \citet{enderby2012harmonic}. The levels of individual harmonics in the output were
 			plotted as a function of the input sinusoid's peak amplitude. Figures
 			\ref{fig:HardClippingHarmonics} and \ref{fig:SoftClippingHarmonics} show these plots for the
-			clipping functions described in Section \ref{sec:Excitation-Methods-Statics}.
+			clipping functions described in Section~\ref{sec:Excitation-Methods-Statics}.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/HardClippingHarmonics.pdf}
-				\caption{Individual harmonic distortion levels for a symmetric hard peak clipper (Equation
-					 \ref{eq:SymmetricHardClipping}) with a threshold of 0.5.}
+				\caption{Individual harmonic distortion levels for a symmetric hard peak clipper
+					 (Equation~\ref{eq:SymmetricHardClipping}) with a threshold of 0.5.}
 				\label{fig:HardClippingHarmonics}
 			\end{figure}
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/SoftClippingHarmonics.pdf}
-				\caption{Individual harmonic distortion levels for a symmetric soft peak clipper (Equation
-					 \ref{eq:SymmetricSoftClipping}) with a threshold of 0.5.}
+				\caption{Individual harmonic distortion levels for a symmetric soft peak clipper
+					 (Equation~\ref{eq:SymmetricSoftClipping}) with a threshold of 0.5.}
 				\label{fig:SoftClippingHarmonics}
 			\end{figure}
 
@@ -320,7 +320,7 @@
 			amplitude of a particular order of harmonic varies is dependent on the characteristic curve of the
 			nonlinearity. These characteristics cause clippers to have vastly different perceived effects
 			depending on input amplitude. This behaviour can be improved on through the use of a different
-			clipping function. Equation \ref{eq:SymmetricExponentialClipping} shows a function used to apply
+			clipping function. Equation~\ref{eq:SymmetricExponentialClipping} shows a function used to apply
 			exponential clipping to a signal.
 			
 			\begin{equation}
@@ -335,20 +335,20 @@
 			Where $E$ is a second parameter defining the exponent of the system. One advantage of this clipper
 			is that it has no linear section meaning that harmonics are generated for input signals of any
 			amplitude. Another advantage is that while the system is still non-homogeneous, the levels of the
-			generated harmonics vary monotonically with input amplitude as shown in Figure
-			\ref{fig:ExponentialClippingHarmonics}.
+			generated harmonics vary monotonically with input amplitude as shown in
+			Figure~\ref{fig:ExponentialClippingHarmonics}.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/ExponentialClippingHarmonics.pdf}
-				\caption{Individual harmonic distortion levels for Equation
-					 \ref{eq:SymmetricExponentialClipping} with a threshold of 0.5 and an 
+				\caption{Individual harmonic distortion levels for
+					 Equation~\ref{eq:SymmetricExponentialClipping} with a threshold of 0.5 and an 
 				         exponent of 5.}
 				\label{fig:ExponentialClippingHarmonics}
 			\end{figure}
 
 			Simple peak clipping systems can be made homogeneous by introducing gain stages either side of the
-			clipping stage as shown in Figure \ref{fig:HomogeneousClipping}. The first gain stage scales the
+			clipping stage as shown in Figure~\ref{fig:HomogeneousClipping}. The first gain stage scales the
 			signal such that the clipping stage will always clip the same proportion of the signal. To achieve
 			this the amplitude of the input signal must be tracked in order to adjust the gain correctly. The
 			second gain stage then scales the signal back to the original input amplitude. In an analogous
@@ -386,7 +386,7 @@
 
 		\subsubsection*{Rectification}
 			Both half and full wave rectifiers exhibit positive homogeneity. For full wave rectification this
-			can be summarised using Equation \ref{eq:FullWaveRectificationHomogeneity}. For negative values of
+			can be summarised using Equation~\ref{eq:FullWaveRectificationHomogeneity}. For negative values of
 			$m$ the right hand side of the equation is the additive inverse of the left hand side. This has
 			little effect on the use of a full wave rectifier as the output is always positive.
 
@@ -404,7 +404,7 @@
 
 		\subsubsection*{Integrator}
 			Integration is a linear operation meaning that it satisfies the homogeneity principle. The
-			implementation given in Equation \ref{eq:Integrator} however only exhibits positive homogeneity due
+			implementation given in Equation~\ref{eq:Integrator} however only exhibits positive homogeneity due
 			to the rectification of the signal prior to integration. The sign of the gain applied to the input
 			signal also determines the points at which the output signal is reset to zero. The signal is reset
 			on positive zero crossings but a negative gain before in the input reverses the direction of all
@@ -413,7 +413,7 @@
 
 		\subsubsection*{Multiplier}
 			Exponentiation is a non-homogeneous operation. Any gain applied to a signal prior to processing is
-			also raised to the exponent, as shown in Equation \ref{eq:MultiplierHomogeneity}.
+			also raised to the exponent, as shown in Equation~\ref{eq:MultiplierHomogeneity}.
 
 			\begin{equation}
 				(mx[n])^{h} = m^{h}x^{h}[n]
@@ -421,13 +421,13 @@
 			\end{equation}
 
 			As with peak clipping systems, multipliers can be made homogeneous by the addition of a gain stage
-			either side of the nonlinearity (as in Figure \ref{fig:HomogeneousClipping}). For multipliers this
+			either side of the nonlinearity (as in Figure~\ref{fig:HomogeneousClipping}). For multipliers this
 			effect can only be achieved using gain stages as there is no threshold parameter to change in
 			response to the amplitude of the input signal.
 
 		\subsubsection*{SSBA}
 			As with multipliers, SSBA is a non-homogeneous process: the gain applied to the input signal is
-			raised to the same power as the signal as shown in Equation \ref{eq:SSBAHomogeneity}.
+			raised to the same power as the signal as shown in Equation~\ref{eq:SSBAHomogeneity}.
 
 			\begin{equation}
 				\Re \left( (mx_{a}[n])^{h} \right) = m^{h} \Re \left( x_{a}^{h}[n] \right)
@@ -436,7 +436,7 @@
 			
 			Expressing the analytic signal in polar form it can be shown that the amplitude envelope of the
 			$h$\super{th} order SSBA is the amplitude envelope of the original signal raised to the power $h$
-			as seen in Equation \ref{eq:PolarSSBA}.
+			as seen in Equation~\ref{eq:PolarSSBA}.
 
 			\begin{gather}
 				x_{a}^{h}[n] = \abs{x_{a}[n]}^{h} e^{ih\arg (x_{a}[n])}
@@ -445,8 +445,8 @@
 
 			As the output's amplitude envelope is know in terms of the input's, the output can be normalised in
 			an attempt to make the system homogeneous. Multiplying the output of the $h$\super{th} order SSBA
-			by $\abs{x_{a}[n]}^{1-h}$ is equivalent to applying $h$\super{th} order IAP as shown by equation
-			\ref{eq:SSBAandIAP}. The homogeneity of this system is discussed in the following section.
+			by $\abs{x_{a}[n]}^{1-h}$ is equivalent to applying $h$\super{th} order IAP as shown by
+			Equation~\ref{eq:SSBAandIAP}. The homogeneity of this system is discussed in the following section.
 
 			\begin{equation}
 				\abs{x_{a}[n]}^{1-h} \Re \left( x_{a}^{h}[n] \right) = 
@@ -456,9 +456,9 @@
 
 		\subsubsection*{IAP}
 			The IAP method is homogeneous when used to generate odd order harmonics but is only positive
-			homogeneous when used to generate even order harmonics. Equation \ref{eq:IAP} is easily shown to be
+			homogeneous when used to generate even order harmonics. Equation~\ref{eq:IAP} is easily shown to be
 			positive homogeneous as application of a non-negative gain will alter only the amplitude of a
-			signal leaving its phase information unchanged (Equation \ref{eq:IAPPositiveHomogeneity}).
+			signal leaving its phase information unchanged (Equation~\ref{eq:IAPPositiveHomogeneity}).
 
 			\begin{equation}
 				\begin{array}{c}
@@ -469,8 +469,8 @@
 				\label{eq:IAPPositiveHomogeneity}
 			\end{equation}
 
-			Application of a negative gain however, changes the phase of the signal (Equation
-			\ref{eq:NegativeGainPhase}).
+			Application of a negative gain however, changes the phase of the signal
+			(Equation~\ref{eq:NegativeGainPhase}).
 						
 			\begin{equation}
 				\arg(mx_{a}[n]) = (\arg(x_{a}[n]) \mod 2\pi) - \pi, \quad m < 0
@@ -479,8 +479,8 @@
 
 			When the phase is scaled to increase the frequency, the effects depend on the order of the harmonic
 			being generated, $h$. The phase of the amplified signal, $mx_{a}[n]$, scaled by $h$ is $h\pi$
-			radians less than that of the original signal, $x_{a}[n]$, scaled by the same factor (Equation
-			\ref{eq:IAPOrderHomogeneity}).
+			radians less than that of the original signal, $x_{a}[n]$, scaled by the same factor
+			(Equation~\ref{eq:IAPOrderHomogeneity}).
 
 			\begin{equation}
 				h\arg(mx_{a}[n]) = h(\arg(x_{a}[n]) \mod 2\pi) - h\pi, \quad m < 0
@@ -506,7 +506,7 @@
 			the input signal avoiding any unwanted signal inversions.
 
 		\subsubsection*{Linear Time Variant Algorithms}
-			The remaining algorithms (spectral replication using Equation \ref{eq:SpectralReplication},
+			The remaining algorithms (spectral replication using Equation~\ref{eq:SpectralReplication},
 			spectral folding and STTR) are linear time variant systems. As such they all satisfy the principle
 			of homogeneity.
 
@@ -539,8 +539,8 @@
 			\ref{fig:ExponentialClippingHarmonics}) that only odd order harmonics have been introduced to a
 			sinusoidal input. In order to generate even order distortion components these clipping function can
 			be made asymmetric. This is easily done by clipping negative and positive portions of the input
-			signal at different thresholds. For example, Equation \ref{eq:SymmetricHardClipping} can be
-			modified to allow for asymmetric clipping giving Equation \ref{eq:AsymmetricHardClipping}.
+			signal at different thresholds. For example, Equation~\ref{eq:SymmetricHardClipping} can be
+			modified to allow for asymmetric clipping giving Equation~\ref{eq:AsymmetricHardClipping}.
 			
 			\begin{equation}
 				y[n] = \begin{cases}
@@ -552,16 +552,16 @@
 			\end{equation}
 
 			Where $t_{+}$ and $t_{-}$ are the clipping thresholds for positive and negative portions of the
-			signal respectively. Figure \ref{fig:AsymmetricHardClippingHarmonics} shows the harmonic amplitude
-			plot for Equation \ref{eq:AsymmetricHardClipping} with $t_{+} = 0.5$ and $t_{-} = -0.3$. While the
+			signal respectively. Figure~\ref{fig:AsymmetricHardClippingHarmonics} shows the harmonic amplitude
+			plot for Equation~\ref{eq:AsymmetricHardClipping} with $t_{+} = 0.5$ and $t_{-} = -0.3$. While the
 			system is still non-homogeneous, the introduced energy consists of both odd and even order
 			distortion components.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/AsymmetricHardClippingHarmonics.pdf}
-				\caption{Individual harmonic distortion levels for asymmetric hard clipping (Equation
-					 \ref{eq:AsymmetricHardClipping}) with thresholds of -0.3 and 0.5.}
+				\caption{Individual harmonic distortion levels for asymmetric hard clipping
+					 (Equation~\ref{eq:AsymmetricHardClipping}) with thresholds of -0.3 and 0.5.}
 				\label{fig:AsymmetricHardClippingHarmonics}
 			\end{figure}
 
@@ -570,9 +570,9 @@
 			octave when the $n$\super{th} derivative of the output signal is discontinuous
 			\citep{kraght2000aliasing}.  Hard clippers introduce discontinuities to the first derivative of a
 			signal and so will introduce harmonics whose amplitudes will roll off at 12dB per octave. Signals
-			clipped by Equation \ref{eq:SymmetricSoftClipping} are continuous in the first derivative and so
-			produce harmonics whose amplitudes roll off at a faster rate. This can be seen in Figure
-			\ref{fig:ClippingSpectra}.
+			clipped by Equation~\ref{eq:SymmetricSoftClipping} are continuous in the first derivative and so
+			produce harmonics whose amplitudes roll off at a faster rate. This can be seen in
+			Figure~\ref{fig:ClippingSpectra}.
 
 			\begin{figure}[h!]
 				\centering
@@ -590,7 +590,7 @@
 			nonlinearity's characteristic curve. A simple implementation of this is the harmonic mixer
 			\citep{schattschneider1999discrete} in which low order polynomial expression approximating the
 			desired characteristic curve is calculated.  This could be achieved through linear regression as
-			shown in Figure \ref{fig:ClippingApproximation}. The order of the polynomial used controls the
+			shown in Figure~\ref{fig:ClippingApproximation}. The order of the polynomial used controls the
 			maximum order of the distortion components generated, effectively eliminating those which would be
 			aliased.
 
@@ -617,7 +617,7 @@
 		\subsubsection*{Rectification}
 			Full wave rectification can be considered as a static nonlinearity with an even characteristic
 			curve, as such it only introduces even order distortion components. Examining the Fourier series of
-			a full wave rectified sine wave (Equation \ref{eq:RectificationFourier}) shows the amplitudes of
+			a full wave rectified sine wave (Equation~\ref{eq:RectificationFourier}) shows the amplitudes of
 			each harmonic produced, $c_{n}$ being the amplitude of the $n$\super{th} order harmonic.
 
 			\begin{gather}
@@ -639,8 +639,8 @@
 			with the content of the original signal included. This can easily be shown by considering how a
 			half wave rectified signal can be constructed from the original signal and a full wave rectified
 			signal.  Where $x[n]$, $x_{f}[n]$ and $x_{h}[n]$ represent the original signal, full wave rectified
-			and half waves rectified signals respectively, their relationship can be seen in Equation
-			\ref{eq:RectificationRelationship}.
+			and half waves rectified signals respectively, their relationship can be seen in
+			Equation~\ref{eq:RectificationRelationship}.
 
 			\begin{equation}
 				x_{h}[n] = \frac{1}{2} \left( x_{f}[n] + x[n] \right)
@@ -648,8 +648,8 @@
 			\end{equation}
 
 		\subsubsection*{Integrator}
-			Applying the integrator described in Equation \ref{eq:Integrator} to a sine wave produces a signal
-			with Fourier series coefficients as shown in Equation \ref{eq:IntegratorFourier}.
+			Applying the integrator described in Equation~\ref{eq:Integrator} to a sine wave produces a signal
+			with Fourier series coefficients as shown in Equation~\ref{eq:IntegratorFourier}.
 
 			\begin{gather}
 				c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1 - cos(x))e^{-inx} dx +
@@ -670,14 +670,14 @@
 			amplitudes of frequencies in the output just the overall amplitude of the signal.
 
 		\subsubsection*{Multiplier}
-			Nonlinear processing using a multiplier (Equation \ref{eq:Multiplier}) in which the exponent is a
+			Nonlinear processing using a multiplier (Equation~\ref{eq:Multiplier}) in which the exponent is a
 			positive integer, allows for control over the maximum order of distortion generated. The highest
 			frequency present among those generated will be equal to the highest frequency in the input signal
-			multiplied by the exponent, $h$. This effect is illustrated in Figure \ref{fig:CubedSpectra} which
+			multiplied by the exponent, $h$. This effect is illustrated in Figure~\ref{fig:CubedSpectra} which
 			shows the spectral effects of cubing an arbitrary compound signal. The input signal has an $f_{0}$
 			of 1kHz and has energy in its first four harmonics making the highest frequency present 4kHz. After
-			cubing the signal the highest frequency is three times this (12kHz) as seen in Figure
-			\ref{fig:CubedSpectra}.
+			cubing the signal the highest frequency is three times this (12kHz) as seen in
+			Figure~\ref{fig:CubedSpectra}.
 
 			\begin{figure}[h!]
 				\centering
@@ -694,7 +694,7 @@
 
 			For an exponential static nonlinearity (one in which the exponent is can take any positive value)
 			control over the bandwidth of the output signal is lost. Non integer exponents cause higher orders
-			of distortion to be generated. Figure \ref{fig:TwoAndAHalfSpectra} shows the spectral effects of
+			of distortion to be generated. Figure~\ref{fig:TwoAndAHalfSpectra} shows the spectral effects of
 			raising the same input signal to the power 2.5. Here it is evident that there is no upper bound on
 			the order of distortion components generated.
 
@@ -712,12 +712,12 @@
 
 		\subsubsection*{SSBA}
 			SSBA extends the control provided by multipliers as it constrains the minimum frequency introduced
-			as well as the highest. Using Equation \ref{eq:SSB} only the upper sideband (the sum frequencies)
+			as well as the highest. Using Equation~\ref{eq:SSB} only the upper sideband (the sum frequencies)
 			of the modulation is produced. The highest and lowest frequency components of the output are those
 			of the input signal multiplied by the exponent, $h$. All other harmonic and intermodulation
-			components created lie between these two frequencies. This can be seen in figure
-			\ref{fig:SSBA3Spectra}, which shows the results of applying $3$\super{rd} order SSBA to the signal
-			used in Figures \ref{fig:CubedSpectra} and \ref{fig:TwoAndAHalfSpectra}. 			
+			components created lie between these two frequencies. This can be seen in
+			Figure~\ref{fig:SSBA3Spectra}, which shows the results of applying $3$\super{rd} order SSBA to the
+			signal used in Figures \ref{fig:CubedSpectra} and \ref{fig:TwoAndAHalfSpectra}. 
 			
 			\begin{figure}[h!]
 				\centering
@@ -732,14 +732,14 @@
 			processing will remove those components in the inputs that will be aliased when processed.
 
 			The bounding of the frequencies in the output signal means that SSBA will produce a single harmonic
-			if the input is a sinusoid as shown in Equation \ref{eq:OneSideband}. This is useful in situations
+			if the input is a sinusoid as shown in Equation~\ref{eq:OneSideband}. This is useful in situations
 			in which fine control is required over the content of the output spectrum. An output signal can be
 			constructed through the generation of several individual harmonics.
 
 		\subsubsection*{IAP}
 			Like the SSBA method, if the input is sinusoidal the IAP method will generate a single harmonic. In
 			contrast to the SSBA method, the IAP method provides little control over the bandwidth of the
-			output when the input has multiple frequency components. Figure \ref{fig:IAP3Spectra} shows the
+			output when the input has multiple frequency components. Figure~\ref{fig:IAP3Spectra} shows the
 			spectral effects of third order IAP processing on the same signal used when discussing previous
 			algorithms.
 
@@ -775,7 +775,7 @@
 		\subsubsection*{Spectral Folding}
 			Spectral folding with a factor $k$ results in the lowest $\frac{1}{k}$ of the input spectrum being
 			repeated $k$ times in the output spectrum. Every second repetition being a mirror image of the
-			original. This effect is shown in Figure \ref{fig:SpectralFolding}. 
+			original. This effect is shown in Figure~\ref{fig:SpectralFolding}. 
 			
 			\begin{figure}[h!]
 				\centering
@@ -793,11 +793,11 @@
 			complexity of the system.
 
 		\subsubsection*{Spectral Stretching}
-			An ideal spectral stretching system would produce the result shown in Figure
-			\ref{fig:SpectralStretching}. All frequency components are scaled by the same factor preserving the
-			frequency ratios between spectral components. For harmonically structured signals this has the
-			effect of scaling the $f_{0}$, increasing the signals perceived pitch. For sinusoidal input this
-			results in the generation of individual harmonics as with the SSBA and IAP techniques.
+			An ideal spectral stretching system would produce the result shown in
+			Figure~\ref{fig:SpectralStretching}. All frequency components are scaled by the same factor
+			preserving the frequency ratios between spectral components. For harmonically structured signals
+			this has the effect of scaling the $f_{0}$, increasing the signals perceived pitch. For sinusoidal
+			input this results in the generation of individual harmonics as with the SSBA and IAP techniques.
 			
 			The phase vocoder introduces frequency artefacts during its operation. The process of splitting the
 			signal into frames causes spectral leakage; energy at a given frequency is spread across the nearby
@@ -815,10 +815,10 @@
 		\subsubsection*{STTR}
 			The spectral effects of STTR depends on the properties of the input signal and the window function
 			and step size used. For simple sinusoidal inputs, complex output spectra can be generated. For
-			example, consider the spectral effects of STTR using the window function defined in Equation
-			\ref{eq:STTRWindow} (shown in Figure \ref{fig:STTRWindow}). This window function exhibits constant
-			overlap add for a step size of $\frac{L}{2}$. Figure \ref{fig:STTRSpectra} shows the output spectra
-			of STTR, using this window with lengths of 1ms and 1.5ms, on a 1kHz sinusoid.
+			example, consider the spectral effects of STTR using the window function defined in
+			Equation~\ref{eq:STTRWindow} (shown in Figure~\ref{fig:STTRWindow}). This window function exhibits
+			constant overlap add for a step size of $\frac{L}{2}$. Figure~\ref{fig:STTRSpectra} shows the
+			output spectra of STTR, using this window with lengths of 1ms and 1.5ms, on a 1kHz sinusoid.
 
 			\begin{equation}
 				w[n] = \begin{cases}
@@ -833,22 +833,22 @@
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/STTRWindow.pdf}
-				\caption{The window function defined in Equation \ref{eq:STTRWindow}.}
+				\caption{The window function defined in Equation~\ref{eq:STTRWindow}.}
 				\label{fig:STTRWindow}
 			\end{figure}
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/STTRSpectra.pdf}
-				\caption{The spectral effects of STTR using the window function defined in Equation
-				         \ref{eq:STTRWindow}.}
+				\caption{The spectral effects of STTR using the window function defined in
+					 Equation~\ref{eq:STTRWindow}.}
 				\label{fig:STTRSpectra}
 			\end{figure}
 
 			The period of the output signal is equal to the least common multiple of the input signal's period
 			and the step size. If the period of the input signal is an integer multiple of the step size this
 			means the period will remain unchanged by the processing. This is evidenced by the output spectrum
-			produced by use of a 1ms window, shown in Figure \ref{fig:STTRSpectra}. Only odd order harmonics
+			produced by use of a 1ms window, shown in Figure~\ref{fig:STTRSpectra}. Only odd order harmonics
 			are generated retaining the original period of the signal. When a signal's period is not an integer
 			multiple of the step size it is increased by STTR. The output spectrum for a 1.5ms window shows
 			this, the period of the signal being increased to 3ms. The lowest frequency in this output is then
@@ -869,14 +869,14 @@
 			temporal evolution of a signal. The gradient of the characteristic curve for low amplitude samples
 			can be manipulated to alter the attack and release times of signals. Increasing the gradient will
 			shorten attack and release times, while decreasing it will lengthen them. As an extreme example
-			consider the infinite peak clipper shown in Equation \ref{eq:InfinitePeakClipper}.
+			consider the infinite peak clipper shown in Equation~\ref{eq:InfinitePeakClipper}.
 
 			\begin{equation}
 				y[n] = \sgn(x[n])
 				\label{eq:InfinitePeakClipper}
 			\end{equation}
 			
-			Figure \ref{fig:InfinitePeakClipping} shows a signal, with attack and release sections, before and
+			Figure~\ref{fig:InfinitePeakClipping} shows a signal, with attack and release sections, before and
 			after infinite peak clipping. The original signal rises to its full amplitude over two cycles and
 			falls back to silence over the same time. After infinite peak clipping the attack and release have
 			become instantaneous.
@@ -903,11 +903,11 @@
 			highly dependent on the input signal and will most likely be imperceptible.
 			
 		\subsubsection*{Integrator}
-			Due to the inherent low pass filtering behaviour of integrators (see Section
-			\ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}) the temporal properties of
-			transient signals will be altered. Fast rise times will be lengthened by the attenuation of their
-			high frequency components as seen in Figure \ref{fig:IntegratorTemporalEffects}. This prevents
-			integrators being used for harmonic excitation in applications where it is essential that
+			Due to the inherent low pass filtering behaviour of integrators (see
+			Section~\ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}) the temporal properties
+			of transient signals will be altered. Fast rise times will be lengthened by the attenuation of
+			their high frequency components as seen in Figure~\ref{fig:IntegratorTemporalEffects}. This
+			prevents integrators being used for harmonic excitation in applications where it is essential that
 			transients are preserved. 
 
 			\begin{figure}[h!]
@@ -948,11 +948,11 @@
 
 		\subsubsection*{SSBA}
 			SSBA has similar temporal effects to a multiplier. The signal undergoes dynamic expansion changing
-			the shape of its attack and release envelopes as shown in Figure \ref{fig:SSBATemporalEffects}.
+			the shape of its attack and release envelopes as shown in Figure~\ref{fig:SSBATemporalEffects}.
 			The restricted bandwidth of the SSBA technique's output is also apparent from this graph. The input
 			is a sinusoid with a simple amplitude envelope. The output is a sinusoid with three times the
 			frequency and an amplitude envelope equal to that of the input cubed. This is in contrast to the
-			effect of the multiplier shown in Figure \ref{fig:ExponentiationTemporalEffects} where the output
+			effect of the multiplier shown in Figure~\ref{fig:ExponentiationTemporalEffects} where the output
 			signal is no longer sinusoidal.
 
 			\begin{figure}[h!]
@@ -965,7 +965,7 @@
 		\subsubsection*{IAP}
 			IAP alters only the frequency (phase) information of a signal. As the amplitude information is left
 			unaltered the system preserves the input signal's amplitude envelope. Due to this the temporal
-			characteristics of signals are unaffected. This can be seen in Figure \ref{fig:IAPTemporalEffects}
+			characteristics of signals are unaffected. This can be seen in Figure~\ref{fig:IAPTemporalEffects}
 			where it is apparent that the frequency of the sinusoid has been altered and its amplitude envelope
 			not.
 
@@ -977,11 +977,11 @@
 			\end{figure}
 			
 		\subsubsection*{Spectral Replication}
-			Spectral replication using Equation \ref{eq:SpectralReplication} operates by multiplying the
+			Spectral replication using Equation~\ref{eq:SpectralReplication} operates by multiplying the
 			analytic signal by a unity amplitude complex sinusoid. This has the effect of multiplying a
-			signal's amplitude envelope by one, leaving it unaffected. Figure
-			\ref{fig:SpectralReplicationTemporalEffects} illustrates this, showing the effects on a signal's
-			amplitude envelope by shifting it's frequency content upwards by 1.5Hz
+			signal's amplitude envelope by one, leaving it unaffected.
+			Figure~\ref{fig:SpectralReplicationTemporalEffects} illustrates this, showing the effects on a
+			signal's amplitude envelope by shifting it's frequency content upwards by 1.5Hz
 
 			\begin{figure}[h!]
 				\centering
@@ -1035,7 +1035,7 @@
 		\subsubsection*{Integrator}
 			Integrators are similarly useful to general static nonlinearities, they provide an efficient means
 			to add wideband energy to the spectrum of a signal. The implementation discussed in this work
-			(Equation \ref{eq:Integrator}) has similar properties to a rectifier, being a positive homogeneous
+			(Equation~\ref{eq:Integrator}) has similar properties to a rectifier, being a positive homogeneous
 			system which introduces distortion components with a shallow roll off. The primary difference being
 			that the integrator produces all orders of distortion rather than only even orders. A disadvantage
 			of integrators over rectifiers is that they smear transients due to their low pass filtering
@@ -1048,9 +1048,9 @@
 			Mixer can be constructed in which the output of several multipliers with different exponents can be
 			summed in order to include multiple orders of distortion. This increases the control over the
 			output spectrum at the expense of increasing the computational complexity. In use cases where
-			aliasing distortion needs to be eliminated, a harmonic mixer (described in Section
-			\ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}) can be used to approximate the
-			behaviour of other static nonlinearities.
+			aliasing distortion needs to be eliminated, a harmonic mixer (described in
+			Section~\ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}) can be used to
+			approximate the behaviour of other static nonlinearities.
 
 		\subsubsection*{SSBA}
 			SSBA increases the flexibility of a multiplier further. As only the sum sideband of the
@@ -1059,8 +1059,8 @@
 			harmonic mixer using SSBA provides full control over which harmonics are generated from a
 			sinusoidal input. Where fine control of the spectral output is desired SSBA provides a reasonably
 			low complexity solution. One disadvantage of this method is its non-homogeneous behaviour which
-			could be amended using similar techniques as those used for peak clippers (discussed in Section
-			\ref{sec:ExcitationEvaluation-Comparison-Homogeneity}).
+			could be amended using similar techniques as those used for peak clippers (discussed in
+			Section~\ref{sec:ExcitationEvaluation-Comparison-Homogeneity}).
 
 		\subsubsection*{IAP}
 			IAP can be used in similar ways to SSBA. For sinusoidal inputs the output is an individual harmonic
@@ -1076,9 +1076,9 @@
 			Spectral replication provides a way of generating higher order harmonics without unwanted
 			intermodulation component beings introduced. To ensure that the harmonic structure is preserved the
 			$f_{0}$ of the input signal must be accurately tracked in order to determine how much the frequency
-			should be shifted by. A discussion of different $f_{0}$ tracking methods is given in Section
-			\ref{sec:FeatureControl-Systems-Fundamental}. While this introduces considerable complexity the
-			bandwidth of the output is bounded at both ends and the system is homogeneous. The spectral
+			should be shifted by. A discussion of different $f_{0}$ tracking methods is given in
+			Section~\ref{sec:FeatureControl-Systems-Fundamental}. While this introduces considerable complexity
+			the bandwidth of the output is bounded at both ends and the system is homogeneous. The spectral
 			envelope of the output is the same as that of the input so further filtering is required to apply
 			any other manipulations.
 
@@ -1106,13 +1106,13 @@
 			does not provide the uniform response across input signals required for timbral control.
 
 \section{Conclusion}
-	This chapter has discussed the characteristics of the harmonic generation algorithms presented in Chapter
-	\ref{chap:Excitation}, highlighting their desirable / undesirable traits when applied to timbral control. Two broad
-	classes of harmonic generators are identified; those which generate large numbers of distortion components with
-	little control over their frequencies / amplitudes and those which provide control over the orders of distortion
-	introduced, sometimes allowing for the generation of individual harmonics. There is typically a compromise made
-	between control and computational complexity, algorithms providing more control over the resulting spectrum
-	requiring more computation.
+	This chapter has discussed the characteristics of the harmonic generation algorithms presented in
+	Chapter~\ref{chap:Excitation}, highlighting their desirable / undesirable traits when applied to timbral control.
+	Two broad classes of harmonic generators are identified; those which generate large numbers of distortion
+	components with little control over their frequencies / amplitudes and those which provide control over the orders
+	of distortion introduced, sometimes allowing for the generation of individual harmonics. There is typically a
+	compromise made between control and computational complexity, algorithms providing more control over the resulting
+	spectrum requiring more computation.
 
 	Static nonlinearities and integrators are the best choice where a large series of distortion components need be
 	created efficiently. The traditionally used peak clipper might not be the most suitable for intuitive timbral
@@ -1131,11 +1131,11 @@
 	introduction of artefacts. SSBA and IAP are both simpler systems but each has a particular advantage. For purely
 	sinusoidal input, IAP outperforms SSBA in that in it homogeneous, having no effect on the amplitude envelope of a
 	signal. For more complex inputs however, SSBA may be preferential as it provides more control over the range of
-	frequencies in the output, bounding the orders of intermodulation components generated.	In Section
-	\ref{sec:PerceptualExperiments-Reconstruction} perceptual listening tests are carried out in order to evaluate the
-	perceived quality of individual harmonics generated using both SSBA and IAP.
+	frequencies in the output, bounding the orders of intermodulation components generated.	In
+	Section~\ref{sec:PerceptualExperiments-Reconstruction} perceptual listening tests are carried out in order to
+	evaluate the perceived quality of individual harmonics generated using both SSBA and IAP.
 
-	In Chapter \ref{chap:FeatureControl} the analysis of harmonic generation algorithms discussed in this chapter is
+	In Chapter~\ref{chap:FeatureControl} the analysis of harmonic generation algorithms discussed in this chapter is
 	used to inform the design of harmonic excitation systems. The properties of the algorithms identified allow these
-	systems to be configured to control specific audio features (defined in Chapter \ref{chap:Timbre}) of an input
+	systems to be configured to control specific audio features (defined in Chapter~\ref{chap:Timbre}) of an input
 	signal.

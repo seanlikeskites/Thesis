@@ -13,19 +13,19 @@
 
 \section{Introduction}
 \label{sec:FeatureControl-Introduction}
-	As discussed in Section \ref{sec:Timbre-Control}, previous studies have attempted to control perceptual features by
+	As discussed in Section~\ref{sec:Timbre-Control}, previous studies have attempted to control perceptual features by
 	controlling specific audio features. This chapter will identify the audio features which can be controlled through
 	harmonic excitation and which excitation algorithms are the most suitable for given feature changes. Firstly, in
-	Section \ref{sec:FeatureControl-Systems}, various challenges which arise when building harmonic excitation systems
+	Section~\ref{sec:FeatureControl-Systems}, various challenges which arise when building harmonic excitation systems
 	are discussed and methods to counteract them are suggested. A number of different systems are proposed which
-	provide control over the nature of the new frequency components introduced to the signal. In Section
-	\ref{sec:FeatureControl-Parameterisation} methods by which these systems can be configured to control specific
-	audio features are proposed and tested.
+	provide control over the nature of the new frequency components introduced to the signal. In
+	Section~\ref{sec:FeatureControl-Parameterisation} methods by which these systems can be configured to control
+	specific audio features are proposed and tested.
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
-	In Section \ref{sec:Excitation-Methods} several different methods of introducing new frequency content to a signal
-	were introduced. In Section \ref{sec:ExcitationEvaluation-Comparison} these methods were discussed further and the
+	In Section~\ref{sec:Excitation-Methods} several different methods of introducing new frequency content to a signal
+	were introduced. In Section~\ref{sec:ExcitationEvaluation-Comparison} these methods were discussed further and the
 	degree to which their effect can be controlled evaluated. From that analysis this is know that better control over
 	the output is gained through meeting certain input requirements, for instance the SSBA and IAP techniques will
 	produce sinusoidal outputs for sinusoidal inputs. It is also noted that further filtering may be needed after the
@@ -36,7 +36,7 @@
 
 	\subsection{$f_{0}$ Tracking}
 	\label{sec:FeatureControl-Systems-Fundamental}
-		The majority of the methods discussed in Section \ref{sec:Excitation-Methods} will cause intermodulation
+		The majority of the methods discussed in Section~\ref{sec:Excitation-Methods} will cause intermodulation
 		distortion when used on signals with multiple frequency components. As the effects of this intermodulation
 		distortion can be difficult to predict it can be useful to eliminate it altogether. This should make the
 		effects of a system more predictable allowing it to be used in more situations.	Intermodulation distortion
@@ -49,7 +49,7 @@
 		harmonic excitation algorithm to the isolated $f_{0}$ will produce a signal with a lower level of
 		intermodulation components than processing the original input signal. The `excited' isolated $f_{0}$ signal
 		can then be summed with the original signal to produce the output. A diagram of this system is shown in
-		Figure \ref{fig:F0Tracking}.
+		Figure~\ref{fig:F0Tracking}.
 
 		\begin{figure}[h!]
 			\centering
@@ -108,11 +108,11 @@
 		estimate methods \citep{noll1969pitch}.
 
 		For real time harmonic excitation, the accuracy of the $f_{0}$ tracking algorithm is not as important as it
-		is in other fields such as automatic music transcription. The aim of the system in Figure
-		\ref{fig:F0Tracking} is to reduce the level of higher harmonics compared to the $f_{0}$. Using a low pass
-		filter with a cutoff frequency close to the $f_{0}$ will achieve this. The lag between the audio and the
-		estimate of the $f_{0}$ is of greater concern. The system needs to respond quickly to changes in $f_{0}$ in
-		order to better isolate it for processing.
+		is in other fields such as automatic music transcription. The aim of the system in
+		Figure~\ref{fig:F0Tracking} is to reduce the level of higher harmonics compared to the $f_{0}$. Using a low
+		pass filter with a cutoff frequency close to the $f_{0}$ will achieve this. The lag between the audio and
+		the estimate of the $f_{0}$ is of greater concern. The system needs to respond quickly to changes in
+		$f_{0}$ in order to better isolate it for processing.
 
 		A problem is posed by signals with little energy at their $f_{0}$, such as those produced in the lower
 		register of a Double Bass \citep{askenfelt2010double}. An $f_{0}$ tracking algorithm will still return the
@@ -124,7 +124,7 @@
 		will allow for the excitation of every harmonic. The SSBA and IAP methods only allow for integer
 		multiplications of the input frequency.
 
-		The system shown in Figure \ref{fig:F0Tracking} can provide differing levels of flexibility depending on
+		The system shown in Figure~\ref{fig:F0Tracking} can provide differing levels of flexibility depending on
 		the harmonic exciter used. Using a simple clipper will generate a series of harmonics of the $f_{0}$. Using
 		methods which provide more control over the order of distortion allows users to excite single harmonics in
 		the output. This will be covered in the next section.
@@ -133,7 +133,7 @@
 	\label{sec:FeatureControl-Systems-Individuals}
 		Control over which harmonics are excited in a signal can be achieved by generating individual harmonics.
 		The principle behind this is to isolate the $f_{0}$ and then shift its frequency to that of the desired
-		harmonic, as done in the system shown in Figure \ref{fig:HarmonicGenerationSystem}.  The frequency shifter
+		harmonic, as done in the system shown in Figure~\ref{fig:HarmonicGenerationSystem}.  The frequency shifter
 		in this system can be implemented the SSBA, IAP, Spectral Replication or Spectral Stretching methods.
 
 		\begin{figure}[h!]
@@ -177,7 +177,7 @@
 		
 	\subsection{Spectral Shaping}
 	\label{sec:FeatureControl-Systems-SpectralShaping}
-		As seen in Section \ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}, static nonlinearities
+		As seen in Section~\ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}, static nonlinearities
 		provide an efficient way to generate large numbers of harmonics for sinusoidal inputs. The characteristic
 		curve of the nonlinearity can be designed to produce a set of harmonics with the desired qualities, the
 		parity of the characteristic curve can be used to control whether odd or even harmonics are generated and
@@ -186,7 +186,7 @@
 
 		A spectral shaping system can be constructed in which a static nonlinearity and filter are used to excite a
 		large band of harmonics and finer control is provided using the individual harmonic generation method shown
-		in Figure \ref{fig:HarmonicGenerationSystem}. This allows the majority of the harmonics to be excited in
+		in Figure~\ref{fig:HarmonicGenerationSystem}. This allows the majority of the harmonics to be excited in
 		an efficient manner, only using more complex processing where it is needed. \citet{howard2009acoustics}
 		discusses how low order harmonics sit in separate critical bands, whereas high order harmonics are within
 		one critical bandwidth of one another. This means that lower order harmonics are resolved separately by the
@@ -195,9 +195,9 @@
 		this reason, a harmonic excitation system need only provide control over the individual amplitudes of low
 		order harmonics. 
 
-		Using Equation \ref{eq:ERB}, the minimum order for which harmonics lie within one critical bandwidth of one
+		Using Equation~\ref{eq:ERB}, the minimum order for which harmonics lie within one critical bandwidth of one
 		another can be calculated. For a signal with a given $f_{0}$, this order, $n$, can be calculated using the
-		inequality in Equation \ref{eq:MinimumFusedHarmonic}.
+		inequality in Equation~\ref{eq:MinimumFusedHarmonic}.
 
 		\begin{gather}
 			f_{0} < 24.7 \left( 4.37n \frac{f_{0}}{1000} + 1 \right) \nonumber \\
@@ -206,7 +206,7 @@
 		\end{gather}
 
 		This value is dependent on the $f_{0}$ of the signal. As $f_{0}$ rises, the minimum value of $n$ grows
-		asymptotically towards 9.26 as shown in Equation \ref{eq:IndividualHarmonicLimit}.
+		asymptotically towards 9.26 as shown in Equation~\ref{eq:IndividualHarmonicLimit}.
 
 		\begin{equation}
 			\lim_{f_{0} \to \infty} 1000 \frac{f_{0} - 24.7}{24.7 \times 4.37f_{0}} \approx 9.26
@@ -215,8 +215,8 @@
 
 		For any value of $f_{0}$, a maximum of nine harmonics will lie at least one critical bandwidth away from
 		all other harmonics. The individual amplitudes of the tenth, and higher order, harmonics have less effect
-		on the timbre of a signal. This leads to the system shown in Figure \ref{fig:SpectralShapingSystem}, an
-		expansion of the system shown in Figure \ref{fig:F0Tracking} providing finer control over the amplitudes of
+		on the timbre of a signal. This leads to the system shown in Figure~\ref{fig:SpectralShapingSystem}, an
+		expansion of the system shown in Figure~\ref{fig:F0Tracking} providing finer control over the amplitudes of
 		the first nine harmonics. The $f_{0}$ is isolated in the same manner but several exciters are used in
 		parallel. Each of the first nine harmonics are generated individually from the isolated $f_{0}$. Higher
 		order harmonics are generated using a static nonlinearity and high pass filter in combination. The filter's
@@ -333,7 +333,7 @@
 		the original and excited signals must be known. This involves performing a full spectral analysis on the
 		input signal. 
 
-		When using a system like that shown in Figure \ref{fig:SpectralShapingSystem}, the phases and amplitudes of
+		When using a system like that shown in Figure~\ref{fig:SpectralShapingSystem}, the phases and amplitudes of
 		the excited harmonics depend on the phase and amplitude of the isolated $f_{0}$. Using the SSBA and IAP
 		techniques to generate the $n$\super{th} harmonic, the phase of the output is $n$ times that of the input
 		after the Hilbert transform filter has been applied. The phases of the harmonics produced by a static
@@ -346,11 +346,11 @@
 		but for more subtle timbral manipulations it is better to preserve more of the original spectral structure.
 
 		A less intrusive method is to filter energy out of the input signal only at the frequencies which are to be
-		excited. For the system in Figure \ref{fig:SpectralShapingSystem} this can be implemented using a series of
+		excited. For the system in Figure~\ref{fig:SpectralShapingSystem} this can be implemented using a series of
 		notch filters tuned to the frequencies of the first nine harmonics and a low pass filter to attenuate any
 		frequency above the ninth harmonic. These filters can be applied to the unexcited signal depending on which
 		harmonics are being generated by the exciters. A diagram of a system which includes these filters is shown
-		in Figure \ref{fig:SuperpositionSystem}.
+		in Figure~\ref{fig:SuperpositionSystem}.
 
 		\begin{figure}[h!]
 			\centering
@@ -449,7 +449,7 @@
 				\node (Out) at (11.75, -1.75) {$y[n]$};
 				\draw (Add) -- (Out);
 			\end{tikzpicture}
-			\caption{The system from Figure \ref{fig:SpectralShapingSystem} extended to allow for filtering of
+			\caption{The system from Figure~\ref{fig:SpectralShapingSystem} extended to allow for filtering of
 				 the original signal.}
 			\label{fig:SuperpositionSystem}
 		\end{figure}
@@ -465,8 +465,8 @@
 
 		For fine control it may be beneficial to separate control of the amplitude and phase of each partial in a
 		signal. This is most easily achieved using the IAP technique as the phase of the input signal is already
-		exposed in the calculation. Introducing a phase parameter, $\theta$, to Equation \ref{eq:IAP} gives rise to
-		Equation \ref{eq:IAPWithPhase}. Assuming a sinusoidal input this new parameter controls the phase of the
+		exposed in the calculation. Introducing a phase parameter, $\theta$, to Equation~\ref{eq:IAP} gives rise to
+		Equation~\ref{eq:IAPWithPhase}. Assuming a sinusoidal input this new parameter controls the phase of the
 		generated harmonic relative to that of the input. 
 
 		\begin{equation}
@@ -474,7 +474,7 @@
 			\label{eq:IAPWithPhase}
 		\end{equation}
 
-		For introducing new spectral content with a specific amplitude and phase Equation \ref{eq:IAPWithPhase}
+		For introducing new spectral content with a specific amplitude and phase Equation~\ref{eq:IAPWithPhase}
 		suffices. Separate control of the phase and amplitudes of existing partials can be achieved in two ways.
 		The first is to use an analysis / resynthesis system in which the amplitudes and phases of the partials are
 		adjusted in the frequency domain. The second approach is to use zero phase filters to amplify or attenuate
@@ -490,7 +490,7 @@
 		order for their frequency to be precise the exact $f_{0}$ must be known. This causes the system to rely on
 		the accuracy of the $f_{0}$ tracking algorithm used, meaning a much more complex tracker needs to be used,
 		adding to the complexity of the system. A system which provides control over inharmonicity and does not
-		rely on precise $f_{0}$ tracking is shown in Figure \ref{fig:InharmonicitySystem}.
+		rely on precise $f_{0}$ tracking is shown in Figure~\ref{fig:InharmonicitySystem}.
 
 		\begin{figure}[h!]
 			\centering
@@ -601,23 +601,23 @@
 				\node (Out) at (12.75, -1.75) {$y[n]$};
 				\draw (Add) -- (Out);
 			\end{tikzpicture}
-			\caption{An extension of the system in Figure \ref{fig:SuperpositionSystem} to allow for control
+			\caption{An extension of the system in Figure~\ref{fig:SuperpositionSystem} to allow for control
 			         of inharmonicity.}
 			\label{fig:InharmonicitySystem}
 		\end{figure}
 
-		As in Figure \ref{fig:SpectralShapingSystem} the second through ninth harmonics are generated individually.
+		As in Figure~\ref{fig:SpectralShapingSystem} the second through ninth harmonics are generated individually.
 		This can be done using any method which generates precise harmonics. Each harmonic is then shifted to the
-		desired frequency using the single sideband modulation technique shown in Section
-		\ref{sec:Excitation-Methods-SpectralReplication}. This produces partials which deviate from harmonic
-		frequencies by exactly the amount of shift applied. The higher order harmonics are not generated
+		desired frequency using the single sideband modulation technique shown in
+		Section~\ref{sec:Excitation-Methods-SpectralReplication}. This produces partials which deviate from
+		harmonic frequencies by exactly the amount of shift applied. The higher order harmonics are not generated
 		individually and as such their inharmonicity cannot be controlled individually. Spectral replication could
 		be used to shift their frequencies as is done with the lower order harmonics. This restricts the higher
 		harmonics to all having the same degree of inharmonicity.  This may sound unnatural as in natural tones the
 		inharmonicity of a harmonic is typically dependent on the order of the harmonic (such as in piano tones
 		\citep{young1952inharmonicity}).
 
-		The system in Figure \ref{fig:InharmonicitySystem} provides an alternative method of introducing
+		The system in Figure~\ref{fig:InharmonicitySystem} provides an alternative method of introducing
 		inharmonicity in the high order harmonics. A separate low pass filter is used to produce an input for the
 		static nonlinearity. If this filter's cutoff frequency is set to isolate the $f_{0}$, the nonlinearity will
 		only produce harmonic distortion components. As the cutoff frequency is increased, allowing more partials
@@ -630,7 +630,7 @@
 
 \section{Parameterisation of Feature Changes}
 \label{sec:FeatureControl-Parameterisation}
-	The systems discussed in Section \ref{sec:FeatureControl-Systems} provide control over where energy is introduced
+	The systems discussed in Section~\ref{sec:FeatureControl-Systems} provide control over where energy is introduced
 	in a signal's spectrum. Large bands of energy can be introduced or finer control over specific harmonics can be
 	provided. Each system has a set of control parameters controlling gains applied to specific bands of energy and
 	filtering / frequency shifting options. This section discusses how these control parameters can be configured to
@@ -638,9 +638,9 @@
 	systems whereby a single control parameter is mapped to the parameters of a harmonic excitation system in order to
 	change the value of an audio feature.
 
-	Assuming perfect detection of $f_{0}$ and perfect filters, the systems shown in Section
-	\ref{sec:FeatureControl-Systems} will provide analogous manipulations for all harmonically structured input
-	signals. For example, the system in Figure \ref{fig:HarmonicGenerationSystem} will always generate a harmonic with
+	Assuming perfect detection of $f_{0}$ and perfect filters, the systems shown in
+	Section~\ref{sec:FeatureControl-Systems} will provide analogous manipulations for all harmonically structured input
+	signals. For example, the system in Figure~\ref{fig:HarmonicGenerationSystem} will always generate a harmonic with
 	the same amplitude relationship to the $f_{0}$ of the input. In actual implementations the inaccuracies in $F_{0}$
 	tracking and the properties of the input signal and filters used will affect how the system operates. To examine
 	these effects, each of the methods proposed for manipulating an audio feature in this section are tested on four
@@ -654,7 +654,7 @@
 	harmonics while clarinet signal has the majority of its energy in the odd order harmonics. The synthesised sound
 	has almost perfectly harmonic partials and zero noise energy. This signal is included to examine how the excitation
 	systems perform for the ideal case of a harmonic signal with zero noise. The piano signal poses a problem to the
-	systems discussed in Section \ref{sec:FeatureControl-Systems} as the $f_{0}$ has been physically damped through
+	systems discussed in Section~\ref{sec:FeatureControl-Systems} as the $f_{0}$ has been physically damped through
 	alteration to the instrument. This reduces the amplitude of the $f_{0}$ compared to the remaining harmonic partials
 	as well as changing the shape of its amplitude envelope. As the systems all rely on isolating the $f_{0}$ before
 	generating harmonics this is likely to cause inaccuracies. This signal is included to examine to extent to which
@@ -674,7 +674,7 @@
 			structure, the relative levels of partials within each band remaining the same. Using this method
 			the new spectral centroid will lie somewhere between the respective centroids of the two bands. The
 			relative amplitudes of the two bands required to give a certain spectral centroid, $\mu_{s}$, can
-			be calculated using Equation \ref{eq:SpectralCentroidManipulation}.
+			be calculated using Equation~\ref{eq:SpectralCentroidManipulation}.
 
 			\begin{equation}
 				\frac{\sum_{n = c + 1}^{N} a_{n}}
@@ -699,12 +699,12 @@
 			to contain frequency content which was not in the original signal. As before the overall spectral
 			centroid can be moved by adjusting the relative amplitudes of the original signal and the new band
 			of energy. To facilitate precise control of the spectral centroid these bands should not share any
-			frequency components. Figure \ref{fig:TwoBandSpectralCentroidSystem} shows a system which
+			frequency components. Figure~\ref{fig:TwoBandSpectralCentroidSystem} shows a system which
 			separately controls the gains of two bands. The lower band is generated via a low pass filter on
 			the input signal while the high band is created using a nonlinear device. The bands are filtered
 			with corresponding low and high pass filters to ensure they share no frequency components. The
 			spectral centroid of the output can be moved between the centroids of these two bands by changing
-			their relative amplitudes according to Equation \ref{eq:SpectralCentroidManipulation}.
+			their relative amplitudes according to Equation~\ref{eq:SpectralCentroidManipulation}.
 
 			\begin{figure}[h!]
 				\centering
@@ -761,7 +761,7 @@
 			band, with amplitudes which are determined by the signals current slope, the centroid can be moved
 			while the slope is left unaltered.
 
-			Figure \ref{fig:MoveCentroids} shows the effect of this system on the test signals. The low and
+			Figure~\ref{fig:MoveCentroids} shows the effect of this system on the test signals. The low and
 			high pass filters used to separate the bands were set to have a cutoff frequency equal to
 			$9.5f_{0}$ and the nonlinear device used was a symmetric hard peak clipper. The gains applied to
 			the bands are parameterised as $P$, the low band is multiplied by a gain of $1 - P$ and the high
@@ -802,10 +802,10 @@
 			Spectral spread can be increased by adding energy at frequencies which are more that one spectral
 			spread from the centroid or reducing the energy at frequencies within one spectral spread of the
 			centroid.  Applying the opposite operations will decrease the spectral spread. This can be
-			implemented using a system similar to that in Figure \ref{fig:TwoBandSpectralCentroidSystem}. A
+			implemented using a system similar to that in Figure~\ref{fig:TwoBandSpectralCentroidSystem}. A
 			band of harmonic energy is generated by processing the isolated $f_{0}$ with a nonlinear device
 			followed by a band pass filter. This new band can then be summed with the original signal at the
-			desired gain. Figure \ref{fig:MoveSpreads} shows the change in spectral spread when the gain, $m$,
+			desired gain. Figure~\ref{fig:MoveSpreads} shows the change in spectral spread when the gain, $m$,
 			of a spectral band, containing energy between $0.8\mu_{s}$ and $1.2\mu_{s}$, is changed.
 
 			\begin{figure}[h!]
@@ -823,11 +823,11 @@
 			with a positive gradient will decrease the skewness, whereas a negative gradient will increase the
 			skewness. While the simplest system to achieve this would be a linear filter, an excitation based
 			approach can provide a more flexible system in terms of manipulation or preservation of other
-			features. Using the system shown in Figure \ref{fig:SuperpositionSystem} a spectral tilt of $k$ dB
+			features. Using the system shown in Figure~\ref{fig:SuperpositionSystem} a spectral tilt of $k$ dB
 			per octave can be applied to the first nine harmonics. This is done by multiplying each harmonic's
 			amplitude by $10^{\frac{k}{20}\log_{2} \left( \frac{\nu_{n}}{\mu_{s}} \right)}$. Increasing the
 			value of $k$ increases the gradient of the tilt applied and thereby lowers the signal's spectral
-			skewness. Figure \ref{fig:MoveSkewnesses} shows the effects of changing $k$ when processing the
+			skewness. Figure~\ref{fig:MoveSkewnesses} shows the effects of changing $k$ when processing the
 			test signals.
 
 			\begin{figure}[h!]
@@ -839,20 +839,20 @@
 
 			Only controlling the amplitudes of the first nine harmonics imposes restrictions on how the
 			spectral skewness can be manipulated. The great amount of control over the low end of the signal's
-			spectrum allows for skewness to be easily increased, as evidenced by Figure
-			\ref{fig:MoveSkewnesses}.  Decreasing the skewness however, is more difficult. The excitation
-			system does not provide such fine control over the high end of a signal's spectrum. Using the
-			spectral tilt method with a high positive value for $k$ will greatly attenuate the low order
-			harmonics but leave the high order harmonics unprocessed. This means the output skewness will be
-			equal to the skewness of the high order harmonics of the signal. This is seen in Figure
-			\ref{fig:MoveSkewnesses} where the skewness values all approach some minimum value. Introducing
-			more high frequency energy using a nonlinear device, as done when controlling the spectral
-			centroid, is a possible solution to this.
+			spectrum allows for skewness to be easily increased, as evidenced by
+			Figure~\ref{fig:MoveSkewnesses}.  Decreasing the skewness however, is more difficult. The
+			excitation system does not provide such fine control over the high end of a signal's spectrum.
+			Using the spectral tilt method with a high positive value for $k$ will greatly attenuate the low
+			order harmonics but leave the high order harmonics unprocessed. This means the output skewness will
+			be equal to the skewness of the high order harmonics of the signal. This is seen in
+			Figure~\ref{fig:MoveSkewnesses} where the skewness values all approach some minimum value.
+			Introducing more high frequency energy using a nonlinear device, as done when controlling the
+			spectral centroid, is a possible solution to this.
 
 			Spectral kurtosis can be changed using the same method as for spectral spread. Increasing the
 			energy near the centroid reduces the kurtosis, while removing energy near the centroid increases
-			the kurtosis. Figure \ref{fig:MoveKurtoses} shows the effect on the spectral kurtosis of the test
-			signal when undergoing the same processing as described for Figure \ref{fig:MoveSpreads}.
+			the kurtosis. Figure~\ref{fig:MoveKurtoses} shows the effect on the spectral kurtosis of the test
+			signal when undergoing the same processing as described for Figure~\ref{fig:MoveSpreads}.
 			
 			\begin{figure}[h!]
 				\centering
@@ -874,8 +874,8 @@
 		\ref{eq:BeauchampIrregularity}) are based on taking the differences between each partial's amplitude and
 		the mean amplitude of itself and the two partials surrounding it. Intuitively this value can be increased
 		or reduced by moving the amplitudes of the partials away or towards their mean. To implement this using the
-		system shown in Figure \ref{fig:SuperpositionSystem} the new amplitudes of the first nine harmonics can be
-		calculated using Equation \ref{eq:PartialSmoothing}
+		system shown in Figure~\ref{fig:SuperpositionSystem} the new amplitudes of the first nine harmonics can be
+		calculated using Equation~\ref{eq:PartialSmoothing}
 
 		\begin{equation}
 			a'_{n} = a_{n} \left( \frac{\sum_{k = 1}^{9} a_{k}}{9a_{n}} \right) ^{P}
@@ -886,7 +886,7 @@
 		$n$\super{th} partial in the input signal, and $P$ is a parameter controlling how the irregularity is
 		affected. Negative values of $P$ will increase the irregularity, while small positive values of $P$ will
 		decrease the irregularity. The minimum possible irregularity is achieved when $P \approx 1$, higher values
-		of $P$ will increase the irregularity again. Figure \ref{fig:MoveIrregularities} shows how each of the
+		of $P$ will increase the irregularity again. Figure~\ref{fig:MoveIrregularities} shows how each of the
 		spectral irregularity measures are affected by changes in the value of $P$.
 
 		\begin{figure}[h!]
@@ -913,26 +913,26 @@
 			\label{fig:MoveIrregularities}
 		\end{figure}
 
-		As is most notable in Figure \ref{fig:MoveIrregularitiesJ} the value of $P$ which will give the minimum
+		As is most notable in Figure~\ref{fig:MoveIrregularitiesJ} the value of $P$ which will give the minimum
 		flatness depends on the input signal. This is because only the first nine harmonics of each signal are
 		being manipulated. The existing irregularity in the higher order harmonics may mean that adjusting the
 		first nine harmonics to have the same level, as happens when $P = 1$, will not produce the minimum
-		irregularity. The unbounded nature of the Krimphoff irregularity is also visible in Figure
-		\ref{fig:MoveIrregularities}.  While the Jensen and Beauchamp irregularities both asymptotically approach a
-		maximum as $P$ is reduced the Krimphoff irregularity increases exponentially.
+		irregularity. The unbounded nature of the Krimphoff irregularity is also visible in
+		Figure~\ref{fig:MoveIrregularities}.  While the Jensen and Beauchamp irregularities both asymptotically
+		approach a maximum as $P$ is reduced the Krimphoff irregularity increases exponentially.
 
 		Achieving this using excitation requires an analysis / resynthesis approach, replacing the existing
 		spectral components with excited ones and changing the amplitudes to give the desired irregularity. If the
 		analysis stage is removed the complexity of the system can be greatly reduced. The amplitudes of the newly
-		excited spectral components can be predetermined and the irregularity manipulated as per Equation
-		\ref{eq:PartialSmoothing}. A different number of spectral components can be replaced with excited ones
-		depending on how large a timbral variation is desired. Replacing only a few spectral components will
+		excited spectral components can be predetermined and the irregularity manipulated as per
+		Equation~\ref{eq:PartialSmoothing}. A different number of spectral components can be replaced with excited
+		ones depending on how large a timbral variation is desired. Replacing only a few spectral components will
 		provide a small amount of control over irregularity while preserving most of the spectrum of the input
 		signal. Replacing more spectral components provides more control over the overall irregularity at the cost
 		of losing more spectral information from the original.
 
 		An alternate way to influence the irregularity of a signal is through control of the oddness and evenness
-		as discussed in Section \ref{sec:FeatureControl-Parameterisation-HarmonicParityRatio}. A signal with a high
+		as discussed in Section~\ref{sec:FeatureControl-Parameterisation-HarmonicParityRatio}. A signal with a high
 		oddness and low evenness (or vice versa) will have a high a spectral irregularity whereas a signal with a
 		more even distribution of energy between odd and even harmonics will have a lower irregularity. This allows
 		the irregularity of a signal which contains both parities of harmonics can be changed by altering the
@@ -943,18 +943,18 @@
 		Spectral flatness is related to spectral irregularity. Many of the techniques to reduce the irregularity
 		will also increase the flatness. More precisely, any manipulation which moves the amplitudes of all
 		spectral components closer to each other will increase the spectral flatness. To take an example from
-		Section \ref{sec:FeatureControl-Parameterisation-Irregularity}, using a low pass filter on the amplitudes
+		Section~\ref{sec:FeatureControl-Parameterisation-Irregularity}, using a low pass filter on the amplitudes
 		of the spectral components will increase the flatness of the spectrum.
 
-		As the measure of spectral flatness (Equation \ref{eq:Flatness}) is the ratio of the geometric and
+		As the measure of spectral flatness (Equation~\ref{eq:Flatness}) is the ratio of the geometric and
 		arithmetic means of the power spectrum, a greater degree of control can be achieved over it by altering one
 		of the means while the other remains constant. The method discussed here changes the arithmetic mean while
 		preserving the geometric mean. Consider two disjoint sets, $L$ and $H$, which are each composed of the
 		indices of $k$ spectral components of the signal, such that the total energy in the spectral components
 		denoted by $L$ is less than that of the spectral components denoted by $H$. A gain $m$ is applied to the
 		spectral components denoted by set $H$ and the reciprocal gain $\frac{1}{m}$ applied to the spectral
-		components denoted by set $L$. The resulting spectral flatness is calculated using Equation
-		\ref{eq:FlatnessManipulation}.
+		components denoted by set $L$. The resulting spectral flatness is calculated using
+		Equation~\ref{eq:FlatnessManipulation}.
 
 		\begin{gather}
 			P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \nonumber \\
@@ -973,12 +973,12 @@
 		mean is unchanged, this provides a point at which the energy has been redistributed in the spectrum but the
 		spectral flatness remains the same. 
 
-		The gain value, $m$, can be calculated from a simplified control parameter, $P$, using Equation
-		\ref{eq:FlatnessControlParameter}. When $P$ is equal to 0 or 1 the spectral flatness will be unchanged.
-		Values of $P$ between 0 and 1 will increase the spectral flatness, with the maximum flatness being achieved
-		at $P = 0.5$. Finally, when $P > 1$ the spectral flatness will decrease.  Figure \ref{fig:MoveFlatnesses}
-		shows the effects of altering this parameter on the spectral flatness of the test signals when both sets,
-		$L$ and $H$, are comprised of the indices of three spectral partials.
+		The gain value, $m$, can be calculated from a simplified control parameter, $P$, using
+		Equation~\ref{eq:FlatnessControlParameter}. When $P$ is equal to 0 or 1 the spectral flatness will be
+		unchanged.  Values of $P$ between 0 and 1 will increase the spectral flatness, with the maximum flatness
+		being achieved at $P = 0.5$. Finally, when $P > 1$ the spectral flatness will decrease.
+		Figure~\ref{fig:MoveFlatnesses} shows the effects of altering this parameter on the spectral flatness of
+		the test signals when both sets, $L$ and $H$, are comprised of the indices of three spectral partials.
 
 		\begin{equation}
 			m = \sqrt{ \left( \frac{A_L}{A_H} \right) ^{1 - P}}
@@ -997,13 +997,13 @@
 		will be large. If the amplitudes of partials within each set have high variance the capacity for increasing
 		the overall flatness is reduced.
 
-		Equation \ref{eq:FlatnessManipulation} provides control over the spectral flatness in a signal where the
+		Equation~\ref{eq:FlatnessManipulation} provides control over the spectral flatness in a signal where the
 		amplitudes of the spectral components are known. As with control of spectral irregularity, an analysis /
 		resynthesis technique could be utilised to implement this using harmonic excitation.  Again it is desirable
 		to remove the analysis step in order to reduce the complexity of the system.  This can be done by replacing
 		a band of spectral components with excited ones. Once a band has been replaced with excited components, the
 		levels of these components can then be manipulated to change the flatness of the entire signal. Altering
-		the flatness of the excited band using the method in Equation \ref{eq:FlatnessManipulation} allows the
+		the flatness of the excited band using the method in Equation~\ref{eq:FlatnessManipulation} allows the
 		overall flatness of the output to be influenced. Reducing the arithmetic mean of the power spectrum of the
 		excited band also reduces the arithmetic mean of the power spectrum of the output signal. Thus, increasing
 		the flatness of the excited band will also increase the flatness of the output signal and decreasing the
@@ -1017,16 +1017,16 @@
 
 	\subsection{Spectral Slope}
 	\label{sec:FeatureControl-Parameterisation-Slope}
-		As discussed in Section \ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}, the spectral
+		As discussed in Section~\ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}, the spectral
 		slope of the band of distortion components generated using a static nonlinearity depends on the continuity
 		of the nonlinearity's characteristic curve and its derivatives. Using a simple system, similar to that
-		shown in Figure \ref{fig:F0Tracking}, the characteristic curve of the nonlinearity can be changed to
+		shown in Figure~\ref{fig:F0Tracking}, the characteristic curve of the nonlinearity can be changed to
 		influence the spectral slope of the output signal. While this would be very efficient, the spectral roll
 		off of the output of a static nonlinearity can only be changed in increments of approximately 6dB per
 		octave, reducing the precision of the control. The introduction of a static nonlinearity will also involve
 		the generation of orders of harmonics which may not be desired.
 
-		The system shown in Figure \ref{fig:SuperpositionSystem} provides more control, allowing for slopes other
+		The system shown in Figure~\ref{fig:SuperpositionSystem} provides more control, allowing for slopes other
 		than multiples of 6dB per octave. As with the discussions on spectral irregularity and flatness, an
 		analysis / resynthesis approach provides finer control. To increase the spectral slope by $k$dB per Hz,
 		each spectral component in the signal should have its amplitude, $a_{n}$, multiplied by the value
@@ -1034,9 +1034,9 @@
 		by $k$dB per octave can be achieved by multiplying the amplitude of each spectral component in the signal
 		by $10^{\frac{k}{20}\log_{2} \left( \frac{\nu_{n}}{\nu_{1}} \right)}$. As the excitation system can only
 		individually control the individual amplitudes of the first nine harmonics, the gain for the high band
-		(generated by the nonlinear device) is calculated using the frequency of the tenth harmonic. Figure
-		\ref{fig:MoveSlopes} shows the manipulation of the spectral slopes of the test signals by applying a tilt
-		of $k$dB per octave.
+		(generated by the nonlinear device) is calculated using the frequency of the tenth harmonic.
+		Figure~\ref{fig:MoveSlopes} shows the manipulation of the spectral slopes of the test signals by applying a
+		tilt of $k$dB per octave.
 
 		\begin{figure}[h!]
 			\centering
@@ -1045,7 +1045,7 @@
 			\label{fig:MoveSlopes}
 		\end{figure}
 
-		Ideally, each line in Figure \ref{fig:MoveSlopes} would have the same gradient, as the signals' spectral
+		Ideally, each line in Figure~\ref{fig:MoveSlopes} would have the same gradient, as the signals' spectral
 		slopes are being increased by the same amount. They do not however, as only the fist nine harmonics are
 		being individually manipulated. The differences in amplitudes of the higher order harmonics between the
 		signals accounts for the differences in control of the spectral slope.
@@ -1058,8 +1058,8 @@
 	\subsection{Tristimulus}
 	\label{sec:FeatureControl-Parameterisation-Tristimulus}
 		A generalised form of the tristimulus metrics measures the amplitude ratio, $R$, of a specific set of
-		spectral components, $S$, and a set which includes that set, $F$. This is shown in Equation
-		\ref{eq:GeneralTristimulus}.
+		spectral components, $S$, and a set which includes that set, $F$. This is shown in
+		Equation~\ref{eq:GeneralTristimulus}.
 
 		\begin{gather}
 			A = \sum_{n \in F} a_{n} \nonumber \\
@@ -1069,7 +1069,7 @@
 		\end{gather}
 
 		This ratio can be adjusted by applying gain to the spectral components in $S$. To attain a particular value
-		of $R$ the required gain, $m$, can be calculated using Equation \ref{eq:GeneralTristimulusManipulation}.
+		of $R$ the required gain, $m$, can be calculated using Equation~\ref{eq:GeneralTristimulusManipulation}.
 
 		\begin{equation}
 			m = \frac{R(B - A)}{B(R - 1)}, \quad 0 \leq R < 1
@@ -1077,10 +1077,10 @@
 		\end{equation}
 
 		Similar to the method discussed for controlling spectral centroid, control of tristimulus metrics involves
-		altering the energy in specific bands. A reduced version of the system shown in Figure
-		\ref{fig:SuperpositionSystem} can be used to control this. The system need only have individual control
-		over the levels of the first four harmonics so the exciters for the fifth through ninth harmonics can be
-		removed.
+		altering the energy in specific bands. A reduced version of the system shown in
+		Figure~\ref{fig:SuperpositionSystem} can be used to control this. The system need only have individual
+		control over the levels of the first four harmonics so the exciters for the fifth through ninth harmonics
+		can be removed.
 
 		The first tristimulus measure is easily controlled through applying gain to the isolated $f_{0}$.  The
 		other two measures can be controlled in different ways depending on the requirements of the system.
@@ -1091,8 +1091,8 @@
 		if the odd to even harmonic ratio needs to remain the same, but the second tristimulus change, different
 		amounts of excitation can be applied to the second through fourth harmonics.
 
-		Figure \ref{fig:MoveTristimulus1} shows how the first tristimuli of the test signals changes when the gain,
-		$m$, is applied at their isolated $f_{0}$s using the system shown in Figure \ref{fig:SuperpositionSystem}.
+		Figure~\ref{fig:MoveTristimulus1} shows how the first tristimuli of the test signals changes when the gain,
+		$m$, is applied at their isolated $f_{0}$s using the system shown in Figure~\ref{fig:SuperpositionSystem}.
 
 		\begin{figure}[h!]
 			\centering
@@ -1103,7 +1103,7 @@
 
 		The maximum achievable first tristimulus value is determined by both the content of the input signal and
 		the order of the filters used in the implementation of the excitation system. The system used for the
-		values shown in Figure \ref{fig:MoveTristimulus1} used second order IIR filters. This means that the
+		values shown in Figure~\ref{fig:MoveTristimulus1} used second order IIR filters. This means that the
 		isolated $f_{0}$ signal contains energy in some of the higher order spectral partials. In sounds where the
 		$f_{0}$ has significantly less amplitude than subsequent spectral partials this is particularly
 		problematic. The piano signal used for testing illustrates this. In this case the isolated $f_{0}$ signal
@@ -1116,7 +1116,7 @@
 		remnant.  Again, increasing the order of the filters used in the system will reduce these effects.
 
 		Control of the second tristimulus can be achieved with the same system, this time applying a gain, $m$, to
-		the second, third and fourth excited harmonics. Figure \ref{fig:MoveTristimulus2} shows how the second
+		the second, third and fourth excited harmonics. Figure~\ref{fig:MoveTristimulus2} shows how the second
 		tristimulus value changes with $m$.
 
 		\begin{figure}[h!]
@@ -1134,8 +1134,8 @@
 		harmonic, reducing the maximum possible second tristimulus.
 
 		The third tristimulus is more easily controlled using the same system as used for controlling the spectral
-		centroid (Figure \ref{fig:TwoBandSpectralCentroidSystem}). A band of high order harmonics is generated from
-		the isolated $f_{0}$ using a static nonlinearity and a high pass filter.  Figure \ref{fig:MoveTristimulus3}
+		centroid (Figure~\ref{fig:TwoBandSpectralCentroidSystem}). A band of high order harmonics is generated from
+		the isolated $f_{0}$ using a static nonlinearity and a high pass filter.  Figure~\ref{fig:MoveTristimulus3}
 		shows how changing the gain, $m$, of this band effects the third tristimulus of the test signals.
 
 		\begin{figure}[h!]
@@ -1151,9 +1151,9 @@
 
 	\subsection{Odd to Even Harmonic Ratio}
 	\label{sec:FeatureControl-Parameterisation-HarmonicParityRatio}
-		The odd to even harmonic ratio, Equation \ref{eq:HarmonicParityRatio}, can easily be altered by applying
+		The odd to even harmonic ratio, Equation~\ref{eq:HarmonicParityRatio}, can easily be altered by applying
 		gain to only the odd harmonics. To change the ratio to a particular value, $\mathrm{OER}$, the required
-		gain, $m$, is calculated using Equation \ref{eq:HarmonicParityRatioManipulation}.
+		gain, $m$, is calculated using Equation~\ref{eq:HarmonicParityRatioManipulation}.
 
 		\begin{equation}
 			m = \sqrt{\frac{\mathrm{OER}\sum_{1 \leq n \leq N, n \text{ is even}} h_{n}^{2}}
@@ -1163,7 +1163,7 @@
 		\end{equation}
 
 		If instead, separate control of the oddness and evenness of a signal is desired, Equations \ref{eq:Oddness}
-		and \ref{eq:Evenness}, can be generalised to give Equation \ref{eq:GeneralOddness}.
+		and \ref{eq:Evenness}, can be generalised to give Equation~\ref{eq:GeneralOddness}.
 
 		\begin{gather}
 			A = \sum_{n \in F} a_{n}^{2} \nonumber \\
@@ -1172,11 +1172,11 @@
 			\label{eq:GeneralOddness}
 		\end{gather}
 
-		Like Equation \ref{eq:GeneralTristimulus} this measures the ratio of amplitudes of a set of frequencies and
+		Like Equation~\ref{eq:GeneralTristimulus} this measures the ratio of amplitudes of a set of frequencies and
 		a larger set of frequencies which contains that set. This time using the squares of the amplitudes and
 		taking the square root afterwards. The value of the ratio can be altered by applying gain to the spectral
 		components in the set $S$. The required gain factor, $m$, to give a ration of $R$ is calculated using
-		Equation \ref{eq:GeneralOddnessManipulation}.
+		Equation~\ref{eq:GeneralOddnessManipulation}.
 
 		\begin{equation}
 			m = \sqrt{\frac{R^{2}(B - A)}{B(R^{2} - 1)}}, \quad 0 \leq R < 1
@@ -1186,11 +1186,11 @@
 		For control over the oddness or evenness of a signal, a system which provides control over individual
 		harmonics is not necessary. While this level of control allows for more complex manipulations a simpler
 		system can be employed in which separate bands of odd and even order harmonics are generated. Such a system
-		is shown in Figure \ref{fig:HarmonicParitySystem}. This system uses two parallel static nonlinearities to
+		is shown in Figure~\ref{fig:HarmonicParitySystem}. This system uses two parallel static nonlinearities to
 		generate two signals consisting of only odd harmonics and even harmonics respectively. The properties of
 		these nonlinearities can be adjusted to shape the spectra of each of these signals which are further shaped
 		through linear filtering. The gains of these two signals allow control over the oddness and evenness of
-		the signal using Equation \ref{eq:GeneralOddnessManipulation}.
+		the signal using Equation~\ref{eq:GeneralOddnessManipulation}.
 
 		\begin{figure}[h!]
 			\centering
@@ -1263,9 +1263,9 @@
 		The odd and even harmonics in a signal could be separated using linear filters. This approach requires in
 		depth analysis of the signal adding complexity and possible delay to the system but has some advantage in
 		preservation of signal characteristics. When using excitation this complexity is reduced but the problems
-		discussed in Section \ref{sec:FeatureControl-Systems-Superposition} become apparent. To elicit full control
-		over the levels of the odd and even harmonics using the system shown in Figure
-		\ref{fig:HarmonicParitySystem} all the harmonic content in the output signal is generated by the
+		discussed in Section~\ref{sec:FeatureControl-Systems-Superposition} become apparent. To elicit full control
+		over the levels of the odd and even harmonics using the system shown in
+		Figure~\ref{fig:HarmonicParitySystem} all the harmonic content in the output signal is generated by the
 		nonlinearities. This is likely to cause a dramatic change in timbre as most of the information present in
 		the original signal has been replaced. 
 
@@ -1275,18 +1275,19 @@
 		mean filtering out alternate harmonics in the input signal. Allowing superposition to occur sacrifices
 		precise control in order to maintain some of the input's characteristics.
 
-		An example of how the system in Figure \ref{fig:HarmonicParitySystem} can be used is as follows.  The
+		An example of how the system in Figure~\ref{fig:HarmonicParitySystem} can be used is as follows.  The
 		isolated $f_{0}$ of each test signal is processed by two parallel static nonlinearities. A band of odd
 		order harmonics is generated through a hard peak clipper and a band of even order harmonics through full
 		wave rectification of this clipped signal. The band of even order harmonics is high pass filtered in order
 		to remove the energy introduced at 0Hz by rectification. Both bands of harmonics are then low passed
 		filtered with a cutoff at the frequency of the ninth harmonic and the original signal is high pass filtered
 		at the same frequency. The ninth harmonic is chosen due to it being the highest individually resolved
-		harmonic as discussed in Section \ref{sec:FeatureControl-Systems-SpectralShaping}. The three signals are
-		then summed at different ratios to control the evenness or oddness of the output. Figure
-		\ref{fig:MoveParities} shows the effects of manipulating the levels of odd and even order harmonics in this
-		way. The original signal remains at unity gain whereas the gains of the harmonic bands are determined by a
-		parameter, $P$.  Odd order harmonics are multiplied by a gain of $P$ and even order harmonics by $1 - P$.
+		harmonic as discussed in Section~\ref{sec:FeatureControl-Systems-SpectralShaping}. The three signals are
+		then summed at different ratios to control the evenness or oddness of the output.
+		Figure~\ref{fig:MoveParities} shows the effects of manipulating the levels of odd and even order harmonics
+		in this way. The original signal remains at unity gain whereas the gains of the harmonic bands are
+		determined by a parameter, $P$.  Odd order harmonics are multiplied by a gain of $P$ and even order
+		harmonics by $1 - P$.
 
 		\begin{figure}[h!]
 			\centering
@@ -1316,8 +1317,8 @@
 	\subsection{Inharmonicity}
 	\label{sec:FeatureControl-Parameterisation-Inharmonicity}
 		While it is reasonably simple to introduce inharmonicity in harmonic excitation systems, controlling the
-		inharmonicity of a signal is a more complicated problem. The system shown in Figure
-		\ref{fig:InharmonicitySystem} can be use to apply multiple approaches approach to this problem. 
+		inharmonicity of a signal is a more complicated problem. The system shown in
+		Figure~\ref{fig:InharmonicitySystem} can be use to apply multiple approaches approach to this problem. 
 
 		A simple two band approach leaves the lower partials of the system unaltered and generates a high band
 		using a static nonlinearity and filtering. The inharmonicities in this high band will be amplified versions
@@ -1330,7 +1331,7 @@
 		signal. The newly generated partials can be given frequencies closer to harmonics than those in the input
 		signal reducing the overall inharmonicity. It also allows for generation of inharmonic partials in a signal
 		with zero inharmonicity. This system is more complicated both in computation and use. Because the
-		inharmonicity metric (Equation \ref{eq:Inharmonicity}) depends on the frequencies of every partial, there
+		inharmonicity metric (Equation~\ref{eq:Inharmonicity}) depends on the frequencies of every partial, there
 		are numerous ways a signal can be manipulated resulting in the same value for the inharmonicity. When
 		manipulating the inharmonicity a decision needs to be made as to which partials are to be made inharmonic
 		and by how much. One method of deciding this is to model it on the vibrational modes of an acoustic
@@ -1338,7 +1339,7 @@
 		the partials can be moved from being harmonic towards the frequencies indicated by the model. One such
 		model is that given by \citet{rossing2002the} for calculating the frequencies of the spectral partials of
 		piano strings. In this model the frequencies of each partial are determined by an inharmonicity factor,
-		$A$, using Equation \ref{eq:PianoInharmonicity}. In the modelling of piano timbre the value of $A$ is
+		$A$, using Equation~\ref{eq:PianoInharmonicity}. In the modelling of piano timbre the value of $A$ is
 		calculated from the physical properties of the piano string. For creative purposes the value of $A$ can be
 		arbitrarily set.
 
@@ -1347,8 +1348,8 @@
 			\label{eq:PianoInharmonicity}
 		\end{equation}
 
-		Using the system shown in Figure \ref{fig:InharmonicitySystem} the inharmonicities of the first nine
-		harmonics of a signal can be set according to this model. Figure \ref{fig:MoveInharmonicities} shows how
+		Using the system shown in Figure~\ref{fig:InharmonicitySystem} the inharmonicities of the first nine
+		harmonics of a signal can be set according to this model. Figure~\ref{fig:MoveInharmonicities} shows how
 		the resulting inharmonicity changes with the inharmonicity factor $A$.
 
 		\begin{figure}[h!]
@@ -1373,7 +1374,7 @@
 \label{sec:FeatureControl-Conclusions}
 	This section has presented and discussed how harmonic excitation can be used to control specific audio features in
 	harmonically structured signals. Methods have been suggested by which a single parameter can be mapped to the
-	parameters of the harmonic excitation systems proposed in Section \ref{sec:FeatureControl-Systems} to control the
+	parameters of the harmonic excitation systems proposed in Section~\ref{sec:FeatureControl-Systems} to control the
 	value of a particular audio feature in the output. Where possible the parameter has been defined such that with a
 	little analysis of the input signal, the value of the feature in the output can be precisely set. In other cases
 	the parameter is defined such that the function describing the relationship between the parameter and feature
@@ -1382,22 +1383,22 @@
 	away from this value is monotonically decreasing. While these parameterisations do not allow for the absolute value
 	of an audio feature to be defined, the user is given control over the direction in which the feature is altered.
 	This allows them to be used for timbral transformations in which the semantic descriptor is defined by a particular
-	change in feature values, such as for `bright' and `warm' (Chapter \ref{chap:TimbreEvaluation}).
+	change in feature values, such as for `bright' and `warm' (Chapter~\ref{chap:TimbreEvaluation}).
 
 	In implementing these methods further challenges are met. The parameterisations all rely on the $f_{0}$ of the
 	input signal being perfectly isolated and the elimination of superposition for any of the excited harmonics
-	(Section \ref{sec:FeatureControl-Systems-Superposition}). In real time systems this will not always be possible.
+	(Section~\ref{sec:FeatureControl-Systems-Superposition}). In real time systems this will not always be possible.
 	The implementations used when processing the test signals used second order IIR filters for these tasks to
-	investigate the effects this would have when processing different signals. As seen the Figures in Section
-	\ref{sec:FeatureControl-Parameterisation} this less than ideal filter performance produces non-monotonic behaviour
-	for some of the systems. This is especially notable when controlling the odd to even harmonic ratio of the piano
-	signal, due to the nature of the damped fundamental the system was only able to produce even order harmonics when
-	using a low order filter. In most of these cases increasing the order of the filters will improve the control over
-	the audio feature at the expense of increasing computational complexity.
+	investigate the effects this would have when processing different signals. As seen in the figures in
+	Section~\ref{sec:FeatureControl-Parameterisation} this less than ideal filter performance produces non-monotonic
+	behaviour for some of the systems. This is especially notable when controlling the odd to even harmonic ratio of
+	the piano signal, due to the nature of the damped fundamental the system was only able to produce even order
+	harmonics when using a low order filter. In most of these cases increasing the order of the filters will improve
+	the control over the audio feature at the expense of increasing computational complexity.
 
 	Other nonlinearities and deviations from monotonic behaviour in the parameterisations can be accounted for by the
 	fact that only the first nine harmonics are being controlled individually. While this is based on psychoacoustic
-	principles, as discussed in Section \ref{sec:FeatureControl-Systems-SpectralShaping}, the audio features
+	principles, as discussed in Section~\ref{sec:FeatureControl-Systems-SpectralShaping}, the audio features
 	manipulated are not. Equal magnitude changes in an audio feature due to spectral changes at different frequencies
 	will not have the same perceived effect. Individual control of the first nine harmonics give control over the most
 	perceptually relevant portion of the spectrum. Inaccuracies in the control of features due to lack of control over
@@ -1407,4 +1408,4 @@
 	In the following chapter perceptual listening tests are undertaken to asses how well the methods proposed in this
 	chapter can be used to provide perceptually control of audio. Firstly the best method are exciting individual
 	harmonics is determined. Then the systems discussed here are specialised to apply the same feature manipulations as
-	those described by a particular descriptor in the SAFE dataset (Chapter \ref{chap:TimbreEvaluation}).
+	those described by a particular descriptor in the SAFE dataset (Chapter~\ref{chap:TimbreEvaluation}).

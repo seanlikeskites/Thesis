@@ -4,18 +4,19 @@
 \section{Introduction}
 \label{sec:TimbreEvaluation-Introduction}
 	In order to manipulate the perceptual characteristics of a sound it is necessary to know the relationships between
-	low level audio features and semantic descriptions. In Chapter \ref{chap:Timbre} several different methods for
+	low level audio features and semantic descriptions. In Chapter~\ref{chap:Timbre} several different methods for
 	obtaining this information were discussed. In this chapter, we present a model for collecting timbral data from
-	within the audio production environment (\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation}). Data collected using
-	this method is then analysed using various techniques. In Section \ref{sec:TimbreEvaluation-Analysis-TermUsage} the
-	frequency with which certain descriptive terms are used to describe timbral transforms is discussed. In Section
-	\ref{sec:TimbreEvaluation-Analysis-TermClustering} clustering techniques are used to identify synonymous terms
-	within the data and in Section \ref{sec:TimbreEvaluation-Analysis-TimbreSpaces} low dimensional timbre spaces are
-	constructed and analysed.
+	within the audio production environment (Section~\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation}). Data
+	collected using this method is then analysed using various techniques. In
+	Section~\ref{sec:TimbreEvaluation-Analysis-TermUsage} the frequency with which certain descriptive terms are used
+	to describe timbral transforms is discussed. In Section~\ref{sec:TimbreEvaluation-Analysis-TermClustering}
+	clustering techniques are used to identify synonymous terms within the data and in
+	Section~\ref{sec:TimbreEvaluation-Analysis-TimbreSpaces} low dimensional timbre spaces are constructed and
+	analysed.
 
 \section{Production Environment Timbre Evaluation} % this name will probably change
 \label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation}
-	The perceptual listening test methodologies discussed in Section \ref{sec:Timbre-ListeningTests} rely on the
+	The perceptual listening test methodologies discussed in Section~\ref{sec:Timbre-ListeningTests} rely on the
 	participants performing a certain set of tasks. While this structure helps to reduce the number of variables in an
 	experiment, it does not necessarily reflect the way audio is treated in a production environment. A new methodology
 	has been developed in which the analysis of timbre is introduced into a typical music production workflow, causing
@@ -96,17 +97,18 @@
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}
 		The SAFE plug-ins consist of four commonly used audio effects: Equaliser, Distortion, Compressor and
 		Reverb. As part of the plug-ins's interface, the user has the option to save a semantic description of the
-		application of the effect. The interface for the SAFE Distortion is shown in Figure
-		\ref{fig:SAFE-Distortion}. Upon saving a description the plug-in will record and analyse five seconds of
-		audio at its inputs and outputs. When the analysis is completed the results are stored, containing:
+		application of the effect. The interface for the SAFE Distortion is shown in
+		Figure~\ref{fig:SAFE-Distortion}. Upon saving a description the plug-in will record and analyse five
+		seconds of audio at its inputs and outputs. When the analysis is completed the results are stored,
+		containing:
 
 		\begin{itemize}
 			\item The users semantic description of the effect's application (entered into the text box seen in
-				Figure \ref{fig:SAFE-Distortion}).
+				Figure~\ref{fig:SAFE-Distortion}).
 			\item The plug-in's current parameter settings.
 			\item The features of the audio both before and after processing.
 			\item Some additional metadata about the user and the track being worked on (entered into the panel
-				shown in Figure \ref{fig:SAFE-Metadata}).
+				shown in Figure~\ref{fig:SAFE-Metadata}).
 			\begin{itemize}
 				\item The genre.
 				\item The instrument.
@@ -212,7 +214,7 @@
 
 		Each entry in the SAFE dataset is described using the \emph{studio:Transform} concept, applying some
 		semantic transform to a set of input signals to produce a set of output signals. The structure of this data
-		is shown in Figure \ref{fig:TransformGraph}.
+		is shown in Figure~\ref{fig:TransformGraph}.
 
 		\begin{figure}[h!]
 			\centering
@@ -251,7 +253,7 @@
 
 		The analysis of audio signals is described using the concept \emph{safe:FeatureExtractionTransform},
 		similar to a \emph{studio:Transform} but taking an audio signal as input and producing a time series of
-		feature values at the output, as shown in Figure \ref{fig:ExtractionGraph}.
+		feature values at the output, as shown in Figure~\ref{fig:ExtractionGraph}.
 
 		\begin{figure}[h!]
 			\centering
@@ -317,15 +319,15 @@
 	which can be applied using harmonic excitation. The distortion demonstrating the effects of introducing new
 	spectral content and the equaliser demonstrating the effects of manipulating the existing spectral content.
 
-	Firstly, the data is cleaned up through the preprocessing described in Section
-	\ref{sec:TimbreEvaluation-Analysis-Preprocessing}. Then the terms used to describe transforms applied by each
-	plug-in are investigated (Section \ref{sec:TimbreEvaluation-Analysis-TermUsage}). This provides insight into the
-	language used to describe audio in the production environment, also showing which terms are shared across
+	Firstly, the data is cleaned up through the preprocessing described in
+	Section~\ref{sec:TimbreEvaluation-Analysis-Preprocessing}. Then the terms used to describe transforms applied by
+	each plug-in are investigated (Section~\ref{sec:TimbreEvaluation-Analysis-TermUsage}). This provides insight into
+	the language used to describe audio in the production environment, also showing which terms are shared across
 	processing techniques and which are reserved for a particular effect. Following this, clustering techniques are
 	used in order to identify group of terms which describe similar audio signals / transforms, finding terms which are
-	synonymous when used to describe timbre (Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}). Finally,
+	synonymous when used to describe timbre (Section~\ref{sec:TimbreEvaluation-Analysis-TermClustering}). Finally,
 	timbre spaces are constructed using PCA in order to find the most salient audio features which contribute to the
-	differences in timbral description (Section \ref{sec:TimbreEvaluation-Analysis-TimbreSpaces}).
+	differences in timbral description (Section~\ref{sec:TimbreEvaluation-Analysis-TimbreSpaces}).
 
 	\subsection{Preprocessing}
 	\label{sec:TimbreEvaluation-Analysis-Preprocessing}
@@ -498,11 +500,11 @@
 
 	\subsection{Term Clustering}
 	\label{sec:TimbreEvaluation-Analysis-TermClustering}
-		Each of the terms arrived at, after stemming, in Section \ref{sec:TimbreEvaluation-Analysis-TermClustering}
+		Each of the terms arrived at, after stemming, in Section~\ref{sec:TimbreEvaluation-Analysis-TermClustering}
 		can be described by their position in a multi dimensional audio feature space. Each dimension of this space
 		corresponds to one of the audio features extracted by the SAFE plug-ins. The position, $\mu_{d,k}$, of a
 		term, $d$, in the $k$\super{th} dimension of the audio feature space is calculated as the mean value of
-		feature $k$ across every transform labelled with that descriptor (Equation \ref{eq:FeatureSpaceCoords}).
+		feature $k$ across every transform labelled with that descriptor (Equation~\ref{eq:FeatureSpaceCoords}).
 
 		\begin{equation}
 			\mu_{d,k} = \frac{1}{N_{d}} \sum_{n = 1}^{N_{d}} \bar{x}_{d,n,k}
@@ -527,7 +529,7 @@
 		initially sits in a cluster on it's own, on each iteration the two closest clusters are combined to create
 		a new cluster. The distance between clusters is calculated using the Ward linkage criterion
 		\citep{ward1963hierarchical} in order to minimise the variance within each cluster. This distance between
-		two clusters ($a$ and $b$), $d(a, b)$, is calculated using Equation \ref{eq:WardsCriterion}.
+		two clusters ($a$ and $b$), $d(a, b)$, is calculated using Equation~\ref{eq:WardsCriterion}.
 
 		\begin{equation}
 			d(a, b) = \frac{N_{a}N_{b}}{N_{a} + N_{b}} \euclidian{\mu_{a} - \mu_{b}}^{2}
@@ -537,16 +539,16 @@
 		Where $N_{a}$ and $\mu_{a}$ and the number of points in and centroid of cluster $a$ respectively.
 
 		\subsubsection*{Clustering of Distortion Terms}
-			Figure \ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
+			Figure~\ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
 			distortion features spaces. The clusters identified are similar for both the processed features
-			(\ref{fig:DistortionProcessedClusters}) and the feature differences
-			(\ref{fig:DistortionDifferenceClusters}), the cluster containing `harsh' and `bright' being the
-			most distant from that containing `warm', `cream' and `fuzz' and the term `crunch' siting in a
+			(Figure~\ref{fig:DistortionProcessedClusters}) and the feature differences
+			(Figure~\ref{fig:DistortionDifferenceClusters}), the cluster containing `harsh' and `bright' being
+			the most distant from that containing `warm', `cream' and `fuzz' and the term `crunch' siting in a
 			cluster separate from the majority of the other terms. This leads to the formation of three
 			distinct timbral groups used to describe the application of distortion (`warmth', `brightness' and
-			`crunchiness'). These clusters reflect some of the combinations of descriptors seen in Table
-			\ref{tab:DistortionTermCombinations}, where `cream', `fuzz' and `warm' are often used alongside
-			each other to describe a transform.
+			`crunchiness'). These clusters reflect some of the combinations of descriptors seen in
+			Table~\ref{tab:DistortionTermCombinations}, where `cream', `fuzz' and `warm' are often used
+			alongside each other to describe a transform.
 
 			\begin{figure}[h!]
 				\centering
@@ -565,13 +567,13 @@
 			\end{figure}
 		
 		\subsubsection*{Clustering of Equaliser Terms}
-			The clusters identified in the equaliser (Figure \ref{fig:EqualiserClusters}) show less agreement
+			The clusters identified in the equaliser (Figure~\ref{fig:EqualiserClusters}) show less agreement
 			between the two different feature spaces. While the terms `warm' and `bright' were the most distant
 			from each other in the distortion feature spaces, they are two of the closest terms in the
-			equaliser's processed feature space (Figure \ref{fig:EqualiserProcessedClusters}). They are,
-			however, separated well in the equaliser's feature difference space (Figure
-			\ref{fig:EqualiserDifferenceClusters}) suggesting that the difference between these terms is better
-			described by certain change in audio features rather than an absolute feature value.
+			equaliser's processed feature space (Figure~\ref{fig:EqualiserProcessedClusters}). They are,
+			however, separated well in the equaliser's feature difference space
+			(Figure~\ref{fig:EqualiserDifferenceClusters}) suggesting that the difference between these terms
+			is better described by certain change in audio features rather than an absolute feature value.
 			
 			Within the equaliser's feature differences space, two main clusters are identified corresponding
 			with the `warmth' and `brightness' clusters from the distortion feature spaces. The `warmth'
@@ -580,7 +582,7 @@
 			`box', is also present. These three terms cluster better in the processed feature space indicating
 			that they are more likely to describe a particular set of feature values rather than the properties
 			of a transform. There is a similarity between these clusters and the combinations of descriptors
-			used to describe equaliser transforms (Table \ref{tab:EqualiserTermCombinations}) suggesting that
+			used to describe equaliser transforms (Table~\ref{tab:EqualiserTermCombinations}) suggesting that
 			some of these terms may be synonymous with each other.
 
 			\begin{figure}[h!]
@@ -602,9 +604,10 @@
 		
 		\subsubsection*{Clustering Across Both Effects}
 			In order to investigate the similarity of descriptors across both plug-ins, their respective
-			feature spaces are combined and clustering is applied to produce the dendrograms shown in Figure
-			\ref{fig:CombinedClusters}. Descriptors are prepended with either and `E' or a `D' to distinguish
-			between those describing distortion transforms and those describing equaliser transforms.
+			feature spaces are combined and clustering is applied to produce the dendrograms shown in
+			Figure~\ref{fig:CombinedClusters}. Descriptors are prepended with either and `E' or a `D' to
+			distinguish between those describing distortion transforms and those describing equaliser
+			transforms.
 
 			\begin{figure}[h!]
 				\centering
@@ -645,7 +648,7 @@
 		equaliser parameter settings. For each participant, a set of weightings is produced which describes the
 		influence of each equaliser band on the perception of a particular timbral descriptor. The agreement score
 		for a descriptor, $A(d)$, measures how similar these weightings are across different test participants
-		using Equation \ref{eq:SocialEqAgreement}.
+		using Equation~\ref{eq:SocialEqAgreement}.
 
 		\begin{equation}
 			A(d) = \frac{\ln(N_{d})}{\sum_{k = 1}^{K} s_{d,k}^{2}}
@@ -660,7 +663,7 @@
 		most commonly used word, 2 the second most common etc.) \citep{manning1999foundations}.
 
 		This can be applied to data from the SAFE plug-ins by using audio feature values in place of parameter
-		weightings. In Equation \ref{eq:SocialEqAgreement}, $N_{d}$ is then the number of transforms labelled with
+		weightings. In Equation~\ref{eq:SocialEqAgreement}, $N_{d}$ is then the number of transforms labelled with
 		descriptor $d$, $s_{d,k}^{2}$ is the variance of feature $k$ across those transforms and $K$ is the total
 		number of features. As when clustering, the feature space should be standardised prior to calculating
 		agreement to remove the biasing effects caused by the ranges of each feature.
@@ -677,14 +680,14 @@
 		In this section an agreement measure which accounts for these points is developed.
 
 		\subsubsection*{Number of Transforms}
-			In Equation \ref{eq:SocialEqAgreement} the logarithm of the number of transforms, $N_{d}$, is used
+			In Equation~\ref{eq:SocialEqAgreement} the logarithm of the number of transforms, $N_{d}$, is used
 			to scale the agreement score. This measures a different concept of agreement to what is desired for
 			this work. It measures the size of a region in the feature space along with how many participants
 			agree that the descriptor applies to the region, obscuring information about of how tightly the
 			transforms in a region are clustered. A sufficiently large number of transforms will produce a
 			large agreement score regardless of how spread apart they are. In this work, the agreement of
 			participants as to the position of a descriptor in the feature space is needed. This is better
-			measured by removing the scaling factor, giving Equation \ref{eq:ReciprocalOfSumAgreement}.
+			measured by removing the scaling factor, giving Equation~\ref{eq:ReciprocalOfSumAgreement}.
 
 			\begin{equation}
 				A(d) = \frac{1}{\sum_{k = 1}^{K} s_{d,k}^{2}}
@@ -700,16 +703,16 @@
 			descriptor could describe various different timbral effects.
 
 			To take account of the number of transforms labelled with a particular descriptor, Bessel's
-			correction can be used in the calculation of variance as shown in Equation
-			\ref{eq:UnbiasedVariance}. This uses the data available from a sample and uses it to approximate
-			the variation present in the population.
+			correction can be used in the calculation of variance as shown in
+			Equation~\ref{eq:UnbiasedVariance}. This uses the data available from a sample and uses it to
+			approximate the variation present in the population.
 
 			\begin{equation}
 				s_{d,k}^{2} = \frac{1}{N_{d} - 1} \sum_{n = 1}^{N_{d}} (\bar{x}_{d,n,k} - \mu_{d,k})^{2}
 				\label{eq:UnbiasedVariance}
 			\end{equation}
 
-			Where $\bar{x}_{d,n,k}$ and $\mu_{d,k}$ are as described for Equation \ref{eq:FeatureSpaceCoords}.
+			Where $\bar{x}_{d,n,k}$ and $\mu_{d,k}$ are as described for Equation~\ref{eq:FeatureSpaceCoords}.
 
 			Using this measure of variance in the agreement score provides an approximation of how closely
 			clustered transforms, labeled with a certain descriptor, would be in a feature space which
@@ -725,9 +728,9 @@
 			high variance does imply disagreement it does not unduly increase the agreement score and if it
 			does not imply disagreement it does to unduly decrease the agreement score.
 			
-			This can be implemented by changing Equation \ref{eq:ReciprocalOfSumAgreement} to be a sum of
-			reciprocals rather than the reciprocal of a sum, as shown in Equation
-			\ref{eq:SumOfReciprocalAgreement}.
+			This can be implemented by changing Equation~\ref{eq:ReciprocalOfSumAgreement} to be a sum of
+			reciprocals rather than the reciprocal of a sum, as shown in
+			Equation~\ref{eq:SumOfReciprocalAgreement}.
 
 			\begin{equation}
 				A(d) = \sum_{k = 1}^{K} \frac{1}{s_{d,k}^{2}}
@@ -746,7 +749,7 @@
 
 			Relationships between features can be taken into account by examining the covariance matrix,
 			$\Sigma_{d}$, of the coordinates of the transforms associated with a descriptor, $d$. This is
-			calculated using Equation \ref{eq:CovarianceMatrix}.
+			calculated using Equation~\ref{eq:CovarianceMatrix}.
 
 			\begin{equation}
 				{\Sigma_{d_{ij}}} = \frac{1}{N_{d} - 1} \sum_{n = 1}^{N_{d}} 
@@ -754,8 +757,8 @@
 				\label{eq:CovarianceMatrix}
 			\end{equation}
 			
-			The variances used in Equation \ref{eq:SumOfReciprocalAgreement} can then be substituted with the
-			eigenvalues of this matrix, as shown in Equation \ref{eq:EigenvalueAgreement}.
+			The variances used in Equation~\ref{eq:SumOfReciprocalAgreement} can then be substituted with the
+			eigenvalues of this matrix, as shown in Equation~\ref{eq:EigenvalueAgreement}.
 
 			\begin{equation}
 				A(d) = \sum_{k = 1}^{K} \frac{1}{\lambda_{d,k}}
@@ -764,7 +767,7 @@
 			
 			Where $\lambda_{d, k}$ is the $k$\super{th} eigenvalue of the covariance matrix $\Sigma_{d}$.
 
-			When using Equation \ref{eq:EigenvalueAgreement}, the number of eigenvalues used, $K$, needs to be
+			When using Equation~\ref{eq:EigenvalueAgreement}, the number of eigenvalues used, $K$, needs to be
 			carefully selected. If $N_{d}$ is less than or equal to the total number of audio features, the
 			covariance matrix will be singular, meaning that one or more of its eigenvalues will be equal to
 			zero. At most, only the $N_{d} - 1$ largest eigenvalues should be used.
@@ -773,9 +776,9 @@
 			of audio features. If the features concerned are mathematically defined to be directly proportional
 			then these zero eigenvalues should have no effect on the agreement score. If, however, a perfect
 			linear relationship is discovered in the data, the agreement score should be increased
-			accordingly. This raises an issue with Equation \ref{eq:EigenvalueAgreement} in that a devision by
+			accordingly. This raises an issue with Equation~\ref{eq:EigenvalueAgreement} in that a devision by
 			zero will occur if a perfectly linear relationship is discovered. This can be remedied by
-			calculating the agreement using Equation \ref{eq:BoundedEigenvalueAgreement}. Calculating the
+			calculating the agreement using Equation~\ref{eq:BoundedEigenvalueAgreement}. Calculating the
 			agreement in this manner also has the advantage of bounding the agreement score between zero (no
 			agreement) and $K$ (perfect agreement in all dimensions).
 
@@ -794,7 +797,7 @@
 			Using PCA, the dimensions with the largest variance in the feature space can be discovered. If the
 			transforms labelled with a particular term exhibit a small variance in one of these dimensions it
 			is likely that that term is well agreed upon. Agreement can be calculated in the PCA timbre space
-			using Equation \ref{eq:BoundedEigenvalueAgreement}, with $\lambda_{d,k}$ being the $k$\super{th}
+			using Equation~\ref{eq:BoundedEigenvalueAgreement}, with $\lambda_{d,k}$ being the $k$\super{th}
 			eigenvalue of the covariance matrix calculated from the principal components (PCs) of every
 			transform labelled with descriptor $d$. As when calculating the agreement in the feature space, the
 			timbre space should be standardised before calculation of agreement to remove bias introduced by
@@ -820,9 +823,9 @@
 			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},
 			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement}, \ref{eq:EigenvalueAgreement}
 			and \ref{eq:BoundedEigenvalueAgreement}, artificial data can be synthesised which exhibits some of
-			the issues discussed with Equation \ref{eq:SocialEqAgreement}.
+			the issues discussed with Equation~\ref{eq:SocialEqAgreement}.
 			
-			Figure \ref{fig:SynthesisedData} shows a synthesised, three dimensional, dataset containing four
+			Figure~\ref{fig:SynthesisedData} shows a synthesised, three dimensional, dataset containing four
 			clusters of points. For ease of discussion it is assumed that this data represents the feature
 			space after PCA has been applied. Each cluster has different properties which need to be taken into
 			account when calculating the agreement score. Cluster 1 represents a set of points whose position
@@ -832,7 +835,7 @@
 			other two. Cluster 4 represent a set of points which are defined by a relationship between two PCs,
 			exhibiting high variance in all PCs but a strong correlation ($r = 0.9$) between PCs 1 and 2. The
 			clusters were generated using the techniques discussed by \citet{ripley1987stochastic}, using the
-			means, $\mu$, and covariance matrices, $\Sigma$, shown in Datum \ref{dat:ClusterStats}.
+			means, $\mu$, and covariance matrices, $\Sigma$, shown in Datum~\ref{dat:ClusterStats}.
 
 			\begin{datum}[h!]
 				\centering
@@ -917,8 +920,8 @@
 					}
 					\label{dat:Cluster4Stats}
 				}
-				\caption{The means and covariance matrices for the clusters shown in Figure
-					 \ref{fig:SynthesisedData}.}
+				\caption{The means and covariance matrices for the clusters shown in
+					 Figure~\ref{fig:SynthesisedData}.}
 				\label{dat:ClusterStats}
 			\end{datum}
 
@@ -939,14 +942,14 @@
 				\label{fig:SynthesisedData}
 			\end{figure}
 
-			Visualising the data in Figure \ref{fig:SynthesisedData} provides intuition as to how an agreement
+			Visualising the data in Figure~\ref{fig:SynthesisedData} provides intuition as to how an agreement
 			score should rate each cluster. Cluster 1 should receive the lowest score as there is no
 			discernible pattern to the data points. Cluster 2 should receive the highest score as it is very
 			tightly clustered in all PCs. Both clusters 3 and 4 show some patterns in the distribution.
 			Cluster 3 has a well defined position in PC 1 while cluster 4 shows a strong relationship between
-			PCs 1 and 2. The agreement scores for these clusters should reflect these patterns. Table
-			\ref{tab:SynthesisedDataAgreement} shows agreement scores for the data shown in Figure
-			\ref{fig:SynthesisedData}, calculated using Equations \ref{eq:SocialEqAgreement},
+			PCs 1 and 2. The agreement scores for these clusters should reflect these patterns.
+			Table~\ref{tab:SynthesisedDataAgreement} shows agreement scores for the data shown in
+			Figure~\ref{fig:SynthesisedData}, calculated using Equations \ref{eq:SocialEqAgreement},
 			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement}, \ref{eq:EigenvalueAgreement}
 			and \ref{eq:BoundedEigenvalueAgreement}.
 
@@ -956,11 +959,11 @@
 					\cline{2-6}
 					\multicolumn{1}{c|}{} & \multicolumn{5}{c|}{\bf{Agreement Score}} \tabularnewline
 					\hline
-					\bf{Cluster} & \bf{Equation \ref{eq:SocialEqAgreement}} & 
-					\bf{Equation \ref{eq:ReciprocalOfSumAgreement}} &
-					\bf{Equation \ref{eq:SumOfReciprocalAgreement}} & 
-					\bf{Equation \ref{eq:EigenvalueAgreement}} &
-					\bf{Equation \ref{eq:BoundedEigenvalueAgreement}} \tabularnewline
+					\bf{Cluster} & \bf{Equation~\ref{eq:SocialEqAgreement}} & 
+					\bf{Equation~\ref{eq:ReciprocalOfSumAgreement}} &
+					\bf{Equation~\ref{eq:SumOfReciprocalAgreement}} & 
+					\bf{Equation~\ref{eq:EigenvalueAgreement}} &
+					\bf{Equation~\ref{eq:BoundedEigenvalueAgreement}} \tabularnewline
 					\hline
 					\hline
 					1 & 2.3 & 0.5 & 4.7 & 4.7 & 1.8 \tabularnewline
@@ -979,11 +982,11 @@
 			The issues with Equations \ref{eq:SocialEqAgreement} and \ref{eq:ReciprocalOfSumAgreement} are
 			immediately obvious. They ignore readily noticeable patterns in the data, giving clusters 1, 3 and
 			4 similar agreement scores. By removing the assumption that high variance implies disagreement,
-			Equation \ref{eq:SumOfReciprocalAgreement} takes account of the pattern in cluster 3. Equation
-			\ref{eq:EigenvalueAgreement} removes the assumption that all PCs are independent enabling it to
-			reflect the pattern shown in cluster 4. The final column of Table
-			\ref{tab:SynthesisedDataAgreement} shows the bounding effect given by Equation
-			\ref{eq:BoundedEigenvalueAgreement}.
+			Equation~\ref{eq:SumOfReciprocalAgreement} takes account of the pattern in cluster 3.
+			Equation~\ref{eq:EigenvalueAgreement} removes the assumption that all PCs are independent enabling
+			it to reflect the pattern shown in cluster 4. The final column of
+			Table~\ref{tab:SynthesisedDataAgreement} shows the bounding effect given by
+			Equation~\ref{eq:BoundedEigenvalueAgreement}.
 
 	\subsection{Timbre Spaces}
 	\label{sec:TimbreEvaluation-Analysis-TimbreSpaces}
@@ -1007,8 +1010,8 @@
 		the timbre space is a product of PCA no additional PCA is needed, the high variance dimensions of the data
 		have already been identified. Each timbre space is standardised and the covariance matrix for each
 		descriptor is calculated. The agreement scores are then calculated from the eigenvalues of these covariance
-		matrices using Equation \ref{eq:BoundedEigenvalueAgreement} as discussed in Section
-		\ref{sec:TimbreEvaluation-Analysis-Agreement}.
+		matrices using Equation~\ref{eq:BoundedEigenvalueAgreement} as discussed in
+		Section~\ref{sec:TimbreEvaluation-Analysis-Agreement}.
 		
 		Two types of graph are plotted to identify patterns within each timbre space. The first is a scatter plot
 		in which the position of each individual transform is shown. These plots show the regions of the timbre
@@ -1026,8 +1029,8 @@
 
 		\subsubsection*{Distortion Processed Features}
 			The first three PCs of the timbre space describing the processed signals produced by the distortion
-			are shown in Figure \ref{fig:DistortionProcessedPCAs}. The corresponding agreement scores are shown
-			in Table \ref{tab:DistortionProcessedAgreements}. The three terms with the highest agreement scores
+			are shown in Figure~\ref{fig:DistortionProcessedPCAs}. The corresponding agreement scores are shown
+			in Table~\ref{tab:DistortionProcessedAgreements}. The three terms with the highest agreement scores
 			(`warm', `fuzz' and `crunch') are of particular interest.
 
 			\begin{figure}[h!]
@@ -1055,9 +1058,9 @@
 				\label{tab:DistortionProcessedAgreements}
 			\end{table}
 
-			Referring back to the clusters shown in Figure \ref{fig:DistortionProcessedClusters}, `warm' and
+			Referring back to the clusters shown in Figure~\ref{fig:DistortionProcessedClusters}, `warm' and
 			`fuzz' were found to be the most closely related descriptors in the distortion's processed feature
-			space. This similarity is reflected in the Figure \ref{fig:DistortionProcessedPCAs} where the
+			space. This similarity is reflected in the Figure~\ref{fig:DistortionProcessedPCAs} where the
 			transforms labelled with these terms occupy similar regions of the timbre space. The third closest
 			member of this cluster, `cream', can also bee seen to be distributed across the same region of the
 			timbre space, further reinforcing the conclusion that these three terms are synonymous when used to
@@ -1069,13 +1072,13 @@
 			suggests that `warm', `fuzz' and `cream' are used to describe signals which lie somewhere between
 			-5 and 5 in PC 2, while `crunch' is used to describe signals which line between -5 and 5 in PC 1.
 			Signals which lie within both of these ranges could potentially be described as both `warm' and
-			`crunch'. Table \ref{tab:DistortionTermCombinations} confirms that one such combination of
+			`crunch'. Table~\ref{tab:DistortionTermCombinations} confirms that one such combination of
 			`warm' and `crunch' exists within the dataset.
 
-			The salient features for this timbre space are shown in Datum
-			\ref{dat:DistortionProcessedCorrelations}. The most salient in each PC are then visualised, along
-			with the mean position and agreement score of each descriptor, in Figure
-			\ref{fig:DistortionProcessedCentroidsPCAs}. 
+			The salient features for this timbre space are shown in
+			Datum~\ref{dat:DistortionProcessedCorrelations}. The most salient in each PC are then visualised,
+			along with the mean position and agreement score of each descriptor, in
+			Figure~\ref{fig:DistortionProcessedCentroidsPCAs}. 
 
 			\begin{datum}[h!]
 				\centering
@@ -1104,9 +1107,9 @@
 				\label{fig:DistortionProcessedCentroidsPCAs}
 			\end{figure}
 
-			From the analysis of Figure \ref{fig:DistortionProcessedPCAs}, the PCs which best describe each
-			term were identified. This information can be used to assist in the analysis of Figure
-			\ref{fig:DistortionProcessedCentroidsPCAs}. For instance, while the mean position of signals
+			From the analysis of Figure~\ref{fig:DistortionProcessedPCAs}, the PCs which best describe each
+			term were identified. This information can be used to assist in the analysis of
+			Figure~\ref{fig:DistortionProcessedCentroidsPCAs}. For instance, while the mean position of signals
 			described with the term `crunch' appears to sit at the top end of PC 2, it is known that this
 			descriptor's position in PC 2 is not significant as the individual signals are distributed across
 			the entire PC.
@@ -1118,13 +1121,13 @@
 			by a relatively low value of Krimphoff irregularity, spectral kurtosis and spectral skewness,
 			indicating a signal in which the energy is more evenly spread throughout the spectrum.
 
-			Inspecting the mean bark band spectra for the descriptors (Figure
-			\ref{fig:DistortionProcessedSpectra}, the spectral effects of a descriptor's position in PC 2 can
-			be seen. As the value of PC 2 increases so does the signal's proportion of high frequency content,
-			`warm' and `cream' describing signals will a low proportion of high frequency energy and `bright'
-			and `harsh' describing those with a larger proportion. The spectral effects of the other PCs are
-			not as apparent, this is likely due to the low resolution of the spectral representation but could
-			also be caused by the low frequency with which some of the terms have been used.
+			Inspecting the mean bark band spectra for the descriptors
+			(Figure~\ref{fig:DistortionProcessedSpectra}, the spectral effects of a descriptor's position in PC
+			2 can be seen. As the value of PC 2 increases so does the signal's proportion of high frequency
+			content, `warm' and `cream' describing signals will a low proportion of high frequency energy and
+			`bright' and `harsh' describing those with a larger proportion. The spectral effects of the other
+			PCs are not as apparent, this is likely due to the low resolution of the spectral representation
+			but could also be caused by the low frequency with which some of the terms have been used.
 
 			\begin{figure}[h!]
 				\centering
@@ -1135,9 +1138,9 @@
 
 		\subsubsection*{Distortion Feature Differences}
 			The first three PCs of the timbre space describing the feature manipulations applied by the
-			distortion are shown in Figure \ref{fig:DistortionDifferencePCAs}. The corresponding agreement
-			scores are shown in Table \ref{tab:DistortionDifferenceAgreements}. This space is largely similar
-			to that describing the distortion's processed signals (Figure \ref{fig:DistortionProcessedPCAs})
+			distortion are shown in Figure~\ref{fig:DistortionDifferencePCAs}. The corresponding agreement
+			scores are shown in Table~\ref{tab:DistortionDifferenceAgreements}. This space is largely similar
+			to that describing the distortion's processed signals (Figure~\ref{fig:DistortionProcessedPCAs})
 			and similar conclusions can be drawn.
 
 			\begin{figure}[h!]
@@ -1173,10 +1176,10 @@
 			does receive a higher agreement score but the small number of transforms labelled with this
 			descriptor (6) reduces the significance of any conclusions drawn from this.
 
-			The salient features for this timbre space are shown in Datum
-			\ref{dat:DistortionDifferenceCorrelations}. The most salient in each PC are then visualised, along
-			with the mean position and agreement score of each descriptor, in Figure
-			\ref{fig:DistortionDifferenceCentroidsPCAs}. 
+			The salient features for this timbre space are shown in
+			Datum~\ref{dat:DistortionDifferenceCorrelations}. The most salient in each PC are then visualised,
+			along with the mean position and agreement score of each descriptor, in
+			Figure~\ref{fig:DistortionDifferenceCentroidsPCAs}. 
 
 			\begin{datum}[h!]
 				\centering
@@ -1208,7 +1211,7 @@
 			PC 2 is again correlated with spectral roll off, spectral centroid and spectral standard deviation.
 			Referring to the raw values of the feature differences, there is no definite direction in which
 			these features and moved by the transforms labelled with `warm', `fuzz' and `crunch'. This is
-			reflected in Figure \ref{fig:DistortionProcessedSpectra} where the mean spectral manipulations for
+			reflected in Figure~\ref{fig:DistortionProcessedSpectra} where the mean spectral manipulations for
 			these descriptors are mostly flat. This is an indication that, when used for describing signals
 			processed by distortion, these terms describe features of the output signal rather than of the
 			transform applied.
@@ -1236,7 +1239,7 @@
 			positions of `warm' and `bright' and the other showing the positions of the remaining descriptors.
 			The first three PCs of the timbre space describing the processed signals produced by the equaliser
 			are shown in Figures \ref{fig:EqualiserBWProcessedPCAs} and \ref{fig:EqualiserProcessedPCAs}. The
-			corresponding agreement scores are shown in Table \ref{tab:EqualiserProcessedAgreements}.
+			corresponding agreement scores are shown in Table~\ref{tab:EqualiserProcessedAgreements}.
 
 			\begin{figure}[h!]
 				\centering
@@ -1282,17 +1285,18 @@
 			\end{table}
 
 			Within the equaliser's processed feature timbre space, the terms `warm' and `bright' do not occupy
-			distinct regions from one another. This reflects the clustering of these terms seen in Figure
-			\ref{fig:EqualiserProcessedClusters}, again suggesting that these terms have not been used to
-			describe distinct properties of the processed signal. The remaining descriptors are also difficult
-			to distinguish. One apparent pattern is the separation of `harsh' and `mud' in PC 2, although this
-			may be due to chance as the agreement score for `harsh' is very low.
+			distinct regions from one another. This reflects the clustering of these terms seen in
+			Figure~\ref{fig:EqualiserProcessedClusters}, again suggesting that these terms have not been used
+			to describe distinct properties of the processed signal. The remaining descriptors are also
+			difficult to distinguish. One apparent pattern is the separation of `harsh' and `mud' in PC 2,
+			although this may be due to chance as the agreement score for `harsh' is very low.
 
-			The salient features for this timbre space are shown in Datum
-			\ref{dat:EqualiserProcessedCorrelations}. The most salient in each PC are then visualised, along
-			with the mean position and agreement score of each descriptor, in Figure
-			\ref{fig:EqualiserProcessedCentroidsPCAs}. These show that, although the clusters for each term are
-			not well separated, their centroids are positioned in the timbre space as one might expect.
+			The salient features for this timbre space are shown in
+			Datum~\ref{dat:EqualiserProcessedCorrelations}. The most salient in each PC are then visualised,
+			along with the mean position and agreement score of each descriptor, in
+			Figure~\ref{fig:EqualiserProcessedCentroidsPCAs}. These show that, although the clusters for each
+			term are not well separated, their centroids are positioned in the timbre space as one might
+			expect.
 
 			\begin{datum}[h!]
 				\centering
@@ -1326,8 +1330,8 @@
 			with more low frequency energy at the bottom. The descriptors are spread out across this dimension,
 			illustrating a general trend that `deep', `mud', `boom' and `warm' are used to describe high
 			proportions of low frequencies and `harsh', `tin' and `clear' used to describe higher proportions
-			of high frequencies. Examining the mean bark band spectra of these signals (Figure
-			\ref{fig:EqualiserProcessedSpectra}) these trends can be seen. 
+			of high frequencies. Examining the mean bark band spectra of these signals
+			(Figure~\ref{fig:EqualiserProcessedSpectra}) these trends can be seen. 
 
 			\begin{figure}[h!]
 				\centering
@@ -1338,15 +1342,15 @@
 
 			PC 1 seems to separate the low frequency descriptors into groups, `deep' describing signals with
 			smoother spectra and a greater skew towards lower frequencies than those described by `boom' and
-			`mud'. This difference is apparent in Figure \ref{fig:EqualiserProcessedSpectra}, signals described
+			`mud'. This difference is apparent in Figure~\ref{fig:EqualiserProcessedSpectra}, signals described
 			as `deep' containing predominantly low frequency energy and those described as `boom' and `mud'
 			having more complex spectra but still with a large proportion of low frequency energy.
 
 		\subsubsection*{Equaliser Feature Differences}
 			The first three PCs of the timbre space describing the feature manipulations applied by the
 			equaliser are shown in Figures \ref{fig:EqualiserBWDifferencePCAs} and
-			\ref{fig:EqualiserDifferencePCAs}. The corresponding agreement scores are shown in Table
-			\ref{tab:EqualiserDifferenceAgreements}. This space shows more definite patterns than that
+			\ref{fig:EqualiserDifferencePCAs}. The corresponding agreement scores are shown in
+			Table~\ref{tab:EqualiserDifferenceAgreements}. This space shows more definite patterns than that
 			constructed from the processed feature values.
 
 			\begin{figure}[h!]
@@ -1399,10 +1403,10 @@
 			are again difficult to discriminate, the separation of `harsh' and `mud' in PC 2 being the most
 			noticeable pattern.
 
-			The salient features for this timbre space are shown in Datum
-			\ref{dat:EqualiserDifferenceCorrelations}. The most salient in each PC are then visualised, along
-			with the mean position and agreement score of each descriptor, in Figure
-			\ref{fig:EqualiserDifferenceCentroidsPCAs}. 
+			The salient features for this timbre space are shown in
+			Datum~\ref{dat:EqualiserDifferenceCorrelations}. The most salient in each PC are then visualised,
+			along with the mean position and agreement score of each descriptor, in
+			Figure~\ref{fig:EqualiserDifferenceCentroidsPCAs}. 
 
 			\begin{datum}[h!]
 				\centering
@@ -1435,9 +1439,9 @@
 			spectral centroid, spectral standard deviation and spectral roll off. Negative values of PC 2
 			correspond to a decrease in these features and positive values an increase. Signals can be made
 			`warmer' by reducing the spectral centroid and `brighter' by increasing it. This is most often done
-			by introducing more energy at low or higher frequencies respectively, as seen in Figure
-			\ref{fig:EqualiserDifferenceSpectra}. `harsh' and `tin' can be thought of as more accentuated
-			versions of `bright' and `mud' as a more accentuated version of `warm'.
+			by introducing more energy at low or higher frequencies respectively, as seen in
+			Figure~\ref{fig:EqualiserDifferenceSpectra}. `harsh' and `tin' can be thought of as more
+			accentuated versions of `bright' and `mud' as a more accentuated version of `warm'.
 
 			The more distinct patterns seen by using the feature differences suggest that these terms have been
 			used to describe the transform rather than the output signal. The process of making a signal
@@ -1453,11 +1457,12 @@
 				\label{fig:EqualiserDifferenceSpectra}
 			\end{figure}
 
-			The usage of `deep' in the dataset seems to be a property of the input signals being used. Figure
-			\ref{fig:EqualiserDifferenceSpectra} shows that very little spectral manipulation was applied in
-			producing a `deep' signal. While it is clear from Figure \ref{fig:EqualiserProcessedSpectra} that
-			`deep' describes signals with a large proportion of low frequency energy, no processing has been
-			applied to cause this. As such, the signals must have been `deep' prior to processing.
+			The usage of `deep' in the dataset seems to be a property of the input signals being used.
+			Figure~\ref{fig:EqualiserDifferenceSpectra} shows that very little spectral manipulation was
+			applied in producing a `deep' signal. While it is clear from
+			Figure~\ref{fig:EqualiserProcessedSpectra} that `deep' describes signals with a large proportion of
+			low frequency energy, no processing has been applied to cause this. As such, the signals must have
+			been `deep' prior to processing.
 
 \section{Conclusion}
 	In this chapter we developed a system for the retrieval of timbral data as part of the typical music production
@@ -1517,5 +1522,5 @@
 	In conclusion this chapter has identified the term most often used to describe the use of distortion and
 	equalisation and their meanings in terms of audio feature manipulations. These findings can be used to predict the
 	perceived timbre of recorded / processed sounds. They can also be used to inform processing systems such that
-	particular timbral results are achieved. In Chapter \ref{chap:PerceptualExperiments} they influence the design of
+	particular timbral results are achieved. In Chapter~\ref{chap:PerceptualExperiments} they influence the design of
 	harmonic excitation systems which move the perceived timbre of audio signals between these groups.

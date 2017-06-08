@@ -38,16 +38,17 @@
 	\citet{helmholtz1875on} who investigated the perceived nature of sounds composed of various simple tones. The
 	composition of the sound being a feature which contributes to its perceived timbre. In more recent work several
 	other features of signals have been defined which are also found to contribute to the perceived timbre of a sound.
-	These low level audio features are discussed in Section \ref{sec:Timbre-LowLevelFeatures}. Research into how these
+	These low level audio features are discussed in Section~\ref{sec:Timbre-LowLevelFeatures}. Research into how these
 	feature contribute to the perception of timbre is typically approached in two ways. The behaviour of the human
 	hearing system can be analysed and used to inform models of particular timbral attributes. This approach is
 	discussed in Sections \ref{sec:Timbre-PsychoacousticPrinciples} and \ref{sec:Timbre-TimbralFeatures}. The second
 	approach, discussed in Sections \ref{sec:Timbre-ListeningTests} and \ref{sec:Timbre-Parameterisation}, involves the
 	use of experiments in which participants listen to audio stimuli and provide responses regarding the their timbre.
 	These responses are then analysed to uncover any correlations between the participants responses and lower level
-	features of the stimuli. Lastly the systems used to control timbre are discussed, Section \ref{sec:Timbre-Control}
-	discussing proposed methods of controlling timbral aspects from the research literature and Section
-	\ref{sec:Timbre-AudioProcessing} discussing the systems traditionally used by audio engineers to modify timbre.
+	features of the stimuli. Lastly the systems used to control timbre are discussed, Section~\ref{sec:Timbre-Control}
+	discussing proposed methods of controlling timbral aspects from the research literature and
+	Section~\ref{sec:Timbre-AudioProcessing} discussing the systems traditionally used by audio engineers to modify
+	timbre.
 
 \section{Low Level Audio Features}
 \label{sec:Timbre-LowLevelFeatures}
@@ -74,7 +75,7 @@
 		an envelope for a signal: a smooth line which describes the peaks or troughs in a signal, ignoring the
 		oscillatory changes in amplitude due to its frequency. Applying an envelope detector to the temporal
 		representation of a signal produces an amplitude envelope describing the level of the signal over time.
-		Figure \ref{fig:AmplitudeEnvelope} illustrates the amplitude envelope of a simple signal.
+		Figure~\ref{fig:AmplitudeEnvelope} illustrates the amplitude envelope of a simple signal.
 
 		\begin{figure}[h!]
 			\centering
@@ -98,8 +99,8 @@
 			Hilbert transform alters the phase information of a signal while leaving the magnitude information
 			unchanged. Any negative frequencies in the signal have their phase shifted by $\frac{\pi}{2}$
 			radians while the phase of positive frequencies is shifted by $-\frac{\pi}{2}$ radians. The
-			transfer function for an FIR implementation of a Hilbert transform is shown in Equation
-			\ref{eq:FirHilbertTransform}.
+			transfer function for an FIR implementation of a Hilbert transform is shown in
+			Equation~\ref{eq:FirHilbertTransform}.
 
 			\begin{equation}
 				H(z) = \sum_{m = -M}^{M} \frac{2}{m\pi} sin^{2} \left( \frac{m\pi}{2} \right) z^{-m}
@@ -110,11 +111,11 @@
 			Practicable approximations of an ideal Hilbert transform can be created by using a finite value for
 			$M$. A delay of $M$ samples must also be introduced in order to give a causal filter. As the value
 			of $M$ is decreased this delay is reduced while the magnitude response of the filter deviates
-			further from the ideal. Figure \ref{fig:HilbertMagnitude} shows the magnitude responses for FIR
+			further from the ideal. Figure~\ref{fig:HilbertMagnitude} shows the magnitude responses for FIR
 			Hilbert transform filters with $M = 11$ and $M = 101$. The filters have a bandpass response with
 			some ripple in the pass band. As $M$ is increased the bandwidth of the passband is increased and
 			the ripple reduced. The phase response of these filters remains ideal no matter the value of $M$,
-			as evidenced by Figure \ref{fig:HilbertPhase}.
+			as evidenced by Figure~\ref{fig:HilbertPhase}.
 
 			\begin{figure}[h!]
 				\centering
@@ -130,7 +131,7 @@
 				\label{fig:HilbertPhase}
 			\end{figure}
 
-			When using Equation \ref{eq:FirHilbertTransform} a compromise needs to be made between the
+			When using Equation~\ref{eq:FirHilbertTransform} a compromise needs to be made between the
 			tolerable amount of delay and the accuracy of the filter's magnitude response. Increasing $M$ will
 			give a more accurate filter but introduce more delay and increase the complexity of the filter.
 			More efficient implementations can be built using IIR filters if some of the properties of an ideal
@@ -139,8 +140,8 @@
 			differ from each other by $\frac{\pi}{2}$ radians for a large proportion of the spectrum. While
 			this is not strictly a Hilbert transform it creates two signals which can be used as the real and
 			imaginary part of an analytic signal. \citet{niemitalo2003hilbert} provides an implementation of
-			such a pair of filters. The phase difference between these two filters is seen in Figure
-			\ref{fig:IIRHilbertPhase}.
+			such a pair of filters. The phase difference between these two filters is seen in
+			Figure~\ref{fig:IIRHilbertPhase}.
 
 			\begin{figure}[h!]
 				\centering
@@ -163,7 +164,7 @@
 			maximum and the decay describing the time it takes for the amplitude to decrease back to a steady
 			level. The sustain describes the level at which the amplitude remains during the steady state
 			portion of the signal and the release the time taken for the amplitude to fall from this level to
-			silence. An example ADSR envelope is shown in Figure \ref{fig:ADSR}.
+			silence. An example ADSR envelope is shown in Figure~\ref{fig:ADSR}.
 
 			\begin{figure}[h!]
 				\centering
@@ -238,7 +239,7 @@
 			skewness and kurtosis.
 
 			The spectral centroid of a signal, $\mu_{\mathrm{s}}$, is the first raw moment (mean) of the
-			spectrum. It is calculated using Equation \ref{eq:SpectralCentroid}. Spectral centroid is often
+			spectrum. It is calculated using Equation~\ref{eq:SpectralCentroid}. Spectral centroid is often
 			stated as being one of the most salient audio features in timbre recognition
 			\citep{freed1990auditory, lakatos2000a}. 
 
@@ -249,7 +250,7 @@
 			\end{equation}
 
 			The spectral spread of a signal, $\sigma_{\mathrm{s}}^{2}$, is the second central moment (variance)
-			of the spectrum. It is calculated using Equation \ref{eq:SpectralSpread}.
+			of the spectrum. It is calculated using Equation~\ref{eq:SpectralSpread}.
 
 			\begin{equation}
 				\sigma_{\mathrm{s}}^{2} = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu_{\mathrm{s}})^{2}}
@@ -261,7 +262,7 @@
 			centered and how far from this center the energy is spread.
 
 			The spectral skewness of a signal, $\gamma_{\mathrm{s}}$, is the third standardised moment of the
-			spectrum. It is calculated using Equation \ref{eq:SpectralSkewness}.
+			spectrum. It is calculated using Equation~\ref{eq:SpectralSkewness}.
 
 			\begin{equation}
 				\gamma_{\mathrm{s}} = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu_{\mathrm{s}})^{3}}
@@ -275,7 +276,7 @@
 			its centroid.
 
 			The spectral kurtosis of a signal, $\kappa_{\mathrm{s}}$, is the fourth standardised moment of the
-			spectrum. It is calculated using Equation \ref{eq:SpectralKurtosis}.
+			spectrum. It is calculated using Equation~\ref{eq:SpectralKurtosis}.
 
 			\begin{equation}
 				\kappa_{\mathrm{s}} = \frac{\sum_{n = 1}^{N} a_{n}(\nu_{n} - \mu_{\mathrm{s}})^{4}}
@@ -297,7 +298,7 @@
 			using the amplitudes of spectral partials as the spectra of pitched signals are characteristically
 			`unsmooth', having sharp amplitude peaks at each partial. Various different methods of measuring
 			this are often cited in the literature. The first being that proposed by
-			\citet{krimphoff1994caracterisation}, shown in Equation \ref{eq:KrimphoffIrregularity} and
+			\citet{krimphoff1994caracterisation}, shown in Equation~\ref{eq:KrimphoffIrregularity} and
 			hereafter referred to as Krimphoff Irregularity ($\mathrm{KI}$).
 
 			\begin{equation}
@@ -308,7 +309,7 @@
 			\end{equation}
 
 			This is often implemented using the raw amplitudes of the partials rather than their dB amplitudes
-			yielding equation \ref{eq:LibXtractKrimphoffIrregularity}. This is how the Krimphoff irregularity
+			yielding Equation~\ref{eq:LibXtractKrimphoffIrregularity}. This is how the Krimphoff irregularity
 			is implemented in LibXtract \citep{bullock2007libxtract} (a software library for audio analysis
 			used throughout this work).
 
@@ -319,7 +320,7 @@
 			\end{equation}
 
 			A second method, Jensen irregularity ($\mathrm{JI}$), is proposed by \citet{jensen1999timbre},
-			shown in Equation \ref{eq:JensenIrregularity}.
+			shown in Equation~\ref{eq:JensenIrregularity}.
 
 			\begin{equation}
 				\mathrm{JI} = \frac{\sum_{n = 1}^{N} (a_{n} - a_{n+1})^{2}}
@@ -329,7 +330,7 @@
 			\end{equation}
 
 			A third method, Beauchamp irregularity ($\mathrm{BI}$) is given by \citet{beauchamp2007analysis},
-			shown in Equation \ref{eq:BeauchampIrregularity}.
+			shown in Equation~\ref{eq:BeauchampIrregularity}.
 
 			\begin{gather}
 			        \bar{a}_{n} = \frac{a_{n-1} + a_{n} + a_{n+1}}{3} \nonumber \\
@@ -340,14 +341,14 @@
 
 			Equation \ref{eq:JensenIrregularity} and \ref{eq:BeauchampIrregularity} have an advantage over
 			Equations \ref{eq:KrimphoffIrregularity} and \ref{eq:LibXtractKrimphoffIrregularity} in that they
-			produce normalised values. Equation \ref{eq:JensenIrregularity} produces values between zero and
-			two while Equation \ref{eq:BeauchampIrregularity} produces values between zero and one. This allows
+			produce normalised values. Equation~\ref{eq:JensenIrregularity} produces values between zero and
+			two while Equation~\ref{eq:BeauchampIrregularity} produces values between zero and one. This allows
 			measures of irregularity of two different signals to be compared more easily.
 
 		\subsubsection*{Spectral Flatness}
 			Spectral flatness, $\mathrm{SF}$, measures how uniformly distributed the energy is in the spectrum.
 			\citet{johnston1988transform} measures the spectral flatness as the ratio of the geometric and
-			arithmetic means of the power spectrum of a signal (Equation \ref{eq:Flatness}).
+			arithmetic means of the power spectrum of a signal (Equation~\ref{eq:Flatness}).
 
 			\begin{equation}
 				\mathrm{SF} = \frac{N\sqrt[N]{\prod_{n = 1}^{N} a_{n}^{2}}}
@@ -356,7 +357,7 @@
 			\end{equation}
 
 			The arithmetic and geometric means of any list of $N$ non-negative numbers, $L$, satisfy the
-			inequality in Equation \ref{eq:MeanInequality}.
+			inequality in Equation~\ref{eq:MeanInequality}.
 
 			\begin{equation}
 				\sqrt[N]{\prod_{n = 1}^{N} L_{n}} \leq \frac{1}{N} \sum_{n = 1}^{N} L_{n}
@@ -387,7 +388,7 @@
 		\subsubsection*{Spectral Slope}
 			The spectral slope, $\mathrm{SSl}$ measures the gradient of the spectrum. It is calculated by first
 			order liner regression of the spectrum. For a signal with $N$ spectral components the spectral
-			slope can be calculated with Equation \ref{eq:SpectralSlope}.
+			slope can be calculated with Equation~\ref{eq:SpectralSlope}.
 
 			\begin{gather}
 				A = \sum_{n = 1}^{N} a_{n}
@@ -404,10 +405,10 @@
 			frequencies of the DFT bins. For musical signals which are composed of partials it may be more
 			beneficial to measure the slope of the partial's amplitudes rather than of the whole spectrum. 
 			
-			Equation \ref{eq:SpectralSlope} produces values with units of Hz\super{-1}. The equation can be
+			Equation~\ref{eq:SpectralSlope} produces values with units of Hz\super{-1}. The equation can be
 			altered to provide results in units of dB per Hz by substituting $a_{n}$ with $20\log_{10}(a_{n})$
-			and removing the scaling factor of $\frac{1}{A}$ from the final calculation, giving Equation
-			\ref{eq:SpectralSlope2}.
+			and removing the scaling factor of $\frac{1}{A}$ from the final calculation, giving
+			Equation~\ref{eq:SpectralSlope2}.
 			
 			\begin{gather}
 				A = \sum_{n = 1}^{N} 20\log_{10}(a_{n})
@@ -419,7 +420,7 @@
 			\end{gather}
 			
 			A commonly used unit for measuring slopes in spectra is dB per octave, as used when measuring the
-			roll off rate in a filters stop band. Equation \ref{eq:SpectralSlope2} can be altered to produce
+			roll off rate in a filters stop band. Equation~\ref{eq:SpectralSlope2} can be altered to produce
 			values in this unit by substituting $\nu_{n}$ with $\log_{2}(\nu_{n})$.
 
 		\subsubsection*{Tristimulus}
@@ -481,7 +482,7 @@
 			order harmonics in a signal. It was found to be a salient feature in timbral recognition by
 			\citet{hall2010importance}, allowing for distinction between signals which consist of only a single
 			parity of harmonic. The ratio is calculated from the squared amplitudes of the harmonic partials in
-			a signal according to Equation \ref{eq:HarmonicParityRatio}.
+			a signal according to Equation~\ref{eq:HarmonicParityRatio}.
 			
 			\begin{equation}
 				\mathrm{OER} = \frac{\sum_{1 \leq n \leq N, n \text{ is odd}} h_{n}^{2}}
@@ -489,7 +490,7 @@
 				\label{eq:HarmonicParityRatio}
 			\end{equation}
 
-			Measuring the $\mathrm{OER}$ of a signal using Equation \ref{eq:HarmonicParityRatio} produces an
+			Measuring the $\mathrm{OER}$ of a signal using Equation~\ref{eq:HarmonicParityRatio} produces an
 			asymmetric scale which may be difficult to interpret.  Signals with most of their energy at even
 			harmonics produce values between zero and one.  Signals with more energy at the odd harmonics can
 			produce any value greater then one. Another problem arises for signals with no energy at even
@@ -516,7 +517,7 @@
 			harmonic frequencies. As such it must be calculated from the amplitudes and frequencies of a
 			signal's spectral partials. \citet{fletcher1962quality} state that inharmonicity of some partials
 			is necessary for the recognition of the timbre of a piano. The inharmonicity of a signal is
-			measured using Equation \ref{eq:Inharmonicity}.
+			measured using Equation~\ref{eq:Inharmonicity}.
 			
 			\begin{equation}
 				I = \frac{2\sum_{n = 1}^{N}a_{n}^{2}
@@ -537,7 +538,7 @@
 	\citep{moore1997a} and pitch \citep{gerhard2003pitch}. Other research considers the human hearing systems ability
 	to locate sound sources \citep{blauert1997spatial}. 
 
-	As discussed in Section \ref{sec:Timbre-LowLevelFeatures-Spectral} there are several metrics which describe the
+	As discussed in Section~\ref{sec:Timbre-LowLevelFeatures-Spectral} there are several metrics which describe the
 	spectral content of a signal. While it may be possible to measure changes in values of these features, the changes
 	may not be detectable by or linearly related to the human hearing system. Psychoacoustic models allow us to
 	determine how audio signals are interpreted by the human hearing system and the perceptibility of such changes.
@@ -555,7 +556,7 @@
 		that it had a pitch which what half that of a reference tone. This was repeated for ten individual
 		reference tones producing ten data points which were used to provide a mapping between the hertz and mel
 		scales. A formula to approximate the frequency in mel, $m$, for any given frequency in hertz, $f$, is given
-		by \citet{oshaughnessy2000speech} and shown in Equation \ref{eq:mel}.
+		by \citet{oshaughnessy2000speech} and shown in Equation~\ref{eq:mel}.
 
 		\begin{equation}
 			m = 2595 \log_{10} \left(1 + \frac{f}{700} \right)
@@ -565,7 +566,7 @@
 		This perceptual frequency scale allows audio feature metrics to analyse audio in more perceptually relevant
 		bands. One such metric is the Mel Frequency Cepstral Coefficients (MFCCs) developed for use in speech
 		recognition \citep{davis1980comparison}. These provide more detailed information about the shape of the
-		spectrum than the spectral moments discussed in Section \ref{sec:Timbre-LowLevelFeatures-Spectral}. In
+		spectrum than the spectral moments discussed in Section~\ref{sec:Timbre-LowLevelFeatures-Spectral}. In
 		brief the power spectrum of a signal is partitioned into bands which are equally spaced on the mel scale.
 		The discrete cosine transform (DCT) of the log powers of these bands is then calculated to produce the
 		MFCCs. From their first use in speech recognition MFCCs have been added to the corpus of audio features
@@ -592,7 +593,7 @@
 		Portions of signals will interfere with the perception of others which are within one critical bandwidth.
 		\citet{glasberg1990derivation} simplify the auditory filters by modelling them as rectangular filters. The
 		bandwidth of these filters known as the equivalent rectangular bandwidth ($\mathrm{ERB}$) and can be
-		approximated using Equation \ref{eq:ERB}.
+		approximated using Equation~\ref{eq:ERB}.
 
 		\begin{equation}
 			\mathrm{ERB}(f_{c}) = 24.7(4.37f_{c} + 1)
@@ -609,7 +610,7 @@
 		fast enough for it to be perceived as a roughness in texture rather than `beats' in the amplitude. In
 		between 15Hz and the critical bandwidth the perceived sound transitions from a single sound to two separate
 		sounds but still with a rough texture. Once the difference in frequency exceeds the critical bandwidth the
-		two tones are perceived as separate tones. These effects are summarised in Figure \ref{fig:ToneSeparation}.
+		two tones are perceived as separate tones. These effects are summarised in Figure~\ref{fig:ToneSeparation}.
 
 		\begin{figure}[h!]
 			\centering
@@ -641,8 +642,8 @@
 			\label{fig:ToneSeparation}
 		\end{figure}
 
-		It is evident from Equation \ref{eq:ERB} that the critical bandwidth increases with frequency. This,
-		together with the perceptual information shown in Figure \ref{fig:ToneSeparation}, suggests that tones
+		It is evident from Equation~\ref{eq:ERB} that the critical bandwidth increases with frequency. This,
+		together with the perceptual information shown in Figure~\ref{fig:ToneSeparation}, suggests that tones
 		separated by the same amount will be heard as separate if they are both low in frequency but as their
 		frequencies rise they will start to be perceived as a single fused sound.
 
@@ -677,7 +678,7 @@
 		of a signal depends on the ratio of high and low frequency content. Increasing the amount of high frequency
 		content increases the sharpness of a signal. The sharpness can also be reduced by adding more low frequency
 		content to a signal. They produce a metric from this information for the measurement of perceived
-		sharpness. The sharpness, $S$, is calculated using Equation \ref{eq:Sharpness}.
+		sharpness. The sharpness, $S$, is calculated using Equation~\ref{eq:Sharpness}.
 
 		\begin{equation}
 			S = 0.11\frac{\sum_{b = 1}^{24} N'_{b}g(b)b}{\sum_{b = 1}^{24}N'_{b}}
@@ -689,12 +690,12 @@
 
 		\citet{marui2006predicting} run listening experiments to test how well perceived sharpness can be predicted
 		using this metric. They find that it does not predict the sharpness of broadband noise accurately and
-		propose an improved metric which is the product of the value from Equation \ref{eq:Sharpness} and the
+		propose an improved metric which is the product of the value from Equation~\ref{eq:Sharpness} and the
 		spectral variance of the specific loudness.
 
 	\subsection{Roughness}
 	\label{sec:Timbre-TimbralFeatures-Roughness}
-		A sensation of roughness was discussed in Section \ref{sec:Timbre-PsychoacousticPrinciples-CriticalBands}.
+		A sensation of roughness was discussed in Section~\ref{sec:Timbre-PsychoacousticPrinciples-CriticalBands}.
 		Here the roughness was due to the rapid amplitude modulation produced as a result of summing two sinusoids
 		which are close in frequency. A lot of early research into this effect concerns the study of consonance or
 		dissonance of tones. The history of this work is summarised by \citet{plomp1965tonal}. In review of this
@@ -711,7 +712,7 @@
 			\item The frequency of the modulated signal.
 		\end{itemize}
 
-		This frequency dependence agrees with that shown in Figure \ref{fig:ToneSeparation}. Amplitude fluctuations
+		This frequency dependence agrees with that shown in Figure~\ref{fig:ToneSeparation}. Amplitude fluctuations
 		above approximately 15Hz produce a rough texture to the sound. As this frequency increases the roughness
 		also increases to a maximum before decreasing again. At some frequency between 75Hz and 150Hz, depending on
 		the frequency content of the modulated signal, the sensation of roughness ceases to be audible.
@@ -766,7 +767,7 @@
 			quality of lossy audio data compression algorithms. Participants are asked to judge how well
 			different systems reconstructed the original signal after lossy data compression.  These tests are
 			often used to assess the performance of bandwidth extension methods such as those discussed in
-			Section \ref{sec:Excitation-Methods}. Other multiple stimulus tests, while not adhering strictly to
+			Section~\ref{sec:Excitation-Methods}. Other multiple stimulus tests, while not adhering strictly to
 			the MUSHRA guidelines, follow a similar structure. \citet{arthi2015influence} uses a multiple
 			stimulus test to determine the perceptual differences between stimuli. 
 			
@@ -797,7 +798,7 @@
 			
 			Issues with the use of semantic differentials were shown by \citet{kendall1993verbal1}. Their first
 			experiment was an attribute scale test in which participants are asked to rate each audio stimulus
-			on eight different bipolar adjective scales, shown in Table \ref{tab:vonBismarcksDescriptors}.
+			on eight different bipolar adjective scales, shown in Table~\ref{tab:vonBismarcksDescriptors}.
 
 			\begin{table}[h!]
 				\centering
@@ -849,8 +850,8 @@
 			audio stimuli used. The adjectives are often selected using a preliminary verbal elicitation
 			experiment. \citet{namba1991verbal} presented participants with the test stimuli in a random order
 			and asked them to provide any terms they would use to describe them. These terms were then used as
-			the adjectives for the test. The adjectives used by \citet{kendall1993verbal1}, shown in Table
-			\ref{tab:vonBismarcksDescriptors} were taken from earlier work performed by
+			the adjectives for the test. The adjectives used by \citet{kendall1993verbal1}, shown in
+			Table~\ref{tab:vonBismarcksDescriptors} were taken from earlier work performed by
 			\citet{vonbismarck1974timbre}. In a second set of experiments \citet{kendall1993verbal2} use a
 			different set of adjectives taken from work on orchestration for composition
 			\citet{piston1955orchestration}. The selection of adjectives was further refined through a simple
@@ -1091,9 +1092,9 @@
 		an equaliser to increase the amplitude of frequencies around 2kHz increased the brightness of a sound. This
 		finding is not generalisable to all input signals, the equaliser parameter settings associated with
 		increasing the brightness will have no effect on signals which have no energy at 2kHz. This problem is
-		avoided by analysing the audio features of the signals as discussed in Section
-		\ref{sec:Timbre-Control-TimbreSpaces}. Using this method, the necessary audio feature manipulation is
-		determined and then the parameters of the audio effect are set accordingly.
+		avoided by analysing the audio features of the signals as discussed in
+		Section~\ref{sec:Timbre-Control-TimbreSpaces}. Using this method, the necessary audio feature manipulation
+		is determined and then the parameters of the audio effect are set accordingly.
 
 \section{Audio Processing}
 \label{sec:Timbre-AudioProcessing}
@@ -1119,13 +1120,13 @@
 		In the following sections the most commonly used audio effects are listed and their properties and usages
 		discussed. The effects are split into three categories: linear time invariant, linear time variant and
 		nonlinear. Popular terms used to describe the timbral characteristics of the most commonly used audio
-		effects are gathered from the dataset collected by the SAFE project (discussed in detail in Section
-		\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}).
+		effects are gathered from the dataset collected by the SAFE project (discussed in detail in
+		Section~\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}).
 
 	\subsection{Linear Time Invariant Effects}
 	\label{sec:Timbre-AudioProcessing-LTI}
 		A linear system is one which satisfies the conditions met by the superposition principle. These conditions
-		are that of additivity (Equation \ref{eq:additivity}) and homogeneity (Equation \ref{eq:homogeneity}).
+		are that of additivity (Equation~\ref{eq:additivity}) and homogeneity (Equation~\ref{eq:homogeneity}).
 
 		\begin{equation} f(x + y) = f(x) + f(y) \label{eq:additivity} \end{equation}
 
@@ -1138,7 +1139,7 @@
 		identical signals processed at different times will produce identical results. A linear time invariant
 		(LTI) system is then one which satisfies the principles of superposition and time invariance. LTI systems
 		also exhibit the property of commutativity, meaning that the order in which multiple LTI systems are
-		applied has no effect on the resultant signal as illustrated in Equation \ref{eq:commutativity}.
+		applied has no effect on the resultant signal as illustrated in Equation~\ref{eq:commutativity}.
 
 		\begin{equation} f(g(x)) = g(f(x)) \label{eq:commutativity} \end{equation}
 
@@ -1152,10 +1153,10 @@
 			associated with signal transmission. As the field of audio production has evolved, more flexible
 			equalisers with more control parameters have been introduced \citep{gottlieb2007shaping}. Modern
 			equalisers are still used for corrective purposes but also provide more opportunities for the
-			creative shaping of timbre. Responses from the SAFE project (Section
-			\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}) indicate that the most commonly used
-			terms to describe the timbral effects of equalisation are: warm, bright, clear, airy, thin, full,
-			boomy, boxy, tinny, deep, muddy and harsh.
+			creative shaping of timbre. Responses from the SAFE project
+			(Section~\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}) indicate that the most commonly
+			used terms to describe the timbral effects of equalisation are: warm, bright, clear, airy, thin,
+			full, boomy, boxy, tinny, deep, muddy and harsh.
 
 		\subsubsection*{Reverberation}
 			Reverberation (reverb) effects simulate the effects of the natural reflection of sounds in enclosed
@@ -1207,4 +1208,4 @@
 			applications \citep{larsen2004audio}. The timbral effects of the distortion plug-in created for the
 			SAFE project have been described as crunchy, warm, fuzzy, creamy, bright, harsh, raspy and smooth.
 			As the focus of this thesis is the application of nonlinear distortion for timbral control an in
-			depth discussion of nonlinear distortion is given in Chapter \ref{chap:Excitation}. 
+			depth discussion of nonlinear distortion is given in Chapter~\ref{chap:Excitation}. 
