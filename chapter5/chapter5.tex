@@ -884,7 +884,8 @@
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/InfinitePeakClipping.pdf}
-				\caption{A graph showing a signal before and after infinite peak clipping.}
+				\caption{The amplitude envelopes of a signal signal before and after
+					 infinite peak clipping.}
 				\label{fig:InfinitePeakClipping}
 			\end{figure}
 
@@ -911,15 +912,22 @@
 			
 		\subsubsection*{Multiplier}
 			Exponential static nonlinearities have a dynamic compression / expansion effect. For exponents
-			greater than 1 the dynamics of a signal are expanded, the amplitude difference between low and high
-			amplitude portions of the signal is increased. For exponents less that 1 the opposite occurs,
-			compressing the dynamics of the signal. Figure \ref{fig:ExponentiationTemporalEffects} show the
-			effects this can have on the attack and release portions of signals.
+			greater than one the dynamics of a signal are expanded, the amplitude difference between low and
+			high amplitude portions of the signal is increased. For exponents less that one the opposite
+			occurs, compressing the dynamics of the signal. Figure \ref{fig:ExponentiationTemporalEffects} show
+			the effects this can have on the attack and release portions of signals.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics{chapter5/Images/MultiplierTemporalEffects.pdf}
+				\caption{The amplitude envelopes of a signal before and after cubing.}
+				\label{fig:MultiplierTemporalEffects}
+			\end{figure}
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/ExponentiationTemporalEffects.pdf}
-				\caption{The temporal effects of exponential static nonlinearities.}
+				\caption{The amplitude envelopes of a signal before and after cube rooting.}
 				\label{fig:ExponentiationTemporalEffects}
 			\end{figure}
 
@@ -931,22 +939,22 @@
 			predictable enough to give intuitive control.
 
 		\subsubsection*{SSBA}
-			SSBA has similar temporal effects to a multiplier using an exponent greater that 1. The signal
+			SSBA has similar temporal effects to a multiplier using an exponent greater that one. The signal
 			undergoes dynamic expansion changing the shape of its attack and release envelopes as shown in
 			Figure \ref{fig:SSBATemporalEffects}.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/SSBATemporalEffects.pdf}
-				\caption{The temporal effects of SSBA.}
+				\caption{The amplitude envelopes of a signal before and after 3\super{rd} order SSBA.}
 				\label{fig:SSBATemporalEffects}
 			\end{figure}
 
 			The restricted bandwidth of the SSBA technique's output is also apparent from this graph. The input
-			is a sinusoid with a simple amplitude envelope. The output is a sinusoid with 3 times the frequency
-			and an amplitude envelope equal to that of the input cubed. This is in contrast to the effect of
-			the multiplier shown in Figure \ref{fig:ExponentiationTemporalEffects} where the output signal is
-			no longer sinusoidal.
+			is a sinusoid with a simple amplitude envelope. The output is a sinusoid with three times the
+			frequency and an amplitude envelope equal to that of the input cubed. This is in contrast to the
+			effect of the multiplier shown in Figure \ref{fig:ExponentiationTemporalEffects} where the output
+			signal is no longer sinusoidal.
 
 		\subsubsection*{IAP}
 			The IAP system preserves the input signal's amplitude envelope. Due to this the temporal
@@ -956,7 +964,7 @@
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/IAPTemporalEffects.pdf}
-				\caption{The temporal effects of IAP.}
+				\caption{The amplitude envelopes of a signal before and after 3\super{rd} order IAP.}
 				\label{fig:IAPTemporalEffects}
 			\end{figure}
 			
