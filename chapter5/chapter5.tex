@@ -1014,25 +1014,23 @@
 
 	\subsection{Use Cases}
 	\label{sec:ExcitationEvaluation-Comparison-UseCases}
-
-		\note{Rewrite these to make them fit with the new section heading.}
-
 		\subsubsection*{Static Nonlinearities}
-			Static nonlinearities prove useful in situations in which a large band of new spectral energy needs
-			to be created efficiently and the precise spectral structure is not important. For musical signals
-			static nonlinearities introduce a spectrally dense band of audio, the spectral content of which is
-			highly dependent on that of the input signal. Properties of the characteristic curve can be changed
-			in order to control the orders of distortion components in the output as well as the rate at which
-			their amplitudes roll off. Further shaping of the spectrum is most easily applied through
-			additional filtering. Typical static nonlinearities, such as peak clippers, are non-homogeneous,
-			although steps can be taken to improve on this at the cost of introducing additional complexity.
+			Static nonlinearities prove useful for situations in which a large band of new spectral energy
+			needs to be created efficiently and the precise spectral structure is not important. For musical
+			signals static nonlinearities introduce a spectrally dense band of audio, the spectral content of
+			which is highly dependent on that of the input signal. Properties of the characteristic curve can
+			be changed in order to control the orders of distortion components in the output as well as the
+			rate at which their amplitudes roll off. Further shaping of the spectrum is most easily applied
+			through additional filtering. Typical static nonlinearities, such as peak clippers, are
+			non-homogeneous, although steps can be taken to improve on this at the cost of introducing
+			additional complexity.
 			
 		\subsubsection*{Rectification}
 			Rectifiers find use in the in the same applications as other static nonlinearities but due to the
-			properties of the characteristic curve their effects are better defined. Only even order distortion
-			components are generated, for sinusoidal this amounts to a series of even harmonics with amplitudes
-			reducing by 12dB per octave. Rectifiers may be more useful for timbral control than other static
-			nonlinearities due to their positive homogeneity.
+			properties of the characteristic curve, their effects are better defined. In rectification, only
+			even order distortion components are generated, for sinusoidal this amounts to a series of even
+			harmonics with amplitudes reducing by 12dB per octave. Rectifiers may be more useful for timbral
+			control than other static nonlinearities due to their positive homogeneity.
 
 		\subsubsection*{Integrator}
 			Integrators are similarly useful to general static nonlinearities, they provide an efficient means
@@ -1040,7 +1038,8 @@
 			(Equation \ref{eq:Integrator}) has similar properties to a rectifier, being a positive homogeneous
 			system which introduces distortion components with a shallow roll off. The primary difference being
 			that the integrator produces all orders of distortion rather than only even orders. A disadvantage
-			of integrators over rectifiers is that they smear transients due to their low pass filter effect.
+			of integrators over rectifiers is that they smear transients due to their low pass filtering
+			effect.
 
 		\subsubsection*{Multiplier}
 			Multipliers offer greater spectral flexibility than peak clippers, rectifiers and integrators,
@@ -1049,8 +1048,9 @@
 			Mixer can be constructed in which the output of several multipliers with different exponents can be
 			summed in order to include multiple orders of distortion. This increases the control over the
 			output spectrum at the expense of increasing the computational complexity. In use cases where
-			aliasing distortion need be eliminated a harmonic mixer can be used to approximate the behaviour of
-			other static nonlinearities.
+			aliasing distortion needs to be eliminated, a harmonic mixer (described in Section
+			\ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}) can be used to approximate the
+			behaviour of other static nonlinearities.
 
 		\subsubsection*{SSBA}
 			SSBA increases the flexibility of a multiplier further. As only the sum sideband of the
@@ -1059,7 +1059,7 @@
 			harmonic mixer using SSBA provides full control over which harmonics are generated from a
 			sinusoidal input. Where fine control of the spectral output is desired SSBA provides a reasonably
 			low complexity solution. One disadvantage of this method is its non-homogeneous behaviour which
-			could be amended using similar techniques as those used for peak clippers (discussed in section
+			could be amended using similar techniques as those used for peak clippers (discussed in Section
 			\ref{sec:ExcitationEvaluation-Comparison-Homogeneity}).
 
 		\subsubsection*{IAP}
@@ -1076,9 +1076,11 @@
 			Spectral replication provides a way of generating higher order harmonics without unwanted
 			intermodulation component beings introduced. To ensure that the harmonic structure is preserved the
 			$f_{0}$ of the input signal must be accurately tracked in order to determine how much the frequency
-			should be shifted by. While this introduces considerable complexity the bandwidth of the output is
-			bounded at both ends and the system is homogeneous. The spectral envelope of the output is the same
-			as that of the input so further filtering is required to apply any other manipulations.
+			should be shifted by. A discussion of different $f_{0}$ tracking methods is given in Section
+			\ref{sec:FeatureControl-Systems-Fundamental}. While this introduces considerable complexity the
+			bandwidth of the output is bounded at both ends and the system is homogeneous. The spectral
+			envelope of the output is the same as that of the input so further filtering is required to apply
+			any other manipulations.
 
 		\subsubsection*{Spectral Folding}
 			Spectral folding is an efficient method of producing energy throughout the output spectrum.
@@ -1096,12 +1098,12 @@
 		\subsubsection*{STTR}
 			STTR can be used, much like a static nonlinearity, as a method of generating wide bands of high
 			order harmonics. Unlike static nonlinearities however it is possible to generate inharmonic
-			partials for a sinusoidal input. The generation of these is dependent on the properties of the
-			input signal adding further complexity to predicting the effects for arbitrary input signals.
+			partials for a sinusoidal input. The generation of these partials is dependent on the properties of
+			the input signal, adding further complexity to predicting the effects for arbitrary input signals.
 			\citet{kim2015harmonizing} suggest methods through which the output of STTR can be controlled for
-			use as a harmonising effect. This effect introduces new tones at different musical intervals
-			depending on the input frequency. While this is useful as a compositional tool it does not provide
-			the uniform response across input signals required for timbral control.
+			use as a harmonising effect. This effect introduces new tones at specific musical intervals
+			depending on the input frequency. While this is useful as a creative tool for music composition, it
+			does not provide the uniform response across input signals required for timbral control.
 
 \section{Conclusion}
 	This chapter has discussed the characteristics of the harmonic generation algorithms presented in Chapter
