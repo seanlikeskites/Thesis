@@ -110,3 +110,18 @@ pdf("IntegratorTemporalEffects.pdf", pointsize=9, family="CM Sans", width=4.2, h
 plotTemporalManipulation(t, list(clipped, int), NULL, c("Original Signal", "Integrated Signal"), -1.4)
 dev.off()
 embed_fonts("IntegratorTemporalEffects.pdf")
+
+# spectral replication
+spectralReplication <- function(hilb, f, fs)
+{
+	l = length(hilb)
+	t = 0:(l-1)
+	e = exp(2i*pi*f*t/fs)
+	return(Re(hilb*e))
+}
+
+rep <- spectralReplication(hilb, 1.5, fs)
+pdf("SpectralReplicationTemporalEffects.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
+plotTemporalManipulation(t, list(sig, rep), list(env, env), c("Original Signal", "Spectral Replication"), -1.4)
+dev.off()
+embed_fonts("SpectralReplicationTemporalEffects.pdf")

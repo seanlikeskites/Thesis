@@ -866,10 +866,10 @@
 		\subsubsection*{Static Nonlinearities}
 			As static nonlinearities are memoryless (i.e. non of the previous input and output samples are
 			needed for the calculation of the current output sample) they can not easily be used to control the
-			temporal evolution of a signal. The amplitude of the characteristic curve for low amplitude samples
-			can be manipulated to alter the attack and release times of signals. Increasing this amplitude will
-			shorten attack and release times. As an extreme example consider the infinite peak clipper shown in
-			Equation \ref{eq:InfinitePeakClipper}.
+			temporal evolution of a signal. The gradient of the characteristic curve for low amplitude samples
+			can be manipulated to alter the attack and release times of signals. Increasing the gradient will
+			shorten attack and release times, while decreasing it will lengthen them. As an extreme example
+			consider the infinite peak clipper shown in Equation \ref{eq:InfinitePeakClipper}.
 
 			\begin{equation}
 				y[n] = \sgn(x[n])
@@ -891,7 +891,7 @@
 			The exact change in attack / release time is dependent on both the characteristic curve of the
 			nonlinearity and the existing temporal features of the input signal. For the infinite peak clipper
 			all dynamic information in a signal is lost and all attack and release times are made
-			instantaneous.  Other static nonlinearities, such as soft peak clippers, have less predictable
+			instantaneous. Other static nonlinearities, such as soft peak clippers, have less predictable
 			effects on temporal envelopes. 
 
 		\subsubsection*{Rectification}
@@ -905,9 +905,10 @@
 		\subsubsection*{Integrator}
 			Due to the inherent low pass filtering behaviour of integrators (see Section
 			\ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}) the temporal properties of
-			transient signals will be altered. Fast attacks times will be lengthened by the attenuation of
-			their high frequency components. This prevents integrators being used for harmonic excitation in
-			applications where it is essential that transients are preserved. 
+			transient signals will be altered. Fast rise times will be lengthened by the attenuation of their
+			high frequency components as seen in Figure \ref{IntegratorTemporalEffects}. This prevents
+			integrators being used for harmonic excitation in applications where it is essential that
+			transients are preserved. 
 
 			\begin{figure}[h!]
 				\centering
@@ -917,11 +918,12 @@
 			\end{figure}
 			
 		\subsubsection*{Multiplier}
-			Exponential static nonlinearities have a dynamic compression / expansion effect. For exponents
-			greater than one the dynamics of a signal are expanded, the amplitude difference between low and
-			high amplitude portions of the signal is increased. For exponents less that one the opposite
-			occurs, compressing the dynamics of the signal. Figure \ref{fig:ExponentiationTemporalEffects} show
-			the effects this can have on the attack and release portions of signals.
+			Multipliers and exponential static nonlinearities have a dynamic compression / expansion effect.
+			For exponents greater than one the dynamics of a signal are expanded, the amplitude difference
+			between low and high amplitude portions of the signal is increased. For exponents less that one the
+			opposite occurs, compressing the dynamics of the signal. Figures
+			\ref{fig:MultiplierTemporalEffects} and \ref{fig:ExponentiationTemporalEffects} show the effects
+			this can have on the attack and release portions of signals.
 
 			\begin{figure}[h!]
 				\centering
@@ -945,9 +947,8 @@
 			predictable enough to give intuitive control.
 
 		\subsubsection*{SSBA}
-			SSBA has similar temporal effects to a multiplier using an exponent greater that one. The signal
-			undergoes dynamic expansion changing the shape of its attack and release envelopes as shown in
-			Figure \ref{fig:SSBATemporalEffects}.
+			SSBA has similar temporal effects to a multiplier. The signal undergoes dynamic expansion changing
+			the shape of its attack and release envelopes as shown in Figure \ref{fig:SSBATemporalEffects}.
 
 			\begin{figure}[h!]
 				\centering
@@ -963,9 +964,11 @@
 			signal is no longer sinusoidal.
 
 		\subsubsection*{IAP}
-			The IAP system preserves the input signal's amplitude envelope. Due to this the temporal
-			characteristics of signals are unaffected. This can be seen in Figure \ref{fig:IAPTemporalEffects},
-			it is apparent that the frequency of the sinusoid has been altered and its amplitude envelope not.
+			IAP alters only the frequency (phase) information of a signal. As the amplitude information is left
+			unaltered the system preserves the input signal's amplitude envelope. Due to this the temporal
+			characteristics of signals are unaffected. This can be seen in Figure \ref{fig:IAPTemporalEffects}
+			where it is apparent that the frequency of the sinusoid has been altered and its amplitude envelope
+			not.
 
 			\begin{figure}[h!]
 				\centering
@@ -975,8 +978,18 @@
 			\end{figure}
 			
 		\subsubsection*{Spectral Replication}
-			As with IAP, spectral replication preserves the amplitude envelope of a signal, leaving its
-			temporal characteristics unchanged.
+			Spectral replication using Equation \ref{eq:SpectralReplication} operates by multiplying the
+			analytic signal by a unity amplitude complex sinusoid. This has the effect of multiplying a
+			signal's amplitude envelope by one, leaving it unaffected. Figure
+			\ref{fig:SpectralReplicationTemporalEffects} shown the effects on a signal's amplitude envelope by
+			shifting it's frequency content upwards by.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics{chapter5/Images/SpectralReplicationTemporalEffects.pdf}
+				\caption{The amplitude envelopes of a signal before and after spectral replication.}
+				\label{fig:SpectralReplicationTemporalEffects}
+			\end{figure}
 
 		\subsubsection*{Spectral Folding}
 			When using spectral folding, the low pass filter applied prior to the downsampling and upsampling
