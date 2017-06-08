@@ -906,7 +906,7 @@
 			Due to the inherent low pass filtering behaviour of integrators (see Section
 			\ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}) the temporal properties of
 			transient signals will be altered. Fast rise times will be lengthened by the attenuation of their
-			high frequency components as seen in Figure \ref{IntegratorTemporalEffects}. This prevents
+			high frequency components as seen in Figure \ref{fig:IntegratorTemporalEffects}. This prevents
 			integrators being used for harmonic excitation in applications where it is essential that
 			transients are preserved. 
 
@@ -949,6 +949,11 @@
 		\subsubsection*{SSBA}
 			SSBA has similar temporal effects to a multiplier. The signal undergoes dynamic expansion changing
 			the shape of its attack and release envelopes as shown in Figure \ref{fig:SSBATemporalEffects}.
+			The restricted bandwidth of the SSBA technique's output is also apparent from this graph. The input
+			is a sinusoid with a simple amplitude envelope. The output is a sinusoid with three times the
+			frequency and an amplitude envelope equal to that of the input cubed. This is in contrast to the
+			effect of the multiplier shown in Figure \ref{fig:ExponentiationTemporalEffects} where the output
+			signal is no longer sinusoidal.
 
 			\begin{figure}[h!]
 				\centering
@@ -956,12 +961,6 @@
 				\caption{The amplitude envelopes of a signal before and after 3\super{rd} order SSBA.}
 				\label{fig:SSBATemporalEffects}
 			\end{figure}
-
-			The restricted bandwidth of the SSBA technique's output is also apparent from this graph. The input
-			is a sinusoid with a simple amplitude envelope. The output is a sinusoid with three times the
-			frequency and an amplitude envelope equal to that of the input cubed. This is in contrast to the
-			effect of the multiplier shown in Figure \ref{fig:ExponentiationTemporalEffects} where the output
-			signal is no longer sinusoidal.
 
 		\subsubsection*{IAP}
 			IAP alters only the frequency (phase) information of a signal. As the amplitude information is left
@@ -982,7 +981,7 @@
 			analytic signal by a unity amplitude complex sinusoid. This has the effect of multiplying a
 			signal's amplitude envelope by one, leaving it unaffected. Figure
 			\ref{fig:SpectralReplicationTemporalEffects} shown the effects on a signal's amplitude envelope by
-			shifting it's frequency content upwards by.
+			shifting it's frequency content upwards by 1.5Hz
 
 			\begin{figure}[h!]
 				\centering
