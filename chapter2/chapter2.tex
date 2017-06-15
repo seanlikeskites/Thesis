@@ -4,24 +4,24 @@
 %	Audio Features
 %	Perceptual Control of Synthesis
 
-\chapter{Timbre}
+\chapter{Review of Timbral Literature}
 \label{chap:Timbre}
 
 \section{Introduction}
 \label{sec:Timbre-Introduction}
-	In order to produce systems which control the timbre of audio signals it is necessary to have an understanding of
-	what timbre is and its contributing factors. There are three properties that describe the perception of sound,
-	these being loudness, pitch and timbre.  Loudness describes the perceived intensity of a sound and pitch its
-	perceived frequency. Timbre then describes any other properties of the sound, besides loudness and pitch, which
-	allow it to be distinguished from other sounds \citep{mathews1999introduction}. The relationship between perceived
-	loudness and the statistical properties of a signal is nonlinear. Despite this, loudness can be expressed using a
-	single dimension: from quiet to loud. For a given listener an audio stimulus can only be perceived as quieter than,
-	equally loud as or louder than another stimuli. The description of pitch is more complicated as not all stimuli
-	have a single perceived pitch. Some stimuli contain several perceived pitches (such as a chord played on a piano)
-	while others do not have a pitch (such as white noise). Once the pitches present in a stimuli have been determined
-	they can be compared using a single dimension: from low to high pitch. The perception of timbre is more complex
-	still, consisting of multiple dimensions \citep{rossing2002the}. There is a large body of research concerning the
-	analysis of timbre, identifying these dimensions and their relationships with the acoustic features of a sound.
+	This chapter will review the existing body of timbral research, defining timbre and discussing how it is
+	investigated. There are three properties that describe the perception of sound, these being loudness, pitch and
+	timbre.  Loudness describes the perceived intensity of a sound and pitch its perceived frequency. Timbre then
+	describes any other properties of the sound, besides loudness and pitch, which allow it to be distinguished from
+	other sounds \citep{mathews1999introduction}. The relationship between perceived loudness and the statistical
+	properties of a signal is nonlinear. Despite this, loudness can be expressed using a single dimension: from quiet
+	to loud. For a given listener an audio stimulus can only be perceived as quieter than, equally loud as or louder
+	than another stimuli. The description of pitch is more complicated as not all stimuli have a single perceived
+	pitch. Some stimuli contain several perceived pitches (such as a chord played on a piano) while others do not have
+	a pitch (such as white noise). Once the pitches present in a stimuli have been determined they can be compared
+	using a single dimension: from low to high pitch. The perception of timbre is more complex still, consisting of
+	multiple dimensions \citep{rossing2002the}. There is a large body of research concerning the analysis of timbre,
+	identifying these dimensions and their relationships with the acoustic features of a sound.
 
 	A simple interpretation of timbre is that of instrument identification. One can identify the instrument which
 	produced a sound from the sound's timbre. This concept can be used to describe the timbre of other sounds, a sound
@@ -34,36 +34,34 @@
 	respect to these criteria much like with loudness and pitch. For example one could order a set of sounds by how
 	bright they sound.
 
-	This chapter will review the existing body of timbral research. Early research into timbre was performed by
-	\citet{helmholtz1875on} who investigated the perceived nature of sounds composed of various simple tones. The
-	composition of the sound being a feature which contributes to its perceived timbre. In more recent work several
-	other features of signals have been defined which are also found to contribute to the perceived timbre of a sound.
-	These low level audio features are discussed in Section~\ref{sec:Timbre-LowLevelFeatures}. Research into how these
-	feature contribute to the perception of timbre is typically approached in two ways. The behaviour of the human
-	hearing system can be analysed and used to inform models of particular timbral attributes. This approach is
-	discussed in Sections \ref{sec:Timbre-PsychoacousticPrinciples} and \ref{sec:Timbre-TimbralFeatures}. The second
-	approach, discussed in Sections \ref{sec:Timbre-ListeningTests} and \ref{sec:Timbre-Parameterisation}, involves the
-	use of experiments in which participants listen to audio stimuli and provide responses regarding the their timbre.
-	These responses are then analysed to uncover any correlations between the participants responses and lower level
-	features of the stimuli. Lastly the systems used to control timbre are discussed: Section~\ref{sec:Timbre-Control}
-	discussing proposed methods of controlling timbral aspects from the research literature and
+	Early research into timbre was performed by \citet{helmholtz1875on} who investigated the perceived nature of sounds
+	composed of various simple tones. In more recent work several other features of signals have been defined which are
+	also found to contribute to the perceived timbre of a sound.  These low level audio features are discussed in
+	Section~\ref{sec:Timbre-LowLevelFeatures}.  Research into how these feature contribute to the perception of timbre
+	is typically approached in two ways. The behaviour of the human hearing system can be analysed and used to inform
+	models of particular timbral attributes.  This approach is discussed in Sections
+	\ref{sec:Timbre-PsychoacousticPrinciples} and \ref{sec:Timbre-TimbralFeatures}. The second approach, discussed in
+	Sections \ref{sec:Timbre-ListeningTests} and \ref{sec:Timbre-Parameterisation}, involves the use of experiments in
+	which participants listen to audio stimuli and provide responses regarding the their timbre.  These responses are
+	then analysed to uncover any correlations between the participants responses and lower level features of the
+	stimuli. Lastly the systems used to control timbre are discussed: Section~\ref{sec:Timbre-Control} discussing
+	proposed methods of controlling timbral aspects from the research literature and
 	Section~\ref{sec:Timbre-AudioProcessing} discussing the systems traditionally used by audio engineers to modify
 	timbre.
 
-\section{Low Level Audio Features}
+\section{Low Level Audio Features Characterising Timbre}
 \label{sec:Timbre-LowLevelFeatures}
-	A widely cited definition of timbre \citep{ASA1960american} suggests that timbre is influenced by various low level
-	features of an audio signal. The spectral content, waveform and temporal characteristics all effect the perceived
-	timbre of a sound. Signal analysis techniques can be used to extract information about these elements of a signal.
-	A large list of such feature extraction techniques is given by \citet{peeters2004a} and
+	A widely cited definition of timbre \citep{ASA1960american} states that ``timbre depends primarily upon the
+	spectrum of the stimulus, but it also depends on the waveform, the sound pressure, the frequency location of the
+	spectrum, and the temporal characteristics of the stimulus''. This suggests that timbre is influenced by various
+	low level features of an audio signal. The spectral content, waveform and temporal characteristics all effect the
+	perceived timbre of a sound. Signal analysis techniques can be used to extract information about these elements of
+	a signal.  A large list of such feature extraction techniques is given by \citet{peeters2004a} and
 	\citet{bullock2008implementing}. These features can be separated into three categories. Features which describe the
-	properties of the temporal representation of a signal and how it evolves with time (temporal
-	features), features which describe the frequency content of a signal (spectral features) and features which
-	describe how the frequency content of a signal evolves with time (spectro-temporal features). In the later part of
-	this work (Chapters \ref{chap:TimbreEvaluation} and \ref{chap:FeatureControl}) several of these features are
-	discussed in the analysis of timbre and operation of audio effects. Definitions for the features discussed in those
-	chapters are given in this section, for definitions of other audio features refer to the previously published
-	literature.
+	properties of the temporal representation of a signal and how it evolves with time (temporal features), features
+	which describe the frequency content of a signal (spectral features) and features which describe how the frequency
+	content of a signal evolves with time (spectro-temporal features). This section provides definitions for several
+	low level audio features which are relevant to this work.
 
 	\subsection{Temporal Features}
 	\label{sec:Timbre-LowLevelFeatures-Temporal}
@@ -189,21 +187,23 @@
 			(the zero crossing rate). The temporal distance between similar events in a signal can also be
 			found through autocorrelation and used as an estimate of pitch / frequency \citep{mcleod2005a}.
 
-			Larger scale temporal features measure the properties of passages of music rather than individual
-			notes, such as the measure used by \citet{wilson2014profiling} in which the probability mass
-			function (PMF) of sample amplitudes in a segment of audio is used as a measure of the distortion
-			present in the signal.  Temporal features on this scale are outside of the scope of this work as
-			they no longer relate to the timbre of individual sounds but rather the perceived nature of a
-			musical piece.
+			Features extracted from an amplitude envelope are used to describe the properties of individual
+			notes produced by a source. As such they describe short portions of time; attack times typically
+			being measured in milliseconds. Larger scale temporal features measure the properties of an entire
+			passages of music rather than individual notes, such as the measure used by
+			\citet{wilson2014profiling} in which the probability mass function (PMF) of sample amplitudes in a
+			segment of audio is used as a measure of the distortion present in the signal.  Temporal features
+			on this scale are outside of the scope of this work as they no longer relate to the timbre of
+			individual sounds but rather the perceived nature of a musical piece.
 
 	\subsection{Spectral Features}
 	\label{sec:Timbre-LowLevelFeatures-Spectral}
-		In existing timbral research it is widely reported that features describing a sound's spectrum produce the
-		largest effects on timbre. To calculate these features the signal is first converted into a frequency
-		domain representation. This is most commonly done using either the Discrete Fourier Transform (DTF) or a
-		parallel filter bank. The calculation of many spectral features is done directly from these spectral
-		representations, for others peak finding is applied to the spectrum in order to determine the spectral
-		partials.
+		As stated by \cite{ASA1960american} the timbre of a sound is primarily influenced by its spectrum. In
+		timbral research the properties of a signal's are summarised using a number of spectral features. To
+		calculate these features the signal is first converted into a frequency domain representation. This is most
+		commonly done using either the Discrete Fourier Transform (DTF) or a parallel filter bank. The calculation
+		of many spectral features is done directly from these spectral representations; for others, peak finding is
+		applied to the spectrum in order to determine the spectral partials.
 
 		The spectral partials of a signal are its distinct frequency components. These are analogous to the
 		vibrational modes of a physical body. Determining the spectral partials of a signal allows the tonal
