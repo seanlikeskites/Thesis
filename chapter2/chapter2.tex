@@ -532,16 +532,16 @@
 
 \section{Psychoacoustic Principles}
 \label{sec:Timbre-PsychoacousticPrinciples}
-	Psychoacoustics is a field which deals with the perception of sound. The existing literature concerns the study of
-	the human hearing system and how it responds to certain aspects of audio stimuli. Several different areas of audio
-	perception have been researched. Methods have been devised to model the human perception of loudness
-	\citep{moore1997a} and pitch \citep{gerhard2003pitch}. Other research considers the human hearing systems ability
-	to locate sound sources \citep{blauert1997spatial}. 
-
-	As discussed in Section~\ref{sec:Timbre-LowLevelFeatures-Spectral} there are several metrics which describe the
-	spectral content of a signal. While it may be possible to measure changes in values of these features, the changes
-	may not be detectable by or linearly related to the human hearing system. Psychoacoustic models allow us to
-	determine how audio signals are interpreted by the human hearing system and the perceptibility of such changes.
+	As discussed in the previous section, there are several metrics which describe the low level features of audio
+	signals. While it is possible to measure changes in the values of these features, these changes may not be
+	detectable by or linearly related to the human hearing system. To understand the possible effects an audio feature
+	can have on perceived timbre we must model how that feature itself is perceived. Several models have been proposed
+	by research in psychoacoustics, a field which studies the perception of sound. The existing psychoacoustic
+	literature concerns the study of the human hearing system and how it responds to certain aspects of audio stimuli.
+	Several different areas of audio perception have been researched. Methods have been devised to model the human
+	perception of loudness \citep{moore1997a} and pitch \citep{gerhard2003pitch}. Other research considers the human
+	hearing system's ability to locate sound sources \citep{blauert1997spatial}. This section covers the key principles
+	of psychoacoustics relevant to this work.
 
 	\subsection{Psychoacoustic Frequency}
 	\label{sec:Timbre-PsychoacousticPrinciples-Frequency}
@@ -556,12 +556,19 @@
 		that it had a pitch which was half that of a reference tone. This was repeated for ten individual reference
 		tones producing ten data points which were used to provide a mapping between the hertz and mel scales. A
 		formula to approximate the frequency in mel, $m$, for any given frequency in hertz, $f$, is given by
-		\citet{oshaughnessy2000speech} and shown in Equation~\ref{eq:mel}.
+		\citet{oshaughnessy2000speech} (Equation~\ref{eq:mel}), shown graphically in Figure~\ref{fig:MelScale}.
 
 		\begin{equation}
 			m = 2595 \log_{10} \left(1 + \frac{f}{700} \right)
 			\label{eq:mel}
 		\end{equation}
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics{chapter2/Images/MelScale.pdf}
+			\caption{The mel frequency scale.}
+			\label{fig:MelScale}
+		\end{figure}
 
 		This perceptual frequency scale allows audio feature metrics to analyse audio in more perceptually relevant
 		bands. One such metric is the Mel Frequency Cepstral Coefficients (MFCCs) developed for use in speech
@@ -664,13 +671,18 @@
 		values of barks occur at the boundaries between two bark bands. A change in frequency of one bark is equal
 		to one critical bandwidth.
 
-\section{Timbral Features}
+\section{Psychoacoustic Models of Timbral Descriptors}
 \label{sec:Timbre-TimbralFeatures}
-	The majority of timbral research examines the statistical properties of signals which have been semantically
-	annotated by participants in a listening test. These studies provide conclusions as to which features of a signal
-	contribute to the perception of a particular timbral attribute. A small number of models have been developed in the
-	literature providing metrics which describe certain aspects of the timbre of a sound. Two such models are those for
-	describing auditory sharpness and roughness.
+	One method of relating semantic descriptors to measurable features of an audio signal is through the use of
+	psychoacoustic models. To construct these, a semantic descriptor is chosen and a hypothesis made as to what
+	attributes of a signal it describes. Psychoacoustic principles are then used to formulate a model describing how
+	these attributes are interpreted by the human hearing system. This model is then refined through listening
+	experiments so that the resulting metric is proportional to perception of the attribute it describes. As the
+	features relating to a description are hypothesised, models can only be built in this manner for descriptors which
+	are known to describe particular phenomena. There are two such descriptors which have received considerable
+	attention in previous research: sharpness, describing the unpleasant nature of high frequency sounds; and
+	roughness, used to describe the dissonance of particular musical intervals. Proposed psychoacoustic models for
+	these descriptors are given in this section.
 	
 	\subsection{Sharpness}
 	\label{sec:Timbre-TimbralFeatures-Sharpness}
@@ -711,24 +723,48 @@
 			\item The frequency of the modulated signal.
 		\end{itemize}
 
-		This frequency dependence agrees with that shown in Figure~\ref{fig:ToneSeparation}. Amplitude fluctuations
-		above approximately 15Hz produce a rough texture to the sound. As this frequency increases the roughness
-		also increases to a maximum before decreasing again. At some frequency between 75Hz and 150Hz, depending on
-		the frequency content of the modulated signal, the sensation of roughness ceases to be audible.
-
 		Using these criteria a method is proposed for calculating the roughness of a signal consisting of two
-		sinusoidal tones. The method uses only the frequencies and amplitudes of the two tones in order to
-		calculate the perceived roughness. The roughness of more complex tones can be calculated as the sum of the
-		roughnesses of each pair of tones within the signal. \citet{fastl2007psychoacoustics} use the same four
-		criteria to develop a different model of roughness which takes account of the structure of the human
-		hearing system.
+		sinusoidal tones. Where $a_{1}$ and $\nu_{1}$ represent the amplitude and frequency of the lowest frequency
+		tone and $a_{2}$ and $\nu_{2}$ those of the highest, the roughness, $R$, is calculated using
+		Equation~\ref{eq:PartialRoughness}.
+		
+		\begin{gather}
+			X = a_{1}a_{2} \nonumber \\
+			Y = 2\frac{\min(a_{1}, a_{2})}{a_{1} + a_{2}} \nonumber \\
+			s = \frac{0.24}{0.0207\nu_{1} + 18.96} \nonumber \\
+			Z = e^{-3.5s(\nu_{2} - \nu_{1})} - e^{-5.75s(\nu_{2} - \nu_{1})} \nonumber \\
+			R = 0.5X^{0.1}Y^{3.11}Z
+			\label{eq:PartialRoughness}
+		\end{gather}
 
-\section{Listening Tests}
+		The intermediate variables in this equation model the different dependencies of roughness: $X$ modeling the
+		dependence on signal intensity, $Y$ the dependence on the magnitude of the amplitude fluctuation and $Z$
+		the dependence on the frequency of the signal and the amplitude fluctuation. The roughness of more complex
+		tones can be calculated as the sum of the roughnesses of each pair of tones within the signal. 
+		
+		The frequency dependence of this model agrees with that shown in Figure~\ref{fig:ToneSeparation}. Amplitude
+		fluctuations above approximately 15Hz produce a rough texture to the sound. As this frequency increases the
+		roughness also increases to a maximum before decreasing again. At some frequency between 75Hz and 150Hz,
+		depending on the frequency content of the modulated signal, the sensation of roughness ceases to be
+		audible.
+
+		The constants used in Equation~\ref{eq:PartialRoughness} were arrived at through experimentation, while the
+		researchers report high correlations with perceived roughness this may not model all the possible
+		interactions of tones within the human hearing system. \citet{fastl2007psychoacoustics} use the same four
+		criteria to develop a different model of roughness, including more detailed modelling of auditory masking.
+		This model takes account of both simultaneous masking (tones played simultaneously interfering with one
+		another) and temporal masking (tones played close together in time interfering with one another). A full
+		discussion of this model is beyond the scope of this report.
+
+\section{Subjective Listening Tests}
 \label{sec:Timbre-ListeningTests}
-	In order to collect information about the perception of sound, subjective listening tests need to be carried out.
-	Depending on the nature of the experiment there are several different testing methodologies which have been
-	proposed \citep{bech2006perceptual}. Those most prevalent in timbral research will be discussed here.
+	The psychoacoustic models presented in the previous section are restricted to modelling descriptors for which
+	informal definitions are already widely used. To investigate other aspects of timbre subjective listening tests
+	must be carried out in order to collect information about the perception of sound. Depending on the nature of the
+	experiment there are several different testing methodologies which have been proposed \citep{bech2006perceptual}.
+	Those most prevalent in timbral research will be discussed here.
 
+	% COH
 	\subsection{Testing Methodologies for Timbral Analysis}
 	\label{sec:Timbre-ListeningTests-Methods}
 		Two different classes of listening test are common in timbral studies. In one, participants are asked to
