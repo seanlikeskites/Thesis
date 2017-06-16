@@ -764,7 +764,6 @@
 	experiment there are several different testing methodologies which have been proposed \citep{bech2006perceptual}.
 	Those most prevalent in timbral research will be discussed here.
 
-	% COH
 	\subsection{Testing Methodologies for Timbral Analysis}
 	\label{sec:Timbre-ListeningTests-Methods}
 		Two different classes of listening test are common in timbral studies. In one, participants are asked to
@@ -800,11 +799,18 @@
 			test participants are presented with several stimuli simultaneously and asked to rate each against
 			a given criteria. A multiple stimuli methodology often used in perceptual audio tests is MUSHRA
 			(Multiple Stimuli with Hidden Reference and Anchor) \citep{mushra2014}. MUSHRA was developed for
-			grading the quality of lossy audio data compression algorithms. Participants are asked to judge how
-			well different systems reconstructed the original signal after lossy data compression.  These tests
-			are often used to assess the performance of bandwidth extension methods such as those discussed in
+			grading the quality of lossy audio data compression algorithms. Participants presented with several
+			compressed versions of a signal simultaneously and asked to grade how similar each of them are to a
+			reference signal (the uncompressed version) on a scale from 0 to 100. Among the signals to be
+			graded are a hidden reference and anchor which are used to evaluate the reliability of a
+			participants results. The hidden reference is the same as the reference signal and as such should
+			be given a grade of 100. The anchor is a low pass filtered version of the signal, processed such
+			that it is less similar to the reference than any of the compressed signals and hence should
+			receive the lowest grade. Results are deemed reliable if they correctly identify the hidden
+			reference (grading to 100) and anchor (giving it the lowest grade). These tests are often used to
+			assess the performance of bandwidth extension methods such as those discussed in
 			Section~\ref{sec:Excitation-Methods}. Other multiple stimulus tests, while not adhering strictly to
-			the MUSHRA guidelines, follow a similar structure. \citet{arthi2015influence} uses a multiple
+			the MUSHRA guidelines, follow a similar structure.  \citet{arthi2015influence} use a multiple
 			stimulus test to determine the perceptual differences between stimuli. 
 			
 			Dissimilarity tests can provide accurate information about the perceived differences between
@@ -1054,15 +1060,28 @@
 		\citet{caclin2005acoustic} who, as discussed before, used synthetic audio stimuli which only differed in
 		those features and spectral flux. This suggests that log attack time and spectral centroid are two
 		orthogonal features which contribute greatly to the perception of difference in timbre.
-		\citet{alluri2010exploring} take a more in depth approach, using regression techniques to identify which
-		audio features contribute to which dimensions of their timbre space.
-
-		Where timbral descriptors are available, the semantic meanings of the dimensions can be discussed. When PCA
-		or EFA are used on the results from attribute scale tests the results directly show how much each of the
-		graded attributes contribute to each dimension of the timbre space. \citet{marui2005timbre} use the results
-		from their semantic differential test in order to assign semantic descriptors to the dimensions of their
-		timbre space. 
 		
+		The data analysed in those studies were the results of dissimilarity tests. Where timbral descriptors are
+		available, the semantic meanings of the dimensions can be discussed. When PCA or EFA are used on the
+		results from attribute scale tests the results directly show how much each of the graded attributes
+		contribute to each dimension of the timbre space. \citet{marui2005timbre} use the results from their
+		semantic differential test in order to assign semantic descriptors to the dimensions of their timbre space.
+		They report that the semantic differential, thick $\Leftrightarrow$ thin, can be used to distinguish
+		between different classes of distortion effect, while dark $\Leftrightarrow$ bright and sharp
+		$\Leftrightarrow$ dull describe the amount of distortion applied with a particular effect.
+
+		\citet{alluri2010exploring} take a more in depth approach, using regression techniques to identify which
+		audio features contribute to which dimensions of their timbre space. Using factor analysis they identify
+		three dimensions which they label `Activity', `Brightness' and `Fullness'. The audio is analysed using
+		several features including: zero crossing rate, the ratio of energy above and below 1.5kHz (high-low energy
+		ratio), entropy (a measure of whether the spectrum has predominant peaks) and sub-band flux (a feature
+		describing the fluctuation of frequency components in a specific band). Regression is used to model how
+		each of these features affect the perception of each timbral dimension. The `Activity' dimension is
+		contributed to by the high-low energy ratio and the sub-band flux in the 3\super{rd}, 6\super{th} and
+		8\super{th} of 10 spectral bands. The `Brightness' dimension comprises zero crossing rate and the
+		1\super{st} and 3\super{rd} bands' fluxes and the `Fullness' dimension is described by zero crossing rate,
+		high-low energy ratio, entropy and the 2\super{nd} band's flux.
+
 		Further analysis can be carried out in the form of clustering. This identifies groups (clusters) of stimuli
 		with similar timbres. The clustering applied by \citet{lakatos2000a} identifies clusters which correlate
 		well with the class of instruments played in the audio stimuli. Clustering can also be applied to attribute
