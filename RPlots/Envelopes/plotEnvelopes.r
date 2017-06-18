@@ -16,7 +16,7 @@ sig[(1:fs) + 6*fs] <- 0
 env <- abs(hilbert(sig, f=fs))
 
 # envelope
-pdf("AmplitudeEnvelope.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
+pdf("AmplitudeEnvelope.pdf", pointsize=9, family="CMU Sans Serif", width=4.2, height=3)
 par(mar=c(0.1, 0, 0, 0))
 plot(t, env, type='n', axes=FALSE, ylim=c(-1.4, 1))
 lines(t, sig, col="blue")
@@ -33,7 +33,7 @@ release <- seq(140, 0, -0.5)/200
 adsr <- c(attack, decay, sustain, release)
 len <- length(adsr)
 
-pdf("ADSR.pdf", pointsize=9, family="CM Sans", width=4.2, height=3-0.375)
+pdf("ADSR.pdf", pointsize=9, family="CMU Sans Serif", width=4.2, height=3-0.375)
 par(xaxs='i', yaxs='i', mar=c(2, 4, 0.1, 0.6))
 plot(1:len, adsr, type='l', col="blue", lty=1, axes=FALSE, xlab="", ylab="")
 lines(c(201, 201), c(0, 1), lty=3, col="black")

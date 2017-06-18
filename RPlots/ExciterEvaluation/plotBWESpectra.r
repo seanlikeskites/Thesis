@@ -31,22 +31,22 @@ plotSpectra <- function(spectra, names, colours)
 }
 
 # replication
-pdf("SpectralReplicationSpectrum.pdf", pointsize=9, family="CM Sans", width=4.2, height=3-0.375)
+pdf("SpectralReplicationSpectrum.pdf", pointsize=9, family="CMU Sans Serif", width=4.2, height=3-0.375)
 plotSpectra(list(repSpec, sigSpec), c("Output", "Input"), c("red", "blue"))
 dev.off()
 embed_fonts("SpectralReplicationSpectrum.pdf")
 
 # stretching
-pdf("SpectralStretchingSpectrum.pdf", pointsize=9, family="CM Sans", width=4.2, height=3-0.375)
+pdf("SpectralStretchingSpectrum.pdf", pointsize=9, family="CMU Sans Serif", width=4.2, height=3-0.375)
 plotSpectra(list(stretchSpec, sigSpec), c("Output", "Input"), c("red", "blue"))
 dev.off()
 embed_fonts("SpectralStretchingSpectrum.pdf")
 
 # folding
-pdf("SpectralFoldingSpectrum.pdf", pointsize=9, fonts=c("CM Roman", "CM Sans"), family="CM Sans", 
+pdf("SpectralFoldingSpectrum.pdf", pointsize=9, fonts=c("CMU Serif", "CMU Sans Serif"), family="CMU Sans Serif", 
     width=4.2, height=3-0.375)
 plotSpectra(list(sigSpec, fold2Spec, fold3Spec), c("Input", "   = 2", "   = 3"), c("blue", "red", "green2"))
-par(family="CM Roman")
+par(family="CMU Serif")
 text(20050, c(567, 525), expression(italic(k)))
 dev.off()
 embed_fonts("SpectralFoldingSpectrum.pdf")
