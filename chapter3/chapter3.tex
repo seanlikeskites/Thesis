@@ -129,16 +129,16 @@
 			different scenarios as the spectral content introduced will depend on the sampling frequency of the
 			signal being processed. Thus, the perceived timbral transform may also depend on the sampling
 			frequency. Steps can be taken to reduce the impact of aliasing on the performance of nonlinear
-			effects, \citep{vetter2013estimation} upsample signals by a factor of 32 prior to applying
-			nonlinear processing. Afterwards the signal is downsampled to the original sampling frequency. This
-			method relies on the use of a nonlinearity which produces harmonics whose amplitudes decrease as
-			their frequencies increase. This way upsampling can be applied such that only the low amplitude,
-			high frequency, partials are aliased. The upsampling factor can be chosen such that these aliased
-			partials are rendered inaudible. Upsampling does however increase the computational complexity of
-			the system, along with the extra overhead of upsampling and downsampling the signal there is also a
-			larger number of samples to process. For certain excitation methods it may be possible to reduce
-			aliasing by changing properties of the processing algorithm. Details of these techniques will be
-			discussed where appropriate in Section~\ref{sec:ExcitationEvaluation-Comparison}.
+			effects; for example \citep{vetter2013estimation} describe a method for use with nonlinearities
+			which produce harmonics whose amplitudes decrease as their frequencies increase. They upsample
+			signals by a factor of 32 prior to applying nonlinear processing; this endures that only the low
+			amplitude, high frequency partials are aliased. If the upsampling factor is sufficiently high these
+			aliased partials will be rendered inaudible. After processing the signal is downsampled to the
+			original sampling frequency. Upsampling increases the computational complexity of a system, along
+			with the extra overhead of upsampling and downsampling the signal there is also a larger number of
+			samples to process. For certain excitation methods it may be possible to reduce aliasing by
+			changing properties of the processing algorithm. Details of these techniques will be discussed
+			where appropriate in Section~\ref{sec:ExcitationEvaluation-Comparison}.
 
 	\subsection{Objective Distortion Metrics}
 	\label{sec:Excitation-Analysis-Metrics}
