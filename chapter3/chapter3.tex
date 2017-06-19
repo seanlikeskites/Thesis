@@ -165,16 +165,15 @@
 
 			Where $h_{n}$ is the amplitude of the $n$\super{th} harmonic. 
 
-			Each of these measures has slightly different properties. $\mathrm{THD}_{R}$ measures the
-			proportion of the output signal which consists of new harmonic components, producing a value
-			between zero and one.  $\mathrm{THD}_{F}$ measures the relative levels of new harmonic content and
-			the energy at the frequency of the original sinusoid producing a positive value.
-			\citet{shmilovitz2005on} suggests that $\mathrm{THD}_{F}$ provides a better measure for signals
-			with high distortion as there is no upper bound on the value which is produced.  Both methods have
-			been used in recent work published in the audio processing field ($\mathrm{THD}_{F}$ by
-			\citet{fleischmann2014a} and $\mathrm{THD}_{R}$ by \citet{dutilleux2011nonlinear}).  The lack of
-			standardisation for this metric makes it difficult to compare experimental results reported by
-			different sources.
+			Each of these measures has slightly different properties. $\mathrm{THD}_{F}$ measures the relative
+			levels of new harmonic content and the energy at the frequency of the original sinusoid, producing
+			a positive value. $\mathrm{THD}_{R}$ measures the proportion of the output signal which consists of
+			new harmonic components, producing a value between zero and one. \citet{shmilovitz2005on} suggests
+			that $\mathrm{THD}_{F}$ provides a better measure for signals with high distortion as there is no
+			upper bound on the value which is produced.  Both methods have been used in recent work published
+			in the audio processing field ($\mathrm{THD}_{F}$ by \citet{fleischmann2014a} and
+			$\mathrm{THD}_{R}$ by \citet{dutilleux2011nonlinear}).  The lack of standardisation for this metric
+			makes it difficult to compare experimental results reported by different sources.
 
 			Various standards exist for the measurement of IMD. Typically the system's response to a signal
 			consisting of two sinusoids is measured. According to the \citet{IEC2001amplifiers} standard, a
@@ -223,12 +222,12 @@
 			instantaneous amplitude of the input signal to the amplitude of the output signal). These systems
 			are referred to as static nonlinearities and are memoryless systems (their behaviour is only
 			governed by the instantaneous amplitude of the input, not any of its previous states). The GedLee
-			metric, proposed by \citet{geddes2003auditory}, measures how much a static nonlinearity will be
-			perceived through analysis of its characteristic curve, $T(x)$. It is calculated using
-			Equation~\ref{eq:gedlee}.
+			metric, $G$, proposed by \citet{geddes2003auditory}, measures the level of audible distortion
+			produced by a static nonlinearity through analysis of its characteristic curve, $T(x)$. It is
+			calculated using Equation~\ref{eq:gedlee}.
 
 			\begin{equation}
-				G_{m} = \sqrt{\int_{-1}^{1} \left( \cos \left( \frac{x\pi}{2} \right) \right)^{2}
+				G = \sqrt{\int_{-1}^{1} \left( \cos \left( \frac{x\pi}{2} \right) \right)^{2}
 					      \left( \frac{d^{2}}{dx^{2}} T(x) \right)^{2} dx}
 				\label{eq:gedlee}
 			\end{equation}
@@ -248,7 +247,7 @@
 			($\mathrm{DS}$), which employs models of the human hearing system to better approximate the
 			perceived level of distortion. Firstly, both the input and output signal of the system under test
 			are split into $I$ non-overlapping frames, each 30ms long. Then the spectrum of each frame is
-			calculated using the DFT. Distortion components which are inaudible due to masking are taken into
+			calculated using the DFT. The frequency selectivity of the human hearing system is taken into
 			account by splitting the spectrum of each frame into $J$ non-overlapping bands which are each one
 			$\mathrm{ERB}$ in width. The final distortion score, $\mathrm{DS}$, is calculated from the
 			difference in power between these bands in the input and output signal according to
@@ -337,7 +336,7 @@
 					\end{gather}
 
 					This weighting ensures that only bands which contain sufficient energy contribute
-					to the final distortion metric. Prior to being applied the weighs are normalised
+					to the final distortion metric. Prior to being applied the weights are normalised
 					such that the sum of the weights for each frame is equal to 1 giving the normalised
 					weights, $W'_{i,j}$, using Equation~\ref{eq:RNonlinWeightsNormalisation}.
 
@@ -374,19 +373,20 @@
 
 	\subsection{Nonlinear Modelling}
 	\label{sec:Excitation-Analysis-Modelling}
-		Various techniques for modelling nonlinear systems have been proposed and developed the fields of
+		Various techniques for modelling nonlinear systems have been proposed and developed in the fields of
 		mathematics and engineering. These models allow for more in depth analysis of a nonlinear system as well as
 		replicating its effects in the digital domain. Summaries of some of these modelling techniques can be found
-		in the work by \citet{janczak2005identification} and \citet{ogunfunmi2007adaptive}. Several of these models
-		have been used to model the operation of nonlinear audio effects including:
+		in the work by \citet{janczak2005identification} and \citet{ogunfunmi2007adaptive}. Three of these models
+		that have been used to model the operation of nonlinear audio effects are described in the following
+		sections.
 
-		\begin{itemize}
-			\item Wave Digital Filters
-			\item Volterra Series
-			\item The Synchronised Swept Sine Method
-		\end{itemize}
+		%\begin{itemize}
+		%	\item Wave Digital Filters
+		%	\item Volterra Series
+		%	\item The Synchronised Swept Sine Method
+		%\end{itemize}
 
-		These techniques are summarised here.
+		%These techniques are summarised here.
 
 		\subsubsection{Wave Digital Filters}
 			Wave digital filters are a class of filter which can be used to emulate analogue circuits. The
@@ -409,7 +409,7 @@
 			signal is used to calculate a series of kernels using methods described by \citet{schetzen1980the}.
 			These Volterra kernels are analogous to an LTI system's impulse response and can be used to
 			calculate the output of the system to an arbitrary input using Equation~\ref{eq:VolterraSeries}
-			(shown graphically in Figure~\ref{fig:VolterraModel}.
+			(shown graphically in Figure~\ref{fig:VolterraModel}).
 
 			\begin{equation}
 				y[n] = g_{0} + \sum_{p = 1}^{P} 
@@ -423,7 +423,7 @@
 			$p$\super{th} order Volterra kernel. The order of a Volterra kernel defines its dimensionality,
 			$g_{0}$ being a constant, $g_{1}[m_{1}]$ being a one dimensional array of length $M$, $g_{2}[m_{1},
 			m{2}]$ being an $M \times M$ two dimensional array and so on. When $P = 1$ the Volterra series is
-			equivalent to convolution by $g_{1}[m_{1}]$ and an offset by $g_{0}$.
+			equivalent to convolution by $g_{1}[m_{1}]$ and a DC offset by $g_{0}$.
 
 			\begin{figure}[h!]
 				\centering
@@ -572,7 +572,7 @@
 
 \section{Timbre of Nonlinear Distortion}
 \label{sec:Excitation-Timbre}
-	The research discussed thus far in this chapter has focused on measuring the extent to which unwanted distortion
+	The research, discussed thus far in this chapter, has focused on measuring the extent to which unwanted distortion
 	can be perceived, or on modelling the operation of a nonlinear system. This does not provide sufficient information
 	for the description of the timbral effect of nonlinear systems. The listening tests performed to verify the
 	distortion metrics discussed asked subjects to rate the quality of audio stimuli. It is possible that nonlinear
@@ -655,24 +655,24 @@
 	Zwicker sharpness of distorted guitar signals. They show that for a given parameter setting on a distortion effect,
 	the function describing the relationship between the perceived `brightness' and Zwicker sharpness of output signals
 	is monotonically increasing. As the parameter of the effect is changed the number of distortion components
-	introduced to the signal is changed. Conversely to their predictions it is shown that if the output signals are
-	processed to have matching Zwicker sharpness those to which greater levels of distortion have been introduced are
+	introduced to the signal is changed. Conversely to their predictions, it is shown that if the output signals are
+	processed to have matching Zwicker sharpness those to which greater levels of distortion had been introduced were
 	perceived to be less `bright' then those which are less distorted. This is explained by examining the relative
-	levels of different orders of distortion in the output, suggesting that the perception of distortion depends on the
-	individual levels of orders of distortion.
+	levels of different orders of distortion components in the output, suggesting that the perception of distortion
+	depends on the individual levels of different orders of distortion components.
 
 	\citet{wilson2014characterisation} use a different approach to describe the distortion characteristics of popular
 	music tracks. A panel of expert listeners rated several stimuli on two scales: distortion level and distortion
-	character (hard or soft). These results were then used to train a classifier for identifying distortion character.
-	The features found to best describe the distortion character were various features of the signal's probability mass
-	function. These stimuli were then used in a listening test in which participants were asked to choose words which
-	describe the audio quality of the stimuli. The most often used word was `distorted', being used to describe the
-	stimuli which were classified has having high distortion levels, suggesting that the concept if distortion is well
-	known to listeners. The other descriptors elicited (`punchy', `clear', 'harsh' etc.) did not correlate well with
-	any particular group of stimuli as categorised by the classifier. This may be to do with the method by which the
-	original stimuli were classified by the expert panel. The descriptors which did not correlate may refer to
-	perceptual dimensions other than distortion level and character. Training the classifier to only discriminate
-	stimuli in these two dimensions removes any information about where the stimuli lie on these additional dimensions.
+	character (hard or soft). These results were then used to train a classifier for identifying distortion character,
+	various features of the signal's probability mass function being found to best characterise distortion. The stimuli
+	were then used in a listening test in which participants were asked to choose words which describe the audio
+	quality of the stimuli. The most often used word was `distorted', being used to describe the stimuli which were
+	classified has having high distortion levels, suggesting that the concept of distortion is well known to listeners.
+	The other descriptors elicited (`punchy', `clear', 'harsh' etc.) did not correlate well with any particular group
+	of stimuli as categorised by the classifier. This may be to do with the method by which the original stimuli were
+	classified by the expert panel. The descriptors which did not correlate may refer to perceptual dimensions other
+	than distortion level and character. Training the classifier to only discriminate stimuli in these two dimensions
+	removes any information about where the stimuli lie on these additional dimensions.
 
 	From discussion of the previous literature it is apparent that the use of nonlinear systems contribute to a variety
 	of aspects of timbre. Distortion effects are widely used as a creative tool in popular music production but the
@@ -685,7 +685,7 @@
 
 \section{Uses of Harmonic Excitation}
 \label{sec:Excitation-Uses}
-	While harmonic excitation algorithms are best know as a creative effect used by guitarists, they find use in
+	While harmonic excitation algorithms are best known as a creative effect used by guitarists, they find use in
 	several other areas of audio processing. These areas are summarised in Sections
 	\ref{sec:Excitation-Uses-Reconstruction} through \ref{sec:Excitation-Uses-Enhancement}. While popular creative
 	distortion algorithms are based on simple analogue electronic circuits, algorithms designed for these applications
@@ -737,17 +737,18 @@
 		
 		The pitch of harmonically structured sounds is the same as that of its $f_{0}$. No energy need be present
 		at this frequency for its pitch to be perceived however, as long as a sufficient proportion of the harmonic
-		structure remains the original pitch can still be perceived. This phenomenon is commonly referred to as the
-		missing fundamental \citep{plack2005the}. The perception of a low frequency $f_{0}$ can then be actualised
-		by introducing a set of higher order harmonics. This technique is implemented in effects such as Waves'
-		MaxxBass \citep{ben-tzur1999the}. Implementation techniques typically involve various filtering stages
-		around a nonlinear stage. Firstly a filter is used to isolate the frequencies which need psychoacoustic
-		reinforcement (those below the cutoff frequency of the reproduction system). A nonlinearity is then used to
-		produce harmonics of these low frequencies which are then possibly shaped by further filtering. The largest
-		differences between proposed implementations lie in the nonlinear stage.  \citet{gan2001virtual} use a
-		psychoacoustically informed amplitude modulation technique to ensure that the harmonics generated produce
-		the desired perceived pitch. \citet{larsen2002reproducing} propose the use of simpler nonlinear stages,
-		relying on further filtering to shape the spectrum such that the desired pitch is achieved.
+		structure remains, the original pitch can still be perceived. This phenomenon is commonly referred to as
+		the missing fundamental \citep{plack2005the}. The perception of a low frequency $f_{0}$ can then be
+		actualised by introducing a set of higher order harmonics. This technique is implemented in effects such as
+		Waves' MaxxBass \citep{ben-tzur1999the}. Implementation techniques typically involve various filtering
+		stages around a nonlinear stage. Firstly a filter is used to isolate the frequencies which need
+		psychoacoustic reinforcement (those below the cutoff frequency of the reproduction system). A nonlinearity
+		is then used to produce harmonics of these low frequencies which are then possibly shaped by further
+		filtering. The largest differences between proposed implementations lie in the nonlinear stage.
+		\citet{gan2001virtual} use a psychoacoustically informed amplitude modulation technique to ensure that the
+		harmonics generated produce the desired perceived pitch. \citet{larsen2002reproducing} propose the use of
+		simpler nonlinear stages, relying on further filtering to shape the spectrum such that the desired pitch is
+		achieved.
 
 	\subsection{Audio Enhancement}
 	\label{sec:Excitation-Uses-Enhancement}
@@ -866,7 +867,7 @@
 		\end{equation}
 
 		Where $k$ is the integration constant, effectively setting the output gain of the system. The output signal
-		is reset to 0 ofter every negative to positive zero crossing in order to prevent the sample amplitudes from
+		is reset to 0 after every negative to positive zero crossing in order to prevent the sample amplitudes from
 		rising indefinitely. For periodic input signals, zeroing the output only on negative to positive zero
 		crossings produces a signal with the same period as the input.
 
