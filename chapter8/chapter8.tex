@@ -52,32 +52,44 @@
 
 \section{Control of Audio Features with Harmonic Exciters}
 \label{sec:Conclusion-FeatureConrol}
-	\note
-	{
-		\begin{itemize}
-			\item Nonlinear systems must be configured such that their effects are predictable for a large
-				number of inputs.
-			\item Individual control provides the most flexibility. (IAP, SSBA).
-			\item Some features can be controlled more efficiently by simpler systems.
-			\item Isolation of $f_{0}$ guarantees harmonic partials in output for most systems. Others the
-				$f_{0}$ must also be tracked well.
-			\item Control is provided monotonically but not linearly.
-		\end{itemize}
-	}
+	To determine the suitability of harmonic excitation algorithms to timbral control their behaviour was assessed in
+	the areas of: complexity, homogeneity, spectral characteristics and temporal characteristics. It was shown that the
+	effects of a harmonic excitation system become more easily predictable if the input is sinusoidal, in most cases
+	producing a set of harmonics of the input frequency. Monophonic tonal signals can be made sinusoidal by tracking
+	their $f_{0}$ and filtering out all higher frequencies to take advantage of this fact. Other techniques by which the
+	performance of particular algorithms can be improved were also discussed, such as modelling static nonlinearities as
+	polynomials to restrict the frequency range of their output.
+	
+	Use cases for each of the algorithms evaluated were suggested, and the most useful for timbral control noted.
+	Broadly, the algorithms can be divided into two groups: those which generate a band of new energy in the spectrum
+	and those which can be used to generate individual harmonics. In situations where a large band of energy needs to be
+	added to the spectrum, without precise control over its content, static nonlinearities prove to be the most
+	efficient choice. One can either choose a homogeneous nonlinearity (such as a full wave rectifier) or apply
+	additional steps to make the system homogeneous (such as a gain stage either side). Where finer control of the
+	spectrum is desired, individual harmonics can be generated and summed together. This gives better control at the
+	expense of greater computational complexity. The IAP technique was shown to have the best performance in this type
+	of system, exhibiting positive homogeneity and also being shown to produce the most natural sounding harmonics in
+	subjective listening tests.
+
+	It was shown that using these algorithms systems can be constructed which provide monotonic control over the
+	spectral moments, irregularity, flatness, slope, tristimulus, odd to even harmonic ratio and inharmonicity of a set
+	of test signal. While this control is not always linear, its monotonic nature allows for more intuitive control as
+	the feature will always move in the same direction for a given direction in change of parameter value. As the
+	systems rely on the $f_{0}$ of the input signal being isolated, the control of certain feature in signals without a
+	strong $f_{0}$ is lost. 
 
 \section{Timbral Control with Harmonic Exciters}
 \label{sec:Conclusion-TimbralControl}
 	\note
 	{
-		Make this the longest!
-
 		\begin{itemize}
-			\item IAP performs well at generating individual harmonics and is also positive homogeneous.
 			\item Bright and harsh are easy to replicate using the designed systems, crunch and warmth are more
 				difficult. Perhaps due to poor definitions and use of full wave rectification.
 			\item Put in percentages and whatnot.
 		\end{itemize}
 	}
+
+
 
 \section{Critique}
 \label{sec:Conclusion-Critique}
