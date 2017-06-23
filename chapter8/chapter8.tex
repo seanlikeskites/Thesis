@@ -179,19 +179,37 @@
 		In the proposed systems a greater amount of control over the effects of nonlinear systems is attained by
 		processing the isolated $f_{0}$ of the input signal. This restricts the systems to only operate on
 		monophonic tonal sounds. Nonlinear systems will also have timbral effects on polyphonic and non-tonal
-		signals. Further investigation is needed to develop intuitive timbral effects for these types of signals.
+		signals. In this application the term harmonic excitation no longer applies as the harmonic content of the
+		input signal is not defined. Further investigation is needed to develop intuitive timbral effects for these
+		types of signals.
 
 \section{Further Work}
 \label{sec:Conclusion-FurtherWork}
-	\note
-	{
-		\begin{itemize}
-			\item Extend to other descriptors.
-			\item Run more extensive experiments to highlight the differences between the terms within the
-				timbral groups.
-			\item Potential applications in audio restoration.
-			\item Alter SAFE to elicit the degree to which a term applies.
-			\item Segment data with machine learning techniques.
-			\item Apply to other classes of effects.
-		\end{itemize}
-	}
+	The shortcomings highlighted in the previous section provide several directions for continued work in this area.
+	Firstly, refining the approach taken to collect timbral data as part of the music production workflow could lead to
+	a higher quality dataset from which to make conclusions. This might be achieved through altering the interface such
+	that users are asked to rate how well their description applies to the timbral transform they have applied. This
+	opens up new directions in which the data can be analysed, investigating how the perception of a particular
+	descriptor can be altered. Further options for analysis can be opened up by making it a requirement to enter
+	instrument and genre metadata, allowing the used of terms across application domains to be investigated.
+
+	As well as the equalisation and distortion data used in this these, the current SAFE dataset includes information on
+	the application on compression and reverberation. The same approach as taken in this work could be applied to that
+	data producing semantically controlled equalisation, compression and reverberation effects. As well as extending the
+	research to new classes of audio effect, it can also be extended to cover different timbral descriptors. The SAFE
+	dataset identifies several terms that are used to describe timbre, but were not investigated fully in this work due
+	to a lack of sufficient instances of transforms labelled with them. Specific experiments could be undertaken in
+	which the SAFE plug-ins are used to gather data about these descriptors, as done for warm and bright by
+	\citet{stasis2015a}.
+
+	In place of improving the quality of the SAFE dataset by having users provide instrument and genre metadata, this
+	information could be filled in using machine learning techniques. This would involve the use of classification
+	systems to segment the transforms in the dataset by the audio feature values associated with them. These systems can
+	be trained using the transforms in the dataset which have metadata attached and used to classify those which don't.
+	It is possible that the current feature set extracted by the SAFE plug-ins is not sufficient to train such systems.
+	In this case, studies need to be undertaken to determine the most salient features for instrument and genre
+	classification and the SAFE plug-ins altered to accommodate this.
+
+	% COH
+	The systems developed in this thesis provide fine grained control over the spectrum of a signal. This could be used
+	to develop audio signal restoration systems.
