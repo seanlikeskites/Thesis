@@ -125,10 +125,11 @@
 
 		For real time harmonic excitation, the accuracy of the $f_{0}$ tracking algorithm is not as important as it
 		is in other fields such as automatic music transcription. The aim of the system in
-		Figure~\ref{fig:F0Tracking} is to reduce the level of higher harmonics compared to the $f_{0}$. Using a low
-		pass filter with a cutoff frequency close to the $f_{0}$ will achieve this. The lag between the audio and
-		the estimate of the $f_{0}$ is of greater concern. The system needs to respond quickly to changes in
-		$f_{0}$ in order to better isolate it for processing.
+		Figure~\ref{fig:F0Tracking} is to reduce the level of higher harmonics compared to the $f_{0}$. Using a
+		sufficient order band pass filter centered at the $f_{0}$ will achieve this, attenuating frequency
+		components either side of the $f_{0}$. The lag between the audio and the estimate of the $f_{0}$ is of
+		greater concern. The system needs to respond quickly to changes in $f_{0}$ in order to better isolate it
+		for processing.
 
 		A problem is posed by signals with little energy at their $f_{0}$, such as those produced in the lower
 		register of a Double Bass \citep{askenfelt2010double}. An $f_{0}$ tracking algorithm will still return the
