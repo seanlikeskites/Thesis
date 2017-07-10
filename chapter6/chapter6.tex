@@ -5,24 +5,29 @@
 
 \chapter{Controlling Audio Features} % control of low level features using exciters
 \label{chap:FeatureControl}
-	\note
-	{
-		Emphasise why we are doing this. Why monotonic? Why not independent?
-
-		Clarify that we are only considering control of timbre for tonal sounds with a single pitch.
-	}
-
 
 \section{Introduction}
 \label{sec:FeatureControl-Introduction}
-	As discussed in Section~\ref{sec:Timbre-Control}, previous studies have attempted to control perceptual features by
-	controlling specific audio features. This chapter will identify the audio features which can be controlled through
-	harmonic excitation and which excitation algorithms are the most suitable for given feature changes. Firstly, in
+	Previous studies, discussed in Section~\ref{sec:Timbre-Control}, have attempted to control perceptual features,
+	such as warmth and brightness, by controlling specific audio features. The characteristics of the harmonic
+	excitation systems discussed in Chapter~\ref{chap:ExcitationEvaluation} can be utilised to provide similar control
+	over audio features. Ideally, control over a feature should be linear (the relationship between the effect's
+	parameter setting the feature value being linear) and independent (the effect only controls one audio feature, the
+	rest remaining constant). This would allow for the most flexibility in applying timbral transforms, every separate
+	feature can be set individually and predictably. In reality this is not achievable: providing linear control
+	requires in depth analysis of the input signal which cannot be applied in real time. In addition, independent
+	control of features is not always possible as several features are closely related, such as spectral flatness and
+	spectral irregularity. In light of this, the techniques developed in this chapter will focus on providing monotonic
+	control over an audio feature: a given direction in change of parameter setting will always produce the same
+	direction of change of the audio feature.
+	
+	This chapter will provide methods by which several audio features can be controlled through harmonic excitation and
+	which excitation algorithms are the most suitable for given feature changes. Firstly, in
 	Section~\ref{sec:FeatureControl-Systems}, various challenges which arise when building harmonic excitation systems
 	are discussed and methods to counteract them are suggested. A number of different systems are proposed which
 	provide control over the nature of the new frequency components introduced to the signal. In
-	Section~\ref{sec:FeatureControl-Parameterisation} methods by which these systems can be configured to control
-	specific audio features are proposed and tested.
+	Section~\ref{sec:FeatureControl-Parameterisation} methods by which these systems can be configured to provide
+	monotonic control over specific audio features are proposed and tested.
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
@@ -38,20 +43,24 @@
 
 	\subsection{$f_{0}$ Tracking}
 	\label{sec:FeatureControl-Systems-Fundamental}
-		The majority of the methods discussed in Section~\ref{sec:Excitation-Methods} will cause intermodulation
-		distortion when used on signals with multiple frequency components. As the effects of this intermodulation
-		distortion can be difficult to predict it can be useful to eliminate it altogether. This should make the
-		effects of a system more predictable allowing it to be used in more situations.	The levels of
-		intermodulation distortion can be decreased by reducing the number of frequency components in the input
-		signal. For a sinusoidal input (one frequency component) no intermodulation distortion occurs. The
-		intermodulation introduced by a harmonic excitation system can then be reduced by pre-processing a signal
-		such that it is more sinusoidal. This can be achieved by only processing the $f_{0}$ of a signal, the
-		$f_{0}$ can be isolated with a filter producing a narrowband signal with the majority of its energy
-		concentrated at the $f_{0}$. In the following discussion this filtered signal will be referred to as the
-		`isolated $f_{0}$'. Applying a harmonic excitation algorithm to the isolated $f_{0}$ will produce a signal
-		with a lower level of intermodulation components than processing the original input signal. The `excited'
-		isolated $f_{0}$ signal can then be summed with the original signal to produce the output. A diagram of
-		this system is shown in Figure~\ref{fig:F0Tracking}.
+		As discussed in Section~\ref{sec:ExcitationEvaluation-Comparison}, the behaviour of several of the harmonic
+		excitation systems is more predictable for sinusoidal inputs. This is due to the elimination of
+		intermodulation distortion components by having an input signal consisting of only a single frequency. This
+		more predictable behaviour simplifies the problem of using harmonic excitation algorithms in providing
+		monotonic control of audio features, allowing similar transforms to be applied to a wide range of input
+		signals. To take advantage of these improvement in predictability the input signal to a harmonic exciter
+		must be pre-processed such that it is represented by a single sinusoid. For monophonic tonal sources this
+		can be achieved by representing this signal as a sinusoid at the input's $f_{0}$. This remainder of this
+		thesis then focusses of controlling timbre in this class of audio signal. Other classes of signal
+		(polyphonic, noisy etc.) are left for consideration in future work.
+		
+		A monophonic tonal signal can be represented as a sinusoid by applying a band pass filter centered around
+		its $f_{0}$. This produces a narrowband signal with the majority of its energy concentrated at the $f_{0}$.
+		In the following discussion this filtered signal will be referred to as the `isolated $f_{0}$'. Applying a
+		harmonic excitation algorithm to the isolated $f_{0}$ will produce a signal with a lower level of
+		intermodulation components than processing the original input signal. The `excited' isolated $f_{0}$ signal
+		can then be summed with the original signal to produce the output. A diagram of this system is shown in
+		Figure~\ref{fig:F0Tracking}.
 
 		\begin{figure}[h!]
 			\centering
@@ -69,7 +78,7 @@
 				\draw (InMid) -- (Side);
 
 				\node (F0) [draw] at (2.5, 2) {$f_{0}$ Tracker};
-				\node (Filter) [draw] at (2.5, 1) {LPF};
+				\node (Filter) [draw] at (2.5, 1) {BPF};
 				\draw (InMid) -- (Filter);
 				\draw (F0) -- (Filter);
 
@@ -107,14 +116,12 @@
 		uses a simple recursive formula. While this is not as precise as the more advanced techniques it takes
 		considerably less time to compute. Frequency domain methods require the DFT of the signal to be calculated
 		introducing considerable complexity. Widely used frequency domain techniques include the Harmonic Product
-		Spectrum (HPS) and maximum likelihood estimate methods \citep{noll1969pitch}.
-
-		\note
-		{
-			State of the art techniques use machine learning techniques to improve the performance of trackers
-			in the presence of noise. Probabilistic framework by \citet{chu2012safe}, Neural nets by
-			\citet{han2014neural} and hidden Markov models by \citet{wang2016f0}.
-		}
+		Spectrum (HPS) and maximum likelihood estimate methods \citep{noll1969pitch}. State of the art techniques
+		employ statistical / machine learning techniques to improve the performance of $f_{0}$ trackers for input
+		signals with high levels of noise. These techniques include a probabilistic framework \citep{chu2012safe},
+		artificial neural networks \citep{han2014neural} and hidden Markov models \citep{wang2016f0}. Other recent
+		work has developed methods of tracking multiple pitches in polyphonic signals \citep{christensen2008multi}.
+		Due to this work's focus on monophonic signals, these are beyond the scope of this discussion.
 
 		For real time harmonic excitation, the accuracy of the $f_{0}$ tracking algorithm is not as important as it
 		is in other fields such as automatic music transcription. The aim of the system in
@@ -134,9 +141,9 @@
 		multiplications of the input frequency.
 
 		The system shown in Figure~\ref{fig:F0Tracking} can provide differing levels of flexibility depending on
-		the harmonic exciter used. Using a simple clipper will generate a series of harmonics of the $f_{0}$. Using
-		methods which provide more control over the order of distortion allows users to excite single harmonics in
-		the output. This will be covered in the next section.
+		the harmonic exciter used. Using a static nonlinearity will generate a series of harmonics of the $f_{0}$.
+		Using methods which provide more control over the order of distortion allows users to excite single
+		harmonics in the output. This will be covered in the next section.
 
 	\subsection{Individual Harmonic Generation}
 	\label{sec:FeatureControl-Systems-Individuals}
@@ -156,7 +163,7 @@
 				\draw (InMid) -- (Side);
 
 				\node (F0) [draw] at (2.5, 2) {$f_{0}$ Tracker};
-				\node (Filter) [draw] at (2.5, 1) {LPF};
+				\node (Filter) [draw] at (2.5, 1) {BPF};
 				\draw (InMid) -- (Filter);
 				\draw (F0) -- (Filter);
 
@@ -248,7 +255,7 @@
 				\draw (InMid) -- (Side);
 
 				\node (F0) [draw] at (2, -0.75) {$f_{0}$ Tracker};
-				\node (F0Filter) [draw] at (2, -1.75) {LPF};
+				\node (F0Filter) [draw] at (2, -1.75) {BPF};
 				\draw (InMid) -- (F0Filter);
 				\draw (F0) -- (F0Filter);
 				\draw (Side) -- (F0);
@@ -378,7 +385,7 @@
 				\draw (InMid) -- (Side);
 
 				\node (F0) [draw] at (2, -0.75) {$f_{0}$ Tracker};
-				\node (F0Filter) [draw] at (2, -1.75) {LPF};
+				\node (F0Filter) [draw] at (2, -1.75) {BPF};
 				\draw (InMid) -- (F0Filter);
 				\draw (F0) -- (F0Filter);
 				\draw (Side) -- (F0);
@@ -517,7 +524,7 @@
 				\draw (InMid) -- (Side);
 
 				\node (F0) [draw] at (2, -0.75) {$f_{0}$ Tracker};
-				\node (F0Filter) [draw] at (2, -1.75) {LPF};
+				\node (F0Filter) [draw] at (2, -1.75) {BPF};
 				\draw (InMid) -- (F0Filter);
 				\draw (F0) -- (F0Filter);
 				\draw (Side) -- (F0);
@@ -740,7 +747,7 @@
 					\draw (InMid) -- (Side);
 
 					\node (F0) [draw] at (2.5, 2) {$f_{0}$ Tracker};
-					\node (Filter) [draw] at (2.5, 1) {LPF};
+					\node (Filter) [draw] at (2.5, 1) {BPF};
 					\draw (InMid) -- (Filter);
 					\draw (F0) -- (Filter);
 
@@ -1216,7 +1223,7 @@
 				\draw (InMid) -- (Side);
 
 				\node (F0) [draw] at (2, -1.25) {$f_{0}$ Tracker};
-				\node (F0Filter) [draw] at (2, -2.25) {LPF};
+				\node (F0Filter) [draw] at (2, -2.25) {BPF};
 				\draw (InMid) -- (F0Filter);
 				\draw (F0) -- (F0Filter);
 				\draw (Side) -- (F0);

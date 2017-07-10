@@ -80,7 +80,7 @@
 		\end{figure}
 
 		The other two harmonic generation methods use the system illustrated in Figure~\ref{fig:FilterAndShift},
-		isolating the $f_{0}$ with a low pass filter and then using a frequency shifting technique to change the
+		isolating the $f_{0}$ with a band pass filter and then using a frequency shifting technique to change the
 		frequency to that of the desired harmonic. The two frequency shifting techniques used in this experiment
 		are SSBA (Section~\ref{sec:Excitation-Methods-SSBA}) and IAP (Section~\ref{sec:Excitation-Methods-IAP}).
 
@@ -88,7 +88,7 @@
 			\centering
 			\begin{tikzpicture}
 				\node (In) at (1.3, 1) {$x[n]$};
-				\node (Filter) [draw] at (2.5, 1) {LPF};
+				\node (Filter) [draw] at (2.5, 1) {BPF};
 				\draw (In) -- (Filter);
 
 				\node (Exciter) [draw] at (4.75, 1) {Frequency Shifter};
@@ -771,7 +771,7 @@
 					\draw (Side2) -- (Side1);
 
 					\node (F0) [draw] at (2, -1.25) {$f_{0}$ Tracker};
-					\node (F0Filter) [draw] at (2, -2.25) {LPF};
+					\node (F0Filter) [draw] at (2, -2.25) {BPF};
 					\draw (Side2) -- (F0Filter);
 					\draw (F0) -- (F0Filter);
 					\draw (Side1) -- (F0);
@@ -860,7 +860,7 @@
 					\draw (InMid) -- (Side);
 
 					\node (F0) [draw] at (2, -0.85) {$f_{0}$ Tracker};
-					\node (F0Filter) [draw] at (2, -1.85) {LPF};
+					\node (F0Filter) [draw] at (2, -1.85) {BPF};
 					\draw (InMid) -- (F0Filter);
 					\draw (F0) -- (F0Filter);
 					\draw (Side) -- (F0);
@@ -937,7 +937,7 @@
 			Each of the individual harmonics are generated using the IAP technique discussed in
 			Section~\ref{sec:Excitation-Methods-IAP}. This method was chosen due to it performing the best in
 			the experiments in Section~\ref{sec:PerceptualExperiments-Reconstruction}. To reduce computational
-			load the filter used to isolate the $f_{0}$ in this system is a second order IIR low pass filter.
+			load the filter used to isolate the $f_{0}$ in this system is a second order IIR band pass filter.
 			The use of a low order filter means that there is a higher proportion of high frequency energy
 			which remains in the isolated $f_{0}$. This in turn produces more intermodulation components in the
 			generated harmonics. Each of the generated harmonics is band pass filtered, again with second order
