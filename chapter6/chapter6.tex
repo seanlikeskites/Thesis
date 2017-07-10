@@ -480,11 +480,13 @@
 		Removing harmonics from the original signal loses any phase information that was present for those
 		frequencies. The newly generated harmonics may not have the same phase as those that have been removed,
 		potentially causing unwanted timbral effects. The phases of a signal's partials influence its temporal
-		features. \citet{plomp1969effect} discuss the audible effects of this for harmonic signals, concluding that
-		the effect is more subtle than, but independent to, that of changing the harmonics' amplitudes. They state
-		that the largest perceptual difference occurs between a signal in which all the harmonics have the same
-		phase and one composed of harmonics with phases alternating between two values $\frac{\pi}{2}$ radians
-		apart.
+		features. The rising portions of in phase harmonics sum together to give short rise times in the resultant
+		signal, as seen in a square wave. Altering the phase differences between the harmonics will alter the rise
+		time of the waveform. \citet{plomp1969effect} discuss the audible effects of this for harmonic signals,
+		concluding that the effect is more subtle than, but independent to, that of changing the harmonics'
+		amplitudes. They state that the largest perceptual difference occurs between a signal in which all the
+		harmonics have the same phase and one composed of harmonics with phases alternating between two values
+		$\frac{\pi}{2}$ radians apart.
 
 		For fine control it may be beneficial to separate control of the amplitude and phase of each partial in a
 		signal. This is most easily achieved using the IAP technique as the phase of the input signal is already
@@ -498,21 +500,26 @@
 		\end{equation}
 
 		For introducing new spectral content with a specific amplitude and phase, Equation~\ref{eq:IAPWithPhase}
-		suffices. Separate control of the phase and amplitudes of existing partials can be achieved in two ways.
-		The first is to use an analysis / resynthesis system in which the amplitudes and phases of the partials are
-		adjusted in the frequency domain. The second approach is to use zero phase filters to amplify or attenuate
-		partials and phase shifting techniques to adjust their phases. Both of these approaches introduce delay
-		into the system, be it through the windowing used for spectral analysis or the delay introduced in applying
-		zero phase filters.
+		suffices. Here we suggest two approaches which can be taken in order to provide control oer the amplitudes
+		and phases of spectral partials which are already present in a signal. The first is to use an analysis /
+		resynthesis system, measuring the amplitudes and phases of the components in the input signal and using
+		that information to synthesise the output signal with the desred transformations applied.  The second
+		approach is to use zero phase filters to amplify or attenuate partials and phase shifting techniques to
+		adjust their phases. Both of these approaches introduce delay into the system, be it through the windowing
+		used for spectral analysis or the delay introduced in applying zero phase filters. The systems developed in
+		this chapter focus on the generation of new spectral content, avoiding the introduction of this delay.
 
 	\subsection{Generating Inharmonic Partials}
 	\label{sec:FeatureControl-Systems-Inharmonicity}
 		With a sinusoidal input the SSBA and IAP techniques generate perfectly harmonic partials. As inharmonicity
 		is an important cue for differentiating timbre it is desirable to be able to introduce some inharmonicity
-		to the generated partials. Spectral replication allows for generation of partials at any frequency, but in
-		order for their frequency to be precise the exact $f_{0}$ must be known. This causes the system to rely on
-		the accuracy of the $f_{0}$ tracking algorithm used. A system which provides control over inharmonicity and
-		does not rely on precise $f_{0}$ tracking is shown in Figure~\ref{fig:InharmonicitySystem}.
+		to the generated partials. Spectral replication allows for generation of partials at any frequency as a
+		spectral shift of any amount can be applied to the isolated $f_{0}$. However, in order to know what shift
+		to apply the $f_{0}$ must be tracked precisely: to generate the second harmonic one must apply a shift
+		exactly equal to the $f_{0}$. This causes the system to rely on the accuracy of the $f_{0}$ tracking
+		algorithm used. A system which does not rely on accurate tracking of the $f_{0}$ would be beneficial, as it
+		allows for more variability in the accuracy of the tracker caused by processing different classes of input
+		signal. Such a system is is shown in Figure~\ref{fig:InharmonicitySystem}.
 
 		\begin{figure}[h!]
 			\centering
@@ -634,7 +641,7 @@
 		Section~\ref{sec:Excitation-Methods-SpectralReplication}. This produces partials which deviate from
 		harmonic frequencies by exactly the amount of shift applied. The higher order harmonics are not generated
 		individually and as such their inharmonicity cannot be controlled individually. Spectral replication could
-		be used to shift their frequencies. as is done with the lower order harmonics. This restricts the higher
+		be used to shift their frequencies, as is done with the lower order harmonics. This restricts the higher
 		harmonics to all having the same degree of inharmonicity.  This may sound unnatural as in natural tones the
 		inharmonicity of a harmonic is typically dependent on the order of the harmonic (such as in piano tones
 		\citep{young1952inharmonicity}).
