@@ -1109,9 +1109,13 @@
 
 	\subsection{Tristimulus}
 	\label{sec:FeatureControl-Parameterisation-Tristimulus}
-		A generalised form of the tristimulus metrics measures the amplitude ratio, $R$, of a specific set of
-		spectral components, $S$, and a set which includes that set, $F$. This is shown in
-		Equation~\ref{eq:GeneralTristimulus}.
+		While no previous work discusses methods which specifically control the tristimulus measures of signals,
+		several use similar metrics. Both \cite{williams2010perceptually} and \cite{zacharakis2011an} suggest that
+		the perception of warmth is associated with the power present in the first three harmonics. This is similar
+		to what is measures by the tristimulus metrics, only using a slightly different band of harmonics. To
+		account for different band definitions, in this section a generalised form of the tristimulus metrics is
+		defined which measures the amplitude ratio, $R$, of a specific set of spectral components, $S$, and a set
+		which includes that set, $F$. This is shown in Equation~\ref{eq:GeneralTristimulus}.
 
 		\begin{gather}
 			A = \sum_{n \in F} a_{n} \nonumber \\
@@ -1128,13 +1132,13 @@
 			\label{eq:GeneralTristimulusManipulation}
 		\end{equation}
 
-		Similar to the method discussed for controlling spectral centroid, control of tristimulus metrics involves
+		Similar to the method discussed for controlling spectral centroid, control over the ratio $R$ involves
 		altering the energy in specific bands. A reduced version of the system shown in
-		Figure~\ref{fig:SuperpositionSystem} can be used to control this. The system need only have individual
-		control over the levels of the first four harmonics so the exciters for the fifth through ninth harmonics
-		can be removed.
+		Figure~\ref{fig:SuperpositionSystem} can be used to control this. For control over the tristimulus metrics
+		, the system need only have individual control over the levels of the first four harmonics so the exciters
+		for the fifth through ninth harmonics can be removed.
 
-		The first tristimulus measure is easily controlled through applying gain to the isolated $f_{0}$.  The
+		The first tristimulus measure is easily controlled through applying a gain to the isolated $f_{0}$.  The
 		other two measures can be controlled in different ways depending on the requirements of the system.
 		Individually controlling the levels of the second through fourth harmonics allows the second tristimulus
 		measure to be manipulated while a more general nonlinear device can be used to generate higher order
@@ -1145,6 +1149,8 @@
 
 		Figure~\ref{fig:MoveTristimulus1} shows how the first tristimuli of the test signals changes when the gain,
 		$m$, is applied at their isolated $f_{0}$ using the system shown in Figure~\ref{fig:SuperpositionSystem}.
+		The filter applied to the original signal in the bottom branch of the diagram is a high pass filter
+		with a cutoff frequency of $1.5f_{0}$, removing energy at the $f_{0}$.
 
 		\begin{figure}[h!]
 			\centering
@@ -1162,10 +1168,10 @@
 		has more energy in the second harmonic than at the $f_{0}$, severely reducing the maximum value which the
 		first tristimulus can attain. Using higher order filters will alleviate this problem at the cost of
 		increased processing complexity. The order of the filters is also responsible for the initial decrease in
-		tristimulus value for small values of $m$. The $f_{0}$ is removed from the original signal using a high
-		pass filter. The lower order this filter is, the more of a remnant of the $f_{0}$ remains. This initial
+		tristimulus value for small values of $m$. If a low order high pass filter is used to remove the $f_{0}$
+		from the input signal there will still be a remnant of energy at the $f_{0}$ in the signal. The initial
 		decrease in the first tristimulus is due to destructive superposition between the isolated $f_{0}$ and this
-		remnant.  Again, increasing the order of the filters used in the system will reduce these effects.
+		remnant. Again, increasing the order of the filters used in the system will reduce these effects.
 
 		\begin{figure}[h!]
 			\centering
@@ -1175,13 +1181,14 @@
 		\end{figure}
 
 		Control of the second tristimulus can be achieved with the same system, this time applying a gain, $m$, to
-		the second, third and fourth excited harmonics. Figure~\ref{fig:MoveTristimulus2} shows how the second
-		tristimulus value changes with $m$. As with control of the first tristimulus, the order of the filters used
-		determines the maximum value the second tristimulus will take. The relationship is a more complex one
-		however, as there is a nonlinear element to the system. The isolated $f_{0}$ signal will contain some
-		energy at higher order partials.  When this signal is used to generate new harmonics some of the
-		intermodulation components will be higher in frequency than the desired harmonic. This results in more
-		energy being introduced above the fourth harmonic, reducing the maximum possible second tristimulus.
+		the second, third and fourth excited harmonics, and band reject filtering the input between $1.5f_{0}$ and
+		$4.5f_{0}$ to avoid superposition occurring with the excited harmonics.  Figure~\ref{fig:MoveTristimulus2}
+		shows how the second tristimulus value changes with $m$. As with control of the first tristimulus, the
+		order of the filters used determines the maximum value the second tristimulus will take. The relationship
+		is a more complex one however, as there is a nonlinear element to the system.  The isolated $f_{0}$ signal
+		will contain some energy at higher order partials.  When this signal is used to generate new harmonics some
+		of the intermodulation components will be higher in frequency than the desired harmonic. This results in
+		more energy being introduced above the fourth harmonic, reducing the maximum possible second tristimulus.
 
 		The third tristimulus is more easily controlled using the same system as used for controlling the spectral
 		centroid (Figure~\ref{fig:TwoBandSpectralCentroidSystem}). A band of high order harmonics is generated from
@@ -1201,9 +1208,9 @@
 
 	\subsection{Odd to Even Harmonic Ratio}
 	\label{sec:FeatureControl-Parameterisation-HarmonicParityRatio}
-		The odd to even harmonic ratio, Equation~\ref{eq:HarmonicParityRatio}, can easily be altered by applying
-		gain to only the odd harmonics. To change the ratio to a particular value, $\mathrm{OER}$, the required
-		gain, $m$, is calculated using Equation~\ref{eq:HarmonicParityRatioManipulation}.
+		The $\mathrm{OER}$, Equation~\ref{eq:HarmonicParityRatio}, can easily be altered by applying gain to only
+		the odd harmonics. To change the ratio to a particular value, $\mathrm{OER}$, the required gain, $m$, is
+		calculated using Equation~\ref{eq:HarmonicParityRatioManipulation}.
 
 		\begin{equation}
 			m = \sqrt{\frac{\mathrm{OER}\sum_{1 \leq n \leq N, n \text{ is even}} h_{n}^{2}}
@@ -1312,9 +1319,9 @@
 
 		The odd and even harmonics in a signal could be separated using linear filters. This approach requires in
 		depth analysis of the signal adding complexity and possible delay to the system but has some advantage in
-		preservation of signal characteristics. When using excitation this complexity is reduced but the problems
-		discussed in Section~\ref{sec:FeatureControl-Systems-Superposition} become apparent. To elicit full control
-		over the levels of the odd and even harmonics using the system shown in
+		preservation of signal characteristics. When using excitation this complexity is reduced but the
+		superposition problems discussed in Section~\ref{sec:FeatureControl-Systems-Superposition} become apparent.
+		To elicit full control over the levels of the odd and even harmonics using the system shown in
 		Figure~\ref{fig:HarmonicParitySystem} all the harmonic content in the output signal is generated by the
 		nonlinearities. This is likely to cause a dramatic change in timbre as most of the information present in
 		the original signal has been replaced. 
@@ -1325,19 +1332,19 @@
 		mean filtering out alternate harmonics in the input signal. Allowing superposition to occur sacrifices
 		precise control in order to maintain some of the input's characteristics.
 
-		An example of how the system in Figure~\ref{fig:HarmonicParitySystem} can be used is as follows.  The
-		isolated $f_{0}$ of each test signal is processed by two parallel static nonlinearities. A band of odd
-		order harmonics is generated through a hard peak clipper and a band of even order harmonics through full
-		wave rectification of this clipped signal. The band of even order harmonics is high pass filtered in order
-		to remove the energy introduced at 0Hz by rectification. Both bands of harmonics are then low passed
-		filtered with a cutoff at the frequency of the ninth harmonic and the original signal is high pass filtered
-		at the same frequency. The ninth harmonic is chosen due to it being the highest individually resolved
-		harmonic as discussed in Section~\ref{sec:FeatureControl-Systems-SpectralShaping}. The three signals are
-		then summed at different ratios to control the evenness or oddness of the output.
-		Figure~\ref{fig:MoveParities} shows the effects of manipulating the levels of odd and even order harmonics
-		in this way. The original signal remains at unity gain whereas the gains of the harmonic bands are
-		determined by a parameter, $P$.  Odd order harmonics are multiplied by a gain of $P$ and even order
-		harmonics by $1 - P$.
+		A method by which the system in Figure~\ref{fig:HarmonicParitySystem} can be used to monotonically control
+		the $\mathrm{OER}$ of signals is as follows. The isolated $f_{0}$ of each test signal is processed by two
+		parallel static nonlinearities. A band of odd order harmonics is generated through a hard peak clipper and
+		a band of even order harmonics through full wave rectification of this clipped signal. The band of even
+		order harmonics is high pass filtered in order to remove the energy introduced at 0Hz by rectification.
+		Both bands of harmonics are then low passed filtered with a cutoff at the frequency of the ninth harmonic
+		and the original signal is high pass filtered at the same frequency. The ninth harmonic is chosen due to it
+		being the highest individually resolved harmonic as discussed in
+		Section~\ref{sec:FeatureControl-Systems-SpectralShaping}. The three signals are then summed at different
+		ratios to control the evenness or oddness of the output.  Figure~\ref{fig:MoveParities} shows the effects
+		of manipulating the levels of odd and even order harmonics in this way. The original signal remains at
+		unity gain whereas the gains of the harmonic bands are determined by a parameter, $P$.  Odd order harmonics
+		are multiplied by a gain of $P$ and even order harmonics by $1 - P$.
 
 		\begin{figure}[h!]
 			\centering
