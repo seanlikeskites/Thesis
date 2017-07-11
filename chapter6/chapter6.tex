@@ -984,15 +984,24 @@
 
 	\subsection{Spectral Flatness}
 	\label{sec:FeatureControl-Parameterisation-Flatness}
-		Spectral flatness is related to spectral irregularity. Many of the techniques to reduce the irregularity
-		will also increase the flatness. More precisely, any manipulation which moves the amplitudes of all
-		spectral components closer to each other will increase the spectral flatness. To take an example from
-		Section~\ref{sec:FeatureControl-Parameterisation-Irregularity}, using a low pass filter on the amplitudes
-		of the spectral components will increase the flatness of the spectrum.
+		Spectral flatness is related to spectral irregularity in that thy both measure the uniformity in amplitude
+		of spectral components. Because of this relationship, many of the techniques used to reduce the
+		irregularity will also increase the flatness. More precisely, any manipulation which moves the amplitudes
+		of all spectral components closer to each other will increase the spectral flatness. To take an example
+		from Section~\ref{sec:FeatureControl-Parameterisation-Irregularity}, using a low pass filter on the
+		amplitudes of the spectral components will increase the flatness of the spectrum. 
+		
+		Unlike measures of spectral irregularity, spectral flatness takes into account the amplitudes of all
+		spectral components simultaneously rather than considering the difference in amplitude between adjacent
+		components. Because of this, the method given by Equation~\ref{eq:PartialSmoothing} will only give
+		monotonic control over the spectral flatness if the amplitudes of every partial in the signal are
+		manipulated. If, as when controlling irregularity, first nine harmonics are all given equal amplitudes, the
+		spectral flatness measure may decrease due to the difference between this amplitude and those of the higher
+		order harmonics.
 
 		As the measure of spectral flatness (Equation~\ref{eq:Flatness}) is the ratio of the geometric and
-		arithmetic means of the power spectrum, a greater degree of control can be achieved over it by altering one
-		of the means while the other remains constant. The method discussed here changes the arithmetic mean while
+		arithmetic means of the power spectrum, monotonic control can be achieved over it by altering one of the
+		means while the other remains constant. The method discussed here changes the arithmetic mean while
 		preserving the geometric mean. Consider two disjoint sets, $L$ and $H$, which are each composed of the
 		indices of $k$ spectral components of the signal, such that the total energy in the spectral components
 		denoted by $L$ is less than that of the spectral components denoted by $H$. A gain $m$ is applied to the
@@ -1048,10 +1057,9 @@
 		a band of spectral components with excited ones. Once a band has been replaced with excited components, the
 		levels of these components can then be manipulated to change the flatness of the entire signal. Altering
 		the flatness of the excited band using the method in Equation~\ref{eq:FlatnessManipulation} allows the
-		overall flatness of the output to be influenced. Reducing the arithmetic mean of the power spectrum of the
-		excited band also reduces the arithmetic mean of the power spectrum of the output signal. Thus, increasing
-		the flatness of the excited band will also increase the flatness of the output signal and decreasing the
-		flatness of the band decreases the flatness of the output signal.
+		overall flatness of the output to be influenced. Because this method only alters the arithmetic mean of the
+		components, increasing the flatness of the excited band will also increase the flatness of the overall
+		signal.
 
 		As the spectral flatness measure doesn't depend on the frequencies of the spectral components, deciding
 		what two groups of components to apply reciprocal gains to will depend on the desired effect on other
