@@ -511,7 +511,7 @@
 
 	\subsection{Generating Inharmonic Partials}
 	\label{sec:FeatureControl-Systems-Inharmonicity}
-		With a sinusoidal input the SSBA and IAP techniques generate perfectly harmonic partials. As inharmonicity
+		For a sinusoidal input, the SSBA and IAP techniques generate perfectly harmonic partials. As inharmonicity
 		is an important cue for differentiating timbre it is desirable to be able to introduce some inharmonicity
 		to the generated partials. Spectral replication allows for generation of partials at any frequency as a
 		spectral shift of any amount can be applied to the isolated $f_{0}$. However, in order to know what shift
@@ -635,9 +635,13 @@
 			\label{fig:InharmonicitySystem}
 		\end{figure}
 
-		As in Figure~\ref{fig:SpectralShapingSystem} the second through ninth harmonics are generated individually.
-		This can be done using any method which generates precise harmonics. Each harmonic is then shifted to the
-		desired frequency using the single sideband modulation technique shown in
+		As in Figure~\ref{fig:SpectralShapingSystem}, the second through ninth harmonics are generated individually
+		using any of the methods which apply multiplicative scaling to the frequency content of the signal (SSBA,
+		IAP, Spectral Stretching etc.). These methods can be used to create partials with frequencies at integer
+		multiples of those in the input, meaning that they can generate precise harmonics for a sinusoidal input
+		without knowing its frequency. As some of these methods (SSBA and IAP) are restricted to only generating
+		harmonic frequencies additional processing is needed to introduce inharmonicity. Each of the generated
+		harmonics if shifted to the desired frequency using a spectral replication technique as discussed in
 		Section~\ref{sec:Excitation-Methods-SpectralReplication}. This produces partials which deviate from
 		harmonic frequencies by exactly the amount of shift applied. The higher order harmonics are not generated
 		individually and as such their inharmonicity cannot be controlled individually. Spectral replication could
@@ -668,15 +672,15 @@
 	system in order to change the value of an audio feature.
 
 	Assuming perfect detection of $f_{0}$ and perfect filters, the systems shown in
-	Section~\ref{sec:FeatureControl-Systems} will provide analogous manipulations for all harmonically structured input
+	Section~\ref{sec:FeatureControl-Systems} will provide analogous manipulations for all monophonic tonal input
 	signals. For example, the system in Figure~\ref{fig:HarmonicGenerationSystem} will always generate a harmonic with
-	the same amplitude relationship to the $f_{0}$ of the input. In actual implementations the inaccuracies in $F_{0}$
+	the same amplitude relationship to the $f_{0}$ of the input. In actual implementations the inaccuracies in $f_{0}$
 	tracking and the properties of the input signal and filters used will affect how the system operates. To examine
 	these effects, each of the methods proposed for manipulating an audio feature in this section are tested on four
-	harmonic audio signals. These signals constitute a bowed cello, a clarinet, an additive synthesiser and a piano
-	respectively. To investigate only the effects of filter implementations and the feature manipulation methods, the
-	$f_{0}$ of each of these signals is calculated accurately before testing and the $f_{0}$ tracking elements of the
-	systems eliminated.
+	monophonic, harmonically structured audio signals. These signals constitute a bowed cello, a clarinet, an additive
+	synthesiser and a piano respectively. To investigate only the effects of filter implementations and the feature
+	manipulation methods, the $f_{0}$ of each of these signals is calculated accurately before testing and the $f_{0}$
+	tracking elements of the systems eliminated.
 
 	The cello and clarinet signals both represent typical recorded harmonic sounds. Both are composed of harmonic
 	partials and noise. The fundamental difference between the two is that the cello signal contains energy at all
@@ -723,17 +727,18 @@
 			signal. A disadvantage of this method is that the change in centroid cannot be easily parameterised
 			as it depends on the content of the signal being processed.
 
-			Another way to move the spectral centroid is by introducing a new band of energy into the spectrum.
-			This is conceptually similar to the two band method discussed previously but allows the second band
-			to contain frequency content which was not in the original signal. As before the overall spectral
-			centroid can be moved by adjusting the relative amplitudes of the original signal and the new band
-			of energy. To facilitate precise control of the spectral centroid these bands should not share any
-			frequency components. Figure~\ref{fig:TwoBandSpectralCentroidSystem} shows a system which
-			separately controls the gains of two bands. The lower band is generated via a low pass filter on
-			the input signal while the high band is created using a nonlinear device. The bands are filtered
-			with corresponding low and high pass filters to ensure they share no frequency components. The
-			spectral centroid of the output can be moved between the centroids of these two bands by changing
-			their relative amplitudes according to Equation~\ref{eq:SpectralCentroidManipulation}.
+			We propose an alternative method for altering the spectral centroid, by introducing a new band of
+			energy into the spectrum.  This is conceptually similar to the two band method discussed previously
+			but allows the second band to contain frequency content which was not in the original signal. As
+			before the overall spectral centroid can be moved by adjusting the relative amplitudes of the
+			original signal and the new band of energy. To facilitate precise control of the spectral centroid
+			these bands should not share any frequency components.
+			Figure~\ref{fig:TwoBandSpectralCentroidSystem} shows a system which separately controls the gains
+			of two bands. The lower band is generated via a low pass filter on the input signal while the high
+			band is created using a nonlinear device. The bands are filtered with corresponding low and high
+			pass filters to ensure they share no frequency components. The spectral centroid of the output can
+			be moved between the centroids of these two bands by changing their relative amplitudes according
+			to Equation~\ref{eq:SpectralCentroidManipulation}.
 
 			\begin{figure}[h!]
 				\centering
@@ -781,20 +786,28 @@
 			\end{figure}
 
 			This method has some advantages over manipulating the amplitudes of two bands using only linear
-			filters. The centroid can be manipulated in various manners. The nonlinear device can be used to
-			reconstruct the high frequency portion of the signal and the relative gains adjusted similarly to
-			if two filters were used.  Alternatively the properties of the nonlinear device can be altered to
-			change the upper band's centroid. This provides more flexibility allowing the centroid to be
-			changed independently of some other features. For example, changing the gains of two bands will
-			change the spectral slope of the signal. If instead additional partials are introduced to the upper
-			band, with amplitudes which are determined by the signals current slope, the centroid can be moved
-			while the slope is left unaltered.
+			filters. The centroid can be manipulated in various manners. An analysis / resynthesis approach can
+			be taken, using a nonlinear device to reconstruct the high frequency portion of the original signal
+			as the upper band and the relative gains adjusted similarly to if two filters were used.
+			Alternatively the properties of the nonlinear device can be altered to change the properties of the
+			upper band. This provides more flexibility for the implementation of timbral transforms as it
+			allowing the centroid to be changed independently of some other features. For example, changing the
+			gains of two bands, as done by \citet{zacharakis2011an}, changes the spectral slope of the output
+			signal as well as its centroid. One might find that a particular aspect of the perception of timbre
+			relies on the independent control of these two features. This can be achieved using the system in
+			Figure~\ref{fig:TwoBandSpectralCentroidSystem} by introducing partials to the upper band, with
+			amplitudes which are determined by the signal's spectral slope. The slope of the output signal is
+			then the same as that of the input while the centroid has been altered by the addition of new high
+			frequency content.
 
-			Figure~\ref{fig:MoveCentroids} shows the effect of this system on the test signals. The low and
-			high pass filters used to separate the bands were set to have a cutoff frequency equal to
-			$9.5f_{0}$ and the nonlinear device used was a symmetric hard peak clipper. The gains applied to
-			the bands are parameterised as $P$, the low band is multiplied by a gain of $1 - P$ and the high
-			band by a gain of $P$.
+			This system can be used to provide monotonic control over the spectral centroid of a signal. As an
+			example of this, the four test signals were processed using the system using a symmetric hard peak
+			clipper as the nonlinear device and a cutoff frequency of $9.5f_{0}$ for the high and low pass
+			filters. The gains applied to the bands are parameterised as $P$, the low band is multiplied by a
+			gain of $1 - P$ and the high band by a gain of $P$. These specifications are selected to
+			demonstrate how monotonic control over the spectral centroid can be achieved, shown in Figure
+			\ref{fig:MoveCentroid}. More advanced configurations can be devised for application in specific
+			timbral transforms.
 
 			\begin{figure}[h!]
 				\centering
@@ -821,7 +834,7 @@
 			centroid meaning different gains must be applied to components either side of the centroid.
 			Calculating these gains must be done on a signal by signal basis making if difficult to provide a
 			general solution. These problems are compounded further when trying to control the higher order
-			moments as the spectral spread must also be kept constant.
+			moments as their values depend on both the centroid and spread of the input's spectrum.
 
 			Intuition about what the spectral moments describe can be used to influence them in a simpler
 			manner. These methods do not provide precise control over a specific moment but allow it to be
@@ -849,16 +862,17 @@
 			ability to generate new bands of energy means that energy can be added near to the spectral
 			centroid regardless of whether there was energy there in the input signal.
 
-			Spectral skewness can be increased by applying a spectral tilt about the spectral centroid. A tilt
-			with a positive gradient will decrease the skewness, whereas a negative gradient will increase the
-			skewness. While the simplest system to achieve this would be a linear filter, an excitation based
-			approach can provide a more flexible system in terms of manipulation or preservation of other
-			features. Using the system shown in Figure~\ref{fig:SuperpositionSystem} a spectral tilt of $k$ dB
-			per octave can be applied to the first nine harmonics. This is done by multiplying each harmonic's
-			amplitude by $10^{\frac{k}{20}\log_{2} \left( \frac{\nu_{n}}{\mu_{s}} \right)}$. Increasing the
-			value of $k$ increases the gradient of the tilt applied and thereby lowers the signal's spectral
-			skewness. Figure~\ref{fig:MoveSkewnesses} shows the effects of changing $k$ when processing the
-			test signals.
+			Spectral skewness can be manipulated by applying a spectral tilt about the spectral centroid,
+			similarly to how \citet{williams2007perceptually} manipulate the spectral centroid. A tilt with a
+			positive gradient will decrease the skewness, whereas a negative gradient will increase the
+			skewness. As with the manipulation of the centroid, the simplest system to achieve this would be a
+			linear filter, however, an excitation based approach can provide a more flexible system in terms of
+			manipulation or preservation of other features. Using the system shown in
+			Figure~\ref{fig:SuperpositionSystem} a spectral tilt of $k$ dB per octave can be applied to the
+			first nine harmonics. This is done by multiplying each harmonic's amplitude by
+			$10^{\frac{k}{20}\log_{2} \left( \frac{\nu_{n}}{\mu_{s}} \right)}$. Increasing the value of $k$
+			increases the gradient of the tilt applied and thereby lowers the signal's spectral skewness.
+			Figure~\ref{fig:MoveSkewnesses} shows the effects of changing $k$ when processing the test signals.
 
 			\begin{figure}[h!]
 				\centering
