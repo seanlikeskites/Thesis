@@ -663,6 +663,11 @@
 
 \section{Parameterisation of Audio Feature}
 \label{sec:FeatureControl-Parameterisation}
+	\note
+	{
+		Why these features?
+	}
+
 	The systems discussed in Section~\ref{sec:FeatureControl-Systems} provide control over where the energy is
 	introduced into a signal's spectrum. Large bands of energy can be introduced or finer control over specific
 	harmonics can be provided. Each system has a set of control parameters controlling gains applied to specific bands
@@ -1431,34 +1436,56 @@
 
 \section{Summary}
 \label{sec:FeatureControl-Summary}
+	\note
+	{
+		Introduce the table any why it is a good thing and what the columns refer to. All things require f0
+		tracking but other elements may differ.
+	}
+
 	\begin{table}[h!]
 		\centering
-		\begin{tabular}{|c|c|C{4cm}|c|}
+		\begin{tabular}{|C{3cm}|c|C{5cm}|C{3cm}|}
 			\hline
 			\bf{Feature} & \bf{System} & \bf{Nonlinear Device} & \bf{Monotonicity} \tabularnewline
 			\hline
 			\hline
-			$\mu_{\mathrm{s}}$ & Figure~\ref{fig:TwoBandSpectralCentroidSystem} & 
+			Spectral Centroid, Skewness and Kurtosis &
+			Figure~\ref{fig:TwoBandSpectralCentroidSystem} & 
 			Any which generate a large band of harmonic energy, e.g. static nonlinearities. & 
-			Yes \tabularnewline			
+			Monotonic Control \tabularnewline
 			\hline
-			Spectral Spread & Figure~\ref{fig:TwoBandSpectralCentroidSystem} & 
+			Spectral Spread & Figure~\ref{fig:SuperpositionSystem} & 
 			Any which generate a large band of harmonic energy, e.g. static nonlinearities. & 
-			Yes \tabularnewline			
+			Monotonic Control \tabularnewline
 			\hline
-			Spectral Irregularity & & & \tabularnewline			
+			Spectral Irregularity & Figure~\ref{fig:SuperpositionSystem} & 
+			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Monotonic Control \tabularnewline
 			\hline
-			Spectral Flatness & & & \tabularnewline			
+			Spectral Flatness & Figure~\ref{fig:SuperpositionSystem} &
+			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Monotonic control for a particular parameter range. \tabularnewline
 			\hline
-			Spectral Slope & & & \tabularnewline			
+			Spectral Slope & Figure~\ref{fig:SuperpositionSystem} &
+			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Linear Control \tabularnewline
 			\hline
-			Tristimulus & & & \tabularnewline			
+			Tristimulus & Figure~\ref{fig:SuperpositionSystem} & 
+			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Monotonic Control \tabularnewline			
 			\hline
-			$\mathrm{OER}$ & & & \tabularnewline			
+			$\mathrm{OER}$ & Figure~\ref{fig:HarmonicParitySystem} &
+			Nonlinearities which can generate bands of odd or even harmonic (e.g. static nonlinearities
+			described by odd or even characteristic curves). & 
+			Monotonic Control \tabularnewline
 			\hline
-			Inharmonicity & & & \tabularnewline			
+			Inharmonicity & Figure~\ref{fig:InharmonicitySystem} & 
+			Individual harmonic generation (e.g. SSBA or IAP) and spectral shifting techniques. & 
+			Linear Control \tabularnewline
 			\hline
 		\end{tabular}
+		\caption{A summary table of the systems used to control each audio feature.}
+		\label{tab:FeautreControlSummary}
 	\end{table}
 
 \section{Conclusions}
