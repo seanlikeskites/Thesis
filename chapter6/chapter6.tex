@@ -706,20 +706,21 @@
 			can then be altered to adjust the spectral centroid. This preserves more of the original signal's
 			structure, the relative levels of partials within each band remaining the same. Using this method
 			the new spectral centroid will lie somewhere between the respective centroids of the two bands. The
-			relative amplitudes of the two bands required to give a certain spectral centroid, $\mu_{s}$, can
-			be calculated using Equation~\ref{eq:SpectralCentroidManipulation}.
+			relative amplitudes of the two bands required to give a certain spectral centroid,
+			$\mu_{\mathrm{s}}$, can be calculated using Equation~\ref{eq:SpectralCentroidManipulation}.
 
 			\begin{equation}
 				\frac{\sum_{n = c + 1}^{N} a_{n}}
 				     {{\sum_{n = 1}^{c} a_{n}}} = 
-				\frac{\mu_{s_{l}} - \mu_{s}}{\mu_{s} - \mu_{s_{u}}}, 
-				\quad \mu_{s_{l}} \leq \mu_{s} < \mu_{s_{u}} \quad \text{or} 
-					\quad \mu_{s_{u}} < \mu_{s} \leq \mu_{s_{l}}
+				\frac{\mu_{\mathrm{s}_{l}} - \mu_{\mathrm{s}}}{\mu_{\mathrm{s}} - \mu_{\mathrm{s}_{u}}}, 
+				\quad \mu_{\mathrm{s}_{l}} \leq \mu_{\mathrm{s}} < \mu_{\mathrm{s}_{u}} \quad \text{or} 
+					\quad \mu_{\mathrm{s}_{u}} < \mu_{\mathrm{s}} \leq \mu_{\mathrm{s}_{l}}
 				\label{eq:SpectralCentroidManipulation}
 			\end{equation}
 
-			Where $\mu_{s_{l}}$ and $\mu_{s_{u}}$ are the spectral centroid of the lower and upper bands
-			respectively, and $c$ is the order of the highest frequency spectral component in the lower band.
+			Where $\mu_{\mathrm{s}_{l}}$ and $\mu_{\mathrm{s}_{u}}$ are the spectral centroid of the lower and
+			upper bands respectively, and $c$ is the order of the highest frequency spectral component in the
+			lower band.
 
 			\citet{williams2007perceptually} employ a spectral tilt to manipulate spectral centroid, applying
 			gain to the partials of a signal as a linear function of their frequency. This allows the spectral
@@ -849,7 +850,7 @@
 			processing the isolated $f_{0}$ with a nonlinear device followed by a band pass filter. This new
 			band can then be summed with the original signal at the desired gain. Figure~\ref{fig:MoveSpreads}
 			shows the change in spectral spread when the gain, $m$, of a spectral band, containing energy
-			between $0.8\mu_{s}$ and $1.2\mu_{s}$, is changed.
+			between $0.8\mu_{\mathrm{s}}$ and $1.2\mu_{\mathrm{s}}$, is changed.
 
 			\begin{figure}[h!]
 				\centering
@@ -870,9 +871,10 @@
 			manipulation or preservation of other features. Using the system shown in
 			Figure~\ref{fig:SuperpositionSystem} a spectral tilt of $k$ dB per octave can be applied to the
 			first nine harmonics. This is done by multiplying each harmonic's amplitude by
-			$10^{\frac{k}{20}\log_{2} \left( \frac{\nu_{n}}{\mu_{s}} \right)}$. Increasing the value of $k$
-			increases the gradient of the tilt applied and thereby lowers the signal's spectral skewness.
-			Figure~\ref{fig:MoveSkewnesses} shows the effects of changing $k$ when processing the test signals.
+			$10^{\frac{k}{20}\log_{2} \left( \frac{\nu_{n}}{\mu_{\mathrm{s}}} \right)}$. Increasing the value
+			of $k$ increases the gradient of the tilt applied and thereby lowers the signal's spectral
+			skewness.  Figure~\ref{fig:MoveSkewnesses} shows the effects of changing $k$ when processing the
+			test signals.
 
 			\begin{figure}[h!]
 				\centering
@@ -1427,6 +1429,38 @@
 		counteracted by adding an addition frequency shifter to the system. This shifter would operate on the
 		filtered input signal and shift all the higher order partials by the same amount.
 
+\section{Summary}
+\label{sec:FeatureControl-Summary}
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|c|c|C{4cm}|c|}
+			\hline
+			\bf{Feature} & \bf{System} & \bf{Nonlinear Device} & \bf{Monotonicity} \tabularnewline
+			\hline
+			\hline
+			$\mu_{\mathrm{s}}$ & Figure~\ref{fig:TwoBandSpectralCentroidSystem} & 
+			Any which generate a large band of harmonic energy, e.g. static nonlinearities. & 
+			Yes \tabularnewline			
+			\hline
+			Spectral Spread & Figure~\ref{fig:TwoBandSpectralCentroidSystem} & 
+			Any which generate a large band of harmonic energy, e.g. static nonlinearities. & 
+			Yes \tabularnewline			
+			\hline
+			Spectral Irregularity & & & \tabularnewline			
+			\hline
+			Spectral Flatness & & & \tabularnewline			
+			\hline
+			Spectral Slope & & & \tabularnewline			
+			\hline
+			Tristimulus & & & \tabularnewline			
+			\hline
+			$\mathrm{OER}$ & & & \tabularnewline			
+			\hline
+			Inharmonicity & & & \tabularnewline			
+			\hline
+		\end{tabular}
+	\end{table}
+
 \section{Conclusions}
 \label{sec:FeatureControl-Conclusions}
 	This section has presented and discussed how harmonic excitation can be used to control specific audio features in
@@ -1446,7 +1480,7 @@
 	input signal being perfectly isolated and the elimination of superposition for any of the excited harmonics
 	(Section~\ref{sec:FeatureControl-Systems-Superposition}). In real time systems this will not always be possible.
 	The implementations used when processing the test signals used second order IIR filters for these tasks to
-	investigate the effects this would have when processing different signals. As seen in the figures in
+	investigate the effects this would have when processing different signals. As seen in
 	Section~\ref{sec:FeatureControl-Parameterisation} this less than ideal filter performance produces non-monotonic
 	behaviour for some of the systems. This is especially notable when controlling the odd to even harmonic ratio of
 	the piano signal, due to the nature of the damped fundamental the system was only able to produce even order
