@@ -663,20 +663,34 @@
 
 \section{Parameterisation of Audio Feature}
 \label{sec:FeatureControl-Parameterisation}
-	\note
-	{
-		Why these features?
-	}
-
 	The systems discussed in Section~\ref{sec:FeatureControl-Systems} provide control over where the energy is
 	introduced into a signal's spectrum. Large bands of energy can be introduced or finer control over specific
-	harmonics can be provided. Each system has a set of control parameters controlling gains applied to specific bands
-	of energy and filtering / frequency shifting options. This section discusses how these control parameters can be
-	configured to alter specific audio features. This process is referred to as parameterisation of the feature
-	changes, defining systems whereby a single control parameter is mapped to the parameters of a harmonic excitation
+	harmonics can be provided. As such they are well suited to applications in which the spectral features of an audio
+	signal are manipulated. Each system has a set of control parameters controlling gains applied to specific bands of
+	energy and filtering / frequency shifting options. This section discusses how these control parameters can be
+	configured to alter specific spectral audio feature. This process is referred to as parameterisation of the audio
+	feature, defining systems whereby a single control parameter is mapped to the parameters of a harmonic excitation
 	system in order to change the value of an audio feature.
 
-	Assuming perfect detection of $f_{0}$ and perfect filters, the systems shown in
+	The features parameterised in this section were selected based on the analysis of harmonic excitation algorithms in
+	Chapter~\ref{chap:ExcitationEvaluation} and the properties of the features themselves. The harmonic excitation
+	algorithms used provide the most control over spectral properties of signals, giving few options for temporal
+	manipulations. As such, only spectral audio features will be considered in this section. Of these, only those which
+	which can be manipulated by introducing of a band of spectral energy or through individual control of the first
+	nine harmonics are parameterised. This is due to the limitations of the systems developed in
+	Section~\ref{sec:FeatureControl-Systems}. Control of more complex features requires different processing
+	techniques. For	example, control of the MFCCs involves the manipulation of several frequency bands, a task better
+	suited to an equalisation system. The spectral features parameterised in this section are the spectral moments
+	(Section~\ref{sec:FeatureControl-Parameterisation-SpectralMoments}), spectral irregularity
+	(Section~\ref{sec:FeatureControl-Parameterisation-Irregularity}), spectral flatness
+	(Section~\ref{sec:FeatureControl-Parameterisation-Flatness}), spectral slope
+	(Section~\ref{sec:FeatureControl-Parameterisation-Slope}), tristimulus
+	(Section~\ref{sec:FeatureControl-Parameterisation-Tristimulus}), odd to even harmonic ratio
+	(Section~\ref{sec:FeatureControl-Parameterisation-HarmonicParityRatio}) and inharmonicity
+	(Section~\ref{sec:FeatureControl-Parameterisation-Inharmonicity}). Where previous studies have been conducted in
+	which a particular feature is manipulated the techniques used are discussed.
+
+	Assuming perfect detection of $f_{0}$ and perfect filters, the systems developed in
 	Section~\ref{sec:FeatureControl-Systems} will provide analogous manipulations for all monophonic, tonal input
 	signals. For example, the system in Figure~\ref{fig:HarmonicGenerationSystem} will always generate a harmonic with
 	the same amplitude relationship to the $f_{0}$ of the input. In actual implementations the inaccuracies in $f_{0}$
