@@ -49,12 +49,12 @@
 		more predictable behaviour simplifies the problem of using harmonic excitation algorithms in providing
 		monotonic control of audio features, allowing similar transforms to be applied to a wide range of input
 		signals. To take advantage of these improvement in predictability the input signal to a harmonic exciter
-		must be pre-processed such that it is represented by a single sinusoid. For monophonic tonal sources this
+		must be pre-processed such that it is represented by a single sinusoid. For monophonic, tonal sources this
 		can be achieved by representing this signal as a sinusoid at the input's $f_{0}$. This remainder of this
 		thesis then focusses of controlling timbre in this class of audio signal. Other classes of signal
 		(polyphonic, noisy etc.) are left for consideration in future work.
 		
-		A monophonic tonal signal can be represented as a sinusoid by applying a band pass filter centered around
+		A monophonic, tonal signal can be represented as a sinusoid by applying a band pass filter centered around
 		its $f_{0}$. This produces a narrowband signal with the majority of its energy concentrated at the $f_{0}$.
 		In the following discussion this filtered signal will be referred to as the `isolated $f_{0}$'. Applying a
 		harmonic excitation algorithm to the isolated $f_{0}$ will produce a signal with a lower level of
@@ -677,7 +677,7 @@
 	system in order to change the value of an audio feature.
 
 	Assuming perfect detection of $f_{0}$ and perfect filters, the systems shown in
-	Section~\ref{sec:FeatureControl-Systems} will provide analogous manipulations for all monophonic tonal input
+	Section~\ref{sec:FeatureControl-Systems} will provide analogous manipulations for all monophonic, tonal input
 	signals. For example, the system in Figure~\ref{fig:HarmonicGenerationSystem} will always generate a harmonic with
 	the same amplitude relationship to the $f_{0}$ of the input. In actual implementations the inaccuracies in $f_{0}$
 	tracking and the properties of the input signal and filters used will affect how the system operates. To examine
@@ -1434,74 +1434,77 @@
 		counteracted by adding an addition frequency shifter to the system. This shifter would operate on the
 		filtered input signal and shift all the higher order partials by the same amount.
 
-\section{Summary}
-\label{sec:FeatureControl-Summary}
-	\note
-	{
-		Introduce the table any why it is a good thing and what the columns refer to. All things require f0
-		tracking but other elements may differ.
-	}
-
-	\begin{table}[h!]
-		\centering
-		\begin{tabular}{|C{3cm}|c|C{5cm}|C{3cm}|}
-			\hline
-			\bf{Feature} & \bf{System} & \bf{Nonlinear Device} & \bf{Monotonicity} \tabularnewline
-			\hline
-			\hline
-			Spectral Centroid, Skewness and Kurtosis &
-			Figure~\ref{fig:TwoBandSpectralCentroidSystem} & 
-			Any which generate a large band of harmonic energy, e.g. static nonlinearities. & 
-			Monotonic Control \tabularnewline
-			\hline
-			Spectral Spread & Figure~\ref{fig:SuperpositionSystem} & 
-			Any which generate a large band of harmonic energy, e.g. static nonlinearities. & 
-			Monotonic Control \tabularnewline
-			\hline
-			Spectral Irregularity & Figure~\ref{fig:SuperpositionSystem} & 
-			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
-			Monotonic Control \tabularnewline
-			\hline
-			Spectral Flatness & Figure~\ref{fig:SuperpositionSystem} &
-			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
-			Monotonic control for a particular parameter range. \tabularnewline
-			\hline
-			Spectral Slope & Figure~\ref{fig:SuperpositionSystem} &
-			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
-			Linear Control \tabularnewline
-			\hline
-			Tristimulus & Figure~\ref{fig:SuperpositionSystem} & 
-			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
-			Monotonic Control \tabularnewline			
-			\hline
-			Odd to Even Harmonic Ratio & Figure~\ref{fig:HarmonicParitySystem} &
-			Nonlinearities which can generate bands of odd or even harmonic (e.g. static nonlinearities
-			described by odd or even characteristic curves). & 
-			Monotonic Control \tabularnewline
-			\hline
-			Inharmonicity & Figure~\ref{fig:InharmonicitySystem} & 
-			Individual harmonic generation (e.g. SSBA or IAP) and spectral shifting techniques. & 
-			Linear Control \tabularnewline
-			\hline
-		\end{tabular}
-		\caption{A summary table of the systems used to control each audio feature.}
-		\label{tab:FeautreControlSummary}
-	\end{table}
-
 \section{Conclusions}
 \label{sec:FeatureControl-Conclusions}
 	This section has presented and discussed how harmonic excitation can be used to control specific audio features in
 	harmonically structured signals. Methods have been suggested by which a single parameter can be mapped to the
 	parameters of the harmonic excitation systems proposed in Section~\ref{sec:FeatureControl-Systems} to control the
-	value of a particular audio feature in the output. Where possible the parameter has been defined such that with a
-	little analysis of the input signal, the value of the feature in the output can be precisely set. In other cases
-	the parameter is defined such that the function describing the relationship between the parameter and feature
-	values is monotonic. In the case of spectral flatness this was not possible, but the parameter values at which the
-	maximum spectral flatness occurs is defined. The function describing spectral flatness as the parameter is moved
-	away from this value is monotonically decreasing. While these parameterisations do not allow for the absolute value
-	of an audio feature to be defined, the user is given control over the direction in which the feature is altered.
-	This allows them to be used for timbral transformations in which the semantic descriptor is defined by a particular
-	change in feature values, such as for `bright' and `warm' (Chapter~\ref{chap:TimbreEvaluation}).
+	value of a particular audio feature in the output. Each of these methods rely on the isolation of the
+	input's $f_{0}$, restricting their use to monophonic, tonal signals. The remaining characteristics of the systems
+	differ depending on the audio feature being manipulated, each having different structures and using different types
+	of nonlinear devices. The system details used to manipulate each feature are summarised in
+	Table~\ref{tab:FeatureControlSummary}.
+
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{|C{3cm}|c|C{5cm}|C{3cm}|}
+			\hline
+			\bf{Feature} & \bf{System} & \bf{Nonlinear Device} & \bf{Degree of Control} \tabularnewline
+			\hline
+			\hline
+			Spectral Centroid & Figure~\ref{fig:TwoBandSpectralCentroidSystem} & 
+			Any which generate a large band of harmonic energy, e.g. static nonlinearities. & 
+			Exact \tabularnewline
+			\hline
+			Spectral Spread & Figure~\ref{fig:SuperpositionSystem} & 
+			Any which generate a large band of harmonic energy, e.g. static nonlinearities. & 
+			Monotonic \tabularnewline
+			\hline
+			Spectral Skewness and Kurtosis & Figure~\ref{fig:TwoBandSpectralCentroidSystem} & 
+			Any which generate a large band of harmonic energy, e.g. static nonlinearities. & 
+			Monotonic \tabularnewline
+			\hline
+			Spectral Irregularity & Figure~\ref{fig:SuperpositionSystem} & 
+			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Monotonic \tabularnewline
+			\hline
+			Spectral Flatness & Figure~\ref{fig:SuperpositionSystem} &
+			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Monotonic within a particular parameter range. \tabularnewline
+			\hline
+			Spectral Slope & Figure~\ref{fig:SuperpositionSystem} &
+			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Exact \tabularnewline
+			\hline
+			Tristimulus & Figure~\ref{fig:SuperpositionSystem} & 
+			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Exact \tabularnewline			
+			\hline
+			Odd to Even Harmonic Ratio & Figure~\ref{fig:HarmonicParitySystem} &
+			Nonlinearities which can generate bands of odd or even harmonic 
+			(e.g. static nonlinearities described by odd or even characteristic curves). & 
+			Exact \tabularnewline
+			\hline
+			Inharmonicity & Figure~\ref{fig:InharmonicitySystem} & 
+			Individual harmonic generation (e.g. SSBA or IAP) and spectral shifting techniques. & 
+			Linear \tabularnewline
+			\hline
+		\end{tabular}
+		\caption{A summary table of the systems used to control each audio feature.}
+		\label{tab:FeatureControlSummary}
+	\end{table}
+	
+	Where possible, parameterisations have been defined such that, using ideal filters, the audio feature being
+	manipulated can be set to an exact value. These are identified as having an `exact' degree of control in
+	Table~\ref{tab:FeatureControlSummary}. In other cases the parameter is defined such that the function describing
+	the relationship between the parameter and feature values is monotonic. These are identified as having either
+	`linear' or `monotonic' degrees of control in Table~\ref{tab:FeatureControlSummary}. In the case of spectral
+	flatness this was not possible, but the parameter values at which the maximum spectral flatness occurs is defined.
+	The function describing spectral flatness as the parameter is moved away from this value is monotonically
+	decreasing. While these parameterisations do not allow for the absolute value of an audio feature to be defined,
+	the user is given control over the direction in which the feature is altered. This allows them to be used for
+	timbral transformations in which the semantic descriptor is defined by a particular change in feature values, such
+	as for `bright' and `warm' (Chapter~\ref{chap:TimbreEvaluation}).
 
 	In implementing these methods further challenges are met. The parameterisations all rely on the $f_{0}$ of the
 	input signal being perfectly isolated and the elimination of superposition for any of the excited harmonics
