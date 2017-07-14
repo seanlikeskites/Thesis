@@ -17,9 +17,9 @@
 	are specialised to perform a particular task. As this work is concerned with the application of harmonic excitation
 	to real time timbral control, some algorithms in the literature may not be suitable due to the predictability of
 	their effects on a signal or their inability to operate in real time. In
-	Section~\ref{sec:ExcitationEvaluation-Evaluation} a set of criteria for assessing the suitability of a harmonic
+	Section~\ref{sec:ExcitationEvaluation-Evaluation} a set of criteria for assessing the suitability of harmonic
 	excitation algorithms for use in this work are suggested. These criteria are then used to asses various algorithms
-	in Section~\ref{sec:ExcitationEvaluation-Comparison}, a summary of each algorithm's performance shown in
+	in Section~\ref{sec:ExcitationEvaluation-Comparison}, with a summary of each algorithm's performance shown in
 	Table~\ref{tab:ComparisonSummary}. Techniques by which the performance of several algorithms can be improved, with
 	respect to these criteria, are also discussed.
 
@@ -32,7 +32,7 @@
 	assessed against the following criteria:
 
 	\begin{itemize}
-		\item Complexity
+		\item Computational Complexity
 		\item Homogeneity
 		\item Spectral Characteristics
 		\item Temporal Characteristics
@@ -46,7 +46,7 @@
 	ideal characteristics within these areas are discussed in Sections
 	\ref{sec:ExcitationEvaluation-Evaluation-Complexity} to \ref{sec:ExcitationEvaluation-Evaluation-UseCases}.
 
-	\subsection{Complexity}
+	\subsection{Computational Complexity}
 	\label{sec:ExcitationEvaluation-Evaluation-Complexity}
 		Audio effects can operate either offline or in real time. An offline effect is provided with a prerecorded
 		input signal and processes it, taking as much time as is necessary. A real time effect processes an input
@@ -81,7 +81,7 @@
 		of signals with energy in this frequency range will be altered while those of signals with no energy in
 		that band will be unaffected. This problem is compounded when the effect being applied is non-homogeneous
 		(does not satisfy the condition of homogeneity given by Equation~\ref{eq:homogeneity}).  Nonlinear systems
-		are typically non-homogeneous, this is undesirable when using them to achieve timbral control as it means
+		are typically non-homogeneous; this is undesirable when using them to achieve timbral control as it means
 		the effects are less easy to predict. A non-homogeneous system behaves differently depending on the
 		amplitude of the input signal. Different timbral transforms could be applied to the same signal if its
 		amplitude is changed slightly. From a user's point of view this makes control of the system less intuitive
@@ -99,10 +99,10 @@
 	\subsection{Spectral Characteristics}
 	\label{sec:ExcitationEvaluation-Evaluation-SpectralCharacteristics}
 		The algorithms presented in Section~\ref{sec:Excitation-Methods} all introduce new spectral content to a
-		signal. Depending on the algorithm and the input signal, the nature of this this new content can vary
-		greatly, ranging from wide bands comprising both harmonic and inharmonic partials to individual harmonic
-		partials. To provide intuitive timbral control a system should produce similar spectral effects despite the
-		content of the input signal. The degree to which these spectral effects can be manipulated using a system's
+		signal. Depending on the algorithm and the input signal, the nature of this new content can vary greatly,
+		ranging from wide bands comprising both harmonic and inharmonic partials to individual harmonic partials.
+		To provide intuitive timbral control a system should produce similar spectral effects despite the content
+		of the input signal. The degree to which these spectral effects can be manipulated using a system's
 		parameters also contributes to its usefulness. An ideal algorithm would allow for precise control over
 		where energy in introduced in the output spectrum. Several considerations must be made depending on the
 		desired spectral result. For example, a system designed to only generate harmonic partials should not
@@ -122,7 +122,7 @@
 		changes in energy) in the signal. This refers to spreading out the time taken for a transient to occur over
 		a longer period. As with spectral characteristics, to provide intuitive timbral control the temporal
 		characteristics of a system used should produce the same result despite the properties of the input signal.
-		Again control over these properties provides another advantage.
+		Again, control over these properties provides another advantage.
 
 	\subsection{Use Cases}
 	\label{sec:ExcitationEvaluation-Evaluation-UseCases}
@@ -215,7 +215,7 @@
 		\end{table}
 	\end{landscape}
 
-	\subsection{Complexity}
+	\subsection{Computational Complexity}
 	\label{sec:ExcitationEvaluation-Comparison-Complexity}
 		The algorithms with the lowest complexity are the static nonlinearities. The application of a static
 		nonlinearity involves only a few simple operations for each input sample. Perhaps the simplest case is that
@@ -255,21 +255,21 @@
 		consists of eight biquad filters and a one sample delay. This provides a reasonable compromise between
 		accuracy, complexity and introduced delay.  Once an analytic signal has been constructed, little additional
 		computation is required. SSBA requires the evaluation of a complex exponential for each sample. IAP and
-		spectral replication, however, require the computation of trigonometric functions, be it to calculate the
-		complex argument of the analytic signal or to synthesise a modulating signal.
+		spectral replication require the computation of trigonometric functions, be it to calculate the complex
+		argument of the analytic signal or to synthesise a modulating signal.
 
 		Spectral stretching using a phase vocoder requires a large amount of computation. Calculating the STFT
 		involves splitting the signal into frames on which the DFT is then computed. The frame size used in the
-		calculation of the STFT must be sufficient enough to represent the detail in the input signal. Frames of
-		size $N$ represent the spectrum in frequency bins $\frac{f_{s}}{N}$Hz apart. Larger frame sizes give finer
-		spectral detail while introducing more latency into the system, as $N$ samples of input must have been
-		produced before a frame of the STFT can be calculated. When building a phase vocoder a balance must be made
-		between the frequency resolution of the STFT and the desired amount of latency. After calculation of the
-		STFT, the phase correction for each frame is computed and applied before the inverse DFT of each frame is
-		taken and the frames summed back together with the new hop size. The resulting signal then needs to be
-		resampled requiring further operations. If the scaling factor is not an integer value, the resampling
-		process will require additional interpolation calculations. Several steps can be taken to reduce the work
-		needed when using a phase vocoder. The computational complexity of the DFT calculations can be reduced from
+		calculation of the STFT must be sufficient to represent the detail in the input signal. Frames of size $N$
+		represent the spectrum in frequency bins $\frac{f_{s}}{N}$Hz apart. Larger frame sizes give finer spectral
+		detail while introducing more latency into the system, as $N$ samples of input must have been produced
+		before a frame of the STFT can be calculated. When building a phase vocoder a balance must be made between
+		the frequency resolution of the STFT and the desired amount of latency. After calculation of the STFT, the
+		phase correction for each frame is computed and applied before the inverse DFT of each frame is taken and
+		the frames summed back together with the new hop size. The resulting signal then needs to be resampled
+		requiring further operations. If the scaling factor is not an integer value, the resampling process will
+		require additional interpolation calculations. Several steps can be taken to reduce the work needed when
+		using a phase vocoder. The computational complexity of the DFT calculations can be reduced from
 		$\mathcal{O} \left( n^{2} \right)$ to $\mathcal{O}(n\log{n})$, where $n$ is the number of samples on which
 		the DFT is being computed, by using the fast Fourier transform \citep{portnoff1976implementation}. When
 		shifting the frequencies upwards, the amount of work can be further reduced by resampling the signal prior
@@ -281,7 +281,7 @@
 		to calculate an output sample increases, increasing the computational load. The algorithm's complexity
 		remains relatively low however, requiring a small number of simple operations. The biggest source of
 		latency in STTR is through the time reversal of the frames. This introduces an $L$ sample delay to the
-		signal as the samples at the end of the first frame are needed to form the start of the signal.
+		signal, as the samples at the end of the first frame are needed to form the start of the signal.
 
 	\subsection{Homogeneity}
 	\label{sec:ExcitationEvaluation-Comparison-Homogeneity}
@@ -407,9 +407,9 @@
 			implementation given in Equation~\ref{eq:Integrator} however only exhibits positive homogeneity due
 			to the rectification of the signal prior to integration. The sign of the gain applied to the input
 			signal also determines the points at which the output signal is reset to zero. The signal is reset
-			on positive zero crossings but a negative gain before in the input reverses the direction of all
-			zero crossings. Similarly to half wave rectification this may have audible effects depending on the
-			nature of the input signal.
+			on positive zero crossings but a negative gain applied before the input reverses the direction of
+			all zero crossings. Similarly to half wave rectification this may have audible effects depending on
+			the nature of the input signal.
 
 		\subsubsection*{Multiplier}
 			Exponentiation is a non-homogeneous operation. Any gain applied to a signal prior to processing is
@@ -607,8 +607,8 @@
 			from Chebyshev polynomials in order to control the highest frequencies introduced.
 
 			\citet{esqueda2015aliasing} propose a method for the reduction of aliasing in soft clipping
-			systems, applying bandlimited hard clipping prior to the soft clipping. They show their method to
-			reduce the level of aliased components when processing signals with $f_{0} < 3$kHz. While this
+			systems, applying bandlimited hard clipping prior to the soft clipping. They show that their method
+			reduced the level of aliased components when processing signals with $f_{0} < 3$kHz. While this
 			method does not fully eliminate aliasing, it applies bandlimiting at the Nyquist ensuring that all
 			orders of distortion which will not alias are left mostly unaffected. With a harmonic mixer one
 			would have to select a distortion order based on the $f_{0}$ of the input signal to make the best
@@ -663,7 +663,7 @@
 
 			This produces all harmonics with amplitudes rolling off at approximately 6dB per octave. This
 			shallow roll of make integrators very useful when a large amount of new frequency content is
-			desired. Due to the shallow roll off of the distortion component's amplitudes integrators are very
+			desired. Due to the shallow roll off of the distortion components' amplitudes integrators are very
 			prone to aliasing. While integrators are homogeneous, they are frequency dependent, exhibiting low
 			pass filter characteristics. Using the same integration constant a high frequency input signal will
 			produce a lower amplitude output than a low frequency input. This does not affect the relatives
@@ -769,8 +769,8 @@
 			equal to that of the input. This predictability allows for easier control of the output spectrum.
 			It also provides a simple method for the reduction of aliasing. The highest frequency in the output
 			will be that of the input plus the shift frequency $f$. Applying a low pass filter, with a cutoff
-			frequency of $f_{s} - f$Hz to the input signal will minimise the amplitude of any aliased frequency
-			components.
+			frequency of $(f_{s} - f)$Hz to the input signal will minimise the amplitude of any aliased
+			frequency components.
 
 		\subsubsection*{Spectral Folding}
 			Spectral folding with a factor $k$ results in the lowest $\frac{1}{k}$ of the input spectrum being
@@ -855,11 +855,11 @@
 			approximately 333Hz.
 
 			The exact frequencies of the partials in the output are discussed by \citet{kim2014shorttime}. In
-			effect they are the intermodulation frequencies of the input frequency and the step frequency (1
-			over the step size in seconds). The amplitudes of these partials are influenced by the Fourier
-			transform of the window function used. This allows the spectral characteristics of the output to be
-			loosely controlled through manipulation of the window function and step size. There is no upper
-			bound on the frequency of the output so upsampling may need to be used to minimise aliasing.
+			effect they are the intermodulation frequencies of the input frequency and the step frequency. The
+			amplitudes of these partials are influenced by the Fourier transform of the window function used.
+			This allows the spectral characteristics of the output to be loosely controlled through
+			manipulation of the window function and step size. There is no upper bound on the frequency of the
+			output so upsampling may need to be used to minimise aliasing.
 
 	\subsection{Temporal Characteristics}
 	\label{sec:ExcitationEvaluation-Comparison-TemporalCharacteristics}
@@ -1065,7 +1065,7 @@
 		\subsubsection*{IAP}
 			IAP can be used in similar ways to SSBA. For sinusoidal inputs the output is an individual harmonic
 			meaning harmonic mixers can be constructed which provide very fine spectral control. IAP is
-			possible more applicable in this situation that SSBA as it a homogeneous / positive homogeneous
+			possibly more applicable in this situation than SSBA as it a homogeneous / positive homogeneous
 			system depending on the order of distortion being applied. Care may need to be taken if mixing odd
 			and even orders of distortion as the behaviour of the system is slightly different for each. This
 			homogeneity is gained at the expense of less predictable behaviour when used to process signals
@@ -1092,7 +1092,7 @@
 			Spectral stretching is similar to SSBA in that it imposes a bound on the maximum and minimum
 			frequencies in the output. A perfect spectral stretching system would produce only harmonic
 			distortion components having an advantage over SSBA in which intermodulation must be combated. In
-			practise, using a phase vocoder, artefacts are introduced and the complexity of the system exceeds
+			practice, using a phase vocoder, artefacts are introduced and the complexity of the system exceeds
 			that of SSBA considerably.
 
 		\subsubsection*{STTR}

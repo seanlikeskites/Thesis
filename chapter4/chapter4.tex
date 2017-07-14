@@ -80,7 +80,7 @@
 		preferred DAW with which they work most fluidly. Convincing producers to use a new DAW for the purposes of
 		research would be a difficult task.
 
-		Third party developers can produce extensions to DAWs known as plug-ins. Plug-Ins provide additional audio
+		Third party developers can produce extensions to DAWs known as plug-ins. Plug-ins provide additional audio
 		processing functionality to the DAW environment. They can optionally expose their own parameters which
 		users can adjust to achieve their desired effect. There are several different formats in which audio
 		plug-ins can be distributed (VST, AU etc.). Most of the commonly used DAWs support plug-ins in one or more
@@ -89,14 +89,14 @@
 		Audio plug-ins provide a good platform to allow producers to provide semantic terms and audio feature
 		information from within their preferred DAW. As part of this research a suite of audio plug-ins which
 		extract this information have been developed. They have been released under the title Semantic Audio
-		Feature Extraction (SAFE) Plug-Ins \footnote{The most recent versions of the SAFE plug-ins can be
+		Feature Extraction (SAFE) Plug-ins \footnote{The most recent versions of the SAFE plug-ins can be
 		downloaded from \href{http://www.semanticaudio.co.uk/projects/download/}
 		{www.semanticaudio.co.uk/projects/download}.}.
 
-	\subsection{SAFE Plug-Ins}
+	\subsection{SAFE Plug-ins}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}
 		The SAFE plug-ins consist of four commonly used audio effects: Equaliser, Distortion, Compressor and
-		Reverb. As part of the plug-ins's interface, the user has the option to save a semantic description of the
+		Reverb. As part of the plug-in's interface, the user has the option to save a semantic description of the
 		application of the effect. The interface for the SAFE Distortion is shown in
 		Figure~\ref{fig:SAFE-Distortion}. Upon saving a description the plug-in will record and analyse five
 		seconds of audio at its inputs and outputs. When the analysis is completed the results are stored,
@@ -112,9 +112,9 @@
 			\begin{itemize}
 				\item The genre.
 				\item The instrument.
-				\item The users age.
-				\item The users location.
-				\item The users primary language.
+				\item The user's age.
+				\item The user's location.
+				\item The user's primary language.
 				\item The number of years experience the user has in music production.
 			\end{itemize}
 		\end{itemize}
@@ -133,7 +133,7 @@
 			\label{fig:SAFE-Metadata}
 		\end{figure}
 
-		The input and output signals of the plug-in are analysed in frames 4096 samples in length using the
+		The input and output signals of the plug-in are analysed in frames, 4096 samples in length, using the
 		LibXtract software library \citep{bullock2007libxtract}. In total 80 different audio features are
 		calculated for each frame. These features are split into five groups and given symbols as follows:
 
@@ -182,16 +182,16 @@
 		One disadvantage in using plug-ins is that they cannot gather information about the processing chain they
 		may be a part of. The timbral transform the user is describing may be the result of several effects working
 		together. One solution to this is to implement the feature extraction and metadata collection as a plug-in
-		which host other plug-ins. The user would use this plug-in on the channel they wish to process and build a
+		which hosts other plug-ins. The user would use this plug-in on the channel they wish to process and build a
 		processing chain from other plug-ins within it. In this manner the feature extraction process sees the
-		input and out put signals of every effect in the processing chain. This was deemed to be too much of an
+		input and output signals of every effect in the processing chain. This was deemed to be too much of an
 		interruption to the normal music production workflow which would reduce the number of people who would use
 		the plug-in. Instead the problem is mitigated somewhat by asking users to ensure that the semantic terms
-		they provide describe only the effect the plug-in being used.
+		they provide describe only the effect of the plug-in being used.
 
 		The SAFE plug-ins suffer from the same issues other distributed tests do. The researcher forfeits control
 		over the listening environment in order to gather results from a much larger sample of people. In fact they
-		provide even lest control than methodologies like that used in the Social EQ project
+		provide even less control than methodologies like that used in the Social EQ project
 		\citep{cartwright2013socialeq} in that the choice of audio stimuli being used is decided by the test
 		subject. This control is relinquished in order to access a greater user base. The metadata fields allow the
 		collected data to be categorised if information about a particular genre or instrument is desired.
@@ -211,10 +211,6 @@
 			\item Audio feature data for the input and output signals.
 			\item Provenance of the data.
 		\end{itemize}
-
-		Each entry in the SAFE dataset is described using the \emph{studio:Transform} concept, applying some
-		semantic transform to a set of input signals to produce a set of output signals. The structure of this data
-		is shown in Figure~\ref{fig:TransformGraph}.
 
 		\begin{figure}[h!]
 			\centering
@@ -242,14 +238,17 @@
 			\label{fig:TransformGraph}
 		\end{figure}
 
-		Here, users provide a term, or series of terms, to describe the transform applied by the audio effect in
-		its current state. This should describe the perceived difference between the output and input signals. In
-		the SAFE Ontology this is modelled through the \emph{safe:DescriptorItem} concept which provides a semantic
-		description for each transform. Metadata items are used to provide details about the application domain of
-		the effect, where each metadata item describes one property of an object, the property being identified
-		using an \emph{rdfs:label} and the description provided using an \emph{rdfs:comment}. Each object described
-		by a metadata item has its own set of properties, ``genre'' and ``instrument'' metadata tags, for example,
-		describe an audio signal, while ``location'' metadata tags describe a transform.
+		Each entry in the SAFE dataset is described using the \emph{studio:Transform} concept, applying some
+		semantic transform to a set of input signals to produce a set of output signals. The structure of this data
+		is shown in Figure~\ref{fig:TransformGraph}. Here, users provide a term, or series of terms, to describe
+		the transform applied by the audio effect in its current state. This should describe the perceived
+		difference between the output and input signals. In the SAFE Ontology this is modelled through the
+		\emph{safe:DescriptorItem} concept which provides a semantic description for each transform. Metadata items
+		are used to provide details about the application domain of the effect, where each metadata item describes
+		one property of an object, the property being identified using an \emph{rdfs:label} and the description
+		provided using an \emph{rdfs:comment}. Each object described by a metadata item has its own set of
+		properties, ``genre'' and ``instrument'' metadata tags, for example, describe an audio signal, while
+		``location'' metadata tags describe a transform.
 
 		The analysis of audio signals is described using the concept \emph{safe:FeatureExtractionTransform},
 		similar to a \emph{studio:Transform} but taking an audio signal as input and producing a time series of
@@ -316,10 +315,10 @@
 \label{sec:TimbreEvaluation-Analysis}
 	In this section the data collected using the SAFE plug-ins is analysed. For the purposes of this study only the
 	data from the distortion and equaliser plug-ins is used, as these effects best represent the timbral transforms
-	which can be applied using harmonic excitation. The distortion demonstrating the effects of introducing new
-	spectral content and the equaliser demonstrating the effects of manipulating the existing spectral content.
+	which can be applied using harmonic excitation. The distortion demonstrates the effects of introducing new spectral
+	content and the equaliser demonstrates the effects of manipulating the existing spectral content.
 
-	Firstly, the data is cleaned up through the preprocessing described in
+	Firstly, the data is cleaned through the preprocessing described in
 	Section~\ref{sec:TimbreEvaluation-Analysis-Preprocessing}. Then the terms used to describe transforms applied by
 	each plug-in are investigated (Section~\ref{sec:TimbreEvaluation-Analysis-TermUsage}). This provides insight into
 	the language used to describe audio in the production environment, also showing which terms are shared across
@@ -492,42 +491,43 @@
 
 		The terms `warm' and `bright' have been used to describe transforms applied using both the distortion and
 		the equaliser effects, suggesting that the timbral characteristics these terms describe can be manipulated
-		using either effect. These terms have much a much greater frequency in the equaliser as the result of an
+		using either effect. These terms have a much greater frequency in the equaliser as the result of an
 		experiment in which participants were asked to use the equaliser to make audio stimuli `warmer' and
 		`brighter' \citep{stasis2015a}. Other descriptors are only used to describe transforms applied using a
 		specific effect, suggesting that a unique property of that effect produces that timbral result. For
-		example, the term `crunch' is only used to in relation to the distortion effect.
+		example, the term `crunch' is only used in relation to the distortion effect.
 
 	\subsection{Term Clustering}
 	\label{sec:TimbreEvaluation-Analysis-TermClustering}
 		Each of the terms arrived at, after stemming, in Section~\ref{sec:TimbreEvaluation-Analysis-TermClustering}
 		can be described by their position in a multi dimensional audio feature space. Each dimension of this space
 		corresponds to one of the audio features extracted by the SAFE plug-ins. The position, $\mu_{d,k}$, of a
-		term, $d$, in the $k$\super{th} dimension of the audio feature space is calculated as the mean value of
-		feature $k$ across every transform labelled with that descriptor (Equation~\ref{eq:FeatureSpaceCoords}).
+		semantic term, $d$, in the $k$\super{th} dimension of the audio feature space is calculated as the mean
+		value of feature $k$ across every transform labelled with that descriptor
+		(Equation~\ref{eq:FeatureSpaceCoords}).
 
 		\begin{equation}
 			\mu_{d,k} = \frac{1}{N_{d}} \sum_{n = 1}^{N_{d}} \bar{x}_{d,n,k}
 			\label{eq:FeatureSpaceCoords}
 		\end{equation}
 
-		Where $N_{d}$ is the number of transforms described by descriptor $d$, and $\bar{x}_{d,n,k}$ is the mean of
-		feature $k$ across every frame of the signals analysed when saving the $n$\super{th} transform described by
-		descriptor $d$.
+		Where $N_{d}$ is the number of transforms where the user had entered the term, $d$, and $\bar{x}_{d,n,k}$
+		is the mean of feature $k$ across every frame of the signal analysed when saving the $n$\super{th}
+		transform described by descriptor $d$.
 		
-		For each audio effect two separate feature spaces are constructed. In the first, a terms coordinates are
-		calculated from the audio features of the processed signals. This gives insight into how terms are used to
-		describe the absolute feature values of a signal (e.g. a signal with a spectral centroid between 4 and
-		8kHz). In the second feature space, a terms coordinates are calculated from the difference between audio
-		features of the output and input signals. This allows terms which describe the change of features
-		associated with a transform (e.g. an increase in inharmonicity) to be identified.
+		For each audio effect two separate feature spaces are constructed. In the first, a semantic term's
+		coordinates are calculated from the audio features of the processed signals. This gives insight into how
+		terms are used to describe the absolute feature values of a signal (e.g. a signal with a spectral centroid
+		between 4 and 8kHz). In the second feature space, a term's coordinates are calculated from the difference
+		between audio features of the output and input signals. This allows terms which describe the change of
+		features associated with a transform (e.g. an increase in inharmonicity) to be identified.
 
 		To identify groups of semantically similar descriptors, hierarchical clustering is applied to these feature
 		spaces. Prior to clustering, each dimension of the feature space is standardised (i.e. scaled and offset
 		such that is has a mean of zero and a standard deviation of one) to mitigate any effect the range of a
 		particular audio feature might have on the clustering. Clusters are constructed iteratively. Each term
-		initially sits in a cluster on it's own, on each iteration the two closest clusters are combined to create
-		a new cluster. The distance between clusters is calculated using the Ward linkage criterion
+		initially sits in a cluster on its own, on each iteration the two closest clusters are combined to create a
+		new cluster. The distance between clusters is calculated using the Ward linkage criterion
 		\citep{ward1963hierarchical} in order to minimise the variance within each cluster. This distance between
 		two clusters ($a$ and $b$), $d(a, b)$, is calculated using Equation~\ref{eq:WardsCriterion}.
 
@@ -724,9 +724,10 @@
 			that users do not agree on the position of the term in the feature space, or that that feature has
 			no effect on the perception of the term. In the first case the agreement score should be decreased,
 			but in the second the agreement score should not be affected. Because of this ambiguity, it is
-			preferable that a high variance has negligible effect on the agreement score. In this way, if a
-			high variance does imply disagreement it does not unduly increase the agreement score and if it
-			does not imply disagreement it does to unduly decrease the agreement score.
+			preferable that features exhibiting high variances do not have an overly large effect on the
+			agreement score.  In this way, if a high variance does imply disagreement it does not unduly
+			increase the agreement score and if it does not imply disagreement it does to unduly decrease the
+			agreement score.
 			
 			This can be implemented by changing Equation~\ref{eq:ReciprocalOfSumAgreement} to be a sum of
 			reciprocals rather than the reciprocal of a sum, as shown in
@@ -776,7 +777,7 @@
 			of audio features. If the features concerned are mathematically defined to be directly proportional
 			then these zero eigenvalues should have no effect on the agreement score. If, however, a perfect
 			linear relationship is discovered in the data, the agreement score should be increased
-			accordingly. This raises an issue with Equation~\ref{eq:EigenvalueAgreement} in that a devision by
+			accordingly. This raises an issue with Equation~\ref{eq:EigenvalueAgreement} in that a division by
 			zero will occur if a perfectly linear relationship is discovered. This can be remedied by
 			calculating the agreement using Equation~\ref{eq:BoundedEigenvalueAgreement}. Calculating the
 			agreement in this manner also has the advantage of bounding the agreement score between zero (no
@@ -1127,7 +1128,8 @@
 			content, `warm' and `cream' describing signals will a low proportion of high frequency energy and
 			`bright' and `harsh' describing those with a larger proportion. The spectral effects of the other
 			PCs are not as apparent, this is likely due to the low resolution of the spectral representation
-			but could also be caused by the low frequency with which some of the terms have been used.
+			but it should also be noted that this could be influenced by the low number of times some of the
+			terms have been used.
 
 			\begin{figure}[h!]
 				\centering
@@ -1487,22 +1489,22 @@
 	these being `warm', `bright' and `crunch'.
 
 	Low dimensional timbre spaces are then constructed by applying PCA to the audio features associated with each
-	transform. The audio features which correlate est with each principal component are identified allowing the
-	meanings of timbral descriptors to be determined. For the timbral groups associated in the clustering analysis
-	these acoustic correlated are as follows.
+	transform. The audio features which correlate best with each principal component are identified allowing the
+	meanings of timbral descriptors to be determined. For the timbral groups identified in the clustering analysis,
+	these acoustic correlates are as follows.
 
 	`Warmth' is used in a similar manner when describing distortion and equaliser transforms. It is used to describe a
 	shift in energy towards the lower end of the spectrum, decreasing the spectral centroid and spectral roll off. This
 	corresponds to amplifying the low frequencies using an equaliser or applying a nonlinearity which produces a
 	spectrum with a low proportion of high frequency energy. `Warm' and its related descriptors can be further
-	distinguished by the smoothness of the spectrum, `deep' signals being having the smoothest spectra with `full',
-	`cream', `warm' then `fuzz' describing increasing irregularity.
+	distinguished by the smoothness of the spectrum, `deep' signals having the smoothest spectra with `full', `cream',
+	`warm' then `fuzz' describing increasing irregularity.
 
-	`Brightness' describes slightly different properties depending on the nature of the processing. In all cases it it
+	`Brightness' describes different properties depending on the nature of the processing. In all cases it it
 	associated with an increase in spectral centroid, increasing the proportion of high frequency energy in the signal.
-	For the nonlinearity used in the SAFE distortion plug-in `bright' and 'harsh' both describe similar transforms,
+	For the nonlinearity used in the SAFE distortion plug-in `bright' and 'harsh' both describe similar transforms;
 	those producing signals which have a significant proportion of high frequency energy. For equalisation the terms
-	can better separated, `bright' describing a small amplification of high frequencies and `harsh' a larger one.
+	can be better separated: `bright' describing a small amplification of high frequencies and `harsh' a larger one.
 
 	`Crunchiness' is a term used only to describe audio processed by the distortion effect. Here it describes the
 	application of a nonlinearity which flattens the spectrum of a signal. As the proportion of high frequency energy
@@ -1515,11 +1517,11 @@
 
 	`Muddiness' has only been used to describe signals processed by the equaliser. It is characterised by the
 	introduction of a large proportion of low frequency energy, more so than `warm'. The different descriptors in this
-	group can be differentiated by the frequency range this energy is introduced to, `boom' adding the most in the
+	group can be differentiated by the frequency range that this energy is introduced to, `boom' adding the most in the
 	first bark band (20-100Hz), `mud' in the second and third bark bands (200-400Hz) and `box' in the sixth and seventh
 	bark bands (630-920Hz).
 
-	In conclusion this chapter has identified the term most often used to describe the use of distortion and
+	In conclusion this chapter has identified the terms most often used to describe the use of distortion and
 	equalisation and their meanings in terms of audio feature manipulations. These findings can be used to predict the
 	perceived timbre of recorded / processed sounds. They can also be used to inform processing systems such that
 	particular timbral results are achieved. In Chapter~\ref{chap:PerceptualExperiments} they influence the design of
