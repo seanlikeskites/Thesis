@@ -184,6 +184,12 @@
 			\item {\bf{MFCCs (}}$\mathrm{MFCC}_{0\mathrm{-}12}${\bf{):}} The 13 MFCCs.
 		\end{itemize}
 
+		The SAFE plug-ins were distributed online as VST and AU effects for Windows, Mac OS X and Linux.  Releases
+		were promoted on music production forums and at music production and research events. Across all release
+		platforms and versions the plug-in suite has been downloaded 12,036 times. This number does not reflect the
+		number of unique users however, as users may have downloaded updated versions or packages for various
+		platforms.
+
 		One disadvantage in using plug-ins is that they cannot gather information about the processing chain they
 		may be a part of. The timbral transform the user is describing may be the result of several effects working
 		together. One solution to this is to implement the feature extraction and metadata collection as a plug-in
@@ -318,7 +324,7 @@
 
 \section{Analysis}
 \label{sec:TimbreEvaluation-Analysis}
-	In this section the data collected using the SAFE plug-ins is analysed. For the purposes of this study only the
+	In this section, the data collected using the SAFE plug-ins is analysed. For the purposes of this study only the
 	data from the distortion and equaliser plug-ins is used, as these effects best represent the timbral transforms
 	which can be applied using harmonic excitation. The distortion demonstrates the effects of introducing new spectral
 	content and the equaliser demonstrates the effects of manipulating the existing spectral content.
@@ -335,10 +341,11 @@
 
 	\subsection{Preprocessing}
 	\label{sec:TimbreEvaluation-Analysis-Preprocessing}
-		The dataset used for this work totals 304 transforms saved using the SAFE Distortion and 1483 transforms
-		saved using the SAFE Equaliser. Several of these have descriptive terms which are application details
-		rather than timbral descriptors (e.g. ``Drum Bus'') while others are not recognisable words (e.g.
-		``cp-1''). These transforms are removed from the dataset prior to further processing.
+		The dataset used for this work was collected by the SAFE plug-ins between June 2014 and July 2016. In total
+		the dataset describes 304 transforms saved using the SAFE Distortion and 1,483 transforms saved using the
+		SAFE Equaliser. Several of these have descriptive terms which are application details rather than timbral
+		descriptors (e.g. ``Drum Bus'') while others are not recognisable words (e.g.  ``cp-1''). These transforms
+		are removed from the dataset prior to further processing.
 
 		Of the remaining transforms, several have terms which are derived from the same root word, with the
 		addition of suffixes such as `y' or `er' (e.g. `crunch' and `crunchy' or `bright' and `brighter'). It is
@@ -494,14 +501,22 @@
 			\label{tab:EqualiserTermCombinations}
 		\end{table}
 
-		The terms `warm' and `bright' have been used to describe transforms applied using both the distortion and
-		the equaliser effects, suggesting that the timbral characteristics these terms describe can be manipulated
-		using either effect. These terms have a much greater frequency in the equaliser as the result of an
-		experiment in which participants were asked to use the equaliser to make audio stimuli `warmer' and
-		`brighter' \citep{stasis2015a}. Other descriptors are only used to describe transforms applied using a
-		specific effect, suggesting that a unique property of that effect produces that timbral result. For
-		example, the term `crunch' is only used in relation to the distortion effect.
-
+		The majority of descriptors are only used to describe transforms applied using a specific effect,
+		suggesting that a unique property of that effect produces that timbral result. For example, the term
+		`crunch' is only used in relation to the distortion effect. The terms `warm' and `bright' have been used to
+		describe transforms applied using both the distortion and equaliser effects, suggesting that the timbral
+		characteristics these terms describe can be manipulated using either effect. It was noted from early
+		results gathered using the SAFE plug-ins and numerous previous research publications, that these terms are
+		very commonly used timbral descriptors. In light of this, a specific study was undertaken in which
+		participants were asked to use the SAFE equaliser to make audio stimuli sound `warmer' and `brighter'
+		\citep{stasis2015a}. In this work, the results of this study are combined with the data gathered by
+		distributing the SAFE plug-ins online, leading to the terms `warm' and `bright' occurring with much greater
+		frequency in the dataset. The results of these studies can be combined as they both the same question of
+		participants, the only difference being that in the `warm', `bright' study participants were given a
+		specific term to work towards. It is assumed that when using the SAFE plug-ins outside of this experiment,
+		users have a timbral result in mind which they are working towards, meaning the two datasets are both
+		collected under the same conditions.
+		
 	\subsection{Term Clustering}
 	\label{sec:TimbreEvaluation-Analysis-TermClustering}
 		Each of the terms arrived at, after stemming, in Section~\ref{sec:TimbreEvaluation-Analysis-TermClustering}
