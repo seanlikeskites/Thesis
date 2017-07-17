@@ -80,7 +80,7 @@
 		will have different effects depending on whether the input contain energy at these frequencies. The spectra
 		of signals with energy in this frequency range will be altered while those of signals with no energy in
 		that band will be unaffected. This problem is compounded when the effect being applied is non-homogeneous
-		(does not satisfy the condition of homogeneity given by Equation~\ref{eq:homogeneity}).  Nonlinear systems
+		(does not satisfy the condition of homogeneity given by Equation~\ref{eq:homogeneity}). Nonlinear systems
 		are typically non-homogeneous; this is undesirable when using them to achieve timbral control as it means
 		the effects are less easy to predict. A non-homogeneous system behaves differently depending on the
 		amplitude of the input signal. Different timbral transforms could be applied to the same signal if its
@@ -319,9 +319,10 @@
 			each of these harmonics vary independently of one another. Furthermore, the way in which the
 			amplitude of a particular order of harmonic varies is dependent on the characteristic curve of the
 			nonlinearity. These characteristics cause clippers to have vastly different perceived effects
-			depending on input amplitude. This behaviour can be improved on through the use of a different
-			clipping function. Equation~\ref{eq:SymmetricExponentialClipping} shows a function used to apply
-			exponential clipping to a signal.
+			depending on input amplitude. Clipping functions can be defined which give more uniform changes in
+			the levels of distortion components with changes in input amplitude.
+			Equation~\ref{eq:SymmetricExponentialClipping} describes a novel clipping function, exponential
+			clipping, which has this property.
 			
 			\begin{equation}
 				y[n] = \begin{cases}

@@ -324,8 +324,8 @@
 		extraction algorithm, the provenance data allows queries to filter results to remove those generated using
 		an earlier or incompatible implementation. Further use of provenance describes the role of a user in the
 		application of a transform. Storage of this data allows the simple retrieval of all transforms associated
-		with a particular user, allowing users to maintain personal libraries of semantic presets amongst the
-		entire SAFE dataset.
+		with a particular user: benefiting researchers by allowing for segmentation of the data and benefiting
+		users by allowing them to maintain personal libraries of semantic presets amongst the entire SAFE dataset.
 
 \section{Analysis}
 \label{sec:TimbreEvaluation-Analysis}
@@ -724,8 +724,8 @@
 			(occupies a small region) then the manipulations which need to be applied to the audio are better
 			defined. The audio features of a signal must be moved to a particular location in the feature
 			space. As the size of the region a descriptor occupies increases, the number of different
-			manipulations which can be applied to a signal to place it within that region increases. The
-			descriptor could describe various different timbral effects.
+			manipulations which can be applied to a signal to place it within that region increases. A large
+			distribution may indicate that a term can be used to describe multiple different timbral effects.
 
 			To take account of the number of transforms labelled with a particular descriptor, Bessel's
 			correction can be used in the calculation of variance as shown in
@@ -1534,11 +1534,12 @@
 	`Crunchiness' is a term used only to describe audio processed by the distortion effect. Here it describes the
 	application of a nonlinearity which flattens the spectrum of a signal. As the proportion of high frequency energy
 	introduced by the nonlinearity increases the terms used to describe it move from `warm' through `crunch' to
-	`bright' and `harsh'. There is a crossover point at which both `warm and `crunch' are applicable. `Crunchiness' is
-	distinguished from terms used to describe equalisation by a slight increase in spectral irregularity. A typical
-	harmonic signal will have a fairly smooth decrease in the amplitude of its partials. Once a nonlinearity has been
-	applied the overall shape of the spectrum may appear flatter but the variation in amplitude between all the
-	distortion components creates a more irregular spectrum.
+	`bright' and `harsh'. There is a crossover point at which both `warm and `crunch' are applicable. The terms `warm',
+	`bright' and `harsh' can all be used to describe the effects of equalisation or distortion, `Crunchiness' only
+	refers to distortion timbres, being distinguished from these other terms by a slight increase in spectral
+	irregularity. A typical harmonic signal will have a fairly smooth decrease in the amplitude of its partials. Once a
+	nonlinearity has been applied the overall shape of the spectrum may appear flatter but the variation in amplitude
+	between all the distortion components creates a more irregular spectrum.
 
 	`Muddiness' has only been used to describe signals processed by the equaliser. It is characterised by the
 	introduction of a large proportion of low frequency energy, more so than `warm'. The different descriptors in this
