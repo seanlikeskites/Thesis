@@ -209,13 +209,18 @@
 
 	\subsection{SAFE Ontology}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFEOntology}
-		\note{Probably explain the need to use an ontology, something about being machine navigable or something.}
-
-		The data collected using the SAFE plug-ins is stored as RDF triples using the SAFE ontology.  The SAFE
-		Ontology was designed to describe the semantics relating to the application of an audio effect and the
-		audio features of the signals involved. It acts as an extension to the Audio Effects Ontology
-		\citep{wilmering2013the}, introducing additional concepts for the description of semantic data.  This
-		additional data can be separated into three groups:
+		To store the data collected by the SAFE plug-ins, a new semantic web ontology, the SAFE ontology, was
+		created. The decision to use a semantic web ontology was taken for its flexibility. Storage in such a
+		manner allows for integration with other datasets stored on the semantic web, allowing for machine
+		navigation of multiple datasets. Additionally, describing relationships using resource description
+		framework (RDF) triples provides extensibility, allowing the dataset to be extended with minimal
+		reconstruction. The SAFE plug-ins generate RDF triples according to the SAFE ontology and send them to a
+		server for storage using the triple store software, 4store \citep{harris20094store}.
+		
+		The SAFE Ontology was designed to describe the semantics relating to the application of an
+		audio effect and the audio features of the signals involved. It acts as an extension to the Audio Effects
+		Ontology \citep{wilmering2013the}, introducing additional concepts for the description of semantic data.
+		This additional data can be separated into three groups:
 
 		\begin{itemize}
 			\item Metadata describing the application of the effect.
@@ -249,17 +254,17 @@
 			\label{fig:TransformGraph}
 		\end{figure}
 
-		Each entry in the SAFE dataset is described using the \emph{studio:Transform} concept, applying some
-		semantic transform to a set of input signals to produce a set of output signals. The structure of this data
-		is shown in Figure~\ref{fig:TransformGraph}. Here, users provide a term, or series of terms, to describe
-		the transform applied by the audio effect in its current state. This should describe the perceived
-		difference between the output and input signals. In the SAFE Ontology this is modelled through the
-		\emph{safe:DescriptorItem} concept which provides a semantic description for each transform. Metadata items
-		are used to provide details about the application domain of the effect, where each metadata item describes
-		one property of an object, the property being identified using an \emph{rdfs:label} and the description
-		provided using an \emph{rdfs:comment}. Each object described by a metadata item has its own set of
-		properties, ``genre'' and ``instrument'' metadata tags, for example, describe an audio signal, while
-		``location'' metadata tags describe a transform.
+		Each entry in the SAFE dataset is described using the \emph{studio:Transform} concept, representing the
+		application of a semantic transform to a set of input signals to produce a set of output signals. The
+		structure of this data is shown in Figure~\ref{fig:TransformGraph}. Here, users provide a term, or series
+		of terms, to describe the transform applied by the audio effect in its current state. This should describe
+		the perceived difference between the output and input signals. In the SAFE Ontology this is modelled
+		through the \emph{safe:DescriptorItem} concept which provides a semantic description for each transform.
+		Metadata items are used to provide details about the application domain of the effect, where each metadata
+		item describes one property of an object, the property being identified using an \emph{rdfs:label} and the
+		description provided using an \emph{rdfs:comment}. Each object described by a metadata item has its own set
+		of properties, ``genre'' and ``instrument'' metadata tags, for example, describe an audio signal, while
+		``location'' metadata tags describe where a transform took place.
 
 		The analysis of audio signals is described using the concept \emph{safe:FeatureExtractionTransform},
 		similar to a \emph{studio:Transform} but taking an audio signal as input and producing a time series of
