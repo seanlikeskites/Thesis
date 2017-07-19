@@ -55,15 +55,15 @@
 		individual harmonics are assessed to determine the audibility of these errors.
 
 		The first method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated
-		in Figure~\ref{fig:Synthesise}. The STFT of the input signal is calculated and used to generate an
-		amplitude envelope for the input signal's $f_{0}$. This amplitude envelope is then used in the synthesis of
-		a sinusoid at the frequency of the desired harmonic.
+		in Figure~\ref{fig:Synthesise}. The \acrshort{stft} of the input signal is calculated and used to generate
+		an amplitude envelope for the input signal's $f_{0}$. This amplitude envelope is then used in the synthesis
+		of a sinusoid at the frequency of the desired harmonic.
 
 		\begin{figure}[h!]
 			\centering
 			\begin{tikzpicture}
 				\node (In) at (-0.1, 1) {$x[n]$};
-				\node (STFT) [draw] at (1.25, 1) {STFT};
+				\node (STFT) [draw] at (1.25, 1) {\acrshort{stft}};
 				\draw (In) -- (STFT);
 
 				\node (Amp) [draw] at (3.76, 1) {Amplitude Envelope};
@@ -146,24 +146,24 @@
 			Eleven test stimuli were created from each of the original four signals. The first two being the
 			unprocessed signal and the filtered signal. The remaining nine were reconstructions of the original
 			signal from the filtered signal. Each signal was reconstructed three times using each system, using
-			different parameters each time. For the synthesis method the window length of the STFT was changed,
-			taking values of 50, 100 and 500 samples. As the window length increases the frequency resolution
-			of the spectrum increases allowing for more accurate calculation of the amplitude of the $f_{0}$.
-			Longer window length however will decrease the temporal resolution of the system, smoothing the
-			extracted amplitude envelope. Care must be taken to not increase the STFT window length such that
-			this smoothing starts to reduce the accuracy of the extracted amplitude envelope.  For the SSBA and
-			IAP methods a different order FIR filter was used to isolate the $f_{0}$. The filters used were
-			windowed sinc filters with orders of 50, 100 and 500 and using the Blackman window to maximise
-			stopband attenuation \citep{schlichtharle2011digital}. As the filter order is increased, the
-			level of the second harmonic in the isolated $f_{0}$ decreases. This leads to a more sinusoidal
-			input to the harmonic generation systems, reducing the amount of intermodulation distortion
-			introduced.
+			different parameters each time. For the synthesis method the window length of the \acrshort{stft}
+			was changed, taking values of 50, 100 and 500 samples. As the window length increases the frequency
+			resolution of the spectrum increases allowing for more accurate calculation of the amplitude of the
+			$f_{0}$.  Longer window length however will decrease the temporal resolution of the system,
+			smoothing the extracted amplitude envelope. Care must be taken to not increase the \acrshort{stft}
+			window length such that this smoothing starts to reduce the accuracy of the extracted amplitude
+			envelope.  For the SSBA and IAP methods a different order FIR filter was used to isolate the
+			$f_{0}$. The filters used were windowed sinc filters with orders of 50, 100 and 500 and using the
+			Blackman window to maximise stopband attenuation \citep{schlichtharle2011digital}. As the filter
+			order is increased, the level of the second harmonic in the isolated $f_{0}$ decreases. This leads
+			to a more sinusoidal input to the harmonic generation systems, reducing the amount of
+			intermodulation distortion introduced.
 
 			The generation of samples using the synthesis method is not directly comparable to that using the
-			SSBA and IAP methods because the STFT window length is not comparable with filter order. The values
-			for these parameters were chosen such that the differences between the reconstructions were easily
-			audible. Increasing either of the parameters results in a more computationally complex system which
-			should increase the quality of the resulting reconstruction.
+			SSBA and IAP methods because the \acrshort{stft} window length is not comparable with filter order.
+			The values for these parameters were chosen such that the differences between the reconstructions
+			were easily audible. Increasing either of the parameters results in a more computationally complex
+			system which should increase the quality of the resulting reconstruction.
 
 		\subsubsection*{Objective Evaluation}
 			An approximation of the perceptual difference between the stimuli and the relevant audio signal is
@@ -244,11 +244,11 @@
 
 		\begin{tabular}{>{\bfseries}rl}
 			1. & The reference stimulus. \tabularnewline
-			2. & Stimulus reconstructed using the synthesis method with an STFT window length of 50
+			2. & Stimulus reconstructed using the synthesis method with an \acrshort{stft} window length of 50
 			     samples. \tabularnewline
-			3. & Stimulus reconstructed using the synthesis method with an STFT window length of 100
+			3. & Stimulus reconstructed using the synthesis method with an \acrshort{stft} window length of 100
 			     samples. \tabularnewline
-			4. & Stimulus reconstructed using the synthesis method with an STFT window length of 500
+			4. & Stimulus reconstructed using the synthesis method with an \acrshort{stft} window length of 500
 			     samples. \tabularnewline
 			5. & Stimulus reconstructed using the SSBA method using a 50\super{th} order filter. \tabularnewline
 			6. & Stimulus reconstructed using the SSBA method using a 100\super{th} order filter.
@@ -446,17 +446,17 @@
 %			\label{fig:PianoHarmonics}
 %		\end{figure}
 %
-		The results of the listening test show that the effects of STFT window length and filter order are as
-		expected. Across the majority of the stimuli there is an increase in the perceived quality of the
-		reconstruction as the STFT window length / filter order is increased. The $R_{\mathrm{nonlin}}$
+		The results of the listening test show that the effects of \acrshort{stft} window length and filter order
+		are as expected. Across the majority of the stimuli there is an increase in the perceived quality of the
+		reconstruction as the \acrshort{stft} window length / filter order is increased. The $R_{\mathrm{nonlin}}$
 		measurements confirm that as these parameters are increased the resulting reconstructed signal is
 		objectively more similar to the original signal. For each of the original signals the highest quality
 		reconstructions receive similar grades, it is in the lower setting of these parameters that differences
 		between the methods become noticeable.
 
-		For each of the acoustic signals (cello, clarinet and piano) the synthesis method with an STFT window
-		length of 50 samples was given the lowest mean grade by participants. This is most likely because of the
-		poor spectral resolution achieved when using such a short analysis window. The SSBA and IAP techniques
+		For each of the acoustic signals (cello, clarinet and piano) the synthesis method with an \acrshort{stft}
+		window length of 50 samples was given the lowest mean grade by participants. This is most likely because of
+		the poor spectral resolution achieved when using such a short analysis window. The SSBA and IAP techniques
 		produce better reconstructions of these signals at lower filter orders and require less computational
 		power. The results for the synthesised sample do not exhibit this pattern, with the IAP reconstructions
 		being given lower grades than the other methods for lower filter orders. However, examining the
@@ -631,12 +631,12 @@
 			\label{eq:HarmonicVariability}
 		\end{gather}
 
-		Where $h_{n,f}$ is the amplitude of the $n$\super{th} harmonic in the $f$\super{th} frame of the STFT of
-		the signal and $F$ the total number of frames in the STFT. This metric has a minimum value of zero,
-		describing a signal in which the amplitudes of the third through ninth harmonics are all linearly related
-		to that of the $f_{0}$. Higher values of harmonic variability describe signals in which these amplitude
-		ratios change more with time. Harmonic variability values for the four test signals used in this experiment
-		are shown in Table~\ref{tab:HarmonicVariabilities}.
+		Where $h_{n,f}$ is the amplitude of the $n$\super{th} harmonic in the $f$\super{th} frame of the
+		\acrshort{stft} of the signal and $F$ the total number of frames in the \acrshort{stft}. This metric has a
+		minimum value of zero, describing a signal in which the amplitudes of the third through ninth harmonics are
+		all linearly related to that of the $f_{0}$. Higher values of harmonic variability describe signals in
+		which these amplitude ratios change more with time. Harmonic variability values for the four test signals
+		used in this experiment are shown in Table~\ref{tab:HarmonicVariabilities}.
 
 		\begin{table}[h!]
 			\centering
@@ -707,18 +707,18 @@
 	\label{sec:PerceptualExperiments-Reconstruction-Conclusion}
 		It has been shown that the naturalness of harmonics generated using the information present in the $f_{0}$
 		of a signal depends on both the method of generating the harmonic and the properties of the input signal.
-		If sufficient processing is applied (increasing the STFT window length / filter order) all three of the
-		tested harmonic generation methods perform similarly well. As the amount of processing is decreased
-		(decreasing STFT window length / filter order) the synthesis method's performance decreases more rapidly
-		than that of the SSBA and IAP based systems. For a given reconstruction system the amplitude envelopes of
-		the harmonics in the input signal determine how easily it can be reconstructed. Signals in which the
-		harmonics have amplitude envelopes which are linearly related to that of the $f_{0}$ are reconstructed with
-		better quality than those with more complex relationships.
+		If sufficient processing is applied (increasing the \acrshort{stft} window length / filter order) all three
+		of the tested harmonic generation methods perform similarly well. As the amount of processing is decreased
+		(decreasing \acrshort{stft} window length / filter order) the synthesis method's performance decreases more
+		rapidly than that of the SSBA and IAP based systems. For a given reconstruction system the amplitude
+		envelopes of the harmonics in the input signal determine how easily it can be reconstructed. Signals in
+		which the harmonics have amplitude envelopes which are linearly related to that of the $f_{0}$ are
+		reconstructed with better quality than those with more complex relationships.
 		
 		The SSBA and IAP techniques also have the advantage of having lower computational complexity and introduce
-		less latency. The synthesis method requires the calculation of the DFT and introduces latency equal to the
-		window length used. Of the three tested methods IAP is the most suitable for use the harmonic excitation
-		systems due to it being a positive homogeneous process. As discussed in
+		less latency. The synthesis method requires the calculation of the \acrshort{dft} and introduces latency
+		equal to the window length used. Of the three tested methods IAP is the most suitable for use the harmonic
+		excitation systems due to it being a positive homogeneous process. As discussed in
 		Section~\ref{sec:ExcitationEvaluation-Comparison-Homogeneity} this allows it to be applied to a wider range
 		of signals with more predictable results.
 

@@ -247,9 +247,9 @@
 			($\mathrm{DS}$), which employs models of the human hearing system to better approximate the
 			perceived level of distortion. Firstly, both the input and output signal of the system under test
 			are split into $I$ non-overlapping frames, each 30ms long. Then the spectrum of each frame is
-			calculated using the DFT. The frequency selectivity of the human hearing system is taken into
-			account by splitting the spectrum of each frame into $J$ non-overlapping bands which are each one
-			$\mathrm{ERB}$ in width. The final distortion score, $\mathrm{DS}$, is calculated from the
+			calculated using the \acrshort{dft}. The frequency selectivity of the human hearing system is taken
+			into account by splitting the spectrum of each frame into $J$ non-overlapping bands which are each
+			one $\mathrm{ERB}$ in width. The final distortion score, $\mathrm{DS}$, is calculated from the
 			difference in power between these bands in the input and output signal according to
 			Equation~\ref{eq:DistortionScore}.
 
@@ -1004,19 +1004,19 @@
 		\end{figure}
 
 		A typical implementation of this effect utilises a phase vocoder. The phase vocoder is an algorithm which
-		allows for time stretching of a signal. It is applied by calculating the short-time Fourier transform
-		(STFT) of a signal with a given frame and hop size. The signal is then resynthesised using a different hop
-		size in order to either lengthen or shorten it. This signal can then be resampled back to the length of the
-		original signal, scaling the frequency content in the process. The spectrum is scaled by a factor, $s$,
-		given by Equation~\ref{eq:PhaseVocoderFactor}.
+		allows for time stretching of a signal. It is applied by calculating the \acrfull{stft} of a signal with a
+		given frame and hop size. The signal is then resynthesised using a different hop size in order to either
+		lengthen or shorten it. This signal can then be resampled back to the length of the original signal,
+		scaling the frequency content in the process. The spectrum is scaled by a factor, $s$, given by
+		Equation~\ref{eq:PhaseVocoderFactor}.
 
 		\begin{equation}
 			s = \frac{\delta_{s}}{\delta_{a}}
 			\label{eq:PhaseVocoderFactor}
 		\end{equation}
 
-		Where $\delta_{a}$ is the hop size used when calculating the STFT and $\delta_{s}$ is the hop size used to
-		resynthesise the signal.
+		Where $\delta_{a}$ is the hop size used when calculating the \acrshort{stft} and $\delta_{s}$ is the hop
+		size used to resynthesise the signal.
 
 	\subsection{Short-Time Time Reversal}
 	\label{sec:Excitation-Methods-STTR}

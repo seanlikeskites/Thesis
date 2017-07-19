@@ -258,23 +258,24 @@
 		spectral replication require the computation of trigonometric functions, be it to calculate the complex
 		argument of the analytic signal or to synthesise a modulating signal.
 
-		Spectral stretching using a phase vocoder requires a large amount of computation. Calculating the STFT
-		involves splitting the signal into frames on which the DFT is then computed. The frame size used in the
-		calculation of the STFT must be sufficient to represent the detail in the input signal. Frames of size $N$
-		represent the spectrum in frequency bins $\frac{f_{s}}{N}$Hz apart. Larger frame sizes give finer spectral
-		detail while introducing more latency into the system, as $N$ samples of input must have been produced
-		before a frame of the STFT can be calculated. When building a phase vocoder a balance must be made between
-		the frequency resolution of the STFT and the desired amount of latency. After calculation of the STFT, the
-		phase correction for each frame is computed and applied before the inverse DFT of each frame is taken and
-		the frames summed back together with the new hop size. The resulting signal then needs to be resampled
-		requiring further operations. If the scaling factor is not an integer value, the resampling process will
-		require additional interpolation calculations. Several steps can be taken to reduce the work needed when
-		using a phase vocoder. The computational complexity of the DFT calculations can be reduced from
-		$\mathcal{O} \left( n^{2} \right)$ to $\mathcal{O}(n\log{n})$, where $n$ is the number of samples on which
-		the DFT is being computed, by using the fast Fourier transform \citep{portnoff1976implementation}. When
-		shifting the frequencies upwards, the amount of work can be further reduced by resampling the signal prior
-		to calculating the STFT \citep{laroche1999new}. This way there are fewer frames for which the DFT need be
-		calculated.
+		Spectral stretching using a phase vocoder requires a large amount of computation. Calculating the
+		\acrshort{stft} involves splitting the signal into frames on which the \acrshort{dft} is then computed. The
+		frame size used in the calculation of the \acrshort{stft} must be sufficient to represent the detail in the
+		input signal. Frames of size $N$ represent the spectrum in frequency bins $\frac{f_{s}}{N}$Hz apart. Larger
+		frame sizes give finer spectral detail while introducing more latency into the system, as $N$ samples of
+		input must have been produced before a frame of the \acrshort{stft} can be calculated. When building a
+		phase vocoder a balance must be made between the frequency resolution of the \acrshort{stft} and the
+		desired amount of latency. After calculation of the \acrshort{stft}, the phase correction for each frame is
+		computed and applied before the inverse \acrshort{dft} of each frame is taken and the frames summed back
+		together with the new hop size. The resulting signal then needs to be resampled requiring further
+		operations. If the scaling factor is not an integer value, the resampling process will require additional
+		interpolation calculations. Several steps can be taken to reduce the work needed when using a phase
+		vocoder. The computational complexity of the \acrshort{dft} calculations can be reduced from $\mathcal{O}
+		\left( n^{2} \right)$ to $\mathcal{O}(n\log{n})$, where $n$ is the number of samples on which the
+		\acrshort{dft} is being computed, by using the fast Fourier transform \citep{portnoff1976implementation}.
+		When shifting the frequencies upwards, the amount of work can be further reduced by resampling the signal
+		prior to calculating the \acrshort{stft} \citep{laroche1999new}. This way there are fewer frames for which
+		the \acrshort{dft} need be calculated.
 
 		The computational complexity of STTR depends on the ratio of the step size, $\delta$, and the length of the
 		window function, $L$, in samples. As $\frac{\delta}{L}$ decreases the number of overlapping frames needed
@@ -502,9 +503,9 @@
 			the signal in the frequency domain only the phase information is altered, leaving the magnitude
 			information unchanged. As seen with the analysis of the IAP system it is possible that phase shifts
 			of odd multiples of $\pi$ radians will cause non-homogeneous behaviour. As the phase corrections
-			for each new frame of the STFT are calculated iteratively from previous frames this should not
-			occur. When processing the first frame the output signal should have the same phase information as
-			the input signal avoiding any unwanted signal inversions.
+			for each new frame of the \acrshort{stft} are calculated iteratively from previous frames this
+			should not occur. When processing the first frame the output signal should have the same phase
+			information as the input signal avoiding any unwanted signal inversions.
 
 		\subsubsection*{Linear Time Variant Algorithms}
 			The remaining algorithms (spectral replication using Equation~\ref{eq:SpectralReplication},
@@ -804,9 +805,9 @@
 			signal into frames causes spectral leakage; energy at a given frequency is spread across the nearby
 			frequencies. This can cause inharmonic partials to be generated for input signals which are
 			perfectly harmonic. To counteract this, a window function can be applied to the frames prior to
-			calculating their DFT. Various different window functions have been proposed, each having different
-			effect in reducing the spectral leakage. The selection of a window function is application
-			specific, the performance and use of several different functions is discussed by
+			calculating their \acrshort{dft}. Various different window functions have been proposed, each
+			having different effect in reducing the spectral leakage. The selection of a window function is
+			application specific, the performance and use of several different functions is discussed by
 			\citet{harris1978on}.
 			
 			Ignoring the effects of spectral leakage, the bandwidth of the output signal will be that of the
@@ -1002,10 +1003,10 @@
 			A simple phase vocoder implementation produces artefacts when processing transients in a signal.
 			The phase correction stage before resynthesis can have the effect of softening the attack portion.
 			The exact effect had on the transient is not able to be controlled as it depends on where the
-			transient lies in the STFT frame. \citet{robel2003a} proposes a method to better process transients
-			with a phase vocoder. An algorithm is used to detect the presence of transients in an STFT frame.
-			The phase information is then processed differently depending on the position of the transient
-			within the frame.
+			transient lies in the \acrshort{stft} frame. \citet{robel2003a} proposes a method to better process
+			transients with a phase vocoder. An algorithm is used to detect the presence of transients in an
+			\acrshort{stft} frame.  The phase information is then processed differently depending on the
+			position of the transient within the frame.
 
 		\subsubsection*{STTR}
 			Due to the time reversal STTR can have complicated effects on a signal's amplitude envelope.  For

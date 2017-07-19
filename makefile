@@ -12,6 +12,7 @@ Sean_Enderby_Thesis.pdf: Sean_Enderby_Thesis.tex Preamble.tex Bibliography.tex $
 	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 	@pdflatex -interaction=nonstopmode -file-line-error Sean_Enderby_Thesis.tex | grep -A 2 ".*:[0-9]*:.*" | cat
 	@bibtex Sean_Enderby_Thesis.aux > /dev/null
+	@makeglossaries Sean_Enderby_Thesis > /dev/null
 	@pdflatex -interaction=nonstopmode Sean_Enderby_Thesis.tex > /dev/null
 	@pdflatex -interaction=nonstopmode Sean_Enderby_Thesis.tex > /dev/null
 	@pdflatex -interaction=nonstopmode Sean_Enderby_Thesis.tex > /dev/null
@@ -51,6 +52,7 @@ proofs.pdf: proofs.tex
 	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 	@pdflatex -interaction=nonstopmode --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}" > /dev/null
 	@bibtex $* > /dev/null
+	@makeglossaries $* > /dev/null
 	@pdflatex -interaction=nonstopmode --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}" > /dev/null
 	@pdflatex -interaction=nonstopmode --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}" > /dev/null
 	@pdflatex -interaction=nonstopmode --jobname=$* "\includeonly{$(<D)/$*}\input{Sean_Enderby_Thesis.tex}" > /dev/null

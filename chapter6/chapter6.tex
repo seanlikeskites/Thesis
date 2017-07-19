@@ -114,14 +114,15 @@
 		reduces the time resolution of the system. If analysing real time audio the current estimate of the $f_{0}$
 		will lag behind the audio signal. \citet{larsen2004audio} describe a time domain frequency tracker which
 		uses a simple recursive formula. While this is not as precise as the more advanced techniques it takes
-		considerably less time to compute. Frequency domain methods require the DFT of the signal to be calculated
-		introducing considerable complexity. Widely used frequency domain techniques include the Harmonic Product
-		Spectrum (HPS) and maximum likelihood estimate methods \citep{noll1969pitch}. State of the art techniques
-		employ statistical / machine learning techniques to improve the performance of $f_{0}$ trackers for input
-		signals with high levels of noise. These techniques include a probabilistic framework \citep{chu2012safe},
-		artificial neural networks \citep{han2014neural} and hidden Markov models \citep{wang2016f0}. Other recent
-		work has developed methods of tracking multiple pitches in polyphonic signals \citep{christensen2008multi}.
-		Due to this work's focus on monophonic signals, these are beyond the scope of this discussion.
+		considerably less time to compute. Frequency domain methods require the \acrshort{dft} of the signal to be
+		calculated introducing considerable complexity. Widely used frequency domain techniques include the
+		Harmonic Product Spectrum (HPS) and maximum likelihood estimate methods \citep{noll1969pitch}. State of the
+		art techniques employ statistical / machine learning techniques to improve the performance of $f_{0}$
+		trackers for input signals with high levels of noise. These techniques include a probabilistic framework
+		\citep{chu2012safe}, artificial neural networks \citep{han2014neural} and hidden Markov models
+		\citep{wang2016f0}. Other recent work has developed methods of tracking multiple pitches in polyphonic
+		signals \citep{christensen2008multi}.  Due to this work's focus on monophonic signals, these are beyond the
+		scope of this discussion.
 
 		For real time harmonic excitation, the accuracy of the $f_{0}$ tracking algorithm is not as important as it
 		is in other fields such as automatic music transcription. The aim of the system in

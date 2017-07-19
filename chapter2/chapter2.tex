@@ -201,9 +201,9 @@
 		As stated by \cite{ASA1960american} the timbre of a sound is primarily influenced by its spectrum. In
 		timbral research the properties of a signal's are summarised using a number of spectral features. To
 		calculate these features the signal is first converted into a frequency domain representation. This is most
-		commonly done using either the Discrete Fourier Transform (DTF) or a parallel filter bank. The calculation
-		of many spectral features is done directly from these spectral representations; for others, peak finding is
-		applied to the spectrum in order to determine the spectral partials.
+		commonly done using either the \acrfull{dft} or a parallel filter bank. The calculation of many spectral
+		features is done directly from these spectral representations; for others, peak finding is applied to the
+		spectrum in order to determine the spectral partials.
 
 		The spectral partials of a signal are its distinct frequency components. These are analogous to the
 		vibrational modes of a physical body. Determining the spectral partials of a signal allows the tonal
@@ -222,11 +222,11 @@
 		is a general concept used to describe individual portions of a signal's spectrum. A signal is composed of
 		$N$ spectral components which are each described by an amplitude and a frequency. The amplitude and
 		frequency of the $n$\super{th} spectral component are denoted $a_{n}$ and $\nu_{n}$ respectively. Spectral
-		components can describe DFT bins, $a_{n}$ being the bin's magnitude and $\nu_{n}$ its frequency; filter
-		bank bands, $a_{n}$ representing the total energy in the band and $\nu_{n}$ the band's center frequency; or
-		spectral partials, $a_{n}$ and $\nu_{n}$ giving the amplitude and frequency of the partial. Several of the
-		features discussed in this section can be calculated from any type of spectral components so this uniform
-		notation proves very useful. Where the calculation of a feature requires a particular spectral
+		components can describe \acrshort{dft} bins, $a_{n}$ being the bin's magnitude and $\nu_{n}$ its frequency;
+		filter bank bands, $a_{n}$ representing the total energy in the band and $\nu_{n}$ the band's center
+		frequency; or spectral partials, $a_{n}$ and $\nu_{n}$ giving the amplitude and frequency of the partial.
+		Several of the features discussed in this section can be calculated from any type of spectral components so
+		this uniform notation proves very useful. Where the calculation of a feature requires a particular spectral
 		representation this will be noted. Some features are calculated using only the energy at the harmonic
 		frequencies of a signal. The equations for calculating these features use a slightly different notation.
 		Features are calculated from the amplitudes of the first $N$ harmonics of a signal, the amplitude of the
@@ -375,17 +375,17 @@
 			power spectrum have the same amplitude (white noise). This means the spectral flatness also gives a
 			description of the tonality / noisiness of a signal.
 
-			The spectral flatness is traditionally measured using DFT bins as spectral components. This way any
-			signal which has zero energy in any DFT bin will produce a spectral flatness of zero. Musical
-			signals which are composed of a set of frequency partials may have areas of the spectrum with zero
-			energy. Several different sounds with radically different spectral envelopes can then all exhibit a
-			spectral flatness of zero. This is particularly problematic for digitally synthesised signals as
-			they do not have the inherent noise present in recorded sounds. The method used by
-			\citet{peeters2004a} mitigates this by using filter bank bands as the spectral components. It is
-			less likely that there will be zero energy in a wider spectral band than a single DFT bin. Another
-			method to avoid spectral flatnesses of zero is to use the signals partials as spectral components.
-			This no longer measures the tonality / noisiness of a signal but rather the flatness of its
-			spectral envelope.
+			The spectral flatness is traditionally measured using \acrshort{dft} bins as spectral components.
+			This way any signal which has zero energy in any \acrshort{dft} bin will produce a spectral
+			flatness of zero. Musical signals which are composed of a set of frequency partials may have areas
+			of the spectrum with zero energy. Several different sounds with radically different spectral
+			envelopes can then all exhibit a spectral flatness of zero. This is particularly problematic for
+			digitally synthesised signals as they do not have the inherent noise present in recorded sounds.
+			The method used by \citet{peeters2004a} mitigates this by using filter bank bands as the spectral
+			components. It is less likely that there will be zero energy in a wider spectral band than a single
+			\acrshort{dft} bin. Another method to avoid spectral flatnesses of zero is to use the signals
+			partials as spectral components.  This no longer measures the tonality / noisiness of a signal but
+			rather the flatness of its spectral envelope.
 
 		\subsubsection*{Spectral Slope}
 			The spectral slope, $\mathrm{SSl}$ measures the gradient of the spectrum. It is calculated by first
@@ -404,8 +404,9 @@
 			Negative values of spectral slope describe a spectrum where the majority of the energy is in the
 			low end of the spectrum. Positive values describe signals with more energy in the high end of the
 			spectrum. Traditional measures of spectral slope are calculated using the amplitudes and
-			frequencies of the DFT bins. For musical signals which are composed of partials it may be more
-			beneficial to measure the slope of the partial's amplitudes rather than of the whole spectrum. 
+			frequencies of the \acrshort{dft} bins. For musical signals which are composed of partials it may
+			be more beneficial to measure the slope of the partial's amplitudes rather than of the whole
+			spectrum. 
 			
 			Equation~\ref{eq:SpectralSlope} produces values with units of Hz\super{-1}. The equation can be
 			altered to provide results in units of dB per Hz by substituting $a_{n}$ with $20\log_{10}(a_{n})$
