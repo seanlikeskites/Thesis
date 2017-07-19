@@ -85,16 +85,17 @@
 \newcolumntype{C}[1]{>{\centering}p{#1}}
 
 % glossary entries
-\usepackage[acronym, style=super, nonumberlist, nogroupskip]{glossaries}
+\usepackage[acronym, style=super, nonumberlist]{glossaries}
 \newglossary[mlg]{maths}{mni}{mno}{Mathematical Notation}
 \setlength{\glsdescwidth}{0.8\textwidth}
 \makeglossaries
 \newacronym{dft}{DFT}{Discrete Fourier Transform}
 \newacronym{dct}{DCT}{Discrete Cosine Transform}
 \newacronym{stft}{STFT}{Short-Time Fourier Transform}
-\newacronym{mfccs}{MFCCs}{Mel-Frequency Cepstral Coefficients}
+\newacronym{mfccs}{MFCCs}{Mel Frequency Cepstral Coefficients}
 \newacronym{mds}{MDS}{Multidimensional Scaling}
 \newacronym{pca}{PCA}{Principle Component Analysis}
+\newacronym{pc}{PC}{Principle Component}
 \newacronym{efa}{EFA}{Exploratory Factor Analysis}
 \newacronym{lti}{LTI}{Linear Time Invariant}
 \newacronym{ltv}{LTV}{Linear Time Variant}
@@ -102,12 +103,14 @@
 \newacronym{imd}{IMD}{Intermodulation Distortion}
 \newacronym{ssba}{SSBA}{Single Sideband Automodulation}
 \newacronym{iap}{IAP}{Instantaneous Amplitude and Phase}
+\newacronym{sttr}{STTR}{Short-Time Time Reversal}
+\newacronym{daw}{DAW}{Digital Audio Workstation}
 
 \newglossaryentry{maths:round}
 {
 	type=maths,
 	name={$\round{a}$},
-	description={round $a$ to the nearest integer},
+	description={$a$ rounded to the nearest integer},
 	sort={round}
 }
 \glsadd{maths:round}
@@ -116,7 +119,7 @@
 {
 	type=maths,
 	name={$B \setminus A$},
-	description={the relative complement of set $A$ with respect to set $B$ (the elements in $B$ which are not in
+	description={the relative complement of set $A$ with respect to set $B$ (the set of elements in $B$ which are not in
 		     $A$)},
 	sort={comp}
 }

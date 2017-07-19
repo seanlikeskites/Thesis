@@ -206,7 +206,7 @@
 				Scaling of input bandwidth, scales $f_{0}$. & 
 				Phase vocoder can smear transients. \tabularnewline
 				\hline
-				STTR & $\mathcal{O}(n)$ & \acrshort{ltv} & 
+				\acrshort{sttr} & $\mathcal{O}(n)$ & \acrshort{ltv} & 
 				Depends on $f_{0}$ of input, no bound on orders of distortion components. &
 				Complex due to time reversal. \tabularnewline
 				\hline
@@ -279,12 +279,13 @@
 		prior to calculating the \acrshort{stft} \citep{laroche1999new}. This way there are fewer frames for which
 		the \acrshort{dft} need be calculated.
 
-		The computational complexity of STTR depends on the ratio of the step size, $\delta$, and the length of the
-		window function, $L$, in samples. As $\frac{\delta}{L}$ decreases the number of overlapping frames needed
-		to calculate an output sample increases, increasing the computational load. The algorithm's complexity
-		remains relatively low however, requiring a small number of simple operations. The biggest source of
-		latency in STTR is through the time reversal of the frames. This introduces an $L$ sample delay to the
-		signal, as the samples at the end of the first frame are needed to form the start of the signal.
+		The computational complexity of \acrshort{sttr} depends on the ratio of the step size, $\delta$, and the
+		length of the window function, $L$, in samples. As $\frac{\delta}{L}$ decreases the number of overlapping
+		frames needed to calculate an output sample increases, increasing the computational load. The algorithm's
+		complexity remains relatively low however, requiring a small number of simple operations. The biggest
+		source of latency in \acrshort{sttr} is through the time reversal of the frames. This introduces an $L$
+		sample delay to the signal, as the samples at the end of the first frame are needed to form the start of
+		the signal.
 
 	\subsection{Homogeneity}
 	\label{sec:ExcitationEvaluation-Comparison-Homogeneity}
@@ -513,8 +514,8 @@
 
 		\subsubsection*{Linear Time Variant Algorithms}
 			The remaining algorithms (spectral replication using Equation~\ref{eq:SpectralReplication},
-			spectral folding and STTR) are linear time variant systems. As such they all satisfy the principle
-			of homogeneity.
+			spectral folding and \acrshort{sttr}) are linear time variant systems. As such they all satisfy the
+			principle of homogeneity.
 
 %		\subsubsection*{Spectral Replication}
 %			Spectral replication using Equation \ref{eq:SpectralReplication} linear time variant system, as such
@@ -821,13 +822,14 @@
 			the signal can be low pass filtered prior to processing as done with multipliers and
 			\acrshort{ssba}.
 		
-		\subsubsection*{STTR}
-			The spectral effects of STTR depends on the properties of the input signal and the window function
-			and step size used. For simple sinusoidal inputs, complex output spectra can be generated. For
-			example, consider the spectral effects of STTR using the window function defined in
-			Equation~\ref{eq:STTRWindow} (shown in Figure~\ref{fig:STTRWindow}). This window function exhibits
-			constant overlap add for a step size of $\frac{L}{2}$. Figure~\ref{fig:STTRSpectra} shows the
-			output spectra of STTR, using this window with lengths of 1ms and 1.5ms, on a 1kHz sinusoid.
+		\subsubsection*{\acrshort{sttr}}
+			The spectral effects of \acrshort{sttr} depends on the properties of the input signal and the
+			window function and step size used. For simple sinusoidal inputs, complex output spectra can be
+			generated. For example, consider the spectral effects of \acrshort{sttr} using the window function
+			defined in Equation~\ref{eq:STTRWindow} (shown in Figure~\ref{fig:STTRWindow}). This window
+			function exhibits constant overlap add for a step size of $\frac{L}{2}$.
+			Figure~\ref{fig:STTRSpectra} shows the output spectra of \acrshort{sttr}, using this window with
+			lengths of 1ms and 1.5ms, on a 1kHz sinusoid.
 
 			\begin{equation}
 				w[n] = \begin{cases}
@@ -849,7 +851,7 @@
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/STTRSpectra.pdf}
-				\caption{The spectral effects of STTR using the window function defined in
+				\caption{The spectral effects of \acrshort{sttr} using the window function defined in
 					 Equation~\ref{eq:STTRWindow}.}
 				\label{fig:STTRSpectra}
 			\end{figure}
@@ -859,9 +861,9 @@
 			means the period will remain unchanged by the processing. This is evidenced by the output spectrum
 			produced by use of a 1ms window, shown in Figure~\ref{fig:STTRSpectra}. Only odd order harmonics
 			are generated retaining the original period of the signal. When a signal's period is not an integer
-			multiple of the step size it is increased by STTR. The output spectrum for a 1.5ms window shows
-			this, the period of the signal being increased to 3ms. The lowest frequency in this output is then
-			approximately 333Hz.
+			multiple of the step size it is increased by \acrshort{sttr}. The output spectrum for a 1.5ms
+			window shows this, the period of the signal being increased to 3ms. The lowest frequency in this
+			output is then approximately 333Hz.
 
 			The exact frequencies of the partials in the output are discussed by \citet{kim2014shorttime}. In
 			effect they are the intermodulation frequencies of the input frequency and the step frequency. The
@@ -1017,11 +1019,11 @@
 			\acrshort{stft} frame.  The phase information is then processed differently depending on the
 			position of the transient within the frame.
 
-		\subsubsection*{STTR}
-			Due to the time reversal STTR can have complicated effects on a signal's amplitude envelope.  For
-			instance, the attack and release portion of a sound may be switched. Whilst possible, this is
-			highly dependent on the window length, step size and content of the input frequency. Controlling
-			these aspects for general input signals proves a very difficult task.
+		\subsubsection*{\acrshort{sttr}}
+			Due to the time reversal \acrshort{sttr} can have complicated effects on a signal's amplitude
+			envelope.  For instance, the attack and release portion of a sound may be switched. Whilst
+			possible, this is highly dependent on the window length, step size and content of the input
+			frequency. Controlling these aspects for general input signals proves a very difficult task.
 
 	\subsection{Use Cases}
 	\label{sec:ExcitationEvaluation-Comparison-UseCases}
@@ -1107,15 +1109,16 @@
 			combated. In practice, using a phase vocoder, artefacts are introduced and the complexity of the
 			system exceeds that of \acrshort{ssba} considerably.
 
-		\subsubsection*{STTR}
-			STTR can be used, much like a static nonlinearity, as a method of generating wide bands of high
-			order harmonics. Unlike static nonlinearities however it is possible to generate inharmonic
+		\subsubsection*{\acrshort{sttr}}
+			\acrshort{sttr} can be used, much like a static nonlinearity, as a method of generating wide bands
+			of high order harmonics. Unlike static nonlinearities however it is possible to generate inharmonic
 			partials for a sinusoidal input. The generation of these partials is dependent on the properties of
 			the input signal, adding further complexity to predicting the effects for arbitrary input signals.
-			\citet{kim2015harmonizing} suggest methods through which the output of STTR can be controlled for
-			use as a harmonising effect. This effect introduces new tones at specific musical intervals
-			depending on the input frequency. While this is useful as a creative tool for music composition, it
-			does not provide the uniform response across input signals required for timbral control.
+			\citet{kim2015harmonizing} suggest methods through which the output of \acrshort{sttr} can be
+			controlled for use as a harmonising effect. This effect introduces new tones at specific musical
+			intervals depending on the input frequency. While this is useful as a creative tool for music
+			composition, it does not provide the uniform response across input signals required for timbral
+			control.
 
 \section{Conclusion}
 	This chapter has discussed the characteristics of the harmonic generation algorithms presented in

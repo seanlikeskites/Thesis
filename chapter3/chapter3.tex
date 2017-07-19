@@ -891,11 +891,11 @@
 		to take any positive value ($h > 0$) the resulting system is referred to as an exponential static
 		nonlinearity.
 
-	\subsection{Single Side Band Automodulation}
+	\subsection{\acrlong{ssba}}
 	\label{sec:Excitation-Methods-SSBA}
 		\acrfull{ssba} combines the automodulation performed in a multiplier with the technique of single sideband
 		modulation \citep{corinthios2009signals}. Regular amplitude modulation produces two sidebands (a sum and
-		difference side band) containing frequency components at the sums and differences in frequency of the those
+		difference sideband) containing frequency components at the sums and differences in frequency of the those
 		in the carrier and modulator signals. Single sideband modulation is a method of applying amplitude
 		modulation to a signal and only producing either the sum or difference sideband. This requires the
 		construction of an analytic representation, $x_{a}[n]$, of the input signal, $x[n]$, as discussed in
@@ -931,7 +931,7 @@
 		through single sideband modulation all take the form shown in Equation~\ref{eq:IntermodulationComponents}
 		but where the scaling factors, $k_{n}$, are all positive integers.
 
-	\subsection{Instantaneous Amplitude and Phase}
+	\subsection{\acrlong{iap}}
 	\label{sec:Excitation-Methods-IAP}
 		In this method, the \acrfull{iap} of a signal are calculated from its analytic representation. These values
 		are then used to aid in the construction of harmonics as discussed by \citet{puckette2007patch}. The
@@ -1019,10 +1019,10 @@
 		Where $\delta_{a}$ is the hop size used when calculating the \acrshort{stft} and $\delta_{s}$ is the hop
 		size used to resynthesise the signal.
 
-	\subsection{Short-Time Time Reversal}
+	\subsection{\acrlong{sttr}}
 	\label{sec:Excitation-Methods-STTR}
-		Short-Time time reversal (STTR) is an audio effect proposed by \citet{kim2014shorttime}. The output signal
-		is constructed by summing overlapping frames of the input signal which have been reversed in time using
+		\acrfull{sttr} is an audio effect proposed by \citet{kim2014shorttime}. The output signal is constructed by
+		summing overlapping frames of the input signal which have been reversed in time using
 		Equation~\ref{eq:STTR}.
 
 		\begin{equation}

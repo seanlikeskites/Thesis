@@ -47,14 +47,14 @@
 
 		Historically, audio production required the use of several pieces of electronic hardware, including
 		microphones, a mixing console, audio processing effects and a recording device. Modern music production
-		techniques utilise Digital Audio Workstation (DAW) software. This software performs the tasks of many
-		pieces of hardware, enabling users to record, edit and mix multiple tracks of audio using a computer. 
+		techniques utilise \acrfull{daw} software. This software performs the tasks of many pieces of hardware,
+		enabling users to record, edit and mix multiple tracks of audio using a computer. 
 		
-	\subsection{Analysis of Timbre Inside the DAW}
+	\subsection{Analysis of Timbre Inside the \acrshort{daw}}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-InDAW}
-		An ideal way to collect timbral information during music production would be to have the DAW analyse the
-		audio tracks used and production techniques applied. Information which could be gathered directly from the
-		DAW, with no extra input from the user, includes:
+		An ideal way to collect timbral information during music production would be to have the \acrshort{daw}
+		analyse the audio tracks used and production techniques applied. Information which could be gathered
+		directly from the \acrshort{daw}, with no extra input from the user, includes:
 
 		\begin{itemize}
 			\item Information about the audio processing chain:
@@ -75,22 +75,22 @@
 			      effect.
 		\end{itemize}
 
-		Achieving this would require the creation of a new DAW, which would be impractical for the current
-		research. DAWs are comprehensive software packages which perform many more tasks than the application of
-		audio effects (project management, audio editing functionality etc.). A lot of effort would be expended in
-		implementing these features before any timbral data could be collected. Music producers also tend to have a
-		preferred DAW with which they work most fluidly. Convincing producers to use a new DAW for the purposes of
-		research would be a difficult task.
+		Achieving this would require the creation of a new \acrshort{daw}, which would be impractical for the
+		current research. \acrshort{daw}s are comprehensive software packages which perform many more tasks than
+		the application of audio effects (project management, audio editing functionality etc.). A lot of effort
+		would be expended in implementing these features before any timbral data could be collected. Music
+		producers also tend to have a preferred \acrshort{daw} with which they work most fluidly. Convincing
+		producers to use a new \acrshort{daw} for the purposes of research would be a difficult task.
 
-		Third party developers can produce extensions to DAWs known as plug-ins. Plug-ins provide additional audio
-		processing functionality to the DAW environment. They can optionally expose their own parameters which
-		users can adjust to achieve their desired effect. There are several different formats in which audio
-		plug-ins can be distributed (VST, AU etc.). Most of the commonly used DAWs support plug-ins in one or more
-		of these formats.
+		Third party developers can produce extensions to \acrshort{daw}s known as plug-ins. Plug-ins provide
+		additional audio processing functionality to the \acrshort{daw} environment. They can optionally expose
+		their own parameters which users can adjust to achieve their desired effect. There are several different
+		formats in which audio plug-ins can be distributed (VST, AU etc.). Most of the commonly used
+		\acrshort{daw}s support plug-ins in one or more of these formats.
 
 		Audio plug-ins provide a good platform to allow producers to provide semantic terms and audio feature
-		information from within their preferred DAW. As part of this research a suite of audio plug-ins which
-		extract this information have been developed. They have been released under the title Semantic Audio
+		information from within their preferred \acrshort{daw}. As part of this research a suite of audio plug-ins
+		which extract this information have been developed. They have been released under the title Semantic Audio
 		Feature Extraction (SAFE) Plug-ins \footnote{The most recent versions of the SAFE plug-ins can be
 		downloaded from \href{http://www.semanticaudio.co.uk/projects/download/}
 		{www.semanticaudio.co.uk/projects/download}.}.
@@ -825,25 +825,26 @@
 			these dimensions it is likely that that term is well agreed upon. Agreement can be calculated in
 			the \acrshort{pca} timbre space using Equation~\ref{eq:BoundedEigenvalueAgreement}, with
 			$\lambda_{d,k}$ being the $k$\super{th} eigenvalue of the covariance matrix calculated from the
-			principal components (PCs) of every transform labelled with descriptor $d$. As when calculating the
-			agreement in the feature space, the timbre space should be standardised before calculation of
-			agreement to remove bias introduced by the proportions of total variance each PC describes.
+			principal components (\acrshort{pc}s) of every transform labelled with descriptor $d$. As when
+			calculating the agreement in the feature space, the timbre space should be standardised before
+			calculation of agreement to remove bias introduced by the proportions of total variance each
+			\acrshort{pc} describes.
 
-			The number of PCs to use in the calculation of agreement is an important consideration. PCs which
-			describe a low proportion of total variance should be discarded as is it is not known whether this
-			low variance is due to user agreement or not. It is therefore recommended that a threshold is set,
-			and only PCs which describe a proportion of variance above this threshold are used. Discarding the
-			low variance PCs in this manner also removes any which have zero variance due to audio features
-			which are defined to be directly proportional to one another, removing their effect on the
-			agreement score.
+			The number of \acrshort{pc}s to use in the calculation of agreement is an important consideration.
+			\acrshort{pc}s which describe a low proportion of total variance should be discarded as is it is
+			not known whether this low variance is due to user agreement or not. It is therefore recommended
+			that a threshold is set, and only \acrshort{pc}s which describe a proportion of variance above this
+			threshold are used. Discarding the low variance \acrshort{pc}s in this manner also removes any
+			which have zero variance due to audio features which are defined to be directly proportional to one
+			another, removing their effect on the agreement score.
 
 			Further to this, the number of eigenvalues used, $K$, needs to be decided. Where $N_{d}$ is greater
-			than the number of PCs used, all the eigenvalues should be used ($K$ equal to the number of
-			non-discarded PCs).  For cases where $N_{d}$ is less than or equal to the number of PCs used, only
-			$N_{d} - 1$ eigenvalues should be used ($K = N_{d} - 1$). This dynamic value for $K$ has the
-			benefit of reducing the agreement scores for terms which describe very few transforms. It also
-			ensures that terms which describe only one transform will always receive an agreement score of
-			zero, as $K$ will be equal to zero.
+			than the number of \acrshort{pc}s used, all the eigenvalues should be used ($K$ equal to the number
+			of non-discarded \acrshort{pc}s).  For cases where $N_{d}$ is less than or equal to the number of
+			\acrshort{pc}s used, only $N_{d} - 1$ eigenvalues should be used ($K = N_{d} - 1$). This dynamic
+			value for $K$ has the benefit of reducing the agreement scores for terms which describe very few
+			transforms. It also ensures that terms which describe only one transform will always receive an
+			agreement score of zero, as $K$ will be equal to zero.
 
 		\subsubsection*{Validation with Synthesised Data}
 			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},
@@ -855,14 +856,14 @@
 			clusters of points. For ease of discussion it is assumed that this data represents the feature
 			space after \acrshort{pca} has been applied. Each cluster has different properties which need to be
 			taken into account when calculating the agreement score. Cluster 1 represents a set of points whose
-			position in the \acrshort{pca} space is not agreed upon, exhibiting a high variance in every PC.
-			Cluster 2 represents a set of points whose position is very well agreed upon, having low variance
-			in every PC. Cluster 3 represents a set of points whose position is only defined in one PC, having
-			high variance in the other two. Cluster 4 represent a set of points which are defined by a
-			relationship between two PCs, exhibiting high variance in all PCs but a strong correlation ($r =
-			0.9$) between PCs 1 and 2. The clusters were generated using the techniques discussed by
-			\citet{ripley1987stochastic}, using the means, $\mu$, and covariance matrices, $\Sigma$, shown in
-			Datum~\ref{dat:ClusterStats}.
+			position in the \acrshort{pca} space is not agreed upon, exhibiting a high variance in every
+			\acrshort{pc}.  Cluster 2 represents a set of points whose position is very well agreed upon,
+			having low variance in every \acrshort{pc}. Cluster 3 represents a set of points whose position is
+			only defined in one \acrshort{pc}, having high variance in the other two. Cluster 4 represent a set
+			of points which are defined by a relationship between two \acrshort{pc}s, exhibiting high variance
+			in all \acrshort{pc}s but a strong correlation ($r = 0.9$) between \acrshort{pc}s 1 and 2. The
+			clusters were generated using the techniques discussed by \citet{ripley1987stochastic}, using the
+			means, $\mu$, and covariance matrices, $\Sigma$, shown in Datum~\ref{dat:ClusterStats}.
 
 			\begin{datum}[h!]
 				\centering
@@ -972,13 +973,13 @@
 			Visualising the data in Figure~\ref{fig:SynthesisedData} provides intuition as to how an agreement
 			score should rate each cluster. Cluster 1 should receive the lowest score as there is no
 			discernible pattern to the data points. Cluster 2 should receive the highest score as it is very
-			tightly clustered in all PCs. Both clusters 3 and 4 show some patterns in the distribution.
-			Cluster 3 has a well defined position in PC 1 while cluster 4 shows a strong relationship between
-			PCs 1 and 2. The agreement scores for these clusters should reflect these patterns.
-			Table~\ref{tab:SynthesisedDataAgreement} shows agreement scores for the data shown in
-			Figure~\ref{fig:SynthesisedData}, calculated using Equations \ref{eq:SocialEqAgreement},
-			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement}, \ref{eq:EigenvalueAgreement}
-			and \ref{eq:BoundedEigenvalueAgreement}.
+			tightly clustered in all \acrshort{pc}s. Both clusters 3 and 4 show some patterns in the
+			distribution. Cluster 3 has a well defined position in \acrshort{pc} 1 while cluster 4 shows a
+			strong relationship between \acrshort{pc}s 1 and 2. The agreement scores for these clusters should
+			reflect these patterns.  Table~\ref{tab:SynthesisedDataAgreement} shows agreement scores for the
+			data shown in Figure~\ref{fig:SynthesisedData}, calculated using Equations
+			\ref{eq:SocialEqAgreement}, \ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement},
+			\ref{eq:EigenvalueAgreement} and \ref{eq:BoundedEigenvalueAgreement}.
 
 			\begin{table}[h!]
 				\centering
@@ -1010,8 +1011,8 @@
 			immediately obvious. They ignore readily noticeable patterns in the data, giving clusters 1, 3 and
 			4 similar agreement scores. By removing the assumption that high variance implies disagreement,
 			Equation~\ref{eq:SumOfReciprocalAgreement} takes account of the pattern in cluster 3.
-			Equation~\ref{eq:EigenvalueAgreement} removes the assumption that all PCs are independent enabling
-			it to reflect the pattern shown in cluster 4. The final column of
+			Equation~\ref{eq:EigenvalueAgreement} removes the assumption that all \acrshort{pc}s are
+			independent enabling it to reflect the pattern shown in cluster 4. The final column of
 			Table~\ref{tab:SynthesisedDataAgreement} shows the bounding effect given by
 			Equation~\ref{eq:BoundedEigenvalueAgreement}.
 
@@ -1028,26 +1029,26 @@
 		processed signals and the other from the feature space describing the difference in feature values between
 		the processed and unprocessed signals. To generate these timbre spaces, the feature spaces are first
 		standardised and then undergo \acrshort{pca}. For every space, the knee of the \acrshort{pca} scree plot
-		lies at five PCs. The final reduced dimensionality timbre spaces are then constructed from the first five
-		PCs.
+		lies at five \acrshort{pc}s. The final reduced dimensionality timbre spaces are then constructed from the
+		first five \acrshort{pc}s.
 
 		These timbre spaces are analysed in various steps. Firstly the audio features which correlate most highly
-		with each PC are determined. Features which satisfy a correlation criterion of $\abs{r} > 0.7$ and $p <
-		0.01$ are deemed to be the salient features of each timbre space. Next the agreement scores for the
-		relevant descriptors from Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} are calculated. As
-		the timbre space is a product of \acrshort{pca} no additional \acrshort{pca} is needed, the high variance
-		dimensions of the data have already been identified. Each timbre space is standardised and the covariance
-		matrix for each descriptor is calculated. The agreement scores are then calculated from the eigenvalues of
-		these covariance matrices using Equation~\ref{eq:BoundedEigenvalueAgreement} as discussed in
+		with each \acrshort{pc} are determined. Features which satisfy a correlation criterion of $\abs{r} > 0.7$
+		and $p < 0.01$ are deemed to be the salient features of each timbre space. Next the agreement scores for
+		the relevant descriptors from Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} are calculated.
+		As the timbre space is a product of \acrshort{pca} no additional \acrshort{pca} is needed, the high
+		variance dimensions of the data have already been identified. Each timbre space is standardised and the
+		covariance matrix for each descriptor is calculated. The agreement scores are then calculated from the
+		eigenvalues of these covariance matrices using Equation~\ref{eq:BoundedEigenvalueAgreement} as discussed in
 		Section~\ref{sec:TimbreEvaluation-Analysis-Agreement}.
 		
 		Two types of graph are plotted to identify patterns within each timbre space. The first is a scatter plot
 		in which the position of each individual transform is shown. These plots show the regions of the timbre
 		space which have been described by each term. The second is a biplot showing the mean position of
 		transforms labelled with each descriptor, along with vectors showing the influence of the most salient
-		audio features in each PC. In these graphs the size of the text indicates the agreement score associated
-		with that descriptor. In combination these two plots give a visual representation of how the audio features
-		influence the use of descriptors.
+		audio features in each \acrshort{pc}. In these graphs the size of the text indicates the agreement score
+		associated with that descriptor. In combination these two plots give a visual representation of how the
+		audio features influence the use of descriptors.
 
 		Additionally, an impression of the spectral characteristics related to each descriptor can be seen by
 		examining the bark band coefficients of the signals. When applied to the processed feature space this
@@ -1056,10 +1057,10 @@
 		with a particular term.
 
 		\subsubsection*{Distortion Processed Features}
-			The first three PCs of the timbre space describing the processed signals produced by the distortion
-			are shown in Figure~\ref{fig:DistortionProcessedPCAs}. The corresponding agreement scores are shown
-			in Table~\ref{tab:DistortionProcessedAgreements}. The three terms with the highest agreement scores
-			(`warm', `fuzz' and `crunch') are of particular interest.
+			The first three \acrshort{pc}s of the timbre space describing the processed signals produced by the
+			distortion are shown in Figure~\ref{fig:DistortionProcessedPCAs}. The corresponding agreement
+			scores are shown in Table~\ref{tab:DistortionProcessedAgreements}. The three terms with the highest
+			agreement scores (`warm', `fuzz' and `crunch') are of particular interest.
 
 			\begin{figure}[h!]
 				\centering
@@ -1094,18 +1095,19 @@
 			timbre space, further reinforcing the conclusion that these three terms are synonymous when used to
 			describe signals processed by a distortion effect.
 
-			This `warm' region is spread across the majority of the ranges of both PCs 1 and 3, while only
-			occupying a lesser extent of the range of PC 2. In contrast, the region described by the term
-			`crunch' is spread out across PCs 2 and 3 and concentrated to a smaller range of PC 1. This
-			suggests that `warm', `fuzz' and `cream' are used to describe signals which lie somewhere between
-			-5 and 5 in PC 2, while `crunch' is used to describe signals which line between -5 and 5 in PC 1.
-			Signals which lie within both of these ranges could potentially be described as both `warm' and
-			`crunch'. Table~\ref{tab:DistortionTermCombinations} confirms that one such combination of
-			`warm' and `crunch' exists within the dataset.
+			This `warm' region is spread across the majority of the ranges of both \acrshort{pc}s 1 and 3,
+			while only occupying a lesser extent of the range of \acrshort{pc} 2. In contrast, the region
+			described by the term `crunch' is spread out across \acrshort{pc}s 2 and 3 and concentrated to a
+			smaller range of \acrshort{pc} 1. This suggests that `warm', `fuzz' and `cream' are used to
+			describe signals which lie somewhere between -5 and 5 in \acrshort{pc} 2, while `crunch' is used to
+			describe signals which line between -5 and 5 in \acrshort{pc} 1.  Signals which lie within both of
+			these ranges could potentially be described as both `warm' and `crunch'.
+			Table~\ref{tab:DistortionTermCombinations} confirms that one such combination of `warm' and
+			`crunch' exists within the dataset.
 
 			The salient features for this timbre space are shown in
-			Datum~\ref{dat:DistortionProcessedCorrelations}. The most salient in each PC are then visualised,
-			along with the mean position and agreement score of each descriptor, in
+			Datum~\ref{dat:DistortionProcessedCorrelations}. The most salient in each \acrshort{pc} are then
+			visualised, along with the mean position and agreement score of each descriptor, in
 			Figure~\ref{fig:DistortionProcessedCentroidsPCAs}. 
 
 			\begin{datum}[h!]
@@ -1135,12 +1137,12 @@
 				\label{fig:DistortionProcessedCentroidsPCAs}
 			\end{figure}
 
-			From the analysis of Figure~\ref{fig:DistortionProcessedPCAs}, the PCs which best describe each
-			term were identified. This information can be used to assist in the analysis of
+			From the analysis of Figure~\ref{fig:DistortionProcessedPCAs}, the \acrshort{pc}s which best
+			describe each term were identified. This information can be used to assist in the analysis of
 			Figure~\ref{fig:DistortionProcessedCentroidsPCAs}. For instance, while the mean position of signals
-			described with the term `crunch' appears to sit at the top end of PC 2, it is known that this
-			descriptor's position in PC 2 is not significant as the individual signals are distributed across
-			the entire PC.
+			described with the term `crunch' appears to sit at the top end of \acrshort{pc} 2, it is known that
+			this descriptor's position in \acrshort{pc} 2 is not significant as the individual signals are
+			distributed across the entire \acrshort{pc}.
 
 			Combining the information from both visualisations of the timbre space, it is suggested that the
 			terms `warm', `fuzz' and `cream' are characterised by a relatively low spectral roll off, spectral
@@ -1150,13 +1152,13 @@
 			indicating a signal in which the energy is more evenly spread throughout the spectrum.
 
 			Inspecting the mean bark band spectra for the descriptors
-			(Figure~\ref{fig:DistortionProcessedSpectra}, the spectral effects of a descriptor's position in PC
-			2 can be seen. As the value of PC 2 increases so does the signal's proportion of high frequency
-			content, `warm' and `cream' describing signals will a low proportion of high frequency energy and
-			`bright' and `harsh' describing those with a larger proportion. The spectral effects of the other
-			PCs are not as apparent, this is likely due to the low resolution of the spectral representation
-			but it should also be noted that this could be influenced by the low number of times some of the
-			terms have been used.
+			(Figure~\ref{fig:DistortionProcessedSpectra}, the spectral effects of a descriptor's position in
+			\acrshort{pc} 2 can be seen. As the value of \acrshort{pc} 2 increases so does the signal's
+			proportion of high frequency content, `warm' and `cream' describing signals will a low proportion
+			of high frequency energy and `bright' and `harsh' describing those with a larger proportion. The
+			spectral effects of the other \acrshort{pc}s are not as apparent, this is likely due to the low
+			resolution of the spectral representation but it should also be noted that this could be influenced
+			by the low number of times some of the terms have been used.
 
 			\begin{figure}[h!]
 				\centering
@@ -1166,8 +1168,8 @@
 			\end{figure}
 
 		\subsubsection*{Distortion Feature Differences}
-			The first three PCs of the timbre space describing the feature manipulations applied by the
-			distortion are shown in Figure~\ref{fig:DistortionDifferencePCAs}. The corresponding agreement
+			The first three \acrshort{pc}s of the timbre space describing the feature manipulations applied by
+			the distortion are shown in Figure~\ref{fig:DistortionDifferencePCAs}. The corresponding agreement
 			scores are shown in Table~\ref{tab:DistortionDifferenceAgreements}. This space is largely similar
 			to that describing the distortion's processed signals (Figure~\ref{fig:DistortionProcessedPCAs})
 			and similar conclusions can be drawn.
@@ -1198,16 +1200,16 @@
 				\label{tab:DistortionDifferenceAgreements}
 			\end{table}
 
-			Again `warm', `fuzz' and `cream' are best defined by their position in PC 1 while crunch is better
-			defined in PC 2. For the majority of the descriptors, the agreement scores are not substantially
-			different from those calculated in the processed feature timbre space, making it uncertain whether
-			the terms best describe a signal's features or the manipulations applied by a transform. `cream'
-			does receive a higher agreement score but the small number of transforms labelled with this
-			descriptor (6) reduces the significance of any conclusions drawn from this.
+			Again `warm', `fuzz' and `cream' are best defined by their position in \acrshort{pc} 1 while crunch
+			is better defined in \acrshort{pc} 2. For the majority of the descriptors, the agreement scores are
+			not substantially different from those calculated in the processed feature timbre space, making it
+			uncertain whether the terms best describe a signal's features or the manipulations applied by a
+			transform. `cream' does receive a higher agreement score but the small number of transforms
+			labelled with this descriptor (6) reduces the significance of any conclusions drawn from this.
 
 			The salient features for this timbre space are shown in
-			Datum~\ref{dat:DistortionDifferenceCorrelations}. The most salient in each PC are then visualised,
-			along with the mean position and agreement score of each descriptor, in
+			Datum~\ref{dat:DistortionDifferenceCorrelations}. The most salient in each \acrshort{pc} are then
+			visualised, along with the mean position and agreement score of each descriptor, in
 			Figure~\ref{fig:DistortionDifferenceCentroidsPCAs}. 
 
 			\begin{datum}[h!]
@@ -1237,23 +1239,23 @@
 				\label{fig:DistortionDifferenceCentroidsPCAs}
 			\end{figure}
 
-			PC 2 is again correlated with spectral roll off, spectral centroid and spectral standard deviation.
-			Referring to the raw values of the feature differences, there is no definite direction in which
-			these features and moved by the transforms labelled with `warm', `fuzz' and `crunch'. This is
-			reflected in Figure~\ref{fig:DistortionProcessedSpectra} where the mean spectral manipulations for
-			these descriptors are mostly flat. This is an indication that, when used for describing signals
+			\acrshort{pc} 2 is again correlated with spectral roll off, spectral centroid and spectral standard
+			deviation.  Referring to the raw values of the feature differences, there is no definite direction
+			in which these features and moved by the transforms labelled with `warm', `fuzz' and `crunch'. This
+			is reflected in Figure~\ref{fig:DistortionProcessedSpectra} where the mean spectral manipulations
+			for these descriptors are mostly flat. This is an indication that, when used for describing signals
 			processed by distortion, these terms describe features of the output signal rather than of the
 			transform applied.
 
-			PC 1 is correlated with Krimphoff irregularity, spectral skewness and spectral kurtosis, the
-			position of `crunch', in this PC, corresponding to a small increase in each of these features.
-			Inspecting the bark band spectra and spectral manipulations in Figures
+			\acrshort{pc} 1 is correlated with Krimphoff irregularity, spectral skewness and spectral kurtosis,
+			the position of `crunch', in this \acrshort{pc}, corresponding to a small increase in each of these
+			features.  Inspecting the bark band spectra and spectral manipulations in Figures
 			\ref{fig:DistortionProcessedSpectra} and \ref{fig:DistortionDifferenceSpectra} the magnitude of
-			these increases can be investigated. For `crunch', at the low end of PC 1, a small amount higher
-			frequency energy is introduced creating a signal in which the energy is more evenly distributed
-			throughout the spectrum. For `bright', at the other end of PC 1, much larger amounts of high
-			frequency energy is added, producing signals in which there is more energy at high frequencies than
-			at mid frequencies.
+			these increases can be investigated. For `crunch', at the low end of \acrshort{pc} 1, a small
+			amount higher frequency energy is introduced creating a signal in which the energy is more evenly
+			distributed throughout the spectrum. For `bright', at the other end of \acrshort{pc} 1, much larger
+			amounts of high frequency energy is added, producing signals in which there is more energy at high
+			frequencies than at mid frequencies.
 
 			\begin{figure}[h!]
 				\centering
@@ -1266,9 +1268,10 @@
 			To avoid the large number of instances of the terms `warm' and `bright' from obscuring the other
 			terms, the equaliser timbre spaces have been split across two sets of graphs. One showing the
 			positions of `warm' and `bright' and the other showing the positions of the remaining descriptors.
-			The first three PCs of the timbre space describing the processed signals produced by the equaliser
-			are shown in Figures \ref{fig:EqualiserBWProcessedPCAs} and \ref{fig:EqualiserProcessedPCAs}. The
-			corresponding agreement scores are shown in Table~\ref{tab:EqualiserProcessedAgreements}.
+			The first three \acrshort{pc}s of the timbre space describing the processed signals produced by the
+			equaliser are shown in Figures \ref{fig:EqualiserBWProcessedPCAs} and
+			\ref{fig:EqualiserProcessedPCAs}. The corresponding agreement scores are shown in
+			Table~\ref{tab:EqualiserProcessedAgreements}.
 
 			\begin{figure}[h!]
 				\centering
@@ -1317,12 +1320,12 @@
 			distinct regions from one another. This reflects the clustering of these terms seen in
 			Figure~\ref{fig:EqualiserProcessedClusters}, again suggesting that these terms have not been used
 			to describe distinct properties of the processed signal. The remaining descriptors are also
-			difficult to distinguish. One apparent pattern is the separation of `harsh' and `mud' in PC 2,
-			although this may be due to chance as the agreement score for `harsh' is very low.
+			difficult to distinguish. One apparent pattern is the separation of `harsh' and `mud' in
+			\acrshort{pc} 2, although this may be due to chance as the agreement score for `harsh' is very low.
 
 			The salient features for this timbre space are shown in
-			Datum~\ref{dat:EqualiserProcessedCorrelations}. The most salient in each PC are then visualised,
-			along with the mean position and agreement score of each descriptor, in
+			Datum~\ref{dat:EqualiserProcessedCorrelations}. The most salient in each \acrshort{pc} are then
+			visualised, along with the mean position and agreement score of each descriptor, in
 			Figure~\ref{fig:EqualiserProcessedCentroidsPCAs}. These show that, although the clusters for each
 			term are not well separated, their centroids are positioned in the timbre space as one might
 			expect.
@@ -1354,12 +1357,12 @@
 				\label{fig:EqualiserProcessedCentroidsPCAs}
 			\end{figure}
 
-			PC 2 is correlated with spectral standard deviation, spectral roll off and spectral centroid.
-			Signals with a larger proportion of high frequency energy being positioned at the top and those
-			with more low frequency energy at the bottom. The descriptors are spread out across this dimension,
-			illustrating a general trend that `deep', `mud', `boom' and `warm' are used to describe high
-			proportions of low frequencies and `harsh', `tin' and `clear' used to describe higher proportions
-			of high frequencies. Examining the mean bark band spectra of these signals
+			\acrshort{pc} 2 is correlated with spectral standard deviation, spectral roll off and spectral
+			centroid.  Signals with a larger proportion of high frequency energy being positioned at the top
+			and those with more low frequency energy at the bottom. The descriptors are spread out across this
+			dimension, illustrating a general trend that `deep', `mud', `boom' and `warm' are used to describe
+			high proportions of low frequencies and `harsh', `tin' and `clear' used to describe higher
+			proportions of high frequencies. Examining the mean bark band spectra of these signals
 			(Figure~\ref{fig:EqualiserProcessedSpectra}) these trends can be seen. 
 
 			\begin{figure}[h!]
@@ -1369,15 +1372,16 @@
 				\label{fig:EqualiserProcessedSpectra}
 			\end{figure}
 
-			PC 1 seems to separate the low frequency descriptors into groups, `deep' describing signals with
-			smoother spectra and a greater skew towards lower frequencies than those described by `boom' and
-			`mud'. This difference is apparent in Figure~\ref{fig:EqualiserProcessedSpectra}, signals described
-			as `deep' containing predominantly low frequency energy and those described as `boom' and `mud'
-			having more complex spectra but still with a large proportion of low frequency energy.
+			\acrshort{pc} 1 seems to separate the low frequency descriptors into groups, `deep' describing
+			signals with smoother spectra and a greater skew towards lower frequencies than those described by
+			`boom' and `mud'. This difference is apparent in Figure~\ref{fig:EqualiserProcessedSpectra},
+			signals described as `deep' containing predominantly low frequency energy and those described as
+			`boom' and `mud' having more complex spectra but still with a large proportion of low frequency
+			energy.
 
 		\subsubsection*{Equaliser Feature Differences}
-			The first three PCs of the timbre space describing the feature manipulations applied by the
-			equaliser are shown in Figures \ref{fig:EqualiserBWDifferencePCAs} and
+			The first three \acrshort{pc}s of the timbre space describing the feature manipulations applied by
+			the equaliser are shown in Figures \ref{fig:EqualiserBWDifferencePCAs} and
 			\ref{fig:EqualiserDifferencePCAs}. The corresponding agreement scores are shown in
 			Table~\ref{tab:EqualiserDifferenceAgreements}. This space shows more definite patterns than that
 			constructed from the processed feature values.
@@ -1425,16 +1429,16 @@
 				\label{tab:EqualiserDifferenceAgreements}
 			\end{table}
 
-			The clusters of transforms labelled with `warm' and `bright' are now better separated in PC 2,
-			`bright' taking positive values and `warm' negative values. In the other PCs these descriptors
-			occupy very similar ranges, suggesting that the distinction between `warm' and `bright' is in how
-			the features which correlate with PC 2 are manipulated. The clusters of the remaining descriptors
-			are again difficult to discriminate, the separation of `harsh' and `mud' in PC 2 being the most
-			noticeable pattern.
+			The clusters of transforms labelled with `warm' and `bright' are now better separated in
+			\acrshort{pc} 2, `bright' taking positive values and `warm' negative values. In the other
+			\acrshort{pc}s these descriptors occupy very similar ranges, suggesting that the distinction
+			between `warm' and `bright' is in how the features which correlate with \acrshort{pc} 2 are
+			manipulated. The clusters of the remaining descriptors are again difficult to discriminate, the
+			separation of `harsh' and `mud' in \acrshort{pc} 2 being the most noticeable pattern.
 
 			The salient features for this timbre space are shown in
-			Datum~\ref{dat:EqualiserDifferenceCorrelations}. The most salient in each PC are then visualised,
-			along with the mean position and agreement score of each descriptor, in
+			Datum~\ref{dat:EqualiserDifferenceCorrelations}. The most salient in each \acrshort{pc} are then
+			visualised, along with the mean position and agreement score of each descriptor, in
 			Figure~\ref{fig:EqualiserDifferenceCentroidsPCAs}. 
 
 			\begin{datum}[h!]
@@ -1464,13 +1468,14 @@
 				\label{fig:EqualiserDifferenceCentroidsPCAs}
 			\end{figure}
 
-			The distinction between `warm' and `bright' becomes very clear here. PC 2 is highly correlated with
-			spectral centroid, spectral standard deviation and spectral roll off. Negative values of PC 2
-			correspond to a decrease in these features and positive values an increase. Signals can be made
-			`warmer' by reducing the spectral centroid and `brighter' by increasing it. This is most often done
-			by introducing more energy at low or higher frequencies respectively, as seen in
-			Figure~\ref{fig:EqualiserDifferenceSpectra}. `harsh' and `tin' can be thought of as more
-			accentuated versions of `bright' and `mud' as a more accentuated version of `warm'.
+			The distinction between `warm' and `bright' becomes very clear here. \acrshort{pc} 2 is highly
+			correlated with spectral centroid, spectral standard deviation and spectral roll off. Negative
+			values of \acrshort{pc} 2 correspond to a decrease in these features and positive values an
+			increase. Signals can be made `warmer' by reducing the spectral centroid and `brighter' by
+			increasing it. This is most often done by introducing more energy at low or higher frequencies
+			respectively, as seen in Figure~\ref{fig:EqualiserDifferenceSpectra}. `harsh' and `tin' can be
+			thought of as more accentuated versions of `bright' and `mud' as a more accentuated version of
+			`warm'.
 
 			The more distinct patterns seen by using the feature differences suggest that these terms have been
 			used to describe the transform rather than the output signal. The process of making a signal

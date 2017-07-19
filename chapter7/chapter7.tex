@@ -1041,21 +1041,21 @@
 			descriptor $d$ and $\Sigma_{d}$ the covariance matrix of those transforms' coordinates in the
 			timbre space. The number of coordinates used in the calculation of Mahalanobis distance is
 			determined in the same manner as in Section~\ref{sec:TimbreEvaluation-Analysis-Agreement}. Where
-			there are more than five transforms in the distribution, the coordinates in the first five PCs of
-			the timbre space are used. Where the number of points in the distribution, $N_{d}$, is lower, only
-			the first $N_{d} - 1$ coordinates can be used in order to avoid $\Sigma_{d}$ being singular. Where
-			the descriptor, $d$, is represented by two distributions of transforms, one from the distortion and
-			one from the equaliser, the Mahalanobis distance from both distributions is taken and the minimum
-			distance kept as the measure of performance.
+			there are more than five transforms in the distribution, the coordinates in the first five
+			\acrshort{pc}s of the timbre space are used. Where the number of points in the distribution,
+			$N_{d}$, is lower, only the first $N_{d} - 1$ coordinates can be used in order to avoid
+			$\Sigma_{d}$ being singular. Where the descriptor, $d$, is represented by two distributions of
+			transforms, one from the distortion and one from the equaliser, the Mahalanobis distance from both
+			distributions is taken and the minimum distance kept as the measure of performance.
 	
 		\subsubsection*{Subjective Evaluation}
 			To assess the performance of the developed effects subjectively, a series of perceptual listening
 			tests were undertaken. For the purpose of testing, each of the effects was implemented as an audio
 			plug-in using the JUCE framework \footnote{The JUCE framework can be found at
-			\href{https://juce.com}{juce.com}.}. Participants were presented with a DAW session containing a
-			track for each of the test signals. On each track both effect plug-ins were inserted. The effects
-			were labelled as ``Plug-in 1'' and ``Plug-in 2'' and had identical interfaces as seen in
-			Figure~\ref{fig:TestPlugInterface}.
+			\href{https://juce.com}{juce.com}.}. Participants were presented with a \acrshort{daw} session
+			containing a track for each of the test signals. On each track both effect plug-ins were inserted.
+			The effects were labelled as ``Plug-in 1'' and ``Plug-in 2'' and had identical interfaces as seen
+			in Figure~\ref{fig:TestPlugInterface}.
 
 			\begin{figure}[h!]
 				\centering
@@ -1066,16 +1066,16 @@
 
 			To mitigate influence of the plug-in's interface layout on the result of the experiment the
 			direction of the parameter sliders was randomised for each participant. The order of the tracks in
-			the DAW session was also randomised to mitigate any effect the order of tracks may have had on
-			results.
+			the \acrshort{daw} session was also randomised to mitigate any effect the order of tracks may have
+			had on results.
 
-			Participants were asked to go through each test signal (DAW channel) in order and describe
-			operation of each of the plug-ins on that signal. First they were asked to take a short time to
-			audition each plug-in to become accustomed to how changing the parameter value affects the current
-			signal. Once they had investigated the operation of the plug-in, they were asked to label its
-			parameter slider at three positions (parameter values of 0, 0.5 and 1) with a term they felt best
-			described the timbral effect of the plug-in at that parameter setting. A list of available terms
-			was provided in a drop down list at each parameter value to be labelled as seen in
+			Participants were asked to go through each test signal (\acrshort{daw} channel) in order and
+			describe operation of each of the plug-ins on that signal. First they were asked to take a short
+			time to audition each plug-in to become accustomed to how changing the parameter value affects the
+			current signal. Once they had investigated the operation of the plug-in, they were asked to label
+			its parameter slider at three positions (parameter values of 0, 0.5 and 1) with a term they felt
+			best described the timbral effect of the plug-in at that parameter setting. A list of available
+			terms was provided in a drop down list at each parameter value to be labelled as seen in
 			Figure~\ref{fig:TestPlugInterface}. The available terms were the 17 unique terms from the SAFE
 			dataset discussed in Chapter~\ref{chap:TimbreEvaluation} (airy, boomy, boxy, bright, clear, creamy,
 			crunchy, deep, full, fuzzy, harsh, muddy, raspy, smooth, thin, tinny and warm).
