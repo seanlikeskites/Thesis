@@ -82,7 +82,8 @@
 		The other two harmonic generation methods use the system illustrated in Figure~\ref{fig:FilterAndShift},
 		isolating the $f_{0}$ with a band pass filter and then using a frequency shifting technique to change the
 		frequency to that of the desired harmonic. The two frequency shifting techniques used in this experiment
-		are SSBA (Section~\ref{sec:Excitation-Methods-SSBA}) and IAP (Section~\ref{sec:Excitation-Methods-IAP}).
+		are \acrshort{ssba} (Section~\ref{sec:Excitation-Methods-SSBA}) and \acrshort{iap}
+		(Section~\ref{sec:Excitation-Methods-IAP}).
 
 		\begin{figure}[h!]
 			\centering
@@ -97,7 +98,8 @@
 				\node (Out) at (6.95, 1) {$h_{i}[n]$};
 				\draw (Exciter) -- (Out);
 			\end{tikzpicture}
-			\caption{The system used to generate new harmonics using the SSBA and IAP techniques.}
+			\caption{The system used to generate new harmonics using the \acrshort{ssba} and \acrshort{iap}
+				 techniques.}
 			\label{fig:FilterAndShift}
 		\end{figure}
 
@@ -110,11 +112,12 @@
 			harmonics were removed using a 2001\super{st} order FIR band reject filter with the stopband
 			starting at 2.5$f_{0}$ and ending at 9.5$f_{0}$. This was in order to cause significant degradation
 			in the quality of the signal such that the difference is plainly audible to the majority of
-			listeners. The second harmonic was left in the signal to pose a challenge to the SSBA and IAP
-			methods. As mentioned previously, the performance of these methods depends on how well the $f_{0}$
-			is isolated.  Retaining the second harmonic allows for the effect of filter order on the
-			performance of the system to be assessed. Spectrograms of the cello signal before and after this
-			process are shown in Figures \ref{fig:CelloSpectrogram} and \ref{fig:CelloFilteredSpectrogram}. 
+			listeners. The second harmonic was left in the signal to pose a challenge to the \acrshort{ssba}
+			and \acrshort{iap} methods. As mentioned previously, the performance of these methods depends on
+			how well the $f_{0}$ is isolated.  Retaining the second harmonic allows for the effect of filter
+			order on the performance of the system to be assessed. Spectrograms of the cello signal before and
+			after this process are shown in Figures \ref{fig:CelloSpectrogram} and
+			\ref{fig:CelloFilteredSpectrogram}. 
 
 			\begin{figure}[h!]
 				\centering
@@ -152,18 +155,19 @@
 			$f_{0}$.  Longer window length however will decrease the temporal resolution of the system,
 			smoothing the extracted amplitude envelope. Care must be taken to not increase the \acrshort{stft}
 			window length such that this smoothing starts to reduce the accuracy of the extracted amplitude
-			envelope.  For the SSBA and IAP methods a different order FIR filter was used to isolate the
-			$f_{0}$. The filters used were windowed sinc filters with orders of 50, 100 and 500 and using the
-			Blackman window to maximise stopband attenuation \citep{schlichtharle2011digital}. As the filter
-			order is increased, the level of the second harmonic in the isolated $f_{0}$ decreases. This leads
-			to a more sinusoidal input to the harmonic generation systems, reducing the amount of
+			envelope.  For the \acrshort{ssba} and \acrshort{iap} methods a different order FIR filter was used
+			to isolate the $f_{0}$. The filters used were windowed sinc filters with orders of 50, 100 and 500
+			and using the Blackman window to maximise stopband attenuation \citep{schlichtharle2011digital}. As
+			the filter order is increased, the level of the second harmonic in the isolated $f_{0}$ decreases.
+			This leads to a more sinusoidal input to the harmonic generation systems, reducing the amount of
 			intermodulation distortion introduced.
 
 			The generation of samples using the synthesis method is not directly comparable to that using the
-			SSBA and IAP methods because the \acrshort{stft} window length is not comparable with filter order.
-			The values for these parameters were chosen such that the differences between the reconstructions
-			were easily audible. Increasing either of the parameters results in a more computationally complex
-			system which should increase the quality of the resulting reconstruction.
+			\acrshort{ssba} and \acrshort{iap} methods because the \acrshort{stft} window length is not
+			comparable with filter order.  The values for these parameters were chosen such that the
+			differences between the reconstructions were easily audible. Increasing either of the parameters
+			results in a more computationally complex system which should increase the quality of the resulting
+			reconstruction.
 
 		\subsubsection*{Objective Evaluation}
 			An approximation of the perceptual difference between the stimuli and the relevant audio signal is
@@ -250,14 +254,14 @@
 			     samples. \tabularnewline
 			4. & Stimulus reconstructed using the synthesis method with an \acrshort{stft} window length of 500
 			     samples. \tabularnewline
-			5. & Stimulus reconstructed using the SSBA method using a 50\super{th} order filter. \tabularnewline
-			6. & Stimulus reconstructed using the SSBA method using a 100\super{th} order filter.
+			5. & Stimulus reconstructed using the \acrshort{ssba} method using a 50\super{th} order filter. \tabularnewline
+			6. & Stimulus reconstructed using the \acrshort{ssba} method using a 100\super{th} order filter.
 			     \tabularnewline
-			7. & Stimulus reconstructed using the SSBA method using a 500\super{th} order filter.
+			7. & Stimulus reconstructed using the \acrshort{ssba} method using a 500\super{th} order filter.
 			     \tabularnewline
-			8. & Stimulus reconstructed using the IAP method using a 50\super{th} order filter. \tabularnewline
-			9. & Stimulus reconstructed using the IAP method using a 100\super{th} order filter. \tabularnewline
-			10. & Stimulus reconstructed using the IAP method using a 500\super{th} order filter.
+			8. & Stimulus reconstructed using the \acrshort{iap} method using a 50\super{th} order filter. \tabularnewline
+			9. & Stimulus reconstructed using the \acrshort{iap} method using a 100\super{th} order filter. \tabularnewline
+			10. & Stimulus reconstructed using the \acrshort{iap} method using a 500\super{th} order filter.
 			     \tabularnewline
 			11. & Stimulus with third through ninth harmonics removed (anchor).
 		\end{tabular}
@@ -456,41 +460,43 @@
 
 		For each of the acoustic signals (cello, clarinet and piano) the synthesis method with an \acrshort{stft}
 		window length of 50 samples was given the lowest mean grade by participants. This is most likely because of
-		the poor spectral resolution achieved when using such a short analysis window. The SSBA and IAP techniques
-		produce better reconstructions of these signals at lower filter orders and require less computational
-		power. The results for the synthesised sample do not exhibit this pattern, with the IAP reconstructions
-		being given lower grades than the other methods for lower filter orders. However, examining the
-		$R_{\mathrm{nonlin}}$ measures it is seen that the IAP reconstructions of this signal are objectively more
-		similar to the original signal than those reconstructed with the synthesis method. This is possibly
-		explained by the fact that the synthesised signal is the easiest to reconstruct. It is a purely harmonic
-		signal with no energy at inharmonic frequencies. This makes it easy to isolate the $f_{0}$ as the
-		transition band of the filter can occupy the entire frequency range between the $f_{0}$ and second harmonic
-		without affecting performance. This in turn reduces the number of unwanted intermodulation components
-		present in the generated harmonics. As all the reconstructions of the synthesised signal are similar to
-		each other it is more difficult for test participants to decide where to grade them on the scale. Where
-		there is more variability between the stimuli, as for the acoustic signals, it becomes easier for test
-		participants to grade stimuli on the scale as they will need to be spread over a wider / larger range.
+		the poor spectral resolution achieved when using such a short analysis window. The \acrshort{ssba} and
+		\acrshort{iap} techniques produce better reconstructions of these signals at lower filter orders and
+		require less computational power. The results for the synthesised sample do not exhibit this pattern, with
+		the \acrshort{iap} reconstructions being given lower grades than the other methods for lower filter orders.
+		However, examining the $R_{\mathrm{nonlin}}$ measures it is seen that the \acrshort{iap} reconstructions of
+		this signal are objectively more similar to the original signal than those reconstructed with the synthesis
+		method. This is possibly explained by the fact that the synthesised signal is the easiest to reconstruct.
+		It is a purely harmonic signal with no energy at inharmonic frequencies. This makes it easy to isolate the
+		$f_{0}$ as the transition band of the filter can occupy the entire frequency range between the $f_{0}$ and
+		second harmonic without affecting performance. This in turn reduces the number of unwanted intermodulation
+		components present in the generated harmonics. As all the reconstructions of the synthesised signal are
+		similar to each other it is more difficult for test participants to decide where to grade them on the
+		scale. Where there is more variability between the stimuli, as for the acoustic signals, it becomes easier
+		for test participants to grade stimuli on the scale as they will need to be spread over a wider / larger
+		range.
 
 		All the systems evaluated in this section use the amplitude envelope of the $f_{0}$ to inform the amplitude
 		envelopes of the generated harmonics. This assumes that the amplitude envelopes of the harmonics in a
 		signal have a simple relationship with that of the $f_{0}$. A linear relationship is assumed by both the
-		IAP and synthesis based systems while the SSBA system assumes a polynomial relationship which is dependent
-		on the order of the harmonic being generated. These assumptions introduce inaccuracies in the
-		reconstruction of signals in which the amplitudes of the harmonics do not obey these relationships. Better
-		results might be achieved by using one of the higher order harmonics in the generation of new harmonics,
-		rather than the $f_{0}$. For the synthesis method, measuring the amplitude of this harmonic and for the
-		SSBA and IAP methods filtering this harmonic out and shifting its frequency to the desired value. For the
-		cello sample, for instance, it may be better to use the $f_{0}$ in the generation of the third harmonic but
-		the second harmonic in the generation of the other harmonics as the amplitude envelopes of those
-		combinations are better matched as seen in Figure~\ref{fig:CelloSpectrogram}. Building a system like this
-		however, requires knowledge of which harmonics in the input signal will be the best choice for
-		reconstructing a given harmonic. This will be different depending on the source of the signal and is not
-		calculable from a degraded input signal. It is possible that models could be build describing the
-		relationship between the $f_{0}$ and harmonic's amplitudes for different classes of sound source. This
-		would require different processing algorithms for different inputs, increasing the complexity of using the
-		system. Furthermore, the SSBA and IAP techniques are only able apply frequency shifts at integer multiples
-		of the frequency of the input signal. In order to generate all orders of harmonic using these techniques
-		the $f_{0}$ must be used as the input to the frequency shifter.
+		\acrshort{iap} and synthesis based systems while the \acrshort{ssba} system assumes a polynomial
+		relationship which is dependent on the order of the harmonic being generated. These assumptions introduce
+		inaccuracies in the reconstruction of signals in which the amplitudes of the harmonics do not obey these
+		relationships. Better results might be achieved by using one of the higher order harmonics in the
+		generation of new harmonics, rather than the $f_{0}$. For the synthesis method, measuring the amplitude of
+		this harmonic and for the \acrshort{ssba} and \acrshort{iap} methods filtering this harmonic out and
+		shifting its frequency to the desired value. For the cello sample, for instance, it may be better to use
+		the $f_{0}$ in the generation of the third harmonic but the second harmonic in the generation of the other
+		harmonics as the amplitude envelopes of those combinations are better matched as seen in
+		Figure~\ref{fig:CelloSpectrogram}. Building a system like this however, requires knowledge of which
+		harmonics in the input signal will be the best choice for reconstructing a given harmonic. This will be
+		different depending on the source of the signal and is not calculable from a degraded input signal. It is
+		possible that models could be build describing the relationship between the $f_{0}$ and harmonic's
+		amplitudes for different classes of sound source. This would require different processing algorithms for
+		different inputs, increasing the complexity of using the system. Furthermore, the \acrshort{ssba} and
+		\acrshort{iap} techniques are only able apply frequency shifts at integer multiples of the frequency of the
+		input signal. In order to generate all orders of harmonic using these techniques the $f_{0}$ must be used
+		as the input to the frequency shifter.
 		
 		The degree of inaccuracy introduced can be estimated by examining the relationships of the harmonics'
 		amplitudes in the unprocessed test signals. As the systems rely on the amplitude envelope of the $f_{0}$
@@ -710,17 +716,17 @@
 		If sufficient processing is applied (increasing the \acrshort{stft} window length / filter order) all three
 		of the tested harmonic generation methods perform similarly well. As the amount of processing is decreased
 		(decreasing \acrshort{stft} window length / filter order) the synthesis method's performance decreases more
-		rapidly than that of the SSBA and IAP based systems. For a given reconstruction system the amplitude
-		envelopes of the harmonics in the input signal determine how easily it can be reconstructed. Signals in
-		which the harmonics have amplitude envelopes which are linearly related to that of the $f_{0}$ are
-		reconstructed with better quality than those with more complex relationships.
+		rapidly than that of the \acrshort{ssba} and \acrshort{iap} based systems. For a given reconstruction
+		system the amplitude envelopes of the harmonics in the input signal determine how easily it can be
+		reconstructed.  Signals in which the harmonics have amplitude envelopes which are linearly related to that
+		of the $f_{0}$ are reconstructed with better quality than those with more complex relationships.
 		
-		The SSBA and IAP techniques also have the advantage of having lower computational complexity and introduce
-		less latency. The synthesis method requires the calculation of the \acrshort{dft} and introduces latency
-		equal to the window length used. Of the three tested methods IAP is the most suitable for use the harmonic
-		excitation systems due to it being a positive homogeneous process. As discussed in
-		Section~\ref{sec:ExcitationEvaluation-Comparison-Homogeneity} this allows it to be applied to a wider range
-		of signals with more predictable results.
+		The \acrshort{ssba} and \acrshort{iap} techniques also have the advantage of having lower computational
+		complexity and introduce less latency. The synthesis method requires the calculation of the \acrshort{dft}
+		and introduces latency equal to the window length used. Of the three tested methods \acrshort{iap} is the
+		most suitable for use the harmonic excitation systems due to it being a positive homogeneous process. As
+		discussed in Section~\ref{sec:ExcitationEvaluation-Comparison-Homogeneity} this allows it to be applied to
+		a wider range of signals with more predictable results.
 
 \section{Semantic Control}
 \label{sec:PerceptualExperiments-SemanticControl}
@@ -934,7 +940,7 @@
 				\label{fig:HarshCrunch}
 			\end{figure}
 
-			Each of the individual harmonics are generated using the IAP technique discussed in
+			Each of the individual harmonics are generated using the \acrshort{iap} technique discussed in
 			Section~\ref{sec:Excitation-Methods-IAP}. This method was chosen due to it performing the best in
 			the experiments in Section~\ref{sec:PerceptualExperiments-Reconstruction}. To reduce computational
 			load the filter used to isolate the $f_{0}$ in this system is a second order IIR band pass filter.
@@ -1322,8 +1328,8 @@
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter7/Images/CelloFilterOrderSpectra.pdf}
-				\caption{Spectra of sixth order IAP applied to the $f_{0}$ isolated with two different
-					 filters.}
+				\caption{Spectra of sixth order \acrshort{iap} applied to the $f_{0}$ isolated with two
+					 different filters.}
 				\label{fig:CelloFilterOrderSpectra}
 			\end{figure}
 

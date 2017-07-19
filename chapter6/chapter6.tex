@@ -34,12 +34,13 @@
 	In Section~\ref{sec:Excitation-Methods} several different methods of introducing new frequency content to a signal
 	were introduced. In Section~\ref{sec:ExcitationEvaluation-Comparison} these methods were discussed further and the
 	degree to which their effect can be controlled evaluated. From that analysis it is known that better control over
-	the output is gained through meeting certain input requirements, for instance the SSBA and IAP techniques will
-	produce sinusoidal outputs for sinusoidal inputs. It is also noted that further filtering may be needed after the
-	use of a harmonic excitation algorithms in order to shape the spectrum as desired, such as after a peak clipper has
-	been applied. Harmonic excitation systems can be constructed which apply these pre and post-processing before and
-	after a giver harmonic excitation algorithm. This section discusses the design of these systems, aiming to give
-	users precise control over the new spectral content added to a wide range of input signals.
+	the output is gained through meeting certain input requirements, for instance the \acrshort{ssba} and
+	\acrshort{iap} techniques will produce sinusoidal outputs for sinusoidal inputs. It is also noted that further
+	filtering may be needed after the use of a harmonic excitation algorithms in order to shape the spectrum as
+	desired, such as after a peak clipper has been applied. Harmonic excitation systems can be constructed which apply
+	these pre and post-processing before and after a giver harmonic excitation algorithm. This section discusses the
+	design of these systems, aiming to give users precise control over the new spectral content added to a wide range
+	of input signals.
 
 	\subsection{$f_{0}$ Tracking}
 	\label{sec:FeatureControl-Systems-Fundamental}
@@ -139,8 +140,8 @@
 		robust in this situation as it is easier to check whether there is sufficient energy at the detected
 		$f_{0}$. If there is not, the first harmonic which has sufficient magnitude can be isolated and used as the
 		input to the exciter. If this action is taken, only the spectral replication and spectral shifting methods
-		will allow for the excitation of every harmonic. The SSBA and IAP methods only allow for integer
-		multiplications of the input frequency.
+		will allow for the excitation of every harmonic. The \acrshort{ssba} and \acrshort{iap} methods only allow
+		for integer multiplications of the input frequency.
 
 		The system shown in Figure~\ref{fig:F0Tracking} can provide differing levels of flexibility depending on
 		the harmonic exciter used. Using a static nonlinearity will generate a series of harmonics of the $f_{0}$.
@@ -152,7 +153,8 @@
 		Control over which harmonics are excited in a signal can be achieved by generating individual harmonics.
 		The principle behind this is to isolate the $f_{0}$ and then shift its frequency to that of the desired
 		harmonic, as done in the system shown in Figure~\ref{fig:HarmonicGenerationSystem}.  The frequency shifter
-		in this system can be implemented using the SSBA, IAP, Spectral Replication or Spectral Stretching methods.
+		in this system can be implemented using the \acrshort{ssba}, \acrshort{iap}, Spectral Replication or
+		Spectral Stretching methods.
 
 		\begin{figure}[h!]
 			\centering
@@ -357,17 +359,17 @@
 		input signal. 
 
 		When using a system like that shown in Figure~\ref{fig:SpectralShapingSystem}, the phases and amplitudes of
-		the excited harmonics depend on the phase and amplitude of the isolated $f_{0}$. Using the SSBA and IAP
-		techniques to generate the $n$\super{th} harmonic, the phase of the output is $n$ times that of the input
-		after the Hilbert transform filter has been applied. The phases of the harmonics produced by a static
-		nonlinearity can be determined by calculating the Fourier series of a sinusoid with the nonlinearity
-		applied. Calculating this in real time dramatically increases the computational complexity of the system.
-		This complexity can be avoided by avoiding superposition of harmonics. This simplest way to achieve this is
-		by discarding the original signal and constructing the output from only the $f_{0}$ and generated
-		harmonics.  This destroys most of the timbral characteristics of a signal, completely reconstructing its
-		spectrum. For situations where a dramatic alteration of timbre is desired this can be a useful technique
-		but for more subtle timbral manipulations it is beneficial to preserve more of the original spectral
-		structure.
+		the excited harmonics depend on the phase and amplitude of the isolated $f_{0}$. Using the \acrshort{ssba}
+		and \acrshort{iap} techniques to generate the $n$\super{th} harmonic, the phase of the output is $n$ times
+		that of the input after the Hilbert transform filter has been applied. The phases of the harmonics produced
+		by a static nonlinearity can be determined by calculating the Fourier series of a sinusoid with the
+		nonlinearity applied. Calculating this in real time dramatically increases the computational complexity of
+		the system.  This complexity can be avoided by avoiding superposition of harmonics. This simplest way to
+		achieve this is by discarding the original signal and constructing the output from only the $f_{0}$ and
+		generated harmonics.  This destroys most of the timbral characteristics of a signal, completely
+		reconstructing its spectrum. For situations where a dramatic alteration of timbre is desired this can be a
+		useful technique but for more subtle timbral manipulations it is beneficial to preserve more of the
+		original spectral structure.
 
 		A less intrusive method is to filter energy out of the input signal only at the frequencies which are to be
 		excited. For the system in Figure~\ref{fig:SpectralShapingSystem} this can be implemented using a series of
@@ -490,10 +492,10 @@
 		$\frac{\pi}{2}$ radians apart.
 
 		For fine control it may be beneficial to separate control of the amplitude and phase of each partial in a
-		signal. This is most easily achieved using the IAP technique as the phase of the input signal is already
-		exposed in the calculation. Introducing a phase parameter, $\theta$, to Equation~\ref{eq:IAP} gives rise to
-		Equation~\ref{eq:IAPWithPhase}. Assuming a sinusoidal input, this new parameter controls the phase of the
-		generated harmonic relative to that of the input. 
+		signal. This is most easily achieved using the \acrshort{iap} technique as the phase of the input signal is
+		already exposed in the calculation. Introducing a phase parameter, $\theta$, to Equation~\ref{eq:IAP} gives
+		rise to Equation~\ref{eq:IAPWithPhase}. Assuming a sinusoidal input, this new parameter controls the phase
+		of the generated harmonic relative to that of the input. 
 
 		\begin{equation}
 			y[n] = \abs{x_{a}[n]} \cos \left( h\arg(x_{a}[n] + \theta) \right), \quad h \in \textbf{N}
@@ -512,15 +514,16 @@
 
 	\subsection{Generating Inharmonic Partials}
 	\label{sec:FeatureControl-Systems-Inharmonicity}
-		For a sinusoidal input, the SSBA and IAP techniques generate perfectly harmonic partials. As inharmonicity
-		is an important cue for differentiating timbre it is desirable to be able to introduce some inharmonicity
-		to the generated partials. Spectral replication allows for generation of partials at any frequency as a
-		spectral shift of any amount can be applied to the isolated $f_{0}$. However, in order to know what shift
-		to apply the $f_{0}$ must be tracked precisely: to generate the second harmonic one must apply a shift
-		exactly equal to the $f_{0}$. This causes the system to rely on the accuracy of the $f_{0}$ tracking
-		algorithm used. A system which does not rely on accurate tracking of the $f_{0}$ would be beneficial, as it
-		allows for more variability in the accuracy of the tracker caused by processing different classes of input
-		signal. Such a system is is shown in Figure~\ref{fig:InharmonicitySystem}.
+		For a sinusoidal input, the \acrshort{ssba} and \acrshort{iap} techniques generate perfectly harmonic
+		partials. As inharmonicity is an important cue for differentiating timbre it is desirable to be able to
+		introduce some inharmonicity to the generated partials. Spectral replication allows for generation of
+		partials at any frequency as a spectral shift of any amount can be applied to the isolated $f_{0}$.
+		However, in order to know what shift to apply the $f_{0}$ must be tracked precisely: to generate the second
+		harmonic one must apply a shift exactly equal to the $f_{0}$. This causes the system to rely on the
+		accuracy of the $f_{0}$ tracking algorithm used. A system which does not rely on accurate tracking of the
+		$f_{0}$ would be beneficial, as it allows for more variability in the accuracy of the tracker caused by
+		processing different classes of input signal. Such a system is is shown in
+		Figure~\ref{fig:InharmonicitySystem}.
 
 		\begin{figure}[h!]
 			\centering
@@ -637,19 +640,19 @@
 		\end{figure}
 
 		As in Figure~\ref{fig:SpectralShapingSystem}, the second through ninth harmonics are generated individually
-		using any of the methods which apply multiplicative scaling to the frequency content of the signal (SSBA,
-		IAP, Spectral Stretching etc.). These methods can be used to create partials with frequencies at integer
-		multiples of those in the input, meaning that they can generate precise harmonics for a sinusoidal input
-		without knowing its frequency. As some of these methods (SSBA and IAP) are restricted to only generating
-		harmonic frequencies additional processing is needed to introduce inharmonicity. Each of the generated
-		harmonics if shifted to the desired frequency using a spectral replication technique as discussed in
-		Section~\ref{sec:Excitation-Methods-SpectralReplication}. This produces partials which deviate from
-		harmonic frequencies by exactly the amount of shift applied. The higher order harmonics are not generated
-		individually and as such their inharmonicity cannot be controlled individually. Spectral replication could
-		be used to shift their frequencies, as is done with the lower order harmonics. This restricts the higher
-		harmonics to all having the same degree of inharmonicity.  This may sound unnatural as in natural tones the
-		inharmonicity of a harmonic is typically dependent on the order of the harmonic (such as in piano tones
-		\citep{young1952inharmonicity}).
+		using any of the methods which apply multiplicative scaling to the frequency content of the signal
+		(\acrshort{ssba}, \acrshort{iap}, Spectral Stretching etc.). These methods can be used to create partials
+		with frequencies at integer multiples of those in the input, meaning that they can generate precise
+		harmonics for a sinusoidal input without knowing its frequency. As some of these methods (\acrshort{ssba}
+		and \acrshort{iap}) are restricted to only generating harmonic frequencies additional processing is needed
+		to introduce inharmonicity. Each of the generated harmonics if shifted to the desired frequency using a
+		spectral replication technique as discussed in Section~\ref{sec:Excitation-Methods-SpectralReplication}.
+		This produces partials which deviate from harmonic frequencies by exactly the amount of shift applied. The
+		higher order harmonics are not generated individually and as such their inharmonicity cannot be controlled
+		individually. Spectral replication could be used to shift their frequencies, as is done with the lower
+		order harmonics. This restricts the higher harmonics to all having the same degree of inharmonicity.  This
+		may sound unnatural as in natural tones the inharmonicity of a harmonic is typically dependent on the order
+		of the harmonic (such as in piano tones \citep{young1952inharmonicity}).
 
 		The system in Figure~\ref{fig:InharmonicitySystem} provides an alternative method of introducing
 		inharmonicity in the high order harmonics. A separate low pass filter is used to produce an input for the
@@ -1480,19 +1483,19 @@
 			Monotonic \tabularnewline
 			\hline
 			Spectral Irregularity & Figure~\ref{fig:SuperpositionSystem} & 
-			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Individual harmonic generation techniques (e.g. \acrshort{ssba} or \acrshort{iap}). & 
 			Monotonic \tabularnewline
 			\hline
 			Spectral Flatness & Figure~\ref{fig:SuperpositionSystem} &
-			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Individual harmonic generation techniques (e.g. \acrshort{ssba} or \acrshort{iap}). & 
 			Monotonic within a particular parameter range. \tabularnewline
 			\hline
 			Spectral Slope & Figure~\ref{fig:SuperpositionSystem} &
-			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Individual harmonic generation techniques (e.g. \acrshort{ssba} or \acrshort{iap}). & 
 			Exact \tabularnewline
 			\hline
 			Tristimulus & Figure~\ref{fig:SuperpositionSystem} & 
-			Individual harmonic generation techniques (e.g. SSBA or IAP). & 
+			Individual harmonic generation techniques (e.g. \acrshort{ssba} or \acrshort{iap}). & 
 			Exact \tabularnewline			
 			\hline
 			Odd to Even Harmonic Ratio & Figure~\ref{fig:HarmonicParitySystem} &
@@ -1501,7 +1504,8 @@
 			Exact \tabularnewline
 			\hline
 			Inharmonicity & Figure~\ref{fig:InharmonicitySystem} & 
-			Individual harmonic generation (e.g. SSBA or IAP) and spectral shifting techniques. & 
+			Individual harmonic generation (e.g. \acrshort{ssba} or \acrshort{iap}) and spectral shifting
+			techniques. & 
 			Linear \tabularnewline
 			\hline
 		\end{tabular}

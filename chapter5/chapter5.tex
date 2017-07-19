@@ -184,12 +184,13 @@
 				Control over exact orders of components, bounding the maximum frequency in the output. & 
 				Dynamic compression / expansion. \tabularnewline
 				\hline
-				SSBA & $\mathcal{O}(n)$ & Non-Homogeneous & 
+				\acrshort{ssba} & $\mathcal{O}(n)$ & Non-Homogeneous & 
 				Sum sideband of a particular order of intermodulation, bounding maximum and minimum
 				frequency in output. Individual harmonic output for sinusoidal input. & 
 				Dynamic compression / expansion. \tabularnewline
 				\hline
-				IAP & $\mathcal{O}(n)$ & Homogeneous when $h$ is odd, positive homogeneous otherwise. & 
+				\acrshort{iap} & $\mathcal{O}(n)$ & Homogeneous when $h$ is odd, positive homogeneous
+				otherwise. & 
 				Individual harmonic output for sinusoidal input, dense spectra for more complex signals. & 
 				No effects. \tabularnewline
 				\hline
@@ -243,20 +244,21 @@
 		aliasing introduced by downsampling the signal. This filter comprises the majority of the complexity of the
 		system leading to a trade off between computational complexity and the level of aliasing. Increasing the
 		order of the filter will better reduce aliasing while increasing the overall complexity. Additional
-		filtering is also required by those algorithms which operate on an analytic signal (SSBA, IAP and Spectral
-		Replication). The Hilbert transform of the input signal must be computed in order to construct the analytic
-		signal. The Hilbert transform filter used must have a suitably consistent response for a wide range of
-		frequencies so the resulting harmonic excitation gives similar results at different frequencies. As shown
-		in Section~\ref{sec:Timbre-LowLevelFeatures-Temporal} a high order FIR Hilbert transform filter is required
-		to give a suitably flat magnitude response. As the order of this filter is increased the computation time
-		rises along with the amount of delay needed to make the filter causal. A lower complexity IIR phase
-		splitter can be used in order to reduce the computational load. The implementation given by
-		\citet{niemitalo2003hilbert} (also discussed in Section~\ref{sec:Timbre-LowLevelFeatures-Temporal})
-		consists of eight biquad filters and a one sample delay. This provides a reasonable compromise between
-		accuracy, complexity and introduced delay.  Once an analytic signal has been constructed, little additional
-		computation is required. SSBA requires the evaluation of a complex exponential for each sample. IAP and
-		spectral replication require the computation of trigonometric functions, be it to calculate the complex
-		argument of the analytic signal or to synthesise a modulating signal.
+		filtering is also required by those algorithms which operate on an analytic signal (\acrshort{ssba},
+		\acrshort{iap} and Spectral Replication). The Hilbert transform of the input signal must be computed in
+		order to construct the analytic signal. The Hilbert transform filter used must have a suitably consistent
+		response for a wide range of frequencies so the resulting harmonic excitation gives similar results at
+		different frequencies.  As shown in Section~\ref{sec:Timbre-LowLevelFeatures-Temporal} a high order FIR
+		Hilbert transform filter is required to give a suitably flat magnitude response. As the order of this
+		filter is increased the computation time rises along with the amount of delay needed to make the filter
+		causal. A lower complexity IIR phase splitter can be used in order to reduce the computational load. The
+		implementation given by \citet{niemitalo2003hilbert} (also discussed in
+		Section~\ref{sec:Timbre-LowLevelFeatures-Temporal}) consists of eight biquad filters and a one sample
+		delay. This provides a reasonable compromise between accuracy, complexity and introduced delay.  Once an
+		analytic signal has been constructed, little additional computation is required. \acrshort{ssba} requires
+		the evaluation of a complex exponential for each sample. \acrshort{iap} and spectral replication require
+		the computation of trigonometric functions, be it to calculate the complex argument of the analytic signal
+		or to synthesise a modulating signal.
 
 		Spectral stretching using a phase vocoder requires a large amount of computation. Calculating the
 		\acrshort{stft} involves splitting the signal into frames on which the \acrshort{dft} is then computed. The
@@ -427,9 +429,9 @@
 			effect can only be achieved using gain stages as there is no threshold parameter to change in
 			response to the amplitude of the input signal.
 
-		\subsubsection*{SSBA}
-			As with multipliers, SSBA is a non-homogeneous process: the gain applied to the input signal is
-			raised to the same power as the signal as shown in Equation~\ref{eq:SSBAHomogeneity}.
+		\subsubsection*{\acrshort{ssba}}
+			As with multipliers, \acrshort{ssba} is a non-homogeneous process: the gain applied to the input
+			signal is raised to the same power as the signal as shown in Equation~\ref{eq:SSBAHomogeneity}.
 
 			\begin{equation}
 				\Re \left( (mx_{a}[n])^{h} \right) = m^{h} \Re \left( x_{a}^{h}[n] \right)
@@ -437,8 +439,8 @@
 			\end{equation}
 			
 			Expressing the analytic signal in polar form it can be shown that the amplitude envelope of the
-			$h$\super{th} order SSBA is the amplitude envelope of the original signal raised to the power $h$
-			as seen in Equation~\ref{eq:PolarSSBA}.
+			$h$\super{th} order \acrshort{ssba} is the amplitude envelope of the original signal raised to the
+			power $h$ as seen in Equation~\ref{eq:PolarSSBA}.
 
 			\begin{gather}
 				x_{a}^{h}[n] = \abs{x_{a}[n]}^{h} e^{ih\arg (x_{a}[n])}
@@ -446,9 +448,10 @@
 			\end{gather}
 
 			As the output's amplitude envelope is know in terms of the input's, the output can be normalised in
-			an attempt to make the system homogeneous. Multiplying the output of the $h$\super{th} order SSBA
-			by $\abs{x_{a}[n]}^{1-h}$ is equivalent to applying $h$\super{th} order IAP as shown by
-			Equation~\ref{eq:SSBAandIAP}. The homogeneity of this system is discussed in the following section.
+			an attempt to make the system homogeneous. Multiplying the output of the $h$\super{th} order
+			\acrshort{ssba} by $\abs{x_{a}[n]}^{1-h}$ is equivalent to applying $h$\super{th} order
+			\acrshort{iap} as shown by Equation~\ref{eq:SSBAandIAP}. The homogeneity of this system is
+			discussed in the following section.
 
 			\begin{equation}
 				\abs{x_{a}[n]}^{1-h} \Re \left( x_{a}^{h}[n] \right) = 
@@ -456,11 +459,12 @@
 				\label{eq:SSBAandIAP}
 			\end{equation}
 
-		\subsubsection*{IAP}
-			The IAP method is homogeneous when used to generate odd order harmonics but is only positive
-			homogeneous when used to generate even order harmonics. Equation~\ref{eq:IAP} is easily shown to be
-			positive homogeneous as application of a non-negative gain will alter only the amplitude of a
-			signal leaving its phase information unchanged (Equation~\ref{eq:IAPPositiveHomogeneity}).
+		\subsubsection*{\acrshort{iap}}
+			The \acrshort{iap} method is homogeneous when used to generate odd order harmonics but is only
+			positive homogeneous when used to generate even order harmonics. Equation~\ref{eq:IAP} is easily
+			shown to be positive homogeneous as application of a non-negative gain will alter only the
+			amplitude of a signal leaving its phase information unchanged
+			(Equation~\ref{eq:IAPPositiveHomogeneity}).
 
 			\begin{equation}
 				\begin{array}{c}
@@ -493,19 +497,19 @@
 			is changed depending on the parity of $h$. Odd values of $h$ result in a phase difference of an odd
 			multiple of $\pi$ radians, corresponding to an additive inversion of the signal. Even values of $h$
 			produce a phase difference of an even multiple of $pi$ radians, having no effect on the signal. If
-			the input signal to a harmonic excitation system using IAP is inverted the odd order harmonics
-			generated will also be inverted while the even order ones will not. This could have dramatic
-			timbral effects if the generated harmonics are being summed with other signals that include the
-			same frequency components.
+			the input signal to a harmonic excitation system using \acrshort{iap} is inverted the odd order
+			harmonics generated will also be inverted while the even order ones will not. This could have
+			dramatic timbral effects if the generated harmonics are being summed with other signals that
+			include the same frequency components.
 
 		\subsubsection*{Spectral Stretching}
 			The phase vocoder algorithm used for spectral stretching is a homogeneous system. When processing
 			the signal in the frequency domain only the phase information is altered, leaving the magnitude
-			information unchanged. As seen with the analysis of the IAP system it is possible that phase shifts
-			of odd multiples of $\pi$ radians will cause non-homogeneous behaviour. As the phase corrections
-			for each new frame of the \acrshort{stft} are calculated iteratively from previous frames this
-			should not occur. When processing the first frame the output signal should have the same phase
-			information as the input signal avoiding any unwanted signal inversions.
+			information unchanged. As seen with the analysis of the \acrshort{iap} system it is possible that
+			phase shifts of odd multiples of $\pi$ radians will cause non-homogeneous behaviour. As the phase
+			corrections for each new frame of the \acrshort{stft} are calculated iteratively from previous
+			frames this should not occur. When processing the first frame the output signal should have the
+			same phase information as the input signal avoiding any unwanted signal inversions.
 
 		\subsubsection*{Linear Time Variant Algorithms}
 			The remaining algorithms (spectral replication using Equation~\ref{eq:SpectralReplication},
@@ -712,52 +716,53 @@
 			For even exponents the output will always be positive meaning there will always be some 0Hz (DC
 			offset) energy introduced.
 
-		\subsubsection*{SSBA}
-			SSBA extends the control provided by multipliers as it constrains the minimum frequency introduced
-			as well as the highest. Using Equation~\ref{eq:SSB} only the upper sideband (the sum frequencies)
-			of the modulation is produced. The highest and lowest frequency components of the output are those
-			of the input signal multiplied by the exponent, $h$. All other harmonic and intermodulation
-			components created lie between these two frequencies. This can be seen in
-			Figure~\ref{fig:SSBA3Spectra}, which shows the results of applying $3$\super{rd} order SSBA to the
-			signal used in Figures \ref{fig:CubedSpectra} and \ref{fig:TwoAndAHalfSpectra}. 
+		\subsubsection*{\acrshort{ssba}}
+			\acrshort{ssba} extends the control provided by multipliers as it constrains the minimum frequency
+			introduced as well as the highest. Using Equation~\ref{eq:SSB} only the upper sideband (the sum
+			frequencies) of the modulation is produced. The highest and lowest frequency components of the
+			output are those of the input signal multiplied by the exponent, $h$. All other harmonic and
+			intermodulation components created lie between these two frequencies. This can be seen in
+			Figure~\ref{fig:SSBA3Spectra}, which shows the results of applying $3$\super{rd} order
+			\acrshort{ssba} to the signal used in Figures \ref{fig:CubedSpectra} and
+			\ref{fig:TwoAndAHalfSpectra}. 
 			
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/SSBA3Spectra.pdf}
-				\caption{The spectral effects of applying third order SSBA to a signal with energy in its 
-				         first four harmonics.}
+				\caption{The spectral effects of applying third order \acrshort{ssba} to a signal with
+					 energy in its first four harmonics.}
 				\label{fig:SSBA3Spectra}
 			\end{figure}
 
-			As with a multiplier, the bound SSBA gives on the maximum frequency in the output allows for
-			effective control of aliasing. Again, low pass filtering the input at $\frac{fs}{2h}$Hz prior to
-			processing will remove those components in the inputs that will be aliased when processed.
+			As with a multiplier, the bound \acrshort{ssba} gives on the maximum frequency in the output allows
+			for effective control of aliasing. Again, low pass filtering the input at $\frac{fs}{2h}$Hz prior
+			to processing will remove those components in the inputs that will be aliased when processed.
 
-			The bounding of the frequencies in the output signal means that SSBA will produce a single harmonic
-			if the input is a sinusoid as shown in Equation~\ref{eq:OneSideband}. This is useful in situations
-			in which fine control is required over the content of the output spectrum. An output signal can be
-			constructed through the generation of several individual harmonics.
+			The bounding of the frequencies in the output signal means that \acrshort{ssba} will produce a
+			single harmonic if the input is a sinusoid as shown in Equation~\ref{eq:OneSideband}. This is
+			useful in situations in which fine control is required over the content of the output spectrum. An
+			output signal can be constructed through the generation of several individual harmonics.
 
-		\subsubsection*{IAP}
-			Like the SSBA method, if the input is sinusoidal the IAP method will generate a single harmonic. In
-			contrast to the SSBA method, the IAP method provides little control over the bandwidth of the
-			output when the input has multiple frequency components. Figure~\ref{fig:IAP3Spectra} shows the
-			spectral effects of third order IAP processing on the same signal used when discussing previous
-			algorithms.
+		\subsubsection*{\acrshort{iap}}
+			Like the \acrshort{ssba} method, if the input is sinusoidal the \acrshort{iap} method will generate
+			a single harmonic. In contrast to the \acrshort{ssba} method, the \acrshort{iap} method provides
+			little control over the bandwidth of the output when the input has multiple frequency components.
+			Figure~\ref{fig:IAP3Spectra} shows the spectral effects of third order \acrshort{iap} processing on
+			the same signal used when discussing previous algorithms.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/IAP3Spectra.pdf}
-				\caption{The spectral effects of applying third order IAP to a signal with energy in its 
-				         first four harmonics.}
+				\caption{The spectral effects of applying third order \acrshort{iap} to a signal with
+					 energy in its first four harmonics.}
 				\label{fig:IAP3Spectra}
 			\end{figure}
 
-			When multiple frequency components are present in the input signal, IAP processing produces energy
-			at high order distortion components. The exact orders and amplitudes of the distortion components
-			produces are dependent on the content of the input signal and the order of IAP applied. As with
-			previous algorithms, it may be necessary to upsample the signal before processing to avoid aliasing
-			of these frequencies.
+			When multiple frequency components are present in the input signal, \acrshort{iap} processing
+			produces energy at high order distortion components. The exact orders and amplitudes of the
+			distortion components produces are dependent on the content of the input signal and the order of
+			\acrshort{iap} applied. As with previous algorithms, it may be necessary to upsample the signal
+			before processing to avoid aliasing of these frequencies.
 
 		\subsubsection*{Spectral Replication}
 			In spectral replication each frequency component is shifted by the same amount, preserving the
@@ -799,7 +804,8 @@
 			Figure~\ref{fig:SpectralStretching}. All frequency components are scaled by the same factor
 			preserving the frequency ratios between spectral components. For harmonically structured signals
 			this has the effect of scaling the $f_{0}$, increasing the signals perceived pitch. For sinusoidal
-			input this results in the generation of individual harmonics as with the SSBA and IAP techniques.
+			input this results in the generation of individual harmonics as with the \acrshort{ssba} and
+			\acrshort{iap} techniques.
 			
 			The phase vocoder introduces frequency artefacts during its operation. The process of splitting the
 			signal into frames causes spectral leakage; energy at a given frequency is spread across the nearby
@@ -812,7 +818,8 @@
 			
 			Ignoring the effects of spectral leakage, the bandwidth of the output signal will be that of the
 			input multiplied by the stretching factor. This allows for effective minimisation of aliasing as
-			the signal can be low pass filtered prior to processing as done with multipliers and SSBA.
+			the signal can be low pass filtered prior to processing as done with multipliers and
+			\acrshort{ssba}.
 		
 		\subsubsection*{STTR}
 			The spectral effects of STTR depends on the properties of the input signal and the window function
@@ -948,33 +955,35 @@
 			with other static nonlinearities these effects are dependent on the input signal and are not
 			predictable enough to give intuitive control.
 
-		\subsubsection*{SSBA}
-			SSBA has similar temporal effects to a multiplier. The signal undergoes dynamic expansion changing
-			the shape of its attack and release envelopes as shown in Figure~\ref{fig:SSBATemporalEffects}.
-			The restricted bandwidth of the SSBA technique's output is also apparent from this graph. The input
-			is a sinusoid with a simple amplitude envelope. The output is a sinusoid with three times the
-			frequency and an amplitude envelope equal to that of the input cubed. This is in contrast to the
-			effect of the multiplier shown in Figure~\ref{fig:ExponentiationTemporalEffects} where the output
-			signal is no longer sinusoidal.
+		\subsubsection*{\acrshort{ssba}}
+			\acrshort{ssba} has similar temporal effects to a multiplier. The signal undergoes dynamic
+			expansion changing the shape of its attack and release envelopes as shown in
+			Figure~\ref{fig:SSBATemporalEffects}.  The restricted bandwidth of the \acrshort{ssba} technique's
+			output is also apparent from this graph. The input is a sinusoid with a simple amplitude envelope.
+			The output is a sinusoid with three times the frequency and an amplitude envelope equal to that of
+			the input cubed. This is in contrast to the effect of the multiplier shown in
+			Figure~\ref{fig:ExponentiationTemporalEffects} where the output signal is no longer sinusoidal.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/SSBATemporalEffects.pdf}
-				\caption{The amplitude envelopes of a signal before and after 3\super{rd} order SSBA.}
+				\caption{The amplitude envelopes of a signal before and after 3\super{rd} order
+					 \acrshort{ssba}.}
 				\label{fig:SSBATemporalEffects}
 			\end{figure}
 
-		\subsubsection*{IAP}
-			IAP alters only the frequency (phase) information of a signal. As the amplitude information is left
-			unaltered the system preserves the input signal's amplitude envelope. Due to this the temporal
-			characteristics of signals are unaffected. This can be seen in Figure~\ref{fig:IAPTemporalEffects}
-			where it is apparent that the frequency of the sinusoid has been altered and its amplitude envelope
-			not.
+		\subsubsection*{\acrshort{iap}}
+			\acrshort{iap} alters only the frequency (phase) information of a signal. As the amplitude
+			information is left unaltered the system preserves the input signal's amplitude envelope. Due to
+			this the temporal characteristics of signals are unaffected. This can be seen in
+			Figure~\ref{fig:IAPTemporalEffects} where it is apparent that the frequency of the sinusoid has
+			been altered and its amplitude envelope not.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/IAPTemporalEffects.pdf}
-				\caption{The amplitude envelopes of a signal before and after 3\super{rd} order IAP.}
+				\caption{The amplitude envelopes of a signal before and after 3\super{rd} order
+					 \acrshort{iap}.}
 				\label{fig:IAPTemporalEffects}
 			\end{figure}
 			
@@ -1054,25 +1063,26 @@
 			Section~\ref{sec:ExcitationEvaluation-Comparison-SpectralCharacteristics}) can be used to
 			approximate the behaviour of other static nonlinearities.
 
-		\subsubsection*{SSBA}
-			SSBA increases the flexibility of a multiplier further. As only the sum sideband of the
+		\subsubsection*{\acrshort{ssba}}
+			\acrshort{ssba} increases the flexibility of a multiplier further. As only the sum sideband of the
 			intermodulation is generated the minimum frequency in the output signal is bounded as well as the
 			maximum. When the input is sinusoidal the output will be an individual harmonic. Building a
-			harmonic mixer using SSBA provides full control over which harmonics are generated from a
-			sinusoidal input. Where fine control of the spectral output is desired SSBA provides a reasonably
-			low complexity solution. One disadvantage of this method is its non-homogeneous behaviour which
-			could be amended using similar techniques as those used for peak clippers (discussed in
-			Section~\ref{sec:ExcitationEvaluation-Comparison-Homogeneity}).
+			harmonic mixer using \acrshort{ssba} provides full control over which harmonics are generated from
+			a sinusoidal input. Where fine control of the spectral output is desired \acrshort{ssba} provides a
+			reasonably low complexity solution. One disadvantage of this method is its non-homogeneous
+			behaviour which could be amended using similar techniques as those used for peak clippers
+			(discussed in Section~\ref{sec:ExcitationEvaluation-Comparison-Homogeneity}).
 
-		\subsubsection*{IAP}
-			IAP can be used in similar ways to SSBA. For sinusoidal inputs the output is an individual harmonic
-			meaning harmonic mixers can be constructed which provide very fine spectral control. IAP is
-			possibly more applicable in this situation than SSBA as it a homogeneous / positive homogeneous
-			system depending on the order of distortion being applied. Care may need to be taken if mixing odd
-			and even orders of distortion as the behaviour of the system is slightly different for each. This
-			homogeneity is gained at the expense of less predictable behaviour when used to process signals
-			with more than one frequency component compared to SSBA. If the input signal is more complex than a
-			sinusoid it may be preferential to use SSBA.
+		\subsubsection*{\acrshort{iap}}
+			\acrshort{iap} can be used in similar ways to \acrshort{ssba}. For sinusoidal inputs the output is
+			an individual harmonic meaning harmonic mixers can be constructed which provide very fine spectral
+			control. \acrshort{iap} is possibly more applicable in this situation than \acrshort{ssba} as it a
+			homogeneous / positive homogeneous system depending on the order of distortion being applied. Care
+			may need to be taken if mixing odd and even orders of distortion as the behaviour of the system is
+			slightly different for each. This homogeneity is gained at the expense of less predictable
+			behaviour when used to process signals with more than one frequency component compared to
+			\acrshort{ssba}. If the input signal is more complex than a sinusoid it may be preferential to use
+			\acrshort{ssba}.
 
 		\subsubsection*{Spectral Replication}
 			Spectral replication provides a way of generating higher order harmonics without unwanted
@@ -1091,11 +1101,11 @@
 			input signal as well as the sampling frequency.
 
 		\subsubsection*{Spectral Stretching}
-			Spectral stretching is similar to SSBA in that it imposes a bound on the maximum and minimum
-			frequencies in the output. A perfect spectral stretching system would produce only harmonic
-			distortion components having an advantage over SSBA in which intermodulation must be combated. In
-			practice, using a phase vocoder, artefacts are introduced and the complexity of the system exceeds
-			that of SSBA considerably.
+			Spectral stretching is similar to \acrshort{ssba} in that it imposes a bound on the maximum and
+			minimum frequencies in the output. A perfect spectral stretching system would produce only harmonic
+			distortion components having an advantage over \acrshort{ssba} in which intermodulation must be
+			combated. In practice, using a phase vocoder, artefacts are introduced and the complexity of the
+			system exceeds that of \acrshort{ssba} considerably.
 
 		\subsubsection*{STTR}
 			STTR can be used, much like a static nonlinearity, as a method of generating wide bands of high
@@ -1127,15 +1137,16 @@
 	bandlimited through approximation with a harmonic mixer while no bandlimiting methods are provided for integrators.
 
 	Where finer control over the spectral structure of the output is desired, more complex algorithms are needed. Here
-	SSBA and IAP and spectral stretching have desirable characteristics. Each of these algorithms are able to generate
-	individual harmonics from a sinusoidal input and each have their own advantages and disadvantages. Spectral
-	stretching is the more computationally intensive of the three and the phase vocoder approach is prone to the
-	introduction of artefacts. SSBA and IAP are both simpler systems but each has a particular advantage. For purely
-	sinusoidal input, IAP outperforms SSBA in that in it homogeneous, having no effect on the amplitude envelope of a
-	signal. For more complex inputs however, SSBA may be preferential as it provides more control over the range of
-	frequencies in the output, bounding the orders of intermodulation components generated.	In
+	\acrshort{ssba} and \acrshort{iap} and spectral stretching have desirable characteristics. Each of these algorithms
+	are able to generate individual harmonics from a sinusoidal input and each have their own advantages and
+	disadvantages.  Spectral stretching is the more computationally intensive of the three and the phase vocoder
+	approach is prone to the introduction of artefacts. \acrshort{ssba} and \acrshort{iap} are both simpler systems but
+	each has a particular advantage. For purely sinusoidal input, \acrshort{iap} outperforms \acrshort{ssba} in that in
+	it homogeneous, having no effect on the amplitude envelope of a signal. For more complex inputs however,
+	\acrshort{ssba} may be preferential as it provides more control over the range of frequencies in the output,
+	bounding the orders of intermodulation components generated.	In
 	Section~\ref{sec:PerceptualExperiments-Reconstruction} perceptual listening tests are carried out in order to
-	evaluate the perceived quality of individual harmonics generated using both SSBA and IAP.
+	evaluate the perceived quality of individual harmonics generated using both \acrshort{ssba} and \acrshort{iap}.
 
 	In Chapter~\ref{chap:FeatureControl} the analysis of harmonic generation algorithms discussed in this chapter is
 	used to inform the design of harmonic excitation systems. The properties of the algorithms identified allow these

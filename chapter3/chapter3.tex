@@ -893,15 +893,15 @@
 
 	\subsection{Single Side Band Automodulation}
 	\label{sec:Excitation-Methods-SSBA}
-		Single sideband automodulation (SSBA) combines the automodulation performed in a multiplier with the
-		technique of single sideband modulation \citep{corinthios2009signals}. Regular amplitude modulation
-		produces two sidebands (a sum and difference side band) containing frequency components at the sums and
-		differences in frequency of the those in the carrier and modulator signals. Single sideband modulation is a
-		method of applying amplitude modulation to a signal and only producing either the sum or difference
-		sideband. This requires the construction of an analytic representation, $x_{a}[n]$, of the input signal,
-		$x[n]$, as discussed in Section~\ref{sec:Timbre-LowLevelFeatures-Temporal}. The analytic signal is then
-		raised to a positive integer power, $h$, as shown in Equation~\ref{eq:SSB}. Taking the real part of the
-		resultant complex valued signal gives only the sum sideband of the modulation.
+		\acrfull{ssba} combines the automodulation performed in a multiplier with the technique of single sideband
+		modulation \citep{corinthios2009signals}. Regular amplitude modulation produces two sidebands (a sum and
+		difference side band) containing frequency components at the sums and differences in frequency of the those
+		in the carrier and modulator signals. Single sideband modulation is a method of applying amplitude
+		modulation to a signal and only producing either the sum or difference sideband. This requires the
+		construction of an analytic representation, $x_{a}[n]$, of the input signal, $x[n]$, as discussed in
+		Section~\ref{sec:Timbre-LowLevelFeatures-Temporal}. The analytic signal is then raised to a positive
+		integer power, $h$, as shown in Equation~\ref{eq:SSB}. Taking the real part of the resultant complex valued
+		signal gives only the sum sideband of the modulation.
 
 		\begin{equation}
 			y[n] = \Re \left( x_{a}^{h}[n] \right), \quad h \in \textbf{N}
@@ -933,13 +933,13 @@
 
 	\subsection{Instantaneous Amplitude and Phase}
 	\label{sec:Excitation-Methods-IAP}
-		In this method, the instantaneous amplitude and phase (IAP) of a signal are calculated from its analytic
-		representation. These values are then used to aid in the construction of harmonics as discussed by
-		\citet{puckette2007patch}. The instantaneous amplitude of the analytic signal is found by taking its
-		absolute value, $\abs{x_{a}[n]}$. The instantaneous phase is found by taking the complex argument of the
-		analytic signal, $\arg(x_{a}[n])$. The instantaneous phase can then be scaled in order to scale the
-		frequency content of the signal independent of its amplitude.  Equation~\ref{eq:IAP} shows the
-		$h$\super{th} order instantaneous amplitude and phase modulation of a signal.
+		In this method, the \acrfull{iap} of a signal are calculated from its analytic representation. These values
+		are then used to aid in the construction of harmonics as discussed by \citet{puckette2007patch}. The
+		instantaneous amplitude of the analytic signal is found by taking its absolute value, $\abs{x_{a}[n]}$. The
+		instantaneous phase is found by taking the complex argument of the analytic signal, $\arg(x_{a}[n])$. The
+		instantaneous phase can then be scaled in order to scale the frequency content of the signal independent of
+		its amplitude.  Equation~\ref{eq:IAP} shows the $h$\super{th} order instantaneous amplitude and phase
+		modulation of a signal.
 
 		\begin{equation}
 			y[n] = \abs{x_{a}[n]} \cos \left( h\arg(x_{a}[n]) \right), \quad h \in \textbf{N}
