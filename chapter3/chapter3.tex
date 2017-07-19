@@ -146,12 +146,12 @@
 		\subsubsection*{Traditional Metrics}
 			Traditional measurements of the effects of nonlinear systems measure the ratio between the levels
 			of unwanted distortion components and wanted frequency components in the output signal. Two
-			metrics, Total Harmonic Distortion (THD) and Intermodulation Distortion (IMD), are the traditional
-			objective measures of distortion in audio systems \citep{czerwinski2001multitone1}. THD measures
-			the level of harmonic distortion components introduced by a system for a sinusoidal input signal
-			and is calculated using two different methods. These have been denoted $\mathrm{THD}_{F}$ and
-			$\mathrm{THD}_{R}$ by \citet{shmilovitz2005on} and are calculated using Equations \ref{eq:thdf} and
-			\ref{eq:thdr} respectively.
+			metrics, \acrfull{tmd} and \acrfull{imd}, are the traditional objective measures of distortion in
+			audio systems \citep{czerwinski2001multitone1}. \acrshort{thd} measures the level of harmonic
+			distortion components introduced by a system for a sinusoidal input signal and is calculated using
+			two different methods. These have been denoted $\mathrm{THD}_{F}$ and $\mathrm{THD}_{R}$ by
+			\citet{shmilovitz2005on} and are calculated using Equations \ref{eq:thdf} and \ref{eq:thdr}
+			respectively.
 
 			\begin{equation}
 				\mathrm{THD}_{F} = \frac{\sqrt{\sum_{n = 2}^{\infty} h_{n}^{2}}}{h_{1}}
@@ -176,12 +176,12 @@
 			$\mathrm{THD}_{R}$ by \citet{dutilleux2011nonlinear}).  The lack of standardisation for this metric
 			makes it difficult to compare experimental results reported by different sources.
 
-			Various standards exist for the measurement of IMD. Typically the system's response to a signal
-			consisting of two sinusoids is measured. According to the \citet{IEC2001amplifiers} standard, a
-			signal comprising two frequency components, $f_{1}$ and $f_{2}$ (where $f_{2} > f_{1}$), with an
-			amplitude ratio of 4:1 is used.  The levels of the second and third order intermodulation
-			components present in the output is then measured separately according to Equations \ref{eq:imd2}
-			and \ref{eq:imd3}.
+			Various standards exist for the measurement of \acrshort{imd}. Typically the system's response to a
+			signal consisting of two sinusoids is measured. According to the \citet{IEC2001amplifiers}
+			standard, a signal comprising two frequency components, $f_{1}$ and $f_{2}$ (where $f_{2} >
+			f_{1}$), with an amplitude ratio of 4:1 is used.  The levels of the second and third order
+			intermodulation components present in the output is then measured separately according to Equations
+			\ref{eq:imd2} and \ref{eq:imd3}.
 
 			\begin{equation}
 				\mathrm{IMD}_{2} = 100\frac{a_{f_{2} + f_{1}} + a_{f_{2} - f_{1}}}{a_{f_{2}}}
@@ -195,14 +195,14 @@
 
 			Where $a_{f}$ is the amplitude of frequency $f$ in the output signal.
 
-			THD and IMD give very limited information about the response of nonlinear systems. They are
-			typically measured using simple input signals which are not representative of the signals a system
-			would process in actual use. Given that nonlinear systems may not satisfy the condition of
-			superposition, a system may process simple and complex signals in vastly differing manners. These
-			metrics also give no indication of the perceived degradation in audio quality a system introduces.
-			A signal with a high THD value may potentially sound less distorted than one with a small THD. To
-			measure the perceived levels of distortion a system produces, metrics which are based around
-			psychoacoustic principles are required.
+			\acrshort{thd} and \acrshort{imd} give very limited information about the response of nonlinear
+			systems. They are typically measured using simple input signals which are not representative of the
+			signals a system would process in actual use. Given that nonlinear systems may not satisfy the
+			condition of superposition, a system may process simple and complex signals in vastly differing
+			manners. These metrics also give no indication of the perceived degradation in audio quality a
+			system introduces.  A signal with a high \acrshort{thd} value may potentially sound less distorted
+			than one with a small \acrshort{thd}. To measure the perceived levels of distortion a system
+			produces, metrics which are based around psychoacoustic principles are required.
 
 		\subsubsection*{Psychoacoustically Influenced Metrics}
 			Several researchers have developed new distortion metrics which indicate the perceived amount of
@@ -236,13 +236,13 @@
 			A considerable advantage of the GedLee metric is that it directly measures the system in question
 			rather than signals processed by it. This should allow measurements taken using the metric to
 			describe the audible degradation of any signal processed by a system. \citet{lee2003auditory}
-			provide results of an experiment in which their metric was tested against THD and IMD as a rating
-			of audio quality. They show that for low levels of distortion the GedLee metric correlates with
-			subjective audio quality ratings. THD and IMD are both found not to correlate well with perceived
-			quality. The GedLee metric is only applicable to the analysis of static nonlinearities. Many
-			nonlinear systems are more complex than this and may exhibit frequency dependent or time variant
-			behaviour. While the GedLee metric may provide a good, signal independent, measure of distortion,
-			it is only applicable to a subset of nonlinear systems.
+			provide results of an experiment in which their metric was tested against \acrshort{thd} and
+			\acrshort{imd} as a rating of audio quality. They show that for low levels of distortion the GedLee
+			metric correlates with subjective audio quality ratings. \acrshort{thd} and \acrshort{imd} are both
+			found not to correlate well with perceived quality. The GedLee metric is only applicable to the
+			analysis of static nonlinearities. Many nonlinear systems are more complex than this and may
+			exhibit frequency dependent or time variant behaviour. While the GedLee metric may provide a good,
+			signal independent, measure of distortion, it is only applicable to a subset of nonlinear systems.
 
 			\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score
 			($\mathrm{DS}$), which employs models of the human hearing system to better approximate the
