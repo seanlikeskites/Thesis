@@ -85,7 +85,9 @@
 \newcolumntype{C}[1]{>{\centering}p{#1}}
 
 % glossary entries
-\usepackage[acronym, nonumberlist]{glossaries}
+\usepackage[acronym, style=super, nonumberlist, nogroupskip]{glossaries}
+\newglossary[mlg]{maths}{mni}{mno}{Mathematical Notation}
+\setlength{\glsdescwidth}{0.8\textwidth}
 \makeglossaries
 \newacronym{dft}{DFT}{Discrete Fourier Transform}
 \newacronym{dct}{DCT}{Discrete Cosine Transform}
@@ -94,6 +96,27 @@
 \newacronym{mds}{MDS}{Multidimensional Scaling}
 \newacronym{pca}{PCA}{Principle Component Analysis}
 \newacronym{efa}{EFA}{Exploratory Factor Analysis}
+\newacronym{lti}{LTI}{Linear Time Invariant}
+\newacronym{ltv}{LTV}{Linear Time Variant}
+
+\newglossaryentry{maths:round}
+{
+	type=maths,
+	name={$\round{a}$},
+	description={round $a$ to the nearest integer},
+	sort={round}
+}
+\glsadd{maths:round}
+
+\newglossaryentry{maths:setcomp}
+{
+	type=maths,
+	name={$B \setminus A$},
+	description={the relative complement of set $A$ with respect to set $B$ (the elements in $B$ which are not in
+		     $A$)},
+	sort={comp}
+}
+\glsadd{maths:setcomp}
 
 \author{Sean Enderby}
 \title{Timbral Control of Audio Through Harmonic Excitation}

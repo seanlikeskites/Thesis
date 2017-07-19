@@ -30,9 +30,9 @@
 
 \section{Analysis of Nonlinear Systems}
 \label{sec:Excitation-AnalysisOfNonlinearSystems}
-	The behaviour of an LTI system can be entirely summarised by its response to a unit impulse signal (the Kronecker
-	delta function) \citep{phillips2007signals}. This is know as the system's impulse response, $A[n]$, and can be used
-	to calculate the response of the system to an arbitrary input signal, $x[n]$, via convolution
+	The behaviour of an \acrshort{lti} system can be entirely summarised by its response to a unit impulse signal (the
+	Kronecker delta function) \citep{phillips2007signals}. This is know as the system's impulse response, $A[n]$, and
+	can be used to calculate the response of the system to an arbitrary input signal, $x[n]$, via convolution
 	(Equation~\ref{eq:Convolution}).
 
 	\begin{equation}
@@ -42,18 +42,19 @@
 
 	Where $M$ is the length of the system's impulse response.
 	
-	Analysis of nonlinear systems is more complicated, unlike LTI systems the properties of the system cannot be
-	summarised by the system's response to a single input signal. Depending on the field in which a nonlinear system is
-	being studied, different approaches are taken in an attempt to summarise the behaviour of nonlinear systems. In the
-	field of audio engineering much of the literature concerning nonlinearities has to do with minimising distortion or
-	measuring the maximum allowable levels of distortion. Several distortion metrics have been developed each with
-	their own uses. A review of many of these metrics is given by \citet{voishvillo2006assessment}, some of which will
-	be discussed in Section~\ref{sec:Excitation-Analysis-Metrics}.  Where more information is needed, nonlinear
-	modelling techniques are used.  These typically involve setting the parameters of a generalised nonlinear system
-	such that its behaviour matches that of the system being analysed. The nonlinear modelling techniques utilised in
-	the audio processing literature are discussed in Section~\ref{sec:Excitation-Analysis-Modelling}. Prior to
-	discussing how the effects of nonlinear systems are measured / modelled, the concept of distortion components (the
-	artefacts introduced by nonlinear systems) is introduced in Section~\ref{sec:Excitation-Analysis-Components}.
+	Analysis of nonlinear systems is more complicated, unlike \acrshort{lti} systems the properties of the system
+	cannot be summarised by the system's response to a single input signal. Depending on the field in which a nonlinear
+	system is being studied, different approaches are taken in an attempt to summarise the behaviour of nonlinear
+	systems. In the field of audio engineering much of the literature concerning nonlinearities has to do with
+	minimising distortion or measuring the maximum allowable levels of distortion. Several distortion metrics have been
+	developed each with their own uses. A review of many of these metrics is given by \citet{voishvillo2006assessment},
+	some of which will be discussed in Section~\ref{sec:Excitation-Analysis-Metrics}.  Where more information is
+	needed, nonlinear modelling techniques are used.  These typically involve setting the parameters of a generalised
+	nonlinear system such that its behaviour matches that of the system being analysed. The nonlinear modelling
+	techniques utilised in the audio processing literature are discussed in
+	Section~\ref{sec:Excitation-Analysis-Modelling}. Prior to discussing how the effects of nonlinear systems are
+	measured / modelled, the concept of distortion components (the artefacts introduced by nonlinear systems) is
+	introduced in Section~\ref{sec:Excitation-Analysis-Components}.
 
 	\subsection{Distortion Components}
 	\label{sec:Excitation-Analysis-Components}
@@ -405,11 +406,11 @@
 
 		\subsubsection{Volterra Series}
 			Modelling a nonlinear system using a Volterra series can be considered an extension of modelling an
-			LTI system by measuring its impulse response. The response of the system to a pseudo-random test
-			signal is used to calculate a series of kernels using methods described by \citet{schetzen1980the}.
-			These Volterra kernels are analogous to an LTI system's impulse response and can be used to
-			calculate the output of the system to an arbitrary input using Equation~\ref{eq:VolterraSeries}
-			(shown graphically in Figure~\ref{fig:VolterraModel}).
+			\acrshort{lti} system by measuring its impulse response. The response of the system to a
+			pseudo-random test signal is used to calculate a series of kernels using methods described by
+			\citet{schetzen1980the}.  These Volterra kernels are analogous to an \acrshort{lti} system's
+			impulse response and can be used to calculate the output of the system to an arbitrary input using
+			Equation~\ref{eq:VolterraSeries} (shown graphically in Figure~\ref{fig:VolterraModel}).
 
 			\begin{equation}
 				y[n] = g_{0} + \sum_{p = 1}^{P} 

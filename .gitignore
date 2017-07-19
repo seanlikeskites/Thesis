@@ -36,3 +36,6 @@
 *.brf
 *.lod
 *.un~
+*.mlg
+*.mni
+*.mno

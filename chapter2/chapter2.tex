@@ -833,13 +833,13 @@
 			
 			In an attribute scale test the stimuli are presented to the participants one at a time and rated
 			against several criteria. This is in direct opposition to a multiple stimulus test in which the
-			stimuli are all presented at once and rated against a single criterion. Attribute scale tests pose a
-			problem here as there is no reference provided against which to rate the stimuli. Participants must
-			keep several scales (one for each descriptor) in mind throughout the duration of the test. This may
-			cause them to use the extremes of the scales too early in the test so when presented with a
-			stimulus they wish to rate closer to the extremes they cannot. In a multiple stimulus test all the
-			stimuli being compared are available at once, allowing participants to find the stimuli which lie
-			at the extremes and rate the rest accordingly. This better utilises the range of the scale. 
+			stimuli are all presented at once and rated against a single criterion. Attribute scale tests pose
+			a problem here as there is no reference provided against which to rate the stimuli. Participants
+			must keep several scales (one for each descriptor) in mind throughout the duration of the test.
+			This may cause them to use the extremes of the scales too early in the test so when presented with
+			a stimulus they wish to rate closer to the extremes they cannot. In a multiple stimulus test all
+			the stimuli being compared are available at once, allowing participants to find the stimuli which
+			lie at the extremes and rate the rest accordingly. This better utilises the range of the scale. 
 			
 			Issues with the use of semantic differentials were shown by \citet{kendall1993verbal1}. Their first
 			experiment was an attribute scale test in which participants are asked to rate each audio stimulus
@@ -1181,9 +1181,9 @@
 		grouping effects into classes which are similarly implemented and also have similar timbral effects.
 		
 		In the following sections the most commonly used audio effects are listed and their properties and usages
-		discussed. The effects are split into three categories: linear time invariant, linear time variant and
-		nonlinear. Popular terms used to describe the timbral characteristics of the most commonly used audio
-		effects are gathered from the dataset collected by the SAFE project (discussed in detail in
+		discussed. The effects are split into three categories: \acrfull{lti}, \acrfull{ltv} and nonlinear. Popular
+		terms used to describe the timbral characteristics of the most commonly used audio effects are gathered
+		from the dataset collected by the SAFE project (discussed in detail in
 		Section~\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}).
 
 	\subsection{Linear Time Invariant Effects}
@@ -1199,15 +1199,16 @@
 		$m$ an arbitrary scaling factor.
 
 		Time invariance includes a further restriction that the behaviour of the system does not vary with time:
-		identical signals processed at different times will produce identical results. A linear time invariant
-		(LTI) system is then one which satisfies the principles of superposition and time invariance. LTI systems
-		also exhibit the property of commutativity, meaning that the order in which multiple LTI systems are
+		identical signals processed at different times will produce identical results. An \acrshort{lti} system is
+		then one which satisfies the principles of superposition and time invariance. \acrshort{lti} systems also
+		exhibit the property of commutativity, meaning that the order in which multiple \acrshort{lti} systems are
 		applied has no effect on the resultant signal as defined in Equation~\ref{eq:commutativity}.
 
 		\begin{equation} f(g(x)) = g(f(x)) \label{eq:commutativity} \end{equation}
 
-		Where $f$ and $g$ are both functions representing LTI systems and $x$ is an input signal. From the corpus
-		of audio effects used by audio engineers equalisation, delay and reverb are each LTI systems.
+		Where $f$ and $g$ are both functions representing \acrshort{lti} systems and $x$ is an input signal.  From
+		the corpus of audio effects used by audio engineers equalisation, delay and reverb are each \acrshort{lti}
+		systems.
 
 		\subsubsection*{Equalisation}
 			Equalisation is the process of applying filters to a signal to accentuate / attenuate certain
@@ -1233,9 +1234,9 @@
 
 	\subsection{Linear Time Variant Effects}
 	\label{sec:Timbre-AudioProcessing-LTV}
-		Linear time variant (LTV) systems satisfy the superposition principle but include an element which varies
-		with time. In audio effects this time variance is most often due to modulation of the processing parameters
-		by an internally generated signal; this internal signal generator is often referred to as a low frequency
+		\acrshort{ltv} systems satisfy the superposition principle but include an element which varies with time.
+		In audio effects this time variance is most often due to modulation of the processing parameters by an
+		internally generated signal; this internal signal generator is often referred to as a low frequency
 		oscillator (LFO). LFOs can be used to modulate the time by which playback of an audio signal is delayed;
 		changing delay time in a constant linear fashion can model the Doppler effect applying a pitch shift to a
 		signal \citep{dattorro1997effect}. More complex modulation of the delay time is used in the flanger effect

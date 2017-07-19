@@ -94,7 +94,7 @@
 		which do and don't satisfy the principle of homogeneity. Positive homogeneous refers to systems which are
 		homogeneous for positive gain applied to the input signal (satisfying Equation~\ref{eq:homogeneity} for
 		positive values of $m$). A number of the systems evaluates are linear time variant and therefore
-		homogeneous, these are identified as LTV systems.
+		homogeneous, these are identified as \acrshort{ltv} systems.
 
 	\subsection{Spectral Characteristics}
 	\label{sec:ExcitationEvaluation-Evaluation-SpectralCharacteristics}
@@ -193,11 +193,11 @@
 				Individual harmonic output for sinusoidal input, dense spectra for more complex signals. & 
 				No effects. \tabularnewline
 				\hline
-				Spectral Replication & $\mathcal{O}(n)$ & LTV & 
+				Spectral Replication & $\mathcal{O}(n)$ & \acrshort{ltv} & 
 				Same bandwidth as input only shifted in frequency, retains $f_{0}$. & 
 				No effects. \tabularnewline
 				\hline
-				Spectral Folding & $\mathcal{O}(n)$ & LTV & 
+				Spectral Folding & $\mathcal{O}(n)$ & \acrshort{ltv} & 
 				Little control, fills entire output spectrum. & 
 				Low pass filter smears transients. \tabularnewline
 				\hline
@@ -205,7 +205,7 @@
 				Scaling of input bandwidth, scales $f_{0}$. & 
 				Phase vocoder can smear transients. \tabularnewline
 				\hline
-				STTR & $\mathcal{O}(n)$ & LTV & 
+				STTR & $\mathcal{O}(n)$ & \acrshort{ltv} & 
 				Depends on $f_{0}$ of input, no bound on orders of distortion components. &
 				Complex due to time reversal. \tabularnewline
 				\hline
@@ -763,9 +763,9 @@
 			In spectral replication each frequency component is shifted by the same amount, preserving the
 			differences between them. This is useful for harmonic excitation of simple harmonically structured
 			signals. Providing the spectrum is shifted by an integer multiple of the $f_{0}$, any components at
-			harmonic frequencies in the input will remain harmonic frequencies at the output. Being an LTV
-			system, spectral replication avoids the intermodulation distortion inherent to the systems
-			discussed previously. 
+			harmonic frequencies in the input will remain harmonic frequencies at the output. Being an
+			\acrshort{ltv} system, spectral replication avoids the intermodulation distortion inherent to the
+			systems discussed previously. 
 
 			Due to every frequency component being shifted by an equal amount, the bandwidth of the output is
 			equal to that of the input. This predictability allows for easier control of the output spectrum.
