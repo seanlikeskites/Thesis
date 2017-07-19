@@ -84,11 +84,13 @@
 \usepackage{hhline}
 \newcolumntype{C}[1]{>{\centering}p{#1}}
 
-% glossary entries
-\usepackage[acronym, style=super, nonumberlist]{glossaries}
+% glossary options
+\usepackage[acronym, nonumberlist, style=super]{glossaries}
 \newglossary[mlg]{maths}{mni}{mno}{Mathematical Notation}
 \setlength{\glsdescwidth}{0.8\textwidth}
 \makeglossaries
+
+% glossary entries
 \newacronym{dft}{DFT}{Discrete Fourier Transform}
 \newacronym{dct}{DCT}{Discrete Cosine Transform}
 \newacronym{stft}{STFT}{Short-Time Fourier Transform}
@@ -115,15 +117,78 @@
 }
 \glsadd{maths:round}
 
+\newglossaryentry{maths:max}
+{
+	type=maths,
+	name={$\displaystyle \max_{i = 0}^{I} A_{i}$},
+	description={the maximum value of $A_{i}$ for $0 \leq i \leq I$},
+	sort={max}
+}
+\glsadd{maths:max}
+
+\newglossaryentry{maths:euclidian}
+{
+	type=maths,
+	name={$\euclidian{a - b}$},
+	description={the Euclidian distance between points $a$ and $b$ in a multidimensional space},
+	sort={euclidian}
+}
+\glsadd{maths:euclidian}
+
 \newglossaryentry{maths:setcomp}
 {
 	type=maths,
-	name={$B \setminus A$},
-	description={the relative complement of set $A$ with respect to set $B$ (the set of elements in $B$ which are not in
-		     $A$)},
-	sort={comp}
+	name={$A \setminus B$},
+	description={the relative complement of set $B$ with respect to set $A$ (the set of elements in $A$ which are not in
+		     $B$)},
+	sort={setcomp}
 }
 \glsadd{maths:setcomp}
+
+\newglossaryentry{maths:subset}
+{
+	type=maths,
+	name={$A \subseteq B$},
+	description={$A$ is a subset of or equal to $B$ ($A$ only contain elements which are also in $B$)},
+	sort={subset}
+}
+\glsadd{maths:subset}
+
+\newglossaryentry{maths:setunion}
+{
+	type=maths,
+	name={$A \protect\medcup B$},
+	description={the union of sets $A$ and $B$ (the set which contains all elements in both $A$ and $B$)},
+	sort={setunion}
+}
+\glsadd{maths:setunion}
+
+\newglossaryentry{maths:setmembership}
+{
+	type=maths,
+	name={$a \in A$},
+	description={set membership, $a$ is an element of $A$},
+	sort={setmembership}
+}
+\glsadd{maths:setmembership}
+
+\newglossaryentry{maths:thenaturalnumbers}
+{
+	type=maths,
+	name={$\textbf{N}$},
+	description={the set of all natural numbers (integers greater than zero)},
+	sort={thenaturalnumbers}
+}
+\glsadd{maths:thenaturalnumbers}
+
+\newglossaryentry{maths:theintegers}
+{
+	type=maths,
+	name={$\textbf{Z}$},
+	description={the set of all integers},
+	sort={theintegers}
+}
+\glsadd{maths:theintegers}
 
 \author{Sean Enderby}
 \title{Timbral Control of Audio Through Harmonic Excitation}
