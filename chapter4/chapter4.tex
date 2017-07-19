@@ -181,7 +181,7 @@
 			\end{itemize}
 			\item {\bf{Bark Coefficients (}}$\mathrm{Bark}_{0\mathrm{-}24}${\bf{):}} The 25 bark band
 			      coefficients.
-		        \item {\bf{MFCCs (}}$\mathrm{MFCC}_{0\mathrm{-}12}${\bf{):}} The 13 \acrshort{mfccs}.
+		      \item {\bf{\acrshort{mfccs} (}}$\mathrm{MFCC}_{0\mathrm{-}12}${\bf{):}} The 13 \acrshort{mfccs}.
 		\end{itemize}
 
 		The SAFE plug-ins were distributed online as VST and AU effects for Windows, Mac OS X and Linux.  Releases
@@ -341,8 +341,8 @@
 	processing techniques and which are reserved for a particular effect. Following this, clustering techniques are
 	used in order to identify group of terms which describe similar audio signals / transforms, finding terms which are
 	synonymous when used to describe timbre (Section~\ref{sec:TimbreEvaluation-Analysis-TermClustering}). Finally,
-	timbre spaces are constructed using PCA in order to find the most salient audio features which contribute to the
-	differences in timbral description (Section~\ref{sec:TimbreEvaluation-Analysis-TimbreSpaces}).
+	timbre spaces are constructed using \acrshort{pca} in order to find the most salient audio features which
+	contribute to the differences in timbral description (Section~\ref{sec:TimbreEvaluation-Analysis-TimbreSpaces}).
 
 	\subsection{Preprocessing}
 	\label{sec:TimbreEvaluation-Analysis-Preprocessing}
@@ -820,14 +820,14 @@
 			disregarded. This can be achieved by calculating the agreement in a reduced dimensionality
 			representation of the feature space.
 
-			Using PCA, the dimensions with the largest variance in the feature space can be discovered. If the
-			transforms labelled with a particular term exhibit a small variance in one of these dimensions it
-			is likely that that term is well agreed upon. Agreement can be calculated in the PCA timbre space
-			using Equation~\ref{eq:BoundedEigenvalueAgreement}, with $\lambda_{d,k}$ being the $k$\super{th}
-			eigenvalue of the covariance matrix calculated from the principal components (PCs) of every
-			transform labelled with descriptor $d$. As when calculating the agreement in the feature space, the
-			timbre space should be standardised before calculation of agreement to remove bias introduced by
-			the proportions of total variance each PC describes.
+			Using \acrshort{pca}, the dimensions with the largest variance in the feature space can be
+			discovered. If the transforms labelled with a particular term exhibit a small variance in one of
+			these dimensions it is likely that that term is well agreed upon. Agreement can be calculated in
+			the \acrshort{pca} timbre space using Equation~\ref{eq:BoundedEigenvalueAgreement}, with
+			$\lambda_{d,k}$ being the $k$\super{th} eigenvalue of the covariance matrix calculated from the
+			principal components (PCs) of every transform labelled with descriptor $d$. As when calculating the
+			agreement in the feature space, the timbre space should be standardised before calculation of
+			agreement to remove bias introduced by the proportions of total variance each PC describes.
 
 			The number of PCs to use in the calculation of agreement is an important consideration. PCs which
 			describe a low proportion of total variance should be discarded as is it is not known whether this
@@ -853,15 +853,16 @@
 			
 			Figure~\ref{fig:SynthesisedData} shows a synthesised, three dimensional, dataset containing four
 			clusters of points. For ease of discussion it is assumed that this data represents the feature
-			space after PCA has been applied. Each cluster has different properties which need to be taken into
-			account when calculating the agreement score. Cluster 1 represents a set of points whose position
-			in the PCA space is not agreed upon, exhibiting a high variance in every PC. Cluster 2 represents a
-			set of points whose position is very well agreed upon, having low variance in every PC. Cluster 3
-			represents a set of points whose position is only defined in one PC, having high variance in the
-			other two. Cluster 4 represent a set of points which are defined by a relationship between two PCs,
-			exhibiting high variance in all PCs but a strong correlation ($r = 0.9$) between PCs 1 and 2. The
-			clusters were generated using the techniques discussed by \citet{ripley1987stochastic}, using the
-			means, $\mu$, and covariance matrices, $\Sigma$, shown in Datum~\ref{dat:ClusterStats}.
+			space after \acrshort{pca} has been applied. Each cluster has different properties which need to be
+			taken into account when calculating the agreement score. Cluster 1 represents a set of points whose
+			position in the \acrshort{pca} space is not agreed upon, exhibiting a high variance in every PC.
+			Cluster 2 represents a set of points whose position is very well agreed upon, having low variance
+			in every PC. Cluster 3 represents a set of points whose position is only defined in one PC, having
+			high variance in the other two. Cluster 4 represent a set of points which are defined by a
+			relationship between two PCs, exhibiting high variance in all PCs but a strong correlation ($r =
+			0.9$) between PCs 1 and 2. The clusters were generated using the techniques discussed by
+			\citet{ripley1987stochastic}, using the means, $\mu$, and covariance matrices, $\Sigma$, shown in
+			Datum~\ref{dat:ClusterStats}.
 
 			\begin{datum}[h!]
 				\centering
@@ -1026,17 +1027,18 @@
 		Two low dimensionality timbre spaces are generated for each effect, one from the feature space of the
 		processed signals and the other from the feature space describing the difference in feature values between
 		the processed and unprocessed signals. To generate these timbre spaces, the feature spaces are first
-		standardised and then undergo PCA. For every space, the knee of the PCA scree plot lies at five PCs. The
-		final reduced dimensionality timbre spaces are then constructed from the first five PCs.
+		standardised and then undergo \acrshort{pca}. For every space, the knee of the \acrshort{pca} scree plot
+		lies at five PCs. The final reduced dimensionality timbre spaces are then constructed from the first five
+		PCs.
 
 		These timbre spaces are analysed in various steps. Firstly the audio features which correlate most highly
 		with each PC are determined. Features which satisfy a correlation criterion of $\abs{r} > 0.7$ and $p <
 		0.01$ are deemed to be the salient features of each timbre space. Next the agreement scores for the
 		relevant descriptors from Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} are calculated. As
-		the timbre space is a product of PCA no additional PCA is needed, the high variance dimensions of the data
-		have already been identified. Each timbre space is standardised and the covariance matrix for each
-		descriptor is calculated. The agreement scores are then calculated from the eigenvalues of these covariance
-		matrices using Equation~\ref{eq:BoundedEigenvalueAgreement} as discussed in
+		the timbre space is a product of \acrshort{pca} no additional \acrshort{pca} is needed, the high variance
+		dimensions of the data have already been identified. Each timbre space is standardised and the covariance
+		matrix for each descriptor is calculated. The agreement scores are then calculated from the eigenvalues of
+		these covariance matrices using Equation~\ref{eq:BoundedEigenvalueAgreement} as discussed in
 		Section~\ref{sec:TimbreEvaluation-Analysis-Agreement}.
 		
 		Two types of graph are plotted to identify patterns within each timbre space. The first is a scatter plot
@@ -1513,8 +1515,8 @@
 	applied to synthetic data. This new metric is used to identify the most agreed upon descriptors in the dataset,
 	these being `warm', `bright' and `crunch'.
 
-	Low dimensional timbre spaces are then constructed by applying PCA to the audio features associated with each
-	transform. The audio features which correlate best with each principal component are identified allowing the
+	Low dimensional timbre spaces are then constructed by applying \acrshort{pca} to the audio features associated with
+	each transform. The audio features which correlate best with each principal component are identified allowing the
 	meanings of timbral descriptors to be determined. For the timbral groups identified in the clustering analysis,
 	these acoustic correlates are as follows.
 

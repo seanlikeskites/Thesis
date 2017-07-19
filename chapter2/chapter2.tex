@@ -1028,30 +1028,30 @@
 		reduce the number of dimensions while preserving information relating to the differences between stimuli
 		(such as the euclidean distances between them). The dimensionality reduction method used depends on the
 		type of data collected in the listening experiment. Various methods have been used in previous timbral
-		research including multidimensional scaling (MDS), principal component analysis (PCA) and exploratory
-		factor analysis (EFA).
+		research including \acrfull{mds}, \acrfull{pca} and \acrfull{efa}.
 
-		MDS is typically used in situations where dissimilarity data is being analysed. This type of data can be
-		further grouped in to metric and non-metric data \citep{hair2013multivariate}. Metric dissimilarity data
-		consists of the distances between each pair of stimuli. This is the type of data collected using pairwise
-		dissimilarity tests. Non-metric data consists of rankings of the stimulus' dissimilarity (e.g. this pair of
-		stimuli is more similar than this pair of stimuli). This is the type of data collected using a triadic
-		comparisons experiment. The goal of MDS analysis is to take this dissimilarity data and represent it in an
-		$N$ dimensional timbre space. Each audio stimulus is placed at a point in this space, the distances between
-		them representing their dissimilarities. For timbral research the data is usually represented in two
-		\citep{giragama2003relating} or three \citep{grey1978perceptual} dimensions and sometimes four
-		\citep{bernays2011verbal}. There are multiple different algorithms for performing MDS several of which are
-		discussed by \citet{mcadams1999perspectives}. Each has slight performance improvements for specific types
-		of input data.  \citet{burgoyne2008a} reanalysed the results of various classic timbre studies with an
-		improved MDS algorithm stating that through removing nonlinearities in the input data the timbre space can
-		be better represented.
+		\acrshort{mds} is typically used in situations where dissimilarity data is being analysed. This type of
+		data can be further grouped in to metric and non-metric data \citep{hair2013multivariate}. Metric
+		dissimilarity data consists of the distances between each pair of stimuli. This is the type of data
+		collected using pairwise dissimilarity tests. Non-metric data consists of rankings of the stimulus'
+		dissimilarity (e.g. this pair of stimuli is more similar than this pair of stimuli). This is the type of
+		data collected using a triadic comparisons experiment. The goal of \acrshort{mds} analysis is to take this
+		dissimilarity data and represent it in an $N$ dimensional timbre space. Each audio stimulus is placed at a
+		point in this space, the distances between them representing their dissimilarities. For timbral research
+		the data is usually represented in two \citep{giragama2003relating} or three \citep{grey1978perceptual}
+		dimensions and sometimes four \citep{bernays2011verbal}. There are multiple different algorithms for
+		performing \acrshort{mds} several of which are discussed by \citet{mcadams1999perspectives}. Each has
+		slight performance improvements for specific types of input data.  \citet{burgoyne2008a} reanalysed the
+		results of various classic timbre studies with an improved \acrshort{mds} algorithm stating that through
+		removing nonlinearities in the input data the timbre space can be better represented.
 
-		The other two methods (PCA and EFA) take multivariate data and try to describe it using a smaller set of
-		variables, called components or factors. This approach is well suited to data obtained from attribute scale
-		tests, the variables being the scales on which each audio stimulus is graded. \citet{kendall1993verbal1}
-		use PCA to identify three factors which describe the results of their VAME experiment.
-		\citet{zacharakis2012analysis} also performed a VAME test but choose to use EFA over PCA stating that EFA
-		better explains the relationships between the separate attribute scales.
+		The other two methods (\acrshort{pca} and \acrshort{efa}) take multivariate data and try to describe it
+		using a smaller set of variables, called components or factors. This approach is well suited to data
+		obtained from attribute scale tests, the variables being the scales on which each audio stimulus is graded.
+		\citet{kendall1993verbal1} use \acrshort{pca} to identify three factors which describe the results of their
+		VAME experiment.  \citet{zacharakis2012analysis} also performed a VAME test but choose to use
+		\acrshort{efa} over \acrshort{pca} stating that \acrshort{efa} better explains the relationships between
+		the separate attribute scales.
 
 	\subsection{Correlation of Dimensions with Audio Features}
 	\label{sec:Timbre-DimensionalityReduction-DimensionCorrelations}
@@ -1065,12 +1065,12 @@
 		orthogonal features which contribute greatly to the perception of difference in timbre.
 		
 		The data analysed in those studies were the results of dissimilarity tests. Where timbral descriptors are
-		available, the semantic meanings of the dimensions can be discussed. When PCA or EFA are used on the
-		results from attribute scale tests the results directly show how much each of the graded attributes
-		contribute to each dimension of the timbre space. \citet{marui2005timbre} use the results from their
-		semantic differential test in order to assign semantic descriptors to the dimensions of their timbre space.
-		They report that the semantic differential, thick $\Leftrightarrow$ thin, can be used to distinguish
-		between different classes of distortion effect, while dark $\Leftrightarrow$ bright and sharp
+		available, the semantic meanings of the dimensions can be discussed. When \acrshort{pca} or \acrshort{efa}
+		are used on the results from attribute scale tests the results directly show how much each of the graded
+		attributes contribute to each dimension of the timbre space. \citet{marui2005timbre} use the results from
+		their semantic differential test in order to assign semantic descriptors to the dimensions of their timbre
+		space.  They report that the semantic differential, thick $\Leftrightarrow$ thin, can be used to
+		distinguish between different classes of distortion effect, while dark $\Leftrightarrow$ bright and sharp
 		$\Leftrightarrow$ dull describe the amount of distortion applied with a particular effect.
 
 		\citet{alluri2010exploring} take a more in depth approach, using regression techniques to identify which
@@ -1086,15 +1086,16 @@
 		high-low energy ratio, entropy and the 2\super{nd} band's flux.
 
 		Further analysis can be carried out in the form of clustering, identifying groups (clusters) of stimuli
-		with similar timbres. \citet{lakatos2000a} perform a pairwise dissimilarity test and apply MDS followed by
-		clustering to the results. The clusters identified within the MDS timbre space correlate well with the
-		classes of instruments (e.g. bowed string, blown tubes, metal plates etc.) the stimuli were produced by.
-		Alternatively, clustering can be applied to the results taken from an adjective scale test, identifying
-		clusters of terms which are used to describe similar features of audio signals. \citet{zacharakis2011an2}
-		use this method to identify three groups of descriptors, summarised here as: cluster one, containing
-		`soft', `light' and `warm'; cluster two, containing `bright', `brilliant' and `thin'; and cluster three,
-		containing `shrill', `sharp' and `rough'. Terms within each of these clusters can be though of as timbral
-		synonyms, being used similarly when rating the set of stimuli used for the test.
+		with similar timbres. \citet{lakatos2000a} perform a pairwise dissimilarity test and apply \acrshort{mds}
+		followed by clustering to the results. The clusters identified within the \acrshort{mds} timbre space
+		correlate well with the classes of instruments (e.g. bowed string, blown tubes, metal plates etc.) the
+		stimuli were produced by.  Alternatively, clustering can be applied to the results taken from an adjective
+		scale test, identifying clusters of terms which are used to describe similar features of audio signals.
+		\citet{zacharakis2011an2} use this method to identify three groups of descriptors, summarised here as:
+		cluster one, containing `soft', `light' and `warm'; cluster two, containing `bright', `brilliant' and
+		`thin'; and cluster three, containing `shrill', `sharp' and `rough'. Terms within each of these clusters
+		can be though of as timbral synonyms, being used similarly when rating the set of stimuli used for the
+		test.
 
 \section{Controlling Timbre}
 \label{sec:Timbre-Control}
@@ -1137,9 +1138,9 @@
 		dimensionality reduction on a large set of possible parameter configurations for an audio processing
 		algorithm. This is the approach take by \citet{cartwright2013socialeq} and
 		\citet{seetharaman2014crowdsourcing}. In these studies the researchers asked listening test participants to
-		attribute semantic descriptors to audio stimuli processed using an equaliser and a reverb respectively. MDS
-		analysis is then performed on the effects parameter configurations to produce a two dimensional parameter
-		space onto which the descriptors are mapped.
+		attribute semantic descriptors to audio stimuli processed using an equaliser and a reverb respectively.
+		\acrshort{mds} analysis is then performed on the effects parameter configurations to produce a two
+		dimensional parameter space onto which the descriptors are mapped.
 
 		Similar work was carried out by \citet{sabin2011weighting} who run experiments to determine which
 		parameters of certain audio effects contribute most to particular timbral attributes. This is done by
