@@ -97,7 +97,7 @@
 			Hilbert transform alters the phase information of a signal while leaving the magnitude information
 			unchanged. Any negative frequencies in the signal have their phase shifted by $\frac{\pi}{2}$
 			radians while the phase of positive frequencies is shifted by $-\frac{\pi}{2}$ radians. The
-			transfer function for an FIR implementation of a Hilbert transform is shown in
+			transfer function for an \acrshort{fir} implementation of a Hilbert transform is shown in
 			Equation~\ref{eq:FirHilbertTransform}.
 
 			\begin{equation}
@@ -109,36 +109,38 @@
 			Practicable approximations of an ideal Hilbert transform can be created by using a finite value for
 			$M$. A delay of $M$ samples must also be introduced in order to give a causal filter. As the value
 			of $M$ is decreased this delay is reduced while the magnitude response of the filter deviates
-			further from the ideal. Figure~\ref{fig:HilbertMagnitude} shows the magnitude responses for FIR
-			Hilbert transform filters with $M = 11$ and $M = 101$. The filters have a bandpass response with
-			some ripple in the pass band. As $M$ is increased the bandwidth of the passband is increased and
-			the ripple reduced. The phase response of these filters remains ideal no matter the value of $M$,
-			as evidenced by Figure~\ref{fig:HilbertPhase}.
+			further from the ideal. Figure~\ref{fig:HilbertMagnitude} shows the magnitude responses for
+			\acrshort{fir} Hilbert transform filters with $M = 11$ and $M = 101$. The filters have a bandpass
+			response with some ripple in the pass band. As $M$ is increased the bandwidth of the passband is
+			increased and the ripple reduced. The phase response of these filters remains ideal no matter the
+			value of $M$, as evidenced by Figure~\ref{fig:HilbertPhase}.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter2/Images/HilbertMagnitudeResponses.pdf}
-				\caption{Magnitude responses of FIR Hilbert transform filter with different orders.}
+				\caption{Magnitude responses of \acrshort{fir} Hilbert transform filter with different
+					 orders.}
 				\label{fig:HilbertMagnitude}
 			\end{figure}
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter2/Images/HilbertPhaseResponses.pdf}
-				\caption{Phase responses of FIR Hilbert transform filters with different orders.}
+				\caption{Phase responses of \acrshort{fir} Hilbert transform filters with different
+					 orders.}
 				\label{fig:HilbertPhase}
 			\end{figure}
 
 			When using Equation~\ref{eq:FirHilbertTransform} a compromise needs to be made between the
 			tolerable amount of delay and the accuracy of the filter's magnitude response. Increasing $M$ will
 			give a more accurate filter but introduce more delay and increase the complexity of the filter.
-			More efficient implementations can be built using IIR filters if some of the properties of an ideal
-			Hilbert transform are disregarded.  \citet{oppenheim2014discrete} suggest constructing a phase
-			splitter: processing audio with two parallel allpass IIR filters the phase responses of which
-			differ from each other by $\frac{\pi}{2}$ radians for a large proportion of the spectrum. While
-			this is not strictly a Hilbert transform it creates two signals which can be used as the real and
-			imaginary part of an analytic signal. \citet{niemitalo2003hilbert} provides an implementation of
-			such a pair of filters. The phase difference between these two filters is seen in
+			More efficient implementations can be built using \acrshort{iir} filters if some of the properties
+			of an ideal Hilbert transform are disregarded.  \citet{oppenheim2014discrete} suggest constructing
+			a phase splitter: processing audio with two parallel allpass \acrshort{iir} filters the phase
+			responses of which differ from each other by $\frac{\pi}{2}$ radians for a large proportion of the
+			spectrum. While this is not strictly a Hilbert transform it creates two signals which can be used
+			as the real and imaginary part of an analytic signal. \citet{niemitalo2003hilbert} provides an
+			implementation of such a pair of filters. The phase difference between these two filters is seen in
 			Figure~\ref{fig:IIRHilbertPhase}.
 
 			\begin{figure}[h!]

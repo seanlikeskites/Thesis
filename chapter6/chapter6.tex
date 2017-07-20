@@ -1186,9 +1186,9 @@
 
 		The maximum achievable first tristimulus value is determined by both the content of the input signal and
 		the order of the filters used in the implementation of the excitation system. The system used for the
-		values shown in Figure~\ref{fig:MoveTristimulus1} used second order IIR filters. This means that the
-		isolated $f_{0}$ signal contains energy in some of the higher order spectral partials. In sounds where the
-		$f_{0}$ has significantly less amplitude than subsequent spectral partials this is particularly
+		values shown in Figure~\ref{fig:MoveTristimulus1} used second order \acrshort{iir} filters. This means that
+		the isolated $f_{0}$ signal contains energy in some of the higher order spectral partials. In sounds where
+		the $f_{0}$ has significantly less amplitude than subsequent spectral partials this is particularly
 		problematic. The piano signal used for testing illustrates this. In this case the isolated $f_{0}$ signal
 		has more energy in the second harmonic than at the $f_{0}$, severely reducing the maximum value which the
 		first tristimulus can attain. Using higher order filters will alleviate this problem at the cost of
@@ -1227,9 +1227,9 @@
 			\label{fig:MoveTristimulus3}
 		\end{figure}
 
-		Again, second order IIR filters have been used to filter out the lower order harmonics from the excited
-		signal.	These low order filters do not remove all the energy in the first 4 harmonics thereby limiting how
-		high the third tristimulus can be made.
+		Again, second order \acrshort{iir} filters have been used to filter out the lower order harmonics from the
+		excited signal.	These low order filters do not remove all the energy in the first 4 harmonics thereby
+		limiting how high the third tristimulus can be made.
 
 	\subsection{Odd to Even Harmonic Ratio}
 	\label{sec:FeatureControl-Parameterisation-HarmonicParityRatio}
@@ -1528,8 +1528,8 @@
 	In implementing these methods further challenges are met. The parameterisations all rely on the $f_{0}$ of the
 	input signal being perfectly isolated and the elimination of superposition for any of the excited harmonics
 	(Section~\ref{sec:FeatureControl-Systems-Superposition}). In real time systems this will not always be possible.
-	The implementations used when processing the test signals used second order IIR filters for these tasks to
-	investigate the effects this would have when processing different signals. As seen in
+	The implementations used when processing the test signals used second order \acrshort{iir} filters for these tasks
+	to investigate the effects this would have when processing different signals. As seen in
 	Section~\ref{sec:FeatureControl-Parameterisation} this less than ideal filter performance produces non-monotonic
 	behaviour for some of the systems. This is especially notable when controlling the odd to even harmonic ratio of
 	the piano signal, due to the nature of the damped fundamental the system was only able to produce even order

@@ -20,18 +20,31 @@
 	The application of audio effects for creative purposes is typically motivated by the perceived timbre of the audio.
 	Creative decisions are often expressed using language which does not refer to the mathematical properties of the
 	recorded signals. For example one might ask that the saxophone is made more present in the mix, or that the piano be
-	made to sound more airy. In order to complete these tasks using traditional audio effects music, producers and audio
+	made to sound more airy. In order to complete these tasks using traditional audio effects, music producers and audio
 	engineers require knowledge of how the technical parameters relate to specific perceived aspects of timbre. This
 	knowledge is gained through training and experience, presenting an obstacle to novices.
 
+	Audio production software typically uses parameter presets to assist novice users. These are a predefined set of
+	parameter values for a particular effect which are labelled with semantic descriptions. Users can apply an effect to
+	a signal and choose a preset which best fits their desired outcome. This does not, however, provide an intuitive
+	interface to the user. A static parameter setting will not apply the same timbral transformation to all input
+	signals. If the user wishes to alter the settings slightly, they still require knowledge of how the effect's
+	parameters relate to perceived timbre. For example, a user might apply a preset to make a sound brighter, if they
+	are not happy with the result no assistance is given in making the sound more or less bright.
+
+	More intuitive interfaces for control over timbre provide parameters which directly relate to perceived aspects of a
+	sound. These perform the translation between the language used to describe timbre and the technical parameters of
+	signal processing algorithms, allowing users to focus on the creative aspects of music production. Having timbral
+	properties controlled by continuous parameters increases the intuitiveness of the system as it is evident which
+	parameter to adjust to change a particular timbral property. The effect can also analyse the input signal and adjust
+	itself such that the parameter has similar timbral effects across a wide range of inputs.
+
 	\note
 	{
-		Presets are there to help novice users but they are shit. One must still know what kind of processing they
-		wish to apply. They are also highly signal dependant.
-
-		Proper intuitive systems are based on the relationship between timbre and mathematical properties.
-		These have been proposed for different types of effect but we will focus on distortion.
+		To develop these types of affects we need to investigate the relationships between timbre and low level
+		features. This has been done for several types of effect but we are doing it for distortion type effects.
 	}
+
 
 \section{Objectives}
 \label{sec:Introduction-Objectives}
@@ -74,6 +87,11 @@
 
 	In {\bf{Chapter~\ref{chap:PerceptualExperiments}}} perceptual effects of the systems proposed in
 	Chapter~\ref{chap:FeatureControl} are evaluated. 
+
+	\note
+	{
+		We conclude in {\bf{Chapter~\ref{chap:Conclusion}}} with a summary of findings.
+	}
 
 \section{Contributions}
 \label{sec:Introduction-Contributions}

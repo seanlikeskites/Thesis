@@ -248,11 +248,11 @@
 		\acrshort{iap} and Spectral Replication). The Hilbert transform of the input signal must be computed in
 		order to construct the analytic signal. The Hilbert transform filter used must have a suitably consistent
 		response for a wide range of frequencies so the resulting harmonic excitation gives similar results at
-		different frequencies.  As shown in Section~\ref{sec:Timbre-LowLevelFeatures-Temporal} a high order FIR
-		Hilbert transform filter is required to give a suitably flat magnitude response. As the order of this
-		filter is increased the computation time rises along with the amount of delay needed to make the filter
-		causal. A lower complexity IIR phase splitter can be used in order to reduce the computational load. The
-		implementation given by \citet{niemitalo2003hilbert} (also discussed in
+		different frequencies.  As shown in Section~\ref{sec:Timbre-LowLevelFeatures-Temporal} a high order
+		\acrshort{fir} Hilbert transform filter is required to give a suitably flat magnitude response. As the
+		order of this filter is increased the computation time rises along with the amount of delay needed to make
+		the filter causal. A lower complexity \acrshort{iir} phase splitter can be used in order to reduce the
+		computational load. The implementation given by \citet{niemitalo2003hilbert} (also discussed in
 		Section~\ref{sec:Timbre-LowLevelFeatures-Temporal}) consists of eight biquad filters and a one sample
 		delay. This provides a reasonable compromise between accuracy, complexity and introduced delay.  Once an
 		analytic signal has been constructed, little additional computation is required. \acrshort{ssba} requires
