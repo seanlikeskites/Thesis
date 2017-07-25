@@ -750,17 +750,18 @@
 			parameterised as it depends on the content of the signal being processed.
 
 			We propose an alternative method for altering the spectral centroid, by introducing a new band of
-			energy into the spectrum.  This is conceptually similar to the two band method discussed previously
+			energy into the spectrum. This is conceptually similar to the two band method discussed previously
 			but allows the second band to contain frequency content which was not in the original signal. As
 			before the overall spectral centroid can be moved by adjusting the relative amplitudes of the
-			original signal and the new band of energy. To facilitate precise control of the spectral centroid
-			these bands should not share any frequency components.
-			Figure~\ref{fig:TwoBandSpectralCentroidSystem} shows a system which separately controls the gains
-			of two bands. The lower band is generated via a low pass filter on the input signal while the high
-			band is created using a nonlinear device. The bands are filtered with corresponding low and high
-			pass filters to ensure they share no frequency components. The spectral centroid of the output can
-			be moved between the centroids of these two bands by changing their relative amplitudes according
-			to Equation~\ref{eq:SpectralCentroidManipulation}.
+			original signal and the new band of energy. To facilitate precise control of the spectral centroid,
+			superposition effects between the two bands are eliminated by ensuring that they do not share any
+			frequency components.  Figure~\ref{fig:TwoBandSpectralCentroidSystem} shows a system which
+			separately controls the gains of two such bands. The lower band is generated via a low pass filter
+			on the input signal while the high band is created by applying a nonlinear device to the isolated
+			$f_{0}$, followed by high pass filtering. The bands are filtered with corresponding low and high
+			pass filters to ensure that they share no frequency components. The spectral centroid of the output
+			can be moved between the centroids of these two bands by changing their relative amplitudes
+			according to Equation~\ref{eq:SpectralCentroidManipulation}.
 
 			\begin{figure}[h!]
 				\centering
