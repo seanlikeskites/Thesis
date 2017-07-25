@@ -1127,7 +1127,7 @@
 	Two broad classes of harmonic generators are identified; those which generate large numbers of distortion
 	components with little control over their frequencies / amplitudes and those which provide control over the orders
 	of distortion introduced, sometimes allowing for the generation of individual harmonics. There is typically a
-	compromise made between control and computational complexity, algorithms providing more control over the resulting
+	compromise made between control and computational complexity; algorithms providing more control over the resulting
 	spectrum requiring more computation.
 
 	Static nonlinearities and integrators are the best choice where a large series of distortion components need be
@@ -1137,18 +1137,19 @@
 	Rectification will only generate even order distortion but will have negligible effects on any temporal properties
 	of a signal. Integration generates all orders of distortion but has a low pass filter response which will increase
 	the attack times of input transients. Neither of these methods provide any control over the maximum order of
-	distortion introduced leading to possible problems with aliasing. Rectification, as a static nonlinearity, can be
-	bandlimited through approximation with a harmonic mixer while no bandlimiting methods are provided for integrators.
+	distortion introduced leading to possible problems with aliasing. Bandlimited rectification can be applied by
+	modelling its characteristic curve with a harmonic mixer. As integration is not a static nonlinearity it cannot be
+	bandlimited in this manner.
 
 	Where finer control over the spectral structure of the output is desired, more complex algorithms are needed. Here
 	\acrshort{ssba} and \acrshort{iap} and spectral stretching have desirable characteristics. Each of these algorithms
 	are able to generate individual harmonics from a sinusoidal input and each have their own advantages and
-	disadvantages.  Spectral stretching is the more computationally intensive of the three and the phase vocoder
-	approach is prone to the introduction of artefacts. \acrshort{ssba} and \acrshort{iap} are both simpler systems but
-	each has a particular advantage. For purely sinusoidal input, \acrshort{iap} outperforms \acrshort{ssba} in that in
-	it homogeneous, having no effect on the amplitude envelope of a signal. For more complex inputs however,
+	disadvantages.  Spectral stretching is the most computationally intensive of the three and the phase vocoder
+	approach is prone to the introduction of artefacts. \acrshort{ssba} and \acrshort{iap} are both simpler systems and
+	each has a particular advantage. For purely sinusoidal input, \acrshort{iap} outperforms \acrshort{ssba} in that it
+	is homogeneous, having no effect on the amplitude envelope of a signal. For more complex inputs however,
 	\acrshort{ssba} may be preferential as it provides more control over the range of frequencies in the output,
-	bounding the orders of intermodulation components generated.	In
+	bounding the orders of intermodulation components generated. In
 	Section~\ref{sec:PerceptualExperiments-Reconstruction} perceptual listening tests are carried out in order to
 	evaluate the perceived quality of individual harmonics generated using both \acrshort{ssba} and \acrshort{iap}.
 
