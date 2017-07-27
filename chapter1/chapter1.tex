@@ -1,21 +1,18 @@
 %\setcounter{chapter}{0}
 \chapter{Introduction}
 \label{chap:Introduction}
-	\note
-	{
-		In music production people use audio effects to manipulate the timbre of pieces of audio. One such effect is
-		harmonic excitation. Distortion is typically applied to guitar signals.
-	}
 
 \section{Motivation}
 \label{sec:Introduction-Motivation}
 % Genuine Waffle (if those who disagree have uncovered this comment I have no regrets)
-	Traditional audio effects evolved from the use of analogue signal processing systems designed to address the
-	technical requirements of broadcast or recording. As such, these effects have control parameters which relate
-	directly to specific technical properties of an audio signal: a traditional equaliser has parameters for selecting
-	specific frequency regions, traditional dynamics processors (compressors and limiters) have parameters relating to
-	signal amplitudes. These parameters are effective when correcting technical issues with a signal but do not allow
-	for intuitive creative manipulation of timbre.
+	As part of the music production process, audio effects are used to creatively shape the timbre of recorded audio
+	signals. This allows producers to create timbres which are not possible to achieve through only the recording of
+	acoustic instruments. Traditional audio effects evolved from the use of analogue signal processing systems
+	designed to address the technical requirements of broadcast or recording. As such, these effects have control
+	parameters which relate directly to specific technical properties of an audio signal: a traditional equaliser has
+	parameters for selecting specific frequency regions, traditional dynamics processors (compressors and limiters) have
+	parameters relating to signal amplitudes. These parameters are effective when correcting technical issues with a
+	signal but do not allow for intuitive creative manipulation of timbre.
 
 	The application of audio effects for creative purposes is typically motivated by the perceived timbre of the audio.
 	Creative decisions are often expressed using language which does not refer to the mathematical properties of the
@@ -72,6 +69,12 @@
 
 \section{Thesis Structure}
 \label{sec:Introduction-ThesisStructure}
+	The aim of this work is to develop harmonic excitation systems which provide intuitive control over timbre.
+	Firstly, a review of the existing work in timbral manipulation and nonlinear processing is given. Experiments are
+	then conducted to discover how spectral manipulations are use in music production. This information is used to aid
+	in the design of semantically controlled harmonic excitation effects which are subsequently evaluated in perceptual
+	listening tests. This is presented in seven chapters as follows:
+
 	In {\bf{Chapter~\ref{chap:Timbre}}} the background of research into timbre is discussed. It begins with a discussion
 	of the low level features of audio signals. Popular experimental methodologies for uncovering the perceptual effects
 	of these features are then introduced along with the methods used to analyse their results. Finally, existing work
@@ -82,38 +85,47 @@
 	their timbral effects are then presented. Finally, various algorithms for harmonic excitation, proposed in existing
 	literature, are described.
 
-	In {\bf{Chapter~\ref{chap:TimbreEvaluation}}} the collection of semantic audio data during the production process is
-	discussed. This data is used to determine the language used for describing audio in a studio environment and how
-	audio effects are used to produce certain timbral effects.
+	In {\bf{Chapter~\ref{chap:TimbreEvaluation}}} the collection of semantic audio data during the music production
+	process is discussed. This data is used to determine the language used for describing audio in a studio environment
+	and how audio effects are used to produce certain timbral effects.
 
 	In {\bf{Chapter~\ref{chap:ExcitationEvaluation}}} a set of criteria for assessing the applicability of harmonic
 	excitation techniques to timbral control is proposed. The algorithms described in the Chapter~\ref{chap:Excitation}
 	are then evaluated against these criteria to identify those most suitable for use in timbral control systems.
 	Methods by which the performance of certain harmonic excitation methods can be improved are proposed.
 
-	In {\bf{Chapter~\ref{chap:FeatureControl}}} results from Chapters \ref{chap:TimbreEvaluation} and
-	\ref{chap:ExcitationEvaluation} are used to inform the design of systems for controlling low level features using
-	harmonic excitation techniques.
+	In {\bf{Chapter~\ref{chap:FeatureControl}}}, results from Chapter~\ref{chap:ExcitationEvaluation} are used to inform
+	the design of systems for controlling low level features using harmonic excitation techniques. Systems are developed
+	which can be used to provide monotonic control over a specific property of the input signal. The operation of these
+	systems is evaluated using a number of test signals.
 
-	In {\bf{Chapter~\ref{chap:PerceptualExperiments}}} perceptual effects of the systems proposed in
-	Chapter~\ref{chap:FeatureControl} are evaluated. 
+	In {\bf{Chapter~\ref{chap:PerceptualExperiments}}} the systems proposed in Chapter~\ref{chap:FeatureControl} are
+	refined using the results of Chapter~\ref{chap:TimbreEvaluation} to develop harmonic excitation effects which
+	control specific timbral traits of a signal. These effects are evaluated objectively, through comparison with the
+	dataset gathered in Chapter~\ref{chap:TimbreEvaluation}, and objectively, through a series of perceptual listening
+	tests.
 
-	\note
-	{
-		We conclude in {\bf{Chapter~\ref{chap:Conclusion}}} with a summary of findings.
-	}
+	We conclude in {\bf{Chapter~\ref{chap:Conclusion}}} with a summary of findings across Chapters
+	\ref{chap:TimbreEvaluation} to \ref{chap:PerceptualExperiments}, a critique of the methods used in this work and
+	suggestions for further work in this area.
 
 \section{Contributions}
 \label{sec:Introduction-Contributions}
+	The primary contribution of this thesis is the proposal of methods by which harmonic excitation systems can be
+	configured to give intuitive control over timbral features. In achieving this a number of other contributions are
+	made, as follows:
 
 	\begin{itemize}
 		\item A new method for the collection of semantic audio descriptors and their underlying features
+		      (Chapter~\ref{chap:TimbreEvaluation}).
+		\item A new metric for the measurement of agreement in multidimensional distributions
 		      (Chapter~\ref{chap:TimbreEvaluation}).
 		\item A methodology for the assessment of harmonic generation algorithms for use in timbral control
 		      (Chapter~\ref{chap:ExcitationEvaluation}).
 		\item A comparison of harmonic generation algorithms and their suitability to provide perceptual control
 		      (Chapter~\ref{chap:ExcitationEvaluation}).
-		\item The development of new harmonic excitation systems (Chapter~\ref{chap:FeatureControl}).
+		\item The development of new harmonic excitation systems for control of low level audio features
+		      (Chapter~\ref{chap:FeatureControl}).
 		\item Potential new methods for controlling perceptual attributes using harmonic excitation
 		      (Chapter~\ref{chap:FeatureControl}).
 	\end{itemize}

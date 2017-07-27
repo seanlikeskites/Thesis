@@ -13,6 +13,8 @@
 \renewenvironment{abstract}
 {
 	\cleardoublepage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Abstract}
 	\thispagestyle{plain}
 	\setcounter{page}{1}
 	\vspace*{\fill}
@@ -28,6 +30,8 @@
 \newenvironment{acknowledgements}
 {
 	\cleardoublepage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Acknowledgements}
 	\thispagestyle{plain}
 	\vspace*{\fill}
 	\begin{center}
