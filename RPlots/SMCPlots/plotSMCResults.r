@@ -16,7 +16,7 @@ plotResults <- function(res, conf, nonlin=FALSE)
 	if (nonlin)
 	{
 		mtext("Normalised", 2, 3, at=40)
-		mtext(expression(italic(R)[nonlin]), 2, 2.85, at=67, family="CM Roman")
+		mtext(expression(italic(R)[nonlin]), 2, 2.85, at=67, family="CMU Serif")
 	}
 
 	# find which error bars we should draw
@@ -37,25 +37,25 @@ plotResults <- function(res, conf, nonlin=FALSE)
 results <- readMat("MushraResults.mat")
 confs <- results$res - results$conf[,,1]
 
-pdf("CelloResults.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
+pdf("CelloResults.pdf", pointsize=8, family="CMU Sans Serif", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
 plotResults(results$res[1,], confs[1,])
 dev.off()
 embed_fonts("CelloResults.pdf")
 
-pdf("SynthResults.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
+pdf("SynthResults.pdf", pointsize=8, family="CMU Sans Serif", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
 plotResults(results$res[2,], confs[2,])
 dev.off()
 embed_fonts("SynthResults.pdf")
 
-pdf("PianoResults.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
+pdf("PianoResults.pdf", pointsize=8, family="CMU Sans Serif", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
 plotResults(results$res[3,], confs[3,])
 dev.off()
 embed_fonts("PianoResults.pdf")
 
-pdf("ClarinetResults.pdf", pointsize=8, family="CM Sans", width=2.94, height=2.1)
+pdf("ClarinetResults.pdf", pointsize=8, family="CMU Sans Serif", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
 plotResults(results$res[4,], confs[4,])
 dev.off()
@@ -64,25 +64,25 @@ embed_fonts("ClarinetResults.pdf")
 # plot the objective metrics
 rnonlin <- readMat("RNonlin_Results.mat")
 
-pdf("CelloRNonlin.pdf", pointsize=8, fonts=c("CM Sans", "CM Roman"), family="CM Sans", width=2.94, height=2.1)
+pdf("CelloRNonlin.pdf", pointsize=8, fonts=c("CMU Sans Serif", "CMU Serif"), family="CMU Sans Serif", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
 plotResults(rnonlin$results[1,], array(0, 11), TRUE)
 dev.off()
 embed_fonts("CelloRNonlin.pdf")
 
-pdf("SynthRNonlin.pdf", pointsize=8, fonts=c("CM Sans", "CM Roman"), family="CM Sans", width=2.94, height=2.1)
+pdf("SynthRNonlin.pdf", pointsize=8, fonts=c("CMU Sans Serif", "CMU Serif"), family="CMU Sans Serif", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
 plotResults(rnonlin$results[2,], array(0, 11), TRUE)
 dev.off()
 embed_fonts("SynthRNonlin.pdf")
 
-pdf("PianoRNonlin.pdf", pointsize=8, fonts=c("CM Sans", "CM Roman"), family="CM Sans", width=2.94, height=2.1)
+pdf("PianoRNonlin.pdf", pointsize=8, fonts=c("CMU Sans Serif", "CMU Serif"), family="CMU Sans Serif", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
 plotResults(rnonlin$results[3,], array(0, 11), TRUE)
 dev.off()
 embed_fonts("PianoRNonlin.pdf")
 
-pdf("ClarinetRNonlin.pdf", pointsize=8, fonts=c("CM Sans", "CM Roman"), family="CM Sans", width=2.94, height=2.1)
+pdf("ClarinetRNonlin.pdf", pointsize=8, fonts=c("CMU Sans Serif", "CMU Serif"), family="CMU Sans Serif", width=2.94, height=2.1)
 par(mar=c(3, 4, 0.8, 0))
 plotResults(rnonlin$results[4,], array(0, 11), TRUE)
 dev.off()
