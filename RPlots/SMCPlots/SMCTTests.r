@@ -24,6 +24,7 @@ for (i in 1:3)
 
 	lines <- c(lines, paste("\t", method, " & ", shortMed, " & ", medLong, " & ", shortLong, " \\tabularnewline",
 				sep=""))
+	lines <- c(lines, "\t\\hline")
 }
 
 lines <- c(lines, "\t\\hline")
