@@ -23,13 +23,13 @@
 
 \section{Reconstruction of Individual Harmonics}
 \label{sec:PerceptualExperiments-Reconstruction}
-	As discussed in Chapter~\ref{chap:ExcitationEvaluation} the most control over the shape of a signal's spectrum is
-	attained by using systems which allow control over the levels of individual harmonics in the output. This
+	As discussed in Chapter~\ref{chap:ExcitationEvaluation} control over the shape of a signal's spectrum is best
+	attained by using systems which allow for manipulation of the levels of individual harmonics in the output. This
 	flexibility is not only useful for building creative effects, it can also be used for the reconstruction of
 	degraded signals; a process known as audio inpainting \citep{adler2012audio}. These processes use a variety of
 	techniques to reintroduce portions of audio which have been lost / degraded by interference or the limitations of
 	recording equipment. Individual harmonic generation methods are particularly useful where a harmonically structured
-	spectrum needs to be reconstructed such are when audio has been bandlimited to reduce its storage / transmission
+	spectrum needs to be reconstructed such as when audio has been bandlimited to reduce its storage / transmission
 	size.
 
 	Several of the harmonic excitation systems discussed in Section~\ref{sec:FeatureControl-Systems} rely on the
@@ -179,7 +179,7 @@
 			describing signals with a higher level of perceivable distortion.
 
 		\subsubsection*{Subjective Evaluation}
-			The performance of the reconstruction systems was evaluated subjectively using series of multiple
+			The performance of the reconstruction systems was evaluated subjectively using series a of multiple
 			stimulus listening tests using the MUSHRA methodology \citep{mushra2014}. Each test is split into
 			two phases, a training phase and an evaluation phase. In the training phase, participants are
 			presented with an interface (Figure~\ref{fig:MushraTraining}) which allows them to audition every
@@ -271,15 +271,15 @@
 		the listening test. Note that for the piano signal three of the reconstructed stimuli have
 		$R_{\mathrm{nonlin}}$ score lower than that of the anchor. This is due to the piano signal having a damped
 		$f_{0}$.  Reconstructing the higher order harmonics using information in the $f_{0}$ produces lower quality
-		harmonics as the structure of the $f_{0}$ does not reflect that of the other harmonics in the signal. In
-		lieu of this, test participants who grade any of the reconstructed piano stimuli less than the piano anchor
-		will not be deemed unreliable.
+		harmonics as the structure of the $f_{0}$ does not reflect that of the other harmonics in the signal.
+		Because of this, test participants who grade any of the reconstructed piano stimuli less than the piano
+		anchor will not be deemed unreliable.
 		
 		Two of the eight participants who took part in the listening tests failed to grade the hidden reference
-		correctly causing their results have been discarded. The mean grades given by the remaining six
-		participants are shown in Figure~\ref{fig:SMCResults} with error bars illustrating 95\% confidence
-		intervals. The Pearson correlation ($r$) between these mean grades and the $R_{\mathrm{nonlin}}$ scores for
-		the stimuli are shown in Table~\ref{tab:SMCCorrelations}.
+		correctly causing their results to be discarded. The mean grades given by the remaining six participants
+		are shown in Figure~\ref{fig:SMCResults} with error bars illustrating 95\% confidence intervals. The
+		Pearson correlation ($r$) between these mean grades and the $R_{\mathrm{nonlin}}$ scores for the stimuli
+		are shown in Table~\ref{tab:SMCCorrelations}.
 
 		\begin{figure}[h!]
 			\centering
@@ -483,8 +483,8 @@
 		relationship which is dependent on the order of the harmonic being generated. These assumptions introduce
 		inaccuracies in the reconstruction of signals in which the amplitudes of the harmonics do not obey these
 		relationships. Better results might be achieved by using one of the higher order harmonics in the
-		generation of new harmonics, rather than the $f_{0}$. For the synthesis method, measuring the amplitude of
-		this harmonic and for the \acrshort{ssba} and \acrshort{iap} methods filtering this harmonic out and
+		generation of new harmonics, rather than the $f_{0}$: for the synthesis method, measuring the amplitude of
+		this harmonic, and for the \acrshort{ssba} and \acrshort{iap} methods filtering this harmonic out and
 		shifting its frequency to the desired value. For the cello sample, for instance, it may be better to use
 		the $f_{0}$ in the generation of the third harmonic but the second harmonic in the generation of the other
 		harmonics as the amplitude envelopes of those combinations are better matched as seen in
@@ -494,9 +494,9 @@
 		possible that models could be build describing the relationship between the $f_{0}$ and harmonic's
 		amplitudes for different classes of sound source. This would require different processing algorithms for
 		different inputs, increasing the complexity of using the system. Furthermore, the \acrshort{ssba} and
-		\acrshort{iap} techniques are only able apply frequency shifts at integer multiples of the frequency of the
-		input signal. In order to generate all orders of harmonic using these techniques the $f_{0}$ must be used
-		as the input to the frequency shifter.
+		\acrshort{iap} techniques are only able to apply frequency shifts at integer multiples of the frequency of
+		the input signal. In order to generate all orders of harmonic using these techniques the $f_{0}$ must be
+		used as the input to the frequency shifter.
 		
 		The degree of inaccuracy introduced can be estimated by examining the relationships of the harmonics'
 		amplitudes in the unprocessed test signals. As the systems rely on the amplitude envelope of the $f_{0}$
@@ -543,9 +543,9 @@
 		too fast to apply spectral analysis. The cello signal (Figure~\ref{fig:CelloAttack}) has a fast attack
 		followed by a slower decay in which the amplitudes of the higher harmonics decay quicker than that of the
 		$f_{0}$. The synthesised signal (Figure~\ref{fig:SynthAttack}) has a slow attack and release in which the
-		in which the amplitudes increase and decrease more rapidly than that of the $f_{0}$. This signal also
-		exhibits individual amplitude modulation of each of the harmonics. In the attack and decay portions of the
-		piano signal (Figure~\ref{fig:PianoAttack}) the amplitude ratios remain mostly consistent.
+		amplitudes increase and decrease more rapidly than that of the $f_{0}$. This signal also exhibits
+		individual amplitude modulation of each of the harmonics. In the attack and decay portions of the piano
+		signal (Figure~\ref{fig:PianoAttack}) the amplitude ratios remain mostly consistent.
 
 		\begin{figure}[h!]
 			\centering
@@ -630,15 +630,15 @@
 		Equation~\ref{eq:HarmonicVariability}. 		
 		
 		\begin{gather}
-			\mu_{n} = \frac{\sum_{f = 1}^{F} \frac{h_{n,f}}{h_{1,f}}}{F} \nonumber \\
-			\sigma_{n} = \sqrt{\frac{\sum_{f = 1}^{F} 
-					         \left(\frac{h_{n,f}}{h_{1,f}} - \mu_{n} \right)^{2}}{F}} \nonumber \\
+			\mu_{n} = \frac{\sum_{k = 1}^{K} \frac{h_{n,k}}{h_{1,k}}}{K} \nonumber \\
+			\sigma_{n} = \sqrt{\frac{\sum_{k = 1}^{K} 
+					         \left(\frac{h_{n,k}}{h_{1,k}} - \mu_{n} \right)^{2}}{K}} \nonumber \\
 			\mathrm{HV} = \sum_{n = 3}^{9} \sigma_{n}
 			\label{eq:HarmonicVariability}
 		\end{gather}
 
-		Where $h_{n,f}$ is the amplitude of the $n$\super{th} harmonic in the $f$\super{th} frame of the
-		\acrshort{stft} of the signal and $F$ the total number of frames in the \acrshort{stft}. This metric has a
+		Where $h_{n,k}$ is the amplitude of the $n$\super{th} harmonic in the $k$\super{th} frame of the
+		\acrshort{stft} of the signal and $K$ the total number of frames in the \acrshort{stft}. This metric has a
 		minimum value of zero, describing a signal in which the amplitudes of the third through ninth harmonics are
 		all linearly related to that of the $f_{0}$. Higher values of harmonic variability describe signals in
 		which these amplitude ratios change more with time. Harmonic variability values for the four test signals
@@ -724,7 +724,7 @@
 		The \acrshort{ssba} and \acrshort{iap} techniques also have the advantage of having lower computational
 		complexity and introduce less latency. The synthesis method requires the calculation of the \acrshort{dft}
 		and introduces latency equal to the window length used. Of the three tested methods \acrshort{iap} is the
-		most suitable for use the harmonic excitation systems due to it being a positive homogeneous process. As
+		most suitable for use in harmonic excitation systems due to it being a positive homogeneous process. As
 		discussed in Section~\ref{sec:ExcitationEvaluation-Comparison-Homogeneity} this allows it to be applied to
 		a wider range of signals with more predictable results.
 
@@ -737,12 +737,12 @@
 	is mapped to the parameters of an audio effect which can manipulate the relevant features. In this section the
 	findings of Chapter~\ref{chap:TimbreEvaluation} are combined with the techniques discussed in
 	Chapter~\ref{chap:FeatureControl} to develop audio effects with control parameters which relate to specific
-	descriptive terms. Two effects are developed, each with a control parameter which changes alters the underlying
-	processing based on three related semantic terms. The performance of these effects is evaluated both objectively,
-	by comparison with the results discussed in Section~\ref{sec:TimbreEvaluation-Analysis-TimbreSpaces}, and
-	subjectively in a series of listening tests.
+	descriptive terms. Two effects are developed, each with a control parameter which alters the underlying processing
+	based on three related semantic terms. The performance of these effects is evaluated both objectively, by
+	comparison with the results discussed in Section~\ref{sec:TimbreEvaluation-Analysis-TimbreSpaces}, and subjectively
+	in a series of listening tests.
 
-	\subsection{Effect Design}
+	\subsection{Semantic Effect Design}
 	\label{sec:PerceptualExperiments-SemanticControl-EffectDesign}
 		In this section the design of two harmonic excitation effects with semantic control parameters is
 		discussed. In Chapter~\ref{chap:TimbreEvaluation} it was shown that across both the distortion and
@@ -753,7 +753,7 @@
 		`warmth' for low parameter values and `brightness' for higher parameter values. As `harsh' was shown to be
 		a in the same timbral group as `bright' but being a more exaggerated version of it the highest parameter
 		values should introduce `harshness'. The second effect, the brightness / crunchiness effect, is intended to
-		alter timbre between the between `brightness' and `crunchiness' groups: introducing `crunchiness' for high
+		alter timbre between the `brightness' and `crunchiness' groups: introducing `crunchiness' for high
 		parameter values and `brightness' for lower values. Again, due to `harsh' being a more exaggerated version
 		of `bright' the lowest values should produce `harsher' timbres.
 
@@ -761,8 +761,8 @@
 			The warmth / brightness effect controls the spectral centroid of a signal using a refined version
 			of the system given in Figure~\ref{fig:TwoBandSpectralCentroidSystem}. Two spectral bands are
 			created, one with a spectral centroid lower than the input signal and one with a higher spectral
-			centroid than the input signal. The relative levels of these bands is then adjusted in order to
-			adjust the output's spectral centroid. The full system is shown in Figure~\ref{fig:WarmHarsh}.
+			centroid. The relative levels of these bands is then adjusted in order to adjust the output's
+			spectral centroid. The full system is shown in Figure~\ref{fig:WarmHarsh}.
 
 			\begin{figure}[h!]
 				\centering
@@ -827,12 +827,13 @@
 			The high frequency band is created by applying full wave rectification to the isolated $f_{0}$ of
 			the input signal and high pass filtering at the input's spectral centroid.  Separating the bands at
 			the spectral centroid in this way ensures that their respective spectral centroids sit either side
-			of the input's. Full wave rectification is used to ensure the system is positive homogeneous as
-			described in Section~\ref{sec:ExcitationEvaluation-Comparison-Homogeneity}.
+			of that of the input. Full wave rectification is used to ensure the system is positive homogeneous
+			as described in Section~\ref{sec:ExcitationEvaluation-Comparison-Homogeneity}.
 
-			The semantic parameter controls the relative gains applied to each of the spectral bands. The
-			parameter value, $p$, ranges from 0 to 1 and is used to calculate the gains, $m_{L}$ and $m_{H}$,
-			applied to the low and high frequency bands using Equation~\ref{eq:WarmHarshParam}.
+			An experimentally derived semantic parameter controls the relative gains applied to each of the
+			spectral bands. The parameter value, $p$, ranges from 0 to 1 and is used to calculate the gains,
+			$m_{L}$ and $m_{H}$, applied to the low and high frequency bands using
+			Equation~\ref{eq:WarmHarshParam}.
 
 			\begin{gather}
 				m_{H} = p^{3} \nonumber \\
@@ -1009,13 +1010,13 @@
 			`warm', `bright' and `harsh' for the warmth / brightness effect and `harsh', `bright' and `crunchy'
 			for the brightness / crunchiness effect. The audio features of the unprocessed and processed
 			signals in each of these applications are calculated in the same manner as in the SAFE plug-ins.
-			These audio features are the compared to those taken from the SAFE dataset.
+			These audio features are then compared to those taken from the SAFE dataset.
 
 			As discussed in Chapter~\ref{chap:TimbreEvaluation} the terms `warm', `harsh' and `bright' are all
 			used to describe transformations applied by both distortion and equalisation effects. `Harsh' and
 			`bright' having different definitions depending on the type of processing applied. The objective
 			performance of the effects proposed in this section is evaluated against data from both the SAFE
-			distortion and equaliser. In order to be able to compare the different effect's timbre spaces, two
+			distortion and equaliser. In order to be able to compare the different effects' timbre spaces, two
 			new timbre spaces are constructed by performing \acrshort{pca} on the processed audio features and
 			feature differences of the combined distortion and equaliser data. Two performance scores are given
 			to each combination of audio effect, descriptor and test signal. The first measuring how close the
@@ -1094,7 +1095,7 @@
 			usage of the 17 available descriptors against the intended descriptors.
 
 			Listening tests were undertaken using circumaural headphones in a quiet listening environment. In
-			total 22 participants took part in the listening tests, all of whom reported no know hearing
+			total 22 participants took part in the listening tests, all of whom reported no known hearing
 			problems. On average participants took 25 minutes to complete the test.
 
 	\subsection{Results}
@@ -1184,7 +1185,7 @@
 
 			The mean cophenetic distances between participants' annotation of the brightness / crunchiness
 			effect's parameter and the descriptors `harsh', `bright' and `crunch' are shown in
-			Figure~\ref{fig:HarshCophs}. Again, distances in both the processed feature dendrogram and feature
+			Figure~\ref{fig:CrunchCophs}. Again, distances in both the processed feature dendrogram and feature
 			difference dendrogram are shown separately.
 
 			\begin{figure}[h!]
@@ -1393,14 +1394,15 @@
 	\label{sec:PerceptualExperiments-SemanticControl-Conclusion}
 		This experiment has shown that, using information collected from the SAFE data and the harmonic excitation
 		systems developed in Chapter~\ref{chap:FeatureControl}, harmonic excitation can be easily used to introduce
-		brightness and harshness to an audio signal while crunchiness is a difficult timbral adjective to isolate.
+		brightness and harshness to an audio signal while crunchiness is a more difficult timbral adjective to
+		isolate.
 
-		Both the warmth / brightness and brightness / crunchiness effects are successful in producing effects which
-		are described as `bright' and `harsh' by isolating the $f_{0}$, applying full wave rectification and high
-		pass filtering. `Hash' is confirmed to be a more exaggerated version of `bright', describing signals with
-		higher proportions of high frequency content. Due to the nature of the processing however, other terms are
-		also used to describe these effects such as `fuzzy' and `raspy'. These terms were only used to describe the
-		effects of the SAFE distortion in Chapter~\ref{chap:TimbreEvaluation} indicating that they describe
+		Both the warmth / brightness and brightness / crunchiness effects are successful in applying transforms
+		which are described as `bright' and `harsh' by isolating the $f_{0}$, applying full wave rectification and
+		high pass filtering. `Harsh' is confirmed to be a more exaggerated version of `bright', describing signals
+		with higher proportions of high frequency content. Due to the nature of the processing however, other terms
+		are also used to describe these effects such as `fuzzy' and `raspy'. These terms were only used to describe
+		the effects of the SAFE distortion in Chapter~\ref{chap:TimbreEvaluation} indicating that they describe
 		features of distorted signals other than the proportion of energy at each end of the spectrum. The full
 		wave rectification used to generate high order harmonics is a static nonlinearity with a characteristic
 		curve which is discontinuous in its first derivative. This is similar to the hard peak clipper used in the
@@ -1409,10 +1411,10 @@
 
 		The results of the listening test with the warmth / brightness effect show that applying a low pass filter
 		with a cutoff frequency at the input's spectral centroid is not sufficient to produce a `warmer' sound.
-		Further analysis of the input signal may be necessary in order to ensure the resulting output is `warmer'
-		than it, ensuring that the low pass filter will give the correct proportion of low and high frequency
-		energy in the output. Crunchiness is also difficult to achieve, despite being give a high agreement score
-		in Chapter~\ref{chap:TimbreEvaluation}. In the distortion effects timbre spaces it was shown that the
+		Further analysis of the input signal may be necessary in order to ensure the resulting output is `warmer' ,
+		ensuring that the low pass filter will give the correct proportion of low and high frequency energy in the
+		output. Crunchiness is also difficult to achieve, despite being give a high agreement score in
+		Chapter~\ref{chap:TimbreEvaluation}. In the distortion effects timbre spaces it was shown that the
 		`crunchy' and `warm' regions have an overlap each other. More data and further analysis is need to
 		determine whether there are other factors which could be used by audio effects to better differentiate the
 		two.
