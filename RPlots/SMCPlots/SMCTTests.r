@@ -27,7 +27,6 @@ for (i in 1:3)
 	lines <- c(lines, "\t\\hline")
 }
 
-lines <- c(lines, "\t\\hline")
 lines <- c(lines, "\\end{tabular}")
 f <- file("SMCTTests.tex")
 writeLines(lines, f)
