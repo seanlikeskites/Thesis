@@ -51,8 +51,10 @@
 		between the $f_{0}$ and a particular harmonic in a signal may vary with time. This system reconstructs
 		harmonics with a constant amplitude ratio to the $f_{0}$ introducing error to the reconstruction. Depending
 		on the excitation method used to generate the individual harmonics, further errors will be introduced as
-		discussed in Section~\ref{sec:ExcitationEvaluation-Comparison}. In this section three methods of generating
-		individual harmonics are assessed to determine the audibility of these errors.
+		discussed in Section~\ref{sec:ExcitationEvaluation-Comparison}. For example the \acrshort{ssba} technique
+		is non-homogeneous and the \acrshort{iap} technique does not bound the highest order of distortion
+		introduced when the input contains more than one frequency component. In this section three methods of
+		generating individual harmonics are assessed to determine the audibility of these errors.
 
 		The first method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated
 		in Figure~\ref{fig:Synthesise}. The \acrshort{stft} of the input signal is calculated and used to generate
@@ -239,7 +241,7 @@
 			Listening tests were undertaken using circumaural headphones in a quiet listening environment. In
 			total eight participants took part in the listening tests, all of whom reported no know hearing
 			problems. On average participants spent 5.14 minutes in the training phase ($\sigma$ = 1.85) and
-			3.36 minutes on each of the four evaluation phases ($\sigma$ = 20.6).
+			3.36 minutes on each of the four evaluation phases ($\sigma$ = 2.06).
 
 	\subsection{Results}
 	\label{sec:PerceptualExperiments-Reconstruction-Results}
@@ -452,16 +454,24 @@
 %
 		The results of the listening test show that the effects of \acrshort{stft} window length and filter order
 		are as expected. Across the majority of the stimuli there is an increase in the perceived quality of the
-		reconstruction as the \acrshort{stft} window length / filter order is increased. The $R_{\mathrm{nonlin}}$
-		measurements confirm that as these parameters are increased the resulting reconstructed signal is
-		objectively more similar to the original signal. For each of the original signals the highest quality
-		reconstructions receive similar grades, it is in the lower setting of these parameters that differences
-		between the methods become noticeable.
+		reconstruction as the \acrshort{stft} window length / filter order is increased. The significance of this
+		increase is evaluated by performing paired t-tests on the grades given to the signals in the listening
+		test. For each reconstruction method three paired t-tests are performed, representing comparisons between
+		every combination of the three \acrshort{stft} window lengths / filter order values (50, 100 and 500). The
+		$p$ values of these tests are shown in Table~\ref{tab:SMCTTests}. While the differences noticed between
+		adjacent parameter values (50-100, 100-500) are not always found to be significant, the largest increase in
+		parameter value (50-500) produces a significant increase in perceived quality for every reconstruction
+		method. The $R_{\mathrm{nonlin}}$ measurements confirm that as these parameters are increased the
+		resulting reconstructed signal is objectively more similar to the original signal. For each of the original
+		signals the highest quality reconstructions receive similar grades, it is in the lower setting of these
+		parameters that differences between the methods become noticeable.
 
 		\begin{table}[h!]
 			\centering
 			\input{chapter7/Tables/SMCTTests.tex}
-			\caption{The $p$ values of the paired t-tests between each processing method.}
+			\caption{The $p$ values of the paired t-tests comparing changes in reconstruction
+				 with changes in \acrshort{stft} window length
+				 / filter order.}
 			\label{tab:SMCTTests}
 		\end{table}
 
@@ -978,11 +988,21 @@
 
 			When $p = 0$ the first six harmonics all have the same amplitude, giving the lowest spectral
 			irregularity. When $p = 1$ the relative amplitudes of the first six harmonics are as defined by
-			$c$.  The values in $c$ are taken from a guitar signal, which had been processed by the SAFE
-			distortion, with a Krimphoff irregularity similar to the processed signals in the SAFE dataset
-			described as `crunchy'. As the parameter value is increased the spectral irregularity of the first
-			six harmonics increases towards that of a `crunchy' signal. This models the increase in spectral
-			irregularity noted for the transforms labelled `crunchy' in Chapter~\ref{chap:TimbreEvaluation}.
+			$c$.  The values in $c$ (shown in Datum~\ref{dat:CrunchAmplitudes}) are taken from a guitar signal,
+			which had been processed by the SAFE distortion, with a Krimphoff irregularity similar to the
+			processed signals in the SAFE dataset described as `crunchy'. As the parameter value is increased
+			the spectral irregularity of the first six harmonics increases towards that of a `crunchy' signal.
+			This models the increase in spectral irregularity noted for the transforms labelled `crunchy' in
+			Chapter~\ref{chap:TimbreEvaluation}.
+
+			\begin{datum}[h!]
+				\centering
+				$c = \begin{bmatrix}
+					1.0 & 0.9 & 1.3 & 0.6 & 0.8 & 0.4
+				     \end{bmatrix}$
+				\caption{The relative amplitudes of the first six harmonics when $p = 1$.}
+				\label{dat:CrunchAmplitudes}
+			\end{datum}
 			
 			The relative amount of high frequency content in the output is also controlled by $p$. This is
 			achieved by changing the relative level of the first six harmonics and the band generated by the
@@ -1096,10 +1116,12 @@
 			Figure~\ref{fig:CombinedClusters} provide information about how similar the signals / transforms
 			described by certain terms are. This information can be used as a metric describing the proximity
 			of the user's response to the intended response. The proximity of two descriptors is measured as
-			the cophenetic distance between the clusters in which the two descriptors lie. Where a descriptor
-			appears twice in the dendrogram (from both the distortion and equaliser) the combination of points
-			which yield the lowest cophenetic distance is used. Secondly, heat maps are plotted comparing the
-			usage of the 17 available descriptors against the intended descriptors.
+			the cophenetic distance between the clusters in which the two descriptors lie. This is the distance
+			measure between the two clusters used when performing the hierarchical clustering, calculated using
+			Equation~\ref{eq:WardsCriterion}. Where a descriptor appears twice in the dendrogram (from both the
+			distortion and equaliser) the combination of points which yield the lowest cophenetic distance is
+			used. Secondly, heat maps are plotted comparing the usage of the 17 available descriptors against
+			the intended descriptors.
 
 			Listening tests were undertaken using circumaural headphones in a quiet listening environment. In
 			total 22 participants took part in the listening tests, all of whom reported no known hearing

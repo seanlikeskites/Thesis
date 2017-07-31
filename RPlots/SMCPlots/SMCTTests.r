@@ -1,3 +1,5 @@
+library(R.matlab)
+
 results <- readMat("MushraResults.mat")
 raws <- results$raw
 raws <- raws[,2:10,]
@@ -5,7 +7,7 @@ raws <- raws[,2:10,]
 lines <- character()
 lines <- c(lines, "\\begin{tabular}{|c|c|c|c|}")
 lines <- c(lines, "\t\\cline{2-4}")
-lines <- c(lines, "\t\\multicolumn{1}{c|}{} & \\multicolumn{3}{c|}{\\bf{Length Comparison}} \\tabularnewline")
+lines <- c(lines, "\t\\multicolumn{1}{c|}{} & \\multicolumn{3}{c|}{\\bf{Parameter Comparison}} \\tabularnewline")
 lines <- c(lines, "\t\\hline")
 lines <- c(lines, "\t\\bf{Method} & \\bf{50-100} & \\bf{100-500} & \\bf{50-500} \\tabularnewline")
 lines <- c(lines, "\t\\hline")
