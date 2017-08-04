@@ -1,0 +1,5 @@
+Don't say stuff is statistically insignificant in 8.4.1
+Things are indicative of something, so we will assume rather then rely on
+results
+
+Don't slag stuff off, just suggest further improvements
