@@ -39,7 +39,7 @@
 
 	Through construction and analysis of timbre spaces, the audio features which contribute to the perception of a
 	particular descriptor were identified. Spectral centroid was found to be a major factor in differentiating between
-	the different timbral groups. Warmth describing transforms in which the spectral centroid is decreased and
+	the different timbral groups: warmth describing transforms in which the spectral centroid is decreased and
 	brightness those in which it is increased. Muddiness is also described by a decrease in spectral centroid but with a
 	further stipulation that the majority of the energy in the output is in specific low frequency bands. Crunchiness
 	was found to be better characterised by an increase in spectral irregularity producing a flatter but more irregular
@@ -52,38 +52,38 @@
 
 \section{Control of Audio Features with Harmonic Exciters}
 \label{sec:Conclusion-FeatureConrol}
-	To determine the suitability of harmonic excitation algorithms to timbral control their behaviour was assessed in
+	To determine the suitability of harmonic excitation algorithms for timbral control, their behaviour was assessed in
 	the areas of: complexity, homogeneity, spectral characteristics and temporal characteristics. It was shown that the
 	effects of a harmonic excitation system become more easily predictable if the input is sinusoidal, in most cases
 	producing a set of harmonics of the input frequency. Monophonic tonal signals can be made sinusoidal by tracking
-	their $f_{0}$ and filtering out all higher frequencies to take advantage of this fact. Other techniques by which the
-	performance of particular algorithms can be improved were also discussed, such as modelling static nonlinearities as
-	polynomials to restrict the frequency range of their output.
+	their $f_{0}$ and filtering out all higher frequencies. Other techniques by which the performance of particular
+	algorithms can be improved were also discussed, such as modelling static nonlinearities as polynomials to restrict
+	the frequency range of their output.
 	
 	Use cases for each of the algorithms evaluated were suggested, and the most useful for timbral control noted.
 	Broadly, the algorithms can be divided into two groups: those which generate a band of new energy in the spectrum
 	and those which can be used to generate individual harmonics. In situations where a large band of energy needs to be
 	added to the spectrum, without precise control over its content, static nonlinearities prove to be the most
 	efficient choice. One can either choose a homogeneous nonlinearity (such as a full wave rectifier) or apply
-	additional steps to make the system homogeneous (such as a gain stage either side). Where finer control of the
-	spectrum is desired, individual harmonics can be generated and summed together. This gives better control at the
-	expense of greater computational complexity. The \acrshort{iap} technique was shown to have the best performance in
-	this type of system, exhibiting positive homogeneity and also being shown to produce the most natural sounding
-	harmonics in subjective listening tests. The performance of the algorithms in these tests was highly negatively
-	correlated with the variability of the amplitude ratio between the harmonics and $f_{0}$ in the input signal. This
-	shows that the reconstruction of harmonics from the $f_{0}$ removes spectral and temporal information crucial to the
-	perception of timbre.
+	additional steps to make the system homogeneous (such as including a gain stage either side of the nonlinear
+	device). Where finer control of the spectrum is desired, individual harmonics can be generated and summed together.
+	This gives better control at the expense of greater computational complexity. The \acrshort{iap} technique was shown
+	to have the best performance in this type of system, exhibiting positive homogeneity and also being shown to produce
+	the most natural sounding harmonics in subjective listening tests. The performance of the algorithms in these tests
+	was highly negatively correlated with the variability of the amplitude ratio between the harmonics and $f_{0}$ in
+	the input signal. This shows that the reconstruction of harmonics from the $f_{0}$ removes spectral and temporal
+	information crucial to the perception of timbre.
 
 	It was shown that using these algorithms, systems can be constructed which provide monotonic control over the
 	spectral moments, irregularity, flatness, slope, tristimulus, odd to even harmonic ratio and inharmonicity of a set
 	of test signal. While this control is not always linear, its monotonic nature allows for more intuitive control as
 	the feature will always move in the same direction for a given direction in change of parameter value. As the
-	systems rely on the $f_{0}$ of the input signal being isolated, the control of certain feature in signals without a
+	systems rely on the $f_{0}$ of the input signal being isolated, the control of certain features in signals without a
 	strong $f_{0}$ is lost. 
 
 \section{Timbral Control with Harmonic Exciters}
 \label{sec:Conclusion-TimbralControl}
-	To create effects which provide intuitive timbral control the findings discussed in the previous to sections were
+	To create effects which provide intuitive timbral control the findings discussed in the previous two sections were
 	combined. The systems developed for controlling features were specialised to produce the feature manipulations which
 	correspond to particular timbral descriptions. Two effects were developed in this manner: one moving audio signals
 	between warmth and brightness in the timbre space and the other between crunchiness and brightness. Each of these
@@ -92,11 +92,13 @@
 
 	The warmth / brightness effect manipulates the spectral centroid of a signal by adjusting the relative levels of two
 	bands in the spectrum: a low band generated by low pass filtering and a high band generated by application of full
-	wave rectification. To ensure the centroid can be moved in both directions the, low and high frequency bands are low
-	and high pass filtered at the input spectral centroid respectively. It is shown that this system can be used to
+	wave rectification. To ensure the centroid can be moved in both directions the low and high frequency bands are low
+	and high pass filtered at the input's spectral centroid respectively. It is shown that this system can be used to
 	apply transforms similar to those labelled warm, bright and harsh in the SAFE dataset to a selection of monophonic
-	input signals. However, the resulting signals were not so similar to those produced by the relevant transforms in
-	the SAFE dataset. 
+	input signals. While the manipulations applied to the audio features were similar to those in the SAFE dataset, the
+	absolute values of these features in the resulting signals were not similar. This was deemed to be acceptable as it
+	was concluded in Chapter~\ref{chap:TimbreEvaluation} that the terms warmth and bright best describe transformations
+	of features rather than absolute values.
 
 	The subjective performance of the effect was evaluated by asking test participants to describe its effects on
 	various input signals. When the system was emulating transforms labelled as bright and harsh in the SAFE dataset,
@@ -146,9 +148,9 @@
 
 		Another shortcoming in the data collected by the SAFE plug-ins is due to the way in which a semantic
 		description is elicited. It is common for experiments which investigate timbral descriptors to gather
-		information about how well a descriptor applies to a signal. In VAME tests this is done buy having
-		participants grade stimuli on several descriptive rating scales, while \citet{cartwright2013socialeq} ask
-		participants to rank several stimuli in terms of how well a descriptor applies. This information allows
+		information about how well a descriptor applies to a signal. In \acrshort{vame} tests this is done buy
+		having participants grade stimuli on several descriptive rating scales, while \citet{cartwright2013socialeq}
+		ask participants to rank several stimuli in terms of how well a descriptor applies. This information allows
 		experimenters to investigate the way in which sounds are differentiated in terms of a particular descriptor
 		(e.g. what makes one sound warmer than another?). The SAFE plug-ins do not collect this information, only a
 		description of the timbre / timbral transformation. This restricts analysis of the SAFE dataset to only
