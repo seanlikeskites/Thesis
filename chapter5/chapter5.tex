@@ -457,7 +457,7 @@
 
 			\begin{equation}
 				\abs{x_{a}[n]}^{1-h} \Re \left( x_{a}^{h}[n] \right) = 
-				\abs{x_{a}[n]} \cos \left( h\arg(x_{a}[n]) \right)
+				\abs{x_{a}[n]} \cos \bigl( h\arg(x_{a}[n]) \bigr)
 				\label{eq:SSBAandIAP}
 			\end{equation}
 
@@ -481,7 +481,7 @@
 			(Equation~\ref{eq:NegativeGainPhase}).
 						
 			\begin{equation}
-				\arg(mx_{a}[n]) = (\arg(x_{a}[n]) \mod 2\pi) - \pi, \quad m < 0
+				\arg(mx_{a}[n]) = \bigl( \arg(x_{a}[n]) \mod 2\pi \bigr) - \pi, \quad m < 0
 				\label{eq:NegativeGainPhase}
 			\end{equation}
 
@@ -491,7 +491,7 @@
 			(Equation~\ref{eq:IAPOrderHomogeneity}).
 
 			\begin{equation}
-				h\arg(mx_{a}[n]) = h(\arg(x_{a}[n]) \mod 2\pi) - h\pi, \quad m < 0
+				h\arg(mx_{a}[n]) = h \bigl( \arg(x_{a}[n]) \mod 2\pi \bigr) - h\pi, \quad m < 0
 				\label{eq:IAPOrderHomogeneity}
 			\end{equation}
 
@@ -660,8 +660,9 @@
 			with Fourier series coefficients as shown in Equation~\ref{eq:IntegratorFourier}.
 
 			\begin{gather}
-				c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1 - cos(x))e^{-inx} dx +
-							\int_{\pi}^{2\pi} (3 + cos(x))e^{-inx} dx \right) \nonumber \\
+				c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} \bigl( 1 - cos(x) \bigr) e^{-inx} dx +
+							\int_{\pi}^{2\pi} \bigl( 3 + cos(x) \bigr) 
+							e^{-inx} dx \right) \nonumber \\
 				c_{-1} = - \frac{2ikf_{s}}{\pi} \nonumber \\
 				c_{0} = 2kf_{s} \nonumber \\
 				c_{1} = \frac{2ikf_{s}}{\pi} \nonumber \\
