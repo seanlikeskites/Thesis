@@ -37,9 +37,9 @@
 	Early research into timbre was performed by \citet{helmholtz1875on} who investigated the perceived nature of sounds
 	composed of various simple tones. In more recent work several other features of signals have been defined which are
 	also found to contribute to the perceived timbre of a sound.  These low level audio features are discussed in
-	Section~\ref{sec:Timbre-LowLevelFeatures}.  Research into how these feature contribute to the perception of timbre
-	is typically approached in two ways. The behaviour of the human hearing system can be analysed and used to inform
-	models of particular timbral attributes.  This approach is discussed in Sections
+	Section~\ref{sec:Timbre-LowLevelFeatures}.  Research into how these features contribute to the perception of timbre
+	is typically approached in two ways. Firstly, the behaviour of the human hearing system can be analysed and used to
+	inform models of particular timbral attributes. This approach is discussed in Sections
 	\ref{sec:Timbre-PsychoacousticPrinciples} and \ref{sec:Timbre-TimbralFeatures}. The second approach, discussed in
 	Sections \ref{sec:Timbre-ListeningTests} and \ref{sec:Timbre-Parameterisation}, involves the use of experiments in
 	which participants listen to audio stimuli and provide responses regarding the their timbre.  These responses are
@@ -83,7 +83,7 @@
 		\end{figure}
 
 		\subsubsection*{Envelope Detection}
-			Simple envelope detectors can be implemented based on those used in electronic circuits. First
+			Simple envelope detectors can be implemented based on those used in electronic circuits. First,
 			rectification is applied to produce a unipolar signal and then a low pass filter is applied to
 			smooth the result \citep{dutilleux2011modulators}. In the digital domain more complex envelope
 			detectors are possible such as the instantaneous amplitude detector. Instantaneous amplitude is
@@ -201,7 +201,7 @@
 	\subsection{Spectral Features}
 	\label{sec:Timbre-LowLevelFeatures-Spectral}
 		As stated by \cite{ASA1960american} the timbre of a sound is primarily influenced by its spectrum. In
-		timbral research the properties of a signal's are summarised using a number of spectral features. To
+		timbral research the properties of a signal are summarised using a number of spectral features. To
 		calculate these features the signal is first converted into a frequency domain representation. This is most
 		commonly done using either the \acrfull{dft} or a parallel filter bank. The calculation of many spectral
 		features is done directly from these spectral representations; for others, peak finding is applied to the
@@ -761,13 +761,19 @@
 		another) and temporal masking (tones played close together in time interfering with one another). A full
 		discussion of this model is beyond the scope of this report.
 
+		The psychoacoustic models presented in this section are restricted to modelling descriptors for which
+		informal definitions are already widely used (sharpness and roughness). To investigate other aspects of
+		timbre, subjective listening tests must be carried out in order to collect information about the perception
+		of sound. As the first two objectives of this work are concerned with discovering the use of semantic terms
+		to describe the timbre of harmonic excitation effects additional experimentation is required to determine
+		these terms and their meanings. The following section details the commonly used approaches in carrying out
+		listening tests for timbral research.
+		
 \section{Subjective Listening Tests}
 \label{sec:Timbre-ListeningTests}
-	The psychoacoustic models presented in the previous section are restricted to modelling descriptors for which
-	informal definitions are already widely used. To investigate other aspects of timbre subjective listening tests
-	must be carried out in order to collect information about the perception of sound. Depending on the nature of the
-	experiment there are several different testing methodologies which have been proposed \citep{bech2006perceptual}.
-	Those most prevalent in timbral research will be discussed here.
+	In running a subjective listening tests one must elicit perceptual gradings / descriptions of audio stimuli from
+	participants. Depending on the nature of the experiment there are several different testing methodologies which
+	have been proposed \citep{bech2006perceptual}.  Those most prevalent in timbral research will be discussed here.
 
 	\subsection{Testing Methodologies for Timbral Analysis}
 	\label{sec:Timbre-ListeningTests-Methods}
@@ -884,9 +890,10 @@
 			given by participants. 
 
 			Attribute scale methods have an advantage over dissimilarity tests as they gather information about
-			which aspects of the stimuli the participants are judging. A major disadvantage however is that non
-			of the stimuli are directly compared against one another. The participants have no reference of
-			where they have put other stimuli on the adjective scales making it difficult to use the scales
+			which aspects of the stimuli the participants are judging. A major disadvantage however is that
+			each of the stimuli are presented individually; participants are not ask to directly compare
+			stimuli with other stimuli. Without direct comparison of stimuli participants are likely to forget
+			how they have graded previous stimuli on the adjective scales making it difficult to use the scales
 			consistently. \citet{marui2005constructing} uses both a semantic differential test and triadic
 			comparisons in order to avoid the weaknesses of both methodologies. 
 
@@ -1005,6 +1012,12 @@
 			``game with a purpose'' \citep{law2007tagatune, huq2010crowdsourcing, burgoyne2013hooked,
 			wolff2014spot} making the testing procedure more enjoyable.
 
+			Once data has been gathered from a perceptual listening test, one must analyse it to determine the
+			relationships between the properties of the audio stimuli and the perceptual gradings /
+			descriptions given by the test participants. The following section details the commonly used
+			approach of identifying orthogonal dimensions within the data which correspond to particular
+			perceived attributes of the audio stimuli.
+
 \section{Parameterisation of Timbre}
 \label{sec:Timbre-Parameterisation}
 	As discussed earlier in the chapter, timbre is a multidimensional property of a sound. One of the aims of timbral
@@ -1096,7 +1109,7 @@
 		\citet{zacharakis2011an2} use this method to identify three groups of descriptors, summarised here as:
 		cluster one, containing `soft', `light' and `warm'; cluster two, containing `bright', `brilliant' and
 		`thin'; and cluster three, containing `shrill', `sharp' and `rough'. Terms within each of these clusters
-		can be though of as timbral synonyms, being used similarly when rating the set of stimuli used for the
+		can be thought of as timbral synonyms, being used similarly when rating the set of stimuli used for the
 		test.
 
 \section{Controlling Timbre}
@@ -1138,13 +1151,13 @@
 		A different approach to controlling timbre is based around analysing the parameter settings of effects used
 		to produce a given semantic effect. One way of doing this is to construct parameter spaces by performing
 		dimensionality reduction on a large set of possible parameter configurations for an audio processing
-		algorithm. This is the approach take by \citet{cartwright2013socialeq} and
+		algorithm. This is the approach taken by \citet{cartwright2013socialeq} and
 		\citet{seetharaman2014crowdsourcing}. In these studies the researchers asked listening test participants to
 		attribute semantic descriptors to audio stimuli processed using an equaliser and a reverb respectively.
 		\acrshort{mds} analysis is then performed on the effects parameter configurations to produce a two
 		dimensional parameter space onto which the descriptors are mapped.
 
-		Similar work was carried out by \citet{sabin2011weighting} who run experiments to determine which
+		Similar work was carried out by \citet{sabin2011weighting} who ran experiments to determine which
 		parameters of certain audio effects contribute most to particular timbral attributes. This is done by
 		asking listening test participants to rank how well given semantic descriptors describe an audio stimulus
 		processed with several different parameter configurations. Weightings for each effect parameter can then be
@@ -1275,3 +1288,30 @@
 			SAFE project have been described as crunchy, warm, fuzzy, creamy, bright, harsh, raspy and smooth.
 			As the focus of this thesis is the application of nonlinear distortion for timbral control an in
 			depth discussion of nonlinear distortion is given in Chapter~\ref{chap:Excitation}. 
+
+\section{Summary}
+\label{sec:Timbre-Summary}
+	This chapter has reviewed the current techniques used in researching the timbre of audio signals. Timbre is the
+	property which allows listeners to differentiate sounds which have the same pitch and loudness. Understanding the
+	perception of timbre is important to the understanding of music production, as musicians / producers use
+	performance techniques and processing effects in order to shape the timbre of sounds in creative ways. The content
+	of this chapter has focussed on the method used in researching the perception of timbre and the tools used to
+	manipulate it.
+	
+	Research into the perception of timbre is chiefly focussed on mapping the relationships between low level
+	mathematical features of audio signals and the language used to describe them. The typical approach for uncovering
+	these relationships is to identify orthogonal timbral dimensions through the use of perceptual listening tests and
+	then to find the audio features which correlate most highly with these dimensions. These listening tests can either
+	be run in strict laboratory conditions or distributed to participants to complete in their own time. The later is
+	deemed more appropriate for this work as it allows for a greater amount of data to be collected at the expense of
+	control over the listening environment. Control over the listening environment may even be damaging to results, as
+	timbral effects observed in the laboratory may not translate to different listening environments. Timbral effects
+	which are robust enough to be observed in distributed listening tests are more likely to translate to different
+	listening environments, meaning the results will be more applicable to `real world' situations.
+
+	Tools used to manipulate timbre can be separated into two classes: `modern' tools which have semantically labelled
+	control parameters and more traditional tools which provide parameters based on mathematical signal properties. On
+	is these traditional tools is nonlinear distortion which introduces new spectral content to a signal. This thesis
+	will focus on the creation of `modern' effects which use these nonlinear systems but have semantically meaningful
+	control parameters. As such the following chapter will discuss the analysis and development of nonlinear audio
+	processing systems.
