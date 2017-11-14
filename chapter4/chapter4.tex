@@ -373,14 +373,31 @@
 
 	\subsection{Term Usage}
 	\label{sec:TimbreEvaluation-Analysis-TermUsage}
-		Tables \ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} show the terms (after preprocessing) which
-		are most frequently used to describe transforms applied by the distortion and equaliser respectively. The
-		frequency of each term indicates how many transforms it is used to describe. In some cases multiple
-		descriptors are used to describe a transform. The numbers of transforms which share certain combinations of
-		descriptors are shown in Tables \ref{tab:DistortionTermCombinations} and
-		\ref{tab:EqualiserTermCombinations}. In total 85 of the distortion transforms are described by the 8 most
-		popular distortion terms and 947 equaliser transforms are described by the 12 most popular equaliser
-		descriptors.
+		Further filtering is applied by discarding terms which are use infrequently. Tables
+		\ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} show the terms (after preprocessing) which are most
+		frequently used to describe transforms applied by the distortion and equaliser respectively. The frequency
+		of each term indicates how many transforms it is used to describe. In some cases multiple descriptors are
+		used to describe a transform. The numbers of transforms which share certain combinations of descriptors are
+		shown in Tables \ref{tab:DistortionTermCombinations} and \ref{tab:EqualiserTermCombinations}. In total, 85
+		of the distortion transforms are described by the 8 most popular distortion terms and 947 equaliser
+		transforms are described by the 12 most popular equaliser descriptors.
+
+		The majority of descriptors are only used to describe transforms applied using a specific effect,
+		suggesting that a unique property of that effect produces that timbral result. For example, the term
+		`crunch' is only used in relation to the distortion effect. The terms `warm' and `bright' have been used to
+		describe transforms applied using both the distortion and equaliser effects, suggesting that the timbral
+		characteristics these terms describe can be manipulated using either effect. It was noted from early
+		results gathered using the SAFE plug-ins and their use in previous research publications
+		\citep{geddes2003auditory, lukasik2005towards, zacharakis2011an}, that these terms are very commonly used
+		timbral descriptors. In light of this, a specific study was undertaken in which participants were asked to
+		use the SAFE equaliser to make audio stimuli sound `warmer' and `brighter' \citep{stasis2015a}. In this
+		work, the results of this study are combined with the data gathered by distributing the SAFE plug-ins
+		online, leading to the terms `warm' and `bright' occurring with much greater frequency in the dataset. The
+		results of these studies can be combined as they both ask the same question of participants, the only
+		difference being that in the `warm', `bright' study participants were given a specific term to work
+		towards. It is assumed that when using the SAFE plug-ins outside of this experiment, users have a timbral
+		result in mind which they are working towards, meaning the two datasets are both collected under the same
+		conditions.
 
 		\begin{table}[h!]
 			\centering
@@ -514,22 +531,6 @@
 			\caption{Combinations of terms from the equaliser.}
 			\label{tab:EqualiserTermCombinations}
 		\end{table}
-
-		The majority of descriptors are only used to describe transforms applied using a specific effect,
-		suggesting that a unique property of that effect produces that timbral result. For example, the term
-		`crunch' is only used in relation to the distortion effect. The terms `warm' and `bright' have been used to
-		describe transforms applied using both the distortion and equaliser effects, suggesting that the timbral
-		characteristics these terms describe can be manipulated using either effect. It was noted from early
-		results gathered using the SAFE plug-ins and numerous previous research publications, that these terms are
-		very commonly used timbral descriptors. In light of this, a specific study was undertaken in which
-		participants were asked to use the SAFE equaliser to make audio stimuli sound `warmer' and `brighter'
-		\citep{stasis2015a}. In this work, the results of this study are combined with the data gathered by
-		distributing the SAFE plug-ins online, leading to the terms `warm' and `bright' occurring with much greater
-		frequency in the dataset. The results of these studies can be combined as they both ask the same question
-		of participants, the only difference being that in the `warm', `bright' study participants were given a
-		specific term to work towards. It is assumed that when using the SAFE plug-ins outside of this experiment,
-		users have a timbral result in mind which they are working towards, meaning the two datasets are both
-		collected under the same conditions.
 		
 	\subsection{Term Clustering}
 	\label{sec:TimbreEvaluation-Analysis-TermClustering}
@@ -559,18 +560,25 @@
 		To identify groups of semantically similar descriptors, hierarchical clustering is applied to these feature
 		spaces. Prior to clustering, each dimension of the feature space is standardised (i.e. scaled and offset
 		such that is has a mean of zero and a standard deviation of one) to mitigate any effect the range of a
-		particular audio feature might have on the clustering. Clusters are constructed iteratively. Each term
+		particular audio feature might have on the clustering. Clusters are constructed iteratively: each term
 		initially sits in a cluster on its own, on each iteration the two closest clusters are combined to create a
-		new cluster. The distance between clusters is calculated using the Ward linkage criterion
-		\citep{ward1963hierarchical} in order to minimise the variance within each cluster. This distance between
-		two clusters ($a$ and $b$), $d(a, b)$, is calculated using Equation~\ref{eq:WardsCriterion}.
+		new cluster. There are numerous metric for measuring the proximity of clusters each having different
+		effects on the meaning of the resulting clustering hierarchy. As will be discussed in greater detail in
+		Section~\ref{sec:TimbreEvaluation-Analysis-Agreement}, low variance within a cluster in the feature space
+		is deemed to denote agreement between the transforms which make up the cluster (agreement between users of
+		the plug-ins as to the meaning of a descriptor). It follows that low variance within clusters containing
+		multiple descriptors indicates semantic similarity between those descriptors. As such, when applying
+		hierarchical clustering in the feature spaces, at each step the two clusters to be combined should be those
+		that minimise the variance within the resulting clusters. This is achieved by measuring the distance
+		between two clusters using the Ward linkage criterion \citep{ward1963hierarchical}, in which distance
+		between two clusters ($a$ and $b$), $d(a, b)$, is calculated using Equation~\ref{eq:WardsCriterion} where
+		$N_{a}$ and $\mu_{a}$ are the number of points in, and centroid of, cluster $a$ respectively.
 
 		\begin{equation}
 			d(a, b) = \frac{N_{a}N_{b}}{N_{a} + N_{b}} \euclidian{\mu_{a} - \mu_{b}}^{2}
 			\label{eq:WardsCriterion}
 		\end{equation}
 
-		Where $N_{a}$ and $\mu_{a}$ and the number of points in and centroid of cluster $a$ respectively.
 
 		\subsubsection*{Clustering of Distortion Terms}
 			Figure~\ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
@@ -1117,7 +1125,13 @@
 			The salient features for this timbre space are shown in
 			Datum~\ref{dat:DistortionProcessedCorrelations}. The most salient in each \acrshort{pc} are then
 			visualised, along with the mean position and agreement score of each descriptor, in
-			Figure~\ref{fig:DistortionProcessedCentroidsPCAs}. 
+			Figure~\ref{fig:DistortionProcessedCentroidsPCAs}. From the analysis of
+			Figure~\ref{fig:DistortionProcessedPCAs}, the \acrshort{pc}s which best describe each term were
+			identified. This information can be used to assist in the analysis of
+			Figure~\ref{fig:DistortionProcessedCentroidsPCAs}. For instance, while the mean position of signals
+			described with the term `crunch' appears to sit at the top end of \acrshort{pc} 2, it is known that
+			this descriptor's position in \acrshort{pc} 2 is not significant as the individual signals are
+			distributed across the entire \acrshort{pc}.
 
 			\begin{datum}[h!]
 				\centering
@@ -1145,13 +1159,6 @@
 				\caption{Biplots of the distortion's processed feature timbre space.}
 				\label{fig:DistortionProcessedCentroidsPCAs}
 			\end{figure}
-
-			From the analysis of Figure~\ref{fig:DistortionProcessedPCAs}, the \acrshort{pc}s which best
-			describe each term were identified. This information can be used to assist in the analysis of
-			Figure~\ref{fig:DistortionProcessedCentroidsPCAs}. For instance, while the mean position of signals
-			described with the term `crunch' appears to sit at the top end of \acrshort{pc} 2, it is known that
-			this descriptor's position in \acrshort{pc} 2 is not significant as the individual signals are
-			distributed across the entire \acrshort{pc}.
 
 			Combining the information from both visualisations of the timbre space, it is suggested that the
 			terms `warm', `fuzz' and `cream' are characterised by a relatively low spectral roll off, spectral
@@ -1219,7 +1226,14 @@
 			The salient features for this timbre space are shown in
 			Datum~\ref{dat:DistortionDifferenceCorrelations}. The most salient in each \acrshort{pc} are then
 			visualised, along with the mean position and agreement score of each descriptor, in
-			Figure~\ref{fig:DistortionDifferenceCentroidsPCAs}. 
+			Figure~\ref{fig:DistortionDifferenceCentroidsPCAs}. \acrshort{pc} 2 is again correlated with
+			spectral roll off, spectral centroid and spectral standard deviation.  Referring to the raw values
+			of the feature differences, there is no definite direction in which these features are moved by the
+			transforms labelled with `warm', `fuzz' and `crunch'. This is reflected in
+			Figure~\ref{fig:DistortionProcessedSpectra} where the mean spectral manipulations for these
+			descriptors are mostly flat. This is an indication that, when used for describing signals processed
+			by distortion, these terms describe features of the output signal rather than of the transform
+			applied.
 
 			\begin{datum}[h!]
 				\centering
@@ -1247,14 +1261,6 @@
 				\caption{Biplots of the distortion's feature difference timbre space.}
 				\label{fig:DistortionDifferenceCentroidsPCAs}
 			\end{figure}
-
-			\acrshort{pc} 2 is again correlated with spectral roll off, spectral centroid and spectral standard
-			deviation.  Referring to the raw values of the feature differences, there is no definite direction
-			in which these features are moved by the transforms labelled with `warm', `fuzz' and `crunch'. This
-			is reflected in Figure~\ref{fig:DistortionProcessedSpectra} where the mean spectral manipulations
-			for these descriptors are mostly flat. This is an indication that, when used for describing signals
-			processed by distortion, these terms describe features of the output signal rather than of the
-			transform applied.
 
 			\acrshort{pc} 1 is correlated with Krimphoff irregularity, spectral skewness and spectral kurtosis,
 			the position of `crunch', in this \acrshort{pc}, corresponding to a small increase in each of these
@@ -1448,7 +1454,14 @@
 			The salient features for this timbre space are shown in
 			Datum~\ref{dat:EqualiserDifferenceCorrelations}. The most salient in each \acrshort{pc} are then
 			visualised, along with the mean position and agreement score of each descriptor, in
-			Figure~\ref{fig:EqualiserDifferenceCentroidsPCAs}. 
+			Figure~\ref{fig:EqualiserDifferenceCentroidsPCAs}. The distinction between `warm' and `bright'
+			becomes very clear here. \acrshort{pc} 2 is highly correlated with spectral centroid, spectral
+			standard deviation and spectral roll off. Negative values of \acrshort{pc} 2 correspond to a
+			decrease in these features and positive values an increase. Signals can be made `warmer' by
+			reducing the spectral centroid and `brighter' by increasing it. This is most often done by
+			introducing more energy at low or higher frequencies respectively, as seen in
+			Figure~\ref{fig:EqualiserDifferenceSpectra}. `harsh' and `tin' can be thought of as more
+			accentuated versions of `bright' and `mud' as a more accentuated version of `warm'.
 
 			\begin{datum}[h!]
 				\centering
@@ -1477,15 +1490,6 @@
 				\label{fig:EqualiserDifferenceCentroidsPCAs}
 			\end{figure}
 
-			The distinction between `warm' and `bright' becomes very clear here. \acrshort{pc} 2 is highly
-			correlated with spectral centroid, spectral standard deviation and spectral roll off. Negative
-			values of \acrshort{pc} 2 correspond to a decrease in these features and positive values an
-			increase. Signals can be made `warmer' by reducing the spectral centroid and `brighter' by
-			increasing it. This is most often done by introducing more energy at low or higher frequencies
-			respectively, as seen in Figure~\ref{fig:EqualiserDifferenceSpectra}. `harsh' and `tin' can be
-			thought of as more accentuated versions of `bright' and `mud' as a more accentuated version of
-			`warm'.
-
 			The more distinct patterns seen by using the feature differences suggest that these terms have been
 			used to describe the transform rather than the output signal. The process of making a signal
 			`warmer' or `brighter' is independent of the resulting value of spectral centroid or spectral roll
@@ -1508,13 +1512,13 @@
 			been `deep' prior to processing.
 
 \section{Conclusion}
-	In this chapter we developed a system for the retrieval of timbral data as part of the typical music production
-	workflow. This allows `real world' usage of timbral descriptors to be investigated in comparison to laboratory test
+	In this chapter a system was developed for the retrieval of timbral data as part of the typical music production
+	workflow. This allows `real world' usage of timbral descriptors to be investigated in contrast to laboratory test
 	which require sets of audio stimuli to be predefined by the experimenter. A dataset of 1787 audio transforms,
 	applied using either a distortion or equaliser, was collected using this system. By analysing the frequency with
-	which terms were used to describe these transforms, 17 commonly used timbral descriptors are identified.
-	Hierarchical clustering applied to the audio feature values associated with the transforms identified four main
-	timbral groups consisting of related descriptors:
+	which terms were used to describe these transforms, 17 commonly used timbral descriptors are identified reducing
+	the size of the dataset to 1032 transforms.  Hierarchical clustering applied to the audio feature values associated
+	with these transforms identified four main timbral groups consisting of related descriptors:
 
 	\begin{itemize}
 		\item Warmth: warm, cream, fuzz, deep and full.
