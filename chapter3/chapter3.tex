@@ -234,14 +234,15 @@
 
 			A considerable advantage of the GedLee metric is that it directly measures the system in question
 			rather than signals processed by it. This should allow measurements taken using the metric to
-			describe the audible degradation of any signal processed by a system. \citet{lee2003auditory}
-			provide results of an experiment in which their metric was tested against \acrshort{thd} and
-			\acrshort{imd} as a rating of audio quality. They show that for low levels of distortion the GedLee
-			metric correlates with subjective audio quality ratings. \acrshort{thd} and \acrshort{imd} are both
-			found not to correlate well with perceived quality. The GedLee metric is only applicable to the
-			analysis of static nonlinearities. Many nonlinear systems are more complex than this and may
-			exhibit frequency dependent or time variant behaviour. While the GedLee metric may provide a good,
-			signal independent, measure of distortion, it is only applicable to a subset of nonlinear systems.
+			describe the audible degradation of any signal processed by a system. In a second paper,
+			\citet{lee2003auditory} provide results of an experiment in which their metric was tested against
+			\acrshort{thd} and \acrshort{imd} as a rating of audio quality. They show that for low levels of
+			distortion the GedLee metric correlates with subjective audio quality ratings. \acrshort{thd} and
+			\acrshort{imd} are both found not to correlate well with perceived quality. The GedLee metric is
+			only applicable to the analysis of static nonlinearities. Many nonlinear systems are more complex
+			than this and may exhibit frequency dependent or time variant behaviour. While the GedLee metric
+			may provide a good, signal independent, measure of distortion, it is only applicable to a subset of
+			nonlinear systems.
 
 			\citet{tan2003the} also developed a perceptual metric for distortion, Distortion Score
 			($\mathrm{DS}$), which employs models of the human hearing system to better approximate the
@@ -574,11 +575,12 @@
 \label{sec:Excitation-Timbre}
 	The research, discussed thus far in this chapter, has focused on measuring the extent to which unwanted distortion
 	can be perceived, or on modelling the operation of a nonlinear system. This does not provide sufficient information
-	for the description of the timbral effect of nonlinear systems. The listening tests performed to verify the
-	distortion metrics discussed asked subjects to rate the quality of audio stimuli. It is possible that nonlinear
-	distortion could alter the timbre of audio without deteriorating its perceived quality. To investigate this
-	experiments must be conducted in which participants are asked to rate the timbral characteristics of nonlinearly
-	processed stimuli. The section reviews literature published in that regard.
+	for the description of the timbral effect of nonlinear systems. The listening tests performed by
+	\citet{lee2003auditory} and \citet{tan2004predicting}, to verify the distortion metrics discussed, asked subjects
+	to rate the quality of audio stimuli. It is possible that nonlinear distortion could alter the timbre of audio
+	without deteriorating its perceived quality. To investigate this experiments must be conducted in which
+	participants are asked to rate the timbral characteristics of nonlinearly processed stimuli. The section reviews
+	literature published in that regard.
 
 	There is a wealth of research into how low level audio features influence timbre, as discussed in
 	Chapter~\ref{chap:Timbre}. The mappings between low level features and semantic features from the literature can be
@@ -1022,22 +1024,33 @@
 	\label{sec:Excitation-Methods-STTR}
 		\acrfull{sttr} is an audio effect proposed by \citet{kim2014shorttime}. The output signal is constructed by
 		summing overlapping frames of the input signal which have been reversed in time using
-		Equation~\ref{eq:STTR}.
+		Equation~\ref{eq:STTR}. Where $\delta$ is the step size between frames in samples and $w$ is an arbitrary
+		window function which exhibits constant overlap add (i.e. the sum of the window function translated in time
+		by all integer multiples of $\delta$ is equal to 1 at all values of $n$
+		(Equation~\ref{eq:ConstantOverlapAdd})).  Constant overlap add ensures that no unwanted amplitude
+		modulation is applied to the signal.
 
 		\begin{equation}
 			y[n] = \sum_{m = -\infty}^{\infty} w[n - m\delta]x[2m\delta - n]
 			\label{eq:STTR}
 		\end{equation}
 
-		Where $\delta$ is the step size between frames in samples and $w$ is an arbitrary window function which
-		exhibits constant overlap add (i.e. the sum of the window function translated in time by all integer
-		multiples of $\delta$ is equal to 1 at all values of $n$ (Equation~\ref{eq:ConstantOverlapAdd})).  Constant
-		overlap add ensures that no unwanted amplitude modulation is applied to the signal.
-
 		\begin{equation}
 			\sum_{m = -\infty}^{\infty} w[n - m\delta] = 1
 			\label{eq:ConstantOverlapAdd}
 		\end{equation}
-	
+
 \section{Summary}
 \label{sec:Excitation-Summary}
+	In this chapter it has been shown that nonlinear systems find several uses within the audio processing field. Not
+	only are they used as creative tools for timbral shaping but they can be used for corrective / reconstructive
+	purposes. A number of nonlinear processing algorithms taken from implementations in these fields have been
+	presented. The behaviour of such systems has been researched extensively both from the point of view of minimising
+	audible distortion in audio processing equipment and modelling their nonlinear characteristics. Only more recently
+	has research been carried out into the use of nonlinear distortion as a creative tool. In this area, publications
+	have typically focussed on the application of distortion in specific use cases (the use of distortion pedals by
+	guitar players \citep{tsumoto2016the}, the use of the Aphex Aural Exciter \citep{shekar2013modeling}) or have
+	looked at the properties of distortion present in already recorded media \citep{wilson2014characterisation}. There
+	is need for new research into the application of nonlinear distortion for creative purposes in order to generate
+	semantically controlled distortion effects. In the following chapter the collection and analysis of data relating
+	to this is discussed, providing the relevant data for the construction of these systems in subsequent chapters.
