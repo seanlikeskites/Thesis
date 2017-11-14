@@ -4,7 +4,7 @@
 \section{Introduction}
 \label{sec:TimbreEvaluation-Introduction}
 	In order to manipulate the perceptual characteristics of a sound it is necessary to define semantic descriptions of
-	timbre in ways which can be objectively quantified. Systems can then be build based on these objective principles,
+	timbre in ways which can be objectively quantified. Systems can then be built based on these objective principles,
 	giving semantically relevant control over the perceived timbre of sound. This can be achieved through investigating
 	the relationships between the objective low level audio features of a signal and its semantic description.  In
 	Chapter~\ref{chap:Timbre} several different methods for obtaining this information were discussed. In this chapter,
@@ -103,9 +103,17 @@
 		where the results from all participants are collated. One element of the SAFE project are the SAFE
 		plug-ins, a suite of four commonly used audio effects: Equaliser, Distortion, Compressor and Reverb. As
 		part of the plug-in's interface, the user has the option to save a semantic description of the application
-		of the effect. The interface for the SAFE Distortion is shown in Figure~\ref{fig:SAFE-Distortion}. Upon
-		saving a description the plug-in will record and analyse five seconds of audio at its inputs and outputs.
-		When the analysis is completed the results are stored, containing:
+		of the effect. The interface for the SAFE Distortion is shown in Figure~\ref{fig:SAFE-Distortion}.
+
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.8\textwidth]{chapter4/Images/SAFEDistortion.png}
+			\caption{The interface for the SAFE distortion plug-in.}
+			\label{fig:SAFE-Distortion}
+		\end{figure}
+		
+		Upon saving a description the plug-in will record and analyse five seconds of audio at its inputs and
+		outputs.  When the analysis is completed the results are stored, containing:
 
 		\begin{itemize}
 			\item The users semantic description of the effect's application (entered into the text box seen in
@@ -126,21 +134,22 @@
 
 		\begin{figure}[h!]
 			\centering
-			\includegraphics[width=0.8\textwidth]{chapter4/Images/SAFEDistortion.png}
-			\caption{The interface for the SAFE distortion plug-in.}
-			\label{fig:SAFE-Distortion}
-		\end{figure}
-
-		\begin{figure}[h!]
-			\centering
 			\includegraphics[width=0.8\textwidth]{chapter4/Images/SAFEMetadata.png}
 			\caption{The metadata entry panel in the SAFE distortion plug-in.}
 			\label{fig:SAFE-Metadata}
 		\end{figure}
 
 		The input and output signals of the plug-in are analysed in frames, 4096 samples in length, using the
-		LibXtract software library \citep{bullock2007libxtract}. In total 80 different audio features are
-		calculated for each frame. These features are split into five groups and given symbols as follows:
+		LibXtract software library \citep{bullock2007libxtract}. This frame length represents a compromise between
+		the time and frequency resolution of the spectral analysis. At a sampling rate of 44.1kHz the audio is
+		analysed in frames 93ms in length; which in the frequency domain are represented by arrays of 2049
+		frequency bins, each 11Hz apart. Temporal events must be a minimum of 93ms apart in order to be
+		distinguished from one another, while spectral details must be 11Hz apart. Increasing the frame length will
+		increase the spectral resolution (move frequency bins closer together) at the expense of poorer time
+		resolution (longer time periods between each frame).  Decreasing the frame length will have to opposite
+		effect: increasing temporal resolution at the expense of spectral resolution. In total 80 different audio
+		features are calculated for each frame. These features are split into five groups and given symbols as
+		follows:
 
 		\begin{itemize}
 			\item {\bf{Temporal Features:}} Features calculated from the temporal representation of the signal.
@@ -516,8 +525,8 @@
 		participants were asked to use the SAFE equaliser to make audio stimuli sound `warmer' and `brighter'
 		\citep{stasis2015a}. In this work, the results of this study are combined with the data gathered by
 		distributing the SAFE plug-ins online, leading to the terms `warm' and `bright' occurring with much greater
-		frequency in the dataset. The results of these studies can be combined as they both the same question of
-		participants, the only difference being that in the `warm', `bright' study participants were given a
+		frequency in the dataset. The results of these studies can be combined as they both ask the same question
+		of participants, the only difference being that in the `warm', `bright' study participants were given a
 		specific term to work towards. It is assumed that when using the SAFE plug-ins outside of this experiment,
 		users have a timbral result in mind which they are working towards, meaning the two datasets are both
 		collected under the same conditions.
@@ -1152,9 +1161,9 @@
 			indicating a signal in which the energy is more evenly spread throughout the spectrum.
 
 			Inspecting the mean bark band spectra for the descriptors
-			(Figure~\ref{fig:DistortionProcessedSpectra}, the spectral effects of a descriptor's position in
+			(Figure~\ref{fig:DistortionProcessedSpectra}), the spectral effects of a descriptor's position in
 			\acrshort{pc} 2 can be seen. As the value of \acrshort{pc} 2 increases so does the signal's
-			proportion of high frequency content, `warm' and `cream' describing signals will a low proportion
+			proportion of high frequency content, `warm' and `cream' describing signals with a low proportion
 			of high frequency energy and `bright' and `harsh' describing those with a larger proportion. The
 			spectral effects of the other \acrshort{pc}s are not as apparent, this is likely due to the low
 			resolution of the spectral representation but it should also be noted that this could be influenced
@@ -1241,7 +1250,7 @@
 
 			\acrshort{pc} 2 is again correlated with spectral roll off, spectral centroid and spectral standard
 			deviation.  Referring to the raw values of the feature differences, there is no definite direction
-			in which these features and moved by the transforms labelled with `warm', `fuzz' and `crunch'. This
+			in which these features are moved by the transforms labelled with `warm', `fuzz' and `crunch'. This
 			is reflected in Figure~\ref{fig:DistortionProcessedSpectra} where the mean spectral manipulations
 			for these descriptors are mostly flat. This is an indication that, when used for describing signals
 			processed by distortion, these terms describe features of the output signal rather than of the
