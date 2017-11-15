@@ -21,8 +21,8 @@
 	control over an audio feature: a given direction in change of parameter setting will always produce the same
 	direction of change of the audio feature.
 	
-	This chapter will provide methods by which several audio features can be controlled through harmonic excitation and
-	which excitation algorithms are the most suitable for given feature changes. Firstly, in
+	This chapter will provide methods by which selected audio features can be controlled through harmonic excitation
+	and which excitation algorithms are the most suitable for given feature changes. Firstly, in
 	Section~\ref{sec:FeatureControl-Systems}, various challenges which arise when building harmonic excitation systems
 	are discussed and methods to counteract them are suggested. A number of different systems are proposed which
 	provide control over the nature of the new frequency components introduced to the signal. In
@@ -50,8 +50,8 @@
 		monotonic control of audio features, allowing similar transforms to be applied to a wide range of input
 		signals. To take advantage of these improvement in predictability the input signal to a harmonic exciter
 		must be pre-processed such that it is represented by a single sinusoid. For monophonic, tonal sources this
-		can be achieved by representing this signal as a sinusoid at the input's $f_{0}$. This remainder of this
-		thesis then focusses of controlling timbre in this class of audio signal. Other classes of signal
+		can be achieved by representing this signal as a sinusoid at the input's $f_{0}$. The remainder of this
+		thesis then focusses on controlling timbre in this class of audio signal. Other classes of signal
 		(polyphonic, noisy etc.) are left for consideration in future work.
 		
 		A monophonic, tonal signal can be represented as a sinusoid by applying a band pass filter centered around
@@ -643,7 +643,7 @@
 		with frequencies at integer multiples of those in the input, meaning that they can generate precise
 		harmonics for a sinusoidal input without knowing its frequency. As some of these methods (\acrshort{ssba}
 		and \acrshort{iap}) are restricted to only generating harmonic frequencies additional processing is needed
-		to introduce inharmonicity. Each of the generated harmonics if shifted to the desired frequency using a
+		to introduce inharmonicity. Each of the generated harmonics is shifted to the desired frequency using a
 		spectral replication technique as discussed in Section~\ref{sec:Excitation-Methods-SpectralReplication}.
 		This produces partials which deviate from harmonic frequencies by exactly the amount of shift applied. The
 		higher order harmonics are not generated individually and as such their inharmonicity cannot be controlled
@@ -703,16 +703,17 @@
 	manipulation methods, the $f_{0}$ of each of these signals is calculated accurately before testing and thus the
 	$f_{0}$ tracking elements of the systems can be eliminated.
 
-	The cello and clarinet signals both represent typical recorded harmonic sounds. Both are composed of harmonic
-	partials and noise. The fundamental difference between the two is that the cello signal contains energy at all
-	harmonics while the clarinet signal has the majority of its energy in the odd order harmonics. The synthesised
-	sound has almost perfectly harmonic partials and zero noise energy. This signal is included to examine how the
-	excitation systems perform for the ideal case of a harmonic signal with zero noise. The piano signal is designed to
-	pose a problem to the systems discussed in Section~\ref{sec:FeatureControl-Systems}: the $f_{0}$ is physically
-	damped through alteration to the instrument. This reduces the amplitude of the $f_{0}$ compared to the remaining
-	harmonic partials as well as changing the shape of its amplitude envelope. As the systems all rely on isolating the
-	$f_{0}$ before generating harmonics this is likely to cause inaccuracies. This signal is included to examine the
-	extent to which the systems are affected by these problems.
+	The four test signals were selected to represent the best, average and worst cases for the spectral properties of
+	the input signal. The cello and clarinet signals both represent typical recorded harmonic sounds: both are composed
+	of harmonic partials and noise. The fundamental difference between the two is that the cello signal contains energy
+	at all harmonics while the clarinet signal has the majority of its energy in the odd order harmonics. The
+	synthesised sound has almost perfectly harmonic partials and zero noise energy. This signal is included to examine
+	how the excitation systems perform for the ideal case of a harmonic signal with zero noise. The piano signal is
+	designed to pose a problem to the systems discussed in Section~\ref{sec:FeatureControl-Systems}: the $f_{0}$ is
+	physically damped through alteration to the instrument. This reduces the amplitude of the $f_{0}$ compared to the
+	remaining harmonic partials as well as changing the shape of its amplitude envelope. As the systems all rely on
+	isolating the $f_{0}$ before generating harmonics this is likely to cause inaccuracies. This signal is included to
+	examine the extent to which the systems are affected by these problems.
 
 	\subsection{Spectral Moments}
 	\label{sec:FeatureControl-Parameterisation-SpectralMoments}
