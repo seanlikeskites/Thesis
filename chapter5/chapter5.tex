@@ -14,10 +14,10 @@
 \addtocontents{toc}{\protect\newpage}
 \chapter{Comparative Evaluation of Harmonic Excitation Algorithms}
 \label{chap:ExcitationEvaluation}
-	Harmonic excitation algorithms developed for the applications discussed in the Section~\ref{sec:Excitation-Uses}
-	are specialised to perform a particular task. As this work is concerned with the application of harmonic excitation
-	to real time timbral control, some algorithms in the literature may not be suitable due to the predictability of
-	their effects on a signal or their inability to operate in real time. In
+	Harmonic excitation algorithms developed for the applications discussed in Section~\ref{sec:Excitation-Uses} are
+	specialised to perform a particular task. As this work is concerned with the application of harmonic excitation to
+	real time timbral control, some algorithms in the literature may not be suitable due to the predictability of their
+	effects on a signal or their inability to operate in real time. In
 	Section~\ref{sec:ExcitationEvaluation-Evaluation} a set of criteria for assessing the suitability of harmonic
 	excitation algorithms for use in this work are suggested. These criteria are then used to asses various algorithms
 	in Section~\ref{sec:ExcitationEvaluation-Comparison}, with a summary of each algorithm's performance shown in
@@ -105,7 +105,7 @@
 		To provide intuitive timbral control a system should produce similar spectral effects despite the content
 		of the input signal. The degree to which these spectral effects can be manipulated using a system's
 		parameters also contributes to its usefulness. An ideal algorithm would allow for precise control over
-		where energy in introduced in the output spectrum. Several considerations must be made depending on the
+		where energy is introduced in the output spectrum. Several considerations must be made depending on the
 		desired spectral result. For example, a system designed to only generate harmonic partials should not
 		introduce inharmonicity for any input signal. The system must be configured such that none of the
 		distortion components lie at inharmonic frequencies and a limit should be set on the maximum frequency
@@ -149,11 +149,14 @@
 \section{Method Comparison}
 \label{sec:ExcitationEvaluation-Comparison}
 	In this section the algorithms discussed in Section~\ref{sec:Excitation-Methods} are evaluated against the criteria
-	given in Section~\ref{sec:ExcitationEvaluation-Evaluation}. For each criterion the relevant characteristics of each
-	algorithm are discussed in Sections \ref{sec:ExcitationEvaluation-Comparison-Complexity} to
-	\ref{sec:ExcitationEvaluation-Comparison-UseCases}. Where appropriate techniques for improving the performance of
-	an algorithm in a particular area are suggested and discussed. A summary of each of the algorithm's performance in
-	each area is given in Table~\ref{tab:ComparisonSummary}.
+	given in Section~\ref{sec:ExcitationEvaluation-Evaluation}. Similar evaluations have been performed before (for
+	example that done by \citet{larsen2004audio}) but these have focussed on different use cases and reduced numbers of
+	algorithms. The aim of this work is to provide an exhaustive analysis of harmonic excitation algorithms taken from
+	all audio processing fields, revealing their suitability for providing timbral control. For each criterion the
+	relevant characteristics of each algorithm are discussed in Sections
+	\ref{sec:ExcitationEvaluation-Comparison-Complexity} to \ref{sec:ExcitationEvaluation-Comparison-UseCases}. Where
+	appropriate techniques for improving the performance of an algorithm in a particular area are suggested and
+	discussed. A summary of each algorithm's performance in each area is given in Table~\ref{tab:ComparisonSummary}.
 
 	\begin{landscape}
 	\subsection{Comparison Summary}
@@ -175,7 +178,8 @@
 				Rectifier & $\mathcal{O}(n)$ & Positive Homogeneous & 
 				Even order components only, rolling off at 12dB per octave. Half wave rectification also
 				includes 1\super{st} order components (the original signal). & 
-				No perceptible effects, half wave rectification might delay onsets slightly. \tabularnewline
+				No perceptible effects, half wave rectification might delay onsets slightly.
+				\tabularnewline
 				\hline
 				Integrator & $\mathcal{O}(n)$ & Positive Homogeneous & 
 				All order components, rolling off at 6dB per octave. Acts as a low pass filter. &
@@ -1125,9 +1129,10 @@
 \section{Conclusion}
 	This chapter has discussed the characteristics of the harmonic generation algorithms presented in
 	Chapter~\ref{chap:Excitation}, highlighting their desirable / undesirable traits when applied to timbral control.
-	Two broad classes of harmonic generators are identified; those which generate large numbers of distortion
-	components with little control over their frequencies / amplitudes and those which provide control over the orders
-	of distortion introduced, sometimes allowing for the generation of individual harmonics. There is typically a
+	A full summary of the findings for each algorithms was shown in Table~\ref{tab:ComparisonSummary}. In brief, two
+	broad classes of harmonic generators are identified; those which generate large numbers of distortion components
+	with little control over their frequencies / amplitudes and those which provide control over the orders of
+	distortion introduced, sometimes allowing for the generation of individual harmonics. There is typically a
 	compromise made between control and computational complexity; algorithms providing more control over the resulting
 	spectrum requiring more computation.
 
