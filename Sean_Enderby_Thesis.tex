@@ -9,6 +9,28 @@
 \usepackage{microtype} % prettyfication
 \usepackage{emptypage} % remove headers from empty pages
 
+\makeatletter
+\renewcommand{\maketitle}
+{
+	\begin{titlepage}
+		\begin{center}
+			\includegraphics[width=0.15\textwidth]{Images/BCU.jpg} \\
+			\vspace{0.5em}
+			{\huge Digital Media Technology Lab} \\
+			\vspace{0.5em}
+			{\huge Birmingham City University} \\
+			\vspace{14em}
+			{\bfseries \Huge \@title} \\
+			\vspace{3em}
+			{\huge \@author} \\
+			\vspace*{\fill}
+			{\Large A thesis submitted in partial fulfilment of the requirements for the degree of Doctor of
+			Philosophy, \@date}
+		\end{center}
+	\end{titlepage}
+}
+\makeatother
+
 % abstract stuff
 \renewenvironment{abstract}
 {
@@ -247,7 +269,7 @@
 
 \author{Sean Enderby}
 \title{Timbral Control of Audio Through Harmonic Excitation}
-\date{} % fill that shit in when i'm done
+\date{November 2017} % fill that shit in when i'm done
 
 \begin{document}
 
