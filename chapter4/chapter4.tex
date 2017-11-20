@@ -10,11 +10,11 @@
 	Chapter~\ref{chap:Timbre} several different methods for obtaining this information were discussed. In this chapter,
 	we present a model for collecting timbral data from within the audio production environment
 	(Section~\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation}). Data collected using this method is then analysed
-	using various techniques. In Section~\ref{sec:TimbreEvaluation-Analysis-TermUsage} the frequency with which certain
-	descriptive terms are used to describe timbral transforms is discussed. In
+	using various techniques: in Section~\ref{sec:TimbreEvaluation-Analysis-TermUsage} the frequency with which certain
+	descriptive terms are used to describe timbral transforms is discussed; in
 	Section~\ref{sec:TimbreEvaluation-Analysis-TermClustering} clustering techniques are used to identify synonymous
-	terms within the data and in Section~\ref{sec:TimbreEvaluation-Analysis-TimbreSpaces} low dimensional timbre spaces
-	are constructed and analysed.
+	terms within the data; and in Section~\ref{sec:TimbreEvaluation-Analysis-TimbreSpaces} low dimensional timbre
+	spaces are constructed and analysed.
 
 \section{Production Environment Timbre Evaluation} % this name will probably change
 \label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation}
@@ -40,10 +40,10 @@
 		\end{itemize}
 
 		At every stage of this process, semantic descriptors are often used to communicate the desired timbral
-		qualities of the audio. For instance, one my ask that a certain microphone be used because of the `warmth'
-		it adds to the recorded sound. During the mixing and mastering stages, audio processing effects are applied
-		to shape the timbre further. These stages will be the focus of this section as the aim of this thesis is
-		to improve the intuitiveness of these effects.
+		qualities of the audio. For instance, one might ask that a certain microphone be used because of the
+		`warmth' it adds to the recorded sound. During the mixing and mastering stages, audio processing effects
+		are applied to shape the timbre further. These stages will be the focus of this section as the aim of this
+		thesis is to improve the intuitiveness of these effects.
 
 		Historically, audio production required the use of several pieces of electronic hardware, including
 		microphones, a mixing console, audio processing effects and a recording device. Modern music production
@@ -112,7 +112,7 @@
 			\label{fig:SAFE-Distortion}
 		\end{figure}
 		
-		Upon saving a description the plug-in will record and analyse five seconds of audio at its inputs and
+		Upon saving a description, the plug-in will record and analyse five seconds of audio at its inputs and
 		outputs.  When the analysis is completed the results are stored, containing:
 
 		\begin{itemize}
@@ -195,8 +195,8 @@
 
 		The SAFE plug-ins were distributed online as VST and AU effects for Windows, Mac OS X and Linux.  Releases
 		were promoted on music production forums and at music production and research events. Across all release
-		platforms and versions the plug-in suite has been downloaded 12,036 times. This number does not reflect the
-		number of unique users however, as users may have downloaded updated versions or packages for various
+		platforms and versions, the plug-in suite has been downloaded 12,036 times. This number does not reflect
+		the number of unique users however, as users may have downloaded updated versions or packages for various
 		platforms.
 
 		One disadvantage in using plug-ins is that they cannot gather information about the processing chain they
@@ -210,8 +210,8 @@
 		they provide describe only the effect of the plug-in being used.
 
 		The SAFE plug-ins suffer from the same issues other distributed tests do. The researcher forfeits control
-		over the listening environment in order to gather results from a much larger sample of people. In fact they
-		provide even less control than methodologies like that used in the Social EQ project
+		over the listening environment in order to gather results from a much larger sample of people. In fact,
+		they provide even less control than methodologies like that used in the Social EQ project
 		\citep{cartwright2013socialeq} in that the choice of audio stimuli being used is decided by the test
 		subject. This control is relinquished in order to access a greater user base. The metadata fields allow the
 		collected data to be categorised if information about a particular genre or instrument is desired.
@@ -358,7 +358,7 @@
 		The dataset used for this work was collected by the SAFE plug-ins between June 2014 and July 2016. In total
 		the dataset describes 304 transforms saved using the SAFE Distortion and 1,483 transforms saved using the
 		SAFE Equaliser. Several of these have descriptive terms which are application details rather than timbral
-		descriptors (e.g. ``Drum Bus'') while others are not recognisable words (e.g.  ``cp-1''). These transforms
+		descriptors (e.g. ``Drum Bus''), while others are not recognisable words (e.g.  ``cp-1''). These transforms
 		are removed from the dataset prior to further processing.
 
 		Of the remaining transforms, several have terms which are derived from the same root word, with the
@@ -562,7 +562,7 @@
 		such that is has a mean of zero and a standard deviation of one) to mitigate any effect the range of a
 		particular audio feature might have on the clustering. Clusters are constructed iteratively: each term
 		initially sits in a cluster on its own, on each iteration the two closest clusters are combined to create a
-		new cluster. There are numerous metric for measuring the proximity of clusters each having different
+		new cluster. There are numerous metrics for measuring the proximity of clusters, each having different
 		effects on the meaning of the resulting clustering hierarchy. As will be discussed in greater detail in
 		Section~\ref{sec:TimbreEvaluation-Analysis-Agreement}, low variance within a cluster in the feature space
 		is deemed to denote agreement between the transforms which make up the cluster (agreement between users of
@@ -614,18 +614,18 @@
 			from each other in the distortion feature spaces, they are two of the closest terms in the
 			equaliser's processed feature space (Figure~\ref{fig:EqualiserProcessedClusters}). They are,
 			however, separated well in the equaliser's feature difference space
-			(Figure~\ref{fig:EqualiserDifferenceClusters}) suggesting that the difference between these terms
+			(Figure~\ref{fig:EqualiserDifferenceClusters}), suggesting that the difference between these terms
 			is better described by certain change in audio features rather than an absolute feature value.
 			
-			Within the equaliser's feature differences space, two main clusters are identified corresponding
+			Within the equaliser's feature difference space, two main clusters are identified corresponding
 			with the `warmth' and `brightness' clusters from the distortion feature spaces. The `warmth'
 			cluster includes the terms `deep' and `full', while the `brightness' cluster includes the terms
 			`tin', `thin', `clear' and `air'. An additional `muddiness' cluster, containing `mud', `boom' and
-			`box', is also present. These three terms cluster better in the processed feature space indicating
-			that they are more likely to describe a particular set of feature values rather than the properties
-			of a transform. There is a similarity between these clusters and the combinations of descriptors
-			used to describe equaliser transforms (Table~\ref{tab:EqualiserTermCombinations}) suggesting that
-			some of these terms may be synonymous with each other.
+			`box', is also present. These three terms cluster more closely in the processed feature space
+			indicating that they are more likely to describe a particular set of feature values rather than the
+			properties of a transform. There is a similarity between these clusters and the combinations of
+			descriptors used to describe equaliser transforms (Table~\ref{tab:EqualiserTermCombinations})
+			suggesting that some of these terms may be synonymous with each other.
 
 			\begin{figure}[h!]
 %			This figure is da baddest figure, ask your dyslexic down syndromed mother.
@@ -647,7 +647,7 @@
 		\subsubsection*{Clustering Across Both Effects}
 			In order to investigate the similarity of descriptors across both plug-ins, their respective
 			feature spaces are combined and clustering is applied to produce the dendrograms shown in
-			Figure~\ref{fig:CombinedClusters}. Descriptors are prepended with either and `E' or a `D' to
+			Figure~\ref{fig:CombinedClusters}. Descriptors are prepended with either a `D' or an `E' to
 			distinguish between those describing distortion transforms and those describing equaliser
 			transforms.
 
@@ -667,11 +667,11 @@
 				\label{fig:CombinedClusters}
 			\end{figure}
 
-			Here the `warmth' clusters from each plug-in's features spaces are combined, indicating that each
-			of these descriptors describe similar transforms regardless of the processing method used. In
-			contrast the `brightness' groups remain separated into clusters comprised mostly of descriptors
-			from a single plug-in, suggesting that the use of these terms may differ depending on the nature of
-			the audio transform.  Further evidence of this is found in the similarity of the terms `bright' and
+			Here the `warmth' clusters from each plug-in's feature spaces are combined, indicating that each of
+			these descriptors describe similar transforms regardless of the processing method used. In contrast
+			the `brightness' groups remain separated into clusters comprised mostly of descriptors from a
+			single plug-in, suggesting that the use of these terms may differ depending on the nature of the
+			audio transform.  Further evidence of this is found in the similarity of the terms `bright' and
 			`harsh'.  When used to describe distortion transforms these terms always sit adjacent to one
 			another in a cluster, whereas for equaliser transforms they are separated by a greater distance.
 			These terms are more likely to be synonymous when describing audio processed by a distortion then
@@ -683,7 +683,7 @@
 		reality a term describes several transforms which cover a region of the feature space. In order to draw
 		conclusions about the region a descriptor covers in a feature space, it is necessary to have a measure of
 		agreement for a descriptor. This measure describes the level to which different users agree on the semantic
-		meaning of descriptive terms. The closer together the transforms, associated with a particular descriptor,
+		meaning of descriptive terms. The closer together the transforms associated with a particular descriptor
 		are grouped in the feature space, the higher that descriptor's agreement score.
 
 		\citet{cartwright2013socialeq} measure how well participants agree on the semantic annotation of graphic
@@ -867,20 +867,19 @@
 			To demonstrate the differences between Equations \ref{eq:SocialEqAgreement},
 			\ref{eq:ReciprocalOfSumAgreement}, \ref{eq:SumOfReciprocalAgreement}, \ref{eq:EigenvalueAgreement}
 			and \ref{eq:BoundedEigenvalueAgreement}, artificial data can be synthesised which exhibits some of
-			the issues discussed with Equation~\ref{eq:SocialEqAgreement}.
-			
-			Figure~\ref{fig:SynthesisedData} shows a synthesised, three dimensional, dataset containing four
-			clusters of points. For ease of discussion it is assumed that this data represents the feature
-			space after \acrshort{pca} has been applied. Each cluster has different properties which need to be
-			taken into account when calculating the agreement score. Cluster 1 represents a set of points whose
-			position in the \acrshort{pca} space is not agreed upon, exhibiting a high variance in every
-			\acrshort{pc}.  Cluster 2 represents a set of points whose position is very well agreed upon,
-			having low variance in every \acrshort{pc}. Cluster 3 represents a set of points whose position is
-			only defined in one \acrshort{pc}, having high variance in the other two. Cluster 4 represent a set
-			of points which are defined by a relationship between two \acrshort{pc}s, exhibiting high variance
-			in all \acrshort{pc}s but a strong correlation ($r = 0.9$) between \acrshort{pc}s 1 and 2. The
-			clusters were generated using the techniques discussed by \citet{ripley1987stochastic}, using the
-			means, $\mu$, and covariance matrices, $\Sigma$, shown in Datum~\ref{dat:ClusterStats}.
+			the issues discussed with Equation~\ref{eq:SocialEqAgreement}.  Figure~\ref{fig:SynthesisedData}
+			shows a synthesised, three dimensional, dataset containing four clusters of points. For ease of
+			discussion it is assumed that this data represents the feature space after \acrshort{pca} has been
+			applied. Each cluster has different properties which need to be taken into account when calculating
+			the agreement score. Cluster 1 represents a set of points whose position in the \acrshort{pca}
+			space is not agreed upon, exhibiting a high variance in every \acrshort{pc}.  Cluster 2 represents
+			a set of points whose position is very well agreed upon, having low variance in every
+			\acrshort{pc}. Cluster 3 represents a set of points whose position is only defined in one
+			\acrshort{pc}, having high variance in the other two. Cluster 4 represent a set of points which are
+			defined by a relationship between two \acrshort{pc}s, exhibiting high variance in all
+			\acrshort{pc}s but a strong correlation ($r = 0.9$) between \acrshort{pc}s 1 and 2. The clusters
+			were generated using the techniques discussed by \citet{ripley1987stochastic}, using the means,
+			$\mu$, and covariance matrices, $\Sigma$, shown in Datum~\ref{dat:ClusterStats}.
 
 			\begin{datum}[h!]
 				\centering
@@ -1038,8 +1037,8 @@
 		Clustering provides insight into the similarity of descriptive terms but does not show what properties of
 		the signals / transforms contribute to the differences between descriptor clusters. Reducing the
 		dimensionality of the audio feature space allows for the most salient audio features to be identified. To
-		preserve as much of the audio feature data as possible, a different feature space, to that used for
-		clustering, is constructed. Rather than each descriptor representing one point in the feature space, each
+		preserve as much of the audio feature data as possible, a different feature space to that used for
+		clustering is constructed. Rather than each descriptor representing one point in the feature space, each
 		individual transform represents its own point. 
 
 		Two low dimensionality timbre spaces are generated for each effect, one from the feature space of the
@@ -1064,7 +1063,7 @@
 		space which have been described by each term. The second is a biplot showing the mean position of
 		transforms labelled with each descriptor, along with vectors showing the influence of the most salient
 		audio features in each \acrshort{pc}. In these graphs the size of the text indicates the agreement score
-		associated with that descriptor. In combination these two plots give a visual representation of how the
+		associated with that descriptor. In combination, these two plots give a visual representation of how the
 		audio features influence the use of descriptors.
 
 		Additionally, an impression of the spectral characteristics related to each descriptor can be seen by
@@ -1230,7 +1229,7 @@
 			spectral roll off, spectral centroid and spectral standard deviation.  Referring to the raw values
 			of the feature differences, there is no definite direction in which these features are moved by the
 			transforms labelled with `warm', `fuzz' and `crunch'. This is reflected in
-			Figure~\ref{fig:DistortionProcessedSpectra} where the mean spectral manipulations for these
+			Figure~\ref{fig:DistortionDifferenceSpectra}, where the mean spectral manipulations for these
 			descriptors are mostly flat. This is an indication that, when used for describing signals processed
 			by distortion, these terms describe features of the output signal rather than of the transform
 			applied.
@@ -1265,9 +1264,9 @@
 			\acrshort{pc} 1 is correlated with Krimphoff irregularity, spectral skewness and spectral kurtosis,
 			the position of `crunch', in this \acrshort{pc}, corresponding to a small increase in each of these
 			features.  Inspecting the bark band spectra and spectral manipulations in Figures
-			\ref{fig:DistortionProcessedSpectra} and \ref{fig:DistortionDifferenceSpectra} the magnitude of
+			\ref{fig:DistortionProcessedSpectra} and \ref{fig:DistortionDifferenceSpectra}, the magnitude of
 			these increases can be investigated. For `crunch', at the low end of \acrshort{pc} 1, a small
-			amount higher frequency energy is introduced creating a signal in which the energy is more evenly
+			amount high frequency energy is introduced creating a signal in which the energy is more evenly
 			distributed throughout the spectrum. For `bright', at the other end of \acrshort{pc} 1, much larger
 			amounts of high frequency energy is added, producing signals in which there is more energy at high
 			frequencies than at mid frequencies.
@@ -1334,7 +1333,7 @@
 			Within the equaliser's processed feature timbre space, the terms `warm' and `bright' do not occupy
 			distinct regions from one another. This reflects the clustering of these terms seen in
 			Figure~\ref{fig:EqualiserProcessedClusters}, again suggesting that these terms have not been used
-			to describe distinct properties of the processed signal. The remaining descriptors are also
+			to describe distinct properties of the processed signals. The remaining descriptors are also
 			difficult to distinguish. One apparent pattern is the separation of `harsh' and `mud' in
 			\acrshort{pc} 2, although this may be due to chance as the agreement score for `harsh' is very low.
 
@@ -1461,7 +1460,7 @@
 			reducing the spectral centroid and `brighter' by increasing it. This is most often done by
 			introducing more energy at low or higher frequencies respectively, as seen in
 			Figure~\ref{fig:EqualiserDifferenceSpectra}. `harsh' and `tin' can be thought of as more
-			accentuated versions of `bright' and `mud' as a more accentuated version of `warm'.
+			accentuated versions of `bright', and `mud' as a more accentuated version of `warm'.
 
 			\begin{datum}[h!]
 				\centering
@@ -1541,24 +1540,24 @@
 	`Warmth' is used in a similar manner when describing distortion and equaliser transforms. It is used to describe a
 	shift in energy towards the lower end of the spectrum, decreasing the spectral centroid and spectral roll off. This
 	corresponds to amplifying the low frequencies using an equaliser or applying a nonlinearity which produces a
-	spectrum with a low proportion of high frequency energy. `Warm' and its related descriptors can be further
+	spectrum with a low proportion of high frequency energy. `Warm', and its related descriptors, can be further
 	distinguished by the smoothness of the spectrum, `deep' signals having the smoothest spectra with `full', `cream',
 	`warm' then `fuzz' describing increasing irregularity.
 
 	`Brightness' describes different properties depending on the nature of the processing. In all cases it it
 	associated with an increase in spectral centroid, increasing the proportion of high frequency energy in the signal.
-	For the nonlinearity used in the SAFE distortion plug-in `bright' and 'harsh' both describe similar transforms;
-	those producing signals which have a significant proportion of high frequency energy. For equalisation the terms
+	For the nonlinearity used in the SAFE distortion plug-in, `bright' and 'harsh' both describe similar transforms;
+	those producing signals which have a significant proportion of high frequency energy. For equalisation, the terms
 	can be better separated: `bright' describing a small amplification of high frequencies and `harsh' a larger one.
 
 	`Crunchiness' is a term used only to describe audio processed by the distortion effect. Here it describes the
 	application of a nonlinearity which flattens the spectrum of a signal. As the proportion of high frequency energy
 	introduced by the nonlinearity increases the terms used to describe it move from `warm' through `crunch' to
 	`bright' and `harsh'. There is a crossover point at which both `warm and `crunch' are applicable. The terms `warm',
-	`bright' and `harsh' can all be used to describe the effects of equalisation or distortion, `Crunchiness' only
+	`bright' and `harsh' can all be used to describe the effects of equalisation or distortion; `crunchiness' only
 	refers to distortion timbres, being distinguished from these other terms by a slight increase in spectral
 	irregularity. A typical harmonic signal will have a fairly smooth decrease in the amplitude of its partials. Once a
-	nonlinearity has been applied the overall shape of the spectrum may appear flatter but the variation in amplitude
+	nonlinearity has been applied, the overall shape of the spectrum may appear flatter but the variation in amplitude
 	between all the distortion components creates a more irregular spectrum.
 
 	`Muddiness' has only been used to describe signals processed by the equaliser. It is characterised by the

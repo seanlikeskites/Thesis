@@ -12,9 +12,9 @@
 	Several researchers have also worked on creating novel digital distortion techniques
 	\citep{fernandez-cid2001distortion, puckette2007patch, pekonen2008coefficient}.
 
-	Historically distortion is a very broad term which is often used to describe unwanted effects. For this work a more
-	strictly defined term, harmonic excitation, will be used to refer to the deliberate and controlled application of
-	nonlinear or time variant systems in order to introduce new frequency components to a signal.
+	Historically, distortion is a very broad term which is often used to describe unwanted effects. For this work a
+	more strictly defined term, harmonic excitation, will be used to refer to the deliberate and controlled application
+	of nonlinear or time variant systems in order to introduce new frequency components to a signal.
 	\citet{dutilleux2011nonlinear} defines excitation as the process of controlling timbre through the emphasis of
 	certain frequencies. While this is possible with linear systems such as equalisers, nonlinear and time variant
 	systems provide more flexibility as they can add energy in areas of the spectrum where the original signal had
@@ -44,7 +44,7 @@
 	Analysis of nonlinear systems is more complicated, unlike \acrshort{lti} systems the properties of the system
 	cannot be summarised by the system's response to a single input signal. Depending on the field in which a nonlinear
 	system is being studied, different approaches are taken in an attempt to summarise the behaviour of nonlinear
-	systems. In the field of audio engineering much of the literature concerning nonlinearities has to do with
+	systems. In the field of audio engineering, much of the literature concerning nonlinearities has to do with
 	minimising distortion or measuring the maximum allowable levels of distortion. Several distortion metrics have been
 	developed each with their own uses. A review of many of these metrics is given by \citet{voishvillo2006assessment},
 	some of which will be discussed in Section~\ref{sec:Excitation-Analysis-Metrics}.  Where more information is
@@ -126,8 +126,8 @@
 
 			The new frequency content introduced to a discrete signal via nonlinear processing is also subject
 			to aliasing. This can cause problems when predicting the behaviour of a nonlinear system in
-			different scenarios as the spectral content introduced will depend on the sampling frequency of the
-			signal being processed. Thus, the perceived timbral transform may also depend on the sampling
+			different scenarios, as the spectral content introduced will depend on the sampling frequency of
+			the signal being processed. Thus, the perceived timbral transform may also depend on the sampling
 			frequency. Steps can be taken to reduce the impact of aliasing on the performance of nonlinear
 			effects; for example \citep{vetter2013estimation} describe a method for use with nonlinearities
 			which produce harmonics whose amplitudes decrease as their frequencies increase. They upsample
@@ -196,7 +196,7 @@
 
 			\acrshort{thd} and \acrshort{imd} give very limited information about the response of nonlinear
 			systems. They are typically measured using simple input signals which are not representative of the
-			signals a system would process in actual use. Given that nonlinear systems may not satisfy the
+			signals a system would process in actual use. Given that nonlinear systems do not satisfy the
 			condition of superposition, a system may process simple and complex signals in vastly differing
 			manners. These metrics also give no indication of the perceived degradation in audio quality a
 			system introduces.  A signal with a high \acrshort{thd} value may potentially sound less distorted
@@ -211,7 +211,7 @@
 			\begin{itemize}
 				\item New frequency components introduced, with lower frequencies than the original
 					components, will be more perceptible.
-				\item Higher order nonlinearity artefacts will be more perceptible.
+				\item Higher order distortion components will be more perceptible.
 				\item Nonlinearities which affect lower amplitude signals will be more perceptible.
 			\end{itemize}
 
@@ -269,7 +269,7 @@
 			\citet{tan2004predicting} suggest improvements to the $\mathrm{DS}$ metric leading to the
 			$R_{\mathrm{nonlin}}$ metric. The first improvement is the inclusion of a filter with a frequency
 			response similar to that of the outer and middle ear. The filter used is described by
-			\citet{glasberg2002a}, it attenuates frequencies at either end of the audible spectrum modelling
+			\citet{glasberg2002a}, it attenuates frequencies at either end of the audible spectrum, modelling
 			the decreased perception of distortion at these frequencies as reported by
 			\citet{voishvillo2006assessment}. The calculation of $R_{\mathrm{nonlin}}$ is split into several
 			steps as follows:
@@ -288,7 +288,7 @@
 				\item The outputs of each gammatone filter are then split into non-overlapping 30ms frames
 					and the normalised cross-correlation between the input and output frame is
 					measured.  To account for any frequency dependent delay introduced by the system
-					under test a variable lag parameter, $\tau$, is introduced to offset the input and
+					under test, a variable lag parameter, $\tau$, is introduced to offset the input and
 					output signals from one another in time. For each frame, $i$, band, $j$, and lag
 					value, $\tau$, the normalised cross-correlation between the input and output
 					signals, $r_{i,j,\tau}$, is calculated using
@@ -304,7 +304,7 @@
 					\end{gather}
 
 					Where $S_{i,\tau}$ is the range of samples from the input signal used in the
-					calculation, given the frame number and the value of the lag parameter, and $L$ is
+					calculation, given the frame number and the value of the lag parameter; and $L$ is
 					the number of samples in a 30ms frame, given the sampling frequency ($L =
 					\round{0.03f_{s}}$). 
 
@@ -319,9 +319,9 @@
 					\end{gather}
 
 				\item The values of $M_{i,j}$ are then weighted according to the power present in the
-					relevant frame and band, $P_{i,j}$, and the maximum power of all bands in that
-					frame, $Q_{i}$. The weighting for each band and frame, $W_{i,j}$ is calculated
-					using Equation~\ref{eq:RNonlinWeighting}.
+					relevant frame and band of the output signal, $P_{i,j}$, and the maximum power of
+					all bands in that frame, $Q_{i}$. The weighting for each band and frame, $W_{i,j}$
+					is calculated using Equation~\ref{eq:RNonlinWeighting}.
 
 					\begin{gather}
 						P_{i,j} = 10\log_{10} \left( \frac{1}{L} 
@@ -398,7 +398,7 @@
 			as operational amplifiers and diodes \citep{paiva2012emulation}.
 
 			While wave digital filters can accurately represent a nonlinear system, there are some
-			disadvantages. As systems get more complex traversing the `tree' of blocks in order to calculate
+			disadvantages. As systems get more complex, traversing the `tree' of blocks in order to calculate
 			the output signal takes more computation. This presents problems when real time system response is
 			needed. There are also certain circuit topologies which cannot be represented in the wave digital
 			domain \citep{valimaki2011virtual}. Another consideration is that knowledge of the circuitry of the
@@ -480,7 +480,7 @@
 			invariant systems. Other properties a system must exhibit in order to allow Volterra series
 			modelling are discussed by \citet{billings2013nonlinear}.
 
-			The use of Volterra series is computationally demanding. As the order of the series used increases
+			The use of Volterra series is computationally demanding, as the order of the series used increases
 			the number of coefficients in the kernels rises exponentially. This can make the use of high order
 			systems impractical. \citet{reed1996practical} suggests a method by which the number of
 			coefficients can be reduced in the implementation of Volterra series to combat this.
@@ -578,17 +578,17 @@
 	for the description of the timbral effect of nonlinear systems. The listening tests performed by
 	\citet{lee2003auditory} and \citet{tan2004predicting}, to verify the distortion metrics discussed, asked subjects
 	to rate the quality of audio stimuli. It is possible that nonlinear distortion could alter the timbre of audio
-	without deteriorating its perceived quality. To investigate this experiments must be conducted in which
-	participants are asked to rate the timbral characteristics of nonlinearly processed stimuli. The section reviews
+	without deteriorating its perceived quality. To investigate this, experiments must be conducted in which
+	participants are asked to rate the timbral characteristics of nonlinearly processed stimuli. This section reviews
 	literature published in that regard.
 
 	There is a wealth of research into how low level audio features influence timbre, as discussed in
 	Chapter~\ref{chap:Timbre}. The mappings between low level features and semantic features from the literature can be
-	applied to harmonic excitation effects provided the excitation method used can influence the required low level
+	applied to harmonic excitation effects, provided the excitation method used can influence the required low level
 	features.  It is possible that there are semantic terms used to describe the timbre of nonlinear distortion which
 	are seldom used to describe other timbres. The majority of timbral research does not focus on nonlinear distortion
 	and as such does not highlight these semantic terms. There have been some publications specifically discussing the
-	timbral effects of nonlinear distortion. Their findings are discussed in this section.
+	timbral effects of nonlinear distortion, their findings are discussed in this section.
 
 	\citet{marui2005predicting} suggest that one of the primary outcomes of nonlinear distortion is the moving of
 	spectral energy between low and high frequencies. They propose that aspects of this effect correlate with the
@@ -658,10 +658,10 @@
 	the function describing the relationship between the perceived `brightness' and Zwicker sharpness of output signals
 	is monotonically increasing. As the parameter of the effect is changed the number of distortion components
 	introduced to the signal is changed. Conversely to their predictions, it is shown that if the output signals are
-	processed to have matching Zwicker sharpness those to which greater levels of distortion had been introduced were
-	perceived to be less `bright' then those which are less distorted. This is explained by examining the relative
-	levels of different orders of distortion components in the output, suggesting that the perception of distortion
-	depends on the individual levels of different orders of distortion components.
+	processed to have matching Zwicker sharpnesses, those to which greater levels of distortion had been introduced
+	were perceived to be less `bright' then those which were less distorted. This is explained by examining the
+	relative levels of different orders of distortion components in the output, suggesting that the perception of
+	distortion depends on the individual levels of different orders of distortion components.
 
 	\citet{wilson2014characterisation} use a different approach to describe the distortion characteristics of popular
 	music tracks. A panel of expert listeners rated several stimuli on two scales: distortion level and distortion
@@ -672,7 +672,7 @@
 	classified has having high distortion levels, suggesting that the concept of distortion is well known to listeners.
 	The other descriptors elicited (`punchy', `clear', 'harsh' etc.) did not correlate well with any particular group
 	of stimuli as categorised by the classifier. This may be to do with the method by which the original stimuli were
-	classified by the expert panel. The descriptors which did not correlate may refer to perceptual dimensions other
+	classified by the expert panel; the descriptors which did not correlate may refer to perceptual dimensions other
 	than distortion level and character. Training the classifier to only discriminate stimuli in these two dimensions
 	removes any information about where the stimuli lie on these additional dimensions.
 
@@ -688,7 +688,7 @@
 \section{Uses of Harmonic Excitation}
 \label{sec:Excitation-Uses}
 	While harmonic excitation algorithms are best known as a creative effect used by guitarists, they find use in
-	several other areas of audio processing. These areas are summarised in Sections
+	several other areas of audio processing; these areas are summarised in Sections
 	\ref{sec:Excitation-Uses-Reconstruction} through \ref{sec:Excitation-Uses-Enhancement}. While popular creative
 	distortion algorithms are based on simple analogue electronic circuits, algorithms designed for these applications
 	provide more control over the output signal in order to achieve their respective tasks.
@@ -702,7 +702,7 @@
 		frequencies can be estimated during the decompression process. This allows for the bandwidth to be
 		constricted for storage or transmission but the full bandwidth to be restored when required.
 
-		When compressing audio data using lossy audio codecs the original signal, along with its high frequency
+		When compressing audio data using lossy audio codecs, the original signal, along with its high frequency
 		components, is available before compression is applied. Parameters describing the high frequency content of
 		the signal can be recorded and used to aid in the reconstruction of the high frequencies later
 		\citep{dietz2002spectral, friedrich2007spectral}. The high frequency content is estimated from the low
@@ -722,10 +722,10 @@
 			      bandwidth.
 		\end{itemize}
 
-		These methods could be utilised in creative audio effects. They all introduce new harmonic spectral
+		These methods could be utilised in creative audio effects; they all introduce new harmonic spectral
 		components which may enhance perceptual attributes of a sound. In this situation there is not any
-		information about how the higher harmonics might behave so the system will have to operate `blindly'. It is
-		worth noting that when using these methods as creative audio effects, the objective is not to try to
+		information about how the higher harmonics might behave, so the system will have to operate `blindly'. It
+		is worth noting that when using these methods as creative audio effects, the objective is not to try to
 		replicate high frequency content which is missing but to generate new high frequency content. The accuracy
 		lost through using `blind' bandwidth extension methods is not a great concern for creative timbral
 		manipulation work as the generation of new, high order, harmonics does not require the same degree of
@@ -763,7 +763,7 @@
 		that it mainly amplifies high frequency content. The sine wave response analysis is used to demonstrate the
 		nonlinear elements of the device. 
 
-		\citet{dutilleux2011nonlinear} provides a slightly more in depth analysis of the Aural Exciter showing the
+		\citet{dutilleux2011nonlinear} provides a slightly more in depth analysis of the Aural Exciter, showing the
 		spectral alterations make to a chirp signal. This gives information about how the nonlinear section of the
 		device responds to different input frequencies. It is seen that a high level of energy is introduced at the
 		second harmonic. It is not mentioned however, what the exciter's parameters were set to during these tests.
@@ -774,7 +774,7 @@
 \section{Harmonic Generation Methods}
 \label{sec:Excitation-Methods}
 	Various methods have been used to introduce new spectral content in digital audio processing systems.  Some of
-	these mimic the behaviour of existing analogue audio effects while others use novel digital signal processing
+	these mimic the behaviour of existing analogue audio effects, while others use novel digital signal processing
 	techniques. In this section the operation of several harmonic excitation algorithms is described. More detailed
 	discussion on the performance of these algorithms is given in Chapter~\ref{chap:ExcitationEvaluation}.
 
@@ -790,7 +790,7 @@
 			\item A linear section. Applied to low magnitude samples.
 			\item A transition section, often called the `knee'. This refers to the nonlinear part of the
 				characteristic curve for samples with magnitude below the clipping threshold.
-			\item A clipping section. Limiting the magnitude of samples above the clipping threshold.
+			\item A clipping section, limiting the magnitude of samples above the clipping threshold.
 		\end{enumerate}
 		
 		Peak clipping functions can be categorised based on their symmetry and the properties of their first
@@ -838,7 +838,7 @@
 	\label{sec:Excitation-Methods-Rectification}
 		Rectification is a special case of static nonlinearity based on analogue methods of producing a unipolar
 		signal from a bipolar one. Half wave rectification (Equation~\ref{eq:HalfWaveRectification}) does so by
-		zeroing any negative portions of the input signal while full wave rectification
+		zeroing any negative portions of the input signal, while full wave rectification
 		(Equation~\ref{eq:FullWaveRectification}) inverts the polarity of negative portions of the input.
 
 		\begin{equation}
@@ -876,7 +876,7 @@
 	\subsection{Multiplier}
 	\label{sec:Excitation-Methods-Multiplier}
 		Multipliers are a subset of static nonlinearities which apply automodulation to a signal. Automodulation
-		refers to the amplitude modulation of a signal by itself. In amplitude modulation the amplitude of one
+		refers to the amplitude modulation of a signal by itself. In amplitude modulation, the amplitude of one
 		signal (the carrier) is varied according to another signal (the modulator) by multiplication,
 		automodulation then refers to multiplying a signal by itself. The concept of automodulation can be extended
 		by multiplying a signal by itself several times. This is achieved by raising input samples to a positive
@@ -896,10 +896,10 @@
 	\label{sec:Excitation-Methods-SSBA}
 		\acrfull{ssba} combines the automodulation performed in a multiplier with the technique of single sideband
 		modulation \citep{corinthios2009signals}. Regular amplitude modulation produces two sidebands (a sum and
-		difference sideband) containing frequency components at the sums and differences in frequency of the those
-		in the carrier and modulator signals. Single sideband modulation is a method of applying amplitude
-		modulation to a signal and only producing either the sum or difference sideband. This requires the
-		construction of an analytic representation, $x_{a}[n]$, of the input signal, $x[n]$, as discussed in
+		difference sideband) containing frequency components at the sums and differences in frequency of those in
+		the carrier and modulator signals. Single sideband modulation is a method of applying amplitude modulation
+		to a signal and only producing either the sum or difference sideband. This requires the construction of an
+		analytic representation, $x_{a}[n]$, of the input signal, $x[n]$, as discussed in
 		Section~\ref{sec:Timbre-LowLevelFeatures-Temporal}. The analytic signal is then raised to a positive
 		integer power, $h$, as shown in Equation~\ref{eq:SSB}. Taking the real part of the resultant complex valued
 		signal gives only the sum sideband of the modulation.
@@ -910,7 +910,7 @@
 		\end{equation}
 
 		The generation of only a single sideband can be illustrated by considering a sinusoidal input $\cos(x)$.
-		Simply squaring the input produces two frequency components which are the sum and difference of the inputs
+		Simply squaring the input produces two frequency components which are the sum and difference of the input's
 		frequency and itself. These sum and difference sidebands are a sinusoid with twice the frequency of the
 		input and a DC offset (0Hz) as seen in Equation~\ref{eq:TwoSidebands}.
 
@@ -938,8 +938,8 @@
 		are then used to aid in the construction of harmonics as discussed by \citet{puckette2007patch}. The
 		instantaneous amplitude of the analytic signal is found by taking its absolute value, $\abs{x_{a}[n]}$. The
 		instantaneous phase is found by taking the complex argument of the analytic signal, $\arg(x_{a}[n])$. The
-		instantaneous phase can then be scaled in order to scale the frequency content of the signal independent of
-		its amplitude.  Equation~\ref{eq:IAP} shows the $h$\super{th} order instantaneous amplitude and phase
+		instantaneous phase can then be scaled in order to scale the frequency content of the signal independently
+		of its amplitude.  Equation~\ref{eq:IAP} shows the $h$\super{th} order instantaneous amplitude and phase
 		modulation of a signal.
 
 		\begin{equation}
@@ -965,7 +965,7 @@
 		modulation with a complex sinusoid as shown in Equation~\ref{eq:SpectralReplication}.
 
 		\begin{equation}
-			y[n] = \Re \left( x_{a}[n] e^{2i\pi fn/ f_{s}} \right)
+			y[n] = \Re \left( x_{a}[n] e^{\frac{2i\pi fn}{f_{s}}} \right)
 			\label{eq:SpectralReplication}
 		\end{equation}
 
@@ -974,13 +974,13 @@
 		Spectral folding is another method used in bandwidth extension \citep{friedrich2007spectral} which could be
 		adapted for harmonic excitation. Spectral folding uses upsampling in order to replicate parts of the
 		spectrum at higher frequencies. In order for the output signal to have the same sampling frequency as the
-		input the signal is downsampled by a factor $k$ before being upsampled by the same factor. To avoid
-		aliasing during the downsampling phase the signal should have a low pass filter applied with a cutoff
+		input, the signal is downsampled by a factor $k$ before being upsampled by the same factor. To avoid
+		aliasing during the downsampling phase, the signal should have a low pass filter applied with a cutoff
 		frequency of $\frac{f_{s}}{2k}$. Typically upsampling systems apply a low pass filter to remove any high
 		frequency content introduced \citep{oppenheim2014discrete}. This is not needed for spectral folding as the
 		production of high frequency energy is the desired result. After low pass filtering, the downsampling and
 		upsampling can be performed at the same time by retaining every $k$\super{th} sample and setting all others
-		to zero. This is shown in Equation~\ref{eq:SpectralFolding} where $x_{lf}[n]$ is the low pass filtered
+		to zero. This is shown in Equation~\ref{eq:SpectralFolding}, where $x_{lf}[n]$ is the low pass filtered
 		input signal.
 
 		\begin{equation}
@@ -1024,7 +1024,7 @@
 	\label{sec:Excitation-Methods-STTR}
 		\acrfull{sttr} is an audio effect proposed by \citet{kim2014shorttime}. The output signal is constructed by
 		summing overlapping frames of the input signal which have been reversed in time using
-		Equation~\ref{eq:STTR}. Where $\delta$ is the step size between frames in samples and $w$ is an arbitrary
+		Equation~\ref{eq:STTR}, where $\delta$ is the step size between frames in samples and $w$ is an arbitrary
 		window function which exhibits constant overlap add (i.e. the sum of the window function translated in time
 		by all integer multiples of $\delta$ is equal to 1 at all values of $n$
 		(Equation~\ref{eq:ConstantOverlapAdd})).  Constant overlap add ensures that no unwanted amplitude
