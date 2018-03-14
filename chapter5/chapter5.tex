@@ -92,7 +92,7 @@
 
 		In the summary shown in Table~\ref{tab:ComparisonSummary} the homogeneity of the algorithms evaluated in
 		this section is identified using four different terms. Homogeneous and non-homogeneous identify systems
-		which do and don't satisfy the principle of homogeneity. Positive homogeneous refers to systems which are
+		which do and do not satisfy the principle of homogeneity. Positive homogeneous refers to systems which are
 		homogeneous for positive gain applied to the input signal (satisfying Equation~\ref{eq:homogeneity} for
 		positive values of $m$). A number of the systems evaluated are linear time variant and therefore
 		homogeneous, these are identified as \acrshort{ltv} systems.
@@ -279,10 +279,10 @@
 		interpolation calculations. Several steps can be taken to reduce the work needed when using a phase
 		vocoder. The computational complexity of the \acrshort{dft} calculations can be reduced from $\mathcal{O}
 		\left( n^{2} \right)$ to $\mathcal{O}(n\log{n})$, where $n$ is the number of samples on which the
-		\acrshort{dft} is being computed, by using the fast Fourier transform \citep{portnoff1976implementation}.
-		When shifting the frequencies upwards, the amount of work can be further reduced by resampling the signal
-		prior to calculating the \acrshort{stft} \citep{laroche1999new}. This way there are fewer frames for which
-		the \acrshort{dft} need be calculated.
+		\acrshort{dft} is being computed, by using the radix 2 fast Fourier transform
+		\citep{portnoff1976implementation}.  When shifting the frequencies upwards, the amount of work can be
+		further reduced by resampling the signal prior to calculating the \acrshort{stft} \citep{laroche1999new}.
+		This way there are fewer frames for which the \acrshort{dft} need be calculated.
 
 		The computational complexity of \acrshort{sttr} depends on the ratio of the step size, $\delta$, and the
 		length of the window function, $L$, in samples. As $\frac{\delta}{L}$ decreases, the number of overlapping
@@ -485,7 +485,7 @@
 			(Equation~\ref{eq:NegativeGainPhase}).
 						
 			\begin{equation}
-				\arg(mx_{a}[n]) = \bigl( \arg(x_{a}[n]) \mod 2\pi \bigr) - \pi, \quad m < 0
+				\arg(mx_{a}[n]) = \bigl( \arg(x_{a}[n]) \bmod 2\pi \bigr) - \pi, \quad m < 0
 				\label{eq:NegativeGainPhase}
 			\end{equation}
 
@@ -495,7 +495,7 @@
 			(Equation~\ref{eq:IAPOrderHomogeneity}).
 
 			\begin{equation}
-				h\arg(mx_{a}[n]) = h \bigl( \arg(x_{a}[n]) \mod 2\pi \bigr) - h\pi, \quad m < 0
+				h\arg(mx_{a}[n]) = h \bigl( \arg(x_{a}[n]) \bmod 2\pi \bigr) - h\pi, \quad m < 0
 				\label{eq:IAPOrderHomogeneity}
 			\end{equation}
 
@@ -549,8 +549,8 @@
 			clippers discussed previously are all described by odd functions. It is evident from the harmonic
 			amplitude plots (Figures \ref{fig:HardClippingHarmonics}, \ref{fig:SoftClippingHarmonics} and
 			\ref{fig:ExponentialClippingHarmonics}) that only odd order harmonics have been introduced to a
-			sinusoidal input. In order to generate even order distortion components these clipping function can
-			be made asymmetric. This is easily done by clipping negative and positive portions of the input
+			sinusoidal input. In order to generate even order distortion components these clipping functions
+			can be made asymmetric. This is easily done by clipping negative and positive portions of the input
 			signal at different thresholds. For example, Equation~\ref{eq:SymmetricHardClipping} can be
 			modified to allow for asymmetric clipping giving Equation~\ref{eq:AsymmetricHardClipping}.
 			
@@ -581,9 +581,9 @@
 			depending on the properties of the output signal. The spectrum will roll off at $6(n+1)$dB per
 			octave when the $n$\super{th} derivative of the output signal is discontinuous
 			\citep{kraght2000aliasing}.  Hard clippers introduce discontinuities to the first derivative of a
-			signal and so will introduce harmonics whose amplitudes will roll off at 12dB per octave. Signals
-			clipped by Equation~\ref{eq:SymmetricSoftClipping} are continuous in the first derivative and so
-			produce harmonics whose amplitudes roll off at a faster rate. This can be seen in
+			signal and as such will introduce harmonics whose amplitudes will roll off at 12dB per octave.
+			Signals clipped by Equation~\ref{eq:SymmetricSoftClipping} are continuous in the first derivative
+			and so produce harmonics whose amplitudes roll off at a faster rate. This can be seen in
 			Figure~\ref{fig:ClippingSpectra}.
 
 			\begin{figure}[h!]
@@ -596,7 +596,7 @@
 
 			The large amount of spectral content introduced by static nonlinearities means they are
 			particularly susceptible to aliasing. Through smoothing the characteristic curve of the
-			nonlinearity (making the clipper `softer') the amplitudes of generated frequencies will roll of
+			nonlinearity (making the clipper `softer') the amplitudes of generated frequencies will roll off
 			more quickly. With lower levels of high order distortion the amplitudes of any aliased components
 			will be reduced. Aliasing can also be reduced by creating bandlimited approximations of a static
 			nonlinearity's characteristic curve. A simple implementation of this is the harmonic mixer
@@ -675,7 +675,7 @@
 			\end{gather}
 
 			This produces all harmonics with amplitudes rolling off at approximately 6dB per octave. This
-			shallow roll of make integrators very useful when a large amount of new frequency content is
+			shallow roll off makes integrators very useful when a large amount of new frequency content is
 			desired. Due to the shallow roll off of the distortion components' amplitudes, integrators are very
 			prone to aliasing. While integrators are homogeneous, they are frequency dependent, exhibiting low
 			pass filter characteristics. Using the same integration constant, a high frequency input signal
@@ -783,8 +783,8 @@
 			equal to that of the input. This predictability allows for easier control of the output spectrum.
 			It also provides a simple method for the reduction of aliasing: the highest frequency in the output
 			will be that of the input plus the shift frequency $f$. Applying a low pass filter, with a cutoff
-			frequency of $(f_{s} - f)$Hz to the input signal will minimise the amplitude of any aliased
-			frequency components.
+			frequency of $(\frac{f_{s}}{2} - f)$Hz to the input signal will minimise the amplitude of any
+			aliased frequency components.
 
 		\subsubsection*{Spectral Folding}
 			Spectral folding with a factor $k$ results in the lowest $\frac{1}{k}$ of the input spectrum being
@@ -819,7 +819,7 @@
 			frequencies. This can cause inharmonic partials to be generated for input signals which are
 			perfectly harmonic. To counteract this, a window function can be applied to the frames prior to
 			calculating their \acrshort{dft}. Various different window functions have been proposed, each
-			having different effect in reducing the spectral leakage. The selection of a window function is
+			having different effects in reducing the spectral leakage. The selection of a window function is
 			application specific, the performance and use of several different functions is discussed by
 			\citet{harris1978on}.
 			
@@ -1094,9 +1094,9 @@
 
 		\subsubsection*{Spectral Replication}
 			Spectral replication provides a way of generating higher order harmonics without unwanted
-			intermodulation component being introduced. To ensure that the harmonic structure is preserved, the
-			$f_{0}$ of the input signal must be accurately tracked in order to determine how much the frequency
-			should be shifted by. A discussion of different $f_{0}$ tracking methods is given in
+			intermodulation components being introduced. To ensure that the harmonic structure is preserved,
+			the $f_{0}$ of the input signal must be accurately tracked in order to determine how much the
+			frequency should be shifted by. A discussion of different $f_{0}$ tracking methods is given in
 			Section~\ref{sec:FeatureControl-Systems-Fundamental}. While this introduces considerable
 			complexity, the bandwidth of the output is bounded at both ends and the system is homogeneous. The
 			spectral envelope of the output is the same as that of the input, so further filtering is required
@@ -1129,7 +1129,7 @@
 \section{Conclusion}
 	This chapter has discussed the characteristics of the harmonic generation algorithms presented in
 	Chapter~\ref{chap:Excitation}, highlighting their desirable / undesirable traits when applied to timbral control.
-	A full summary of the findings for each algorithms was shown in Table~\ref{tab:ComparisonSummary}. In brief, two
+	A full summary of the findings for each algorithm was shown in Table~\ref{tab:ComparisonSummary}. In brief, two
 	broad classes of harmonic generators are identified; those which generate large numbers of distortion components
 	with little control over their frequencies / amplitudes and those which provide control over the orders of
 	distortion introduced, sometimes allowing for the generation of individual harmonics. There is typically a

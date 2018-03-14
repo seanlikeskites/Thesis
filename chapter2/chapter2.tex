@@ -42,10 +42,10 @@
 	analysed and used to inform models of particular timbral attributes. This approach is discussed in Sections
 	\ref{sec:Timbre-PsychoacousticPrinciples} and \ref{sec:Timbre-TimbralFeatures}. The second approach, discussed in
 	Sections \ref{sec:Timbre-ListeningTests} and \ref{sec:Timbre-Parameterisation}, involves the use of experiments in
-	which participants listen to audio stimuli and provide responses regarding the their timbre.  These responses are
-	then analysed to uncover any correlations between the participants responses and lower level features of the
-	stimuli. Lastly the systems used to control timbre are discussed: Section~\ref{sec:Timbre-Control} discussing
-	methods of controlling timbral aspects of a signal proposed in the research literature, and
+	which participants listen to audio stimuli and provide responses regarding their timbre.  These responses are then
+	analysed to uncover any correlations between the participants responses and lower level features of the stimuli.
+	Lastly the systems used to control timbre are discussed: Section~\ref{sec:Timbre-Control} discussing methods of
+	controlling timbral aspects of a signal proposed in the research literature, and
 	Section~\ref{sec:Timbre-AudioProcessing} discussing the systems traditionally used by audio engineers to modify
 	timbre.
 
@@ -54,7 +54,7 @@
 	A widely cited definition of timbre \citep{ASA1960american} states that ``timbre depends primarily upon the
 	spectrum of the stimulus, but it also depends on the waveform, the sound pressure, the frequency location of the
 	spectrum, and the temporal characteristics of the stimulus''. This suggests that timbre is influenced by various
-	low level features of an audio signal: the spectral content, waveform and temporal characteristics all effect the
+	low level features of an audio signal: the spectral content, waveform and temporal characteristics all affect the
 	perceived timbre of a sound. Signal analysis techniques can be used to extract information about these elements of
 	a signal.  A large list of such feature extraction techniques is given by \citet{peeters2004a} and
 	\citet{bullock2008implementing}. These features can be separated into three categories: features which describe the
@@ -176,7 +176,7 @@
 			Properties of the amplitude envelope can be used to describe the temporal features of a signal's
 			amplitude. The attack time of sounds is important in the distinction of different timbres
 			\citep{ilmoniemi2004subjective} and is often scaled logarithmically giving the log attack time.
-			Other temporal features measure the amplitude envelope in its entirely, such as the temporal
+			Other temporal features measure the amplitude envelope in its entirety, such as the temporal
 			centroid which is the mean time of the signal's duration weighted by the amplitude at each instant
 			\citep{peeters2000instrument}. The temporal evolution of the amplitude envelope can have a distinct
 			effect on the perceived timbre of a sound. \citet{patterson1994the} shows that signals with similar
@@ -788,7 +788,7 @@
 			Pairs of stimuli are presented one at a time until every possible pair from the set of stimuli has
 			been rated. This is a popular method as it ensures that the participants rate every stimulus
 			against every other stimulus. A downside of this is that the number of possible pairs grows
-			exponentially as the total number of stimuli increases. This causes the time taken to complete the
+			factorially as the total number of stimuli increases. This causes the time taken to complete the
 			test to become practically too large if the experimenter wishes to evaluate a large corpus of
 			stimuli.
 

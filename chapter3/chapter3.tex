@@ -97,7 +97,7 @@
 			with slight inharmonicities in it will produce intermodulation components which amplify these
 			inharmonicities. Due to this possible increase in inharmonicity, intermodulation distortion
 			components are often considered to be less audibly pleasant than those of harmonic distortion
-			\citep{rumsey2009sound}. The number of intermodulation components grows exponentially as the number
+			\citep{rumsey2009sound}. The number of intermodulation components grows factorially as the number
 			of frequency components in the input increases. This makes it more difficult to predict the
 			intermodulation characteristics of a system for arbitrary input signals.
 
@@ -423,7 +423,7 @@
 			Where $P$ is the order of the Volterra series and $g_{p}[m_{1}, \dotsc , m_{p}]$ is the
 			$p$\super{th} order Volterra kernel. The order of a Volterra kernel defines its dimensionality,
 			$g_{0}$ being a constant, $g_{1}[m_{1}]$ being a one dimensional array of length $M$, $g_{2}[m_{1},
-			m{2}]$ being an $M \times M$ two dimensional array and so on. When $P = 1$ the Volterra series is
+			m_{2}]$ being an $M \times M$ two dimensional array and so on. When $P = 1$ the Volterra series is
 			equivalent to convolution by $g_{1}[m_{1}]$ and a DC offset by $g_{0}$.
 
 			\begin{figure}[h!]
@@ -698,7 +698,7 @@
 		In digital systems it can be beneficial to reduce the amount of data needed to represent an audio signal.
 		This is done either to reduce the storage space needed or reduce the data rate required to transmit a
 		signal. As a higher data rate is needed to represent high frequencies, these frequencies are removed during
-		the compression process. A lot of research has been carried out to develop methods by which these high
+		the data compression process. A lot of research has been carried out to develop methods by which these high
 		frequencies can be estimated during the decompression process. This allows for the bandwidth to be
 		constricted for storage or transmission but the full bandwidth to be restored when required.
 
@@ -809,7 +809,7 @@
 			\label{eq:SymmetricHardClipping}
 		\end{equation}
 		
-		The characteristic curve of soft clipper has a nonlinear transition section in order to smooth the
+		The characteristic curve of a soft clipper has a nonlinear transition section in order to smooth the
 		transition between the linear and clipping sections. This transition is applied such that the first
 		derivative of the characteristic curve is a continuous function \citep{esqueda2015aliasing}.
 		Equation~\ref{eq:SymmetricSoftClipping} shows a soft clipper adapted from one given by

@@ -137,9 +137,9 @@
 		amplitude to be of any use for harmonic excitation. A frequency domain approach to $f_{0}$ tracking may be
 		more robust in this situation as it is easier to check whether there is sufficient energy at the detected
 		$f_{0}$. If there is not, the first harmonic which has sufficient magnitude can be isolated and used as the
-		input to the exciter. In this case, only the spectral replication and spectral shifting methods will allow
-		for the excitation of every harmonic. The \acrshort{ssba} and \acrshort{iap} methods only allow for integer
-		multiplications of the input frequency.
+		input to the exciter. In this case, only the spectral replication and spectral stretching methods will
+		allow for the excitation of every harmonic. The \acrshort{ssba} and \acrshort{iap} methods only allow for
+		integer multiplications of the input frequency.
 
 		The system shown in Figure~\ref{fig:F0Tracking} can provide differing levels of flexibility depending on
 		the harmonic exciter used. Using a static nonlinearity will generate a series of harmonics of the $f_{0}$.
@@ -496,7 +496,7 @@
 		of the generated harmonic relative to that of the input. 
 
 		\begin{equation}
-			y[n] = \abs{x_{a}[n]} \cos \left( h\arg(x_{a}[n] + \theta) \right), \quad h \in \textbf{N}
+			y[n] = \abs{x_{a}[n]} \cos \left( h\arg(x_{a}[n]) + \theta \right), \quad h \in \textbf{N}
 			\label{eq:IAPWithPhase}
 		\end{equation}
 
@@ -642,7 +642,7 @@
 		(\acrshort{ssba}, \acrshort{iap}, Spectral Stretching etc.). These methods can be used to create partials
 		with frequencies at integer multiples of those in the input, meaning that they can generate precise
 		harmonics for a sinusoidal input without knowing its frequency. As some of these methods (\acrshort{ssba}
-		and \acrshort{iap}) are restricted to only generating harmonic frequencies additional processing is needed
+		and \acrshort{iap}) are restricted to only generating harmonic frequencies, additional processing is needed
 		to introduce inharmonicity. Each of the generated harmonics is shifted to the desired frequency using a
 		spectral replication technique as discussed in Section~\ref{sec:Excitation-Methods-SpectralReplication}.
 		This produces partials which deviate from harmonic frequencies by exactly the amount of shift applied. The
@@ -678,8 +678,8 @@
 	Chapter~\ref{chap:ExcitationEvaluation} and the properties of the features themselves. The harmonic excitation
 	algorithms discussed provide the most control over spectral properties of signals, giving few options for temporal
 	manipulations. As such, only spectral audio features will be considered in this section. Of these, only those which
-	which can be manipulated by introducing of a band of spectral energy or through individual control of the first
-	nine harmonics are parameterised. This is due to the limitations of the systems developed in
+	can be manipulated by introducing of a band of spectral energy or through individual control of the first nine
+	harmonics are parameterised. This is due to the limitations of the systems developed in
 	Section~\ref{sec:FeatureControl-Systems}, control of more complex features requires different processing
 	techniques. For	example, control of the \acrshort{mfccs} involves the manipulation of several frequency bands, a
 	task better suited to an equalisation system. The spectral features parameterised in this section are the spectral
@@ -921,9 +921,9 @@
 
 			Spectral kurtosis and spectral spread are very closely related. As such, the method described for
 			manipulating the spectral spread will also alter the spectral kurtosis. Increasing the energy near
-			the centroid reduces the kurtosis, while removing energy near the centroid increases the kurtosis.
-			Figure~\ref{fig:MoveKurtoses} shows the effect on the spectral kurtosis of the test signals after
-			undergoing identical processing as that used to manipulate the spectral spread in
+			the centroid increases the kurtosis, while removing energy near the centroid decreases the
+			kurtosis.  Figure~\ref{fig:MoveKurtoses} shows the effect on the spectral kurtosis of the test
+			signals after undergoing identical processing as that used to manipulate the spectral spread in
 			Figure~\ref{fig:MoveSpreads}.
 			
 			\begin{figure}[h!]
@@ -991,7 +991,7 @@
 		first nine harmonics to have the same level, as happens when $P = 1$, will not produce the minimum
 		irregularity. The unbounded nature of the Krimphoff irregularity is also visible in
 		Figure~\ref{fig:MoveIrregularities}.  While the Jensen and Beauchamp irregularities both asymptotically
-		approach a maximum as $P$ becomes more negative, the Krimphoff irregularity increases exponentially.
+		approach a maximum as $P$ becomes more negative, the Krimphoff irregularity increases without bound.
 
 		Achieving this using excitation requires an analysis / resynthesis approach, replacing the existing
 		spectral components with excited ones and changing the amplitudes to give the desired irregularity. If the
@@ -1012,7 +1012,7 @@
 
 	\subsection{Spectral Flatness}
 	\label{sec:FeatureControl-Parameterisation-Flatness}
-		Spectral flatness is related to spectral irregularity in that thy both measure the uniformity in amplitude
+		Spectral flatness is related to spectral irregularity in that they both measure the uniformity in amplitude
 		of spectral components. Because of this relationship, many of the techniques used to reduce the
 		irregularity will also increase the flatness. More precisely, any manipulation which moves the amplitudes
 		of all spectral components closer to each other will increase the spectral flatness. To take an example

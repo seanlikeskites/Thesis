@@ -116,8 +116,8 @@
 		outputs.  When the analysis is completed the results are stored, containing:
 
 		\begin{itemize}
-			\item The users semantic description of the effect's application (entered into the text box seen in
-				Figure~\ref{fig:SAFE-Distortion}).
+			\item The user's semantic description of the effect's application (entered into the text box seen
+				in Figure~\ref{fig:SAFE-Distortion}).
 			\item The plug-in's current parameter settings.
 			\item The features of the audio both before and after processing.
 			\item Some additional metadata about the user and the track being worked on (entered into the panel
@@ -146,7 +146,7 @@
 		frequency bins, each 11Hz apart. Temporal events must be a minimum of 93ms apart in order to be
 		distinguished from one another, while spectral details must be 11Hz apart. Increasing the frame length will
 		increase the spectral resolution (move frequency bins closer together) at the expense of poorer time
-		resolution (longer time periods between each frame).  Decreasing the frame length will have to opposite
+		resolution (longer time periods between each frame).  Decreasing the frame length will have the opposite
 		effect: increasing temporal resolution at the expense of spectral resolution. In total 80 different audio
 		features are calculated for each frame. These features are split into five groups and given symbols as
 		follows:
@@ -373,7 +373,7 @@
 
 	\subsection{Term Usage}
 	\label{sec:TimbreEvaluation-Analysis-TermUsage}
-		Further filtering is applied by discarding terms which are use infrequently. Tables
+		Further filtering is applied by discarding terms which are used infrequently. Tables
 		\ref{tab:DistortionTerms} and \ref{tab:EqualiserTerms} show the terms (after preprocessing) which are most
 		frequently used to describe transforms applied by the distortion and equaliser respectively. The frequency
 		of each term indicates how many transforms it is used to describe. In some cases multiple descriptors are
@@ -848,7 +848,7 @@
 			\acrshort{pc} describes.
 
 			The number of \acrshort{pc}s to use in the calculation of agreement is an important consideration.
-			\acrshort{pc}s which describe a low proportion of total variance should be discarded as is it is
+			\acrshort{pc}s which describe a low proportion of total variance should be discarded as it is
 			not known whether this low variance is due to user agreement or not. It is therefore recommended
 			that a threshold is set, and only \acrshort{pc}s which describe a proportion of variance above this
 			threshold are used. Discarding the low variance \acrshort{pc}s in this manner also removes any
@@ -1105,7 +1105,7 @@
 
 			Referring back to the clusters shown in Figure~\ref{fig:DistortionProcessedClusters}, `warm' and
 			`fuzz' were found to be the most closely related descriptors in the distortion's processed feature
-			space. This similarity is reflected in the Figure~\ref{fig:DistortionProcessedPCAs} where the
+			space. This similarity is reflected in Figure~\ref{fig:DistortionProcessedPCAs} where the
 			transforms labelled with these terms occupy similar regions of the timbre space. The third closest
 			member of this cluster, `cream', can also bee seen to be distributed across the same region of the
 			timbre space, further reinforcing the conclusion that these three terms are synonymous when used to
