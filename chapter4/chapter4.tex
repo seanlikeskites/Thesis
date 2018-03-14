@@ -85,30 +85,30 @@
 		Third party developers can produce extensions to \acrshort{daw}s known as plug-ins. Plug-ins provide
 		additional audio processing functionality to the \acrshort{daw} environment. They can optionally expose
 		their own parameters which users can adjust to achieve their desired effect. There are several different
-		formats in which audio plug-ins can be distributed (VST, AU etc.). Most of the commonly used
-		\acrshort{daw}s support plug-ins in one or more of these formats.
+		formats in which audio plug-ins can be distributed (\acrshort{vst}, \acrshort{au} etc.). Most of the
+		commonly used \acrshort{daw}s support plug-ins in one or more of these formats.
 
 		Audio plug-ins provide a good platform to allow producers to provide semantic terms and audio feature
 		information from within their preferred \acrshort{daw}. As part of this research a suite of audio plug-ins
-		which extract this information have been developed. They have been released under the title Semantic Audio
-		Feature Extraction (SAFE) Plug-ins \footnote{The most recent versions of the SAFE plug-ins can be
-		downloaded from \href{http://www.semanticaudio.co.uk/projects/download/}
-		{www.semanticaudio.co.uk/projects/download}.}.
+		which extract this information have been developed. They have been released under the title \acrfull{safe}
+		Plug-ins \footnote{The most recent versions of the \acrshort{safe} plug-ins can be downloaded from
+		\href{http://www.semanticaudio.co.uk/projects/download/} {www.semanticaudio.co.uk/projects/download}.}.
 
-	\subsection{SAFE Plug-Ins}
+	\subsection{\acrshort{safe} Plug-Ins}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}
-		The SAFE project \citep{stables2014safe} investigates the use of language to describe the creative
-		decisions made during music production. This is achieved through the distribution of music production
-		software which elicits semantic information from the users. This information is returned to a web server
-		where the results from all participants are collated. One element of the SAFE project are the SAFE
-		plug-ins, a suite of four commonly used audio effects: Equaliser, Distortion, Compressor and Reverb. As
-		part of the plug-in's interface, the user has the option to save a semantic description of the application
-		of the effect. The interface for the SAFE Distortion is shown in Figure~\ref{fig:SAFE-Distortion}.
+		The \acrshort{safe} project \citep{stables2014safe} investigates the use of language to describe the
+		creative decisions made during music production. This is achieved through the distribution of music
+		production software which elicits semantic information from the users. This information is returned to a
+		web server where the results from all participants are collated. One element of the \acrshort{safe} project
+		are the \acrshort{safe} plug-ins, a suite of four commonly used audio effects: Equaliser, Distortion,
+		Compressor and Reverb. As part of the plug-in's interface, the user has the option to save a semantic
+		description of the application of the effect. The interface for the \acrshort{safe} Distortion is shown in
+		Figure~\ref{fig:SAFE-Distortion}.
 
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=0.8\textwidth]{chapter4/Images/SAFEDistortion.png}
-			\caption{The interface for the SAFE distortion plug-in.}
+			\caption{The interface for the \acrshort{safe} distortion plug-in.}
 			\label{fig:SAFE-Distortion}
 		\end{figure}
 		
@@ -135,7 +135,7 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics[width=0.8\textwidth]{chapter4/Images/SAFEMetadata.png}
-			\caption{The metadata entry panel in the SAFE distortion plug-in.}
+			\caption{The metadata entry panel in the \acrshort{safe} distortion plug-in.}
 			\label{fig:SAFE-Metadata}
 		\end{figure}
 
@@ -193,11 +193,11 @@
 		      \item {\bf{\acrshort{mfccs} (}}$\mathrm{MFCC}_{0\mathrm{-}12}${\bf{):}} The 13 \acrshort{mfccs}.
 		\end{itemize}
 
-		The SAFE plug-ins were distributed online as VST and AU effects for Windows, Mac OS X and Linux.  Releases
-		were promoted on music production forums and at music production and research events. Across all release
-		platforms and versions, the plug-in suite has been downloaded 12,036 times. This number does not reflect
-		the number of unique users however, as users may have downloaded updated versions or packages for various
-		platforms.
+		The \acrshort{safe} plug-ins were distributed online as \acrshort{vst} and \acrshort{au} effects for
+		Windows, Mac OS X and Linux.  Releases were promoted on music production forums and at music production and
+		research events. Across all release platforms and versions, the plug-in suite has been downloaded 12,036
+		times. This number does not reflect the number of unique users however, as users may have downloaded
+		updated versions or packages for various platforms.
 
 		One disadvantage in using plug-ins is that they cannot gather information about the processing chain they
 		may be a part of. The timbral transform the user is describing may be the result of several effects working
@@ -209,24 +209,26 @@
 		the plug-in. Instead the problem is mitigated somewhat by asking users to ensure that the semantic terms
 		they provide describe only the effect of the plug-in being used.
 
-		The SAFE plug-ins suffer from the same issues other distributed tests do. The researcher forfeits control
-		over the listening environment in order to gather results from a much larger sample of people. In fact,
-		they provide even less control than methodologies like that used in the Social EQ project
-		\citep{cartwright2013socialeq} in that the choice of audio stimuli being used is decided by the test
-		subject. This control is relinquished in order to access a greater user base. The metadata fields allow the
-		collected data to be categorised if information about a particular genre or instrument is desired.
+		The \acrshort{safe} plug-ins suffer from the same issues other distributed tests do. The researcher
+		forfeits control over the listening environment in order to gather results from a much larger sample of
+		people. In fact, they provide even less control than methodologies like that used in the Social
+		\acrshort{eq} project \citep{cartwright2013socialeq} in that the choice of audio stimuli being used is
+		decided by the test subject. This control is relinquished in order to access a greater user base. The
+		metadata fields allow the collected data to be categorised if information about a particular genre or
+		instrument is desired.
 
-	\subsection{SAFE Ontology}
+	\subsection{\acrshort{safe} Ontology}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFEOntology}
-		To store the data collected by the SAFE plug-ins, a new semantic web ontology, the SAFE ontology, was
-		created. The decision to use a semantic web ontology was taken for its flexibility. Storage in such a
-		manner allows for integration with other datasets stored on the semantic web, allowing for machine
-		navigation of multiple datasets. Additionally, describing relationships using resource description
-		framework (RDF) triples provides extensibility, allowing the dataset to be extended with minimal
-		reconstruction. The SAFE plug-ins generate RDF triples according to the SAFE ontology and send them to a
-		server for storage using the triple store software, 4store \citep{harris20094store}.
+		To store the data collected by the \acrshort{safe} plug-ins, a new semantic web ontology, the
+		\acrshort{safe} ontology, was created. The decision to use a semantic web ontology was taken for its
+		flexibility. Storage in such a manner allows for integration with other datasets stored on the semantic
+		web, allowing for machine navigation of multiple datasets. Additionally, describing relationships using
+		\acrfull{rdf} triples provides extensibility, allowing the dataset to be extended
+		with minimal reconstruction. The \acrshort{safe} plug-ins generate \acrshort{rdf} triples according to the
+		\acrshort{safe} ontology and send them to a server for storage using the triple store software, 4store
+		\citep{harris20094store}.
 		
-		The SAFE Ontology was designed to describe the semantics relating to the application of an
+		The \acrshort{safe} Ontology was designed to describe the semantics relating to the application of an
 		audio effect and the audio features of the signals involved. It acts as an extension to the Audio Effects
 		Ontology \citep{wilmering2013the}, introducing additional concepts for the description of semantic data.
 		This additional data can be separated into three groups:
@@ -263,17 +265,17 @@
 			\label{fig:TransformGraph}
 		\end{figure}
 
-		Each entry in the SAFE dataset is described using the \emph{studio:Transform} concept, representing the
-		application of a semantic transform to a set of input signals to produce a set of output signals. The
-		structure of this data is shown in Figure~\ref{fig:TransformGraph}. Here, users provide a term, or series
-		of terms, to describe the transform applied by the audio effect in its current state. This should describe
-		the perceived difference between the output and input signals. In the SAFE Ontology this is modelled
-		through the \emph{safe:DescriptorItem} concept which provides a semantic description for each transform.
-		Metadata items are used to provide details about the application domain of the effect, where each metadata
-		item describes one property of an object, the property being identified using an \emph{rdfs:label} and the
-		description provided using an \emph{rdfs:comment}. Each object described by a metadata item has its own set
-		of properties, ``genre'' and ``instrument'' metadata tags, for example, describe an audio signal, while
-		``location'' metadata tags describe where a transform took place.
+		Each entry in the \acrshort{safe} dataset is described using the \emph{studio:Transform} concept,
+		representing the application of a semantic transform to a set of input signals to produce a set of output
+		signals. The structure of this data is shown in Figure~\ref{fig:TransformGraph}. Here, users provide a
+		term, or series of terms, to describe the transform applied by the audio effect in its current state. This
+		should describe the perceived difference between the output and input signals. In the \acrshort{safe}
+		Ontology this is modelled through the \emph{safe:DescriptorItem} concept which provides a semantic
+		description for each transform.  Metadata items are used to provide details about the application domain of
+		the effect, where each metadata item describes one property of an object, the property being identified
+		using an \emph{rdfs:label} and the description provided using an \emph{rdfs:comment}. Each object described
+		by a metadata item has its own set of properties, ``genre'' and ``instrument'' metadata tags, for example,
+		describe an audio signal, while ``location'' metadata tags describe where a transform took place.
 
 		The analysis of audio signals is described using the concept \emph{safe:FeatureExtractionTransform},
 		similar to a \emph{studio:Transform} but taking an audio signal as input and producing a time series of
@@ -313,18 +315,19 @@
 			\label{fig:ExtractionGraph}
 		\end{figure}
 
-		Here, The SAFE Ontology makes extensive use of the Provenance Ontology \citep{provenance} to identify the
-		origins of the data.  Each element of data constitutes a \emph{prov:Entity} which was generated by a
-		\emph{prov:Activity}. These \emph{prov:Activity} nodes are in turn associated with a \emph{prov:Agent}
-		identifying the way that the data was produced.
+		Here, the \acrshort{safe} Ontology makes extensive use of the Provenance Ontology \citep{provenance} to
+		identify the origins of the data.  Each element of data constitutes a \emph{prov:Entity} which was
+		generated by a \emph{prov:Activity}. These \emph{prov:Activity} nodes are in turn associated with a
+		\emph{prov:Agent} identifying the way that the data was produced.
 
-		When using the SAFE plug-ins, users are required to provide a descriptor for a transform, meaning that
-		every \emph{safe:DescriptorItem} node in the dataset is attributed to a particular user. Conversely, the
-		metadata fields are not mandatory. In situations where a user has not filled in certain metadata fields
-		their values can be predicted on the server using supervised machine learning. Using the Provenance
-		Ontology, each metadata entity can be attributed to a particular agent, allowing it to be understood as
-		human or machine labelled. This allows queries on the dataset to request only the more reliable
-		user-labeled data or, for example, compare data produced using different classification algorithms.
+		When using the \acrshort{safe} plug-ins, users are required to provide a descriptor for a transform,
+		meaning that every \emph{safe:DescriptorItem} node in the dataset is attributed to a particular user.
+		Conversely, the metadata fields are not mandatory. In situations where a user has not filled in certain
+		metadata fields their values can be predicted on the server using supervised machine learning. Using the
+		Provenance Ontology, each metadata entity can be attributed to a particular agent, allowing it to be
+		understood as human or machine labelled. This allows queries on the dataset to request only the more
+		reliable user-labeled data or, for example, compare data produced using different classification
+		algorithms.
 
 		The Provenance Ontology is also used to describe the algorithms which produce audio feature data. Each
 		\emph{safe:FeatureExtractionTransform} node is a \emph{prov:Activity} which can be associated with a
@@ -334,14 +337,15 @@
 		an earlier or incompatible implementation. Further use of provenance describes the role of a user in the
 		application of a transform. Storage of this data allows the simple retrieval of all transforms associated
 		with a particular user: benefiting researchers by allowing for segmentation of the data and benefiting
-		users by allowing them to maintain personal libraries of semantic presets amongst the entire SAFE dataset.
+		users by allowing them to maintain personal libraries of semantic presets amongst the entire
+		\acrshort{safe} dataset.
 
 \section{Analysis}
 \label{sec:TimbreEvaluation-Analysis}
-	In this section, the data collected using the SAFE plug-ins is analysed. For the purposes of this study only the
-	data from the distortion and equaliser plug-ins is used, as these effects best represent the timbral transforms
-	which can be applied using harmonic excitation. The distortion demonstrates the effects of introducing new spectral
-	content and the equaliser demonstrates the effects of manipulating the existing spectral content.
+	In this section, the data collected using the \acrshort{safe} plug-ins is analysed. For the purposes of this study
+	only the data from the distortion and equaliser plug-ins is used, as these effects best represent the timbral
+	transforms which can be applied using harmonic excitation. The distortion demonstrates the effects of introducing
+	new spectral content and the equaliser demonstrates the effects of manipulating the existing spectral content.
 
 	Firstly, the data is cleaned through the preprocessing described in
 	Section~\ref{sec:TimbreEvaluation-Analysis-Preprocessing}. Then the terms used to describe transforms applied by
@@ -355,11 +359,11 @@
 
 	\subsection{Preprocessing}
 	\label{sec:TimbreEvaluation-Analysis-Preprocessing}
-		The dataset used for this work was collected by the SAFE plug-ins between June 2014 and July 2016. In total
-		the dataset describes 304 transforms saved using the SAFE Distortion and 1,483 transforms saved using the
-		SAFE Equaliser. Several of these have descriptive terms which are application details rather than timbral
-		descriptors (e.g. ``Drum Bus''), while others are not recognisable words (e.g.  ``cp-1''). These transforms
-		are removed from the dataset prior to further processing.
+		The dataset used for this work was collected by the \acrshort{safe} plug-ins between June 2014 and July
+		2016. In total the dataset describes 304 transforms saved using the \acrshort{safe} Distortion and 1,483
+		transforms saved using the \acrshort{safe} Equaliser. Several of these have descriptive terms which are
+		application details rather than timbral descriptors (e.g. ``Drum Bus''), while others are not recognisable
+		words (e.g.  ``cp-1''). These transforms are removed from the dataset prior to further processing.
 
 		Of the remaining transforms, several have terms which are derived from the same root word, with the
 		addition of suffixes such as `y' or `er' (e.g. `crunch' and `crunchy' or `bright' and `brighter'). It is
@@ -387,17 +391,17 @@
 		`crunch' is only used in relation to the distortion effect. The terms `warm' and `bright' have been used to
 		describe transforms applied using both the distortion and equaliser effects, suggesting that the timbral
 		characteristics these terms describe can be manipulated using either effect. It was noted from early
-		results gathered using the SAFE plug-ins and their use in previous research publications
+		results gathered using the \acrshort{safe} plug-ins and their use in previous research publications
 		\citep{geddes2003auditory, lukasik2005towards, zacharakis2011an}, that these terms are very commonly used
 		timbral descriptors. In light of this, a specific study was undertaken in which participants were asked to
-		use the SAFE equaliser to make audio stimuli sound `warmer' and `brighter' \citep{stasis2015a}. In this
-		work, the results of this study are combined with the data gathered by distributing the SAFE plug-ins
-		online, leading to the terms `warm' and `bright' occurring with much greater frequency in the dataset. The
-		results of these studies can be combined as they both ask the same question of participants, the only
-		difference being that in the `warm', `bright' study participants were given a specific term to work
-		towards. It is assumed that when using the SAFE plug-ins outside of this experiment, users have a timbral
-		result in mind which they are working towards, meaning the two datasets are both collected under the same
-		conditions.
+		use the \acrshort{safe} equaliser to make audio stimuli sound `warmer' and `brighter' \citep{stasis2015a}.
+		In this work, the results of this study are combined with the data gathered by distributing the
+		\acrshort{safe} plug-ins online, leading to the terms `warm' and `bright' occurring with much greater
+		frequency in the dataset. The results of these studies can be combined as they both ask the same question
+		of participants, the only difference being that in the `warm', `bright' study participants were given a
+		specific term to work towards. It is assumed that when using the \acrshort{safe} plug-ins outside of this
+		experiment, users have a timbral result in mind which they are working towards, meaning the two datasets
+		are both collected under the same conditions.
 
 		\begin{table}[h!]
 			\centering
@@ -536,9 +540,9 @@
 	\label{sec:TimbreEvaluation-Analysis-TermClustering}
 		Each of the terms arrived at, after stemming, in Section~\ref{sec:TimbreEvaluation-Analysis-TermClustering}
 		can be described by their position in a multidimensional audio feature space. Each dimension of this space
-		corresponds to one of the audio features extracted by the SAFE plug-ins. The position, $\mu_{d,k}$, of a
-		semantic term, $d$, in the $k$\super{th} dimension of the audio feature space is calculated as the mean
-		value of feature $k$ across every transform labelled with that descriptor
+		corresponds to one of the audio features extracted by the \acrshort{safe} plug-ins. The position,
+		$\mu_{d,k}$, of a semantic term, $d$, in the $k$\super{th} dimension of the audio feature space is
+		calculated as the mean value of feature $k$ across every transform labelled with that descriptor
 		(Equation~\ref{eq:FeatureSpaceCoords}).
 
 		\begin{equation}
@@ -704,11 +708,11 @@
 		is inversely proportional to its usage ranking (an integer describing the words popularity; 1 denoting the
 		most commonly used word, 2 the second most common etc.) \citep{manning1999foundations}.
 
-		This can be applied to data from the SAFE plug-ins by using audio feature values in place of parameter
-		weightings. In Equation~\ref{eq:SocialEqAgreement}, $N_{d}$ is then the number of transforms labelled with
-		descriptor $d$, $s_{d,k}^{2}$ is the variance of feature $k$ across those transforms and $K$ is the total
-		number of features. As when clustering, the feature space should be standardised prior to calculating
-		agreement to remove the biasing effects caused by the ranges of each feature.
+		This can be applied to data from the \acrshort{safe} plug-ins by using audio feature values in place of
+		parameter weightings. In Equation~\ref{eq:SocialEqAgreement}, $N_{d}$ is then the number of transforms
+		labelled with descriptor $d$, $s_{d,k}^{2}$ is the variance of feature $k$ across those transforms and $K$
+		is the total number of features. As when clustering, the feature space should be standardised prior to
+		calculating agreement to remove the biasing effects caused by the ranges of each feature.
 
 		This agreement score has several properties which do not necessarily reflect what is being measured:
 
@@ -1546,9 +1550,10 @@
 
 	`Brightness' describes different properties depending on the nature of the processing. In all cases it it
 	associated with an increase in spectral centroid, increasing the proportion of high frequency energy in the signal.
-	For the nonlinearity used in the SAFE distortion plug-in, `bright' and 'harsh' both describe similar transforms;
-	those producing signals which have a significant proportion of high frequency energy. For equalisation, the terms
-	can be better separated: `bright' describing a small amplification of high frequencies and `harsh' a larger one.
+	For the nonlinearity used in the \acrshort{safe} distortion plug-in, `bright' and 'harsh' both describe similar
+	transforms; those producing signals which have a significant proportion of high frequency energy. For equalisation,
+	the terms can be better separated: `bright' describing a small amplification of high frequencies and `harsh' a
+	larger one.
 
 	`Crunchiness' is a term used only to describe audio processed by the distortion effect. Here it describes the
 	application of a nonlinearity which flattens the spectrum of a signal. As the proportion of high frequency energy

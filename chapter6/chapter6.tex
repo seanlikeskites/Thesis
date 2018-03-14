@@ -107,21 +107,20 @@
 		particular event in a given time period: this event could be a zero crossing, a peak or any other easily
 		identifiable feature of the signal. As signals get more complex, this method becomes more difficult to
 		apply as higher frequency content will produce more instances of the event being counted. More advanced
-		time domain methods include the Average Magnitude Difference Function (AMDF) and autocorrelation methods.
-		Many modern $f_{0}$ tracking systems are based on these, such as the YIN method proposed by
-		\citet{decheveigne2002yin} and the VT-AMDF algorithm proposed by \citet{prukkanon2009vt-amdf}.  These
-		methods require frame based processing which reduces the time resolution of the system. If analysing real
-		time audio, the current estimate of the $f_{0}$ will lag behind the audio signal. \citet{larsen2004audio}
-		describe a time domain frequency tracker which uses a simple recursive formula. While this is not as
-		precise as the more advanced techniques it takes considerably less time to compute. Frequency domain
-		methods require the \acrshort{dft} of the signal to be calculated introducing considerable complexity.
-		Widely used frequency domain techniques include the harmonic product spectrum (HPS) and maximum likelihood
-		estimate methods \citep{noll1969pitch}. State of the art techniques employ statistical / machine learning
-		techniques to improve the performance of $f_{0}$ trackers for input signals with high levels of noise.
-		These techniques include a probabilistic framework \citep{chu2012safe}, artificial neural networks
-		\citep{han2014neural} and hidden Markov models \citep{wang2016f0}. Other recent work has developed methods
-		of tracking multiple pitches in polyphonic signals \citep{christensen2008multi}.  Due to this work's focus
-		on monophonic signals, these are beyond the scope of this discussion.
+		time domain methods include the \acrfull{amdf} and autocorrelation methods.  Many modern $f_{0}$ tracking
+		systems are based on these, such as the YIN method proposed by \citet{decheveigne2002yin} and the VT-AMDF
+		algorithm proposed by \citet{prukkanon2009vt-amdf}.  These methods require frame based processing which
+		reduces the time resolution of the system. If analysing real time audio, the current estimate of the
+		$f_{0}$ will lag behind the audio signal. \citet{larsen2004audio} describe a time domain frequency tracker
+		which uses a simple recursive formula. While this is not as precise as the more advanced techniques it
+		takes considerably less time to compute. Frequency domain methods require the \acrshort{dft} of the signal
+		to be calculated introducing considerable complexity.  Widely used frequency domain techniques include the
+		\acrfull{hps} and maximum likelihood estimate methods \citep{noll1969pitch}. State of the art techniques
+		employ statistical / machine learning techniques to improve the performance of $f_{0}$ trackers for input
+		signals with high levels of noise.  These techniques include a probabilistic framework \citep{chu2012safe},
+		artificial neural networks \citep{han2014neural} and hidden Markov models \citep{wang2016f0}. Other recent
+		work has developed methods of tracking multiple pitches in polyphonic signals \citep{christensen2008multi}.
+		Due to this work's focus on monophonic signals, these are beyond the scope of this discussion.
 
 		For real time harmonic excitation, the accuracy of the $f_{0}$ tracking algorithm is not as important as it
 		is in other fields such as automatic music transcription. The aim of the system in
@@ -1554,4 +1553,4 @@
 	In the following chapter listening tests are undertaken to asses how well the methods proposed in this chapter can
 	be used to provide perceptual control of audio. Firstly the best method for exciting individual harmonics is
 	determined. Then the systems discussed here are specialised to apply the same feature manipulations as those
-	described by particular descriptors in the SAFE dataset (Chapter~\ref{chap:TimbreEvaluation}).
+	described by particular descriptors in the \acrshort{safe} dataset (Chapter~\ref{chap:TimbreEvaluation}).

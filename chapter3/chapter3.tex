@@ -250,7 +250,7 @@
 			are split into $I$ non-overlapping frames, each 30ms long. Then the spectrum of each frame is
 			calculated using the \acrshort{dft}. The frequency selectivity of the human hearing system is taken
 			into account by splitting the spectrum of each frame into $J$ non-overlapping bands which are each
-			one $\mathrm{ERB}$ in width. The final distortion score, $\mathrm{DS}$, is calculated from the
+			one \acrshort{erb} in width. The final distortion score, $\mathrm{DS}$, is calculated from the
 			difference in power between these bands in the input and output signal according to
 			Equation~\ref{eq:DistortionScore}.
 
@@ -282,7 +282,7 @@
 					filter discussed previously.
 
 				\item The signals are then processed by a parallel bank of 40 gammatone filters each one
-					$\mathrm{ERB}$ wide. The input and output signals processed by gammatone filter $j$
+					\acrshort{erb} wide. The input and output signals processed by gammatone filter $j$
 					are denoted $x_j[n]$ and $y_j[n]$ respectively.
 
 				\item The outputs of each gammatone filter are then split into non-overlapping 30ms frames

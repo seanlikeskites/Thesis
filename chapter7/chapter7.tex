@@ -182,13 +182,13 @@
 
 		\subsubsection*{Subjective Evaluation}
 			The performance of the reconstruction systems was evaluated subjectively using series a of multiple
-			stimulus listening tests using the MUSHRA methodology \citep{mushra2014}. Each test is split into
-			two phases, a training phase and an evaluation phase. In the training phase, participants are
-			presented with an interface (Figure~\ref{fig:MushraTraining}) which allows them to audition every
-			one of the stimuli. Participants are asked to listen to each of them in comparison with the
-			relevant reference (the unprocessed signal) in order to learn the range of degradation present
-			across stimuli. Once they have auditioned every stimulus they are able to proceed to the evaluation
-			phase.
+			stimulus listening tests using the \acrshort{mushra} methodology \citep{mushra2014}. Each test is
+			split into two phases, a training phase and an evaluation phase. In the training phase,
+			participants are presented with an interface (Figure~\ref{fig:MushraTraining}) which allows them to
+			audition every one of the stimuli. Participants are asked to listen to each of them in comparison
+			with the relevant reference (the unprocessed signal) in order to learn the range of degradation
+			present across stimuli. Once they have auditioned every stimulus they are able to proceed to the
+			evaluation phase.
 
 			\begin{figure}[h!]
 				\centering
@@ -862,11 +862,12 @@
 			\end{gather}
 
 			When $p = 0$  the output is a low pass filtered version of the input signal resulting in a lower
-			spectral centroid than the input. This corresponds with transforms described as `warm' in the SAFE
-			dataset. When $p = 1$ the output signal consists primarily of high order harmonics resulting in an
-			increase in spectral centroid and corresponding to transforms labelled `harsh' in the SAFE dataset.
-			The power to which $p$ is raised was determined experimentally such that when $p = 0.5$ the effect
-			applies processing which corresponds to that described as `bright' in the SAFE dataset. 
+			spectral centroid than the input. This corresponds with transforms described as `warm' in the
+			\acrshort{safe} dataset. When $p = 1$ the output signal consists primarily of high order harmonics
+			resulting in an increase in spectral centroid and corresponding to transforms labelled `harsh' in
+			the \acrshort{safe} dataset.  The power to which $p$ is raised was determined experimentally such
+			that when $p = 0.5$ the effect applies processing which corresponds to that described as `bright'
+			in the \acrshort{safe} dataset. 
 
 		\subsubsection*{Brightness / Crunchiness}
 			In Chapter~\ref{chap:TimbreEvaluation} we show that `crunchiness' is associated with a small
@@ -992,11 +993,11 @@
 			When $p = 0$ the first six harmonics all have the same amplitude, giving the lowest spectral
 			irregularity. When $p = 1$ the relative amplitudes of the first six harmonics are as defined by
 			$c$.  The values in $c$ (shown in Datum~\ref{dat:CrunchAmplitudes}) are taken from a guitar signal,
-			which had been processed by the SAFE distortion, with a Krimphoff irregularity similar to the
-			processed signals in the SAFE dataset described as `crunchy'. As the parameter value is increased,
-			the spectral irregularity of the first six harmonics increases towards that of a `crunchy' signal.
-			This models the increase in spectral irregularity noted for the transforms labelled `crunchy' in
-			Chapter~\ref{chap:TimbreEvaluation}.
+			which had been processed by the \acrshort{safe} distortion, with a Krimphoff irregularity similar
+			to the processed signals in the \acrshort{safe} dataset described as `crunchy'. As the parameter
+			value is increased, the spectral irregularity of the first six harmonics increases towards that of
+			a `crunchy' signal.  This models the increase in spectral irregularity noted for the transforms
+			labelled `crunchy' in Chapter~\ref{chap:TimbreEvaluation}.
 
 			\begin{datum}[h!]
 				\centering
@@ -1021,8 +1022,9 @@
 			The constants used here were derived experimentally such that when $p = 1$ the amount of energy in
 			the high and low bands of the spectrum are roughly equal for a range of input signals. This
 			produces the low spectral kurtosis and spectral skewness noticed in signals labeled `crunchy' in
-			the SAFE dataset. Lower values of $p$ increase the levels of high frequency energy in the output
-			signal, causing the spectral transformations associated with `bright' and then `harsh' signals.
+			the \acrshort{safe} dataset. Lower values of $p$ increase the levels of high frequency energy in
+			the output signal, causing the spectral transformations associated with `bright' and then `harsh'
+			signals.
 
 	\subsection{Methodology}
 	\label{sec:PerceptualExperiments-SemanticControl-Methodology}
@@ -1039,21 +1041,21 @@
 			parameter set to the minimum value, the middle value and the maximum value: corresponding to
 			`warm', `bright' and `harsh' for the warmth / brightness effect and `harsh', `bright' and `crunchy'
 			for the brightness / crunchiness effect. The audio features of the unprocessed and processed
-			signals in each of these applications are calculated in the same manner as in the SAFE plug-ins.
-			These audio features are then compared to those taken from the SAFE dataset.
+			signals in each of these applications are calculated in the same manner as in the \acrshort{safe}
+			plug-ins.  These audio features are then compared to those taken from the \acrshort{safe} dataset.
 
 			As discussed in Chapter~\ref{chap:TimbreEvaluation}, the terms `warm', `harsh' and `bright' are all
 			used to describe transformations applied by both distortion and equalisation effects. `Harsh' and
 			`bright' having different definitions depending on the type of processing applied. The objective
-			performance of the effects proposed in this section is evaluated against data from both the SAFE
-			distortion and equaliser. In order to be able to compare the different effects' timbre spaces, two
-			new timbre spaces are constructed by performing \acrshort{pca} on the processed audio features and
-			feature differences of the combined distortion and equaliser data. Two performance scores are given
-			to each combination of audio effect, descriptor and test signal. The first measuring how close the
-			features of the output signal are to the distribution of points labelled with the descriptor in the
-			timbre space constructed from the processed feature values. The second measuring how close the
-			changes in features caused by the effect are to the distribution of points labelled with the
-			descriptor in the timbre space constructed from the feature differences.
+			performance of the effects proposed in this section is evaluated against data from both the
+			\acrshort{safe} distortion and equaliser. In order to be able to compare the different effects'
+			timbre spaces, two new timbre spaces are constructed by performing \acrshort{pca} on the processed
+			audio features and feature differences of the combined distortion and equaliser data. Two
+			performance scores are given to each combination of audio effect, descriptor and test signal. The
+			first measuring how close the features of the output signal are to the distribution of points
+			labelled with the descriptor in the timbre space constructed from the processed feature values. The
+			second measuring how close the changes in features caused by the effect are to the distribution of
+			points labelled with the descriptor in the timbre space constructed from the feature differences.
 
 			The performance of a particular effect, for a given combination of parameter setting and test
 			signal, is measured by projecting the extracted audio features to a point on the relevant timbre
@@ -1107,9 +1109,10 @@
 			its parameter slider at three positions (parameter values of 0, 0.5 and 1) with a term they felt
 			best described the timbral effect of the plug-in at that parameter setting. A list of available
 			terms was provided in a drop down list at each parameter value to be labelled, as seen in
-			Figure~\ref{fig:TestPlugInterface}. The available terms were the 17 unique terms from the SAFE
-			dataset discussed in Chapter~\ref{chap:TimbreEvaluation} (airy, boomy, boxy, bright, clear, creamy,
-			crunchy, deep, full, fuzzy, harsh, muddy, raspy, smooth, thin, tinny and warm).
+			Figure~\ref{fig:TestPlugInterface}. The available terms were the 17 unique terms from the
+			\acrshort{safe} dataset discussed in Chapter~\ref{chap:TimbreEvaluation} (airy, boomy, boxy,
+			bright, clear, creamy, crunchy, deep, full, fuzzy, harsh, muddy, raspy, smooth, thin, tinny and
+			warm).
 
 			For each combination of signal, effect and parameter position there is an intended descriptor
 			(those that the effects were designed to elicit) and a descriptor provided by the participant. The
@@ -1137,7 +1140,7 @@
 	\label{sec:PerceptualExperiments-SemanticControl-Results}
 		\subsubsection{Mahalanobis Distances}
 			The Mahalanobis distances between the test signals after being processed by the warmth / brightness
-			effect and those in the timbre space constructed from the SAFE dataset are shown in
+			effect and those in the timbre space constructed from the \acrshort{safe} dataset are shown in
 			Figure~\ref{fig:HarshJeffs}. Distances in both the processed feature space and the feature
 			difference space are shown in Figures \ref{fig:HarshProcJeff} and \ref{fig:HarshDiffJeff}
 			respectively.
@@ -1161,9 +1164,9 @@
 			\end{figure}
 
 			The Mahalanobis distances between the test signals after being processed by the brightness /
-			crunchiness effect and those in the timbre space constructed from the SAFE dataset are shown in
-			Figure~\ref{fig:CrunchJeffs}, again shown in separate figures for both the processed feature space
-			and feature difference space.
+			crunchiness effect and those in the timbre space constructed from the \acrshort{safe} dataset are
+			shown in Figure~\ref{fig:CrunchJeffs}, again shown in separate figures for both the processed
+			feature space and feature difference space.
 
 			\begin{figure}[h!]
 				\centering
@@ -1285,10 +1288,10 @@
 			\ref{fig:HarshDiffCoph}).
 
 			The results in Figure~\ref{fig:HarshDiffJeff} imply that the warmth / brightness effect is
-			successful in applying transforms similar to those described as `warm' and `bright' in the SAFE
-			dataset. For the majority of the input signals the Mahalanobis distances for the `warm' and
-			`bright' transforms are close to 1, indicating that the transform fits well within the distribution
-			of other transforms labeled with these descriptors in the timbre space.
+			successful in applying transforms similar to those described as `warm' and `bright' in the
+			\acrshort{safe} dataset. For the majority of the input signals the Mahalanobis distances for the
+			`warm' and `bright' transforms are close to 1, indicating that the transform fits well within the
+			distribution of other transforms labeled with these descriptors in the timbre space.
 			
 			When attempting to make the test signals `harsher' however, the effect does not perform well on the
 			bass guitar, flute, marimba or oboe signals. This is likely due to the small number of transforms
@@ -1317,8 +1320,8 @@
 			elicit terms related to warmth from participants may indicate that warmth is not only defined by a
 			shift in spectral energy towards lower frequencies. Examining Figure~\ref{fig:HarshProcJeff} it is
 			seen that, for approximately half the test signals, the processed signals are significantly distant
-			from the region described as `warm' in the processed feature space constructed from the SAFE
-			dataset.
+			from the region described as `warm' in the processed feature space constructed from the
+			\acrshort{safe} dataset.
 			
 			Considering only the changes in audio features described by transforms, the terms `bright' and
 			`harsh' seem to have different definitions depending on the type of processing applied, as seen in
@@ -1328,14 +1331,14 @@
 			shows that, when describing the effect of the warmth / brightness effect, participants selected a
 			term related to the intended descriptor 74\% of the time for `bright' and 80\% of the time for
 			`harsh'. The terms they selected come from both the `distorted brightness' and `equalised
-			brightness' clusters, suggesting that although some of these terms were gathered using the SAFE
-			Equaliser they can still be applied to distortion type effects. Regardless of this, the most
-			commonly used descriptors, `fuzz', `harsh' and `rasp' all lie within the `distorted brightness'
-			cluster. The use of terms which were collected from the SAFE equaliser may be explained by the
-			anonymity of the effects in this test. While using the SAFE plug-ins the user is aware of the type
-			of effect they are using so may be more likely to use descriptors they associate with that effect.
-			In this test the type of effect is not know to the user so they may select descriptors they would
-			not usually associate with the type of effect being used.
+			brightness' clusters, suggesting that although some of these terms were gathered using the
+			\acrshort{safe} Equaliser they can still be applied to distortion type effects. Regardless of this,
+			the most commonly used descriptors, `fuzz', `harsh' and `rasp' all lie within the `distorted
+			brightness' cluster. The use of terms which were collected from the \acrshort{safe} equaliser may
+			be explained by the anonymity of the effects in this test. While using the \acrshort{safe} plug-ins
+			the user is aware of the type of effect they are using so may be more likely to use descriptors
+			they associate with that effect.  In this test the type of effect is not know to the user so they
+			may select descriptors they would not usually associate with the type of effect being used.
 
 			The listening test data does not represent a difference between `bright' and `harsh' as seen in
 			Chapter~\ref{chap:TimbreEvaluation}. Both the `bright' and `harsh' positions of the warmth /
@@ -1351,15 +1354,15 @@
 			irregularity. This means that, when attempting to make signals sound `crunchier', both the
 			processed features and feature differences are relevant.  Figure~\ref{fig:CrunchProcJeff} shows
 			that for the majority of the input signals the brightness / crunchiness effect produces output
-			signals which are close to those labeled as `crunchy' in the SAFE dataset. However, the transforms
-			applied to produce these signals are less similar to those in the SAFE dataset, as seen in
-			Figure~\ref{fig:CrunchDiffJeff}. This is possibly explained by the simplifications made to reduce
-			the effect's computational complexity. Using lower order filters increases the level of
-			intermodulation components in the individually generated harmonics. This is illustrated in
-			Figure~\ref{fig:CelloFilterOrderSpectra} which shows the spectra of two sixth order harmonics, each
-			generated from the $f_{0}$ isolated with a different filter. That generated using a second order
-			\acrshort{iir} filter, as done in the brightness / crunchiness effect, has greater levels of
-			intermodulation distortion than that using a high order \acrshort{fir} filter. 
+			signals which are close to those labeled as `crunchy' in the \acrshort{safe} dataset. However, the
+			transforms applied to produce these signals are less similar to those in the \acrshort{safe}
+			dataset, as seen in Figure~\ref{fig:CrunchDiffJeff}. This is possibly explained by the
+			simplifications made to reduce the effect's computational complexity. Using lower order filters
+			increases the level of intermodulation components in the individually generated harmonics. This is
+			illustrated in Figure~\ref{fig:CelloFilterOrderSpectra} which shows the spectra of two sixth order
+			harmonics, each generated from the $f_{0}$ isolated with a different filter. That generated using a
+			second order \acrshort{iir} filter, as done in the brightness / crunchiness effect, has greater
+			levels of intermodulation distortion than that using a high order \acrshort{fir} filter. 
 			
 			\begin{figure}[h!]
 				\centering
@@ -1380,10 +1383,10 @@
 			For the brightness / crunchiness effect's `bright' and `harsh' parameter settings, only the
 			measures of Mahalanobis distance in the feature difference space are relevant (as in the analysis
 			of the warmth / brightness effect). In this regard the effect is most accurate in recreating
-			transforms labelled `bright' in the SAFE dataset, having similar performance to the warmth /
-			brightness effect.  For its `harsh' parameter setting it is less accurate, again possibly due to
-			the low confidence definition of the term `harsh' due to it being used with very low frequency in
-			the SAFE dataset.
+			transforms labelled `bright' in the \acrshort{safe} dataset, having similar performance to the
+			warmth / brightness effect.  For its `harsh' parameter setting it is less accurate, again possibly
+			due to the low confidence definition of the term `harsh' due to it being used with very low
+			frequency in the \acrshort{safe} dataset.
 
 			In Figure~\ref{fig:CombinedClusters} the term `crunch' sits in different clusters depending on the
 			features used for clustering. When using the processed features it is part of the `air' cluster,
@@ -1426,22 +1429,22 @@
 
 	\subsection{Conclusion}
 	\label{sec:PerceptualExperiments-SemanticControl-Conclusion}
-		This experiment has shown that, using information collected from the SAFE dataset and the harmonic
-		excitation systems developed in Chapter~\ref{chap:FeatureControl}, harmonic excitation can be easily used
-		to introduce brightness and harshness to an audio signal while crunchiness is a more difficult timbral
-		adjective to isolate.
+		This experiment has shown that, using information collected from the \acrshort{safe} dataset and the
+		harmonic excitation systems developed in Chapter~\ref{chap:FeatureControl}, harmonic excitation can be
+		easily used to introduce brightness and harshness to an audio signal while crunchiness is a more difficult
+		timbral adjective to isolate.
 
 		Both the warmth / brightness and brightness / crunchiness effects are successful in applying transforms
 		which are described as `bright' and `harsh', by isolating the $f_{0}$, applying full wave rectification and
 		high pass filtering. `Harsh' is confirmed to be a more exaggerated version of `bright', describing signals
 		with higher proportions of high frequency content. Due to the nature of the processing however, other terms
 		are also used to describe these effects such as `fuzzy' and `raspy'. These terms were only used to describe
-		the effects of the SAFE distortion in Chapter~\ref{chap:TimbreEvaluation}, indicating that they describe
-		features of distorted signals other than the proportion of energy at each end of the spectrum. The full
-		wave rectification used to generate high order harmonics is a static nonlinearity with a characteristic
-		curve which is discontinuous in its first derivative. This is similar to the hard peak clipper used in the
-		SAFE distortion, suggesting that these distortion descriptors are being used to describe the harmonics
-		introduced by the rectifier.
+		the effects of the \acrshort{safe} distortion in Chapter~\ref{chap:TimbreEvaluation}, indicating that they
+		describe features of distorted signals other than the proportion of energy at each end of the spectrum. The
+		full wave rectification used to generate high order harmonics is a static nonlinearity with a
+		characteristic curve which is discontinuous in its first derivative. This is similar to the hard peak
+		clipper used in the \acrshort{safe} distortion, suggesting that these distortion descriptors are being used
+		to describe the harmonics introduced by the rectifier.
 
 		The results of the listening test with the warmth / brightness effect show that applying a low pass filter
 		with a cutoff frequency at the input's spectral centroid is not sufficient to produce a `warmer' sound.
@@ -1474,10 +1477,11 @@
 	The parameters (individual harmonic gain and frequency shifts) of the harmonic excitation systems can be mapped
 	onto higher level `perceptual control' parameters which control particular audio features of a signal. The mappings
 	between perceived timbral features and lower level features can be informed by semantically annotated audio
-	production data, such as that gathered by the SAFE plug-ins. A harmonic excitation system can then be configured to
-	control the relevant audio features using the techniques discussed in Chapter~\ref{chap:FeatureControl}. Using this
-	approach, it has been shown that harmonic excitation systems can be successfully configured to control brightness
-	and harshness in audio signals. The developed effects were less successful in introducing warmth and crunchiness to
-	test signals. More complex parameter mappings, with multiple control parameters may allow for better timbral
-	expressiveness. The timbre spaces constructed from the SAFE dataset could also be used as a control system through
-	use of a two dimensional slider interface, similar to work by \citet{schwarz2007corpus} or \citet{stasis2015a}.
+	production data, such as that gathered by the \acrshort{safe} plug-ins. A harmonic excitation system can then be
+	configured to control the relevant audio features using the techniques discussed in
+	Chapter~\ref{chap:FeatureControl}. Using this approach, it has been shown that harmonic excitation systems can be
+	successfully configured to control brightness and harshness in audio signals. The developed effects were less
+	successful in introducing warmth and crunchiness to test signals. More complex parameter mappings, with multiple
+	control parameters may allow for better timbral expressiveness. The timbre spaces constructed from the
+	\acrshort{safe} dataset could also be used as a control system through use of a two dimensional slider interface,
+	similar to work by \citet{schwarz2007corpus} or \citet{stasis2015a}.

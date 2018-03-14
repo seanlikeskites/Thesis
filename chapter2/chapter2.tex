@@ -158,18 +158,18 @@
 			envelope of a sound into three sections: the steady state section being the middle portion in which
 			the timbre of the sound only varies slightly, and the onset and offset sections which describe the
 			way the sound rises from silence to the steady state and returns to silence afterwards. Further
-			refinement of the description of amplitude envelopes leads to the ADSR (Attack, Decay, Sustain,
-			Release) model \citep{descrivan2012music}. The attack and decay portions constitute the onset of
-			the signal, the attack describing the time it takes for the amplitude to rise from silence to a
-			maximum and the decay describing the time it takes for the amplitude to decrease back to a steady
-			level. The sustain describes the level at which the amplitude remains during the steady state
-			portion of the signal and the release the time taken for the amplitude to fall from this level to
-			silence. An example ADSR envelope is shown in Figure~\ref{fig:ADSR}.
+			refinement of the description of amplitude envelopes leads to the \acrfull{adsr} model
+			\citep{descrivan2012music}. The attack and decay portions constitute the onset of the signal, the
+			attack describing the time it takes for the amplitude to rise from silence to a maximum and the
+			decay describing the time it takes for the amplitude to decrease back to a steady level. The
+			sustain describes the level at which the amplitude remains during the steady state portion of the
+			signal and the release the time taken for the amplitude to fall from this level to silence. An
+			example \acrshort{adsr} envelope is shown in Figure~\ref{fig:ADSR}.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter2/Images/ADSR.pdf}
-				\caption{An ADSR envelope.}
+				\caption{An \acrshort{adsr} envelope.}
 				\label{fig:ADSR}
 			\end{figure}
 
@@ -604,8 +604,8 @@
 		sinusoidal tone at its centre frequency. The bandwidth of these filters is known as the critical bandwidth,
 		portions of signals will interfere with the perception of others which are within one critical bandwidth.
 		\citet{glasberg1990derivation} simplify the auditory filters by modelling them as rectangular filters. The
-		bandwidth of these filters is known as the equivalent rectangular bandwidth ($\mathrm{ERB}$) and can be
-		approximated using Equation~\ref{eq:ERB}.
+		bandwidth of these filters is known as the \acrfull{erb} and can be approximated using
+		Equation~\ref{eq:ERB}.
 
 		\begin{equation}
 			\mathrm{ERB}(f_{c}) = 24.7(4.37f_{c} + 1)
@@ -808,12 +808,12 @@
 
 			Another popular testing technique is to carry out multiple stimulus tests. In a multiple stimulus
 			test participants are presented with several stimuli simultaneously and asked to rate each against
-			a given criteria. A multiple stimuli methodology often used in perceptual audio tests is MUSHRA
-			(Multiple Stimuli with Hidden Reference and Anchor) \citep{mushra2014}. MUSHRA was developed for
+			a given criteria. A multiple stimuli methodology often used in perceptual audio tests is
+			\acrshort{mushra} (\acrlong{mushra}) \citep{mushra2014}. \acrshort{mushra} was developed for
 			grading the quality of lossy audio data compression algorithms. Participants are presented with
 			several compressed versions of a signal simultaneously and asked to grade how similar each of them
-			are to a reference signal (the uncompressed version) on a scale from 0 to 100. Among the signals to
-			be graded are a hidden reference and anchor which are used to evaluate the reliability of a
+			are to a reference signal (the uncompressed version) on a scale from 0 to 100.  Among the signals
+			to be graded are a hidden reference and anchor which are used to evaluate the reliability of a
 			participants results. The hidden reference is the same as the reference signal and as such should
 			be given a grade of 100. The anchor is a low pass filtered version of the signal, processed such
 			that it is less similar to the reference than any of the compressed signals and hence should
@@ -821,8 +821,8 @@
 			hidden reference (grading it 100) and anchor (giving it the lowest grade). These tests are often
 			used to assess the performance of bandwidth extension methods such as those discussed in
 			Section~\ref{sec:Excitation-Methods}. Other multiple stimulus tests, while not adhering strictly to
-			the MUSHRA guidelines, follow a similar structure.  \citet{arthi2015influence} use a multiple
-			stimulus test to determine the perceptual differences between stimuli. 
+			the \acrshort{mushra} guidelines, follow a similar structure.  \citet{arthi2015influence} use a
+			multiple stimulus test to determine the perceptual differences between stimuli. 
 			
 			Dissimilarity tests can provide accurate information about the perceived differences between
 			timbres, allowing for similar timbres to be graded or classified into groups. No information,
@@ -999,8 +999,8 @@
 			web implementation is the limitations of audio processing in web browsers. Simple interfaces which
 			involve playback of audio stimuli are easily implemented but more complex audio processing and
 			multiple channel audio playback are still difficult. This is becoming more possible due to
-			development of the web audio API \citep{adenot2015web}, although not all the features of this are
-			currently supported by all web browsers reducing the potential audience for the test.
+			development of the web audio \acrshort{api} \citep{adenot2015web}, although not all the features of
+			this are currently supported by all web browsers reducing the potential audience for the test.
 
 			When distributing a listening test over the internet the issue of recruiting participants arises.
 			Firstly, potential participants need to be made aware of the test and be able to participate in it.
@@ -1198,7 +1198,7 @@
 		In the following sections the most commonly used audio effects are listed and their properties and usages
 		discussed. The effects are split into three categories: \acrfull{lti}, \acrfull{ltv} and nonlinear. Popular
 		terms used to describe the timbral characteristics of the most commonly used audio effects are gathered
-		from the dataset collected by the SAFE project (discussed in detail in
+		from the dataset collected by the \acrshort{safe} project (discussed in detail in
 		Section~\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}).
 
 	\subsection{Linear Time Invariant Effects}
@@ -1227,15 +1227,15 @@
 
 		\subsubsection*{Equalisation}
 			Equalisation is the process of applying filters to a signal to accentuate / attenuate certain
-			frequency ranges. An equaliser (EQ) is the audio effect used to apply these spectral manipulations.
-			Equalisers were first developed as specific electronic circuits used for corrective tasks
-			associated with signal transmission. As the field of audio production has evolved, more flexible
-			equalisers with a greater number of control parameters have been introduced
+			frequency ranges. An equaliser (\acrshort{eq}) is the audio effect used to apply these spectral
+			manipulations.  Equalisers were first developed as specific electronic circuits used for corrective
+			tasks associated with signal transmission. As the field of audio production has evolved, more
+			flexible equalisers with a greater number of control parameters have been introduced
 			\citep{gottlieb2007shaping}. Modern equalisers are still used for corrective purposes but also
-			provide further opportunities for the creative shaping of timbre. Responses from the SAFE project
-			(Section~\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}) indicate that the most commonly
-			used terms to describe the timbral effects of equalisation are: warm, bright, clear, airy, thin,
-			full, boomy, boxy, tinny, deep, muddy and harsh.
+			provide further opportunities for the creative shaping of timbre. Responses from the
+			\acrshort{safe} project (Section~\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}) indicate
+			that the most commonly used terms to describe the timbral effects of equalisation are: warm,
+			bright, clear, airy, thin, full, boomy, boxy, tinny, deep, muddy and harsh.
 
 		\subsubsection*{Reverberation}
 			Reverberation (reverb) effects simulate the effects of the natural reflection of sounds in enclosed
@@ -1243,23 +1243,23 @@
 			techniques. These recording techniques do not capture the natural reverberation of the room in
 			which the sound was recorded; artificial reverb is added to make the recording sound more natural
 			\citep{gottlieb2007shaping}. As with equalisation, reverb effects can also be used more creatively
-			to enhance a musical production. The data from the SAFE project shows that the effects of
-			reverb are often described using size / location descriptors (roomy, big, massive, distant), or
+			to enhance a musical production. The data from the \acrshort{safe} project shows that the effects
+			of reverb are often described using size / location descriptors (roomy, big, massive, distant), or
 			more abstract terms (damp, dreamy, airy).
 
 	\subsection{Linear Time Variant Effects}
 	\label{sec:Timbre-AudioProcessing-LTV}
 		\acrshort{ltv} systems satisfy the superposition principle but include an element which varies with time.
 		In audio effects this time variance is most often due to modulation of the processing parameters by an
-		internally generated signal; this internal signal generator is often referred to as a low frequency
-		oscillator (LFO). LFOs can be used to modulate the time by which playback of an audio signal is delayed;
-		changing delay time in a constant linear fashion can model the Doppler effect applying a pitch shift to a
-		signal \citep{dattorro1997effect}. More complex modulation of the delay time is used in the flanger effect
-		which creates similar sounds to a phaser effect. In both phaser and flanger effects an LFO is used to sweep
-		filter notches up and down the frequency range of a signal, creating a distinctive ``swishing'' effect
-		\citep{huber2010modern}. Similar techniques are used in the chorus effect in which multiple differently
-		processed versions of the single signal are combined with the intention of making it sound as though audio
-		from a signal source was produced by an ensemble of similar sources.
+		internally generated signal; this internal signal generator is often referred to as a \acrfull{lfo}.
+		\acrshort{lfo}s can be used to modulate the time by which playback of an audio signal is delayed; changing
+		delay time in a constant linear fashion can model the Doppler effect applying a pitch shift to a signal
+		\citep{dattorro1997effect}. More complex modulation of the delay time is used in the flanger effect which
+		creates similar sounds to a phaser effect. In both phaser and flanger effects an \acrshort{lfo} is used to
+		sweep filter notches up and down the frequency range of a signal, creating a distinctive ``swishing''
+		effect \citep{huber2010modern}. Similar techniques are used in the chorus effect in which multiple
+		differently processed versions of the single signal are combined with the intention of making it sound as
+		though audio from a signal source was produced by an ensemble of similar sources.
 
 	\subsection{Nonlinear Effects}
 	\label{sec:Timbre-AudioProcessing-Nonlinear}
@@ -1277,17 +1277,17 @@
 			(removing unwanted noise, restricting dynamic range for broadcast) the distinct topologies of
 			different dynamics processors led to their use as creative effects, certain compressors being noted
 			for their desirable timbral characteristics \citep{moore2016an}. The most popular terms used to
-			describe the application of compression in the SAFE dataset are: punchy, tight, smooth, squashed,
-			snappy and crushed.
+			describe the application of compression in the \acrshort{safe} dataset are: punchy, tight, smooth,
+			squashed, snappy and crushed.
 
 		\subsubsection*{Nonlinear Distortion}
 			In contrast to dynamics processing, nonlinear distortion effects are intended to introduce
 			artifacts to a signal. Well known as an effect applied to guitars in modern music
 			\citep{yeh2009digital}, nonlinear distortion can also be used in a controlled manner for corrective
 			applications \citep{larsen2004audio}. The timbral effects of the distortion plug-in created for the
-			SAFE project have been described as crunchy, warm, fuzzy, creamy, bright, harsh, raspy and smooth.
-			As the focus of this thesis is the application of nonlinear distortion for timbral control an in
-			depth discussion of nonlinear distortion is given in Chapter~\ref{chap:Excitation}. 
+			\acrshort{safe} project have been described as crunchy, warm, fuzzy, creamy, bright, harsh, raspy
+			and smooth.  As the focus of this thesis is the application of nonlinear distortion for timbral
+			control an in depth discussion of nonlinear distortion is given in Chapter~\ref{chap:Excitation}. 
 
 \section{Summary}
 \label{sec:Timbre-Summary}
