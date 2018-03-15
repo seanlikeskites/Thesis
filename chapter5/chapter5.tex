@@ -630,7 +630,9 @@
 			Full wave rectification can be considered as a static nonlinearity with an even characteristic
 			curve, as such it only introduces even order distortion components. Examining the Fourier series of
 			a full wave rectified sine wave (Equation~\ref{eq:RectificationFourier}) shows the amplitudes of
-			each harmonic produced, $c_{n}$ being the amplitude of the $n$\super{th} order harmonic.
+			each harmonic produced, $c_{n}$ being the amplitude of the $n$\super{th} order harmonic. A full
+			derivation of this Fourier series is given in
+			Appendix~\ref{app:MathematicalDerivations-Rectification}.
 
 			\begin{gather}
 				c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \abs{sin(x)}e^{-inx} dx \nonumber \\
@@ -661,7 +663,8 @@
 
 		\subsubsection*{Integrator}
 			Applying the integrator described in Equation~\ref{eq:Integrator} to a sine wave produces a signal
-			with Fourier series coefficients as shown in Equation~\ref{eq:IntegratorFourier}.
+			with Fourier series coefficients as shown in Equation~\ref{eq:IntegratorFourier}. A full derivation
+			of this Fourier series is given in Appendix~\ref{app:MathematicalDerivations-Integrator}.
 
 			\begin{gather}
 				c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} \bigl( 1 - cos(x) \bigr) e^{-inx} dx +
@@ -670,7 +673,7 @@
 				c_{-1} = - \frac{2ikf_{s}}{\pi} \nonumber \\
 				c_{0} = 2kf_{s} \nonumber \\
 				c_{1} = \frac{2ikf_{s}}{\pi} \nonumber \\
-				c_{n} = \frac{ikf_{s}}{2\pi} \left( \frac{4n^{2} + 2e^{-i\pi n} - 2}{n^{3} - n} \right)
+				c_{n} = \frac{ikf_{s}}{\pi} \left( \frac{2n^{2} + e^{-in\pi} - 1}{n^{3} - n} \right)
 				\label{eq:IntegratorFourier}
 			\end{gather}
 

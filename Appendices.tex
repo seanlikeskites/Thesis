@@ -1,0 +1,261 @@
+\begin{appendices}
+\chapter{Mathematical Derivations}
+\label{app:MathematicalDerivations}
+	\section{Fourier Series of a Full Wave Rectified Sinusoid}
+	\label{app:MathematicalDerivations-Rectification}
+		The complex Fourier series coefficients, $c_{n}$ of a full wave rectified sinusoid can be calculated as
+		follows:
+
+		\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} |\sin(x)|e^{-inx} dx \]
+
+		Expanding out the complex exponential gives:
+
+		\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \left( |\sin(x)|\cos(nx) - i|\sin(x)|\sin(nx) \right) dx \]
+
+		The expression $|\sin(x)|\sin(nx)$ is an odd function, so across the interval of our Fourier series integral
+		we have:
+
+		\[ \int_{-\pi}^{\pi} i|\sin(x)|\sin(nx) = 0 \]
+
+		Removing this term from the integral leaves us with:
+
+		\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} |\sin(x)|\cos(nx) dx \]
+
+		The expression $|\sin(x)|\cos(nx)$ is an even function, so we can adjust the interval over which we take the
+		integral:
+
+		\begin{align}
+			c_{n} & = \frac{1}{\pi} \int_{0}^{\pi} \sin(x)\cos(nx) dx \nonumber \\
+			\nonumber \\
+			& = \frac{1}{2\pi} \int_{0}^{\pi} \sin((n+1)x) + \sin((1-n)x) dx \nonumber \\
+			\nonumber \\
+			& = \frac{1}{2\pi} \left[ -\frac{\cos((n+1)x)}{n+1} - 
+				\frac{\cos((1-n)x)}{1-n} \right]_{0}^{\pi} \nonumber
+		\end{align}
+
+		When $n$ is even:
+
+		\begin{align}
+			c_{n} & = \frac{1}{2\pi} \left( \frac{1}{n+1} + \frac{1}{1-n} 
+				+ \frac{1}{n+1} + \frac{1}{1-n} \right) \nonumber \\
+			\nonumber \\
+			& = \frac{1}{2\pi} \frac{2(1-n) + 2(n+1)}{1 - n^{2}} \nonumber \\
+			\nonumber \\
+			& = \frac{2}{\pi(1 - n^{2})} \nonumber
+		\end{align}
+
+		When $n$ is odd:
+
+		\begin{align}
+			c_{n} & = \frac{1}{2\pi} \left( -\frac{1}{n+1} - 
+				\frac{1}{1-n} + \frac{1}{n+1} + \frac{1}{1-n} \right) \nonumber \\
+			\nonumber \\
+			& = 0 \nonumber
+		\end{align}
+
+		Giving:
+
+		\[ c_{n} = \begin{cases}
+				\frac{2}{\pi(1 - n^{2})} & \text{when $n$ is even} \\
+				0 & \text{when $n$ is odd}
+			\end{cases} \]
+
+	\section{Fourier Series of a Sinusoid after Application of an Integrator}
+	\label{app:MathematicalDerivations-Integrator}
+		Applying the integrator in Equation~\ref{eq:Integrator} to a sinusoid $\sin(x)$, sampled at a rate of
+		$f_{s}$, produces a periodic waveform, $y$, with a period of $2\pi$ defined on the interval $0$ to $2\pi$
+		as:
+
+		\[ y = \begin{cases}
+				kf_{s} (1 - \cos(x)) & \text{when $0 \leq x < \pi$} \\
+				kf_{s} (3 + \cos(x)) & \text{when $\pi \leq x < 2\pi$} \\
+			\end{cases} \]
+
+		The complex Fourier series coefficients, $c_{n}$, of this waveform can be calculated as:
+
+		\[ c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1-\cos(x))e^{-inx} dx
+						      + \int_{\pi}^{2\pi} (3 + \cos(x))e^{-inx} dx \right) \]
+
+		Evaluating the first integral gives:
+		
+		\begin{align}
+			\int_{0}^{\pi} (1-\cos(x))e^{-inx} dx & = 
+				\int_{0}^{\pi} \left( e^{-inx} - \cos(x)e^{-inx} \right) dx \nonumber \\
+			\nonumber \\
+			& = \left[ \frac{ie^{-inx}}{n} - \frac{e^{-inx}(\sin(x) 
+				- in\cos(x))}{1 - n^{2}} \right]_{0}^{\pi} \nonumber \\
+			\nonumber \\
+			& = \frac{ie^{-in\pi}}{n} - \frac{ine^{-in\pi}}{1 - n^{2}} 
+				- \frac{i}{n} - \frac{in}{1 - n^{2}} \nonumber \\
+			\nonumber \\
+			& = \frac{i}{n(1-n^{2})} \left( (1 - n^{2})e^{-in\pi} - 
+				n^{2}e^{-in\pi} - (1 - n^{2}) - n^2 \right) \nonumber \\
+			\nonumber \\
+			& = \frac{i}{n - n^{3}} \left( e^{-in\pi} - 2n^{2}e^{-in\pi} - 1 \right) \nonumber
+		\end{align}
+
+		And the second integral yields:
+
+		\begin{align}
+			\int_{\pi}^{2\pi} (3+\cos(x))e^{-inx} dx & = 
+				\int_{\pi}^{2\pi} \left( 3e^{-inx} + \cos(x)e^{-inx} \right) dx \nonumber \\
+			\nonumber \\
+			& = \left[ \frac{3ie^{-inx}}{n} + \frac{e^{-inx}(\sin(x) - 
+				in\cos(x))}{1 - n^{2}} \right]_{\pi}^{2\pi} \nonumber \\
+			\nonumber \\
+			& = \frac{3i}{n} - \frac{in}{1 - n^{2}} - \frac{3ie^{-in\pi}}{n} - 
+				\frac{ine^{-in\pi}}{1 - n^{2}} \nonumber \\
+			\nonumber \\
+			& = \frac{i}{n(1-n^{2})} \left( 3(1-n^{2}) - n^{2} - 
+				3(1-n^{2})e^{-in\pi} - n^{2}e^{-in\pi} \right) \nonumber \\
+			\nonumber \\
+			& = \frac{i}{n - n^{3}} \left( 2n^{2}e^{-in\pi} - 3e^{-in\pi} - 4n^{2} + 3 \right) \nonumber
+		\end{align}
+
+		Combining these results gives:
+
+		\begin{align}
+			c_{n} & = \frac{kf_{s}}{2\pi} \times \frac{i}{n - n^{3}} \left( 2 - 2e^{-in\pi} - 4n^{2} \right) 
+				\nonumber \\
+			\nonumber \\
+			& = \frac{ikf_{s}}{\pi} \left( \frac{2n^{2} + e^{-in\pi} - 1}{n^{3} - n} \right) \nonumber
+		\end{align}
+
+		When $n = 1$ this will involve a division by 0, so we can find $c_{1}$ as:
+
+		\[ c_{1} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} (1-\cos(x))e^{-ix} dx
+						      + \int_{\pi}^{2\pi} (3 + \cos(x))e^{-ix} dx 
+						      \right) \]
+
+		Starting with the first integral:
+		
+		\begin{align}
+			\int_{0}^{\pi} (1-\cos(x))e^{-ix} dx & = \int_{0}^{\pi} e^{-ix} - 
+				\cos^{2}(x) + i\cos(x)\sin(x) dx \nonumber \\
+			\nonumber \\
+			& = \int_{0}^{\pi} e^{-ix} - \frac{1}{2} - 
+				\frac{\cos(2x)}{2} + \frac{i\sin(2x)}{2} dx \nonumber \\
+			\nonumber \\
+			& = \left[ ie^{-ix} - \frac{x}{2} - \frac{\sin(2x)}{4} - 
+				\frac{i\cos(2x)}{4} \right]_{0}^{\pi} \nonumber \\
+			\nonumber \\
+			& = -i - \frac{\pi}{2} - \frac{i}{4} - \left( i - \frac{i}{4} \right) \nonumber \\
+			\nonumber \\
+			& = -2i - \frac{\pi}{2} \nonumber
+		\end{align}
+
+		And the second:
+		
+		\begin{align}
+			\int_{\pi}^{2\pi} (3+\cos(x))e^{-ix} dx & = 
+				\int_{\pi}^{2\pi} 3e^{-ix} + \cos^{2}(x) - i\cos(x)\sin(x) dx \nonumber \\
+			\nonumber \\
+			& = \int_{\pi}^{2\pi} 3e^{-ix} + \frac{1}{2} + \frac{\cos(2x)}{2} - 
+				\frac{i\sin(2x)}{2} dx \nonumber \\
+			\nonumber \\
+			& = \left[ 3ie^{-ix} + \frac{x}{2} + \frac{\sin(2x)}{4} + 
+				\frac{i\cos(2x)}{4} \right]_{\pi}^{2\pi} \nonumber \\
+			\nonumber \\
+			& = 3i + \pi + \frac{i}{4} - \left( -3i + \frac{\pi}{2} + \frac{i}{4} \right) \nonumber \\
+			\nonumber \\
+			& = 6i + \frac{\pi}{2} \nonumber
+		\end{align}
+
+		Which combine to give:
+
+		\[ c_{1} = \frac{2ikf_{s}}{\pi} \]
+
+		Which also allows us to write:
+
+		\[ c_{-1} = -\frac{2ikf_{s}}{\pi} \]
+
+		Finally, when $n = 0$ division by 0 will also occur. $c_{0}$ is calculated as follows:
+
+		\[ c_{0} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} 1-\cos(x) dx
+						      + \int_{\pi}^{2\pi} 3 + \cos(x) dx 
+						      \right) \]
+
+		Starting with the first integral:
+
+		\begin{align}
+			\int_{0}^{\pi} 1 - \cos(x) dx & = \biggl[ x + \sin(x) \biggr]_{0}^{\pi} \nonumber \\
+			\nonumber \\
+			& = \pi \nonumber
+		\end{align}
+
+		And the second:
+
+		\begin{align}
+			\int_{\pi}^{2\pi} 3 + \cos(x) dx & = \biggl[ 3x - \sin(x) \biggr]_{\pi}^{2\pi} \nonumber \\
+			\nonumber \\
+			& = 6\pi - 3\pi \nonumber \\
+			\nonumber \\
+			& = 3\pi \nonumber
+		\end{align}
+
+		Leading to:
+
+		\[ c_{0} = 2kf_{s} \]
+
+		Which gives the Fourier series coefficients as:
+
+		\begin{gather}
+			c_{-1} = - \frac{2ikf_{s}}{\pi} \nonumber \\
+			c_{0} = 2kf_{s} \nonumber \\
+			c_{1} = \frac{2ikf_{s}}{\pi} \nonumber \\
+			c_{n} = \frac{ikf_{s}}{\pi} \left( \frac{2n^{2} + e^{-in\pi} - 1}{n^{3} - n} \right) \nonumber
+		\end{gather}
+
+	\section{Parameterisation of Spectral Flatness}
+	\label{app:MathematicalDerivations-SpectralFlatness}
+		Referring back to Section~\ref{sec:FeatureControl-Parameterisation-Flatness} we recall that the spectral
+		flatness was manipulated by altering the arithmetic mean of the spectral components' amplitudes while
+		leaving their geometric mean unchanged.	Equation \ref{eq:FlatnessManipulation} (repeated here) gives the new
+		spectral flatness for a given gain parameter, $m$.
+
+		\[ \mathrm{SF} = \frac{N\sqrt[N]{\prod_{n \in P} a_{n}^{2}}}
+					   {\frac{A_{L}}{m^{2}} + m^{2}A_{H} + A_{E}} \]
+
+		Only the denominator of this equation are changed by $m$. Increasing the denominator will decrease the
+		spectral flatness and decreasing it will have to opposite effect. We can simplify this by considering the
+		sum of the amplitudes of the two scaled groups of spectral components:
+
+		\[ \frac{A_{L}}{m^{2}} + m^{2}A_{H} \]
+
+		For the spectral flatness to increase this expression should be less than the unscaled amplitudes:
+
+		\begin{gather}
+			\frac{A_{L}}{m^{2}} + m^{2}A_{H} < A_{L} + A_{H} \nonumber \\
+			\nonumber \\
+			A_{L} + m^{4}A_{H} < (A_{L} + A_{H})m^{2} \nonumber \\
+			\nonumber \\
+			m^{4}A_{H} - (A_{L} + A_{H})m^{2} + A_{L} < 0 \nonumber \\
+			\nonumber \\
+			(m^{2}A_{H} - A_{L})(m^{2} - 1) < 0 \nonumber \\
+			\nonumber \\
+			\frac{A_{L}}{A_{H}} < m^{2} < 1 \nonumber
+		\end{gather}
+
+		The spectral flatness will increase for values of $m$ in the interval:
+
+		\[ \sqrt{\frac{A_{L}}{A_{H}}} < m < 1 \]
+
+		The maximum spectral flatness occurs at the minimum arithmetic mean:
+
+		\begin{gather}
+			y = \frac{A_{L}}{m^{2}} + m^{2}A_{H} \nonumber \\
+			\nonumber \\
+			\frac{dy}{dx} = -2\frac{A_{L}}{m^{3}} + 2A_{H}m \nonumber \\
+			\nonumber \\
+			2A_{H}m^{4} = 2A_{L} \nonumber \\
+			\nonumber \\
+			m^{4} = \frac{A_{L}}{A_{H}} \nonumber \\
+			\nonumber \\
+			m = \sqrt[4]{\frac{A_{L}}{A_{H}}} \nonumber
+		\end{gather}
+
+\chapter{Software Resources}
+
+\chapter{Audio Resources}
+
+\end{appendices}
