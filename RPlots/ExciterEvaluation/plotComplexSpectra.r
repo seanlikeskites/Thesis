@@ -24,34 +24,40 @@ plotSpectra <- function(f, spectra, names, colours, lwds)
 		lines(f, spectra[[i]], col=colours[i], lwd=lwds[i])
 	}
 
-	legend("topright", legend=names, col=colours, lty=1, lwd=lwds)
+	#legend("topright", legend=names, col=colours, lty=1, lwd=lwds)
 
 	box()
 }
 
+# original
+pdf("FourHarmonics.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
+plotSpectra(freqs, list(sigSpec), "Signal Cubed", "blue", 2)
+dev.off()
+embed_fonts("FourHarmonics.pdf")
+
 # cube
 pdf("CubedSpectra.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotSpectra(freqs, list(cubeSpec, sigSpec), c("Signal Cubed", "Original Signal"), c("green2", "blue"), c(4, 1))
+plotSpectra(freqs, list(cubeSpec), "Signal Cubed", "green2", 2)
 dev.off()
 embed_fonts("CubedSpectra.pdf")
 
 # 2.5
 pdf("RaisedToTwoAndAHalfSpectra.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotSpectra(freqs, list(twopfiveSpec, sigSpec), c("Signal Raised to the 2.5", "Original Signal"),
-	    c("green2", "blue"), c(4, 1))
+plotSpectra(freqs, list(twopfiveSpec), "Signal Raised to the 2.5",
+	    "green2", 2)
 dev.off()
 embed_fonts("RaisedToTwoAndAHalfSpectra.pdf")
 
 # ssb
 pdf("SSBA3Spectra.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotSpectra(freqs, list(ssbSpec, sigSpec), c("Third Order SSBA", "Original Signal"),
-	    c("green2", "blue"), c(4, 1))
+plotSpectra(freqs, list(ssbSpec), "Third Order SSBA",
+	    "green2", 2)
 dev.off()
 embed_fonts("SSBA3Spectra.pdf")
 
 # iap
 pdf("IAP3Spectra.pdf", pointsize=9, family="CM Sans", width=4.2, height=3)
-plotSpectra(freqs, list(iapSpec, sigSpec), c("Third Order IAP", "Original Signal"),
-	    c("green2", "blue"), c(4, 1))
+plotSpectra(freqs, list(iapSpec), "Third Order IAP",
+	    "green2", 2)
 dev.off()
 embed_fonts("IAP3Spectra.pdf")

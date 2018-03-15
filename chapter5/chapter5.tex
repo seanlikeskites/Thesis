@@ -686,42 +686,51 @@
 			Nonlinear processing using a multiplier (Equation~\ref{eq:Multiplier}) in which the exponent is a
 			positive integer, allows for control over the maximum order of distortion generated. The highest
 			frequency present among those generated will be equal to the highest frequency in the input signal
-			multiplied by the exponent, $h$. This effect is illustrated in Figure~\ref{fig:CubedSpectra} which
-			shows the spectral effects of cubing an arbitrary compound signal. The input signal has an $f_{0}$
-			of 1kHz and has energy in its first four harmonics, making the highest frequency present 4kHz.
-			After cubing the signal the highest frequency is three times this (12kHz) as seen in
-			Figure~\ref{fig:CubedSpectra}.
+			multiplied by the exponent, $h$. This effect is illustrated by applying a multiplier to an
+			arbitrary compound signal. This signal has an $f_{0}$ of 1kHz and has energy in its first four
+			harmonics, making the highest frequency present 4kHz. Its spectrum is shown in
+			Figure~\ref{fig:FourHarmonics}.
+
+			\begin{figure}[h!]
+				\centering
+				\includegraphics{chapter5/Images/FourHarmonics.pdf}
+				\caption{The spectrum of the signal used to illustrate the spectral characteristics of
+					several algorithms.}
+				\label{fig:FourHarmonics}
+			\end{figure}
+			
+			Figure~\ref{fig:CubedSpectra} shows the spectral effects of cubing the signal shown in
+			Figure~\ref{fig:FourHarmonics}. After cubing the signal, the highest frequency is three times that
+			in the input signal, moving from 4kHz to 12kHz. This upper bound on the order of distortion
+			introduced allows for effective reduction / elimination of aliasing. As the highest frequency in
+			the output is $h$ times that in the input, ensuring the input has no frequency components over
+			$\frac{f_{s}}{2h}$Hz ensures that all frequency components in the output will be below the Nyquist.
+			Low pass filtering the input at this frequency is an effective means of reducing the aliasing
+			introduced.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/CubedSpectra.pdf}
-				\caption{The spectral effects of cubing a signal with energy in its first four harmonics.}
+				\caption{The spectral effects of cubing the signal represented in
+					Figure~\ref{fig:FourHarmonics}.}
 				\label{fig:CubedSpectra}
 			\end{figure}
-
-			This upper bound on the order of distortion introduced allows for effective reduction / elimination
-			of aliasing. As the highest frequency in the output is $h$ times that in the input, ensuring the
-			input has no frequency components over $\frac{f_{s}}{2h}$Hz ensures that all frequency components
-			in the output will be below the Nyquist. Low pass filtering the input at this frequency is an
-			effective means of reducing the aliasing introduced.
 
 			For an exponential static nonlinearity (one in which the exponent can take any positive value)
 			control over the bandwidth of the output signal is lost. Non-integer exponents cause higher orders
 			of distortion to be generated. Figure~\ref{fig:TwoAndAHalfSpectra} shows the spectral effects of
 			raising the same input signal to the power 2.5. Here it is evident that there is no upper bound on
-			the order of distortion components generated.
+			the order of distortion components generated. The lowest frequency component in the output signal
+			is not bound regardless of the exponent used.  For even exponents the output will always be
+			positive, meaning there will always be some 0Hz (DC offset) energy introduced.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/RaisedToTwoAndAHalfSpectra.pdf}
-				\caption{The spectral effects of raising a signal with energy in its first four harmonics
-					 to the power 2.5.}
+				\caption{The spectral effects of raising the signal represented in
+					Figure~\ref{fig:FourHarmonics} to the power 2.5.}
 				\label{fig:TwoAndAHalfSpectra}
 			\end{figure}
-
-			The lowest frequency component in the output signal is not bound regardless of the exponent used.
-			For even exponents the output will always be positive, meaning there will always be some 0Hz (DC
-			offset) energy introduced.
 
 		\subsubsection*{\acrshort{ssba}}
 			\acrshort{ssba} extends the control provided by multipliers as it constrains the minimum frequency
@@ -730,14 +739,13 @@
 			output are those of the input signal multiplied by the exponent, $h$. All other harmonic and
 			intermodulation components created lie between these two frequencies. This can be seen in
 			Figure~\ref{fig:SSBA3Spectra}, which shows the results of applying $3$\super{rd} order
-			\acrshort{ssba} to the signal used in Figures \ref{fig:CubedSpectra} and
-			\ref{fig:TwoAndAHalfSpectra}. 
+			\acrshort{ssba} to the signal shown in Figure~\ref{fig:FourHarmonics}.
 			
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/SSBA3Spectra.pdf}
-				\caption{The spectral effects of applying third order \acrshort{ssba} to a signal with
-					 energy in its first four harmonics.}
+				\caption{The spectral effects of applying third order \acrshort{ssba} to the signal
+					represented in Figure~\ref{fig:FourHarmonics}.}
 				\label{fig:SSBA3Spectra}
 			\end{figure}
 
@@ -755,13 +763,13 @@
 			a single harmonic. In contrast to the \acrshort{ssba} method, the \acrshort{iap} method provides
 			little control over the bandwidth of the output when the input has multiple frequency components.
 			Figure~\ref{fig:IAP3Spectra} shows the spectral effects of third order \acrshort{iap} processing on
-			the same signal used when discussing previous algorithms.
+			the same signal shown in Figure~\ref{fig:FourHarmonics}.
 
 			\begin{figure}[h!]
 				\centering
 				\includegraphics{chapter5/Images/IAP3Spectra.pdf}
-				\caption{The spectral effects of applying third order \acrshort{iap} to a signal with
-					 energy in its first four harmonics.}
+				\caption{The spectral effects of applying third order \acrshort{iap} to the signal
+				represented in Figure~\ref{fig:FourHarmonics}.}
 				\label{fig:IAP3Spectra}
 			\end{figure}
 
@@ -847,9 +855,20 @@
 
 			\begin{figure}[h!]
 				\centering
-				\includegraphics{chapter5/Images/STTRSpectra.pdf}
-				\caption{The spectral effects of \acrshort{sttr} using the window function defined in
-					 Equation~\ref{eq:STTRWindow}.}
+				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+				\subfloat[1ms Window]
+				{
+					\includegraphics{chapter5/Images/STTRSpectra1.pdf}
+					\label{fig:STTR1ms}
+				}
+				\quad
+				\subfloat[1.5ms Window]
+				{
+					\includegraphics{chapter5/Images/STTRSpectra1p5.pdf}
+					\label{fig:STTR1p5ms}
+				}
+				\caption{The spectral effects of applying \acrshort{sttr} to a 1kHz sinusoid using
+					different window lengths.}
 				\label{fig:STTRSpectra}
 			\end{figure}
 
