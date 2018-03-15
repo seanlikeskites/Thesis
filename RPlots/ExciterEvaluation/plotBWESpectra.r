@@ -12,7 +12,7 @@ stretchSpec <- abs(data$stretchSpec[1:len])
 
 plotSpectra <- function(spectra, names, colours)
 {
-	par(xaxs='i', yaxs='i', mar=c(2, 4, 0.1, 0.6))
+	par(xaxs='i', yaxs='i', mar=c(3, 2, 0.1, 0.6))
 	f <- 1:length(spectra[[1]])
 	plot(f, spectra[[1]], type='n', axes=FALSE, xlab="", ylab="")
 
@@ -27,17 +27,25 @@ plotSpectra <- function(spectra, names, colours)
 
 	legend("topright", legend=names, col=colours, lty=1)
 
+	par(family="CM Roman")
+	axis(1, at=max(f), labels=expression(italic(f[s])), mgp=c(3, 0.7, 0))
+	par(family="CM Sans")
+	axis(1, at=min(f), labels=0, mgp=c(3, 0.7, 0))
+	axis(1, at=max(f), labels=expression(frac(, 2)), mgp=c(3, 2, 0))
+
 	box()
 }
 
 # replication
-pdf("SpectralReplicationSpectrum.pdf", pointsize=9, family="CMU Sans Serif", width=4.2, height=3-0.375)
+pdf("SpectralReplicationSpectrum.pdf", pointsize=9, fonts=c("CMU Serif", "CMU Sans Serif"), family="CMU Sans Serif", 
+    width=4.2, height=3-0.375)
 plotSpectra(list(repSpec, sigSpec), c("Output", "Input"), c("red", "blue"))
 dev.off()
 embed_fonts("SpectralReplicationSpectrum.pdf")
 
 # stretching
-pdf("SpectralStretchingSpectrum.pdf", pointsize=9, family="CMU Sans Serif", width=4.2, height=3-0.375)
+pdf("SpectralStretchingSpectrum.pdf", pointsize=9, fonts=c("CMU Serif", "CMU Sans Serif"), family="CMU Sans Serif", 
+    width=4.2, height=3-0.375)
 plotSpectra(list(stretchSpec, sigSpec), c("Output", "Input"), c("red", "blue"))
 dev.off()
 embed_fonts("SpectralStretchingSpectrum.pdf")

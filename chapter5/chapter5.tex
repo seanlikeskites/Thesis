@@ -783,28 +783,19 @@
 			equal to that of the input. This predictability allows for easier control of the output spectrum.
 			It also provides a simple method for the reduction of aliasing: the highest frequency in the output
 			will be that of the input plus the shift frequency $f$. Applying a low pass filter, with a cutoff
-			frequency of $(\frac{f_{s}}{2} - f)$Hz to the input signal will minimise the amplitude of any
-			aliased frequency components.
+			frequency of $\left( \frac{f_{s}}{2} - f \right)$Hz to the input signal will minimise the amplitude
+			of any aliased frequency components.
 
 		\subsubsection*{Spectral Folding}
 			Spectral folding with a factor $k$ results in the lowest $\frac{1}{k}$ of the input spectrum being
 			repeated $k$ times in the output spectrum. Every second repetition being a mirror image of the
-			original. This effect is shown in Figure~\ref{fig:SpectralFolding}. 
-			
-			\begin{figure}[h!]
-				\centering
-				\includegraphics{chapter5/Images/SpectralFoldingSpectrum.pdf}
-				\caption{The spectral characteristics of spectral folding.}
-				\label{fig:SpectralFolding}
-			\end{figure}
-
-			The new frequencies introduced in the output depend on the sampling rate of the signal. Unless
-			$\frac{f_{s}}{2k}$ is a harmonic of the input signal, there is little chance that the new
-			frequencies will be harmonically related to the input. Other than changing the downsampling /
-			upsampling factor $k$, the user is given little control over the content of the output spectrum.
-			The bandwidth of the output is not constricted, possibly taking up the entirety of the spectrum.
-			Additional filtering is needed to shape the output spectrum as desired, increasing the overall
-			complexity of the system.
+			original, as shown previously in Figure~\ref{fig:SpectralFolding}. The new frequencies introduced
+			in the output depend on the sampling rate of the signal. Unless $\frac{f_{s}}{2k}$ is a harmonic of
+			the input signal, there is little chance that the new frequencies will be harmonically related to
+			the input. Other than changing the downsampling / upsampling factor $k$, the user is given little
+			control over the content of the output spectrum.  The bandwidth of the output is not constricted,
+			possibly taking up the entirety of the spectrum.  Additional filtering is needed to shape the
+			output spectrum as desired, increasing the overall complexity of the system.
 
 		\subsubsection*{Spectral Stretching}
 			An ideal spectral stretching system would produce the result shown in
