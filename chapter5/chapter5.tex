@@ -766,7 +766,9 @@
 			a single harmonic. In contrast to the \acrshort{ssba} method, the \acrshort{iap} method provides
 			little control over the bandwidth of the output when the input has multiple frequency components.
 			Figure~\ref{fig:IAP3Spectra} shows the spectral effects of third order \acrshort{iap} processing on
-			the same signal shown in Figure~\ref{fig:FourHarmonics}.
+			the same signal shown in Figure~\ref{fig:FourHarmonics}. This spectrum is the result of frequency
+			modulation of a sinusoid by a complex modulating signal. A derivation of the spectrum for this
+			type of modulation is given by \citet{lebrun1977a}.
 
 			\begin{figure}[h!]
 				\centering
@@ -908,8 +910,8 @@
 			
 			Figure~\ref{fig:InfinitePeakClipping} shows a signal, with attack and release sections, before and
 			after infinite peak clipping. The original signal rises to its full amplitude over two cycles and
-			falls back to silence over the same time. After infinite peak clipping, the attack and release have
-			become instantaneous.
+			falls back to silence over the same time. After infinite peak clipping, the signal has become a
+			square wave with instantaneous attack and release.
 
 			\begin{figure}[h!]
 				\centering
