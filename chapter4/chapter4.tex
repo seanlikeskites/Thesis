@@ -75,24 +75,31 @@
 			      effect.
 		\end{itemize}
 
-		Achieving this would require the creation of a new \acrshort{daw}, which would be impractical for the
-		current research. \acrshort{daw}s are comprehensive software packages which perform many more tasks than
-		the application of audio effects (project management, audio editing functionality etc.). A lot of effort
-		would be expended in implementing these features before any timbral data could be collected. Music
-		producers also tend to have a preferred \acrshort{daw} with which they work most fluidly. Convincing
-		producers to use a new \acrshort{daw} for the purposes of research would be a difficult task.
+		To ensure that all this information is available this would require the creation of a new \acrshort{daw},
+		which would be impractical for the current research. \acrshort{daw}s are comprehensive software packages
+		which perform many more tasks than the application of audio effects (project management, audio editing
+		functionality etc.). A lot of effort would be expended in implementing these features before any timbral
+		data could be collected. Music producers also tend to have a preferred \acrshort{daw} with which they work
+		most fluidly. Convincing producers to use a new \acrshort{daw} for the purposes of research would be a
+		difficult task.
 
 		Third party developers can produce extensions to \acrshort{daw}s known as plug-ins. Plug-ins provide
 		additional audio processing functionality to the \acrshort{daw} environment. They can optionally expose
 		their own parameters which users can adjust to achieve their desired effect. There are several different
-		formats in which audio plug-ins can be distributed (\acrshort{vst}, \acrshort{au} etc.). Most of the
-		commonly used \acrshort{daw}s support plug-ins in one or more of these formats.
-
-		Audio plug-ins provide a good platform to allow producers to provide semantic terms and audio feature
-		information from within their preferred \acrshort{daw}. As part of this research a suite of audio plug-ins
-		which extract this information have been developed. They have been released under the title \acrfull{safe}
-		Plug-ins \footnote{The most recent versions of the \acrshort{safe} plug-ins can be downloaded from
-		\href{http://www.semanticaudio.co.uk/projects/download/} {www.semanticaudio.co.uk/projects/download}.}.
+		standardised formats in which audio plug-ins can be distributed (\acrshort{vst}, \acrshort{au} etc.). Most
+		of the commonly used \acrshort{daw}s support plug-ins in one or more of these formats. Some \acrshort{daw}s
+		(e.g. REAPER \footnote{www.reaper.fm}) provide additional \acrshort{api}s for accessing data about the
+		user's project. These \acrshort{api}s could be accessed from within a plug-in in order to access useful
+		semantic information about the music production process. They are not standardised however, so unique code
+		would have to be written for every \acrshort{daw} from which this information needs to be gathered. 
+		
+		On their own audio plug-ins are able to access the audio data they are used to process as well as any
+		information they prompt the user to enter. This level of access provides a good platform to allow producers
+		to provide semantic terms and audio feature information from within their preferred \acrshort{daw}. As part
+		of this research a suite of audio plug-ins which extract this information have been developed. They have
+		been released under the title \acrfull{safe} Plug-ins \footnote{The most recent versions of the
+		\acrshort{safe} plug-ins can be downloaded from \href{http://www.semanticaudio.co.uk/projects/download/}
+		{www.semanticaudio.co.uk/projects/download}.}.
 
 	\subsection{\acrshort{safe} Plug-Ins}
 	\label{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}
@@ -112,8 +119,12 @@
 			\label{fig:SAFE-Distortion}
 		\end{figure}
 		
-		Upon saving a description, the plug-in will record and analyse five seconds of audio at its inputs and
-		outputs.  When the analysis is completed the results are stored, containing:
+		When adjusting plug-in parameters audio producers typically loop a small section of audio such that they do
+		not have to keep readjusting the play head position. When saving a description, users are asked to move the
+		play head to the start of the region of audio they were listening to when configuring the effect. The
+		plug-in will the record and analyse five seconds of audio at its inputs and outputs. This length of audio
+		was chosen as it is representative of the loop length used when configuring an effect. When the analysis is
+		completed the results are stored, containing:
 
 		\begin{itemize}
 			\item The user's semantic description of the effect's application (entered into the text box seen
