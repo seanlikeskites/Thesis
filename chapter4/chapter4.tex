@@ -1050,7 +1050,8 @@
 		the processed and unprocessed signals. To generate these timbre spaces, the feature spaces are first
 		standardised and then undergo \acrshort{pca}. For every space, the knee of the \acrshort{pca} scree plot
 		lies at five \acrshort{pc}s. The final reduced dimensionality timbre spaces are then constructed from the
-		first five \acrshort{pc}s.
+		first five \acrshort{pc}s, the total variance explained by these \acrshort{pc}s is given in the sections
+		discussing each timbre space.
 
 		These timbre spaces are analysed in various steps. Firstly the audio features which correlate most highly
 		with each \acrshort{pc} are determined. Features which satisfy a correlation criterion of $\abs{r} > 0.7$
@@ -1077,10 +1078,12 @@
 		with a particular term.
 
 		\subsubsection*{Distortion Processed Features}
-			The first three \acrshort{pc}s of the timbre space describing the processed signals produced by the
-			distortion are shown in Figure~\ref{fig:DistortionProcessedPCAs}. The corresponding agreement
-			scores are shown in Table~\ref{tab:DistortionProcessedAgreements}. The three terms with the highest
-			agreement scores (`warm', `fuzz' and `crunch') are of particular interest.
+			The first five \acrshort{pc}s of the of the timbre space describing the processed signals produced
+			by the distortion describe 69\% of the total variance. Preliminary investigation of these revealed
+			no noticeable patterns in \acrshort{pc}s 4 and 5. Accordingly, only the first three \acrshort{pc}s
+			are shown in Figure~\ref{fig:DistortionProcessedPCAs}. The corresponding agreement scores are shown
+			in Table~\ref{tab:DistortionProcessedAgreements}. The three terms with the highest agreement scores
+			(`warm', `fuzz' and `crunch') are of particular interest.
 
 			\begin{figure}[h!]
 				\centering
@@ -1187,11 +1190,13 @@
 			\end{figure}
 
 		\subsubsection*{Distortion Feature Differences}
-			The first three \acrshort{pc}s of the timbre space describing the feature manipulations applied by
-			the distortion are shown in Figure~\ref{fig:DistortionDifferencePCAs}. The corresponding agreement
-			scores are shown in Table~\ref{tab:DistortionDifferenceAgreements}. This space is largely similar
-			to that describing the distortion's processed signals (Figure~\ref{fig:DistortionProcessedPCAs})
-			and similar conclusions can be drawn.
+			The first five \acrshort{pc}s of the timbre space describing the feature manipulations applied by
+			the distortion describe 67\% of the total variance. Again, preliminary investigation showed no
+			patterns in \acrshort{pc}s 4 and 5, meaning only the first three \acrshort{pc}s are shown in
+			Figure~\ref{fig:DistortionDifferencePCAs}. The corresponding agreement scores are shown in
+			Table~\ref{tab:DistortionDifferenceAgreements}. This space is largely similar to that describing
+			the distortion's processed signals (Figure~\ref{fig:DistortionProcessedPCAs}) and similar
+			conclusions can be drawn.
 
 			\begin{figure}[h!]
 				\centering
@@ -1286,10 +1291,11 @@
 			To avoid the large number of instances of the terms `warm' and `bright' from obscuring the other
 			terms, the equaliser timbre spaces have been split across two sets of graphs. One showing the
 			positions of `warm' and `bright' and the other showing the positions of the remaining descriptors.
-			The first three \acrshort{pc}s of the timbre space describing the processed signals produced by the
-			equaliser are shown in Figures \ref{fig:EqualiserBWProcessedPCAs} and
-			\ref{fig:EqualiserProcessedPCAs}. The corresponding agreement scores are shown in
-			Table~\ref{tab:EqualiserProcessedAgreements}.
+			The first five \acrshort{pc}s of the timbre space describing the processed signals produced by the
+			equaliser describe 65\% of the total variance. As with the distortion timbre spaces no discernible
+			patterns were found in \acrshort{pc}s 4 and 5, leading to only the first three being plotted in
+			Figures \ref{fig:EqualiserBWProcessedPCAs} and \ref{fig:EqualiserProcessedPCAs}. The corresponding
+			agreement scores are shown in Table~\ref{tab:EqualiserProcessedAgreements}.
 
 			\begin{figure}[h!]
 				\centering
@@ -1398,11 +1404,12 @@
 			energy.
 
 		\subsubsection*{Equaliser Feature Differences}
-			The first three \acrshort{pc}s of the timbre space describing the feature manipulations applied by
-			the equaliser are shown in Figures \ref{fig:EqualiserBWDifferencePCAs} and
-			\ref{fig:EqualiserDifferencePCAs}. The corresponding agreement scores are shown in
-			Table~\ref{tab:EqualiserDifferenceAgreements}. This space shows more definite patterns than that
-			constructed from the processed feature values.
+			The first five \acrshort{pc}s of the timbre space describing the feature manipulations applied by
+			the equaliser describe 63\% of the total variance. Again, no noticeable patterns were found in
+			\acrshort{pc}s 4 and 5 so only the first three are shown in Figures
+			\ref{fig:EqualiserBWDifferencePCAs} and \ref{fig:EqualiserDifferencePCAs}. The corresponding
+			agreement scores are shown in Table~\ref{tab:EqualiserDifferenceAgreements}. This space shows more
+			definite patterns than that constructed from the processed feature values.
 
 			\begin{figure}[h!]
 				\centering
