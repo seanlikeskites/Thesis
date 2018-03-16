@@ -1,6 +1,6 @@
 CHAPTERS = chapter1.pdf chapter2.pdf chapter3.pdf chapter4.pdf chapter5.pdf chapter6.pdf chapter7.pdf chapter8.pdf
 
-all: chapters combined $(CHAPTERS) story contributions proofs
+all: chapters combined $(CHAPTERS) story contributions proofs revisions
 
 chapters: combined $(CHAPTERS)
 
@@ -43,6 +43,15 @@ proofs.pdf: proofs.tex
 	@echo \*\* Building $@
 	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
 	@pdflatex -interaction=batchmode proofs.tex
+	@echo
+
+revisions: Revisions.pdf
+
+Revisions.pdf: Revisions.tex
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@echo \*\* Building $@
+	@echo \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+	@pdflatex -interaction=batchmode Revisions.tex
 	@echo
 
 .SECONDEXPANSION:
