@@ -191,24 +191,38 @@
 
 \section{Further Work}
 \label{sec:Conclusion-FurtherWork}
-	The shortcomings highlighted in the previous section provide several directions for continued work in this area.
-	Firstly, refining the approach taken to collect timbral data as part of the music production workflow could lead to
-	a higher quality dataset from which to make conclusions. This might be achieved through altering the interface such
-	that users are asked to rate how well their description applies to the timbral transform they have used. This opens
-	up new directions in which the data can be analysed, investigating how the perception of a particular descriptor can
-	be altered. Further options for analysis can be opened up by making it a requirement to enter instrument and genre
-	metadata, allowing the use of terms across application domains to be investigated. A study conducted by
-	\citet{stasis2017audio} had participants use web versions of the \acrshort{safe} plug-ins to process a predefined
-	set of audio tracks, removing the need for users to enter the instrument and genre metadata.
+	There is a large scope for additional research continuing from the work presented in this thesis. In
+	Chapter~\ref{chap:FeatureControl} methods by which several different audio features can be controlled were proposed.
+	Only two of these, spectral centroid and spectral irregularity, were employed in
+	Chapter~\ref{chap:PerceptualExperiments} to create semantically controlled timbral effects. With more data
+	collection, timbral descriptors could be uncovered which correlate with other audio features manipulated in
+	Chapter~\ref{chap:FeatureControl}. The techniques developed in this thesis could then be used to construct effects
+	which provide control over those aspects of timbre.
 
-	As well as the equalisation and distortion data used in this thesis, the current \acrshort{safe} dataset includes
-	information on the application of compression and reverberation. The same approach as taken in this work could be
-	applied to that data, producing semantically controlled equalisation, compression and reverberation effects. As well
-	as extending the research to new classes of audio effect, it can also be extended to cover different timbral
-	descriptors. The \acrshort{safe} dataset identifies several terms that are used to describe timbre, but were not
-	investigated fully in this work due to a lack of sufficient instances of transforms labelled with them. Specific
-	experiments could be undertaken in which the \acrshort{safe} plug-ins are used to gather data about these
-	descriptors, as done for warm and bright by \citet{stasis2015a}.
+	The shortcomings highlighted in the previous section provide several other directions for additional work in this
+	area. Firstly, the methodology of Chapter~\ref{chap:ExcitationEvaluation} could be extended to examine the
+	possibilities of using nonlinear processing techniques to implement perceptual control of timbre for non-tonal and
+	polyphonic audio sources. This will require the development of systems which have predictable effects on these
+	classes of signals and then following the process used in the rest of this thesis in the generation of new audio
+	effects.
+	
+	Secondly, refining the approach taken to collect timbral data as part of the music production workflow could
+	lead to a higher quality dataset from which to make conclusions. This might be achieved through altering the
+	interface such that users are asked to rate how well their description applies to the timbral transform they have
+	used. This opens up new directions in which the data can be analysed, investigating how the perception of a
+	particular descriptor can be altered. Further options for analysis can be opened up by making it a requirement to
+	enter instrument and genre metadata, allowing the use of terms across application domains to be investigated. A study
+	conducted by \citet{stasis2017audio} had participants use web versions of the \acrshort{safe} plug-ins to process a
+	predefined set of audio tracks, removing the need for users to enter the instrument and genre metadata.
+
+	This work only used the equalisation and distortion data collected by the \acrshort{safe} project. The current
+	\acrshort{safe} dataset also includes information on the application of compression and reverberation. The same
+	approach as taken in this work could be applied to that data, producing semantically controlled equalisation,
+	compression and reverberation effects. As well as extending the research to new classes of audio effect, it can also
+	be extended to cover different timbral descriptors. The \acrshort{safe} dataset identifies several terms that are
+	used to describe timbre, but were not investigated fully in this work due to a lack of sufficient instances of
+	transforms labelled with them. Specific experiments could be undertaken in which the \acrshort{safe} plug-ins are
+	used to gather data about these descriptors, as done for warm and bright by \citet{stasis2015a}.
 
 	In place of improving the quality of the \acrshort{safe} dataset by having users provide instrument and genre
 	metadata, this information could be filled in using machine learning techniques. This would involve the use of
