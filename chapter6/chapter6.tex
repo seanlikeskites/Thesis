@@ -673,46 +673,54 @@
 	features, defining systems whereby a single control parameter is mapped to the parameters of a harmonic excitation
 	system in order to change the value of an audio feature.
 
-	The features parameterised in this section were selected based on the analysis of harmonic excitation algorithms in
-	Chapter~\ref{chap:ExcitationEvaluation} and the properties of the features themselves. The harmonic excitation
-	algorithms discussed provide the most control over spectral properties of signals, giving few options for temporal
-	manipulations. As such, only spectral audio features will be considered in this section. Of these, only those which
-	can be manipulated by introducing of a band of spectral energy or through individual control of the first nine
-	harmonics are parameterised. This is due to the limitations of the systems developed in
-	Section~\ref{sec:FeatureControl-Systems}, control of more complex features requires different processing
-	techniques. For	example, control of the \acrshort{mfccs} involves the manipulation of several frequency bands, a
-	task better suited to an equalisation system. The spectral features parameterised in this section are the spectral
-	moments (Section~\ref{sec:FeatureControl-Parameterisation-SpectralMoments}), spectral irregularity
-	(Section~\ref{sec:FeatureControl-Parameterisation-Irregularity}), spectral flatness
-	(Section~\ref{sec:FeatureControl-Parameterisation-Flatness}), spectral slope
-	(Section~\ref{sec:FeatureControl-Parameterisation-Slope}), tristimulus
-	(Section~\ref{sec:FeatureControl-Parameterisation-Tristimulus}), odd to even harmonic ratio
-	(Section~\ref{sec:FeatureControl-Parameterisation-HarmonicParityRatio}) and inharmonicity
-	(Section~\ref{sec:FeatureControl-Parameterisation-Inharmonicity}). Where previous studies have been conducted in
-	which a particular feature is manipulated, the techniques used are discussed.
+	\subsection{Parameterisation Methodology}
+	\label{sec:FeatureControl-Parameterisation-Methodology}
+		The features parameterised in this section were selected based on the analysis of harmonic excitation algorithms in
+		Chapter~\ref{chap:ExcitationEvaluation} and the properties of the features themselves. The harmonic excitation
+		algorithms discussed provide the most control over spectral properties of signals, giving few options for temporal
+		manipulations. As such, only spectral audio features will be considered in this section. Of these, only those which
+		can be manipulated by introducing of a band of spectral energy or through individual control of the first nine
+		harmonics are parameterised. This is due to the limitations of the systems developed in
+		Section~\ref{sec:FeatureControl-Systems}, control of more complex features requires different processing
+		techniques. For	example, control of the \acrshort{mfccs} involves the manipulation of several frequency bands, a
+		task better suited to an equalisation system. The spectral features parameterised in this section are the spectral
+		moments (Section~\ref{sec:FeatureControl-Parameterisation-SpectralMoments}), spectral irregularity
+		(Section~\ref{sec:FeatureControl-Parameterisation-Irregularity}), spectral flatness
+		(Section~\ref{sec:FeatureControl-Parameterisation-Flatness}), spectral slope
+		(Section~\ref{sec:FeatureControl-Parameterisation-Slope}), tristimulus
+		(Section~\ref{sec:FeatureControl-Parameterisation-Tristimulus}), odd to even harmonic ratio
+		(Section~\ref{sec:FeatureControl-Parameterisation-HarmonicParityRatio}) and inharmonicity
+		(Section~\ref{sec:FeatureControl-Parameterisation-Inharmonicity}). Where previous studies have been conducted in
+		which a particular feature is manipulated, the techniques used are discussed.
 
-	Assuming perfect detection of the $f_{0}$ and perfect filters, the systems developed in
-	Section~\ref{sec:FeatureControl-Systems} will provide analogous manipulations for all monophonic, tonal input
-	signals. For example, the system in Figure~\ref{fig:HarmonicGenerationSystem} will always generate a harmonic with
-	the same amplitude relationship to the $f_{0}$ of the input. In actual implementations the inaccuracies in $f_{0}$
-	tracking and the properties of the input signal and filters used will affect how the system operates. To examine
-	these effects, each of the methods proposed for manipulating an audio feature in this section are tested on four
-	monophonic, harmonically structured audio signals. These signals constitute a bowed cello, a clarinet, an additive
-	synthesiser and a piano respectively. To investigate only the effects of filter implementations and the feature
-	manipulation methods, the $f_{0}$ of each of these signals is calculated accurately before testing and thus the
-	$f_{0}$ tracking elements of the systems can be eliminated.
+		For each of these features, spectral manipulations are identified which will allow the value of the feature
+		to be altered predictably. This manipulation is designed to have a single parameter, the features of the
+		output signal being dependant on the value of this parameter and the features of the input signal.  Formulae
+		are then derived giving the value of the feature in the output given the features of the input and the
+		parameter value. It is then discussed how this manipulation and parameterisation can be implemented by
+		specialising the generic systems developed in Secion~\ref{sec:FeatureControl-Systems}. Assuming perfect
+		detection of the $f_{0}$ and perfect filters, these systems will provide analogous manipulations for all
+		monophonic, tonal input signals. For example, the system in Figure~\ref{fig:HarmonicGenerationSystem} will
+		always generate a harmonic with the same amplitude relationship to the $f_{0}$ of the input. In actual
+		implementations the inaccuracies in $f_{0}$ tracking and the properties of the input signal and filters used
+		will affect how the system operates. To examine these effects, each of the methods proposed for manipulating
+		an audio feature in this section are tested on four monophonic, harmonically structured audio signals. These
+		signals constitute a bowed cello, a clarinet, an additive synthesiser and a piano respectively. To
+		investigate only the effects of filter implementations and the feature manipulation methods, the $f_{0}$ of
+		each of these signals is calculated accurately before testing and thus the $f_{0}$ tracking elements of the
+		systems can be eliminated.
 
-	The four test signals were selected to represent the best, average and worst cases for the spectral properties of
-	the input signal. The cello and clarinet signals both represent typical recorded harmonic sounds: both are composed
-	of harmonic partials and noise. The fundamental difference between the two is that the cello signal contains energy
-	at all harmonics while the clarinet signal has the majority of its energy in the odd order harmonics. The
-	synthesised sound has almost perfectly harmonic partials and zero noise energy. This signal is included to examine
-	how the excitation systems perform given the ideal case of a harmonic signal with zero noise. The piano signal is
-	designed to pose a problem to the systems discussed in Section~\ref{sec:FeatureControl-Systems}: the $f_{0}$ is
-	physically damped through alteration to the instrument. This reduces the amplitude of the $f_{0}$ compared to the
-	remaining harmonic partials, as well as changing the shape of its amplitude envelope. As the systems all rely on
-	isolating the $f_{0}$ before generating harmonics, this is likely to cause inaccuracies. This signal is included to
-	examine the extent to which the systems are affected by these problems.
+		The four test signals were selected to represent the best, average and worst cases for the spectral properties of
+		the input signal. The cello and clarinet signals both represent typical recorded harmonic sounds: both are composed
+		of harmonic partials and noise. The fundamental difference between the two is that the cello signal contains energy
+		at all harmonics while the clarinet signal has the majority of its energy in the odd order harmonics. The
+		synthesised sound has almost perfectly harmonic partials and zero noise energy. This signal is included to examine
+		how the excitation systems perform given the ideal case of a harmonic signal with zero noise. The piano signal is
+		designed to pose a problem to the systems discussed in Section~\ref{sec:FeatureControl-Systems}: the $f_{0}$ is
+		physically damped through alteration to the instrument. This reduces the amplitude of the $f_{0}$ compared to the
+		remaining harmonic partials, as well as changing the shape of its amplitude envelope. As the systems all rely on
+		isolating the $f_{0}$ before generating harmonics, this is likely to cause inaccuracies. This signal is included to
+		examine the extent to which the systems are affected by these problems.
 
 	\subsection{Parameterisation Method Summary}
 		The following subsections each discuss methods by which a single audio feature can be parameterised.
