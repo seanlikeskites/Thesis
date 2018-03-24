@@ -10,13 +10,19 @@
 	which effect to use based on the names of its parameters. Additionally, when using the effect, they are able to
 	more easily make creative decisions without having to translate them to traditional control parameter settings.
 
-	This chapter presents two experiments that evaluate the performance of timbral control systems proposed in this
-	work. The first experiment (Section~\ref{sec:PerceptualExperiments-Reconstruction}) compares the abilities of
-	different excitation methods in generating individual harmonics to reconstruct degraded signals. The second
-	experiment (Section~\ref{sec:PerceptualExperiments-SemanticControl}) uses the results discussed in
-	Chapter~\ref{chap:TimbreEvaluation} to inform the design of harmonic excitation effects which provide control over
-	a particular perceptual parameter. In both experiments the performance of the systems is evaluated both
-	objectively, using performance metrics, and subjectively, through perceptual listening tests.
+	This chapter presents two experiments that evaluate the performance of timbral control systems proposed in this work.
+	The first experiment (Section~\ref{sec:PerceptualExperiments-Reconstruction}) compares the abilities of different
+	excitation methods in generating individual harmonics to reconstruct degraded signals. Three different systems are
+	used to reconstruct signals which have been degraded by the removal of energy at specific harmonics. These
+	reconstructed signals are then evaluated, both objectively and subjectively, in terms of how perceptually similar
+	they are to the original, non-degraded signal. The second experiment
+	(Section~\ref{sec:PerceptualExperiments-SemanticControl}) uses the results discussed in
+	Chapter~\ref{chap:TimbreEvaluation} to inform the design of harmonic excitation effects which provide control over a
+	particular perceptual parameter. The performance of these effects is first evaluated objectively, through comparison
+	with the timbre spaces constructed in Section~\ref{sec:TimbreEvaluation-Analysis-TimbreSpaces}. Then subjective
+	evaluation is carried out by asking listening test participants to describe the timbral manipulations applied by the
+	effect and comparing their responses to the descriptor clustering performed in
+	Section~\ref{sec:TimbreEvaluation-Analysis-TermClustering}.
 
 \section{Reconstruction of Individual Harmonics}
 \label{sec:PerceptualExperiments-Reconstruction}
@@ -53,25 +59,44 @@
 		order of distortion introduced when the input contains more than one frequency component. In this section
 		three methods of generating individual harmonics are assessed to determine the audibility of these errors.
 
-		The first method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated
-		in Figure~\ref{fig:Synthesise}. The \acrshort{stft} of the input signal is calculated and used to generate
-		an amplitude envelope for the input signal's $f_{0}$. This amplitude envelope is then used in the synthesis
-		of a sinusoid at the frequency of the desired harmonic.
+		The first method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated in
+		Figure~\ref{fig:Synthesise}. First, the \acrshort{stft} of the input signal is calculated. The amplitude of
+		the $f_{0}$ in each frame of this \acrshort{stft} is then found and these values interpolated to generate an
+		amplitude envelope for the input signal's $f_{0}$. This amplitude envelope is then used in the synthesis of a
+		sinusoid at the frequency of the desired harmonic.
 
 		\begin{figure}[h!]
 			\centering
 			\begin{tikzpicture}
-				\node (In) at (-0.1, 1) {$x[n]$};
+				\node (In) at (-1, 1) {$x[n]$};
+				\coordinate (InMid) at (0, 1);
+				\draw (In) -- (InMid);
+
+				\coordinate (Side) at (0, 2.5);
+				\draw (InMid) -- (Side);
+
 				\node (STFT) [draw] at (1.25, 1) {\acrshort{stft}};
-				\draw (In) -- (STFT);
+				\draw (InMid) -- (STFT);
+
+				\node (F0) [draw] at (5.63, 2.5) {$f_{0}$ Tracker};
+				\draw (Side) -- (F0);
+
+				\coordinate (F0Node) at (5.63, 1.75);
+				\draw (F0) -- (F0Node);
 
 				\node (Amp) [draw] at (3.76, 1) {Amplitude Envelope};
+				\coordinate (AmpNode) at (3.76, 1.75);
+				\draw(F0Node) -- (AmpNode);
+				\draw(AmpNode) -- (Amp);
 				\draw (STFT) -- (Amp);
 
 				\node (Synth) [draw] at (7.5, 1) {Sine Wave Synthesiser};
+				\coordinate (SynthNode) at (7.5, 1.75);
+				\draw(F0Node) -- (SynthNode);
+				\draw(SynthNode) -- (Synth);
 				\draw (Amp) -- (Synth);
 
-				\node (Out) at (10.05, 1) {$h_{i}[n]$};
+				\node (Out) at (10.5, 1) {$h_{i}[n]$};
 				\draw (Synth) -- (Out);
 			\end{tikzpicture}
 			\caption{The system used to generate new harmonics through synthesis.}
@@ -87,15 +112,24 @@
 		\begin{figure}[h!]
 			\centering
 			\begin{tikzpicture}
-				\node (In) at (1.3, 1) {$x[n]$};
+				\node (In) at (0, 1) {$x[n]$};
+				\coordinate (InMid) at (1, 1);
+				\draw (In) -- (InMid);
+
+				\coordinate (Side) at (1, 2);
+				\draw (InMid) -- (Side);
+
+				\node (F0) [draw] at (2.5, 2) {$f_{0}$ Tracker};
 				\node (Filter) [draw] at (2.5, 1) {BPF};
-				\draw (In) -- (Filter);
+				\draw (InMid) -- (Filter);
+				\draw (Side) -- (F0);
+				\draw (F0) -- (Filter);
 
-				\node (Exciter) [draw] at (4.75, 1) {Frequency Shifter};
-				\draw (Filter) -- (Exciter);
+				\node (Shifter) [draw] at (5, 1) {Frequency Shifter};
+				\draw (Filter) -- (Shifter);
 
-				\node (Out) at (6.95, 1) {$h_{i}[n]$};
-				\draw (Exciter) -- (Out);
+				\node (Out) at (7.35, 1) {$h_{i}[n]$};
+				\draw (Shifter) -- (Out);
 			\end{tikzpicture}
 			\caption{The system used to generate new harmonics using the \acrshort{ssba} and \acrshort{iap}
 				 techniques.}
