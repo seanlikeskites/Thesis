@@ -179,11 +179,14 @@
 		\cite{zacharakis2011an} use a different approach in which warmth and brightness are treated as orthogonal
 		dimensions and can be manipulated individually.
 
-		In the proposed systems a greater amount of control over the effects of nonlinear algorithms is attained by
-		processing the isolated $f_{0}$ of the input signal. This restricts the systems to only operate on
-		monophonic tonal sounds. Nonlinear systems will also have timbral effects on polyphonic and non-tonal
-		signals. In this application the term harmonic excitation no longer applies as the harmonic content of the
-		input signal is not defined. Further investigation is needed to develop intuitive timbral effects for these
+		Another limitation of the proposed systems is that they rely on making the input sinusoidal in order to make
+		the effects of the nonlinearities more predictable. This is achieved through tracking and isolating the
+		$f_{0}$ of the input signal. As such the systems are restricted to only operate on signals which have a
+		single $f_{0}$ (monophonic tonal signals). Application of the systems to signals without a single well
+		defined $f_{0}$ (polyphonic and non-tonal signals) may cause unpredictable results, resulting in unintuitive
+		timbral control. Additionally, the concept of ``harmonic excitation'' (addition of new harmonic energy) does
+		not apply to these classes of signals as they do not have harmonic structures. Further investigation is
+		needed to develop nonlinear processing algorithms which will provide intuitive timbral control for these
 		types of signals.
 
 \section{Further Work}
