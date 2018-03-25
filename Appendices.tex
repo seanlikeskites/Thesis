@@ -255,6 +255,53 @@
 		\end{gather}
 
 \chapter{Software Resources}
+	As part of the work undertaken for this thesis several pieces of software were developed. This appendix lists these
+	and provides links where they can be accessed where available.
+	
+	\section{The \acrshort{safe} Project Codebase}
+		The largest software element developed for this thesis was the suite of \acrshort{safe} plug-ins, developed
+		in C++ using the JUCE framework. This code implements audio processing algorithms as well as the collection
+		of semantic information (audio features and metadata) and the serialisation of that data as XML. Source code
+		for the plug-ins can be found on GitHub
+		(\href{https://github.com/semanticaudio/SAFE}{https://github.com/semanticaudio/SAFE}). The underlying code of
+		these was also packaged into a module for the JUCE framework, easing the development of new plug-ins with the
+		\acrshort{safe} functionality
+		(\href{https://github.com/seanlikeskites/SAFEJuceModule}{https://github.com/seanlikeskites/SAFEJuceModule}).
+
+		The \acrshort{safe} plug-ins send all the semantic information they collect to a web server via HTTP
+		requests. The back end code to handle these requests was written in PHP and parses the plug-in data for
+		storage in a MySQL database.
+
+		For the analysis of the \acrshort{safe} data, a package for the statistical programming language R was
+		developed. This package interfaces with the \acrshort{safe} database and provides functions for some of the
+		analysis carried out in Chapter~\ref{chap:TimbreEvaluation}. This code is not publicly available as it
+		contains details which would compromise the security of the \acrshort{safe} database. R code for a large
+		proportion of the analysis carried out in Chapter~\ref{chap:TimbreEvaluation} can be found on GitHub
+		(\href{https://github.com/seanlikeskites/Thesis/tree/master/RPlots/SAFEAnalysis}
+		{https://github.com/seanlikeskites/Thesis/tree/master/RPlots/SAFEAnalysis}).
+
+	\section{Harmonic Excitation Evaluation and Development Codebase}
+		The evaluation and development of harmonic excitation systems in Chapters~\ref{chap:ExcitationEvaluation} and
+		\ref{chap:FeatureControl} was all undertaken in GNU Octave. Each of the harmonic excitation methods discussed
+		was implemented as well as feature extraction code to examine their effects on low level audio features. The
+		source code for this can be found on Bitbucket
+		(\href{https://bitbucket.org/seanlikeskites/HarmonicExcitationOctave}
+		{https://bitbucket.org/seanlikeskites/HarmonicExcitationOctave}). The plots for this chapter were also
+		initially produced using GNU Octave but eventually the data was imported into R to make the plotting
+		consistent throughout the thesis.
+
+	\section{Perceptual Listening Test Codebase}
+		Additional software was also developed for the perceptual listening tests performed in
+		Chapter~\ref{chap:PerceptualExperiments}. The \acrshort{mushra} test discussed in
+		Section~\ref{sec:PerceptualExperiments-Reconstruction} was undertaken using MATLAB. This involved the
+		development of a framework for performing \acrshort{mushra} tests in MATLAB, source code for which is
+		available on SourceForge
+		(\href{https://sourceforge.net/projects/matlabmushra}{https://sourceforge.net/projects/matlabmushra}).
+
+		The semantically controlled plug-ins developed and evaluated in
+		Section~\ref{sec:PerceptualExperiments-SemanticControl} were developed in C++ using the JUCE framework. These
+		plug-ins reused the \acrshort{safe} codebase allowing for them to perform the feature analysis used to
+		evaluate their performance.
 
 \chapter{Spectral Manipulation System Design Notes}
 
