@@ -10,18 +10,18 @@
 	which effect to use based on the names of its parameters. Additionally, when using the effect, they are able to
 	more easily make creative decisions without having to translate them to traditional control parameter settings.
 
-	This chapter presents two experiments that evaluate the performance of timbral control systems proposed in this work.
-	The first experiment (Section~\ref{sec:PerceptualExperiments-Reconstruction}) compares the abilities of different
-	excitation methods in generating individual harmonics to reconstruct degraded signals. Three different systems are
-	used to reconstruct signals which have been degraded by the removal of energy at specific harmonics. These
-	reconstructed signals are then evaluated, both objectively and subjectively, in terms of how perceptually similar
-	they are to the original, non-degraded signal. The second experiment
+	This chapter presents two experiments that evaluate the performance of timbral control systems proposed in this
+	work. The first experiment (Section~\ref{sec:PerceptualExperiments-Reconstruction}) compares the abilities of
+	different excitation methods in generating individual harmonics to reconstruct degraded signals. Three different
+	systems are used to reconstruct signals which have been degraded by the removal of energy at specific harmonics.
+	These reconstructed signals are then evaluated, both objectively and subjectively, in terms of how perceptually
+	similar they are to the original, non-degraded signal. The second experiment
 	(Section~\ref{sec:PerceptualExperiments-SemanticControl}) uses the results discussed in
-	Chapter~\ref{chap:TimbreEvaluation} to inform the design of harmonic excitation effects which provide control over a
-	particular perceptual parameter. The performance of these effects is first evaluated objectively, through comparison
-	with the timbre spaces constructed in Section~\ref{sec:TimbreEvaluation-Analysis-TimbreSpaces}. Then subjective
-	evaluation is carried out by asking listening test participants to describe the timbral manipulations applied by the
-	effect and comparing their responses to the descriptor clustering performed in
+	Chapter~\ref{chap:TimbreEvaluation} to inform the design of harmonic excitation effects which provide control over
+	a particular perceptual parameter. The performance of these effects is first evaluated objectively, through
+	comparison with the timbre spaces constructed in Section~\ref{sec:TimbreEvaluation-Analysis-TimbreSpaces}. Then
+	subjective evaluation is carried out by asking listening test participants to describe the timbral manipulations
+	applied by the effect and comparing their responses to the descriptor clustering performed in
 	Section~\ref{sec:TimbreEvaluation-Analysis-TermClustering}.
 
 \section{Reconstruction of Individual Harmonics}
@@ -59,11 +59,11 @@
 		order of distortion introduced when the input contains more than one frequency component. In this section
 		three methods of generating individual harmonics are assessed to determine the audibility of these errors.
 
-		The first method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated in
-		Figure~\ref{fig:Synthesise}. First, the \acrshort{stft} of the input signal is calculated. The amplitude of
-		the $f_{0}$ in each frame of this \acrshort{stft} is then found and these values interpolated to generate an
-		amplitude envelope for the input signal's $f_{0}$. This amplitude envelope is then used in the synthesis of a
-		sinusoid at the frequency of the desired harmonic.
+		The first method of reconstructing the harmonics is based on synthesis of new sinusoids and is illustrated
+		in Figure~\ref{fig:Synthesise}. First, the \acrshort{stft} of the input signal is calculated. The amplitude
+		of the $f_{0}$ in each frame of this \acrshort{stft} is then found and these values interpolated to
+		generate an amplitude envelope for the input signal's $f_{0}$. This amplitude envelope is then used in the
+		synthesis of a sinusoid at the frequency of the desired harmonic.
 
 		\begin{figure}[h!]
 			\centering
@@ -1347,19 +1347,19 @@
 			The heat map in Figure~\ref{fig:HarshConfusion} shows that `warm' was the most commonly used term
 			when describing the effect of the warmth / brightness effect with its parameter set to `warm',
 			followed by `clear', `box' and `mud'. These descriptors lie across all three of the clusters
-			identified in Figure~\ref{fig:CombinedDifferenceClusters}. By summing the values of cells in the heat
-			map one can calculate the percentage of the time participants used a descriptor in the same cluster
-			as that intended. To calculate this for `warm' we sum all the cells in the `warm' row of
+			identified in Figure~\ref{fig:CombinedDifferenceClusters}. By summing the values of cells in the
+			heat map one can calculate the percentage of the time participants used a descriptor in the same
+			cluster as that intended. To calculate this for `warm' we sum all the cells in the `warm' row of
 			Figure~\ref{fig:HarshConfusion} which represent the use of a descriptor in the `warmth' cluster
-			discussed in Section~\ref{sec:PerceptualExperiments-SemanticControl-Results} . Summing these cells we
-			find that participants only used descriptors in the same cluster as `warm' 54\% of the time. Thus the
-			mean cophenetic distances for the `warm' transform in Figure~\ref{fig:HarshDiffCoph} do not represent
-			participants using descriptors from the correct cluster. The failure of the effect to elicit terms
-			related to warmth from participants may indicate that warmth is not only defined by a shift in
-			spectral energy towards lower frequencies.  Examining Figure~\ref{fig:HarshProcJeff} it is seen that,
-			for approximately half the test signals, the processed signals are significantly distant from the
-			region described as `warm' in the processed feature space constructed from the \acrshort{safe}
-			dataset.
+			discussed in Section~\ref{sec:PerceptualExperiments-SemanticControl-Results} . Summing these cells
+			we find that participants only used descriptors in the same cluster as `warm' 54\% of the time.
+			Thus the mean cophenetic distances for the `warm' transform in Figure~\ref{fig:HarshDiffCoph} do
+			not represent participants using descriptors from the correct cluster. The failure of the effect to
+			elicit terms related to warmth from participants may indicate that warmth is not only defined by a
+			shift in spectral energy towards lower frequencies.  Examining Figure~\ref{fig:HarshProcJeff} it is
+			seen that, for approximately half the test signals, the processed signals are significantly distant
+			from the region described as `warm' in the processed feature space constructed from the
+			\acrshort{safe} dataset.
 			
 			Considering only the changes in audio features described by transforms, the terms `bright' and
 			`harsh' seem to have different definitions depending on the type of processing applied, as seen in
