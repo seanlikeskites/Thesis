@@ -5,14 +5,83 @@
 \section{Motivation}
 \label{sec:Introduction-Motivation}
 % Genuine Waffle (if those who disagree have uncovered this comment I have no regrets)
-	As part of the music production process, audio effects are used to creatively shape the timbre of recorded audio
-	signals. This allows producers to create timbres which are not possible to achieve through only the recording of
-	acoustic instruments. Traditional audio effects evolved from the use of analogue signal processing systems
-	designed to address the technical requirements of broadcast or recording. As such, these effects have control
-	parameters which relate directly to specific technical properties of an audio signal: a traditional equaliser has
-	parameters for selecting specific frequency regions, traditional dynamics processors (compressors and limiters) have
-	parameters relating to signal amplitudes. These parameters are effective when correcting technical issues with a
-	signal but do not allow for intuitive creative manipulation of timbre.
+	The process of music production can be split into four main stages (recording, editing, mixing and mastering) as
+	shown in Figure~\ref{fig:MusicProduction}. In the recording stage, acoustic and digital sound sources are captured
+	resulting in a set of recorded audio signals (often called stems). These are then edited to correct any mistakes
+	made during the recording and to arrange them in time, forming the musical structure of the finished piece. The
+	signals are then processed further and mixed together to produce the final product.
+
+	\begin{figure}[h!]
+		\centering
+		\begin{tikzpicture}
+			\node (Sources) [align=center] at (0, 0) {Sound\\Sources};
+			\node (Mic1) [draw] at (2, 1.5) {Microphone};
+			\node (Mic2) [draw] at (2, 0.5) {Microphone};
+			\node (Mic3) [draw] at (2, -0.5) {Microphone};
+			\node (Mic4) [draw] at (2, -1.5) {Microphone};
+
+			\draw [dots] (3.2, 3) -- (3.2, -2);
+			\node (Recording) at (2, 2.5) {\bf{Recording}};
+
+			\node (Edit1) [draw] at (4.5, 1.5) {Editing Tools};
+			\node (Edit2) [draw] at (4.5, 0.5) {Editing Tools};
+			\node (Edit3) [draw] at (4.5, -0.5) {Editing Tools};
+			\node (Edit4) [draw] at (4.5, -1.5) {Editing Tools};
+
+			\draw (Mic1) -- (Edit1);
+			\draw (Mic2) -- (Edit2);
+			\draw (Mic3) -- (Edit3);
+			\draw (Mic4) -- (Edit4);
+
+			\draw [dots] (5.8, 3) -- (5.8, -2);
+			\node (Editing) at (4.5, 2.5) {\bf{Editing}};
+
+			\node (Proc1) [draw] at (6.9, 1.5) {Processing};
+			\node (Proc2) [draw] at (6.9, 0.5) {Processing};
+			\node (Proc3) [draw] at (6.9, -0.5) {Processing};
+			\node (Proc4) [draw] at (6.9, -1.5) {Processing};
+
+			\draw (Edit1) -- (Proc1);
+			\draw (Edit2) -- (Proc2);
+			\draw (Edit3) -- (Proc3);
+			\draw (Edit4) -- (Proc4);
+
+			\node (Mixer) at (9.1, 0) {Mixer};
+			\draw (8.2, 1.8) rectangle (10, -1.8);
+			\coordinate (Mix1) at (8.2, 1.5);
+			\coordinate (Mix2) at (8.2, 0.5);
+			\coordinate (Mix3) at (8.2, -0.5);
+			\coordinate (Mix4) at (8.2, -1.5);
+
+			\node (Mixing) at (8, 2.5) {\bf{Mixing}};
+
+			\draw (Proc1) -- (Mix1);
+			\draw (Proc2) -- (Mix2);
+			\draw (Proc3) -- (Mix3);
+			\draw (Proc4) -- (Mix4);
+
+			\draw [dots] (10.2, 3) -- (10.2, -2);
+			\node (Mastering) at (11.3, 2.5) {\bf{Mastering}};
+
+			\node (Master) [draw] at (11.3, 0) {Processing};
+			\draw (10, 0) -- (Master);
+
+			\node (Mix) [align=center] at (13.2, 0) {Finished\\Product};
+			\draw (Master) -- (Mix);
+		\end{tikzpicture}
+		\caption{A block diagram of the music production process.}
+		\label{fig:MusicProduction}
+	\end{figure}
+
+	During the mixing and mastering stages, audio effects are used to creatively shape the timbre of recorded audio
+	signals. This is represented by the blocks labelled ``Processing'' in Figure~\ref{fig:MusicProduction}. This allows
+	producers to create timbres which are not possible to achieve through only the recording of acoustic instruments.
+	Traditional audio effects evolved from the use of analogue signal processing systems designed to address the
+	technical requirements of broadcast or recording. As such, these effects have control parameters which relate
+	directly to specific technical properties of an audio signal: a traditional equaliser has parameters for selecting
+	specific frequency regions, traditional dynamics processors (compressors and limiters) have parameters relating to
+	signal amplitudes. These parameters are effective when correcting technical issues with a signal but do not allow
+	for intuitive creative manipulation of timbre.
 
 	The application of audio effects for creative purposes is typically motivated by the perceived timbre of the audio.
 	Creative decisions are often expressed using language which does not refer to the mathematical properties of the
