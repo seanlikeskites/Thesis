@@ -1,16 +1,16 @@
 library(SAFER)
 source("featureNames.r")
 
-getFeatures <- function(con, plugin, features)
+getFeatures <- function(con, plugin, features, num)
 {
 	descriptors <- dbGetQuery(con, paste("SELECT Descriptors FROM ", plugin,
-					     "UserData WHERE ID != 1121 ORDER BY ID;", sep=""))[,1]
+					     "UserData WHERE ID != 1121 AND ID < ", num, " ORDER BY ID;", sep=""))[,1]
 	descriptors <- trimws(tolower(descriptors))
 	unproc <- as.matrix(dbGetQuery(con, paste("SELECT ", features, " FROM ", plugin, 
-					          "AudioFeatureData WHERE ID != 1121 AND SignalState = 'Unprocessed' ",
+					          "AudioFeatureData WHERE ID != 1121 AND ID < ", num, " AND SignalState = 'Unprocessed' ",
 					          "GROUP BY ID ORDER BY ID;", sep="")))
 	proc <- as.matrix(dbGetQuery(con, paste("SELECT ", features, " FROM ", plugin, 
-				                "AudioFeatureData WHERE ID != 1121 AND SignalState = 'Processed' ",
+				                "AudioFeatureData WHERE ID != 1121 AND ID < ", num, " AND SignalState = 'Processed' ",
 				                "GROUP BY ID ORDER BY ID;", sep="")))
 	diff <- proc - unproc
 
@@ -36,8 +36,8 @@ featureList <- getFeatureList(con)
 featureString <- paste("AVG(", paste(featureList, collapse="), AVG("), ")", sep="")
 
 # get the feature values
-dist <- getFeatures(con, "SAFEDistortion", featureString)
-eq <- getFeatures(con, "SAFEEqualiser", featureString)
+dist <- getFeatures(con, "SAFEDistortion", featureString, 310)
+eq <- getFeatures(con, "SAFEEqualiser", featureString, 1709)
 
 # disconnect from the database
 dbDisconnect(con)

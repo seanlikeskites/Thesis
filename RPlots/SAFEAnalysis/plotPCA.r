@@ -26,10 +26,10 @@ plotIndividualPCA <- function(points, dims, legendPos, border=c(0, 0, 0, 0), col
 	ys <- points[,dims[2]]
 
 	xRange <- diff(range(xs))
-	xLimits <- c(min(xs) - border[1] * xRange, max(xs) + border[2] * xRange)
+	xLimits <- c(border[1], border[2])
 
 	yRange <- diff(range(ys))
-	yLimits <- c(min(ys) - border[3] * yRange, max(ys) + border[4] * yRange)
+	yLimits <- c(border[3], border[4])
 
 	xLabel <- paste("PC ", dims[1], sep="")
 	yLabel <- paste("PC ", dims[2], sep="")
@@ -75,10 +75,10 @@ plotCentroidBiplot <- function(PCA, dims, desc, var, border=c(0.15, 0.15, 0.15, 
 	yLabel <- paste("PC ", dims[2], sep="")
 
 	xRange <- diff(range(xs))
-	xLimits <- c(min(xs) - border[1] * xRange, max(xs) + border[2] * xRange)
+	xLimits <- c(border[1], border[2])
 
 	yRange <- diff(range(ys))
-	yLimits <- c(min(ys) - border[3] * yRange, max(ys) + border[4] * yRange)
+	yLimits <- c(border[3], border[4])
 
 	n <- nrow(PCA$x)
 	scaleX <- PCA$sdev[dims[1]] * sqrt(n)
