@@ -1070,10 +1070,12 @@
 
 		The \acrshort{pca} technique is used to construct timbre spaces in Chapter~\ref{chap:TimbreEvaluation} of
 		this thesis. This technique is used to transform a multidimensional dataset onto a new set of orthogonal
-		dimensions (the Principal Components, \acrshort{pc}s). This transformation is applied such that the first
-		\acrshort{pc} accounts for the largest amount of variance in the data as possible. Each successive
-		\acrshort{pc} then describes as much of the remaining variance as possible. The \acrshort{pc}s of a $n$
-		dimensional dataset comprising $m$ observations are calculate in six steps:
+		dimensions, the \acrfullpl{pc}. This transformation is applied such that the first \acrshort{pc} accounts
+		for the largest amount of variance in the data possible. Each successive \acrshort{pc} then describes as
+		much of the remaining variance as possible. The number of \acrshort{pc}s is equal to the number of
+		dimensions in the data but, since the lower order \acrshort{pc}s describe a greater amount of variance,
+		fewer are needed to describe a significant proportion of the total variance. The \acrshort{pc}s
+		of a $n$ dimensional dataset comprising $m$ observations are calculated in six steps:
 
 		\begin{enumerate}
 			\item Construct an $m \times n$ matrix, $\mathbf{A}$, the rows of which describe the coordinates of
