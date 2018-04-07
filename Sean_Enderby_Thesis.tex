@@ -135,6 +135,9 @@
 % fuck serifs
 \renewcommand{\familydefault}{\sfdefault}
 
+% allow for referencing enums
+\usepackage{enumitem}
+
 % make those tables pretty
 \usepackage{array}
 \usepackage{hhline}
@@ -214,9 +217,45 @@
 	type=maths,
 	name={$\displaystyle \max_{i = 0}^{I} A_{i}$},
 	description={the maximum value of $A_{i}$ for $0 \leq i \leq I$},
-	sort={max}
+	sort={nmax}
 }
 \glsadd{maths:max}
+
+\newglossaryentry{maths:matrixrow}
+{
+	type=maths,
+	name={$\mathbf{D}_{i*}$},
+	description={the $i$\super{th} row of matrix $\mathbf{D}$},
+	sort={matrixi}
+}
+\glsadd{maths:matrixrow}
+
+\newglossaryentry{maths:matrixcolumn}
+{
+	type=maths,
+	name={$\mathbf{D}_{*j}$},
+	description={the $j$\super{th} column of matrix $\mathbf{D}$},
+	sort={matrixj}
+}
+\glsadd{maths:matrixcolumn}
+
+\newglossaryentry{maths:matrixtranspose}
+{
+	type=maths,
+	name={$\mathbf{D}^{T}$},
+	description={the transpose of matrix $\mathbf{D}$},
+	sort={matrixtranspose}
+}
+\glsadd{maths:matrixtranspose}
+
+\newglossaryentry{maths:matrixinverse}
+{
+	type=maths,
+	name={$\mathbf{D}^{-1}$},
+	description={the inverse of matrix $\mathbf{D}$},
+	sort={matrixnverse}
+}
+\glsadd{maths:matrixinverse}
 
 \newglossaryentry{maths:euclidian}
 {
@@ -227,13 +266,22 @@
 }
 \glsadd{maths:euclidian}
 
+\newglossaryentry{maths:mahalanobis}
+{
+	type=maths,
+	name={$M(x, d)$},
+	description={the Mahalanobis distance between a point $x$ and a distribution $d$ in a multidimensional space},
+	sort={eumahal}
+}
+\glsadd{maths:mahalanobis}
+
 \newglossaryentry{maths:setcomp}
 {
 	type=maths,
 	name={$A \setminus B$},
 	description={the relative complement of set $B$ with respect to set $A$ (the set of elements in $A$ which are not in
 		     $B$)},
-	sort={setcomp}
+	sort={sxetcomp}
 }
 \glsadd{maths:setcomp}
 

@@ -1064,9 +1064,73 @@
 		using a smaller set of variables, called components or factors. This approach is well suited to data
 		obtained from attribute scale tests, the variables being the scales on which each audio stimulus is graded.
 		\citet{kendall1993verbal1} use \acrshort{pca} to identify three factors which describe the results of their
-		\acrshort{vame} experiment.  \citet{zacharakis2012analysis} also performed a \acrshort{vame} test but
+		\acrshort{vame} experiment. \citet{zacharakis2012analysis} also performed a \acrshort{vame} test but
 		choose to use \acrshort{efa} over \acrshort{pca} stating that \acrshort{efa} better explains the
 		relationships between the separate attribute scales.
+
+		The \acrshort{pca} technique is used to construct timbre spaces in Chapter~\ref{chap:TimbreEvaluation} of
+		this thesis. This technique is used to transform a multidimensional dataset onto a new set of orthogonal
+		dimensions (the Principal Components, \acrshort{pc}s). This transformation is applied such that the first
+		\acrshort{pc} accounts for the largest amount of variance in the data as possible. Each successive
+		\acrshort{pc} then describes as much of the remaining variance as possible. The \acrshort{pc}s of a $n$
+		dimensional dataset comprising $m$ observations are calculate in six steps:
+
+		\begin{enumerate}
+			\item Construct an $m \times n$ matrix, $\mathbf{A}$, the rows of which describe the coordinates of
+				each observation in the $n$ dimensional space.
+				
+			\item Standardise the data, creating a new $m \times n$ matrix, $\mathbf{B}$, in which each column
+				has a mean of 0 and a standard deviation of 1. The $i$\super{th} column of $\mathbf{B}$ is
+				calculated from the $i$\super{th} column of $\mathbf{A}$ using
+				Equation~\ref{eq:Standardise}:
+
+				\begin{equation}
+					\mathbf{B}_{*i} = \frac{\mathbf{A}_{*i} - \mu_{i}}{\sigma_{i}}
+					\label{eq:Standardise}
+				\end{equation}
+
+				where $\mu_{i}$ and $\sigma_{i}$ are the mean and standard deviation of the values in the
+				column $\mathbf{A}_{*i}$.
+
+			\item Compute the $n \times n$ covariance matrix, $\mathbf{C}$, of the standardised data using
+				Equation~\ref{eq:MatrixCovariance}:
+
+				\begin{equation}
+					\mathbf{C} = \frac{\mathbf{B}^{T}\mathbf{B}}{m - 1}
+					\label{eq:MatrixCovariance}
+				\end{equation}
+
+			\item \label{enum:Eigen} Find the eigenvalues of the matrix $\mathbf{C}$ and arrange them in
+				descending order, $\lambda_{1}$ being the largest and $\lambda_{n}$ the smallest.  \item
+				Arrange the corresponding eigenvectors in a new $n \times n$ matrix, $\mathbf{D}$, the
+				$i$\super{th} column of which is the eigenvector associated with the eigenvalue
+				$\lambda_{i}$.
+
+			\item Transform the standardised data, $\mathbf{B}$, by multiplication with the eigenvector matrix,
+				$\mathbf{D}$, producing a new $m \times n$ matrix, $\mathbf{E}$
+				(Equation~\ref{eq:PCATransform}).
+
+				\begin{equation}
+					\mathbf{E} = \mathbf{BD}
+					\label{eq:PCATransform}
+				\end{equation}
+
+		\end{enumerate}
+
+		The rows of $\mathbf{E}$ represent the coordinates of each observation in each of the \acrshort{pc}s. Since
+		\acrshort{pca} maximises the variance described by successive \acrshort{pc}s, the dimensionality of the
+		data can be reduced by selecting only the first $p$ \acrshort{pc}s (the first $p$ columns of $\mathbf{E}$).
+		The total proportion of variance described by these \acrshort{pc}s, $v_{p}$, is calculated using
+		Equation~\ref{eq:PropVariance}:
+
+		\begin{equation}
+			v_{p} = \frac{\sum_{i = 1}^{p} \lambda_{i}}{\sum_{i = 1}^{n} \lambda_{i}}
+			\label{eq:PropVariance}
+		\end{equation}
+
+		where $\lambda_{i}$ is the $i$\super{th} largest eigenvalue of the covariance matrix, $\mathbf{C}$, as
+		discussed in step~\ref{enum:Eigen}. Typically the number of \acrshort{pc}s used to describe a dataset is
+		chosen such that this proportion of variance is greater than a given threshold (e.g. $v_{p} > 0.8$).
 
 	\subsection{Correlation of Dimensions with Audio Features}
 	\label{sec:Timbre-DimensionalityReduction-DimensionCorrelations}

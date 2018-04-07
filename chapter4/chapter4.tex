@@ -824,7 +824,8 @@
 				\label{eq:EigenvalueAgreement}
 			\end{equation}
 			
-			Where $\lambda_{d, k}$ is the $k$\super{th} eigenvalue of the covariance matrix $\Sigma_{d}$.
+			Where $\lambda_{d, k}$ is the $k$\super{th} largest eigenvalue of the covariance matrix
+			$\Sigma_{d}$.
 
 			When using Equation~\ref{eq:EigenvalueAgreement}, the number of eigenvalues used, $K$, needs to be
 			carefully selected. If $N_{d}$ is less than or equal to the total number of audio features, the
@@ -857,11 +858,11 @@
 			discovered. If the transforms labelled with a particular term exhibit a small variance in one of
 			these dimensions it is likely that that term is well agreed upon. Agreement can be calculated in
 			the \acrshort{pca} timbre space using Equation~\ref{eq:BoundedEigenvalueAgreement}, with
-			$\lambda_{d,k}$ being the $k$\super{th} eigenvalue of the covariance matrix calculated from the
-			principal components (\acrshort{pc}s) of every transform labelled with descriptor $d$. As when
-			calculating the agreement in the feature space, the timbre space should be standardised before
-			calculation of agreement to remove bias introduced by the proportions of total variance each
-			\acrshort{pc} describes.
+			$\lambda_{d,k}$ being the $k$\super{th} largest eigenvalue of the covariance matrix calculated from
+			the \acrshort{pc}s of every transform labelled with descriptor $d$. As when calculating the
+			agreement in the feature space, the timbre space should be standardised before calculation of
+			agreement to remove bias introduced by the proportions of total variance each \acrshort{pc}
+			describes.
 
 			The number of \acrshort{pc}s to use in the calculation of agreement is an important consideration.
 			\acrshort{pc}s which describe a low proportion of total variance should be discarded as it is
