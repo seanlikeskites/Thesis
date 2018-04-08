@@ -19,7 +19,7 @@
 	real time timbral control, some algorithms in the literature may not be suitable due to the predictability of their
 	effects on a signal or their inability to operate in real time. In
 	Section~\ref{sec:ExcitationEvaluation-Evaluation} a set of criteria for assessing the suitability of harmonic
-	excitation algorithms for use in this work are suggested. These criteria are then used to asses various algorithms
+	excitation algorithms for use in this work are suggested. These criteria are then used to assess various algorithms
 	in Section~\ref{sec:ExcitationEvaluation-Comparison}, with a summary of each algorithm's performance shown in
 	Table~\ref{tab:ComparisonSummary}. Techniques by which the performance of several algorithms can be improved, with
 	respect to these criteria, are also discussed.
@@ -171,7 +171,7 @@
 				\hline
 				\hline
 				Static Nonlinearity & $\mathcal{O}(n)$ & Non-homogeneous &
-				Introduction of a large band of distortion components, orders and roll off are determined
+				Introduction of a large band of distortion components, orders and roll-off are determined
 				by properties of the characteristic curve. & 
 				Possible effects on attack / release time. \tabularnewline
 				\hline
@@ -678,8 +678,8 @@
 			\end{gather}
 
 			This produces all harmonics with amplitudes rolling off at approximately 6dB per octave. This
-			shallow roll off makes integrators very useful when a large amount of new frequency content is
-			desired. Due to the shallow roll off of the distortion components' amplitudes, integrators are very
+			shallow roll-off makes integrators very useful when a large amount of new frequency content is
+			desired. Due to the shallow roll-off of the distortion components' amplitudes, integrators are very
 			prone to aliasing. While integrators are homogeneous, they are frequency dependent, exhibiting low
 			pass filter characteristics. Using the same integration constant, a high frequency input signal
 			will produce a lower amplitude output than a low frequency input. This does not affect the
@@ -896,7 +896,7 @@
 	\subsection{Temporal Characteristics}
 	\label{sec:ExcitationEvaluation-Comparison-TemporalCharacteristics}
 		\subsubsection*{Static Nonlinearities}
-			As static nonlinearities are memoryless (i.e. non of the previous input and output samples are
+			As static nonlinearities are memoryless (i.e. none of the previous input and output samples are
 			needed for the calculation of the current output sample) they can not easily be used to control the
 			temporal evolution of a signal. The gradient of the characteristic curve for low amplitude samples
 			can be manipulated to alter the attack and release times of signals. Increasing the gradient will
@@ -1070,7 +1070,7 @@
 			Integrators are similarly useful to general static nonlinearities, they provide an efficient means
 			to add wideband energy to the spectrum of a signal. The implementation discussed in this work
 			(Equation~\ref{eq:Integrator}) has similar properties to a rectifier, being a positive homogeneous
-			system which introduces distortion components with a shallow roll off. The primary difference being
+			system which introduces distortion components with a shallow roll-off. The primary difference being
 			that the integrator produces all orders of distortion rather than only even orders. A disadvantage
 			of integrators over rectifiers is that they smear transients due to their low pass filtering
 			effect.

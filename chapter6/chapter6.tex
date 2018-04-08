@@ -480,7 +480,7 @@
 		Removing harmonics from the original signal loses any phase information that was present for those
 		frequencies. The newly generated harmonics may not have the same phase as those that have been removed,
 		potentially causing unwanted timbral effects: the phases of a signal's partials influence its temporal
-		features. The rising portions of in phase harmonics sum together to give short rise times in the resultant
+		features. The rising portions of in-phase harmonics sum together to give short rise times in the resultant
 		signal, as seen in a square wave. Altering the phase differences between the harmonics will alter the rise
 		time of the waveform. \citet{plomp1969effect} discuss the audible effects of this for harmonic signals,
 		concluding that the effect is more subtle than, but independent to, that of changing the harmonics'
@@ -667,11 +667,11 @@
 	The systems discussed in Section~\ref{sec:FeatureControl-Systems} provide control over where the energy is
 	introduced into a signal's spectrum. Large bands of energy can be introduced or finer control over specific
 	harmonics can be provided. As such they are well suited to applications in which the spectral features of an audio
-	signal are manipulated. Each system has a set of control parameters controlling gains applied to specific bands of
-	energy and filtering / frequency shifting options. This section discusses how these control parameters can be
-	configured to alter specific spectral audio features. This process is referred to as parameterisation of the audio
-	features, defining systems whereby a single control parameter is mapped to the parameters of a harmonic excitation
-	system in order to change the value of an audio feature.
+	signal are manipulated. Each system has a set of parameters controlling gains applied to specific bands of energy
+	and filtering / frequency shifting options. This section discusses how these control parameters can be configured
+	to alter specific spectral audio features. This process is referred to as parameterisation of the audio features,
+	defining systems whereby a single control parameter is mapped to the parameters of a harmonic excitation system in
+	order to change the value of an audio feature.
 
 	\subsection{Parameterisation Methodology}
 	\label{sec:FeatureControl-Parameterisation-Methodology}
@@ -1199,7 +1199,7 @@
 		\end{figure}
 
 		Ideally, each line in Figure~\ref{fig:MoveSlopes} would have the same gradient, as the signals' spectral
-		slopes are being increased by the same amount. They do not however, as only the fist nine harmonics are
+		slopes are being increased by the same amount. They do not however, as only the first nine harmonics are
 		being individually manipulated. The differences in amplitudes of the higher order harmonics between the
 		signals accounts for the differences in control of the spectral slope.
 
@@ -1565,12 +1565,12 @@
 	fact that only the first nine harmonics are being controlled individually. While this is based on psychoacoustic
 	principles, as discussed in Section~\ref{sec:FeatureControl-Systems-SpectralShaping}, the audio features
 	manipulated are not. Equal magnitude changes in an audio feature due to spectral changes at different frequencies
-	will not have the same perceived effect. Individual control of the first nine harmonics gives control over the most
-	perceptually relevant portion of the spectrum. Inaccuracies in the control of features due to lack of control over
-	higher order harmonics are deemed to be less important than those due to imperfect filtering of signals in
-	isolating the $f_{0}$ and minimising the presence of superposition.
+	will not have the same perceived effect. Individually exciting the first nine harmonics gives control over the most
+	perceptually relevant portion of the spectrum. Inaccuracies in the control of features, due to lack of fine
+	adjustment of higher order harmonics, are deemed to be less important than those due to imperfect filtering of
+	signals in isolating the $f_{0}$ and minimising the presence of superposition.
 
-	In the following chapter listening tests are undertaken to asses how well the methods proposed in this chapter can
+	In the following chapter listening tests are undertaken to assess how well the methods proposed in this chapter can
 	be used to provide perceptual control of audio. Firstly the best method for exciting individual harmonics is
 	determined. Then the systems discussed here are specialised to apply the same feature manipulations as those
 	described by particular descriptors in the \acrshort{safe} dataset (Chapter~\ref{chap:TimbreEvaluation}).
