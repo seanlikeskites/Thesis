@@ -263,9 +263,9 @@
 		in C++ using the JUCE framework. This code implements audio processing algorithms as well as the collection
 		of semantic information (audio features and metadata) and the serialisation of that data as XML. Source code
 		for the plug-ins can be found on GitHub
-		(\href{https://github.com/semanticaudio/SAFE}{https://github.com/semanticaudio/SAFE}). The underlying code of
-		these was also packaged into a module for the JUCE framework, easing the development of new plug-ins with the
-		\acrshort{safe} functionality
+		(\href{https://github.com/semanticaudio/SAFE}{https://github.com/semanticaudio/SAFE}). The underlying code
+		of these was also packaged into a module for the JUCE framework, easing the development of new plug-ins with
+		the \acrshort{safe} functionality
 		(\href{https://github.com/seanlikeskites/SAFEJuceModule}{https://github.com/seanlikeskites/SAFEJuceModule}).
 
 		The \acrshort{safe} plug-ins send all the semantic information they collect to a web server via HTTP
@@ -281,10 +281,10 @@
 		{https://github.com/seanlikeskites/Thesis/tree/master/RPlots/SAFEAnalysis}).
 
 	\section{Harmonic Excitation Evaluation and Development Codebase}
-		The evaluation and development of harmonic excitation systems in Chapters~\ref{chap:ExcitationEvaluation} and
-		\ref{chap:FeatureControl} was all undertaken in GNU Octave. Each of the harmonic excitation methods discussed
-		was implemented as well as feature extraction code to examine their effects on low level audio features. The
-		source code for this can be found on Bitbucket
+		The evaluation and development of harmonic excitation systems in Chapters~\ref{chap:ExcitationEvaluation}
+		and \ref{chap:FeatureControl} was all undertaken in GNU Octave. Each of the harmonic excitation methods
+		discussed was implemented as well as feature extraction code to examine their effects on low level audio
+		features. The source code for this can be found on Bitbucket
 		(\href{https://bitbucket.org/seanlikeskites/HarmonicExcitationOctave}
 		{https://bitbucket.org/seanlikeskites/HarmonicExcitationOctave}). The plots for this chapter were also
 		initially produced using GNU Octave but eventually the data was imported into R to make the plotting
@@ -299,10 +299,44 @@
 		(\href{https://sourceforge.net/projects/matlabmushra}{https://sourceforge.net/projects/matlabmushra}).
 
 		The semantically controlled plug-ins developed and evaluated in
-		Section~\ref{sec:PerceptualExperiments-SemanticControl} were developed in C++ using the JUCE framework. These
-		plug-ins reused the \acrshort{safe} codebase allowing for them to perform the feature analysis used to
+		Section~\ref{sec:PerceptualExperiments-SemanticControl} were developed in C++ using the JUCE framework.
+		These plug-ins reused the \acrshort{safe} codebase allowing for them to perform the feature analysis used to
 		evaluate their performance.
 
-\chapter{Spectral Manipulation System Design Notes}
+\chapter{Harmonic Excitation System Design Notes}
+\label{app:FilterNotes}
+	In Section~\ref{sec:FeatureControl-Systems} several different harmonic excitation systems were proposed which
+	provide intuitive control over the spectral structure of a signal. This appendix provides further detail about the
+	use of these systems, specifically the filtering used within them.
+
+	\section{$f_{0}$ Isolation Filters}
+		As illustrated in Figure~\ref{fig:F0Tracking} the proposed harmonic excitation systems all rely on the
+		isolation of a signal's $f_{0}$ using a band pass filter. Throughout this thesis this is implemented using
+		a second order \acrshort{iir} (biquad) band pass filter centered at the frequency of the input's $f_{0}$.
+		This has been shown to be sufficient for excitation of low order harmonics in signals with little inharmonic
+		energy.  However, as shown in Figure~\ref{fig:CelloFilterOrderSpectra}, usage of a higher order
+		\acrshort{fir} reduces the unwanted intermodulation component significantly. This \acrshort{fir} filter was
+		implemented as a windowed sinc filter, using a Blackman window.
+
+	\section{High Order Harmonic Filtering}
+		The purpose of the filter after the nonlinear device in Figure~\ref{fig:SpectralShapingSystem} is to isolate
+		and shape the higher order excited harmonics. Principally, this filter should have a high pass elements,
+		attenuating frequencies below the tenth harmonic. This avoids superposition issues with the first nine
+		individually generated harmonics. For use is this thesis, this is implemented using a biquad high pass
+		filter with the cutoff frequency set at $9.5f_{0}$, which proved sufficient. Additional filtering may be
+		applied to creatively shape these high order harmonics, for instance one might apply a low pass filter in
+		order to change the spectral slope of the signal.
+
+		The low pass filter added before the nonlinear device in Figure~\ref{fig:InharmonicitySystem} is intended to
+		allow the high order harmonics to contain inharmonic partials. This can be implemented as a biquad low pass,
+		the cutoff frequency of which will determine the inharmonicity present in the output of the nonlinear
+		device. A cutoff at the $f_{0}$ will produce the minimum inharmonicity, while higher cutoff frequencies will
+		increase the inharmonicity.
+
+	\section{Superposition Filtering}
+		The filtering applied to the original signal in Figure~\ref{fig:SuperpositionSystem} is intended to remove
+		energy at any of the harmonics which are being excited. This is achieved through series biquad filters, each
+		configured as a notch filter centered at the relevant harmonic's frequency. If high order harmonics are also
+		to be excited, a low pass filter can be included removing high order harmonic content from the input signal.
 
 \end{appendices}
