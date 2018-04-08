@@ -147,13 +147,13 @@
 		LibXtract software library \citep{bullock2007libxtract}. This frame length represents a compromise between
 		the time and frequency resolution of the spectral analysis. At a sampling rate of 44.1kHz the audio is
 		analysed in frames 93ms in length; which in the frequency domain are represented by arrays of 2049
-		frequency bins, each 11Hz apart. Temporal events must be a minimum of 93ms apart in order to be
-		distinguished from one another, while spectral details must be 11Hz apart. Increasing the frame length will
-		increase the spectral resolution (move frequency bins closer together) at the expense of poorer time
-		resolution (longer time periods between each frame).  Decreasing the frame length will have the opposite
-		effect: increasing temporal resolution at the expense of spectral resolution. In total 80 different audio
-		features are calculated for each frame. These features are split into five groups and given symbols as
-		follows:
+		frequency bins, each approximately 10.77Hz apart. Temporal events must be a minimum of 93ms apart in order
+		to be distinguished from one another, while spectral details must be 10.77Hz apart. Increasing the frame
+		length will increase the spectral resolution (move frequency bins closer together) at the expense of poorer
+		time resolution (longer time periods between each frame).  Decreasing the frame length will have the
+		opposite effect: increasing temporal resolution at the expense of spectral resolution. In total 80
+		different audio features are calculated for each frame. These features are split into five groups and given
+		symbols as follows:
 
 		\begin{itemize}
 			\item {\bf{Temporal Features:}} Features calculated from the temporal representation of the signal.
@@ -199,9 +199,9 @@
 
 		The \acrshort{safe} plug-ins were distributed online as \acrshort{vst} and \acrshort{au} effects for
 		Windows, Mac OS X and Linux.  Releases were promoted on music production forums and at music production and
-		research events. Across all release platforms and versions, the plug-in suite has been downloaded 12,036
-		times. This number does not reflect the number of unique users however, as users may have downloaded
-		updated versions or packages for various platforms.
+		research events. At the time of writing, across all release platforms and versions, the plug-in suite has
+		been downloaded 12,036 times. This number does not reflect the number of unique users however, as users may
+		have downloaded updated versions or packages for various platforms.
 
 		One disadvantage in using plug-ins is that they cannot gather information about the processing chain they
 		may be a part of. The timbral transform the user is describing may be the result of several effects working
@@ -554,7 +554,7 @@
 			\label{eq:FeatureSpaceCoords}
 		\end{equation}
 
-		Where $N_{d}$ is the number of transforms where the user had entered the term, $d$, and $\bar{x}_{d,n,k}$
+		where $N_{d}$ is the number of transforms where the user had entered the term, $d$, and $\bar{x}_{d,n,k}$
 		is the mean of feature $k$ across every frame of the signal analysed when saving the $n$\super{th}
 		transform described by descriptor $d$.
 		
@@ -586,7 +586,6 @@
 			d(a, b) = \frac{N_{a}N_{b}}{N_{a} + N_{b}} \euclidian{\mu_{a} - \mu_{b}}^{2}
 			\label{eq:WardsCriterion}
 		\end{equation}
-
 
 		\subsubsection*{Clustering of Distortion Terms}
 			Figure~\ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
@@ -705,7 +704,7 @@
 			\label{eq:SocialEqAgreement}
 		\end{equation}
 
-		Where $N_{d}$ is the number of participants which have provided weightings for descriptor $d$,
+		where $N_{d}$ is the number of participants which have provided weightings for descriptor $d$,
 		$s_{d,k}^{2}$ is the variance of weighting $k$ across those participants, and $K$ is the number of
 		weightings in each set (i.e. the number of equaliser bands). The logarithm of the number of
 		participants is used to account for Zipf's law, which states that the frequency with which a word is used
@@ -762,7 +761,7 @@
 				\label{eq:UnbiasedVariance}
 			\end{equation}
 
-			Where $\bar{x}_{d,n,k}$ and $\mu_{d,k}$ are as described for Equation~\ref{eq:FeatureSpaceCoords}.
+			where $\bar{x}_{d,n,k}$ and $\mu_{d,k}$ are as described for Equation~\ref{eq:FeatureSpaceCoords}.
 
 			Using this measure of variance in the agreement score provides an approximation of how closely
 			clustered transforms, labeled with a certain descriptor, would be in a feature space which
@@ -816,7 +815,7 @@
 				\label{eq:EigenvalueAgreement}
 			\end{equation}
 			
-			Where $\lambda_{d, k}$ is the $k$\super{th} largest eigenvalue of the covariance matrix
+			where $\lambda_{d, k}$ is the $k$\super{th} largest eigenvalue of the covariance matrix
 			$\Sigma_{d}$.
 
 			When using Equation~\ref{eq:EigenvalueAgreement}, the number of eigenvalues used, $K$, needs to be

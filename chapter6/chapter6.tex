@@ -52,7 +52,7 @@
 		must be pre-processed such that it is represented by a single sinusoid. For monophonic, tonal sources, this
 		can be achieved by representing this signal as a sinusoid at the input's $f_{0}$. The remainder of this
 		thesis then focusses on controlling timbre in this class of audio signal. Other classes of signal
-		(polyphonic, noisy etc.) are left for consideration in future work.
+		(e.g. polyphonic, noisy) are left for consideration in future work.
 		
 		A monophonic, tonal signal can be represented as a sinusoid by applying a band pass filter centered around
 		its $f_{0}$. This produces a narrowband signal with the majority of its energy concentrated at the $f_{0}$.
@@ -168,11 +168,11 @@
 				\draw (InMid) -- (Filter);
 				\draw (F0) -- (Filter);
 
-				\node (Exciter) [draw] at (5, 1) {Frequency Shifter};
+				\node (Exciter) [draw] at (4.25, 1) {Shifter};
 				\draw (Filter) -- (Exciter);
 				\draw (Side) -- (F0);
 
-				\node (Out) at (7.25, 1) {$y[n]$};
+				\node (Out) at (5.75, 1) {$y[n]$};
 				\draw (Exciter) -- (Out);
 			\end{tikzpicture}
 			\caption{Generating individual harmonics for a signal.}
@@ -812,7 +812,7 @@
 				\label{eq:SpectralCentroidManipulation}
 			\end{equation}
 
-			Where $\mu_{\mathrm{s}_{l}}$ and $\mu_{\mathrm{s}_{u}}$ are the spectral centroid of the lower and
+			where $\mu_{\mathrm{s}_{l}}$ and $\mu_{\mathrm{s}_{u}}$ are the spectral centroid of the lower and
 			upper bands respectively, and $c$ is the order of the highest frequency spectral component in the
 			lower band.
 
@@ -913,7 +913,7 @@
 			\end{figure}
 
 			When $P$ is set to zero the input signal is effectively processed by only a low pass filter,
-			reducing its spectral centroid. As $P$ is increased more energy is introduced in the higher
+			reducing its spectral centroid. As $P$ is increased, more energy is introduced in the higher
 			harmonics until the maximum spectral centroid is reached at $P = 1$. For each signal, the range of
 			values the spectral centroid can take covers approximately two octaves. The spectral structure of
 			the two bands determines how the spectral centroid changes within this range.
@@ -979,7 +979,8 @@
 				\label{fig:MoveSkewnesses}
 			\end{figure}
 
-			Only controlling the amplitudes of the first nine harmonics imposes restrictions on how the
+			Only controlling the amplitudes of the first nine harmonics (see
+			Section~\ref{sec:FeatureControl-Systems-SpectralShaping}) imposes restrictions on how the
 			spectral skewness can be manipulated. The great amount of control over the low end of the signal's
 			spectrum allows for skewness to be easily increased, as evidenced by
 			Figure~\ref{fig:MoveSkewnesses}.  Decreasing the skewness however, is more difficult. The
@@ -1019,14 +1020,14 @@
 		amplitude of itself and the two partials surrounding it. Intuitively this value can be increased or reduced
 		by moving the amplitudes of the partials away or towards their mean. To implement this using the system
 		shown in Figure~\ref{fig:SuperpositionSystem} the new amplitudes of the first nine harmonics can be
-		calculated using Equation~\ref{eq:PartialSmoothing}
+		calculated using Equation~\ref{eq:PartialSmoothing}.
 
 		\begin{equation}
 			a'_{n} = a_{n} \left( \frac{\sum_{k = 1}^{9} a_{k}}{9a_{n}} \right) ^{P}
 			\label{eq:PartialSmoothing}
 		\end{equation}
 
-		Where $a'_{n}$ is the new amplitude of the $n$\super{th} partial, $a_{n}$ is the amplitude of the
+		where $a'_{n}$ is the new amplitude of the $n$\super{th} partial, $a_{n}$ is the amplitude of the
 		$n$\super{th} partial in the input signal, and $P$ is a parameter controlling how the irregularity is
 		affected. Negative values of $P$ will increase the irregularity, while small positive values of $P$ will
 		decrease the irregularity. The minimum possible irregularity is achieved when $P \approx 1$, higher values

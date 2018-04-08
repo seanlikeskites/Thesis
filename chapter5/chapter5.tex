@@ -77,7 +77,7 @@
 	\label{sec:ExcitationEvaluation-Evaluation-Homogeneity}
 		To make the application of an audio effect more intuitive it should produce similar perceived timbral
 		manipulations for all input signals. Often this is not the case with traditional audio signal processing
-		methods. For example, an equaliser can be used to amplify a certain band of frequencies is a signal. This
+		methods. For example, an equaliser can be used to amplify a certain band of frequencies in a signal. This
 		will have different effects depending on whether the input contains energy at these frequencies. The
 		spectra of signals with energy in this frequency range will be altered, while those of signals with no
 		energy in that band will be unaffected. This problem is compounded when the effect being applied is
@@ -265,21 +265,21 @@
 		the computation of trigonometric functions, be it to calculate the complex argument of the analytic signal
 		or to synthesise a modulating signal.
 
-		Spectral stretching using a phase vocoder requires a large amount of computation. Calculating the
-		\acrshort{stft} involves splitting the signal into frames on which the \acrshort{dft} is then computed. The
-		frame size used in the calculation of the \acrshort{stft} must be sufficient to represent the detail in the
-		input signal. Frames of size $N$ represent the spectrum in frequency bins $\frac{f_{s}}{N}$Hz apart. Larger
-		frame sizes give finer spectral detail while introducing more latency into the system, as $N$ samples of
-		input must have been produced before a frame of the \acrshort{stft} can be calculated. When building a
-		phase vocoder, a balance must be made between the frequency resolution of the \acrshort{stft} and the
-		desired amount of latency. After calculation of the \acrshort{stft}, the phase correction for each frame is
-		computed and applied before the inverse \acrshort{dft} of each frame is taken and the frames summed back
-		together with the new hop size. The resulting signal then needs to be resampled, requiring further
-		operations. If the scaling factor is not an integer value, the resampling process will require additional
-		interpolation calculations. Several steps can be taken to reduce the work needed when using a phase
-		vocoder. The computational complexity of the \acrshort{dft} calculations can be reduced from $\mathcal{O}
-		\left( n^{2} \right)$ to $\mathcal{O}(n\log{n})$, where $n$ is the number of samples on which the
-		\acrshort{dft} is being computed, by using the radix 2 fast Fourier transform
+		Spectral stretching using a phase vocoder requires a relatively larger amount of computation. Calculating
+		the \acrshort{stft} involves splitting the signal into frames on which the \acrshort{dft} is then computed.
+		The frame size used in the calculation of the \acrshort{stft} must be sufficient to represent the detail in
+		the input signal. Frames of size $N$ represent the spectrum in frequency bins $\frac{f_{s}}{N}$Hz apart.
+		Larger frame sizes give finer spectral detail while introducing more latency into the system, as $N$
+		samples of input must have been produced before a frame of the \acrshort{stft} can be calculated. When
+		building a phase vocoder, a balance must be made between the frequency resolution of the \acrshort{stft}
+		and the desired amount of latency. After calculation of the \acrshort{stft}, the phase correction for each
+		frame is computed and applied before the inverse \acrshort{dft} of each frame is taken and the frames
+		summed back together with the new hop size. The resulting signal then needs to be resampled, requiring
+		further operations. If the scaling factor is not an integer value, the resampling process will require
+		additional interpolation calculations. Several steps can be taken to reduce the work needed when using a
+		phase vocoder. The computational complexity of the \acrshort{dft} calculations can be reduced from
+		$\mathcal{O} \left( n^{2} \right)$ to $\mathcal{O}(n\log{n})$, where $n$ is the number of samples on which
+		the \acrshort{dft} is being computed, by using the radix 2 fast Fourier transform
 		\citep{portnoff1976implementation}.  When shifting the frequencies upwards, the amount of work can be
 		further reduced by resampling the signal prior to calculating the \acrshort{stft} \citep{laroche1999new}.
 		This way there are fewer frames for which the \acrshort{dft} need be calculated.
@@ -342,7 +342,7 @@
 				\label{eq:SymmetricExponentialClipping}
 			\end{equation}
 
-			Where $E$ is a second parameter defining the exponent of the system. One advantage of this clipper
+			where $E$ is a second parameter defining the exponent of the system. One advantage of this clipper
 			is that it has no linear section, meaning that harmonics are generated for input signals of any
 			amplitude. Another advantage is that while the system is still non-homogeneous, the levels of the
 			generated harmonics vary monotonically with input amplitude as shown in
@@ -563,7 +563,7 @@
 				\label{eq:AsymmetricHardClipping}
 			\end{equation}
 
-			Where $t_{+}$ and $t_{-}$ are the clipping thresholds for positive and negative portions of the
+			where $t_{+}$ and $t_{-}$ are the clipping thresholds for positive and negative portions of the
 			signal respectively. Figure~\ref{fig:AsymmetricHardClippingHarmonics} shows the harmonic amplitude
 			plot for Equation~\ref{eq:AsymmetricHardClipping} with $t_{+} = 0.5$ and $t_{-} = -0.3$. While the
 			system is still non-homogeneous, the introduced energy consists of both odd and even order
@@ -1148,8 +1148,8 @@
 	broad classes of harmonic generators are identified; those which generate large numbers of distortion components
 	with little control over their frequencies / amplitudes and those which provide control over the orders of
 	distortion introduced, sometimes allowing for the generation of individual harmonics. There is typically a
-	compromise made between control and computational complexity; algorithms providing more control over the resulting
-	spectrum requiring more computation.
+	compromise made between control and computational complexity: algorithms providing more control over the resulting
+	spectrum require more computation.
 
 	Static nonlinearities and integrators are the best choice where a large series of distortion components need to be
 	created efficiently. The traditionally used peak clipper might not be the most suitable for intuitive timbral

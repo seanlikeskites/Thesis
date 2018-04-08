@@ -208,7 +208,7 @@
 			in Section~\ref{sec:Excitation-Analysis-Metrics}, this is a metric which uses psychoacoustic models
 			of the human hearing system to judge the perceived level of distortion in a signal. It is
 			calculated by comparing the degraded signal against the non-degraded signal, returning a value
-			between 0 and 1. 1 denoting a signal which is indistinguishable from the original and lower values
+			between 0 and 1; 1 denoting a signal which is indistinguishable from the original and lower values
 			describing signals with a higher level of perceivable distortion.
 
 		\subsubsection*{Subjective Evaluation}
@@ -670,7 +670,7 @@
 		Figure~\ref{fig:ReleaseAmplitudes} shows the amplitude ratios between the harmonics and $f_{0}$ for the
 		release portions of the test signals. The synthesised signal is not included as it has an instantaneous
 		release. Both the cello and clarinet signals (Figures \ref{fig:CelloRelease} and \ref{fig:ClarinetRelease})
-		exhibit typical envelopes in their release sections: the amplitudes of the higher order harmonics decaying
+		exhibit typical envelopes in their release sections: the amplitudes of the higher order harmonics decay
 		more rapidly than that of the $f_{0}$. In the cello signal however the 3\super{rd} harmonic is the most
 		dominant, being the last partial in the signal to decay fully. In the piano signal's release section
 		(Figure~\ref{fig:PianoRelease}) the 3\super{rd} harmonic is again very dominant, but the damped $f_{0}$
@@ -689,7 +689,7 @@
 			\label{eq:HarmonicVariability}
 		\end{gather}
 
-		Where $h_{n,k}$ is the amplitude of the $n$\super{th} harmonic in the $k$\super{th} frame of the
+		where $h_{n,k}$ is the amplitude of the $n$\super{th} harmonic in the $k$\super{th} frame of the
 		\acrshort{stft} of the signal and $K$ the total number of frames in the \acrshort{stft}. This metric has a
 		minimum value of zero, describing a signal in which the amplitudes of the third through ninth harmonics are
 		all linearly related to that of the $f_{0}$. Higher values of harmonic variability describe signals in
@@ -1096,14 +1096,14 @@
 			space. The processed features of the signal are projected onto the processed feature timbre space
 			and the feature differences onto the feature difference timbre space. The Mahalanobis distance,
 			$M(x, d)$, between this point, $x$, and the distribution of transforms labelled with the
-			descriptor, $d$, is taken using Equation~\ref{eq:Mahalanobis}
+			descriptor, $d$, is taken using Equation~\ref{eq:Mahalanobis}.
 			
 			\begin{equation}
 				M(x, d) = \sqrt{(x - \mu_{d})^{T}\Sigma_{d}^{-1}(x - \mu_{d})}
 				\label{eq:Mahalanobis}
 			\end{equation}
 
-			Where $x$ is a column vector containing the coordinates of the point in the timbre space, $\mu_{d}$
+			where $x$ is a column vector containing the coordinates of the point in the timbre space, $\mu_{d}$
 			a column vector containing the mean coordinates of all transforms in the timbre space labelled with
 			descriptor $d$ and $\Sigma_{d}$ the covariance matrix of those transforms' coordinates in the
 			timbre space. The number of coordinates used in the calculation of Mahalanobis distance is
@@ -1188,7 +1188,7 @@
 					\label{fig:HarshProcJeff}
 				}
 				\quad
-				\subfloat[FeatureDifferences]
+				\subfloat[Feature Differences]
 				{
 					\includegraphics{chapter7/Images/HarshDifferenceJeffsDistance.pdf}
 					\label{fig:HarshDiffJeff}
@@ -1211,7 +1211,7 @@
 					\label{fig:CrunchProcJeff}
 				}
 				\quad
-				\subfloat[FeatureDifferences]
+				\subfloat[Feature Differences]
 				{
 					\includegraphics{chapter7/Images/CrunchDifferenceJeffsDistance.pdf}
 					\label{fig:CrunchDiffJeff}
@@ -1246,7 +1246,7 @@
 					\label{fig:HarshProcCoph}
 				}
 				\quad
-				\subfloat[FeatureDifferences]
+				\subfloat[Feature Differences]
 				{
 					\includegraphics{chapter7/Images/HarshDifferenceCophDistance.pdf}
 					\label{fig:HarshDiffCoph}
@@ -1269,7 +1269,7 @@
 					\label{fig:CrunchProcCoph}
 				}
 				\quad
-				\subfloat[FeatureDifferences]
+				\subfloat[Feature Differences]
 				{
 					\includegraphics{chapter7/Images/CrunchDifferenceCophDistance.pdf}
 					\label{fig:CrunchDiffCoph}
@@ -1375,7 +1375,7 @@
 			brightness' cluster. The use of terms which were collected from the \acrshort{safe} equaliser may
 			be explained by the anonymity of the effects in this test. While using the \acrshort{safe} plug-ins
 			the user is aware of the type of effect they are using so may be more likely to use descriptors
-			they associate with that effect.  In this test the type of effect is not know to the user so they
+			they associate with that effect.  In this test the type of effect is not known to the user so they
 			may select descriptors they would not usually associate with the type of effect being used.
 
 			The listening test data does not represent a difference between `bright' and `harsh' as seen in

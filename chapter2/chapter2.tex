@@ -368,7 +368,7 @@
 				\label{eq:MeanInequality}
 			\end{equation}
 
-			Where $L_{n}$ is the $n$\super{th} element of list $L$. The two means are only equal if all
+			where $L_{n}$ is the $n$\super{th} element of list $L$. The two means are only equal if all
 			elements of $L$ have the same value, if not the geometric mean will be less than the arithmetic
 			mean. Due to this, the spectral flatness of a signal takes a value between zero and one. Low values
 			describe signals whose energy lies in narrow bands of the spectrum (tones). High values describe
@@ -390,7 +390,7 @@
 
 		\subsubsection*{Spectral Slope}
 			The spectral slope, $\mathrm{SSl}$ measures the gradient of the spectrum; it is calculated by first
-			order liner regression of the spectrum. For a signal with $N$ spectral components the spectral
+			order linear regression of the spectrum. For a signal with $N$ spectral components the spectral
 			slope can be calculated with Equation~\ref{eq:SpectralSlope}.
 
 			\begin{gather}
@@ -612,7 +612,7 @@
 			\label{eq:ERB}
 		\end{equation}
 
-		Where $f_{c}$ is the center frequency of the auditory filter in kHz and $\mathrm{ERB}(f_{c})$ is the
+		where $f_{c}$ is the center frequency of the auditory filter in kHz and $\mathrm{ERB}(f_{c})$ is the
 		equivalent rectangular bandwidth, in Hz, at that frequency.
 
 		\citet{howard2009acoustics} discus the perception of two tones played simultaneously as they get further
@@ -702,7 +702,7 @@
 			\label{eq:Sharpness}
 		\end{equation}
 
-		Where $N'_{b}$ is the specific loudness of bark band $b$ and $g(b)$ is a weighting function designed to
+		where $N'_{b}$ is the specific loudness of bark band $b$ and $g(b)$ is a weighting function designed to
 		emphasise the presence of high frequency content.
 
 		\citet{marui2006predicting} ran listening experiments to test how well perceived sharpness can be predicted
@@ -1084,7 +1084,7 @@
 			\item Standardise the data, creating a new $m \times n$ matrix, $\mathbf{B}$, in which each column
 				has a mean of 0 and a standard deviation of 1. The $i$\super{th} column of $\mathbf{B}$ is
 				calculated from the $i$\super{th} column of $\mathbf{A}$ using
-				Equation~\ref{eq:Standardise}:
+				Equation~\ref{eq:Standardise}.
 
 				\begin{equation}
 					\mathbf{B}_{*i} = \frac{\mathbf{A}_{*i} - \mu_{i}}{\sigma_{i}}
@@ -1095,7 +1095,7 @@
 				column $\mathbf{A}_{*i}$.
 
 			\item Compute the $n \times n$ covariance matrix, $\mathbf{C}$, of the standardised data using
-				Equation~\ref{eq:MatrixCovariance}:
+				Equation~\ref{eq:MatrixCovariance}.
 
 				\begin{equation}
 					\mathbf{C} = \frac{\mathbf{B}^{T}\mathbf{B}}{m - 1}
@@ -1169,8 +1169,8 @@
 		Further analysis can be carried out in the form of clustering, identifying groups (clusters) of stimuli
 		with similar timbres. \citet{lakatos2000a} performs a pairwise dissimilarity test and applies
 		\acrshort{mds} followed by clustering to the results. The clusters identified within the \acrshort{mds}
-		timbre space correlate well with the classes of instruments (e.g. bowed string, blown tubes, metal plates
-		etc.) the stimuli were produced by.  Alternatively, clustering can be applied to the results taken from an
+		timbre space correlate well with the classes of instruments (e.g. bowed string, blown tubes, metal plates)
+		the stimuli were produced by.  Alternatively, clustering can be applied to the results taken from an
 		adjective scale test, identifying clusters of terms which are used to describe similar features of audio
 		signals.  \citet{zacharakis2011an2} use this method to identify three groups of descriptors, summarised
 		here as: cluster one, containing `soft', `light' and `warm'; cluster two, containing `bright', `brilliant'
@@ -1201,7 +1201,7 @@
 		\citep{schubert2006does}. This has been used in order to produce systems providing control over the
 		brightness of a sound. \citet{williams2007perceptually} propose a system for manipulation of the brightness
 		of recorded sounds. The system follows an analysis / resynthesis structure. Firstly the short-time Fourier
-		transform of the signal is calculated. The magnitudes of the frequency bins are then altered in order to
+		transform of the signal is calculated. The magnitudes of the frequency bins are then adjusted in order to
 		alter the spectral centroid to achieve the desired change in brightness. Lastly the signal is resynthesised
 		using the new magnitude data.  Two further studies by the same researchers propose systems which control
 		perceived softness by manipulating attack time \citep{williams2009perceptually} and perceived warmth
@@ -1276,7 +1276,7 @@
 
 		\begin{equation} f(mx) = mf(x) \label{eq:homogeneity} \end{equation}
 
-		Where the system is represented as a function $f$, $x$ and $y$ represent two different input signals, and
+		where the system is represented as a function $f$, $x$ and $y$ represent two different input signals, and
 		$m$ an arbitrary scaling factor.
 
 		Time invariance includes a further restriction that the behaviour of the system does not vary with time:
@@ -1287,7 +1287,7 @@
 
 		\begin{equation} f(g(x)) = g(f(x)) \label{eq:commutativity} \end{equation}
 
-		Where $f$ and $g$ are both functions representing \acrshort{lti} systems and $x$ is an input signal.  From
+		where $f$ and $g$ are both functions representing \acrshort{lti} systems and $x$ is an input signal.  From
 		the corpus of audio effects used by audio engineers: equalisation, delay and reverb are each \acrshort{lti}
 		systems.
 
