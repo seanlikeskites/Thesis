@@ -763,13 +763,13 @@
 		that it mainly amplifies high frequency content. The sine wave response analysis is used to demonstrate the
 		nonlinear elements of the device. 
 
-		\citet{dutilleux2011nonlinear} provides a slightly more in depth analysis of the Aural Exciter, showing the
-		spectral alterations make to a chirp signal. This gives information about how the nonlinear section of the
-		device responds to different input frequencies. It is seen that a high level of energy is introduced at the
-		second harmonic. It is not mentioned however, what the exciter's parameters were set to during these tests.
-		For this reason it is difficult to compare these results with those collected by \citet{chalupper2000aural}
-		which seem to disagree as they show a larger amount of new spectral content being introduced. Neither work
-		accounts for differences in processing depending on the input amplitude.
+		\citet{dutilleux2011nonlinear} provides a slightly more in depth analysis of the Aural Exciter,
+		investigating its spectral effects on a chirp signal. This gives information about how the nonlinear
+		section of the device responds to different input frequencies. It is seen that a high level of energy is
+		introduced at the second harmonic. It is not mentioned however, what the exciter's parameters were set to
+		during these tests.  For this reason it is difficult to compare these results with those collected by
+		\citet{chalupper2000aural} which seem to disagree as they show a larger amount of new spectral content
+		being introduced. Neither work accounts for differences in processing depending on the input amplitude.
 
 \section{Harmonic Generation Methods}
 \label{sec:Excitation-Methods}
@@ -787,7 +787,7 @@
 		characteristic curve is typically a piecewise function comprising of three sections:
 
 		\begin{enumerate}
-			\item A linear section. Applied to low magnitude samples.
+			\item A linear section, applied to low magnitude samples.
 			\item A transition section, often called the `knee'. This refers to the nonlinear part of the
 				characteristic curve for samples with magnitude below the clipping threshold.
 			\item A clipping section, limiting the magnitude of samples above the clipping threshold.
@@ -877,10 +877,9 @@
 	\label{sec:Excitation-Methods-Multiplier}
 		Multipliers are a subset of static nonlinearities which apply automodulation to a signal. Automodulation
 		refers to the amplitude modulation of a signal by itself. In amplitude modulation, the amplitude of one
-		signal (the carrier) is varied according to another signal (the modulator) by multiplication,
-		automodulation then refers to multiplying a signal by itself. The concept of automodulation can be extended
-		by multiplying a signal by itself several times. This is achieved by raising input samples to a positive
-		integer power, $h$, as shown in Equation~\ref{eq:Multiplier}.
+		signal (the carrier) is varied according to another signal (the modulator) by multiplication.  Applying
+		automodulation to a signal is achieved by raising input samples to a positive integer power, $h$, as shown
+		in Equation~\ref{eq:Multiplier}.
 
 		\begin{equation}
 			y[n] = x^{h}[n], \quad h \in \textbf{N}

@@ -326,12 +326,10 @@
 
 		When using the \acrshort{safe} plug-ins, users are required to provide a descriptor for a transform,
 		meaning that every \emph{safe:DescriptorItem} node in the dataset is attributed to a particular user.
-		Conversely, the metadata fields are not mandatory. In situations where a user has not filled in certain
-		metadata fields their values can be predicted on the server using supervised machine learning. Using the
-		Provenance Ontology, each metadata entity can be attributed to a particular agent, allowing it to be
-		understood as human or machine labelled. This allows queries on the dataset to request only the more
-		reliable user-labeled data or, for example, compare data produced using different classification
-		algorithms.
+		Conversely, the metadata fields are not mandatory. Using the Provenance Ontology, each metadata entity can
+		be attributed to a particular agent, allowing it to be understood as human or machine labelled. This allows
+		queries on the dataset to request only the more reliable user-labeled data or, for example, compare data
+		produced using different classification algorithms.
 
 		The Provenance Ontology is also used to describe the algorithms which produce audio feature data. Each
 		\emph{safe:FeatureExtractionTransform} node is a \emph{prov:Activity} which can be associated with a
@@ -1180,11 +1178,11 @@
 			Inspecting the mean bark band spectra for the descriptors
 			(Figure~\ref{fig:DistortionProcessedSpectra}), the spectral effects of a descriptor's position in
 			\acrshort{pc} 2 can be seen. As the value of \acrshort{pc} 2 increases so does the signal's
-			proportion of high frequency content, `warm' and `cream' describing signals with a low proportion
-			of high frequency energy and `bright' and `harsh' describing those with a larger proportion. The
-			spectral effects of the other \acrshort{pc}s are not as apparent, this is likely due to the low
-			resolution of the spectral representation but it should also be noted that this could be influenced
-			by the low number of times some of the terms have been used.
+			proportion of high frequency content. The terms `warm' and `cream' describe signals with a low
+			proportion of high frequency energy and `bright' and `harsh' describe those with a larger
+			proportion. The spectral effects of the other \acrshort{pc}s are not as apparent, this is likely
+			due to the low resolution of the spectral representation but it should also be noted that this
+			could be influenced by the low number of times some of the terms have been used.
 
 			\begin{figure}[h!]
 				\centering
@@ -1274,8 +1272,8 @@
 				\label{fig:DistortionDifferenceCentroidsPCAs}
 			\end{figure}
 
-			\acrshort{pc} 1 is correlated with Krimphoff irregularity, spectral skewness and spectral kurtosis,
-			the position of `crunch', in this \acrshort{pc}, corresponding to a small increase in each of these
+			\acrshort{pc} 1 is correlated with Krimphoff irregularity, spectral skewness and spectral kurtosis.
+			The position of `crunch' in this \acrshort{pc} corresponds to a small increase in each of these
 			features.  Inspecting the bark band spectra and spectral manipulations in Figures
 			\ref{fig:DistortionProcessedSpectra} and \ref{fig:DistortionDifferenceSpectra}, the magnitude of
 			these increases can be investigated. For `crunch', at the low end of \acrshort{pc} 1, a small

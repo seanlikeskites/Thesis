@@ -123,7 +123,6 @@
 		changes in energy) in the signal. This refers to spreading out the time taken for a transient to occur over
 		a longer period. As with spectral characteristics, to provide intuitive timbral control the temporal
 		characteristics of a system should produce the same result despite the properties of the input signal.
-		Again, control over these properties provides another advantage.
 
 	\subsection{Use Cases}
 	\label{sec:ExcitationEvaluation-Evaluation-UseCases}
@@ -143,8 +142,8 @@
 		which its parameters can be abstracted. Typically, the parameters of an algorithm do not correlate directly
 		to the low level features of the audio being processed. To combat this, abstracted parameters can be
 		developed which control specific features. This is more easily done with algorithms which expose
-		fundamental properties of a signal as their parameters. For example, a system which provides parameters
-		for the amplitudes of individual harmonics in the output.
+		fundamental properties of a signal as their parameters (e.g. a system which provides parameters for the
+		amplitudes of individual harmonics in the output).
 
 \section{Method Comparison}
 \label{sec:ExcitationEvaluation-Comparison}
@@ -818,12 +817,11 @@
 			sinusoidal input this results in the generation of individual harmonics as with the \acrshort{ssba}
 			and \acrshort{iap} techniques.
 			
-			The phase vocoder introduces frequency artefacts during its operation. The process of splitting the
-			signal into frames causes spectral leakage; energy at a given frequency is spread across the nearby
-			frequencies. This can cause inharmonic partials to be generated for input signals which are
-			perfectly harmonic. To counteract this, a window function can be applied to the frames prior to
-			calculating their \acrshort{dft}. Various different window functions have been proposed, each
-			having different effects in reducing the spectral leakage. The selection of a window function is
+			Phase vocoder implementation use window function to counteract the spectral leakage caused by
+			splitting the signal into frames. Spectral leakage causes energy at a given frequency to be spread
+			across the nearby frequencies. This can cause inharmonic partials to be generated for input signals
+			which are perfectly harmonic. Various different window functions have been proposed, each having
+			different effects in reducing the spectral leakage. The selection of a window function is
 			application specific, the performance and use of several different functions is discussed by
 			\citet{harris1978on}.
 			
@@ -1067,7 +1065,7 @@
 			timbral control than other static nonlinearities due to their exhibiting positive homogeneity.
 
 		\subsubsection*{Integrator}
-			Integrators are similarly useful to general static nonlinearities, they provide an efficient means
+			Integrators are similarly useful to general static nonlinearities; they provide an efficient means
 			to add wideband energy to the spectrum of a signal. The implementation discussed in this work
 			(Equation~\ref{eq:Integrator}) has similar properties to a rectifier, being a positive homogeneous
 			system which introduces distortion components with a shallow roll-off. The primary difference being

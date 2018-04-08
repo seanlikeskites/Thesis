@@ -667,8 +667,8 @@
 		of a signal's spectrum are audible. While the spectrum describes what frequency content is present in the
 		signal, the specific loudness describes how much of each frequency is perceived by a listener.  The total
 		loudness of a signal is calculated as the sum of the specific loudnesses of each frequency band. The full
-		procedure for calculating loudness is beyond the scope of this work, a description of the process is
-		provided by \citet{moore1997a}. 
+		procedure for calculating loudness is beyond the scope of this work, however a full description of the
+		process is provided by \citet{moore1997a}.
 
 		A widely used set of psychoacoustically spaced frequency bands was proposed by
 		\citet{zwicker1961subdivision} who spilt the spectrum into 24 parts, each one critical bandwidth wide.
@@ -1154,17 +1154,17 @@
 		distinguish between different classes of distortion effect, while dark $\Leftrightarrow$ bright and sharp
 		$\Leftrightarrow$ dull describe the amount of distortion applied with a particular effect.
 
-		\citet{alluri2010exploring} take a more in depth approach, using regression techniques to identify which
-		audio features contribute to which dimensions of their timbre space. Using factor analysis they identify
-		three dimensions which they label `Activity', `Brightness' and `Fullness'. The audio is analysed using
-		several features including: zero crossing rate, the ratio of energy above and below 1.5kHz (high-low energy
-		ratio), entropy (a measure of whether the spectrum has predominant peaks) and sub-band flux (a feature
-		describing the temporal fluctuation of frequency components in a specific band). Regression is used to
-		model how each of these features affect the perception of each timbral dimension. The `Activity' dimension
-		is contributed to by the high-low energy ratio and the sub-band flux in the 3\super{rd}, 6\super{th} and
-		8\super{th} of 10 spectral bands. The `Brightness' dimension comprises zero crossing rate and the
-		1\super{st} and 3\super{rd} bands' fluxes and the `Fullness' dimension is described by zero crossing rate,
-		high-low energy ratio, entropy and the 2\super{nd} band's flux.
+		\citet{alluri2010exploring} take a more in depth approach, using stepwise and principal components
+		regression techniques to identify which audio features contribute to which dimensions of their timbre
+		space. Using factor analysis they identify three dimensions which they label `Activity', `Brightness' and
+		`Fullness'. The audio is analysed using several features including: zero crossing rate, the ratio of energy
+		above and below 1.5kHz (high-low energy ratio), entropy (a measure of whether the spectrum has predominant
+		peaks) and sub-band flux (a feature describing the temporal fluctuation of frequency components in a
+		specific band). Regression is used to model how each of these features affect the perception of each
+		timbral dimension. The `Activity' dimension is contributed to by the high-low energy ratio and the sub-band
+		flux in the 3\super{rd}, 6\super{th} and 8\super{th} of 10 spectral bands. The `Brightness' dimension
+		comprises zero crossing rate and the 1\super{st} and 3\super{rd} bands' fluxes and the `Fullness' dimension
+		is described by zero crossing rate, high-low energy ratio, entropy and the 2\super{nd} band's flux.
 
 		Further analysis can be carried out in the form of clustering, identifying groups (clusters) of stimuli
 		with similar timbres. \citet{lakatos2000a} performs a pairwise dissimilarity test and applies

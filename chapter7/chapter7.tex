@@ -274,8 +274,9 @@
 
 			Listening tests were undertaken using circumaural headphones in a quiet listening environment. In
 			total eight participants, between the ages of 20 and 50, took part in the listening tests, all of
-			whom reported no known hearing problems. On average participants spent 5.14 minutes in the training
-			phase ($\sigma$ = 1.85) and 3.36 minutes on each of the four evaluation phases ($\sigma$ = 2.06).
+			whom reported no known hearing problems. Four of the participants had significant prior experience
+			with music production. On average participants spent 5.14 minutes in the training phase ($\sigma$ =
+			1.85) and 3.36 minutes on each of the four evaluation phases ($\sigma$ = 2.06).
 
 	\subsection{Results}
 	\label{sec:PerceptualExperiments-Reconstruction-Results}
@@ -541,13 +542,15 @@
 		harmonics as the amplitude envelopes of those combinations are better matched, as seen in
 		Figure~\ref{fig:CelloSpectrogram}. Building a system like this however, requires knowledge of which
 		harmonics in the input signal will be the best choice for reconstructing a given harmonic. This will be
-		different depending on the source of the signal and is not calculable from a degraded input signal. It is
-		possible that models could be built describing the relationship between the $f_{0}$ and harmonic's
-		amplitudes for different classes of sound source. This would require different processing algorithms for
-		different inputs, increasing the complexity of using the system. Furthermore, the \acrshort{ssba} and
-		\acrshort{iap} techniques are only able to apply frequency shifts at integer multiples of the frequency of
-		the input signal. In order to generate all orders of harmonic using these techniques, the $f_{0}$ must be
-		used as the input to the frequency shifter.
+		different depending on the source of the signal and is not calculable from a degraded input signal.
+		Machine learning techniques could be used to build models describing the relationship between a harmonic's
+		amplitude envelope and those of other harmonics in a signal. Using these, the amplitude envelope of an
+		excited harmonic could be determined from the envelopes of all harmonics present in the input signal. This
+		would require different processing algorithms for different inputs, increasing the complexity of using the
+		system. Furthermore, the \acrshort{ssba} and \acrshort{iap} techniques are required to operate on a single
+		sinusoidal input and are unable to apply arbitrary amplitude envelopes. Additionally they are only able to
+		apply frequency shifts at integer multiples of the frequency of the input signal. In order to generate all
+		orders of harmonic using these techniques, the $f_{0}$ must be used as the input to the frequency shifter.
 		
 		The degree of inaccuracy introduced can be estimated by examining the relationships of the harmonics'
 		amplitudes in the unprocessed test signals. As the systems rely on the amplitude envelope of the $f_{0}$,
