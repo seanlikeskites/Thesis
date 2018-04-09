@@ -49,22 +49,22 @@
 		directly from the \acrshort{daw}, with no extra input from the user, includes:
 
 		\begin{itemize}
-			\item Information about the audio processing chain:
+			\item information about the audio processing chain:
 			\begin{itemize}
-				\item The effects applied to each track.
-				\item The order in which these effects are applied.
-				\item The parameter settings of these effects.
+				\item the effects applied to each track
+				\item the order in which these effects are applied
+				\item the parameter settings of these effects
 			\end{itemize}
-			\item Features of the audio signal at every stage in the processing chain.
+			\item features of the audio signal at every stage in the processing chain
 		\end{itemize}
 
 		Additional information can be gathered by prompting the user for input:
 
 		\begin{itemize}
-			\item The genre of music being produced.
-			\item The content of the separate audio tracks (what instruments etc.).
-			\item Semantic terms which describe the timbral transforms applied by each audio
-			      effect.
+			\item the genre of music being produced
+			\item the content of the separate audio tracks (what instruments etc.)
+			\item semantic terms which describe the timbral transforms applied by each audio
+			      effect
 		\end{itemize}
 
 		To ensure that all this information is available this would require the creation of a new \acrshort{daw},
@@ -120,19 +120,19 @@
 		completed the results are stored, containing:
 
 		\begin{itemize}
-			\item The user's semantic description of the effect's application (entered into the text box seen
-				in Figure~\ref{fig:SAFE-Distortion}).
-			\item The plug-in's current parameter settings.
-			\item The features of the audio both before and after processing.
-			\item Some additional metadata about the user and the track being worked on (entered into the panel
-				shown in Figure~\ref{fig:SAFE-Metadata}).
+			\item the user's semantic description of the effect's application (entered into the text box seen
+				in Figure~\ref{fig:SAFE-Distortion})
+			\item the plug-in's current parameter settings
+			\item the features of the audio both before and after processing
+			\item some additional metadata about the user and the track being worked on (entered into the panel
+				shown in Figure~\ref{fig:SAFE-Metadata})
 			\begin{itemize}
-				\item The genre.
-				\item The instrument.
-				\item The user's age.
-				\item The user's location.
-				\item The user's primary language.
-				\item The number of years experience the user has in music production.
+				\item the genre
+				\item the instrument
+				\item the user's age
+				\item the user's location
+				\item the user's primary language
+				\item the number of years experience the user has in music production
 			\end{itemize}
 		\end{itemize}
 
@@ -156,12 +156,12 @@
 		symbols as follows:
 
 		\begin{itemize}
-			\item {\bf{Temporal Features:}} Features calculated from the temporal representation of the signal.
+			\item {\bf{Temporal Features:}} features calculated from the temporal representation of the signal:
 			\begin{itemize}
 				\item Signal Mean ($\mu$), Signal Variance ($\sigma^{2}$), Signal Standard Deviation
-				      ($\sigma$), RMS Amplitude ($\mathrm{RMS}$) and Zero Crossing Rate ($\mathrm{ZCR}$).
+				      ($\sigma$), RMS Amplitude ($\mathrm{RMS}$) and Zero Crossing Rate ($\mathrm{ZCR}$)
 			\end{itemize}
-		\item {\bf{Spectral Features:}} Features calculated from the \acrshort{dft} of the signal.
+		\item {\bf{Spectral Features:}} features calculated from the \acrshort{dft} of the signal:
 			\begin{itemize}
 				\item Spectral Centroid ($\mu_{\mathrm{s}}$), Spectral Spread ($\sigma_{\mathrm{s}}^{2}$),
 				      Spectral Standard Deviation ($\sigma_{\mathrm{s}}$), Spectral Skewness
@@ -169,9 +169,9 @@
 				      Irregularity ($\mathrm{JI}$), Krimphoff Irregularity ($\mathrm{KI}$), Fundamental
 				      Frequency ($f_{0}$), Spectral Smoothness ($\mathrm{SSm}$), Spectral Roll Off
 				      ($\mathrm{SRO}$), Spectral Flatness ($\mathrm{SF}$), Tonality ($\tau$), Spectral
-				      Crest ($\mathrm{SC}$) and Spectral Slope ($\mathrm{SSl}$).
+				      Crest ($\mathrm{SC}$) and Spectral Slope ($\mathrm{SSl}$)
 			\end{itemize}
-			\item {\bf{Peak Spectral Features:}} Features calculated from the spectral partials of the signal.
+			\item {\bf{Peak Spectral Features:}} features calculated from the spectral partials of the signal:
 			\begin{itemize}
 				\item Peak Spectral Centroid ($\mu_{\mathrm{p}}$), Peak Spectral Spread
 				      ($\sigma_{\mathrm{p}}^{2}$), Peak Spectral Standard Deviation
@@ -179,10 +179,10 @@
 				      Spectral Kurtosis ($\kappa_{\mathrm{p}}$), Peak Jensen Irregularity
 				      ($\mathrm{JI_{p}}$), Peak Krimphoff Irregularity
 				      ($\mathrm{KI_{p}}$), Peak Tristimuli ($T_{\mathrm{p}1}$, $T_{\mathrm{p}2}$
-				      and $T_{\mathrm{p}3}$) and Inharmonicity ($I$).
+				      and $T_{\mathrm{p}3}$) and Inharmonicity ($I$)
 			\end{itemize}
-			\item {\bf{Harmonic Spectral Features:}} Features calculated from the harmonic partials of the
-			      signal.
+			\item {\bf{Harmonic Spectral Features:}} features calculated from the harmonic partials of the
+			      signal:
 			\begin{itemize}
 				\item Harmonic Spectral Centroid ($\mu_{\mathrm{h}}$), Harmonic Spectral Spread
 				      ($\sigma_{\mathrm{h}}^{2}$), Harmonic Spectral Standard Deviation
@@ -190,11 +190,11 @@
 				      Spectral Kurtosis ($\kappa_{\mathrm{h}}$), Harmonic Jensen Irregularity
 				      ($\mathrm{JI_{h}}$), Harmonic Krimphoff Irregularity
 				      ($\mathrm{KI_{h}}$), Tristimuli ($T_{1}$, $T_{2}$ and $T_{3}$), Noisiness
-				      ($N$) and Odd to Even Harmonic Ratio ($\mathrm{OER}$).
+				      ($N$) and Odd to Even Harmonic Ratio ($\mathrm{OER}$)
 			\end{itemize}
-			\item {\bf{Bark Coefficients (}}$\mathrm{Bark}_{0\mathrm{-}24}${\bf{):}} The 25 bark band
-			      coefficients.
-		      \item {\bf{\acrshort{mfccs} (}}$\mathrm{MFCC}_{0\mathrm{-}12}${\bf{):}} The 13 \acrshort{mfccs}.
+			\item {\bf{Bark Coefficients (}}$\mathrm{Bark}_{0\mathrm{-}24}${\bf{):}} the 25 bark band
+			      coefficients
+		      \item {\bf{\acrshort{mfccs} (}}$\mathrm{MFCC}_{0\mathrm{-}12}${\bf{):}} the 13 \acrshort{mfccs}
 		\end{itemize}
 
 		The \acrshort{safe} plug-ins were distributed online as \acrshort{vst} and \acrshort{au} effects for
@@ -238,9 +238,9 @@
 		This additional data can be separated into three groups:
 
 		\begin{itemize}
-			\item Metadata describing the application of the effect.
-			\item Audio feature data for the input and output signals.
-			\item Provenance of the data.
+			\item metadata describing the application of the effect
+			\item audio feature data for the input and output signals
+			\item provenance of the data
 		\end{itemize}
 
 		\begin{figure}[h!]
@@ -1533,10 +1533,10 @@
 	with these transforms identified four main timbral groups consisting of related descriptors:
 
 	\begin{itemize}
-		\item Warmth: warm, cream, fuzz, deep and full.
-		\item Brightness: bright, harsh, tin, thin, clear and air.
-		\item Crunchiness: crunch.
-		\item Muddiness: mud, boom and box.
+		\item warmth: warm, cream, fuzz, deep and full
+		\item brightness: bright, harsh, tin, thin, clear and air
+		\item crunchiness: crunch
+		\item muddiness: mud, boom and box
 	\end{itemize}
 
 	It was shown that metrics used to measure agreement between test participants in previous timbral studies are
