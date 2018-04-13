@@ -31,8 +31,8 @@
 	timbre of a xylophone as being `not flute-like'. More general timbral descriptors directly describe the sound
 	itself rather than the source which produced it. These include terms such as bright, rough and sharp. The timbre of
 	different sounds can then be compared using these terms \citep{howard2009acoustics}. Sounds can also be ordered in
-	terms of these criteria, much like with loudness and pitch. For example one could order a set of sounds by how
-	bright they sound.
+	terms of these criteria, much like with loudness and pitch. For example, one could arrange a set of sounds in order
+	of their perceived brightness.
 
 	Early research into timbre was performed by \citet{helmholtz1875on}, who investigated the perceived nature of
 	sounds composed of various simple tones. In more recent work, several other features of signals have been defined
@@ -43,7 +43,7 @@
 	\ref{sec:Timbre-PsychoacousticPrinciples} and \ref{sec:Timbre-TimbralFeatures}. The second approach, discussed in
 	Sections \ref{sec:Timbre-ListeningTests} and \ref{sec:Timbre-Parameterisation}, involves the use of experiments in
 	which participants listen to audio stimuli and provide responses regarding their timbre.  These responses are then
-	analysed to uncover any correlations between the participants responses and lower level features of the stimuli.
+	analysed to uncover any correlations between the participants' responses and lower level features of the stimuli.
 	Lastly the systems used to control timbre are discussed: Section~\ref{sec:Timbre-Control} discussing methods of
 	controlling timbral aspects of a signal proposed in the research literature, and
 	Section~\ref{sec:Timbre-AudioProcessing} discussing the systems traditionally used by audio engineers to modify
@@ -51,9 +51,9 @@
 
 \section{Low Level Audio Features Characterising Timbre}
 \label{sec:Timbre-LowLevelFeatures}
-	A widely cited definition of timbre \citep{ASA1960american} states that ``timbre depends primarily upon the
+	A widely cited definition of timbre \citep{ASA1960american} states that `timbre depends primarily upon the
 	spectrum of the stimulus, but it also depends on the waveform, the sound pressure, the frequency location of the
-	spectrum, and the temporal characteristics of the stimulus''. This suggests that timbre is influenced by various
+	spectrum, and the temporal characteristics of the stimulus'. This suggests that timbre is influenced by various
 	low level features of an audio signal: the spectral content, waveform and temporal characteristics all affect the
 	perceived timbre of a sound. Signal analysis techniques can be used to extract information about these elements of
 	a signal.  A large list of such feature extraction techniques is given by \citet{peeters2004a} and
@@ -67,7 +67,7 @@
 	\label{sec:Timbre-LowLevelFeatures-Temporal}
 		Simple temporal features involve taking statistical measurements, such as mean and variance, of the audio
 		samples in a signal. These measures give basic information about the ways in which the amplitude of samples
-		in a signal vary, but in many cases they do not provide a good description of a signal. For example, the
+		in a signal varies, but in many cases they do not provide a good description of a signal. For example, the
 		mean value of a sinusoidal signal over a whole number of cycles is zero. A common technique to extract more
 		meaningful information about a signal's level is to use an envelope detector. An envelope detector produces
 		an envelope for a signal: a smooth line which describes the peaks or troughs in a signal, ignoring the
@@ -86,12 +86,12 @@
 			Simple envelope detectors can be implemented based on those used in electronic circuits. First,
 			rectification is applied to produce a unipolar signal and then a low pass filter is applied to
 			smooth the result \citep{dutilleux2011modulators}. In the digital domain more complex envelope
-			detectors are possible such as the instantaneous amplitude detector. Instantaneous amplitude is
+			detectors are possible, such as the instantaneous amplitude detector. Instantaneous amplitude is
 			calculated as the absolute value of an analytic representation of the input signal. An analytic
 			signal is a complex valued signal, the real part of which is the original signal and the imaginary
 			part its Hilbert transform. The analytic signal is often denoted with a subscript letter $a$, such
-			that the analytic representation of the signal $x[n]$ would be denoted $x_{a}[n]$. This method and
-			more complex digital envelope detectors are reviewed by \citet{chang2007a}. 
+			that the analytic representation of the signal $x[n]$ would be denoted $x_{a}[n]$. This method,
+			along with more complex digital envelope detectors, is reviewed by \citet{chang2007a}. 
 
 			Implementing an instantaneous amplitude detector involves making performance compromises. An ideal
 			Hilbert transform alters the phase information of a signal while leaving the magnitude information
@@ -108,10 +108,10 @@
 			For an ideal Hilbert transform the impulse response should be infinitely long ($M = \infty$).
 			Practicable approximations of an ideal Hilbert transform can be created by using a finite value for
 			$M$. A delay of $M$ samples must also be introduced in order to give a causal filter. As the value
-			of $M$ is decreased this delay is reduced while the magnitude response of the filter deviates
+			of $M$ is decreased, this delay is reduced while the magnitude response of the filter deviates
 			further from the ideal. Figure~\ref{fig:HilbertMagnitude} shows the magnitude responses for
 			\acrshort{fir} Hilbert transform filters with $M = 11$ and $M = 101$. The filters have a bandpass
-			response with some ripple in the pass band. As $M$ is increased the bandwidth of the passband is
+			response with some ripple in the pass band. As $M$ is increased, the bandwidth of the passband is
 			increased and the ripple reduced. The phase response of these filters remains ideal no matter the
 			value of $M$, as evidenced by Figure~\ref{fig:HilbertPhase}.
 
@@ -134,7 +134,7 @@
 			When using Equation~\ref{eq:FirHilbertTransform} a compromise needs to be made between the
 			tolerable amount of delay and the accuracy of the filter's magnitude response. Increasing $M$ will
 			give a more accurate filter but introduce more delay and increase the complexity of the filter.
-			More efficient implementations can be built using \acrshort{iir} filters if some of the properties
+			More efficient implementations can be built using \acrshort{iir} filters, if some of the properties
 			of an ideal Hilbert transform are disregarded.  \citet{oppenheim2014discrete} suggest constructing
 			a phase splitter: processing audio with two parallel allpass \acrshort{iir} filters, the phase
 			responses of which differ from each other by $\frac{\pi}{2}$ radians for a large proportion of the
@@ -227,16 +227,16 @@
 		components can describe \acrshort{dft} bins, $a_{n}$ being the bin's magnitude and $\nu_{n}$ its frequency;
 		filter bank bands, $a_{n}$ representing the total energy in the band and $\nu_{n}$ the band's center
 		frequency; or spectral partials, $a_{n}$ and $\nu_{n}$ giving the amplitude and frequency of the partial.
-		Several of the features discussed in this section can be calculated from any type of spectral components so
-		this uniform notation proves very useful. Where the calculation of a feature requires a particular spectral
-		representation this will be noted. Some features are calculated using only the energy at the harmonic
-		frequencies of a signal. The equations for calculating these features use a slightly different notation;
-		features are calculated from the amplitudes of the first $N$ harmonics of a signal, the amplitude of the
-		$n$\super{th} harmonic being denoted $h_{n}$. No additional notation is required for the frequency of the
-		harmonic as it is implicitly equal to $nf_{0}$.
+		Several of the features discussed in this section can be calculated from any type of spectral components,
+		so this uniform notation proves very useful. Where the calculation of a feature requires a particular
+		spectral representation this will be noted. Some features are calculated using only the energy at the
+		harmonic frequencies of a signal. The equations for calculating these features use a slightly different
+		notation; features are calculated from the amplitudes of the first $N$ harmonics of a signal, the amplitude
+		of the $n$\super{th} harmonic being denoted $h_{n}$. No additional notation is required for the frequency
+		of the harmonic as it is implicitly equal to $nf_{0}$.
 
 		\subsubsection*{Spectral Moments}
-			The spectral moments are the statistical moments of a signal's spectrum, they describe how the
+			The spectral moments are the statistical moments of a signal's spectrum; they describe how the
 			energy is distributed in a spectrum. The first four spectral moments are the centroid, spread,
 			skewness and kurtosis.
 
@@ -292,7 +292,7 @@
 			where the energy is evenly distributed in a band around the centroid. A high kurtosis describes a
 			spectrum in which small amounts of energy lies at frequencies far away from the central band.
 
-			The kurtosis of a normal distribution is 3, this gives rise to a different measure, the excess
+			The kurtosis of a normal distribution is 3; this gives rise to a different measure, the excess
 			kurtosis, which is defined as $\kappa_{\mathrm{s}} - 3$. The excess kurtosis is often referred to
 			as the kurtosis, giving rise to some obscurity when reading literature which discusses the kurtosis
 			without providing a definition.
@@ -323,8 +323,8 @@
 				\label{eq:LibXtractKrimphoffIrregularity}
 			\end{equation}
 
-			A second method, Jensen irregularity ($\mathrm{JI}$), is proposed by \citet{jensen1999timbre} and
-			calculated using Equation~\ref{eq:JensenIrregularity}.
+			A second method, Jensen irregularity ($\mathrm{JI}$), was proposed by \citet{jensen1999timbre} and
+			is calculated using Equation~\ref{eq:JensenIrregularity}.
 
 			\begin{equation}
 				\mathrm{JI} = \frac{\sum_{n = 1}^{N} (a_{n} - a_{n+1})^{2}}
@@ -333,8 +333,8 @@
 				\label{eq:JensenIrregularity}
 			\end{equation}
 
-			A third method, Beauchamp irregularity ($\mathrm{BI}$), is given by \citet{beauchamp2007analysis}
-			and described by Equation~\ref{eq:BeauchampIrregularity}.
+			A third method, Beauchamp irregularity ($\mathrm{BI}$), was given by \citet{beauchamp2007analysis}
+			and is described by Equation~\ref{eq:BeauchampIrregularity}.
 
 			\begin{gather}
 			        \bar{a}_{n} = \frac{a_{n-1} + a_{n} + a_{n+1}}{3} \nonumber \\
@@ -346,8 +346,8 @@
 			Equations \ref{eq:JensenIrregularity} and \ref{eq:BeauchampIrregularity} have an advantage over
 			Equations \ref{eq:KrimphoffIrregularity} and \ref{eq:LibXtractKrimphoffIrregularity} in that they
 			produce normalised values. Equation~\ref{eq:JensenIrregularity} produces values between zero and
-			two while Equation~\ref{eq:BeauchampIrregularity} produces values between zero and one. This allows
-			measures of irregularity of two different signals to be compared more easily.
+			two, while Equation~\ref{eq:BeauchampIrregularity} produces values between zero and one. This
+			allows measures of irregularity of two different signals to be compared more easily.
 
 		\subsubsection*{Spectral Flatness}
 			Spectral flatness, $\mathrm{SF}$, measures how uniformly distributed the energy is in the spectrum.
@@ -377,21 +377,21 @@
 			description of the tonality / noisiness of a signal.
 
 			The spectral flatness is traditionally measured using \acrshort{dft} bins as spectral components.
-			This way any signal which has zero energy in any \acrshort{dft} bin will produce a spectral
+			This way, any signal which has zero energy in any \acrshort{dft} bin will produce a spectral
 			flatness of zero. Musical signals which are composed of a set of frequency partials may have areas
 			of the spectrum with zero energy. Several different sounds with radically different spectral
 			envelopes can then all exhibit a spectral flatness of zero. This is particularly problematic for
 			digitally synthesised signals as they do not have the inherent noise present in recorded sounds.
 			The method used by \citet{peeters2004a} mitigates this by using filter bank bands as the spectral
-			components. It is less likely that there will be zero energy in a wider spectral band than a single
-			\acrshort{dft} bin. Another method to avoid a spectral flatnesses of zero is to use the signal's
-			partials as spectral components.  This no longer measures the tonality / noisiness of a signal but
-			rather the flatness of its spectral envelope.
+			components. It is less likely that there will be zero energy in a wider spectral band than in a
+			single \acrshort{dft} bin. Another method to avoid a spectral flatnesses of zero is to use the
+			signal's partials as spectral components.  This no longer measures the tonality / noisiness of a
+			signal but rather the flatness of its spectral envelope.
 
 		\subsubsection*{Spectral Slope}
-			The spectral slope, $\mathrm{SSl}$ measures the gradient of the spectrum; it is calculated by first
-			order linear regression of the spectrum. For a signal with $N$ spectral components the spectral
-			slope can be calculated with Equation~\ref{eq:SpectralSlope}.
+			The spectral slope, $\mathrm{SSl}$, measures the gradient of the spectrum; it is calculated by
+			first order linear regression of the spectrum. For a signal with $N$ spectral components the
+			spectral slope can be calculated with Equation~\ref{eq:SpectralSlope}.
 
 			\begin{gather}
 				A = \sum_{n = 1}^{N} a_{n}
@@ -405,7 +405,7 @@
 			Negative values of spectral slope describe a spectrum where the majority of the energy is in the
 			low end of the spectrum. Positive values describe signals with more energy in the high end of the
 			spectrum. Traditional measures of spectral slope are calculated using the amplitudes and
-			frequencies of the \acrshort{dft} bins. For musical signals which are composed of partials it may
+			frequencies of the \acrshort{dft} bins. For musical signals which are composed of partials, it may
 			be more beneficial to measure the slope of the partial's amplitudes rather than of the whole
 			spectrum. 
 			
@@ -424,7 +424,7 @@
 			\end{gather}
 			
 			A commonly used unit for measuring slopes in spectra is dB per octave, as used when measuring the
-			roll off rate in a filters stop band. Equation~\ref{eq:SpectralSlope2} can be altered to produce
+			roll-off rate in a filters stop band. Equation~\ref{eq:SpectralSlope2} can be altered to produce
 			values in this unit by substituting $\nu_{n}$ with $\log_{2}(\nu_{n})$.
 
 		\subsubsection*{Tristimulus}
@@ -451,7 +451,7 @@
 			Each tristimulus metric measures the amplitude ratio between a specific set of harmonics and the
 			sum of all harmonics. In each of these equations the denominator is always greater than or equal to
 			the numerator, meaning the tristimulus takes values from zero to one. Zero meaning there is no
-			energy in that set of harmonics, one meaning the signal is entirely composed of those harmonics.
+			energy in that set of harmonics and one meaning the signal is entirely composed of those harmonics.
 
 			In this work a generalisation of the tristimulus metrics is proposed which includes the inharmonic
 			partials of a signal. These are called the peak tristimulus measures ($T_{\mathrm{p}1}$,
@@ -500,9 +500,9 @@
 			produce any value greater then one. Another problem arises for signals with no energy at even
 			harmonics where a division by zero will occur. A more robust method is to use separate measures for
 			the proportion of odd harmonics in a signal and the proportion of even harmonics in a signal.
-			\citet{lukasik2005towards} describes two metrics which measure the oddness, $O$, and the evenness,
-			$E$, of a signal producing more easily interpreted values of 0 and 1. Formulae for the oddness and
-			evenness are given in Equations \ref{eq:Oddness} and \ref{eq:Evenness}.
+			\citet{lukasik2005towards} proposed two metrics which measure the oddness, $O$, and the evenness,
+			$E$, of a signal, producing more easily interpreted values in between zero and one. Formulae for
+			the oddness and evenness are given in Equations \ref{eq:Oddness} and \ref{eq:Evenness}.
 
 			\begin{equation}
 				O = \sqrt{\frac{\sum_{1 \leq n \leq N, n \text{ is odd}} h_{n}^{2}}
@@ -518,7 +518,7 @@
 
 		\subsubsection*{Inharmonicity}
 			Inharmonicity, $I$, is a measure of how much the frequencies of a signal's partials deviate from
-			harmonic frequencies. As such it must be calculated from the amplitudes and frequencies of a
+			harmonic frequencies. As such, it must be calculated from the amplitudes and frequencies of a
 			signal's spectral partials. \citet{fletcher1962quality} state that inharmonicity of some partials
 			is necessary for the recognition of the timbre of a piano. The inharmonicity of a signal is
 			measured using Equation~\ref{eq:Inharmonicity}.
@@ -538,9 +538,9 @@
 \label{sec:Timbre-PsychoacousticPrinciples}
 	As discussed in the previous section, there are several metrics which describe the low level features of audio
 	signals. While it is possible to measure changes in the values of these features, these changes may not be
-	detectable by or linearly related to the human hearing system. To understand the possible effects an audio feature
-	can have on perceived timbre we must model how that feature itself is perceived. Several models have been proposed
-	by research in psychoacoustics, a field which studies the perception of sound. The existing psychoacoustic
+	detectable by, or linearly related, to the human hearing system. To understand the possible effects an audio
+	feature can have on perceived timbre we must model how that feature itself is perceived. Several models have been
+	proposed by research in psychoacoustics, a field which studies the perception of sound. The existing psychoacoustic
 	literature concerns the study of the human hearing system and how it responds to certain aspects of audio stimuli.
 	Several different areas of audio perception have been researched. Methods have been devised to model the human
 	perception of loudness \citep{moore1997a} and pitch \citep{gerhard2003pitch}. Other research considers the human
@@ -549,18 +549,18 @@
 
 	\subsection{Psychoacoustic Frequency}
 	\label{sec:Timbre-PsychoacousticPrinciples-Frequency}
-		In scientific work frequency is typically discussed as an absolute number of cycles per second in units of
-		Hertz. In music theory the frequency difference between two sounds is described in terms of tones and
+		In scientific work, frequency is typically discussed as an absolute number of cycles per second in units of
+		Hertz. In music theory, the frequency difference between two sounds is described in terms of tones and
 		octaves.  This musical notation assumes that the ratio of two frequencies defines the perceived interval
 		between them: the perceived difference between 50 and 75Hz is the same as that between 1kHz and 1.5kHz.
-		While this model suffices for musical composition and performance it does not accurately describe the
+		While this model suffices for musical composition and performance, it does not accurately describe the
 		perception of frequency by human listeners. \citet{stevens1937a} propose a new frequency scale, the mel
 		scale, on which a given change in frequency produces the same perceived interval. This scale was devised
 		through a series of listening tests in which participants were asked to adjust the frequency of a tone such
 		that it had a pitch which was perceived to be half that of a reference tone. This was repeated for ten
-		individual reference tones producing ten data points which were used to provide a mapping between the hertz
-		and mel scales. A formula to approximate the frequency in mel, $m$, for any given frequency in hertz, $f$,
-		is given by \citet{oshaughnessy2000speech} (Equation~\ref{eq:mel}), shown graphically in
+		individual reference tones, producing ten data points which were used to provide a mapping between the
+		hertz and mel scales. A formula to approximate the frequency in mel, $m$, for any given frequency in hertz,
+		$f$, was given by \citet{oshaughnessy2000speech} (Equation~\ref{eq:mel}) and is shown graphically in
 		Figure~\ref{fig:MelScale}.
 
 		\begin{equation}
@@ -576,9 +576,9 @@
 		\end{figure}
 
 		This perceptual frequency scale allows audio feature metrics to analyse audio in more perceptually relevant
-		bands. One such metric are the \acrfullpl{mfcc} developed for use in speech recognition
+		bands. An example of this are the \acrfullpl{mfcc}, developed for use in speech recognition
 		\citep{davis1980comparison}. These provide more detailed information about the shape of the spectrum than
-		the spectral moments discussed in Section~\ref{sec:Timbre-LowLevelFeatures-Spectral}. In brief the power
+		the spectral moments discussed in Section~\ref{sec:Timbre-LowLevelFeatures-Spectral}. In brief, the power
 		spectrum of a signal is partitioned into bands which are equally spaced on the mel scale.  The
 		\acrfull{dct} of the log powers of these bands is then calculated to produce the \acrshortpl{mfcc}. From
 		their first use in speech recognition, \acrshortpl{mfcc} have been added to the corpus of audio features
@@ -589,8 +589,8 @@
 		individual tones, but also the perception of tones played simultaneously. In certain situations a sound
 		will mask the perception of another sound, causing it to become inaudible. The degree of masking between
 		two sounds depends on the amplitude, frequency and temporal relationships between them. Two sounds which
-		are perceptually close in frequency are more likely to perceptually interact with each other causing one to
-		be masked. More detailed examination of the human hearing system reveals the maximum difference in
+		are perceptually close in frequency are more likely to perceptually interact with each other, causing one
+		to be masked. More detailed examination of the human hearing system reveals the maximum difference in
 		frequency between two tones for which masking will occur, the critical bandwidth.
 
 	\subsection{Critical Bands}
@@ -601,7 +601,7 @@
 		frequencies. A tone whose excitation band overlaps with another will interfere with how the other tone is
 		perceived by a listener. The basilar membrane can be modelled as a parallel filter bank comprised of band
 		pass filters, each of these auditory filters representing the region of the membrane excited by a
-		sinusoidal tone at its centre frequency. The bandwidth of these filters is known as the critical bandwidth,
+		sinusoidal tone at its centre frequency. The bandwidth of these filters is known as the critical bandwidth;
 		portions of signals will interfere with the perception of others which are within one critical bandwidth.
 		\citet{glasberg1990derivation} simplify the auditory filters by modelling them as rectangular filters. The
 		bandwidth of these filters is known as the \acrfull{erb} and can be approximated using
@@ -613,16 +613,17 @@
 		\end{equation}
 
 		where $f_{c}$ is the center frequency of the auditory filter in kHz and $\mathrm{ERB}(f_{c})$ is the
-		equivalent rectangular bandwidth, in Hz, at that frequency.
+		\acrshort{erb}, in Hz, at that frequency.
 
-		\citet{howard2009acoustics} discus the perception of two tones played simultaneously as they get further
-		apart in frequency. When within 15Hz of one another the two tones are perceived as a single sound with a
+		\citet{howard2009acoustics} discuss the perception of two tones played simultaneously as they get further
+		apart in frequency. When within 15Hz of one another, the two tones are perceived as a single sound with a
 		sinusoidally varying amplitude. The frequency of this variation is equal to the difference in frequency
-		between the tones. As the difference in frequency increases beyond 15Hz this amplitude modulation becomes
+		between the tones. As the difference in frequency increases beyond 15Hz, this amplitude modulation becomes
 		fast enough for it to be perceived as a roughness in texture rather than `beats' in the amplitude. In
-		between 15Hz and the critical bandwidth the perceived sound transitions from a single sound to two separate
-		sounds but still with a rough texture. Once the difference in frequency exceeds the critical bandwidth the
-		two tones are perceived as separate tones. These effects are summarised in Figure~\ref{fig:ToneSeparation}.
+		between 15Hz and the critical bandwidth, the perceived sound transitions from a single sound to two
+		separate sounds but still with a rough texture. Once the difference in frequency exceeds the critical
+		bandwidth, the two tones are perceived as separate tones. These effects are summarised in
+		Figure~\ref{fig:ToneSeparation}.
 
 		\begin{figure}[h!]
 			\centering
@@ -663,12 +664,12 @@
 	\label{sec:Timbre-PsychoacousticPrinciples-SpecificLoudness}
 		In hearing models for measuring loudness it is common to split the audible spectrum into bands which all
 		have the same perceived width. The specific loudness measures the perceived loudness of a signal in each of
-		these bands. For the analysis of the perception of timbre this allows for better modelling of what portions
-		of a signal's spectrum are audible. While the spectrum describes what frequency content is present in the
-		signal, the specific loudness describes how much of each frequency is perceived by a listener.  The total
-		loudness of a signal is calculated as the sum of the specific loudnesses of each frequency band. The full
-		procedure for calculating loudness is beyond the scope of this work, however a full description of the
-		process is provided by \citet{moore1997a}.
+		these bands. For the analysis of the perception of timbre, this allows for better modelling of what
+		portions of a signal's spectrum are audible. While the spectrum describes what frequency content is present
+		in the signal, the specific loudness describes how much of each frequency is perceived by a listener.  The
+		total loudness of a signal is calculated as the sum of the specific loudnesses of each frequency band. The
+		full procedure for calculating loudness is beyond the scope of this work; however, a full description of
+		the process is provided by \citet{moore1997a}.
 
 		A widely used set of psychoacoustically spaced frequency bands was proposed by
 		\citet{zwicker1961subdivision} who spilt the spectrum into 24 parts, each one critical bandwidth wide.
@@ -681,10 +682,10 @@
 	One method of relating semantic descriptors to measurable features of an audio signal is through the use of
 	psychoacoustic models. To construct these, a semantic descriptor is chosen and a hypothesis made as to what
 	attributes of a signal it describes. Psychoacoustic principles are then used to formulate a model describing how
-	these attributes are interpreted by the human hearing system. This model is then refined through listening
-	experiments so that the resulting metric is proportional to perception of the attribute it describes. As the
-	features relating to a description are hypothesised, models can only be built in this manner for descriptors which
-	are known to describe particular phenomena. There are two such descriptors which have received considerable
+	these attributes are interpreted by the human hearing system. This model is then refined, through listening
+	experiments, so that the resulting metric is proportional to a listener's perception of the attribute it describes.
+	As the features relating to a description are hypothesised, models can only be built in this manner for descriptors
+	which are known to describe particular phenomena. There are two such descriptors which have received considerable
 	attention in previous research: sharpness, describing the unpleasant nature of high frequency sounds; and
 	roughness, used to describe the dissonance of particular musical intervals. Proposed psychoacoustic models for
 	these descriptors are given in this section.
@@ -692,28 +693,28 @@
 	\subsection{Sharpness}
 	\label{sec:Timbre-TimbralFeatures-Sharpness}
 		\citet{fastl2007psychoacoustics} discuss the factors leading to the perception of sharpness. The sharpness
-		of a signal depends on the ratio of high and low frequency content: increasing the amount of high frequency
-		content increases the sharpness of a signal. The sharpness can also be reduced by adding more low frequency
-		content to a signal. They produce a metric from this information for the measurement of perceived
-		sharpness, the sharpness, $S$, is calculated using Equation~\ref{eq:Sharpness}.
+		of a signal depends on the ratio of its high and low frequency content: increasing the amount of high
+		frequency content increases the sharpness of a signal. The sharpness can also be reduced by adding more low
+		frequency content to a signal. They proposed a metric, using this information, for the measurement of
+		perceived sharpness; the sharpness, $S$, is calculated using Equation~\ref{eq:Sharpness}.
 
 		\begin{equation}
 			S = 0.11\frac{\sum_{b = 1}^{24} N'_{b}g(b)b}{\sum_{b = 1}^{24}N'_{b}}
 			\label{eq:Sharpness}
 		\end{equation}
 
-		where $N'_{b}$ is the specific loudness of bark band $b$ and $g(b)$ is a weighting function designed to
-		emphasise the presence of high frequency content.
+		where $N'_{b}$ is the specific loudness of the signal in bark band $b$ and $g(b)$ is a weighting function
+		designed to emphasise the presence of high frequency content.
 
 		\citet{marui2006predicting} ran listening experiments to test how well perceived sharpness can be predicted
-		using this metric. They find that it does not predict the sharpness of broadband noise accurately and
-		propose an improved metric which is the product of the value from Equation~\ref{eq:Sharpness} and the
+		using this metric. They found that it does not predict the sharpness of broadband noise accurately and
+		proposed an improved metric which is the product of the value from Equation~\ref{eq:Sharpness} and the
 		spectral variance of the specific loudness.
 
 	\subsection{Roughness}
 	\label{sec:Timbre-TimbralFeatures-Roughness}
 		A sensation of roughness was discussed in Section~\ref{sec:Timbre-PsychoacousticPrinciples-CriticalBands}.
-		Here the roughness was due to the rapid amplitude modulation produced as a result of summing two sinusoids
+		Here, the roughness was due to the rapid amplitude modulation produced as a result of summing two sinusoids
 		which are close in frequency. Much early research into this effect (summarised by \citet{plomp1965tonal})
 		concerns the study of consonance or dissonance of tones, concluding that dissonance is manifested as a
 		sensation of roughness due to amplitude fluctuations. They also suggest a relationship to critical
@@ -728,9 +729,9 @@
 			\item the frequency of the modulated signal
 		\end{itemize}
 
-		Using these criteria a method is proposed for calculating the roughness of a signal consisting of two
-		sinusoidal tones. Where $a_{1}$ and $\nu_{1}$ represent the amplitude and frequency of the lowest frequency
-		tone and $a_{2}$ and $\nu_{2}$ those of the highest, the roughness, $R$, is calculated using
+		Using these criteria, they proposed a method for calculating the perceived roughness of a signal consisting
+		of two sinusoidal tones. Where $a_{1}$ and $\nu_{1}$ represent the amplitude and frequency of the lowest
+		frequency tone and $a_{2}$ and $\nu_{2}$ those of the highest, the roughness, $R$, is calculated using
 		Equation~\ref{eq:PartialRoughness}.
 		
 		\begin{gather}
@@ -748,55 +749,55 @@
 		tones can be calculated as the sum of the roughnesses of each pair of tones within the signal. 
 		
 		The frequency dependence of this model agrees with that shown in Figure~\ref{fig:ToneSeparation}. Amplitude
-		fluctuations above approximately 15Hz produce a rough texture to the sound. As this frequency increases the
-		roughness also increases to a maximum before decreasing again. At some frequency between 75Hz and 150Hz,
+		fluctuations above approximately 15Hz produce a rough texture to the sound. As this frequency increases,
+		the roughness increases to a maximum before decreasing again. At some frequency between 75Hz and 150Hz,
 		depending on the frequency content of the modulated signal, the sensation of roughness ceases to be
 		audible.
 
 		The constants used in Equation~\ref{eq:PartialRoughness} were arrived at through experimentation; while the
-		researchers report high correlations with perceived roughness this may not model all the possible
-		interactions of tones within the human hearing system. \citet{fastl2007psychoacoustics} use the same four
+		researchers reported high correlations with perceived roughness, this may not model all the possible
+		interactions of tones within the human hearing system. \citet{fastl2007psychoacoustics} used the same four
 		criteria to develop a different model of roughness, including more detailed modelling of auditory masking.
 		This model takes account of both simultaneous masking (tones played simultaneously interfering with one
 		another) and temporal masking (tones played close together in time interfering with one another). A full
-		discussion of this model is beyond the scope of this report.
+		discussion of this model is beyond the scope of this thesis.
 
 		The psychoacoustic models presented in this section are restricted to modelling descriptors for which
 		informal definitions are already widely used (sharpness and roughness). To investigate other aspects of
 		timbre, subjective listening tests must be carried out in order to collect information about the perception
 		of sound. As the first two objectives of this work are concerned with discovering the use of semantic terms
 		to describe the timbre of harmonic excitation effects, additional experimentation is required to determine
-		these terms and their meanings. The following section details the commonly used approaches in carrying out
+		these terms and their meanings. The following section details the commonly used approaches for carrying out
 		listening tests for timbral research.
 		
 \section{Subjective Listening Tests}
 \label{sec:Timbre-ListeningTests}
 	In running subjective listening tests, one must elicit perceptual gradings / descriptions of audio stimuli from
-	participants. Depending on the nature of the experiment there are several different testing methodologies which
-	have been proposed \citep{bech2006perceptual}, those most prevalent in timbral research will be discussed here.
+	participants. Depending on the nature of the experiment, there are several different testing methodologies which
+	have been proposed \citep{bech2006perceptual}. Those most prevalent in timbral research will be discussed here.
 
 	\subsection{Testing Methodologies for Timbral Analysis}
 	\label{sec:Timbre-ListeningTests-Methods}
 		Two different classes of listening test are common in timbral studies. In one, participants are asked to
 		judge the dissimilarity of small sets of audio stimuli. In the other, participants are asked to rate each
-		audio stimulus on various scales which relate to attributes of the timbre. In this report, these methods
+		audio stimulus on various scales which relate to attributes of their timbre. In this thesis, these methods
 		will be referred to as dissimilarity tests and attribute scale tests respectively.
 
 		\subsubsection*{Dissimilarity Tests}
-			\citet{grey1977multidimensional} utilises a pairwise dissimilarity methodology to gather similarity
-			data about audio stimuli. Participants are asked to rate the similarity of pairs of audio stimuli.
-			Pairs of stimuli are presented one at a time until every possible pair from the set of stimuli has
+			\citet{grey1977multidimensional} utilised a pairwise dissimilarity methodology to gather similarity
+			data about audio stimuli. Participants were asked to rate the similarity of pairs of audio stimuli.
+			Pairs of stimuli were presented one at a time until every possible pair from the set of stimuli had
 			been rated. This is a popular method as it ensures that the participants rate every stimulus
 			against every other stimulus. A downside of this is that the number of possible pairs grows
 			factorially as the total number of stimuli increases. This causes the time taken to complete the
 			test to become practically too large if the experimenter wishes to evaluate a large corpus of
 			stimuli.
 
-			\citet{caclin2005acoustic} also use a pairwise dissimilarity method but unlike
-			\citet{grey1977multidimensional} use synthetic stimuli rather than acoustically recorded ones. This
-			allows them to better control the differences between them. All stimuli in their experiment only
-			differed in three characteristics (attack time, spectral centroid and spectral flux) allowing them
-			to identify which factors these features contribute to the timbre of a sound.
+			\citet{caclin2005acoustic} also used a pairwise dissimilarity method, but, unlike
+			\citet{grey1977multidimensional}, used synthetic stimuli rather than acoustically recorded ones.
+			This allowed them to better control the differences between stimuli; all of which in their
+			experiment only differed in three characteristics (attack time, spectral centroid and spectral
+			flux) allowing them to identify which factors these features contribute to the timbre of a sound.
 
 			Another method of capturing similarity data is that of triadic comparisons
 			\citep{wickelmaier2007deriving}. In this method audio stimuli are presented in triads (three at a
@@ -807,21 +808,21 @@
 			which is the least, avoiding the elicitation of a value on a scale.
 
 			Another popular testing technique is to carry out multiple stimulus tests. In a multiple stimulus
-			test participants are presented with several stimuli simultaneously and asked to rate each against
+			test, participants are presented with several stimuli simultaneously and asked to rate each against
 			a given criteria. A multiple stimuli methodology often used in perceptual audio tests is
 			\acrshort{mushra} (\acrlong{mushra}) \citep{mushra2014}. \acrshort{mushra} was developed for
 			grading the quality of lossy audio data compression algorithms. Participants are presented with
 			several compressed versions of a signal simultaneously and asked to grade how similar each of them
 			are to a reference signal (the uncompressed version) on a scale from 0 to 100.  Among the signals
 			to be graded are a hidden reference and anchor which are used to evaluate the reliability of a
-			participants results. The hidden reference is the same as the reference signal and as such should
+			participant's results. The hidden reference is the same as the reference signal and as such should
 			be given a grade of 100. The anchor is a low pass filtered version of the signal, processed such
-			that it is less similar to the reference than any of the compressed signals and hence should
+			that it is less similar to the reference than any of the compressed signals, and hence should
 			receive the lowest grade. Results are deemed reliable if the participant correctly identifies the
 			hidden reference (grading it 100) and anchor (giving it the lowest grade). These tests are often
 			used to assess the performance of bandwidth extension methods such as those discussed in
 			Section~\ref{sec:Excitation-Methods}. Other multiple stimulus tests, while not adhering strictly to
-			the \acrshort{mushra} guidelines, follow a similar structure.  \citet{arthi2015influence} use a
+			the \acrshort{mushra} guidelines, follow a similar structure.  \citet{arthi2015influence} used a
 			multiple stimulus test to determine the perceptual differences between stimuli. 
 			
 			Dissimilarity tests can provide accurate information about the perceived differences between
@@ -829,25 +830,26 @@
 			however, is gathered about how participants might describe the timbres of these groups and the
 			differences in timbre between groups. An additional stage to the listening test is required in
 			order to elicit descriptions of the timbres of the stimuli. If the description of timbre is an
-			important outcome of the experiment an attribute scale test may be more suitable.
+			important outcome of the experiment, an attribute scale test may be more suitable.
 			
 		\subsubsection*{Attribute Scale Tests}
 			Attribute scale tests require participants to rate each stimulus against several scales which each
 			relate to an attribute of their timbre. This is often done using a set of semantic differentials (a
 			scale with opposing descriptors on each end). This is popular for timbral research as it provides
 			rankings of audio stimuli against timbral descriptors. This not only allows for inference of the
-			perceptual differences between stimuli but also for descriptors to be applied to describe these
+			perceptual differences between stimuli, but also for descriptors to be applied to describe these
 			differences as done by \citet{zacharakis2014an}. 			
 			
-			In an attribute scale test the stimuli are presented to the participants one at a time and rated
-			against several criteria. This is in direct opposition to a multiple stimulus test in which the
+			In an attribute scale test, the stimuli are presented to the participants one at a time and rated
+			against several criteria. This is in direct opposition to a multiple stimulus test, in which the
 			stimuli are all presented at once and rated against a single criterion. Attribute scale tests pose
 			a problem here as there is no reference provided against which to rate the stimuli. Participants
 			must keep several scales (one for each descriptor) in mind throughout the duration of the test.
-			This may cause them to use the extremes of the scales too early in the test so when presented with
-			a stimulus they wish to rate closer to the extremes they cannot. In a multiple stimulus test all
+			This may cause them to use the extremes of the scales too early in the test; so when presented with
+			a stimulus they wish to rate closer to the extremes, they cannot. In a multiple stimulus test all
 			the stimuli being compared are available at once, allowing participants to find the stimuli which
-			lie at the extremes and rate the rest accordingly. This better utilises the range of the scale. 
+			lie at the extremes and rate the rest accordingly. This better utilises the range of the
+			rating scale. 
 			
 			Issues with the use of semantic differentials were shown by \citet{kendall1993verbal1}. Their first
 			experiment was an attribute scale test in which participants were asked to rate each audio stimulus
@@ -881,20 +883,20 @@
 				\label{tab:vonBismarcksDescriptors}
 			\end{table}
 
-			They propose that semantic differential tests have a problem in that the descriptors at each end of
-			the bipolar scales may not be the semantic opposites of each other. The difference between hard and
-			soft, for instance, may not be a simple one dimensional relationship. In order to determine the
-			effect of this they proposed the \acrfull{vame} method in which the opposites of the adjectives
+			They proposed that semantic differential tests have a problem in that the descriptors at each end
+			of the bipolar scales may not be the semantic opposites of each other. The difference between hard
+			and soft, for instance, may not be a simple one dimensional relationship. In order to determine the
+			effect of this, they proposed the \acrfull{vame} method in which the opposites of the adjectives
 			were merely their negation (hard $\Leftrightarrow$ not hard, sharp $\Leftrightarrow$ not sharp
 			etc.). This was found to increase the independence between each adjective scale in the ratings
 			given by participants. 
 
 			Attribute scale methods have an advantage over dissimilarity tests as they gather information about
-			which aspects of the stimuli the participants are judging. A major disadvantage however is that
+			which aspects of the stimuli the participants are judging. A major disadvantage, however, is that
 			each of the stimuli are presented individually; participants are not asked to directly compare
-			stimuli with other stimuli. Without direct comparison of stimuli participants are likely to forget
+			stimuli with other stimuli. Without direct comparison of stimuli, participants are likely to forget
 			how they have graded previous stimuli on the adjective scales, making it difficult to use the
-			scales consistently. \citet{marui2005constructing} use both a semantic differential test and
+			scales consistently. \citet{marui2005constructing} used both a semantic differential test and
 			triadic comparisons in order to avoid the weaknesses of both methodologies. 
 
 			A difficulty encountered when designing an attribute scale test is the selection of descriptors to
@@ -904,28 +906,28 @@
 			used. The adjectives are often selected using a preliminary verbal elicitation experiment.
 			\citet{namba1991verbal} presented participants with the test stimuli in a random order and asked
 			them to provide any terms they would use to describe them. These terms were then used as the
-			adjectives for the test. The adjectives used by \citet{kendall1993verbal1}, shown in
-			Table~\ref{tab:vonBismarcksDescriptors} were taken from earlier work performed by
-			\citet{vonbismarck1974timbre}. In a second set of experiments \citet{kendall1993verbal2} use a
+			adjectives for the test. The adjectives used by \citet{kendall1993verbal1} (shown in
+			Table~\ref{tab:vonBismarcksDescriptors}) were taken from earlier work performed by
+			\citet{vonbismarck1974timbre}. In a second set of experiments, \citet{kendall1993verbal2} used a
 			different set of adjectives taken from work on orchestration for composition
 			\citep{piston1955orchestration}. The selection of adjectives was further refined through a simple
 			elicitation experiment in which participants were asked to select the adjectives which were most
-			applicable to the audio stimuli. It is reported that using this method produces better results in
+			applicable to the audio stimuli. It was reported that using this method produces better results in
 			the timbral experiment than when the adjectives were selected by the experimenter.
 
 	\subsection{Testing Environments}
 	\label{sec:Timbre-ListeningTests-Environments}
-		Once a testing methodology has been chosen, the task remains to recruit participants and have them
-		undergo the test. Perceptual audio tests necessarily involve the use of audio reproduction equipment and a
-		means of recording the participants' responses. The reproduction system and response method chosen has
-		impacts on the reliability of the results and the sample size of participants. Two common approaches are to
-		run supervised listening tests with specific reproduction equipment in a laboratory, or to produce a web
-		interface to the experiment allowing participants to take part using their own equipment.
+		Once a testing methodology has been chosen, the task remains to recruit participants and have them complete
+		the test. Perceptual audio tests necessarily involve the use of audio reproduction equipment and a means of
+		recording the participants' responses. The reproduction system and response method chosen have impacts on
+		the reliability of the results and the available sample size of participants. Two common approaches are: to
+		run supervised listening tests, with specific reproduction equipment in a laboratory; or to produce a web
+		interface to the experiment, allowing participants to complete the test using their own equipment.
 
 		\subsubsection*{Laboratory Listening Tests}
 			Traditionally, listening tests are carried out in a controlled listening environment, ensuring that
 			the audio stimuli are presented to each participant via the same reproduction equipment, in the
-			same environment, at the same level. This removes any variability in these areas such than any
+			same environment, at the same level. This removes any variability in these areas, such than any
 			perceived differences in the audio stimuli noted by the participants are due to their perception
 			rather than the testing procedure. Laboratory testing also allows for the screening of participants
 			prior to testing. It may be a requirement of the experiment that none of the participants have
@@ -934,27 +936,27 @@
 			participant is having trouble completing a section of the test.
 
 			While laboratory experiments afford the experimenter the greatest amount of control over the
-			conditions of the experiment they can be too restrictive. Typically the experimenter will have
+			conditions of the experiment, they can be too restrictive. Typically, the experimenter will have
 			limited equipment with which to carry out the tests, meaning that very few can be run concurrently.
 			For long tests it can be very time consuming to gather sufficient data. More recent timbral
-			research has attempted to gather information from a much larger group of participants at the loss
-			of control over listening environment. In this work, we refer to these types of tests as
+			research has attempted to gather information from a much larger group of participants, at the loss
+			of control over the listening environment. In this work, these types of tests are referred to as
 			distributed listening tests.
 
 		\subsubsection*{Distributed Listening Tests}
 			When running a distributed listening test, the test is developed and distributed to a wide audience
 			of participants. Participants carry out the test using their own equipment and return the results
 			to the researcher. This is most easily implemented over the internet via a web interface which runs
-			the test and automatically returns the results to the server. Distribution of the testing interface
+			the test and automatically returns the results to a server. Distribution of the testing interface
 			facilitates easier collection of data from a large sample of people as participants are able to
-			take the test at a time which suits them. For laboratory tests the participants, experimenter and
+			take the test at a time which suits them. For laboratory tests, the participants, experimenter and
 			testing equipment all need to be available at the same time in order to carry out a test.
 
 			There are several downsides to this type of testing, but for certain experiments they may not be
-			detrimental. In a laboratory environment the experimenter is present to supervise the tests and
+			detrimental. In a laboratory environment, the experimenter is present to supervise the tests and
 			ensure that participants are able to complete the tasks they are given.  With distributed testing
-			no such supervision is given so participants who have trouble may produce anomalous results or
-			fail to complete the entire test. These problems can be minimised by using a clear testing
+			no such supervision is given, so participants who have trouble may produce anomalous results or
+			fail to complete the entire test. These problems can be minimised by use of a clear testing
 			interface and provision of sufficient documentation / instruction. The additional time required for
 			interface design and writing documentation increases the time taken before testing can commence.
 %			After this initial investment of time the tests can be run without supervision allowing the
@@ -964,31 +966,31 @@
 			tests, such as those intended to provide information for the modelling of the human hearing system
 			\citep{moore1990auditory}. For timbral research this is not always critical if the test can be
 			designed in such a way that the effects of the participant's reproduction equipment have little
-			influence on the results. This influence can never be completely removed but steps can be taken to
+			influence on the results. This influence can never be completely removed, but steps can be taken to
 			minimise it.  One way to reduce the influence is to ask participants to rate the relative timbral
-			difference between stimuli rather than give absolute ratings on a timbral scale. For this reason
+			difference between stimuli rather than give absolute ratings on a timbral scale. For this reason,
 			multiple stimulus style tests are more favorable than \acrshort{vame} tests as all the stimuli
 			being compared are available to the participant at the same time. While the results of the tests
-			will have been influenced by the differences in listening conditions it may lead to more easily
-			producible results. The difference in listening conditions will cause higher variance in the data
-			reducing the confidence of any correlations found. Any correlations found with sufficiently high
-			confidence however will be those which are not affected as much by the reproduction system used.
-			These correlations will then be easier to reproduce on other systems, leading to a more robust
-			timbral manipulation.
+			will have been influenced by the differences in listening conditions, it may lead to more easily
+			reproducible results. The difference in listening conditions will cause higher variance in the
+			data, reducing the confidence of any correlations found. Any correlations found with sufficiently
+			high confidence, however, will be those which are not affected as much by the reproduction system
+			used.  These correlations are then more likely to be reproduced on other systems, leading to a more
+			robust timbral model.
 
 			If the significance of correlations found in the entire dataset are not high enough, the data could
 			be partitioned into groups depending on the listening environment the tests were taken in. This
 			allows for the removal of test data collected in listening environments which are causing anomalous
 			results. Perhaps a certain effect is more audible when listening on loudspeakers rather than
-			headphones. In order to segment the data in this way additional data should be collected from the
-			test participants.  \citet{wilmering2013audio} have participants select an option from a drop down
-			list which best describes their listening environment prior to beginning the test. They find that
-			there was little variance between the results across the different groups although the majority of
-			the participants assigned themselves to the same group. \citet{seetharaman2014crowdsourcing} prompt
-			participants for information about their listing environment but also include an extra testing
-			section to ensure a participant's reproduction system is suitable for the tests. This assesses the
-			range of frequencies a participant's system can reproduce and excludes those which do not meet the
-			required criteria.
+			headphones. In order to segment the data in this way, additional data should be collected from the
+			test participants. \citet{wilmering2013audio} had participants select the option which best
+			described their listening environment, from a drop down list, prior to starting the test. They
+			found that there was little variance between the results across the different groups, although the
+			majority of the participants assigned themselves to the same group.
+			\citet{seetharaman2014crowdsourcing} prompted participants for information about their listing
+			environment, but also included an extra testing section to ensure a participant's reproduction
+			system was suitable for the tests. This assessed the range of frequencies a participant's system
+			could reproduce and excluded those which did not meet the required criteria.
 			
 			A popular method of distributing listening tests is to build a web interface in which the testing
 			is carried out \citep{wilmering2013audio, cartwright2013socialeq, seetharaman2014crowdsourcing}.
@@ -997,19 +999,19 @@
 			specific software to undertake the test. This may see the participation of people who otherwise
 			would have been dissuaded due to not wishing to download untrusted software. A disadvantage of a
 			web implementation is the limitations of audio processing in web browsers. Simple interfaces which
-			involve playback of audio stimuli are easily implemented but more complex audio processing and
+			involve playback of audio stimuli are easily implemented, but more complex audio processing and
 			multiple channel audio playback are still difficult. This is becoming more possible due to
 			development of the web audio \acrshort{api} \citep{adenot2015web}, although not all the features of
-			this are currently supported by all web browsers reducing the potential audience for the test.
+			this are currently supported by all web browsers, reducing the potential audience for the test.
 
 			When distributing a listening test over the internet the issue of recruiting participants arises.
 			Firstly, potential participants need to be made aware of the test and be able to participate in it.
 			Providing multiple interfaces to the test increases its potential audience. A common approach is to
 			provide a web browser interface as well as an application for mobile platforms as done by
 			\citet{huq2010crowdsourcing}. Secondly, the participants need to be motivated to complete the test.
-			\citet{cartwright2013socialeq} provide a small monetary reward for completing the test to motivate
-			people to participate. Other researchers motivate participants by designing their interfaces as a
-			``game with a purpose'' \citep{law2007tagatune, huq2010crowdsourcing, burgoyne2013hooked,
+			\citet{cartwright2013socialeq} provided a small monetary reward for completing the test to motivate
+			people to participate. Other researchers motivated participants by designing their interfaces as a
+			`game with a purpose' \citep{law2007tagatune, huq2010crowdsourcing, burgoyne2013hooked,
 			wolff2014spot}, making the testing procedure more enjoyable.
 
 			Once data has been gathered from a perceptual listening test, one must analyse it to determine the
@@ -1023,36 +1025,37 @@
 	As discussed earlier in the chapter, timbre is a multidimensional property of a sound. One of the aims of timbral
 	research is to identify salient dimensions which can be used for the description of timbre. Various features have
 	already been discussed which might be considered dimensions on which the perceived nature of a sound can be
-	described (loudness, pitch, sharpness, roughness). One disadvantage of these descriptions is that they do not
+	described (loudness, pitch, sharpness, roughness). One disadvantage of these descriptors is that they do not
 	represent orthogonal dimensions. Models of the perception of sharpness and roughness depend on the frequency
-	register of a signal, thus changing the pitch of a signal will also alter its sharpness and roughness. Previous
+	register of a signal; thus, changing the pitch of a signal will also alter its sharpness and roughness. Previous
 	studies attempting to uncover salient dimensions of timbre all use a similar structure in their approach.  First a
 	set of audio stimuli is selected; these are usually equalised in pitch and loudness so as to negate those
 	attributes' effects on the timbre. Listening tests are then undertaken in which participants evaluate the stimuli
-	on a given set of criteria. The results of these experiments are then analysed using dimensionality reduction
-	techniques to produce a timbre space in which the differences between the stimuli are described by a small set of
+	on a given set of criteria. The results of these experiments are then analysed, using dimensionality reduction
+	techniques, to produce a timbre space in which the differences between the stimuli are described by a small set of
 	orthogonal dimensions.
 
 	\subsection{Dimensionality Reduction}
 	\label{sec:Timbre-Parameterisation-DimensionalityReduction}
 		Dimensionality reduction techniques are used to take multidimensional data and reduce the number of
-		dimensions while maintaining the relationships between the data points. In timbral research they are used
+		dimensions while maintaining the relationships between the data points. In timbral research, they are used
 		to reduce the number of dimensions needed to describe the timbre of a sound. For example, the results from
 		a \acrshort{vame} experiment where $N$ adjective scales are used, consist of an $N$ dimensional space in
 		which each audio stimulus sits at the point denoted by its gradings on those scales. Dimensionality
-		reduction is applied to reduce the number of dimensions while preserving information relating to the
-		differences between stimuli (such as the euclidean distances between them). The dimensionality reduction
-		method used depends on the type of data collected in the listening experiment. Various methods have been
-		used in previous timbral research, including \acrfull{mds}, \acrfull{pca} and \acrfull{efa}.
+		reduction is applied to reduce the number of dimensions of this space, while preserving information
+		relating to the differences between stimuli (such as the euclidean distances between them). The
+		dimensionality reduction method used depends on the type of data collected in the listening experiment.
+		Various methods have been used in previous timbral research, including \acrfull{mds}, \acrfull{pca} and
+		\acrfull{efa}.
 
 		\acrshort{mds} is typically used in situations where dissimilarity data is being analysed. This type of
 		data can be further grouped in to metric and non-metric data \citep{hair2013multivariate}. Metric
-		dissimilarity data consists of the distances between each pair of stimuli, this is the type of data
-		collected using pairwise dissimilarity tests. Non-metric data consists of rankings of the stimulus'
-		dissimilarity (e.g. this pair of stimuli is more similar than this pair of stimuli), this is the type of
+		dissimilarity data consists of the distances between each pair of stimuli; this is the type of data
+		collected using pairwise dissimilarity tests. Non-metric data consists of rankings of the stimuli's
+		dissimilarity (e.g. this pair of stimuli is more similar than this pair of stimuli); this is the type of
 		data collected using a triadic comparisons experiment. The goal of \acrshort{mds} analysis is to take this
 		dissimilarity data and represent it in an $N$ dimensional timbre space. Each audio stimulus is placed at a
-		point in this space, the distances between them representing their dissimilarities. For timbral research
+		point in this space, the distances between them representing their dissimilarities. For timbral research,
 		the data is usually represented in two \citep{giragama2003relating} or three \citep{grey1978perceptual}
 		dimensions and sometimes four \citep{bernays2011verbal}. There are multiple different algorithms for
 		performing \acrshort{mds}, several of which are discussed by \citet{mcadams1999perspectives}; each has
@@ -1063,17 +1066,17 @@
 		The other two methods (\acrshort{pca} and \acrshort{efa}) take multivariate data and try to describe it
 		using a smaller set of variables, called components or factors. This approach is well suited to data
 		obtained from attribute scale tests, the variables being the scales on which each audio stimulus is graded.
-		\citet{kendall1993verbal1} use \acrshort{pca} to identify three factors which describe the results of their
-		\acrshort{vame} experiment. \citet{zacharakis2012analysis} also performed a \acrshort{vame} test but
-		choose to use \acrshort{efa} over \acrshort{pca} stating that \acrshort{efa} better explains the
+		\citet{kendall1993verbal1} used \acrshort{pca} to identify three factors which describe the results of
+		their \acrshort{vame} experiment. \citet{zacharakis2012analysis} also performed a \acrshort{vame} test, but
+		chose to use \acrshort{efa} over \acrshort{pca}, stating that \acrshort{efa} better explains the
 		relationships between the separate attribute scales.
 
 		The \acrshort{pca} technique is used to construct timbre spaces in Chapter~\ref{chap:TimbreEvaluation} of
 		this thesis. This technique is used to transform a multidimensional dataset onto a new set of orthogonal
-		dimensions, the \acrfullpl{pc}. This transformation is applied such that the first \acrshort{pc} accounts
+		dimensions (the \acrfullpl{pc}). This transformation is applied such that the first \acrshort{pc} accounts
 		for the largest amount of variance in the data possible. Each successive \acrshort{pc} then describes as
 		much of the remaining variance as possible. The number of \acrshort{pc}s is equal to the number of
-		dimensions in the data but, since the lower order \acrshort{pc}s describe a greater amount of variance,
+		dimensions in the data, but, since the lower order \acrshort{pc}s describe a greater amount of variance,
 		fewer are needed to describe a significant proportion of the total variance. The \acrshort{pc}s
 		of a $n$ dimensional dataset comprising $m$ observations are calculated in six steps:
 
@@ -1122,7 +1125,7 @@
 		The rows of $\mathbf{E}$ represent the coordinates of each observation in each of the \acrshort{pc}s. Since
 		\acrshort{pca} maximises the variance described by successive \acrshort{pc}s, the dimensionality of the
 		data can be reduced by selecting only the first $p$ \acrshort{pc}s (the first $p$ columns of $\mathbf{E}$).
-		The total proportion of variance described by these \acrshort{pc}s, $v_{p}$, is calculated using
+		The total proportion of variance, $v_{p}$, described by these \acrshort{pc}s is calculated using
 		Equation~\ref{eq:PropVariance}:
 
 		\begin{equation}
@@ -1131,15 +1134,15 @@
 		\end{equation}
 
 		where $\lambda_{i}$ is the $i$\super{th} largest eigenvalue of the covariance matrix, $\mathbf{C}$, as
-		discussed in step~\ref{enum:Eigen}. Typically, the number of \acrshort{pc}s used to describe a dataset is
+		discussed in Step~\ref{enum:Eigen}. Typically, the number of \acrshort{pc}s used to describe a dataset is
 		chosen such that this proportion of variance is greater than a given threshold (e.g. $v_{p} > 0.8$).
 
 	\subsection{Correlation of Dimensions with Audio Features}
 	\label{sec:Timbre-DimensionalityReduction-DimensionCorrelations}
 		Once a timbre space has been constructed, the relationship between the timbre space dimensions and audio
-		features can be investigated. A common way of doing this is take correlation measurements between the audio
-		stimulus' features and their position in a given dimension of the timbre space.
-		\citet{mcadams1995perceptual} find that two of their timbre space dimensions correlate well with the log
+		features can be investigated. A common way of doing this is to take correlation measurements between the
+		audio stimuli's features and their positions in a given dimension of the timbre space.
+		\citet{mcadams1995perceptual} found that two of their timbre space dimensions correlated well with the log
 		attack time and spectral centroid of the audio stimuli respectively. Similar results were also found by
 		\citet{caclin2005acoustic} who, as discussed before, used synthetic audio stimuli which only differed in
 		those features and spectral flux. This suggests that log attack time and spectral centroid are two
@@ -1147,32 +1150,33 @@
 		
 		The data analysed in those studies were the results of dissimilarity tests. Where timbral descriptors are
 		available, the semantic meanings of the dimensions can be discussed. When \acrshort{pca} or \acrshort{efa}
-		are used on the results from attribute scale tests the results directly show how much each of the graded
-		attributes contribute to each dimension of the timbre space. \citet{marui2005timbre} use the results from
+		are used on the results from attribute scale tests, the results directly show how much each of the graded
+		attributes contribute to each dimension of the timbre space. \citet{marui2005timbre} used the results from
 		their semantic differential test in order to assign semantic descriptors to the dimensions of their timbre
-		space.  They report that the semantic differential, thick $\Leftrightarrow$ thin, can be used to
+		space.  They reported that the semantic differential, thick $\Leftrightarrow$ thin, can be used to
 		distinguish between different classes of distortion effect, while dark $\Leftrightarrow$ bright and sharp
 		$\Leftrightarrow$ dull describe the amount of distortion applied with a particular effect.
 
-		\citet{alluri2010exploring} take a more in depth approach, using stepwise and principal components
+		\citet{alluri2010exploring} took a more in depth approach, using stepwise and principal components
 		regression techniques to identify which audio features contribute to which dimensions of their timbre
-		space. Using factor analysis they identify three dimensions which they label `Activity', `Brightness' and
-		`Fullness'. The audio is analysed using several features including: zero crossing rate, the ratio of energy
-		above and below 1.5kHz (high-low energy ratio), entropy (a measure of whether the spectrum has predominant
-		peaks) and sub-band flux (a feature describing the temporal fluctuation of frequency components in a
-		specific band). Regression is used to model how each of these features affect the perception of each
-		timbral dimension. The `Activity' dimension is contributed to by the high-low energy ratio and the sub-band
-		flux in the 3\super{rd}, 6\super{th} and 8\super{th} of 10 spectral bands. The `Brightness' dimension
-		comprises zero crossing rate and the 1\super{st} and 3\super{rd} bands' fluxes and the `Fullness' dimension
-		is described by zero crossing rate, high-low energy ratio, entropy and the 2\super{nd} band's flux.
+		space. Using factor analysis, they identified three dimensions which they labelled `Activity', `Brightness'
+		and `Fullness'. Their stimuli were analysed using several features including: zero crossing rate, the ratio
+		of energy above and below 1.5kHz (high-low energy ratio), entropy (a measure of whether the spectrum has
+		predominant peaks) and sub-band flux (a feature describing the temporal fluctuation of frequency components
+		in a specific band). Regression techniques were then used to model how each of these features affect the
+		perception of each timbral dimension. The `Activity' dimension was contributed to by the high-low energy
+		ratio and the sub-band flux in the 3\super{rd}, 6\super{th} and 8\super{th} of 10 spectral bands. The
+		`Brightness' dimension comprised zero crossing rate and the 1\super{st} and 3\super{rd} bands' fluxes and
+		the `Fullness' dimension was described by zero crossing rate, high-low energy ratio, entropy and the
+		2\super{nd} band's flux.
 
 		Further analysis can be carried out in the form of clustering, identifying groups (clusters) of stimuli
-		with similar timbres. \citet{lakatos2000a} performs a pairwise dissimilarity test and applies
+		with similar timbres. \citet{lakatos2000a} performed a pairwise dissimilarity test and applied
 		\acrshort{mds} followed by clustering to the results. The clusters identified within the \acrshort{mds}
-		timbre space correlate well with the classes of instruments (e.g. bowed string, blown tubes, metal plates)
+		timbre space correlated well with the classes of instruments (e.g. bowed string, blown tubes, metal plates)
 		the stimuli were produced by.  Alternatively, clustering can be applied to the results taken from an
 		adjective scale test, identifying clusters of terms which are used to describe similar features of audio
-		signals.  \citet{zacharakis2011an2} use this method to identify three groups of descriptors, summarised
+		signals.  \citet{zacharakis2011an2} used this method to identify three groups of descriptors, summarised
 		here as: cluster one, containing `soft', `light' and `warm'; cluster two, containing `bright', `brilliant'
 		and `thin'; and cluster three, containing `shrill', `sharp' and `rough'. Terms within each of these
 		clusters can be thought of as timbral synonyms, being used similarly when rating the set of stimuli used
@@ -1183,59 +1187,59 @@
 	\subsection{Controlling Timbre via Audio Features}
 	\label{sec:Timbre-Control-TimbreSpaces}
 		Measuring the correlations of audio features with the timbre space dimensions provides information
-		regarding which features need be manipulated to alter the position of a sound in the timbre space.
+		regarding which features need be manipulated to alter the position of a sound within the timbre space.
 		Measuring the correlations of semantic descriptors with the timbre space dimensions allows the space to be
 		partitioned into regions which correspond to particular descriptors. With this information, systems can be
 		created to synthesise sounds at particular positions within a timbre space or manipulate existing sounds to
 		alter their location in the timbre space.
 
-		Early work in this area was performed by \citet{wessel1979timbre} who suggests that a timbre space can be
-		used as an intuitive control system for audio. \citet{vertegaal1994isee} use this concept to produce a
+		Early work in this area was performed by \citet{wessel1979timbre}, who suggested that a timbre space can be
+		used as an intuitive control system for audio. \citet{vertegaal1994isee} used this concept to produce a
 		system which provides control over a synthesis engine using four parameters: an overtones parameter which
 		controls the harmonic content of the signal, a brightness parameter which controls the magnitude
 		distribution of the spectrum and articulation and envelope parameters which control the temporal properties
-		of the signal's amplitude envelope. They state that this system assists novice users but proves too limited
-		for experienced users who desire a finer degree of control.
+		of the signal's amplitude envelope. They state that this system assisted novice users but proved too
+		limited for experienced users, who desired a finer degree of control.
 
 		A commonly stated timbral mapping is that between a sound's spectral centroid and its perceived brightness
 		\citep{schubert2006does}. This has been used in order to produce systems providing control over the
-		brightness of a sound. \citet{williams2007perceptually} propose a system for manipulation of the brightness
-		of recorded sounds. The system follows an analysis / resynthesis structure. Firstly the short-time Fourier
-		transform of the signal is calculated. The magnitudes of the frequency bins are then adjusted in order to
-		alter the spectral centroid to achieve the desired change in brightness. Lastly the signal is resynthesised
-		using the new magnitude data.  Two further studies by the same researchers propose systems which control
-		perceived softness by manipulating attack time \citep{williams2009perceptually} and perceived warmth
-		through altering the relative amplitude of the first three harmonics and the rest of the signal
-		\citep{williams2010perceptually}. \citet{zacharakis2011an} propose an additive synthesis system which can
-		independently control the spectral centroid and the relative energy of the first three harmonics. They
-		report that this is somewhat successful in independent control of perceived brightness and warmth. Although
-		they also find evidence, through listening tests, that the perception of each of these attributes overlaps
-		and that spectral centroid is not the only contributing factor to perceived brightness.
+		brightness of a sound. \citet{williams2007perceptually} proposed a system for manipulation of the
+		brightness of recorded sounds. The system follows an analysis / resynthesis structure. Firstly, the
+		\acrfull{stft} of the signal is calculated. The magnitudes of the frequency bins are then adjusted in order
+		to alter the spectral centroid to achieve the desired change in brightness. Lastly the signal is
+		resynthesised using the new magnitude data.  Two further studies by the same researchers proposed systems
+		which control perceived softness, by manipulating attack time \citep{williams2009perceptually}; and
+		perceived warmth, through altering the relative amplitude of the first three harmonics and the rest of the
+		signal \citep{williams2010perceptually}. \citet{zacharakis2011an} proposed an additive synthesis system
+		which can independently control the spectral centroid and the relative energy of the first three harmonics.
+		They reported that this is somewhat successful in independent control of perceived brightness and warmth.
+		Although they also found evidence, through listening tests, that the perception of each of these attributes
+		overlaps and that spectral centroid is not the only contributing factor to perceived brightness.
 
 	\subsection{Controlling Timbre via Audio Effect Parameters}
 	\label{sec:Timbre-Control-ParameterSpaces}
-		A different approach to controlling timbre is based around analysing the parameter settings of effects used
-		to produce a given semantic effect. One way of doing this is to construct parameter spaces by performing
-		dimensionality reduction on a large set of possible parameter configurations for an audio processing
+		A different approach to controlling timbre is based around analysing the audio effect parameter settings
+		used to produce a given timbre. One way of doing this is to construct parameter spaces by performing
+		dimensionality reduction on a large set of possible parameter configurations for a given audio processing
 		algorithm. This is the approach taken by \citet{cartwright2013socialeq} and
 		\citet{seetharaman2014crowdsourcing}. In these studies the researchers asked listening test participants to
 		attribute semantic descriptors to audio stimuli processed using an equaliser and a reverb respectively.
-		\acrshort{mds} analysis is then performed on the effect's parameter configurations to produce a two
-		dimensional parameter space onto which the descriptors are mapped.
+		\acrshort{mds} analysis was then performed on the effect's parameter configurations to produce a two
+		dimensional parameter space onto which the descriptors were mapped.
 
 		Similar work was carried out by \citet{sabin2011weighting} who ran experiments to determine which
-		parameters of certain audio effects contribute most to particular timbral attributes. This is done by
+		parameters of certain audio effects contribute most to particular timbral attributes. This was done by
 		asking listening test participants to rank how well given semantic descriptors describe an audio stimulus
-		processed with several different parameter configurations. Weightings for each effect parameter can then be
-		deduced by looking at the correlations of parameter values and their respective rankings.
-		\citet{huang2014active} use a more computational method, using Gaussian processes in order to `learn' a
-		function $f(x)$ which maps between the parameters of a synthesiser and the perception of a particular
+		processed with several different parameter configurations. Weightings for each effect parameter could then
+		be deduced by looking at the correlations of parameter values and their respective rankings.
+		\citet{huang2014active} used a more computational method, using Gaussian processes in order to `learn' a
+		function, $f(x)$, which maps between the parameters of a synthesiser and the perception of a particular
 		descriptor.
 
 		One downside of analysing timbral manipulations in the parameter space is that it does not take account of
 		the audio being processed by the effect. For example, consider a situation in which it was found that using
 		an equaliser to increase the amplitude of frequencies around 2kHz increased the brightness of a sound. This
-		finding is not generalisable to all input signals, the equaliser parameter settings associated with
+		finding is not generalisable to all input signals; the equaliser parameter settings associated with
 		increasing the brightness will have no effect on signals which have no energy at 2kHz. This problem is
 		avoided by analysing the audio features of the signals as discussed in
 		Section~\ref{sec:Timbre-Control-TimbreSpaces}. Using this method, the necessary audio feature manipulation
@@ -1243,7 +1247,7 @@
 
 \section{Audio Processing}
 \label{sec:Timbre-AudioProcessing}
-	In the field of audio production various processing devices are used to alter the perceived sound of a piece of
+	In the field of audio production, various processing devices are used to alter the perceived sound of a piece of
 	audio. These devices can be applied for corrective purposes (e.g. noise removal), to meet technical requirements
 	(e.g. broadcast limiting) or as creative effects used as additional tools in music production. Regardless of the
 	intended use case, these devices are typically referred to as audio effects; an audio effect being any device which
@@ -1251,17 +1255,18 @@
 	
 	\subsection{Audio Effect Classification}
 	\label{sec:Timbre-AudioProcessing-Classification}
-		There are numerous methods of classify audio effects, such as by their mathematical properties, operation
-		or timbral characteristics. \citet{verfaille2006an} suggest that each of these methods are appropriate
-		depending on the context. When considering the development of audio effects it is meaningful to group
-		effects based on the signal processing techniques used in their construction. In contrast, end users of the
-		effects (music producers, musicians etc.) may find it more convenient to classify effects by the perceptual
-		characteristics they impart on a signal. \citet{eichas2015feature} classify audio effects using the
-		mathematical properties of the underlying system: whether the system is linear and whether or not the
-		output is dependent on time. This classification provides a compromise between the previous two methods,
-		grouping effects into classes which are similarly implemented and also have similar timbral effects.
+		There are numerous methods of classifying audio effects, such as by their mathematical properties,
+		operation or timbral characteristics. \citet{verfaille2006an} suggest that each of these methods are
+		appropriate depending on the context. When considering the development of audio effects, it is meaningful
+		to group effects based on the signal processing techniques used in their construction. In contrast, end
+		users of the effects (music producers, musicians etc.) may find it more convenient to classify effects by
+		the perceptual characteristics they impart on a signal. \citet{eichas2015feature} classify audio effects
+		using the mathematical properties of the underlying system: whether the system is linear and whether or not
+		the output is dependent on time. This classification provides a compromise between the previous two
+		methods, grouping effects into classes which are similarly implemented and also have similar timbral
+		effects.
 		
-		In the following sections the most commonly used audio effects are listed and their properties and usages
+		In the following sections, the most commonly used audio effects are listed and their properties and usages
 		discussed. The effects are split into three categories: \acrfull{lti}, \acrfull{ltv} and nonlinear. Popular
 		terms used to describe the timbral characteristics of the most commonly used audio effects are gathered
 		from the dataset collected by the \acrshort{safe} project (discussed in detail in
@@ -1276,8 +1281,8 @@
 
 		\begin{equation} f(mx) = mf(x) \label{eq:homogeneity} \end{equation}
 
-		where the system is represented as a function $f$, $x$ and $y$ represent two different input signals, and
-		$m$ an arbitrary scaling factor.
+		where $f$ is a function representing a system, $x$ and $y$ represent two different input signals, and
+		$m$ represents an arbitrary scaling factor.
 
 		Time invariance includes a further restriction that the behaviour of the system does not vary with time:
 		identical signals processed at different times will produce identical results. An \acrshort{lti} system is
@@ -1296,7 +1301,7 @@
 			frequency ranges. An equaliser (\acrshort{eq}) is the audio effect used to apply these spectral
 			manipulations.  Equalisers were first developed as specific electronic circuits used for corrective
 			tasks associated with signal transmission. As the field of audio production has evolved, more
-			flexible equalisers with a greater number of control parameters have been introduced
+			flexible equalisers, with greater numbers of control parameters, have been introduced
 			\citep{gottlieb2007shaping}. Modern equalisers are still used for corrective purposes but also
 			provide further opportunities for the creative shaping of timbre. Responses from the
 			\acrshort{safe} project (Section~\ref{sec:TimbreEvaluation-DAWBasedTimbreEvaluation-SAFE}) indicate
@@ -1319,20 +1324,20 @@
 		In audio effects this time variance is most often due to modulation of the processing parameters by an
 		internally generated signal; this internal signal generator is often referred to as a \acrfull{lfo}.
 		\acrshort{lfo}s can be used to modulate the time by which playback of an audio signal is delayed; changing
-		delay time in a constant linear fashion can model the Doppler effect applying a pitch shift to a signal
-		\citep{dattorro1997effect}. More complex modulation of the delay time is used in the flanger effect which
+		delay time in a constant linear fashion can model the Doppler effect, applying a pitch shift to a signal
+		\citep{dattorro1997effect}. More complex modulation of the delay time is used in the flanger effect, which
 		creates similar sounds to a phaser effect. In both phaser and flanger effects an \acrshort{lfo} is used to
-		sweep filter notches up and down the frequency range of a signal, creating a distinctive ``swishing''
-		effect \citep{huber2010modern}. Similar techniques are used in the chorus effect in which multiple
-		differently processed versions of the single signal are combined with the intention of making it sound as
-		though audio from a signal source was produced by an ensemble of similar sources.
+		sweep filter notches up and down the frequency range of a signal, creating a distinctive `swishing'
+		effect \citep{huber2010modern}. Similar techniques are used in the chorus effect, in which multiple
+		differently processed versions of the signal are combined, with the intention of making it sound as
+		though audio from a single source was produced by an ensemble of similar sources.
 
 	\subsection{Nonlinear Effects}
 	\label{sec:Timbre-AudioProcessing-Nonlinear}
 		Nonlinear systems are those that do not satisfy the superposition principle. The nonlinear systems used in
 		audio processing typically apply automodulation (multiplying the input by itself) or adjust processing
-		parameters based on the amplitude of the input signal. Two common uses for nonlinear processing are control
-		of dynamics and application of deliberate nonlinear distortion.
+		parameters based on the amplitude of the input signal. Two common uses for nonlinear processing are:
+		control of dynamics and application of deliberate nonlinear distortion.
 
 		\subsubsection*{Dynamics Processing}
 			Dynamics processors are designed to be used to alter the dynamics of an audio signal while
@@ -1340,7 +1345,7 @@
 			control the gain of an amplifier. The three main types of dynamic processors are: compressors,
 			which decrease dynamic range; expanders, which increase dynamic range; and gates, which eliminate
 			portions of a signal below a threshold level. While initially used for corrective purposes
-			(removing unwanted noise, restricting dynamic range for broadcast) the distinct topologies of
+			(removing unwanted noise, restricting dynamic range for broadcast), the distinct topologies of
 			different dynamics processors led to their use as creative effects, certain compressors being noted
 			for their desirable timbral characteristics \citep{moore2016an}. The most popular terms used to
 			describe the application of compression in the \acrshort{safe} dataset are: punchy, tight, smooth,
@@ -1352,8 +1357,8 @@
 			\citep{yeh2009digital}, nonlinear distortion can also be used in a controlled manner for corrective
 			applications \citep{larsen2004audio}. The timbral effects of the distortion plug-in created for the
 			\acrshort{safe} project have been described as crunchy, warm, fuzzy, creamy, bright, harsh, raspy
-			and smooth.  As the focus of this thesis is the application of nonlinear distortion for timbral
-			control an in depth discussion of nonlinear distortion is given in Chapter~\ref{chap:Excitation}. 
+			and smooth. As the focus of this thesis is the application of nonlinear distortion for timbral
+			control, an in depth discussion of nonlinear distortion is given in Chapter~\ref{chap:Excitation}. 
 
 \section{Summary}
 \label{sec:Timbre-Summary}
@@ -1366,18 +1371,18 @@
 	
 	Research into the perception of timbre is chiefly focussed on mapping the relationships between low level
 	mathematical features of audio signals and the language used to describe them. The typical approach for uncovering
-	these relationships is to identify orthogonal timbral dimensions through the use of perceptual listening tests and
-	then to find the audio features which correlate most highly with these dimensions. These listening tests can either
-	be run in strict laboratory conditions or distributed to participants to complete in their own time. The later is
-	deemed more appropriate for this work as it allows for a greater amount of data to be collected at the expense of
-	control over the listening environment. Control over the listening environment may even be damaging to results, as
-	timbral effects observed in the laboratory may not translate to different listening environments. Timbral effects
-	which are robust enough to be observed in distributed listening tests are more likely to translate to different
-	listening environments, meaning the results will be more applicable to `real world' situations.
+	these relationships is to identify orthogonal timbral dimensions, through the use of perceptual listening tests,
+	and then to find the audio features which correlate most highly with these dimensions. These listening tests can
+	either be run in strict laboratory conditions or distributed to participants to complete in their own time. The
+	later is deemed more appropriate for this work as it allows for a greater amount of data to be collected, at the
+	expense of control over the listening environment. Control over the listening environment may even be damaging to
+	results, as timbral effects observed in the laboratory may not translate to different listening environments.
+	Timbral effects which are robust enough to be observed in distributed listening tests are more likely to translate
+	to different listening environments, meaning the results will be more applicable to `real world' situations.
 
-	Tools used to manipulate timbre can be separated into two classes: `modern' tools which have semantically labelled
-	control parameters and more traditional tools which provide parameters based on mathematical signal properties. One
-	of these traditional tools is nonlinear distortion which introduces new spectral content to a signal. This thesis
-	will focus on the creation of `modern' effects which use these nonlinear systems but have semantically meaningful
-	control parameters. As such the following chapter will discuss the analysis and development of nonlinear audio
-	processing systems.
+	Tools used to manipulate timbre can be separated into two classes: `modern' tools, which have semantically labelled
+	control parameters; and more traditional tools, which provide parameters based on mathematical signal properties.
+	One of these traditional tools is nonlinear distortion, which introduces new spectral content to a signal. This
+	thesis will focus on the creation of `modern' effects which use these nonlinear systems but have semantically
+	meaningful control parameters. As such, the following chapter will discuss the analysis and development of
+	nonlinear audio processing systems.
