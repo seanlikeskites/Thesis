@@ -8,47 +8,47 @@
 	This thesis has investigated the problem of applying timbral control using harmonic excitation systems. The primary
 	aim was to identify techniques by which harmonic excitation can be used to provide intuitive control over the
 	perceived properties of audio signals. These can then be used to aid novice users in carrying out common audio
-	engineering tasks. Harmonic excitation techniques are useful in these applications as they allow for a greater
+	engineering tasks. Harmonic excitation techniques are useful in these applications, as they allow for a greater
 	number of spectral features to be manipulated than \acrshort{lti} systems do: they can be used to introduce new
-	frequency content to a signal. A disadvantage is that they are typically nonlinear systems and their effects are
+	frequency content to a signal. A disadvantage is that they are typically nonlinear systems, and their effects are
 	highly dependant on the content of the input signal. A key problem to solve for this work was the development of
 	harmonic excitation systems which produce similar effects over a wide range of input signals.
 
 	The approach taken in this thesis can be divided into three main stages. Firstly, subjective data about the
 	manipulation of timbre in music production was gathered. Various analysis techniques were then applied to this data
-	to determine how language is used to describe timbral transformations and the low level audio features which
-	correlate with these descriptions. Secondly, a number of nonlinear and time variant signal processing algorithms
-	were evaluated against how well their effects on the features of a signal can be controlled. The results from this
+	to determine how language is used to describe timbral transformations, and the low level audio features which
+	correlate with these descriptions. Secondly, a number of nonlinear, and time variant, signal processing algorithms
+	were evaluated against how well their effects, on the features of a signal, can be controlled. The results from this
 	analysis were used to inform the design of harmonic excitation systems which provide monotonic control over a
 	particular low level audio feature. Lastly, these systems were specialised to complete common audio processing
-	tasks: reconstructing the spectrum of degraded audio signals and applying creative timbral manipulations using
+	tasks: reconstructing the spectrum of degraded audio signals, and applying creative timbral manipulations using
 	semantically labelled parameters. The performance of the resulting systems was evaluated with a series of perceptual
 	listening tests. Sections \ref{sec:Conclusion-Descriptors} to \ref{sec:Conclusion-TimbralControl} summarise the main
 	findings from each of these stages.
 
 \section{Timbral Descriptors}
 \label{sec:Conclusion-Descriptors}
-	Analysis of 304 applications of a distortion effect and 1483 applications of an equaliser effect identified 17 terms
-	which are commonly used to describe timbre or timbral transformations. The terms crunchy, fuzzy, creamy, raspy and
-	smooth were used only to describe applications of distortion while clear, airy, thin, full, boomy, boxy, tinny, deep
-	and muddy were used only to describe equalisation. Three terms (warm, bright and harsh) were used to describe
-	transformations applied by both of the effects. A new metric to measure the degree to which people agree on the use
-	of these descriptors was used to show that the most consistently used terms are warm bright and crunchy. Clustering
-	of the terms based on the audio features of the signals they describe lead to four distinct timbral groups:
-	warmth, brightness, crunchiness and muddiness. 
+	Analysis of 304 applications of a distortion effect, and 1483 applications of an equaliser effect, identified 17
+	terms which are commonly used to describe timbre or timbral transformations. The terms `crunchy', `fuzzy', `creamy',
+	`raspy' and `smooth' were used only to describe applications of distortion, while `clear', `airy', `thin', `full',
+	`boomy', `boxy', `tinny', `deep' and `muddy' were used only to describe equalisation. Three terms (`warm', `bright'
+	and `harsh') were used to describe transformations applied by both of the effects. A new metric to measure the
+	degree to which people agree on the use of these descriptors, was used to show that the most consistently used terms
+	are `warm', `bright' and `crunchy'.  Clustering of the terms, based on the audio features of the signals they
+	describe, lead to four distinct timbral groups: warmth, brightness, crunchiness and muddiness. 
 
 	Through construction and analysis of timbre spaces, the audio features which contribute to the perception of a
 	particular descriptor were identified. Spectral centroid was found to be a major factor in differentiating between
-	the different timbral groups: warmth describing transforms in which the spectral centroid is decreased and
-	brightness those in which it is increased. Muddiness is also described by a decrease in spectral centroid but with a
-	further stipulation that the majority of the energy in the output is in specific low frequency bands. Crunchiness
+	the different timbral groups: warmth describing transforms in which the spectral centroid is decreased, and
+	brightness those in which it is increased. Muddiness is also described by a decrease in spectral centroid, but with
+	a further stipulation that the majority of the energy in the output is in specific low frequency bands. Crunchiness
 	was found to be better characterised by an increase in spectral irregularity, producing a flatter but more irregular
 	spectrum. A distinction can be made between terms which describe a transform (a change in audio feature values) and
 	those which describe the properties of a signal (its absolute feature values). Warmth and brightness are mostly
-	associated with the description of feature changes, muddiness with the absolute features of the output signal and
+	associated with the description of feature changes, muddiness with the absolute features of the output signal, and
 	crunchiness with both. Within the timbral groups, changes in timbre can be described using more precise descriptors.
-	For example, harsh (part of the brightness group) describes signals with a higher proportion of high frequency
-	energy than bright, despite both describing transforms which increase the spectral centroid.
+	For example, `harsh' (part of the brightness group) describes signals with a higher proportion of high frequency
+	energy than `bright', despite both describing transforms which increase the spectral centroid.
 
 \section{Control of Audio Features with Harmonic Exciters}
 \label{sec:Conclusion-FeatureConrol}
@@ -61,22 +61,22 @@
 	the frequency range of their output.
 	
 	Use cases for each of the algorithms evaluated were suggested, and the most useful for timbral control noted.
-	Broadly, the algorithms can be divided into two groups: those which generate a band of new energy in the spectrum
+	Broadly, the algorithms can be divided into two groups: those which generate a band of new energy in the spectrum,
 	and those which can be used to generate individual harmonics. In situations where a large band of energy needs to be
 	added to the spectrum, without precise control over its content, static nonlinearities prove to be the most
-	efficient choice. One can either choose a homogeneous nonlinearity (such as a full wave rectifier) or apply
+	efficient choice. One can either choose a homogeneous nonlinearity (such as a full wave rectifier), or apply
 	additional steps to make the system homogeneous (such as including a gain stage either side of the nonlinear
 	device). Where finer control of the spectrum is desired, individual harmonics can be generated and summed together.
-	This gives better control at the expense of greater computational complexity. The \acrshort{iap} technique was shown
-	to have the best performance in this type of system, exhibiting positive homogeneity and also being shown to produce
-	the most natural sounding harmonics in subjective listening tests. The performance of the algorithms in these tests
-	was highly negatively correlated with the variability of the amplitude ratio between the harmonics and $f_{0}$ in
-	the input signal. This shows that the reconstruction of harmonics from the $f_{0}$ removes spectral and temporal
-	information crucial to the perception of timbre.
+	This gives better control, at the expense of greater computational complexity. The \acrshort{iap} technique was
+	shown to have the best performance in this type of system, exhibiting positive homogeneity and also being shown to
+	produce the most natural sounding harmonics in subjective listening tests. The performance of the algorithms in
+	these tests was highly negatively correlated with the variability of the amplitude ratios, between the harmonics and
+	$f_{0}$, in the input signal. This shows that the reconstruction of harmonics from the $f_{0}$ removes spectral, and
+	temporal, information crucial to the perception of timbre.
 
-	It was shown that using these algorithms, systems can be constructed which provide monotonic control over the
-	spectral moments, irregularity, flatness, slope, tristimulus, odd to even harmonic ratio and inharmonicity of a set
-	of test signals. While this control is not always linear, its monotonic nature allows for more intuitive control as
+	It was shown that, using these algorithms, systems can be constructed which provide monotonic control over the
+	spectral moments, irregularity, flatness, slope, tristimulus, odd to even harmonic ratio, and inharmonicity of a set
+	of test signals. While this control is not always linear, its monotonic nature allows for more intuitive control, as
 	the feature will always move in the same direction for a given direction in change of parameter value. As the
 	systems rely on the $f_{0}$ of the input signal being isolated, the control of certain features in signals without a
 	strong $f_{0}$ is lost. 
@@ -86,52 +86,52 @@
 	To create effects which provide intuitive timbral control, the findings discussed in the previous two sections were
 	combined. The systems developed for controlling features were specialised to produce the feature manipulations which
 	correspond to particular timbral descriptions. Two effects were developed in this manner: one moving audio signals
-	between warmth and brightness in the timbre space and the other between crunchiness and brightness. Each of these
-	effects was evaluated both objectively, against semantic timbral data, and subjectively in a series of listening
+	between warmth and brightness in the timbre space, and the other between crunchiness and brightness. Each of these
+	effects was evaluated both objectively, against semantic timbral data, and subjectively, in a series of listening
 	tests.
 
 	The warmth / brightness effect manipulates the spectral centroid of a signal by adjusting the relative levels of two
-	bands in the spectrum: a low band generated by low pass filtering and a high band generated by application of full
+	bands in the spectrum: a low band generated by low pass filtering, and a high band generated by application of full
 	wave rectification. To ensure the centroid can be moved in both directions, the low and high frequency bands are low
-	and high pass filtered at the input's spectral centroid respectively. It is shown that this system can be used to
-	apply transforms similar to those labelled warm, bright and harsh in the \acrshort{safe} dataset to a selection of
-	monophonic input signals. While the manipulations applied to the audio features were similar to those in the
-	\acrshort{safe} dataset, the absolute values of these features in the resulting signals were not similar. This was
-	deemed to be acceptable as it was concluded in Chapter~\ref{chap:TimbreEvaluation} that the terms warmth and bright
-	best describe transformations of features rather than absolute values.
+	and high pass filtered, at the input's spectral centroid, respectively. It is shown that this system can be used to
+	apply transforms, similar to those labelled `warm', `bright' and `harsh' in the \acrshort{safe} dataset, to a
+	selection of monophonic input signals. While the manipulations applied to the audio features were similar to those
+	in the \acrshort{safe} dataset, the absolute values of these features in the resulting signals were not similar.
+	This was deemed to be acceptable, as it was concluded in Chapter~\ref{chap:TimbreEvaluation} that the terms `warm'
+	and `bright' best describe transformations of features, rather than absolute values.
 
 	The subjective performance of the effect was evaluated by asking test participants to describe its effects on
-	various input signals. When the system was emulating transforms labelled as bright and harsh in the \acrshort{safe}
-	dataset, participants chose descriptors in the relevant timbral group 74\% and 80\% of the time respectively. While
-	for transforms which should have been labeled as warm, the descriptors chosen were only in the relevant group 54\%
-	of the time. From this, it is concluded that increasing the spectral centroid through the application of nonlinear
-	distortion is an effective way to evoke the perception of brightness or harshness in a signal. Conversely, reducing
-	the spectral centroid through low pass filtering is not sufficient to introduce warmth to a signal. It is considered
-	that the perception of warmth may rely on the spectral properties of the output as well as the way in which the
-	spectral centroid is manipulated.
+	various input signals. When the system was emulating transforms labelled as `bright' and `harsh' in the
+	\acrshort{safe} dataset, participants chose descriptors in the relevant timbral group 74\% and 80\% of the time
+	respectively. While for transforms which should have been labeled as `warm', the descriptors chosen were only in the
+	relevant group 54\% of the time. From this, it is concluded that increasing the spectral centroid, through the
+	application of nonlinear distortion, is an effective way to evoke the perception of brightness or harshness in a
+	signal. Conversely, reducing the spectral centroid, through low pass filtering, is not sufficient to introduce
+	warmth to a signal. It is considered that the perception of warmth may rely on the spectral properties of the output
+	as well as the way in which the spectral centroid is manipulated.
 
-	The brightness / crunchiness effect independently controls the levels of the first six harmonics in the output in
+	The brightness / crunchiness effect independently controls the levels of the first six harmonics in the output, in
 	order to adjust its spectral irregularity and higher order spectral moments. Computational complexity is reduced by
-	generating higher order harmonics through full wave rectification. As with the warmth / harshness effect it is shown
-	that this effect performed well when emulating transforms labelled as bright and harsh in the \acrshort{safe}
-	dataset. However, when emulating crunchiness the transforms were only similar in terms of the features of the output
-	signals. This is thought to be due to the low order filtering used when generating the individual harmonics. Higher
-	order filtering would allow for better isolated harmonics, providing more accurate control over the spectral
-	properties.
+	generating higher order harmonics through full wave rectification. As with the warmth / harshness effect, it was
+	shown that this effect performed well when emulating transforms labelled as `bright' and `harsh' in the
+	\acrshort{safe} dataset. However, when emulating crunchiness, the transforms were only similar in terms of the
+	features of the output signals. This is thought to be due to the low order filtering used when generating the
+	individual harmonics. Higher order filtering would allow for better isolated harmonics, providing more accurate
+	control over the spectral properties.
 
 	Subjectively, the brightness / crunchiness effect performed similarly to the warmth / brightness effect.
 	Participants gave a descriptor in the relevant timbral group 72\% and 90\% of the time for transforms which were
-	intended to be bright and harsh respectively. This reinforces the concept that addition of high frequency content
-	using a nonlinear system evokes the perception of timbres related to brightness and harshness. When applying
-	transforms intended to introduce crunchiness however, the effect performed less well; participants only chose
-	descriptors from the relevant group 51\% of the time. It is concluded that this is due to the poor control over the
-	finer spectral detail due to the order of the filters used.
+	intended to be `bright' and `harsh' respectively. This reinforces the concept that addition of high frequency
+	content, using a nonlinear system, evokes the perception of timbres related to brightness and harshness. When
+	applying transforms intended to introduce crunchiness, however, the effect performed less well; participants only
+	chose descriptors from the relevant group 51\% of the time. It is concluded that this is due to the poor control
+	over the finer spectral detail due to the order of the filters used.
 
 \section{Critique}
 \label{sec:Conclusion-Critique}
 	While the systems developed in this thesis have been shown to provide timbral control, their performance could
 	potentially be improved by altering the approach used when developing them. These changes can be split into two
-	categories: those that improve the quality of the timbral data collected to inform the design of effects and those
+	categories: those that improve the quality of the timbral data collected to inform the design of effects, and those
 	that improve the accuracy of the control the systems have over audio features.
 
 	\subsection{Data Collection}
@@ -140,28 +140,28 @@
 		information about the use of timbral transformations. The data collected by \acrshort{safe} plug-ins
 		describes how an effect has been applied and the users intended timbral result. This thesis has shown how
 		this data can be used to uncover acoustic correlates of commonly used timbral descriptors. The plug-ins also
-		collect metadata such that it can be used to segment the data, highlighting differences between different
+		collect metadata, such that it can be used to segment the data, highlighting differences between different
 		application domains. For example, a descriptor could have different timbral connotations depending on the
 		instrument which produced the audio. However, the \acrshort{safe} plug-in interface does not require users
-		to enter this information, the only required information is a timbral descriptor. The majority of entries in
-		the \acrshort{safe} dataset do not have metadata attached to them, meaning that definitions of descriptors
-		based on application domain cannot be fully investigated. 
+		to enter this information; the only required information is a timbral descriptor. The majority of entries in
+		the \acrshort{safe} dataset do not have metadata attached to them, meaning that definitions of descriptors,
+		based on application domain, cannot be fully investigated. 
 
 		Another shortcoming in the data collected by the \acrshort{safe} plug-ins is due to the way in which a
 		semantic description is elicited. It is common for experiments which investigate timbral descriptors to
-		gather information about how well a descriptor applies to a signal. In \acrshort{vame} tests this is done by
-		having participants grade stimuli on several descriptive rating scales, while \citet{cartwright2013socialeq}
-		ask participants to rank several stimuli in terms of how well a descriptor applies. This information allows
-		experimenters to investigate the way in which sounds are differentiated in terms of a particular descriptor
-		(e.g. what makes one sound warmer than another?). The \acrshort{safe} plug-ins do not collect this
-		information, only a description of the timbre / timbral transformation. This restricts analysis of the
-		\acrshort{safe} dataset to only cover classification of sounds / transforms based on a descriptor. One can
-		investigate the difference between warm and bright sounds, but not the difference between a warm sound and a
-		warmer sound.
+		gather information about how well a descriptor applies to a signal. In \acrshort{vame} tests, this is done
+		by having participants grade stimuli on several descriptive rating scales, while
+		\citet{cartwright2013socialeq} ask participants to rank several stimuli in terms of how well a descriptor
+		applies. This information allows experimenters to investigate the way in which sounds are differentiated in
+		terms of a particular descriptor (e.g. what makes one sound warmer than another?). The \acrshort{safe}
+		plug-ins do not collect this information, only a description of the timbre / timbral transformation. This
+		restricts analysis of the \acrshort{safe} dataset to only cover classification of sounds / transforms based
+		on a descriptor. One can investigate the difference between warm and bright sounds, but not the difference
+		between a warm sound and a warmer sound.
 
 		The fact that the data collection process is built into \acrshort{daw} plug-ins may also have negative
 		effects on the data collected. Users must have a minimum level of music production knowledge in order to
-		used a \acrshort{daw} and hence the plug-ins, reducing the potential sample size for the experiment. As seen
+		use a \acrshort{daw}, and hence the plug-ins, reducing the potential sample size for the experiment. As seen
 		in Chapter~\ref{chap:TimbreEvaluation}, the number of instances for the majority of the descriptors is very
 		low, reducing the statistical significance of any results obtained. It is also worth considering that this
 		minimum level of music production knowledge may influence the language participants use. If, as part of
@@ -172,22 +172,22 @@
 	\label{sec:Conclusion-Critique-SystemDesign}
 		The systems developed in Chapter~\ref{chap:FeatureControl} focus on providing monotonic control over a
 		particular audio feature. This helps with making timbral control systems more intuitive, moving a parameter
-		in a certain direction will always move the feature in the same direction. These techniques however, do not
+		in a certain direction will always move the feature in the same direction. These techniques, however, do not
 		control only a single audio feature. Developing more precise systems, which control individual features, may
 		produce more flexible timbral effects. For example, in this thesis, warmth and brightness have been
-		described as two timbral groups which a sound can be moved between by manipulating the spectral centroid.
+		described as two timbral groups, which a sound can be moved between by manipulating the spectral centroid.
 		\cite{zacharakis2011an} use a different approach in which warmth and brightness are treated as orthogonal
-		dimensions and can be manipulated individually.
+		dimensions, and can be manipulated individually.
 
 		Another limitation of the proposed systems is that they rely on making the input sinusoidal in order to make
 		the effects of the nonlinearities more predictable. This is achieved through tracking and isolating the
-		$f_{0}$ of the input signal. As such the systems are restricted to only operate on signals which have a
+		$f_{0}$ of the input signal. As such, the systems are restricted to only operate on signals which have a
 		single $f_{0}$ (monophonic tonal signals). Application of the systems to signals without a single well
-		defined $f_{0}$ (polyphonic and non-tonal signals) may cause unpredictable results, resulting in unintuitive
-		timbral control. Additionally, the concept of ``harmonic excitation'' (addition of new harmonic energy) does
-		not apply to these classes of signals as they do not have harmonic structures. Further investigation is
-		needed to develop nonlinear processing algorithms which will provide intuitive timbral control for these
-		types of signals.
+		defined $f_{0}$ (polyphonic and non-tonal signals) may cause unpredictable behaviour, resulting in
+		unintuitive timbral control. Additionally, the concept of `harmonic excitation' (addition of new harmonic
+		energy) does not apply to these classes of signals, as they do not have harmonic structures. Further
+		investigation is needed to develop nonlinear processing algorithms which will provide intuitive timbral
+		control for these types of signals.
 
 \section{Further Work}
 \label{sec:Conclusion-FurtherWork}
@@ -203,7 +203,7 @@
 	area. Firstly, the methodology of Chapter~\ref{chap:ExcitationEvaluation} could be extended to examine the
 	possibilities of using nonlinear processing techniques to implement perceptual control of timbre for non-tonal and
 	polyphonic audio sources. This will require the development of systems which have predictable effects on these
-	classes of signals and then following the process used in the rest of this thesis in the generation of new audio
+	classes of signals, and then following the process used in the rest of this thesis in the generation of new audio
 	effects.
 	
 	Secondly, refining the approach taken to collect timbral data as part of the music production workflow could lead to
@@ -224,13 +224,13 @@
 	transforms labelled with them. Specific experiments could be undertaken in which the \acrshort{safe} plug-ins are
 	used to gather data about these descriptors, as done for warm and bright by \citet{stasis2015a}.
 
-	In place of improving the quality of the \acrshort{safe} dataset by having users provide instrument and genre
+	In place of improving the quality of the \acrshort{safe} dataset, by having users provide instrument and genre
 	metadata, this information could be filled in using machine learning techniques. This would involve the use of
 	classification systems to segment the transforms in the dataset by the audio feature values associated with them.
 	These systems can be trained using the transforms in the dataset which have metadata attached, and used to classify
 	those which don't.  It is possible that the current feature set extracted by the \acrshort{safe} plug-ins is not
 	sufficient to train such systems.  In this case, studies need to be undertaken to determine the most salient
-	features for instrument and genre classification and the \acrshort{safe} plug-ins altered to accommodate this.
+	features for instrument and genre classification, and the \acrshort{safe} plug-ins altered to accommodate this.
 
 	Several of the harmonic excitation algorithms discussed in this thesis were first proposed in the spectral band
 	replication literature: reintroducing the high frequency content removed by psychoacoustic audio codecs. The
@@ -249,6 +249,7 @@
 	about the desired timbre from the user and suggest an audio effect / chain of audio effects to achieve it. Lastly,
 	work could be done to develop new interfaces for providing information about the desired timbre. Using semantic
 	terms to describe timbre may not always be reliable. How do these terms translate into other languages? Is the term
-	a `learned' term used only by professional producers? A less ambiguous interface might be a timbral similarity based
-	one, in which users provide a recorded piece of audio which exhibits the timbral characteristics they wish to mimic.
-	The system then analyses this audio and attempts to apply similar timbral traits to the audio being processed.
+	a `learned' term, used only by professional producers? A less ambiguous interface might be a timbral similarity
+	based one, in which users provide a recorded piece of audio which exhibits the timbral characteristics they wish to
+	mimic.  The system then analyses this audio and attempts to apply similar timbral traits to the audio being
+	processed.
