@@ -10,7 +10,7 @@
 
 		Expanding out the complex exponential gives:
 
-		\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \left( |\sin(x)|\cos(nx) - i|\sin(x)|\sin(nx) \right) dx \]
+		\[ c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \bigl( |\sin(x)|\cos(nx) - i|\sin(x)|\sin(nx) \bigr) dx \]
 
 		The expression $|\sin(x)|\sin(nx)$ is an odd function, so across the interval of our Fourier series integral
 		we have:
@@ -27,7 +27,7 @@
 		\begin{align}
 			c_{n} & = \frac{1}{\pi} \int_{0}^{\pi} \sin(x)\cos(nx) dx \nonumber \\
 			\nonumber \\
-			& = \frac{1}{2\pi} \int_{0}^{\pi} \sin((n+1)x) + \sin((1-n)x) dx \nonumber \\
+			& = \frac{1}{2\pi} \int_{0}^{\pi} \bigl( \sin((n+1)x) + \sin((1-n)x) \bigr) dx \nonumber \\
 			\nonumber \\
 			& = \frac{1}{2\pi} \left[ -\frac{\cos((n+1)x)}{n+1} - 
 				\frac{\cos((1-n)x)}{1-n} \right]_{0}^{\pi} \nonumber
@@ -63,7 +63,7 @@
 	\section{Fourier Series of a Sinusoid after Application of an Integrator}
 	\label{app:MathematicalDerivations-Integrator}
 		Applying the integrator in Equation~\ref{eq:Integrator} to a sinusoid $\sin(x)$, sampled at a rate of
-		$f_{s}$, produces a periodic waveform, $y$, with a period of $2\pi$ defined on the interval $0$ to $2\pi$
+		$f_{s}$, produces a periodic waveform, $y$, with a period of $2\pi$, defined on the interval $0$ to $2\pi$
 		as:
 
 		\[ y = \begin{cases}
@@ -130,11 +130,11 @@
 		Starting with the first integral:
 		
 		\begin{align}
-			\int_{0}^{\pi} (1-\cos(x))e^{-ix} dx & = \int_{0}^{\pi} e^{-ix} - 
-				\cos^{2}(x) + i\cos(x)\sin(x) dx \nonumber \\
+			\int_{0}^{\pi} (1-\cos(x))e^{-ix} dx & = \int_{0}^{\pi} \left( e^{-ix} - 
+				\cos^{2}(x) + i\cos(x)\sin(x) \right) dx \nonumber \\
 			\nonumber \\
-			& = \int_{0}^{\pi} e^{-ix} - \frac{1}{2} - 
-				\frac{\cos(2x)}{2} + \frac{i\sin(2x)}{2} dx \nonumber \\
+			& = \int_{0}^{\pi} \left( e^{-ix} - \frac{1}{2} - 
+				\frac{\cos(2x)}{2} + \frac{i\sin(2x)}{2} \right) dx \nonumber \\
 			\nonumber \\
 			& = \left[ ie^{-ix} - \frac{x}{2} - \frac{\sin(2x)}{4} - 
 				\frac{i\cos(2x)}{4} \right]_{0}^{\pi} \nonumber \\
@@ -148,10 +148,11 @@
 		
 		\begin{align}
 			\int_{\pi}^{2\pi} (3+\cos(x))e^{-ix} dx & = 
-				\int_{\pi}^{2\pi} 3e^{-ix} + \cos^{2}(x) - i\cos(x)\sin(x) dx \nonumber \\
+				\int_{\pi}^{2\pi} \left( 3e^{-ix} + \cos^{2}(x) - 
+				i\cos(x)\sin(x) \right) dx \nonumber \\
 			\nonumber \\
-			& = \int_{\pi}^{2\pi} 3e^{-ix} + \frac{1}{2} + \frac{\cos(2x)}{2} - 
-				\frac{i\sin(2x)}{2} dx \nonumber \\
+			& = \int_{\pi}^{2\pi} \left( 3e^{-ix} + \frac{1}{2} + \frac{\cos(2x)}{2} - 
+				\frac{i\sin(2x)}{2} \right) dx \nonumber \\
 			\nonumber \\
 			& = \left[ 3ie^{-ix} + \frac{x}{2} + \frac{\sin(2x)}{4} + 
 				\frac{i\cos(2x)}{4} \right]_{\pi}^{2\pi} \nonumber \\
@@ -178,7 +179,8 @@
 		Starting with the first integral:
 
 		\begin{align}
-			\int_{0}^{\pi} 1 - \cos(x) dx & = \biggl[ x + \sin(x) \biggr]_{0}^{\pi} \nonumber \\
+			\int_{0}^{\pi} \bigl( 1 - \cos(x) \bigr) dx & = 
+				\biggl[ x + \sin(x) \biggr]_{0}^{\pi} \nonumber \\
 			\nonumber \\
 			& = \pi \nonumber
 		\end{align}
@@ -186,7 +188,8 @@
 		And the second:
 
 		\begin{align}
-			\int_{\pi}^{2\pi} 3 + \cos(x) dx & = \biggl[ 3x - \sin(x) \biggr]_{\pi}^{2\pi} \nonumber \\
+			\int_{\pi}^{2\pi} \bigl( 3 + \cos(x) \bigr) dx & = 
+				\biggl[ 3x - \sin(x) \biggr]_{\pi}^{2\pi} \nonumber \\
 			\nonumber \\
 			& = 6\pi - 3\pi \nonumber \\
 			\nonumber \\
@@ -208,21 +211,21 @@
 
 	\section{Parameterisation of Spectral Flatness}
 	\label{app:MathematicalDerivations-SpectralFlatness}
-		Referring back to Section~\ref{sec:FeatureControl-Parameterisation-Flatness} we recall that the spectral
-		flatness was manipulated by altering the arithmetic mean of the spectral components' amplitudes while
+		Referring back to Section~\ref{sec:FeatureControl-Parameterisation-Flatness}, we recall that the spectral
+		flatness was manipulated by altering the arithmetic mean of the spectral components' amplitudes, while
 		leaving their geometric mean unchanged.	Equation \ref{eq:FlatnessManipulation} (repeated here) gives the new
 		spectral flatness for a given gain parameter, $m$.
 
 		\[ \mathrm{SF} = \frac{N\sqrt[N]{\prod_{n \in P} a_{n}^{2}}}
 					   {\frac{A_{L}}{m^{2}} + m^{2}A_{H} + A_{E}} \]
 
-		Only the denominator of this equation are changed by $m$. Increasing the denominator will decrease the
-		spectral flatness and decreasing it will have to opposite effect. We can simplify this by considering the
+		Only the denominator of this equation is changed by $m$. Increasing the denominator will decrease the
+		spectral flatness, and decreasing it will have to opposite effect. We can simplify this by considering the
 		sum of the amplitudes of the two scaled groups of spectral components:
 
 		\[ \frac{A_{L}}{m^{2}} + m^{2}A_{H} \]
 
-		For the spectral flatness to increase this expression should be less than the unscaled amplitudes:
+		For the spectral flatness to increase, this expression should be less than the unscaled amplitudes:
 
 		\begin{gather}
 			\frac{A_{L}}{m^{2}} + m^{2}A_{H} < A_{L} + A_{H} \nonumber \\
@@ -255,12 +258,12 @@
 		\end{gather}
 
 \chapter{Software Resources}
-	As part of the work undertaken for this thesis several pieces of software were developed. This appendix lists these
-	and provides links where they can be accessed where available.
+	As part of the work undertaken for this thesis several pieces of software were developed. This appendix lists these,
+	and provides links to where they can be accessed, where available.
 	
 	\section{The \acrshort{safe} Project Codebase}
 		The largest software element developed for this thesis was the suite of \acrshort{safe} plug-ins, developed
-		in C++ using the JUCE framework. This code implements audio processing algorithms as well as the collection
+		in C++ using the JUCE framework. This code implements audio processing algorithms, as well as the collection
 		of semantic information (audio features and metadata) and the serialisation of that data as XML. Source code
 		for the plug-ins can be found on GitHub
 		(\href{https://github.com/semanticaudio/SAFE}{https://github.com/semanticaudio/SAFE}). The underlying code
@@ -268,63 +271,63 @@
 		the \acrshort{safe} functionality
 		(\href{https://github.com/seanlikeskites/SAFEJuceModule}{https://github.com/seanlikeskites/SAFEJuceModule}).
 
-		The \acrshort{safe} plug-ins send all the semantic information they collect to a web server via HTTP
+		The \acrshort{safe} plug-ins send all the semantic information they collect to a web server, via HTTP
 		requests. The back end code to handle these requests was written in PHP and parses the plug-in data for
 		storage in a MySQL database.
 
 		For the analysis of the \acrshort{safe} data, a package for the statistical programming language R was
 		developed. This package interfaces with the \acrshort{safe} database and provides functions for some of the
-		analysis carried out in Chapter~\ref{chap:TimbreEvaluation}. This code is not publicly available as it
+		analysis carried out in Chapter~\ref{chap:TimbreEvaluation}. This code is not publicly available, as it
 		contains details which would compromise the security of the \acrshort{safe} database. R code for a large
 		proportion of the analysis carried out in Chapter~\ref{chap:TimbreEvaluation} can be found on GitHub
 		(\href{https://github.com/seanlikeskites/Thesis/tree/master/RPlots/SAFEAnalysis}
 		{https://github.com/seanlikeskites/Thesis/tree/master/RPlots/SAFEAnalysis}).
 
 	\section{Harmonic Excitation Evaluation and Development Codebase}
-		The evaluation and development of harmonic excitation systems in Chapters~\ref{chap:ExcitationEvaluation}
-		and \ref{chap:FeatureControl} was all undertaken in GNU Octave. Each of the harmonic excitation methods
-		discussed was implemented as well as feature extraction code to examine their effects on low level audio
+		The evaluation and development of harmonic excitation systems, in Chapters~\ref{chap:ExcitationEvaluation}
+		and \ref{chap:FeatureControl}, was all undertaken in GNU Octave. Each of the harmonic excitation methods
+		discussed was implemented, along with feature extraction code, to examine their effects on low level audio
 		features. The source code for this can be found on Bitbucket
 		(\href{https://bitbucket.org/seanlikeskites/HarmonicExcitationOctave}
 		{https://bitbucket.org/seanlikeskites/HarmonicExcitationOctave}). The plots for this chapter were also
-		initially produced using GNU Octave but eventually the data was imported into R to make the plotting
+		initially produced using GNU Octave, but eventually the data was imported into R to make the plotting
 		consistent throughout the thesis.
 
 	\section{Perceptual Listening Test Codebase}
 		Additional software was also developed for the perceptual listening tests performed in
-		Chapter~\ref{chap:PerceptualExperiments}. The \acrshort{mushra} test discussed in
-		Section~\ref{sec:PerceptualExperiments-Reconstruction} was undertaken using MATLAB. This involved the
+		Chapter~\ref{chap:PerceptualExperiments}. The \acrshort{mushra} test, discussed in
+		Section~\ref{sec:PerceptualExperiments-Reconstruction}, was undertaken using MATLAB. This involved the
 		development of a framework for performing \acrshort{mushra} tests in MATLAB, source code for which is
 		available on SourceForge
 		(\href{https://sourceforge.net/projects/matlabmushra}{https://sourceforge.net/projects/matlabmushra}).
 
-		The semantically controlled plug-ins developed and evaluated in
+		The semantically controlled plug-ins developed, and evaluated, in
 		Section~\ref{sec:PerceptualExperiments-SemanticControl} were developed in C++ using the JUCE framework.
-		These plug-ins reused the \acrshort{safe} codebase allowing for them to perform the feature analysis used to
-		evaluate their performance.
+		These plug-ins reused the \acrshort{safe} codebase, allowing for them to perform the feature analysis used
+		to evaluate their performance.
 
 \chapter{Harmonic Excitation System Design Notes}
 \label{app:FilterNotes}
-	In Section~\ref{sec:FeatureControl-Systems} several different harmonic excitation systems were proposed which
+	In Section~\ref{sec:FeatureControl-Systems}, several different harmonic excitation systems were proposed which
 	provide intuitive control over the spectral structure of a signal. This appendix provides further detail about the
 	use of these systems, specifically the filtering used within them.
 
 	\section{$f_{0}$ Isolation Filters}
-		As illustrated in Figure~\ref{fig:F0Tracking} the proposed harmonic excitation systems all rely on the
-		isolation of a signal's $f_{0}$ using a band pass filter. Throughout this thesis this is implemented using
-		a second order \acrshort{iir} (biquad) band pass filter centered at the frequency of the input's $f_{0}$.
-		This has been shown to be sufficient for excitation of low order harmonics in signals with little inharmonic
-		energy.  However, as shown in Figure~\ref{fig:CelloFilterOrderSpectra}, usage of a higher order
-		\acrshort{fir} reduces the unwanted intermodulation component significantly. This \acrshort{fir} filter was
-		implemented as a windowed sinc filter, using a Blackman window.
+		As illustrated in Figure~\ref{fig:F0Tracking}, the proposed harmonic excitation systems all rely on the
+		isolation of a signal's $f_{0}$ using a band pass filter. Throughout this thesis, this is implemented using
+		a second order \acrshort{iir} (biquad) band pass filter, centered at the frequency of the input's $f_{0}$.
+		This has been shown to be sufficient for excitation of low order harmonics, in signals with little
+		inharmonic energy.  However, as shown in Figure~\ref{fig:CelloFilterOrderSpectra}, usage of a higher order
+		\acrshort{fir} filter reduces the unwanted intermodulation components significantly. This \acrshort{fir}
+		filter was implemented as a windowed sinc filter, using a Blackman window.
 
 	\section{High Order Harmonic Filtering}
-		The purpose of the filter after the nonlinear device in Figure~\ref{fig:SpectralShapingSystem} is to isolate
-		and shape the higher order excited harmonics. Principally, this filter should have a high pass elements,
-		attenuating frequencies below the tenth harmonic. This avoids superposition issues with the first nine
-		individually generated harmonics. For use is this thesis, this is implemented using a biquad high pass
-		filter with the cutoff frequency set at $9.5f_{0}$, which proved sufficient. Additional filtering may be
-		applied to creatively shape these high order harmonics, for instance one might apply a low pass filter in
+		The purpose of the filter after the nonlinear device in Figure~\ref{fig:SpectralShapingSystem} is to
+		isolate, and shape, the higher order excited harmonics. Principally, this filter should have a high pass
+		element, attenuating frequencies below the tenth harmonic. This avoids superposition issues with the first
+		nine individually generated harmonics. For use in this thesis, this is implemented using a biquad high pass
+		filter, with the cutoff frequency set at $9.5f_{0}$, which proved sufficient. Additional filtering may be
+		applied to creatively shape these high order harmonics; for instance, one might apply a low pass filter in
 		order to change the spectral slope of the signal.
 
 		The low pass filter added before the nonlinear device in Figure~\ref{fig:InharmonicitySystem} is intended to
@@ -337,6 +340,7 @@
 		The filtering applied to the original signal in Figure~\ref{fig:SuperpositionSystem} is intended to remove
 		energy at any of the harmonics which are being excited. This is achieved through series biquad filters, each
 		configured as a notch filter centered at the relevant harmonic's frequency. If high order harmonics are also
-		to be excited, a low pass filter can be included removing high order harmonic content from the input signal.
+		to be excited, a low pass filter can be included, removing high order harmonic content from the input
+		signal.
 
 \end{appendices}
