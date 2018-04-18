@@ -256,7 +256,9 @@
 
 			\begin{gather}
 				\mathrm{IP}_{i,j} = \sum_{n = 1}^{N_{j}} X_{i,j}^{2}[n] \nonumber \\
+				\nonumber \\
 				\mathrm{OP}_{i,j} = \sum_{n = 1}^{N_{j}} Y_{i,j}^{2}[n] \nonumber \\
+				\nonumber \\
 				\mathrm{DS} = \frac{1}{I} \sum_{i = 1}^{I} \sum_{j = 1}^{J} 
 					\abs{10\log_{10} \left( \frac{\mathrm{OP}_{i,j}}{\mathrm{IP}_{i,j}} \right) }
 				\label{eq:DistortionScore}
@@ -297,6 +299,7 @@
 					\begin{gather}
 						S_{i,\tau} = \left\{ n | n \in \textbf{Z} 
 							   \land (i-1)L+\tau+1 \leq n \leq iL + \tau \right\} \nonumber \\
+						\nonumber \\
 						r_{i,j,\tau} = \frac{\sum_{n \in S_{i,\tau}} x_{j}[n]y_{j}[n-\tau]}
 							{\left( \sum_{n \in S_{i,\tau}} x_{j}^{2}[n] \right) 
 							\left( \sum_{n \in S_{i,\tau}} y_{j}^{2}[n-\tau] \right)}
@@ -314,6 +317,7 @@
 
 					\begin{gather}
 						\mathrm{T} = \round{0.01f_{s}} \nonumber \\
+						\nonumber \\
 						M_{i,j} = \max_{\tau = -\mathrm{T}}^{\mathrm{T}} r_{i,j,\tau}
 						\label{eq:RNonlinMaxCrossCorrelation}
 					\end{gather}
@@ -326,7 +330,9 @@
 					\begin{gather}
 						P_{i,j} = 10\log_{10} \left( \frac{1}{L} 
 							\sum_{n=(i-1)L+1}^{iL} y_{j}^{2}[n]\right) \nonumber \\
+						\nonumber \\
 						Q_{i} = \max_{j = 1}^{40} P_{i,j} \nonumber \\
+						\nonumber \\
 						W_{i,j} = \begin{cases}
 							1 & \text{if $Q_{i} - P_{i,j} \leq 40$} \\
 							\frac{P_{i,j} - Q_{i} + 80}{40} & 

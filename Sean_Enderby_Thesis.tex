@@ -31,6 +31,25 @@
 }
 \makeatother
 
+% let's try and make the paragraph spacing look good
+\setlength{\parskip}{5pt plus 0pt minus 0pt}
+\setlength{\parsep}{12pt plus 3pt minus 0pt}
+\setlength{\headsep}{25pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\textfloatsep}{15pt plus 0pt minus 0pt}
+\setlength{\floatsep}{15pt plus 0pt minus 0pt}
+\setlength{\intextsep}{12pt plus 0pt minus 0pt}
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{20pt plus 0pt minus 0pt}{*0}
+\titlespacing{\subsection}{0pt}{12pt plus 0pt minus 0pt}{*0}
+\titlespacing{\subsubsection}{0pt}{12pt plus 0pt minus 0pt}{*0}
+
+% tell tex that widows and orphans are bad
+\usepackage[all]{nowidow}
+
 % abstract stuff
 \renewenvironment{abstract}
 {
@@ -75,6 +94,22 @@
 \newfloat{datum}{htbp}{lod}[chapter]
 \floatname{datum}{Datum}
 \newsubfloat{datum}
+
+\makeatletter
+\renewcommand*{\listof}[2]{
+	\@ifundefined{ext@#1}{\float@error{#1}}{
+		\@namedef{l@#1}{\@dottedtocline{1}{0em}{2.3em}}
+		\float@listhead{#2}
+		\begingroup\setlength{\parskip}{\z@}
+			\@starttoc{\@nameuse{ext@#1}}
+		\endgroup}}
+\makeatother
+
+% don't indent lists of figures or tables
+\makeatletter
+\renewcommand*\l@figure{\@dottedtocline{1}{0em}{2.3em}}
+\let\l@table\l@figure
+\makeatother
 
 % oh yes we have to use Harvard referencing or Peter will kill us
 \usepackage{natbib}
@@ -147,9 +182,10 @@
 \usepackage[toc]{appendix}
 
 % glossary options
-\usepackage[acronym, nonumberlist, nomain, toc, style=super]{glossaries}
+\usepackage[acronym, nonumberlist, nomain, toc, style=alttree]{glossaries}
 \newglossary[mlg]{maths}{mni}{mno}{Mathematical Notation}
-\setlength{\glsdescwidth}{0.8\textwidth}
+\glssetwidest[0]{MUSHRAAAA}
+\renewcommand{\glstreenamefmt}{}
 \makeglossaries
 
 % glossary entries
@@ -335,6 +371,11 @@
 \date{November 2017} % fill that shit in when i'm done
 
 \begin{document}
+% display parameters need to go in here
+\setlength{\abovedisplayskip}{0pt plus 0pt minus 0pt}
+\setlength{\belowdisplayskip}{12pt plus 0pt minus 0pt}
+\setlength{\abovedisplayshortskip}{0pt plus 0pt minus 0pt}
+\setlength{\belowdisplayshortskip}{12pt plus 0pt minus 0pt}
 
 \pagenumbering{roman}
 \include{Preamble}

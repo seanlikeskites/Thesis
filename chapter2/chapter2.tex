@@ -338,6 +338,7 @@
 
 			\begin{gather}
 			        \bar{a}_{n} = \frac{a_{n-1} + a_{n} + a_{n+1}}{3} \nonumber \\
+				\nonumber \\
 				\mathrm{BI} = \frac{\sum_{n = 2}^{N - 1} \bar{a}_{n} \abs{a_{n} - \bar{a}_{n}}}
 						   {\sum_{n = 2}^{N - 1} \bar{a}_{n} \sqrt{\sum_{n = 1}^{N} a_{n}^{2}}}
 				\label{eq:BeauchampIrregularity}
@@ -397,7 +398,9 @@
 				A = \sum_{n = 1}^{N} a_{n}
 				\quad 
 				B = \sum_{n = 1}^{N} \nu_{n}a_{n} \nonumber \\
+				\nonumber \\
 				F = \sum_{n = 1}^{N} \nu_{n} \quad G = \sum_{n = 1}^{N} \nu_{n}^{2} \nonumber \\
+				\nonumber \\
 				\mathrm{SSl} = \frac{1}{A} \frac{NB - FA}{NG - F^{2}}
 				\label{eq:SpectralSlope}
 			\end{gather}
@@ -418,7 +421,9 @@
 				A = \sum_{n = 1}^{N} 20\log_{10}(a_{n})
 				\quad 
 				B = \sum_{n = 1}^{N} 20\nu_{n}\log_{10}(a_{n}) \nonumber \\
+				\nonumber \\
 				F = \sum_{n = 1}^{N} \nu_{n} \quad G = \sum_{n = 1}^{N} \nu_{n}^{2} \nonumber \\
+				\nonumber \\
 				\mathrm{SSl} = \frac{NB - FA}{NG - F^{2}}
 				\label{eq:SpectralSlope2}
 			\end{gather}
@@ -464,19 +469,23 @@
 
 			\begin{gather}
 				P = \left\{ n | n \in \textbf{N} \land n \leq N \right\} \nonumber \\
+				\nonumber \\
 				F = \left\{ n | n \in P \land 0.5f_{0} \leq \nu_{n} < 1.5f_{0} \right\} \nonumber \\
+				\nonumber \\
 				T_{\mathrm{p}1} = \frac{\sum_{n \in F} a_{n}}{\sum_{n = 1}^{N} a_{n}}
 				\label{eq:PeakTristimulus1}
 			\end{gather}
 
 			\begin{gather}
 				M = \left\{ n | n \in P \land 1.5f_{0} \leq \nu_{n} < 4.5f_{0} \right\} \nonumber \\
+				\nonumber \\
 				T_{\mathrm{p}2} = \frac{\sum_{n \in M} a_{n}}{\sum_{n = 1}^{N} a_{n}}
 				\label{eq:PeakTristimulus2}
 			\end{gather}
 
 			\begin{gather}
 				H = \left\{ n | n \in P \land \nu_{n} \geq 4.5f_{0} \right\} \nonumber \\
+				\nonumber \\
 				T_{\mathrm{p}3} = \frac{\sum_{n \in H} a_{n}}{\sum_{n = 1}^{N} a_{n}}
 				\label{eq:PeakTristimulus3}
 			\end{gather}
@@ -736,9 +745,13 @@
 		
 		\begin{gather}
 			X = a_{1}a_{2} \nonumber \\
+			\nonumber \\
 			Y = 2\frac{\min(a_{1}, a_{2})}{a_{1} + a_{2}} \nonumber \\
+			\nonumber \\
 			s = \frac{0.24}{0.0207\nu_{1} + 18.96} \nonumber \\
+			\nonumber \\
 			Z = e^{-3.5s(\nu_{2} - \nu_{1})} - e^{-5.75s(\nu_{2} - \nu_{1})} \nonumber \\
+			\nonumber \\
 			R = 0.5X^{0.1}Y^{3.11}Z
 			\label{eq:PartialRoughness}
 		\end{gather}
@@ -1245,6 +1258,7 @@
 		Section~\ref{sec:Timbre-Control-TimbreSpaces}. Using this method, the necessary audio feature manipulation
 		is determined and then the parameters of the audio effect are set accordingly.
 
+\addtocontents{toc}{\protect\newpage}
 \section{Audio Processing}
 \label{sec:Timbre-AudioProcessing}
 	In the field of audio production, various processing devices are used to alter the perceived sound of a piece of
