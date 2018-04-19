@@ -445,10 +445,10 @@
 			$h$\super{th} order \acrshort{ssba} is the amplitude envelope of the original signal raised to the
 			power $h$, as seen in Equation~\ref{eq:PolarSSBA}.
 
-			\begin{gather}
+			\begin{equation}
 				x_{a}^{h}[n] = \abs{x_{a}[n]}^{h} e^{ih\arg (x_{a}[n])}
 				\label{eq:PolarSSBA}
-			\end{gather}
+			\end{equation}
 
 			As the output's amplitude envelope is known in terms of the input's, the output can be normalised
 			in an attempt to make the system homogeneous. Multiplying the output of the $h$\super{th} order
@@ -632,8 +632,7 @@
 			Appendix~\ref{app:MathematicalDerivations-Rectification}.
 
 			\begin{gather}
-				c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \abs{sin(x)}e^{-inx} dx \nonumber \\
-				\nonumber \\
+				c_{n} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \abs{sin(x)}e^{-inx} dx \nonumber \\[0.6em]
 				c_{n} = \begin{cases}
 					\frac{2}{\pi(1 - n^{2})} & \text{when $n$ is even} \\
 					0 & \text{when $n$ is odd}
@@ -667,14 +666,10 @@
 			\begin{gather}
 				c_{n} = \frac{kf_{s}}{2\pi} \left( \int_{0}^{\pi} \bigl( 1 - cos(x) \bigr) e^{-inx} dx +
 							\int_{\pi}^{2\pi} \bigl( 3 + cos(x) \bigr) 
-							e^{-inx} dx \right) \nonumber \\
-				\nonumber \\
-				c_{-1} = - \frac{2ikf_{s}}{\pi} \nonumber \\
-				\nonumber \\
-				c_{0} = 2kf_{s} \nonumber \\
-				\nonumber \\
-				c_{1} = \frac{2ikf_{s}}{\pi} \nonumber \\
-				\nonumber \\
+							e^{-inx} dx \right) \nonumber \\[0.6em]
+				c_{-1} = - \frac{2ikf_{s}}{\pi} \nonumber \\[0.6em]
+				c_{0} = 2kf_{s} \nonumber \\[0.6em]
+				c_{1} = \frac{2ikf_{s}}{\pi} \nonumber \\[0.6em]
 				c_{n} = \frac{ikf_{s}}{\pi} \left( \frac{2n^{2} + e^{-in\pi} - 1}{n^{3} - n} \right)
 				\label{eq:IntegratorFourier}
 			\end{gather}

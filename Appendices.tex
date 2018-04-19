@@ -25,10 +25,8 @@
 		integral:
 
 		\begin{align}
-			c_{n} & = \frac{1}{\pi} \int_{0}^{\pi} \sin(x)\cos(nx) dx \nonumber \\
-			\nonumber \\
-			& = \frac{1}{2\pi} \int_{0}^{\pi} \bigl( \sin((n+1)x) + \sin((1-n)x) \bigr) dx \nonumber \\
-			\nonumber \\
+			c_{n} & = \frac{1}{\pi} \int_{0}^{\pi} \sin(x)\cos(nx) dx \nonumber \\[0.6em]
+			& = \frac{1}{2\pi} \int_{0}^{\pi} \bigl( \sin((n+1)x) + \sin((1-n)x) \bigr) dx \nonumber \\[0.6em]
 			& = \frac{1}{2\pi} \left[ -\frac{\cos((n+1)x)}{n+1} - 
 				\frac{\cos((1-n)x)}{1-n} \right]_{0}^{\pi} \nonumber
 		\end{align}
@@ -37,10 +35,8 @@
 
 		\begin{align}
 			c_{n} & = \frac{1}{2\pi} \left( \frac{1}{n+1} + \frac{1}{1-n} 
-				+ \frac{1}{n+1} + \frac{1}{1-n} \right) \nonumber \\
-			\nonumber \\
-			& = \frac{1}{2\pi} \frac{2(1-n) + 2(n+1)}{1 - n^{2}} \nonumber \\
-			\nonumber \\
+				+ \frac{1}{n+1} + \frac{1}{1-n} \right) \nonumber \\[0.6em]
+			& = \frac{1}{2\pi} \frac{2(1-n) + 2(n+1)}{1 - n^{2}} \nonumber \\[0.6em]
 			& = \frac{2}{\pi(1 - n^{2})} \nonumber
 		\end{align}
 
@@ -48,8 +44,7 @@
 
 		\begin{align}
 			c_{n} & = \frac{1}{2\pi} \left( -\frac{1}{n+1} - 
-				\frac{1}{1-n} + \frac{1}{n+1} + \frac{1}{1-n} \right) \nonumber \\
-			\nonumber \\
+				\frac{1}{1-n} + \frac{1}{n+1} + \frac{1}{1-n} \right) \nonumber \\[0.6em]
 			& = 0 \nonumber
 		\end{align}
 
@@ -80,17 +75,13 @@
 		
 		\begin{align}
 			\int_{0}^{\pi} (1-\cos(x))e^{-inx} dx & = 
-				\int_{0}^{\pi} \left( e^{-inx} - \cos(x)e^{-inx} \right) dx \nonumber \\
-			\nonumber \\
+				\int_{0}^{\pi} \left( e^{-inx} - \cos(x)e^{-inx} \right) dx \nonumber \\[0.6em]
 			& = \left[ \frac{ie^{-inx}}{n} - \frac{e^{-inx}(\sin(x) 
-				- in\cos(x))}{1 - n^{2}} \right]_{0}^{\pi} \nonumber \\
-			\nonumber \\
+				- in\cos(x))}{1 - n^{2}} \right]_{0}^{\pi} \nonumber \\[0.6em]
 			& = \frac{ie^{-in\pi}}{n} - \frac{ine^{-in\pi}}{1 - n^{2}} 
-				- \frac{i}{n} - \frac{in}{1 - n^{2}} \nonumber \\
-			\nonumber \\
+				- \frac{i}{n} - \frac{in}{1 - n^{2}} \nonumber \\[0.6em]
 			& = \frac{i}{n(1-n^{2})} \left( (1 - n^{2})e^{-in\pi} - 
-				n^{2}e^{-in\pi} - (1 - n^{2}) - n^2 \right) \nonumber \\
-			\nonumber \\
+				n^{2}e^{-in\pi} - (1 - n^{2}) - n^2 \right) \nonumber \\[0.6em]
 			& = \frac{i}{n - n^{3}} \left( e^{-in\pi} - 2n^{2}e^{-in\pi} - 1 \right) \nonumber
 		\end{align}
 
@@ -98,17 +89,13 @@
 
 		\begin{align}
 			\int_{\pi}^{2\pi} (3+\cos(x))e^{-inx} dx & = 
-				\int_{\pi}^{2\pi} \left( 3e^{-inx} + \cos(x)e^{-inx} \right) dx \nonumber \\
-			\nonumber \\
+				\int_{\pi}^{2\pi} \left( 3e^{-inx} + \cos(x)e^{-inx} \right) dx \nonumber \\[0.6em]
 			& = \left[ \frac{3ie^{-inx}}{n} + \frac{e^{-inx}(\sin(x) - 
-				in\cos(x))}{1 - n^{2}} \right]_{\pi}^{2\pi} \nonumber \\
-			\nonumber \\
+				in\cos(x))}{1 - n^{2}} \right]_{\pi}^{2\pi} \nonumber \\[0.6em]
 			& = \frac{3i}{n} - \frac{in}{1 - n^{2}} - \frac{3ie^{-in\pi}}{n} - 
-				\frac{ine^{-in\pi}}{1 - n^{2}} \nonumber \\
-			\nonumber \\
+				\frac{ine^{-in\pi}}{1 - n^{2}} \nonumber \\[0.6em]
 			& = \frac{i}{n(1-n^{2})} \left( 3(1-n^{2}) - n^{2} - 
-				3(1-n^{2})e^{-in\pi} - n^{2}e^{-in\pi} \right) \nonumber \\
-			\nonumber \\
+				3(1-n^{2})e^{-in\pi} - n^{2}e^{-in\pi} \right) \nonumber \\[0.6em]
 			& = \frac{i}{n - n^{3}} \left( 2n^{2}e^{-in\pi} - 3e^{-in\pi} - 4n^{2} + 3 \right) \nonumber
 		\end{align}
 
@@ -116,8 +103,7 @@
 
 		\begin{align}
 			c_{n} & = \frac{kf_{s}}{2\pi} \times \frac{i}{n - n^{3}} \left( 2 - 2e^{-in\pi} - 4n^{2} \right) 
-				\nonumber \\
-			\nonumber \\
+				\nonumber \\[0.6em]
 			& = \frac{ikf_{s}}{\pi} \left( \frac{2n^{2} + e^{-in\pi} - 1}{n^{3} - n} \right) \nonumber
 		\end{align}
 
@@ -131,16 +117,12 @@
 		
 		\begin{align}
 			\int_{0}^{\pi} (1-\cos(x))e^{-ix} dx & = \int_{0}^{\pi} \left( e^{-ix} - 
-				\cos^{2}(x) + i\cos(x)\sin(x) \right) dx \nonumber \\
-			\nonumber \\
+				\cos^{2}(x) + i\cos(x)\sin(x) \right) dx \nonumber \\[0.6em]
 			& = \int_{0}^{\pi} \left( e^{-ix} - \frac{1}{2} - 
-				\frac{\cos(2x)}{2} + \frac{i\sin(2x)}{2} \right) dx \nonumber \\
-			\nonumber \\
+				\frac{\cos(2x)}{2} + \frac{i\sin(2x)}{2} \right) dx \nonumber \\[0.6em]
 			& = \left[ ie^{-ix} - \frac{x}{2} - \frac{\sin(2x)}{4} - 
-				\frac{i\cos(2x)}{4} \right]_{0}^{\pi} \nonumber \\
-			\nonumber \\
-			& = -i - \frac{\pi}{2} - \frac{i}{4} - \left( i - \frac{i}{4} \right) \nonumber \\
-			\nonumber \\
+				\frac{i\cos(2x)}{4} \right]_{0}^{\pi} \nonumber \\[0.6em]
+			& = -i - \frac{\pi}{2} - \frac{i}{4} - \left( i - \frac{i}{4} \right) \nonumber \\[0.6em]
 			& = -2i - \frac{\pi}{2} \nonumber
 		\end{align}
 
@@ -149,16 +131,12 @@
 		\begin{align}
 			\int_{\pi}^{2\pi} (3+\cos(x))e^{-ix} dx & = 
 				\int_{\pi}^{2\pi} \left( 3e^{-ix} + \cos^{2}(x) - 
-				i\cos(x)\sin(x) \right) dx \nonumber \\
-			\nonumber \\
+				i\cos(x)\sin(x) \right) dx \nonumber \\[0.6em]
 			& = \int_{\pi}^{2\pi} \left( 3e^{-ix} + \frac{1}{2} + \frac{\cos(2x)}{2} - 
-				\frac{i\sin(2x)}{2} \right) dx \nonumber \\
-			\nonumber \\
+				\frac{i\sin(2x)}{2} \right) dx \nonumber \\[0.6em]
 			& = \left[ 3ie^{-ix} + \frac{x}{2} + \frac{\sin(2x)}{4} + 
-				\frac{i\cos(2x)}{4} \right]_{\pi}^{2\pi} \nonumber \\
-			\nonumber \\
-			& = 3i + \pi + \frac{i}{4} - \left( -3i + \frac{\pi}{2} + \frac{i}{4} \right) \nonumber \\
-			\nonumber \\
+				\frac{i\cos(2x)}{4} \right]_{\pi}^{2\pi} \nonumber \\[0.6em]
+			& = 3i + \pi + \frac{i}{4} - \left( -3i + \frac{\pi}{2} + \frac{i}{4} \right) \nonumber \\[0.6em]
 			& = 6i + \frac{\pi}{2} \nonumber
 		\end{align}
 
@@ -180,8 +158,7 @@
 
 		\begin{align}
 			\int_{0}^{\pi} \bigl( 1 - \cos(x) \bigr) dx & = 
-				\biggl[ x + \sin(x) \biggr]_{0}^{\pi} \nonumber \\
-			\nonumber \\
+				\biggl[ x + \sin(x) \biggr]_{0}^{\pi} \nonumber \\[0.6em]
 			& = \pi \nonumber
 		\end{align}
 
@@ -189,10 +166,8 @@
 
 		\begin{align}
 			\int_{\pi}^{2\pi} \bigl( 3 + \cos(x) \bigr) dx & = 
-				\biggl[ 3x - \sin(x) \biggr]_{\pi}^{2\pi} \nonumber \\
-			\nonumber \\
-			& = 6\pi - 3\pi \nonumber \\
-			\nonumber \\
+				\biggl[ 3x - \sin(x) \biggr]_{\pi}^{2\pi} \nonumber \\[0.6em]
+			& = 6\pi - 3\pi \nonumber \\[0.6em]
 			& = 3\pi \nonumber
 		\end{align}
 
@@ -203,9 +178,9 @@
 		Which gives the Fourier series coefficients as:
 
 		\begin{gather}
-			c_{-1} = - \frac{2ikf_{s}}{\pi} \nonumber \\
-			c_{0} = 2kf_{s} \nonumber \\
-			c_{1} = \frac{2ikf_{s}}{\pi} \nonumber \\
+			c_{-1} = - \frac{2ikf_{s}}{\pi} \nonumber \\[0.6em]
+			c_{0} = 2kf_{s} \nonumber \\[0.6em]
+			c_{1} = \frac{2ikf_{s}}{\pi} \nonumber \\[0.6em]
 			c_{n} = \frac{ikf_{s}}{\pi} \left( \frac{2n^{2} + e^{-in\pi} - 1}{n^{3} - n} \right) \nonumber
 		\end{gather}
 
@@ -228,14 +203,10 @@
 		For the spectral flatness to increase, this expression should be less than the unscaled amplitudes:
 
 		\begin{gather}
-			\frac{A_{L}}{m^{2}} + m^{2}A_{H} < A_{L} + A_{H} \nonumber \\
-			\nonumber \\
-			A_{L} + m^{4}A_{H} < (A_{L} + A_{H})m^{2} \nonumber \\
-			\nonumber \\
-			m^{4}A_{H} - (A_{L} + A_{H})m^{2} + A_{L} < 0 \nonumber \\
-			\nonumber \\
-			(m^{2}A_{H} - A_{L})(m^{2} - 1) < 0 \nonumber \\
-			\nonumber \\
+			\frac{A_{L}}{m^{2}} + m^{2}A_{H} < A_{L} + A_{H} \nonumber \\[0.6em]
+			A_{L} + m^{4}A_{H} < (A_{L} + A_{H})m^{2} \nonumber \\[0.6em]
+			m^{4}A_{H} - (A_{L} + A_{H})m^{2} + A_{L} < 0 \nonumber \\[0.6em]
+			(m^{2}A_{H} - A_{L})(m^{2} - 1) < 0 \nonumber \\[0.6em]
 			\frac{A_{L}}{A_{H}} < m^{2} < 1 \nonumber
 		\end{gather}
 
@@ -246,14 +217,10 @@
 		The maximum spectral flatness occurs at the minimum arithmetic mean:
 
 		\begin{gather}
-			y = \frac{A_{L}}{m^{2}} + m^{2}A_{H} \nonumber \\
-			\nonumber \\
-			\frac{dy}{dx} = -2\frac{A_{L}}{m^{3}} + 2A_{H}m \nonumber \\
-			\nonumber \\
-			2A_{H}m^{4} = 2A_{L} \nonumber \\
-			\nonumber \\
-			m^{4} = \frac{A_{L}}{A_{H}} \nonumber \\
-			\nonumber \\
+			y = \frac{A_{L}}{m^{2}} + m^{2}A_{H} \nonumber \\[0.6em]
+			\frac{dy}{dx} = -2\frac{A_{L}}{m^{3}} + 2A_{H}m \nonumber \\[0.6em]
+			2A_{H}m^{4} = 2A_{L} \nonumber \\[0.6em]
+			m^{4} = \frac{A_{L}}{A_{H}} \nonumber \\[0.6em]
 			m = \sqrt[4]{\frac{A_{L}}{A_{H}}} \nonumber
 		\end{gather}
 
