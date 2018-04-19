@@ -332,16 +332,16 @@
 		queries on the dataset to request only the more reliable user-labeled data, or, for example, compare data
 		produced using different classification algorithms.
 
-		The Provenance Ontology is also used to describe the algorithms which produce audio feature data. Each
-		\emph{safe:FeatureExtractionTransform} node is a \emph{prov:Activity} which can be associated with a
-		particular implementation of the algorithm it uses (e.g. the LibXtract \citep{bullock2007libxtract}
-		spectral centroid function). Say a discrepancy was found between two implementations of a given feature
-		extraction algorithm; the provenance data allows queries to filter results, removing those generated using
-		an earlier or incompatible implementation. Further use of provenance describes the role of a user in the
-		application of a transform. Storage of this data allows the simple retrieval of all transforms associated
-		with a particular user: benefiting researchers by allowing for segmentation of the data and benefiting
-		users by allowing them to maintain personal libraries of semantic presets amongst the entire
-		\acrshort{safe} dataset.
+		The Provenance Ontology is also used to describe the implementations of algorithms which produce audio
+		feature data. Each \emph{safe:FeatureExtractionTransform} node is a \emph{prov:Activity} which can be
+		associated with a particular implementation of the algorithm it uses (e.g. the LibXtract
+		\citep{bullock2007libxtract} spectral centroid function). Say a discrepancy was found between two
+		implementations of a given feature extraction algorithm; the provenance data allows queries to filter
+		results, removing those generated using an earlier or incompatible implementation. Further use of
+		provenance describes the role of a user in the application of a transform. Storage of this data allows the
+		simple retrieval of all transforms associated with a particular user: benefiting researchers by allowing
+		for segmentation of the data and benefiting users by allowing them to maintain personal libraries of
+		semantic presets amongst the entire \acrshort{safe} dataset.
 
 \section{Analysis}
 \label{sec:TimbreEvaluation-Analysis}
@@ -1535,6 +1535,7 @@
 	the size of the dataset to 1032 transforms.  Applying hierarchical clustering, to the audio feature values
 	associated with these transforms, identified four main timbral groups consisting of related descriptors:
 
+	\newpage
 	\begin{itemize}
 		\item warmth: warm, cream, fuzz, deep and full
 		\item brightness: bright, harsh, tin, thin, clear and air

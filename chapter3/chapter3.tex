@@ -954,7 +954,10 @@
 	\label{sec:Excitation-Methods-SpectralReplication}
 		Spectral replication is a method proposed for use in audio bandwidth extension applications
 		\citep{nagel2010a}. The underlying principle is the reproduction of the spectral structure of a signal at
-		higher frequencies, as shown in Figure~\ref{fig:SpectralReplication}.
+		higher frequencies, as shown in Figure~\ref{fig:SpectralReplication}. This shift of energy towards higher
+		frequencies could be adapted for use in harmonic excitation systems.  Shifting the spectrum $f$Hz higher in
+		frequency is easily implemented through the use of single sideband modulation with a complex sinusoid, as
+		shown in Equation~\ref{eq:SpectralReplication}.
 
 		\begin{figure}[h!]
 			\centering
@@ -962,10 +965,6 @@
 			\caption{Spectral reproduction of a signal at higher frequencies.}
 			\label{fig:SpectralReplication}
 		\end{figure}
-
-		This shift of energy towards higher frequencies could be adapted for use in harmonic excitation systems.
-		Shifting the spectrum $f$Hz higher in frequency is easily implemented through the use of single sideband
-		modulation with a complex sinusoid, as shown in Equation~\ref{eq:SpectralReplication}.
 
 		\begin{equation}
 			y[n] = \Re \left( x_{a}[n] e^{\frac{2i\pi nf}{f_{s}}} \right)
@@ -984,7 +983,8 @@
 		of high frequency energy is the desired result. After low pass filtering, the downsampling and upsampling
 		can be performed at the same time by retaining every $k$\super{th} sample and setting all others to zero.
 		This is shown in Equation~\ref{eq:SpectralFolding}, where $x_{lf}[n]$ is the low pass filtered input
-		signal.
+		signal. The effects of spectral folding with $k = 2$ and $k = 3$ are shown in
+		Figure~\ref{fig:SpectralFolding}.
 
 		\begin{equation}
 			y[n] = \begin{cases}
@@ -993,8 +993,6 @@
 			\end{cases}
 			\label{eq:SpectralFolding}
 		\end{equation}
-
-		The effects of spectral folding with $k = 2$ and $k = 3$ are shown in Figure~\ref{fig:SpectralFolding}.
 
 		\begin{figure}[h!]
 			\centering
@@ -1005,10 +1003,15 @@
 
 	\subsection{Spectral Stretching}
 	\label{sec:Excitation-Methods-SpectralStretching}
-		\citet{nagel2009a} proposed spectral stretching as a bandwidth extension method. As with other bandwidth
-		extension techniques it is possible to adapt for harmonic excitation purposes. The principle of spectral
-		stretching is to scale the spectrum of a signal along the frequency axis. This effect is shown in
-		Figure~\ref{fig:SpectralStretching}.
+		\citet{nagel2009a} proposed spectral stretching as a bandwidth extension method. The principle is to scale
+		the spectrum of a signal along the frequency axis, as shown in Figure~\ref{fig:SpectralStretching}. A
+		typical implementation of this effect utilises a phase vocoder: an algorithm which allows for time
+		stretching of a signal. This is applied by calculating the \acrshort{stft} of a signal with a given frame
+		and hop size. The signal is then resynthesised using a different hop size in order to either lengthen or
+		shorten it. This signal is then resampled back to the length of the original signal, scaling the frequency
+		content in the process. Using a hop size of $\delta_{a}$ when calculating the \acrshort{stft} and a hop
+		size of $\delta_{s}$ when resynthesising the signal, the spectrum is scaled by a factor, $s$, given by
+		Equation~\ref{eq:PhaseVocoderFactor}.
 
 		\begin{figure}[h!]
 			\centering
@@ -1017,20 +1020,10 @@
 			\label{fig:SpectralStretching}
 		\end{figure}
 
-		A typical implementation of this effect utilises a phase vocoder: an algorithm which allows for time
-		stretching of a signal. This is applied by calculating the \acrshort{stft} of a signal with a given frame
-		and hop size. The signal is then resynthesised using a different hop size in order to either lengthen or
-		shorten it. This signal can then be resampled back to the length of the original signal, scaling the
-		frequency content in the process. The spectrum is scaled by a factor, $s$, given by
-		Equation~\ref{eq:PhaseVocoderFactor}.
-
 		\begin{equation}
 			s = \frac{\delta_{s}}{\delta_{a}}
 			\label{eq:PhaseVocoderFactor}
 		\end{equation}
-
-		where $\delta_{a}$ is the hop size used when calculating the \acrshort{stft}, and $\delta_{s}$ is the hop
-		size used to resynthesise the signal.
 
 	\subsection{\acrlong{sttr}}
 	\label{sec:Excitation-Methods-STTR}

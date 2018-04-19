@@ -283,7 +283,7 @@
 		In the results figures presented in this section (Figures \ref{fig:SMCRNonlin} and \ref{fig:SMCResults}),
 		the eleven stimuli created from each test signal are numerated 1 to 11 as follows:
 
-		\begin{tabular}{>{\bfseries}rl}
+		\begin{longtable}{>{\bfseries}rl}
 			1. & The reference stimulus. \tabularnewline
 			2. & Stimulus reconstructed with the synthesis method using an \acrshort{stft} window length of 50
 			     samples. \tabularnewline
@@ -301,7 +301,7 @@
 			10. & Stimulus reconstructed with the \acrshort{iap} method using a 500\super{th} order filter.
 			     \tabularnewline
 			11. & Stimulus with third through ninth harmonics removed (anchor).
-		\end{tabular}
+		\end{longtable}
 
 		The $R_{\mathrm{nonlin}}$ results for each of the stimuli are presented in Figure~\ref{fig:SMCRNonlin}. The
 		values have been normalised, to the range 0 to 100, for purposes of comparison with the grading scale used
@@ -487,81 +487,114 @@
 %			\label{fig:PianoHarmonics}
 %		\end{figure}
 %
-		The results of the listening test show that the effects of \acrshort{stft} window length and filter order
-		are as expected. Across the majority of the stimuli, there is an increase in the perceived quality of the
-		reconstruction as the \acrshort{stft} window length / filter order is increased. The significance of this
-		increase is evaluated by performing paired t-tests on the grades given to the signals in the listening
-		test. For each reconstruction method, three paired t-tests are performed, representing comparisons between
-		every combination of the three \acrshort{stft} window lengths / filter order values (50, 100 and 500). The
-		$p$ values of these tests are shown in Table~\ref{tab:SMCTTests}. While the differences noticed between
-		adjacent parameter values (50-100, 100-500) are not always found to be significant, the largest increase in
-		parameter value (50-500) produces a significant increase in perceived quality for every reconstruction
-		method. The $R_{\mathrm{nonlin}}$ measurements confirm that as these parameters are increased, the
-		resulting reconstructed signal is objectively more similar to the original signal. For each of the original
-		signals, the highest quality reconstructions receive similar grades, it is in the lower settings of these
-		parameters that differences between the methods become noticeable.
+		\subsubsection*{Listening Test Results}
+			The results of the listening test show that the effects of \acrshort{stft} window length and filter
+			order are as expected. Across the majority of the stimuli, there is an increase in the perceived
+			quality of the reconstruction as the \acrshort{stft} window length / filter order is increased. The
+			significance of this increase is evaluated by performing paired t-tests on the grades given to the
+			signals in the listening test. For each reconstruction method, three paired t-tests are performed,
+			representing comparisons between every combination of the three \acrshort{stft} window lengths /
+			filter order values (50, 100 and 500). The $p$ values of these tests are shown in
+			Table~\ref{tab:SMCTTests}. While the differences noticed between adjacent parameter values (50-100,
+			100-500) are not always found to be significant, the largest increase in parameter value (50-500)
+			produces a significant increase in perceived quality for every reconstruction method. The
+			$R_{\mathrm{nonlin}}$ measurements confirm that as these parameters are increased, the resulting
+			reconstructed signal is objectively more similar to the original signal. For each of the original
+			signals, the highest quality reconstructions receive similar grades, it is in the lower settings of
+			these parameters that differences between the methods become noticeable.
 
-		\begin{table}[h!]
-			\centering
-			\input{chapter7/Tables/SMCTTests.tex}
-			\caption{The $p$ values of the paired t-tests comparing changes in reconstruction
-				 with changes in \acrshort{stft} window length
-				 / filter order.}
-			\label{tab:SMCTTests}
-		\end{table}
+			\begin{table}[h!]
+				\centering
+				\input{chapter7/Tables/SMCTTests.tex}
+				\caption{The $p$ values of the paired t-tests comparing changes in reconstruction
+					 with changes in \acrshort{stft} window length
+					 / filter order.}
+				\label{tab:SMCTTests}
+			\end{table}
 
-		For each of the acoustic signals (cello, clarinet and piano), the synthesis method with an \acrshort{stft}
-		window length of 50 samples was given the lowest mean grade by participants. This is most likely because of
-		the poor spectral resolution achieved when using such a short analysis window. The \acrshort{ssba} and
-		\acrshort{iap} techniques produce better reconstructions of these signals at lower filter orders, and
-		require less computational power. The results for the synthesised sample do not exhibit this pattern, with
-		the \acrshort{iap} reconstructions being given lower grades than the other methods for lower filter orders.
-		However, examining the $R_{\mathrm{nonlin}}$ measures, it is seen that the \acrshort{iap} reconstructions
-		of this signal are objectively more similar to the original signal than those reconstructed with the
-		synthesis method. This is possibly explained by the fact that the synthesised signal is the easiest to
-		reconstruct. It is a purely harmonic signal, with no energy at inharmonic frequencies, making it easy to
-		isolate the $f_{0}$ as the transition band of the filter can occupy the entire frequency range between the
-		$f_{0}$ and second harmonic without affecting performance. This, in turn, reduces the number of unwanted
-		intermodulation components present in the generated harmonics. As all the reconstructions of the
-		synthesised signal are similar to each other, it is more difficult for test participants to decide where to
-		grade them on the scale, as evidenced by the larger confidence intervals seen in
-		Figure~\ref{fig:SynthResults}. Where there is more variability between the stimuli, as for the acoustic
-		signals, it becomes easier for test participants to grade stimuli on the scale, as they will need to be
-		spread over a larger range.
+			For each of the acoustic signals (cello, clarinet and piano), the synthesis method with an
+			\acrshort{stft} window length of 50 samples was given the lowest mean grade by participants. This
+			is most likely because of the poor spectral resolution achieved when using such a short analysis
+			window. The \acrshort{ssba} and \acrshort{iap} techniques produce better reconstructions of these
+			signals at lower filter orders, and require less computational power. The results for the
+			synthesised sample do not exhibit this pattern, with the \acrshort{iap} reconstructions being given
+			lower grades than the other methods for lower filter orders.  However, examining the
+			$R_{\mathrm{nonlin}}$ measures, it is seen that the \acrshort{iap} reconstructions of this signal
+			are objectively more similar to the original signal than those reconstructed with the synthesis
+			method. This is possibly explained by the fact that the synthesised signal is the easiest to
+			reconstruct. It is a purely harmonic signal, with no energy at inharmonic frequencies, making it
+			easy to isolate the $f_{0}$ as the transition band of the filter can occupy the entire frequency
+			range between the $f_{0}$ and second harmonic without affecting performance. This, in turn, reduces
+			the number of unwanted intermodulation components present in the generated harmonics. As all the
+			reconstructions of the synthesised signal are similar to each other, it is more difficult for test
+			participants to decide where to grade them on the scale, as evidenced by the larger confidence
+			intervals seen in Figure~\ref{fig:SynthResults}. Where there is more variability between the
+			stimuli, as for the acoustic signals, it becomes easier for test participants to grade stimuli on
+			the scale, as they will need to be spread over a larger range.
 
-		All the systems evaluated in this section use the amplitude envelope of the $f_{0}$ to inform the amplitude
-		envelopes of the generated harmonics. This assumes that the amplitude envelopes of the harmonics in a
-		signal have a simple relationship with that of the $f_{0}$. A linear relationship is assumed by both the
-		\acrshort{iap} and synthesis based systems, while the \acrshort{ssba} system assumes a polynomial
-		relationship which is dependent on the order of the harmonic being generated. These assumptions introduce
-		inaccuracies when reconstructing signals in which the amplitudes of the harmonics do not obey these
-		relationships. Better results might be achieved by using one of the higher order harmonics in the
-		generation of new harmonics, rather than the $f_{0}$: for the synthesis method, measuring the amplitude
-		envelope of this harmonic; and for the \acrshort{ssba} and \acrshort{iap} methods, filtering this harmonic
-		out and shifting its frequency to the desired value. For the cello sample, for instance, it may be better
-		to use the $f_{0}$ in the generation of the third harmonic, but the second harmonic in the generation of
-		the other harmonics, as the amplitude envelopes of those combinations are better matched, as seen in
-		Figure~\ref{fig:CelloSpectrogram}. Building a system like this, however, requires knowledge of which
-		harmonics in the input signal will be the best choice for reconstructing a given harmonic. This will be
-		different depending on the source of the signal, and is not calculable from a degraded input signal.
-		Machine learning techniques could be used to build models describing the relationship between a harmonic's
-		amplitude envelope and those of other harmonics in a signal. Using these, the amplitude envelope of an
-		excited harmonic could be determined from the envelopes of all harmonics present in the input signal. This
-		would require different processing algorithms for different inputs, increasing the complexity of using the
-		system. Furthermore, the \acrshort{ssba} and \acrshort{iap} techniques are required to operate on a single
-		sinusoidal input, and are unable to apply arbitrary amplitude envelopes. Additionally, they are only able
-		to apply frequency shifts at integer multiples of the frequency of the input signal. In order to generate
-		all orders of harmonic using these techniques, the $f_{0}$ must be used as the input to the frequency
-		shifter.
-		
-		The degree of inaccuracy introduced can be estimated by examining the relationships of the harmonics'
-		amplitudes in the unprocessed test signals. As the systems rely on the amplitude envelope of the $f_{0}$,
-		this relationship will be measured as the ratio between the amplitude of each harmonic and that of the
-		$f_{0}$ $\left(\frac{h_{n}}{h_{1}}\right)$. Depending on the source of the sound, and playing method if
-		it was produced by an acoustic instrument, the relationships between the harmonics' amplitudes may be
-		different in the attack, sustain and release portions of the signal. Figures \ref{fig:AttackAmplitudes} to
-		\ref{fig:ReleaseAmplitudes} show the amplitude ratios between the third through ninth harmonics of the test
-		signals and their $f_{0}$s.
+		\subsubsection*{Harmonic Amplitude Ratios}
+			All the systems evaluated in this section use the amplitude envelope of the $f_{0}$ to inform the
+			amplitude envelopes of the generated harmonics. This assumes that the amplitude envelopes of the
+			harmonics in a signal have a simple relationship with that of the $f_{0}$. A linear relationship is
+			assumed by both the \acrshort{iap} and synthesis based systems, while the \acrshort{ssba} system
+			assumes a polynomial relationship which is dependent on the order of the harmonic being generated.
+			These assumptions introduce inaccuracies when reconstructing signals in which the amplitudes of the
+			harmonics do not obey these relationships.
+			
+			Better results might be achieved by using one of the higher order harmonics in the generation of
+			new harmonics, rather than the $f_{0}$: for the synthesis method, measuring the amplitude envelope
+			of this harmonic; and for the \acrshort{ssba} and \acrshort{iap} methods, filtering this harmonic
+			out and shifting its frequency to the desired value. For the cello sample, for instance, it may be
+			better to use the $f_{0}$ in the generation of the third harmonic, but the second harmonic in the
+			generation of the other harmonics, as the amplitude envelopes of those combinations are better
+			matched, as seen in Figure~\ref{fig:CelloSpectrogram}. 
+			
+			Building a system like this, however, requires knowledge of which harmonics in the input signal
+			will be the best choice for reconstructing a given harmonic.  This will be different depending on
+			the source of the signal, and is not calculable from a degraded input signal.  Machine learning
+			techniques could be used to build models describing the relationship between a harmonic's amplitude
+			envelope and those of other harmonics in a signal.  Using these, the amplitude envelope of an
+			excited harmonic could be determined from the envelopes of all harmonics present in the input
+			signal. This would require different processing algorithms for different inputs, increasing the
+			complexity of using the system. Furthermore, the \acrshort{ssba} and \acrshort{iap} techniques are
+			required to operate on a single sinusoidal input, and are unable to apply arbitrary amplitude
+			envelopes. Additionally, they are only able to apply frequency shifts at integer multiples of the
+			frequency of the input signal.  In order to generate all orders of harmonic using these techniques,
+			the $f_{0}$ must be used as the input to the frequency shifter.
+
+			\begin{figure}[b!]
+				\centering
+				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+				\subfloat[Cello Signal]
+				{
+					\includegraphics{chapter7/Images/CelloAttackAmplitudes.pdf}
+					\label{fig:CelloAttack}
+				}
+				\quad
+				\subfloat[Synthesised Signal]
+				{
+					\includegraphics{chapter7/Images/SynthAttackAmplitudes.pdf}
+					\label{fig:SynthAttack}
+				}
+
+				\subfloat[Piano Signal]
+				{
+					\includegraphics{chapter7/Images/PianoAttackAmplitudes.pdf}
+					\label{fig:PianoAttack}
+				}
+				\caption{Amplitude ratios, between the harmonics and $f_{0}$, in the attack and decay
+					 portions of the test signals.}
+				\label{fig:AttackAmplitudes}
+			\end{figure}
+
+			The degree of inaccuracy introduced can be estimated by examining the relationships of the
+			harmonics' amplitudes in the unprocessed test signals. As the systems rely on the amplitude
+			envelope of the $f_{0}$, this relationship will be measured as the ratio between the amplitude of
+			each harmonic and that of the $f_{0}$ $\left(\frac{h_{n}}{h_{1}}\right)$. Depending on the source
+			of the sound, and playing method if it was produced by an acoustic instrument, the relationships
+			between the harmonics' amplitudes may be different in the attack, sustain and release portions of
+			the signal. Figures \ref{fig:AttackAmplitudes} to \ref{fig:ReleaseAmplitudes} show the amplitude
+			ratios between the third through ninth harmonics of the test signals and their $f_{0}$s.
 
 %		\note
 %		{
@@ -569,203 +602,186 @@
 %			some lines what wiggle about and shit (Stasis, 2017).
 %		}
 
-		\begin{figure}[h!]
-			\centering
-			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Cello Signal]
-			{
-				\includegraphics{chapter7/Images/CelloAttackAmplitudes.pdf}
-				\label{fig:CelloAttack}
-			}
-			\quad
-			\subfloat[Synthesised Signal]
-			{
-				\includegraphics{chapter7/Images/SynthAttackAmplitudes.pdf}
-				\label{fig:SynthAttack}
-			}
+			Figure~\ref{fig:AttackAmplitudes} shows the amplitude ratios, between the harmonics and $f_{0}$,
+			for the attack and decay portions of the test signals. The clarinet signal is not included, as its
+			attack portion is too short to apply spectral analysis to. The cello signal
+			(Figure~\ref{fig:CelloAttack}) has a fast attack followed by a slower decay, in which the
+			amplitudes of the higher order harmonics decay quicker than that of the $f_{0}$. The synthesised
+			signal (Figure~\ref{fig:SynthAttack}) has a slow attack and decay, in which the amplitudes increase
+			and decrease more rapidly than that of the $f_{0}$. This signal also exhibits individual amplitude
+			modulation of each of the harmonics. In the attack and decay portions of the piano signal
+			(Figure~\ref{fig:PianoAttack}), the amplitude ratios remain mostly consistent.
 
-			\subfloat[Piano Signal]
-			{
-				\includegraphics{chapter7/Images/PianoAttackAmplitudes.pdf}
-				\label{fig:PianoAttack}
-			}
-			\caption{Amplitude ratios, between the harmonics and $f_{0}$, in the attack and decay
-				 portions of the test signals.}
-			\label{fig:AttackAmplitudes}
-		\end{figure}
+			\begin{figure}[h!]
+				\centering
+				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+				\subfloat[Cello Signal]
+				{
+					\includegraphics{chapter7/Images/CelloSustainAmplitudes.pdf}
+					\label{fig:CelloSustain}
+				}
+				\quad
+				\subfloat[Clarinet Signal]
+				{
+					\includegraphics{chapter7/Images/ClarinetSustainAmplitudes.pdf}
+					\label{fig:ClarinetSustain}
+				}
 
-		Figure~\ref{fig:AttackAmplitudes} shows the amplitude ratios, between the harmonics and $f_{0}$, for the
-		attack and decay portions of the test signals. The clarinet signal is not included, as its attack portion
-		is too short to apply spectral analysis to. The cello signal (Figure~\ref{fig:CelloAttack}) has a fast
-		attack followed by a slower decay, in which the amplitudes of the higher order harmonics decay quicker than
-		that of the $f_{0}$. The synthesised signal (Figure~\ref{fig:SynthAttack}) has a slow attack and decay, in
-		which the amplitudes increase and decrease more rapidly than that of the $f_{0}$. This signal also exhibits
-		individual amplitude modulation of each of the harmonics. In the attack and decay portions of the piano
-		signal (Figure~\ref{fig:PianoAttack}), the amplitude ratios remain mostly consistent.
+				\subfloat[Synthesised Signal]
+				{
+					\includegraphics{chapter7/Images/SynthSustainAmplitudes.pdf}
+					\label{fig:SynthSustain}
+				}
+				\quad
+				\subfloat[Piano Signal]
+				{
+					\includegraphics{chapter7/Images/PianoSustainAmplitudes.pdf}
+					\label{fig:PianoSustain}
+				}
+				\caption{Amplitude ratios, between the harmonics and $f_{0}$, in the sustain
+					 portions of the test signals.}
+				\label{fig:SustainAmplitudes}
+			\end{figure}
 
-		\begin{figure}[h!]
-			\centering
-			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Cello Signal]
-			{
-				\includegraphics{chapter7/Images/CelloSustainAmplitudes.pdf}
-				\label{fig:CelloSustain}
-			}
-			\quad
-			\subfloat[Clarinet Signal]
-			{
-				\includegraphics{chapter7/Images/ClarinetSustainAmplitudes.pdf}
-				\label{fig:ClarinetSustain}
-			}
+			Figure~\ref{fig:SustainAmplitudes} shows the amplitude ratios, between the harmonics and $f_{0}$,
+			for the sustain portions of the test signals. Of the signals, the cello signal has the most
+			consistent amplitude ratios in its sustain portion (Figure~\ref{fig:CelloSustain}). The amplitude
+			ratios in the sustain section of the synthesised signal (Figure~\ref{fig:SynthSustain}) oscillate
+			about low levels, apart from at one instance in which the amplitudes of the odd order harmonics
+			exhibit high peaks. The clarinet and piano signals have more complex sustain sections, in which the
+			amplitudes of the individual harmonics vary greatly. In the clarinet signal
+			(Figure~\ref{fig:ClarinetSustain}) the harmonics' amplitudes appear to change in unison with one
+			another, but independently from the $f_{0}$. In the piano signal's sustain section
+			(Figure~\ref{fig:PianoSustain}), at approximately 0.3 seconds, the amplitude ratios for the
+			4\super{th}, 5\super{th} and 6\super{th} harmonics can be seen to rise rapidly, and the 3\super{rd}
+			harmonic begins to rise in level shortly afterwards. The damped $f_{0}$ in this signal is apparent,
+			with several of the other harmonics having greater amplitudes.
 
-			\subfloat[Synthesised Signal]
-			{
-				\includegraphics{chapter7/Images/SynthSustainAmplitudes.pdf}
-				\label{fig:SynthSustain}
-			}
-			\quad
-			\subfloat[Piano Signal]
-			{
-				\includegraphics{chapter7/Images/PianoSustainAmplitudes.pdf}
-				\label{fig:PianoSustain}
-			}
-			\caption{Amplitude ratios, between the harmonics and $f_{0}$, in the sustain
-				 portions of the test signals.}
-			\label{fig:SustainAmplitudes}
-		\end{figure}
+			\begin{figure}[h!]
+				\centering
+				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+				\subfloat[Cello Signal]
+				{
+					\includegraphics{chapter7/Images/CelloReleaseAmplitudes.pdf}
+					\label{fig:CelloRelease}
+				}
+				\quad
+				\subfloat[Clarinet Signal]
+				{
+					\includegraphics{chapter7/Images/ClarinetReleaseAmplitudes.pdf}
+					\label{fig:ClarinetRelease}
+				}
 
-		Figure~\ref{fig:SustainAmplitudes} shows the amplitude ratios, between the harmonics and $f_{0}$, for the
-		sustain portions of the test signals. Of the signals, the cello signal has the most consistent amplitude
-		ratios in its sustain portion (Figure~\ref{fig:CelloSustain}). The amplitude ratios in the sustain section
-		of the synthesised signal (Figure~\ref{fig:SynthSustain}) oscillate about low levels, apart from at one
-		instance in which the amplitudes of the odd order harmonics exhibit high peaks. The clarinet and piano
-		signals have more complex sustain sections, in which the amplitudes of the individual harmonics vary
-		greatly. In the clarinet signal (Figure~\ref{fig:ClarinetSustain}) the harmonics' amplitudes appear to
-		change in unison with one another, but independently from the $f_{0}$. In the piano signal's sustain
-		section (Figure~\ref{fig:PianoSustain}), at approximately 0.3 seconds, the amplitude ratios for the
-		4\super{th}, 5\super{th} and 6\super{th} harmonics can be seen to rise rapidly, and the 3\super{rd}
-		harmonic begins to rise in level shortly afterwards. The damped $f_{0}$ in this signal is apparent, with
-		several of the other harmonics having greater amplitudes.
+				\subfloat[Piano Signal]
+				{
+					\includegraphics{chapter7/Images/PianoReleaseAmplitudes.pdf}
+					\label{fig:PianoRelease}
+				}
+				\caption{Amplitude ratios, between the harmonics and $f_{0}$, in the release
+					 portions of the test signals.}
+				\label{fig:ReleaseAmplitudes}
+			\end{figure}
 
-		\begin{figure}[h!]
-			\centering
-			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[Cello Signal]
-			{
-				\includegraphics{chapter7/Images/CelloReleaseAmplitudes.pdf}
-				\label{fig:CelloRelease}
-			}
-			\quad
-			\subfloat[Clarinet Signal]
-			{
-				\includegraphics{chapter7/Images/ClarinetReleaseAmplitudes.pdf}
-				\label{fig:ClarinetRelease}
-			}
+			Figure~\ref{fig:ReleaseAmplitudes} shows the amplitude ratios, between the harmonics and $f_{0}$,
+			for the release portions of the test signals. The synthesised signal is not included, as it has an
+			instantaneous release. Both the cello and clarinet signals (Figures \ref{fig:CelloRelease} and
+			\ref{fig:ClarinetRelease}) exhibit typical envelopes in their release sections: the amplitudes of
+			the higher order harmonics decay more rapidly than that of the $f_{0}$. In the cello signal,
+			however, the 3\super{rd} harmonic is the most dominant, being the last partial in the signal to
+			decay fully. In the piano signal's release section (Figure~\ref{fig:PianoRelease}) the 3\super{rd}
+			harmonic is again very dominant, but the damped $f_{0}$ must be taken into account when considering
+			the relevance of this.
 
-			\subfloat[Piano Signal]
-			{
-				\includegraphics{chapter7/Images/PianoReleaseAmplitudes.pdf}
-				\label{fig:PianoRelease}
-			}
-			\caption{Amplitude ratios, between the harmonics and $f_{0}$, in the release
-				 portions of the test signals.}
-			\label{fig:ReleaseAmplitudes}
-		\end{figure}
+		\subsubsection*{Harmonic Variability}
+			The degree to which the relationships between the harmonics' amplitudes in a signal differ from
+			those assumed by the reconstruction systems can be measured as the sum of the standard deviations
+			of each of the harmonic amplitude ratios. This measure is termed harmonic variability
+			($\mathrm{HV}$), and is measured using Equation~\ref{eq:HarmonicVariability}. 		
+			
+			\begin{gather}
+				\mu_{n} = \frac{\sum_{k = 1}^{K} \frac{h_{n,k}}{h_{1,k}}}{K} \nonumber \\[0.6em]
+				\sigma_{n} = \sqrt{\frac{\sum_{k = 1}^{K} 
+							 \left(\frac{h_{n,k}}{h_{1,k}} - \mu_{n} \right)^{2}}{K}} 
+							 \nonumber \\[0.6em]
+				\mathrm{HV} = \sum_{n = 3}^{9} \sigma_{n}
+				\label{eq:HarmonicVariability}
+			\end{gather}
 
-		Figure~\ref{fig:ReleaseAmplitudes} shows the amplitude ratios, between the harmonics and $f_{0}$, for the
-		release portions of the test signals. The synthesised signal is not included, as it has an instantaneous
-		release. Both the cello and clarinet signals (Figures \ref{fig:CelloRelease} and \ref{fig:ClarinetRelease})
-		exhibit typical envelopes in their release sections: the amplitudes of the higher order harmonics decay
-		more rapidly than that of the $f_{0}$. In the cello signal, however, the 3\super{rd} harmonic is the most
-		dominant, being the last partial in the signal to decay fully. In the piano signal's release section
-		(Figure~\ref{fig:PianoRelease}) the 3\super{rd} harmonic is again very dominant, but the damped $f_{0}$
-		must be taken into account when considering the relevance of this.
+			where $h_{n,k}$ is the amplitude of the $n$\super{th} harmonic in the $k$\super{th} frame of the
+			\acrshort{stft} of the signal, and $K$ the total number of frames in the \acrshort{stft}. 
+			
+			This metric has a minimum value of zero, describing a signal in which the amplitudes of the third
+			through ninth harmonics are all linearly related to that of the $f_{0}$. Higher values of harmonic
+			variability describe signals in which these amplitudes vary in time, relative to that of the
+			$f_{0}$. Harmonic variability values for the four test signals used in this experiment are shown in
+			Table~\ref{tab:HarmonicVariabilities}.
 
-		The degree to which the relationships between the harmonics' amplitudes in a signal differ from those
-		assumed by the reconstruction systems can be measured as the sum of the standard deviations of each of the
-		harmonic amplitude ratios. This measure is termed harmonic variability ($\mathrm{HV}$), and is measured
-		using Equation~\ref{eq:HarmonicVariability}. 		
-		
-		\begin{gather}
-			\mu_{n} = \frac{\sum_{k = 1}^{K} \frac{h_{n,k}}{h_{1,k}}}{K} \nonumber \\[0.6em]
-			\sigma_{n} = \sqrt{\frac{\sum_{k = 1}^{K} 
-						 \left(\frac{h_{n,k}}{h_{1,k}} - \mu_{n} \right)^{2}}{K}} 
-						 \nonumber \\[0.6em]
-			\mathrm{HV} = \sum_{n = 3}^{9} \sigma_{n}
-			\label{eq:HarmonicVariability}
-		\end{gather}
+			\begin{table}[h!]
+				\centering
+				\input{chapter7/Tables/HarmonicVariabilities.tex}
+				\caption{The harmonic variabilities of the test signals.}
+				\label{tab:HarmonicVariabilities}
+			\end{table}
 
-		where $h_{n,k}$ is the amplitude of the $n$\super{th} harmonic in the $k$\super{th} frame of the
-		\acrshort{stft} of the signal, and $K$ the total number of frames in the \acrshort{stft}. This metric has a
-		minimum value of zero, describing a signal in which the amplitudes of the third through ninth harmonics are
-		all linearly related to that of the $f_{0}$. Higher values of harmonic variability describe signals in
-		which these amplitudes vary in time, relative to that of the $f_{0}$. Harmonic variability values for the
-		four test signals used in this experiment are shown in Table~\ref{tab:HarmonicVariabilities}.
+			The harmonic variability values provide a measure of how well the reconstruction systems should be
+			able to reproduce the test signals. A higher harmonic variability describes a signal which will be
+			less convincingly reconstructed. This is confirmed by measuring the correlation between the
+			harmonic variability values and the mean scores given to stimuli, reconstructed using a particular
+			set of parameters, in the multiple stimulus test. Correlation values for each of the reconstruction
+			system and parameter setting combinations are given in
+			Table~\ref{tab:HarmonicVariabilityCorrelations}. The stimulus numbers refer to the different
+			reconstruction systems, as in Figures \ref{fig:SMCRNonlin} and \ref{fig:SMCResults}.
 
-		\begin{table}[h!]
-			\centering
-			\input{chapter7/Tables/HarmonicVariabilities.tex}
-			\caption{The harmonic variabilities of the test signals.}
-			\label{tab:HarmonicVariabilities}
-		\end{table}
+			\begin{table}[h!]
+				\centering
+				\input{chapter7/Tables/HarmonicVariabilityCorrelations.tex}
+				\caption{Correlations between the harmonic variabilities of the test signals and 
+					 the mean grades given in the multiple stimulus test.}
+				\label{tab:HarmonicVariabilityCorrelations}
+			\end{table}
 
-		The harmonic variability values provide a measure of how well the reconstruction systems should be able to
-		reproduce the test signals. A higher harmonic variability describes a signal which will be less
-		convincingly reconstructed. This is confirmed by measuring the correlation between the harmonic variability
-		values and the mean scores given to stimuli, reconstructed using a particular set of parameters, in the
-		multiple stimulus test. Correlation values for each of the reconstruction system and parameter setting
-		combinations are given in Table~\ref{tab:HarmonicVariabilityCorrelations}. The stimulus numbers refer to
-		the different reconstruction systems, as in Figures \ref{fig:SMCRNonlin} and \ref{fig:SMCResults}.
+			These correlation values suggest that, for all but one of the reconstruction methods, the harmonic
+			variability can be used as a predictor of the perceived quality with which a signal can be
+			reconstructed.  For signals reconstructed using the synthesis method with a window length of 50
+			samples (stimulus 2), the correlation between scores and harmonic variability is not so definitive.
+			Another factor must be contributing to the low quality scores given to signals reconstructed using
+			this method. Inspecting the amplitude ratios of the harmonics in the reconstructed signals provides
+			a possible explanation for this.  As an example, the amplitudes ratios of the harmonics for the
+			clarinet signal, reconstructed using the synthesis technique, are shown in
+			Figure~\ref{fig:STFTModulations}.
 
-		\begin{table}[h!]
-			\centering
-			\input{chapter7/Tables/HarmonicVariabilityCorrelations.tex}
-			\caption{Correlations between the harmonic variabilities of the test signals and 
-				 the mean grades given in the multiple stimulus test.}
-			\label{tab:HarmonicVariabilityCorrelations}
-		\end{table}
+			\begin{figure}[h!]
+				\centering
+				\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
+				\subfloat[50 Sample Window Length]
+				{
+					\includegraphics{chapter7/Images/ClarinetSTFT50SustainAmplitudes.pdf}
+					\label{fig:ClarinetSTFT50Sustain}
+				}
+				\quad
+				\subfloat[100 Sample Window Length]
+				{
+					\includegraphics{chapter7/Images/ClarinetSTFT100SustainAmplitudes.pdf}
+					\label{fig:ClarinetSTFT100Sustain}
+				}
 
-		These correlation values suggest that, for all but one of the reconstruction methods, the harmonic
-		variability can be used as a predictor of the perceived quality with which a signal can be reconstructed.
-		For signals reconstructed using the synthesis method with a window length of 50 samples (stimulus 2), the
-		correlation between scores and harmonic variability is not so definitive. Another factor must be
-		contributing to the low quality scores given to signals reconstructed using this method. Inspecting the
-		amplitude ratios of the harmonics in the reconstructed signals provides a possible explanation for this.
-		As an example, the amplitudes ratios of the harmonics for the clarinet signal, reconstructed using the
-		synthesis technique, are shown in Figure~\ref{fig:STFTModulations}.
+				\subfloat[500 Sample Window Length]
+				{
+					\includegraphics{chapter7/Images/ClarinetSTFT500SustainAmplitudes.pdf}
+					\label{fig:ClarinetSTFT500Sustain}
+				}
+				\caption{Amplitude ratios, between the harmonics and $f_{0}$, in the sustain portion
+					 of the clarinet signal, after being reconstructed with the synthesis technique.}
+				\label{fig:STFTModulations}
+			\end{figure}
 
-		\begin{figure}[h!]
-			\centering
-			\captionsetup[subfigure]{oneside,margin={1cm, 0cm}}
-			\subfloat[50 Sample Window Length]
-			{
-				\includegraphics{chapter7/Images/ClarinetSTFT50SustainAmplitudes.pdf}
-				\label{fig:ClarinetSTFT50Sustain}
-			}
-			\quad
-			\subfloat[100 Sample Window Length]
-			{
-				\includegraphics{chapter7/Images/ClarinetSTFT100SustainAmplitudes.pdf}
-				\label{fig:ClarinetSTFT100Sustain}
-			}
-
-			\subfloat[500 Sample Window Length]
-			{
-				\includegraphics{chapter7/Images/ClarinetSTFT500SustainAmplitudes.pdf}
-				\label{fig:ClarinetSTFT500Sustain}
-			}
-			\caption{Amplitude ratios, between the harmonics and $f_{0}$, in the sustain portion
-				 of the clarinet signal, after being reconstructed with the synthesis technique.}
-			\label{fig:STFTModulations}
-		\end{figure}
-
-		A window length of 50 samples does not provide the synthesis reconstruction system with enough spectral
-		resolution to accurately track the amplitude envelope of the $f_{0}$. As a result, the generated harmonics
-		do not have a consistent amplitude relationship with the $f_{0}$, as seen in
-		Figure~\ref{fig:ClarinetSTFT50Sustain}. Figures \ref{fig:ClarinetSTFT100Sustain} and
-		\ref{fig:ClarinetSTFT500Sustain} show that longer window lengths allow the amplitude envelope of the
-		$f_{0}$ to be tracked more accurately, meaning the generated harmonics follow its amplitude envelope move
-		consistently.
+			A window length of 50 samples does not provide the synthesis reconstruction system with enough
+			spectral resolution to accurately track the amplitude envelope of the $f_{0}$. As a result, the
+			generated harmonics do not have a consistent amplitude relationship with the $f_{0}$, as seen in
+			Figure~\ref{fig:ClarinetSTFT50Sustain}. Figures \ref{fig:ClarinetSTFT100Sustain} and
+			\ref{fig:ClarinetSTFT500Sustain} show that longer window lengths allow the amplitude envelope of
+			the $f_{0}$ to be tracked more accurately, meaning the generated harmonics follow its amplitude
+			envelope move consistently.
 		
 	\subsection{Conclusion}
 	\label{sec:PerceptualExperiments-Reconstruction-Conclusion}

@@ -515,9 +515,8 @@
 			same phase information as the input signal, avoiding any unwanted signal inversions.
 
 		\subsubsection*{Linear Time Variant Algorithms}
-			The remaining algorithms (spectral replication using Equation~\ref{eq:SpectralReplication},
-			spectral folding and \acrshort{sttr}) are \acrshort{ltv} systems. As such, they all satisfy the
-			principle of homogeneity.
+			Spectral replication, spectral folding and \acrshort{sttr} are all \acrshort{ltv} systems,
+			satisfying the principle of homogeneity.
 
 %		\subsubsection*{Spectral Replication}
 %			Spectral replication using Equation \ref{eq:SpectralReplication} linear time variant system, as such
@@ -542,9 +541,9 @@
 			The spectral characteristics of a static nonlinearity depend on the function which describes its
 			characteristic curve. If an odd function is used, only odd order distortion components will be
 			produced; using an even function, only even order distortion components are generated. A function
-			which is neither odd nor even can produce all orders of distortion component. The symmetric
-			clippers discussed previously are all described by odd functions. It is evident from the harmonic
-			amplitude plots (Figures \ref{fig:HardClippingHarmonics}, \ref{fig:SoftClippingHarmonics} and
+			which is neither odd nor even can produce all orders of distortion component. Symmetric clippers
+			are described by odd functions; it is evident from the harmonic amplitude plots (Figures
+			\ref{fig:HardClippingHarmonics}, \ref{fig:SoftClippingHarmonics} and
 			\ref{fig:ExponentialClippingHarmonics}) that only odd order harmonics have been introduced to a
 			sinusoidal input. In order to generate even order distortion components, these clipping functions
 			can be made asymmetric. This is easily done by clipping negative and positive portions of the input
@@ -561,10 +560,12 @@
 			\end{equation}
 
 			where $t_{+}$ and $t_{-}$ are the clipping thresholds for positive and negative portions of the
-			signal respectively. Figure~\ref{fig:AsymmetricHardClippingHarmonics} shows the harmonic amplitude
-			plot for Equation~\ref{eq:AsymmetricHardClipping} with $t_{+} = 0.5$ and $t_{-} = -0.3$. While the
-			system is still non-homogeneous, the energy introduced consists of both odd and even order
-			distortion components.
+			signal respectively. 
+			
+			Figure~\ref{fig:AsymmetricHardClippingHarmonics} shows the harmonic amplitude plot for
+			Equation~\ref{eq:AsymmetricHardClipping} with $t_{+} = 0.5$ and $t_{-} = -0.3$. While the system is
+			still non-homogeneous, the energy introduced consists of both odd and even order distortion
+			components.
 
 			\begin{figure}[h!]
 				\centering
