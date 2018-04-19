@@ -15,13 +15,13 @@
 	describes any other properties of the sound, besides loudness and pitch, which allow it to be distinguished from
 	other sounds \citep{mathews1999introduction}. The relationship between perceived loudness and the statistical
 	properties of a signal is nonlinear. Despite this, loudness can be expressed using a single dimension: from quiet
-	to loud. For a given listener, an audio stimulus can only be perceived as quieter than, equally as loud as or
-	louder than another stimuli. The description of pitch is more complicated as not all stimuli have a single
-	perceived pitch. Some stimuli contain several perceived pitches (such as a chord played on a piano) while others do
-	not have a pitch (such as white noise). Once the pitches present in a stimuli have been determined they can be
-	compared using a single dimension: from low to high pitch. The perception of timbre is more complex still,
-	consisting of multiple dimensions \citep{rossing2002the}. There is a large body of research concerning the analysis
-	of timbre, identifying these dimensions and their relationships with the acoustic features of a sound.
+	to loud. For a given listener, an audio stimulus can only be perceived as quieter than, as loud as or louder than
+	another stimuli. The description of pitch is more complicated as not all stimuli have a single perceived pitch.
+	Some stimuli contain several perceived pitches (such as a chord played on a piano) while others do not have a pitch
+	(such as white noise). Once the pitches present in a stimulus have been determined they can be compared using a
+	single dimension: from low to high pitch. The perception of timbre is more complex still, consisting of multiple
+	dimensions \citep{rossing2002the}. There is a large body of research concerning the analysis of timbre, identifying
+	these dimensions and their relationships with the acoustic features of a sound.
 
 	A simple interpretation of timbre is that of instrument identification. One can identify the instrument which
 	produced a sound from the sound's timbre. This concept can be used to describe the timbre of other sounds, a sound
@@ -229,7 +229,7 @@
 		frequency; or spectral partials, $a_{n}$ and $\nu_{n}$ giving the amplitude and frequency of the partial.
 		Several of the features discussed in this section can be calculated from any type of spectral components,
 		so this uniform notation proves very useful. Where the calculation of a feature requires a particular
-		spectral representation this will be noted. Some features are calculated using only the energy at the
+		spectral representation, this will be noted. Some features are calculated using only the energy at the
 		harmonic frequencies of a signal. The equations for calculating these features use a slightly different
 		notation; features are calculated from the amplitudes of the first $N$ harmonics of a signal, the amplitude
 		of the $n$\super{th} harmonic being denoted $h_{n}$. No additional notation is required for the frequency
@@ -380,14 +380,14 @@
 			The spectral flatness is traditionally measured using \acrshort{dft} bins as spectral components.
 			This way, any signal which has zero energy in any \acrshort{dft} bin will produce a spectral
 			flatness of zero. Musical signals which are composed of a set of frequency partials may have areas
-			of the spectrum with zero energy. Several different sounds with radically different spectral
-			envelopes can then all exhibit a spectral flatness of zero. This is particularly problematic for
-			digitally synthesised signals as they do not have the inherent noise present in recorded sounds.
-			The method used by \citet{peeters2004a} mitigates this by using filter bank bands as the spectral
-			components. It is less likely that there will be zero energy in a wider spectral band than in a
-			single \acrshort{dft} bin. Another method to avoid a spectral flatnesses of zero is to use the
-			signal's partials as spectral components.  This no longer measures the tonality / noisiness of a
-			signal but rather the flatness of its spectral envelope.
+			of the spectrum with zero energy. Several sounds, with radically different spectral envelopes, can
+			then all exhibit a spectral flatness of zero. This is particularly problematic for digitally
+			synthesised signals as they do not have the inherent noise present in recorded sounds.  The method
+			used by \citet{peeters2004a} mitigates this by using filter bank bands as the spectral components.
+			It is less likely that there will be zero energy in a wider spectral band than in a single
+			\acrshort{dft} bin. Another method to avoid a spectral flatness of zero is to use the signal's
+			partials as spectral components.  This no longer measures the tonality / noisiness of a signal but
+			rather the flatness of its spectral envelope.
 
 		\subsubsection*{Spectral Slope}
 			The spectral slope, $\mathrm{SSl}$, measures the gradient of the spectrum; it is calculated by
@@ -462,7 +462,7 @@
 			partials of a signal. These are called the peak tristimulus measures ($T_{\mathrm{p}1}$,
 			$T_{\mathrm{p}2}$ and $T_{\mathrm{p}3}$) and give a measure analogous to the tristimulus which can
 			be used on more inharmonically structured signals. The spectrum is still split into three bands but
-			the number of partials within these bands depends on the content of the signal. The bands include
+			the number of partials within these bands depends on the content of the signal. These bands include
 			all partials with a frequency within $0.5f_{0}$Hz of the harmonics in the equivalent band used in
 			the calculation of tristimulus.  The peak tristimulus measures are given by Equations
 			\ref{eq:PeakTristimulus1}, \ref{eq:PeakTristimulus2} and \ref{eq:PeakTristimulus3}.
@@ -506,7 +506,7 @@
 			Measuring the $\mathrm{OER}$ of a signal using Equation~\ref{eq:HarmonicParityRatio} produces an
 			asymmetric scale which may be difficult to interpret.  Signals with most of their energy at even
 			harmonics produce values between zero and one.  Signals with more energy at the odd harmonics can
-			produce any value greater then one. Another problem arises for signals with no energy at even
+			produce any value greater than one. Another problem arises for signals with no energy at even
 			harmonics where a division by zero will occur. A more robust method is to use separate measures for
 			the proportion of odd harmonics in a signal and the proportion of even harmonics in a signal.
 			\citet{lukasik2005towards} proposed two metrics which measure the oddness, $O$, and the evenness,
@@ -551,7 +551,7 @@
 	feature can have on perceived timbre, the way in which that audio feature is itself perceived must be modelled.
 	Several models have been proposed by research in psychoacoustics, a field which studies the perception of sound.
 	The existing psychoacoustic literature concerns the study of the human hearing system and how it responds to
-	certain aspects of audio stimuli.  Several different areas of audio perception have been researched. Methods have
+	certain aspects of audio stimuli. Several areas of the human perception of audio have been researched. Methods have
 	been devised to model the human perception of loudness \citep{moore1997a} and pitch \citep{gerhard2003pitch}. Other
 	research considers the human hearing system's ability to locate sound sources \citep{blauert1997spatial}. This
 	section covers the key principles of psychoacoustics relevant to this work.
@@ -758,8 +758,8 @@
 
 		The intermediate variables in this equation model the different dependencies of roughness: $X$ modeling the
 		dependence on signal intensity, $Y$ the dependence on the magnitude of the amplitude fluctuation and $Z$
-		the dependence on the frequency of the signal and the amplitude fluctuation. The roughness of more complex
-		tones can be calculated as the sum of the roughnesses of each pair of tones within the signal. 
+		the dependence on the frequency of the signal and the amplitude fluctuation. For more complex tones, the
+		roughness can be calculated as the sum of the roughnesses of each pair of tones within the signal. 
 		
 		The frequency dependence of this model agrees with that shown in Figure~\ref{fig:ToneSeparation}. Amplitude
 		fluctuations above approximately 15Hz produce a rough texture to the sound. As this frequency increases,
@@ -786,15 +786,16 @@
 \section{Subjective Listening Tests}
 \label{sec:Timbre-ListeningTests}
 	In running subjective listening tests, one must elicit perceptual gradings / descriptions of audio stimuli from
-	participants. Depending on the nature of the experiment, there are several different testing methodologies which
-	have been proposed \citep{bech2006perceptual}. Those most prevalent in timbral research will be discussed here.
+	participants. Depending on the nature of the experiment, there are several testing methodologies which have been
+	proposed \citep{bech2006perceptual}. Those most prevalent in timbral research will be discussed here.
 
 	\subsection{Testing Methodologies for Timbral Analysis}
 	\label{sec:Timbre-ListeningTests-Methods}
 		Two different classes of listening test are common in timbral studies. In one, participants are asked to
 		judge the dissimilarity of small sets of audio stimuli. In the other, participants are asked to rate each
-		audio stimulus on various scales which relate to attributes of their timbre. In this thesis, these methods
-		will be referred to as dissimilarity tests and attribute scale tests respectively.
+		audio stimulus on various scales which relate to attributes of their timbre. For the purposes of this
+		discussion, these methods will be referred to as dissimilarity tests and attribute scale tests
+		respectively.
 
 		\subsubsection*{Dissimilarity Tests}
 			\citet{grey1977multidimensional} utilised a pairwise dissimilarity methodology to gather similarity
@@ -848,7 +849,7 @@
 		\subsubsection*{Attribute Scale Tests}
 			Attribute scale tests require participants to rate each stimulus against several scales which each
 			relate to an attribute of their timbre. This is often done using a set of semantic differentials (a
-			scale with opposing descriptors on each end). This is popular for timbral research as it provides
+			scale with opposing descriptors on each end), and is popular for timbral research as it provides
 			rankings of audio stimuli against timbral descriptors. This not only allows for inference of the
 			perceptual differences between stimuli, but also for descriptors to be applied to describe these
 			differences as done by \citet{zacharakis2014an}. 			
@@ -932,7 +933,7 @@
 	\label{sec:Timbre-ListeningTests-Environments}
 		Once a testing methodology has been chosen, the task remains to recruit participants and have them complete
 		the test. Perceptual audio tests necessarily involve the use of audio reproduction equipment and a means of
-		recording the participants' responses. The reproduction system and response method chosen have impacts on
+		recording the participants' responses. The reproduction system, and response method chosen, have impacts on
 		the reliability of the results and the available sample size of participants. Two common approaches are: to
 		run supervised listening tests, with specific reproduction equipment in a laboratory; or to produce a web
 		interface to the experiment, allowing participants to complete the test using their own equipment.
@@ -1017,7 +1018,7 @@
 			development of the web audio \acrshort{api} \citep{adenot2015web}, although not all the features of
 			this are currently supported by all web browsers, reducing the potential audience for the test.
 
-			When distributing a listening test over the internet the issue of recruiting participants arises.
+			When distributing a listening test over the internet, the issue of recruiting participants arises.
 			Firstly, potential participants need to be made aware of the test and be able to participate in it.
 			Providing multiple interfaces to the test increases its potential audience. A common approach is to
 			provide a web browser interface as well as an application for mobile platforms as done by
@@ -1042,11 +1043,11 @@
 	represent orthogonal dimensions. Models of the perception of sharpness and roughness depend on the frequency
 	register of a signal; thus, changing the pitch of a signal will also alter its sharpness and roughness. Previous
 	studies attempting to uncover salient dimensions of timbre all use a similar structure in their approach.  First a
-	set of audio stimuli is selected; these are usually equalised in pitch and loudness so as to negate those
-	attributes' effects on the timbre. Listening tests are then undertaken in which participants evaluate the stimuli
-	on a given set of criteria. The results of these experiments are then analysed, using dimensionality reduction
-	techniques, to produce a timbre space in which the differences between the stimuli are described by a small set of
-	orthogonal dimensions.
+	set of audio stimuli is selected; these are usually equalised in pitch and loudness to negate those attributes'
+	effects on the timbre. Listening tests are then undertaken in which participants evaluate the stimuli on a given
+	set of criteria. The results of these experiments are then analysed, using dimensionality reduction techniques, to
+	produce a timbre space in which the differences between the stimuli are described by a small set of orthogonal
+	dimensions.
 
 	\subsection{Dimensionality Reduction}
 	\label{sec:Timbre-Parameterisation-DimensionalityReduction}
@@ -1091,7 +1092,7 @@
 		much of the remaining variance as possible. The number of \acrshort{pc}s is equal to the number of
 		dimensions in the data, but, since the lower order \acrshort{pc}s describe a greater amount of variance,
 		fewer are needed to describe a significant proportion of the total variance. The \acrshort{pc}s
-		of a $n$ dimensional dataset comprising $m$ observations are calculated in six steps:
+		of an $n$ dimensional dataset comprising $m$ observations are calculated in six steps:
 
 		\begin{enumerate}
 			\item Construct an $m \times n$ matrix, $\mathbf{A}$, the rows of which describe the coordinates of
@@ -1170,7 +1171,7 @@
 		distinguish between different classes of distortion effect, while dark $\Leftrightarrow$ bright and sharp
 		$\Leftrightarrow$ dull describe the amount of distortion applied with a particular effect.
 
-		\citet{alluri2010exploring} took a more in depth approach, using stepwise and principal components
+		\citet{alluri2010exploring} took a more in depth approach, using stepwise and principal component
 		regression techniques to identify which audio features contribute to which dimensions of their timbre
 		space. Using factor analysis, they identified three dimensions which they labelled `Activity', `Brightness'
 		and `Fullness'. Their stimuli were analysed using several features including: zero crossing rate, the ratio
@@ -1275,10 +1276,9 @@
 		to group effects based on the signal processing techniques used in their construction. In contrast, end
 		users of the effects (music producers, musicians etc.) may find it more convenient to classify effects by
 		the perceptual characteristics they impart on a signal. \citet{eichas2015feature} classify audio effects
-		using the mathematical properties of the underlying system: whether the system is linear and whether or not
-		the output is dependent on time. This classification provides a compromise between the previous two
-		methods, grouping effects into classes which are similarly implemented and also have similar timbral
-		effects.
+		using the mathematical properties of the underlying system: whether the system is linear and whether the
+		output is dependent on time. This classification provides a compromise between the previous two methods,
+		grouping effects into classes which are similarly implemented and also have similar timbral effects.
 		
 		In the following sections, the most commonly used audio effects are listed and their properties and usages
 		discussed. The effects are split into three categories: \acrfull{lti}, \acrfull{ltv} and nonlinear. Popular

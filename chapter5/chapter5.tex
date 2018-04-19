@@ -43,8 +43,8 @@
 
 	Together, these criteria describe the possible timbral manipulations an algorithm can be used for: the spectral and
 	temporal characteristics describing the system's effects on the low level features of a signal; and complexity,
-	homogeneity and use cases describing how well those can be utilised in a creative effect. Further detail on the
-	ideal characteristics within these areas is discussed in Sections
+	homogeneity and use cases describing how well those characteristics can be utilised in a creative effect. Further
+	detail on the ideal characteristics within these areas is discussed in Sections
 	\ref{sec:ExcitationEvaluation-Evaluation-Complexity} to \ref{sec:ExcitationEvaluation-Evaluation-UseCases}.
 
 	\subsection{Computational Complexity}
@@ -225,7 +225,7 @@
 		The algorithms with the lowest complexity are the static nonlinearities. The application of a static
 		nonlinearity involves only a few simple operations for each input sample. Perhaps the simplest case is that
 		of full wave rectification, in which a single absolute value operation is applied for each sample. As the
-		characteristic curve of the nonlinearity becomes more complex the computational load increases. Hard
+		characteristic curve of the nonlinearity becomes more complex, the computational load increases. Hard
 		clipping and half wave rectification require comparison operations to determine which samples should be
 		altered. Further complexity is introduced for soft clippers, where the characteristic curve is usually
 		described by a polynomial or trigonometric function. The transition section of the soft clipper given in
@@ -240,9 +240,8 @@
 		previous input and output samples of the system. Implementing these algorithms involves the use of
 		additional memory. The simplest algorithm which requires this additional memory is the integrator given in
 		Equation~\ref{eq:Integrator}. The previous input sample is needed in order to detect zero crossings in the
-		input, and the previous output sample is needed to apply the integration. The amount of computation
-		performed for this system is comparable to that of a simple static nonlinearity, giving a very low
-		computational load.
+		input, and the previous output sample is needed to apply the integration. This system uses an amount of
+		computation comparable to that of a simple static nonlinearity, giving a very low computational load.
 
 		Spectral folding using Equation~\ref{eq:SpectralFolding} requires a low pass filter in order to reduce the
 		aliasing introduced by downsampling the signal. This filter comprises the majority of the complexity of the
@@ -286,21 +285,20 @@
 		The computational complexity of \acrshort{sttr} depends on the ratio of the step size, $\delta$, and the
 		length of the window function, $L$, in samples. As $\frac{\delta}{L}$ decreases, the number of overlapping
 		frames needed to calculate an output sample increases, increasing the computational load. The algorithm's
-		complexity remains relatively low however, requiring a small number of simple operations. The biggest
-		source of latency in \acrshort{sttr} is through the time reversal of the frames. This introduces an $L$
-		sample delay to the signal, as the samples at the end of the first frame are needed to form the start of
-		the signal.
+		complexity remains relatively low however, requiring a few of simple operations. The biggest source of
+		latency in \acrshort{sttr} is through the time reversal of the frames. This introduces an $L$ sample delay
+		to the signal, as the samples at the end of the first frame are needed to form the start of the signal.
 
 	\subsection{Homogeneity}
 	\label{sec:ExcitationEvaluation-Comparison-Homogeneity}
 		\subsubsection*{Static Nonlinearities}
 			The homogeneity of a static nonlinearity depends on its characteristic curve. Changing the
 			amplitude of a sinusoidal input changes the amplitudes of each of the harmonics generated in the
-			output. The response of of several different clipping curves to changing input amplitude was
-			investigated by \citet{enderby2012harmonic}. The levels of individual harmonics in the output were
-			plotted as a function of the input sinusoid's peak amplitude. Figures
-			\ref{fig:HardClippingHarmonics} and \ref{fig:SoftClippingHarmonics} show these plots for the
-			clipping functions described in Section~\ref{sec:Excitation-Methods-Statics}.
+			output. The response of several clipping curves to changing input amplitude was investigated by
+			\citet{enderby2012harmonic}. The levels of individual harmonics in the output were plotted as a
+			function of the input sinusoid's peak amplitude. Figures \ref{fig:HardClippingHarmonics} and
+			\ref{fig:SoftClippingHarmonics} show these plots for the clipping functions described in
+			Section~\ref{sec:Excitation-Methods-Statics}.
 
 			\begin{figure}[h!]
 				\centering
@@ -323,8 +321,8 @@
 			section of a clipper's characteristic curve, no harmonics are produced. This is evidenced by the
 			blank sections of Figures \ref{fig:HardClippingHarmonics} and \ref{fig:SoftClippingHarmonics} for
 			low input amplitudes. When the input amplitude exceeds the linear section of the characteristic
-			curve additional harmonics are created. As the input amplitude increases further, the amplitudes of
-			each of these harmonics vary independently of one another. Furthermore, the way in which the
+			curve, additional harmonics are created. As the input amplitude increases further, the amplitudes
+			of each of these harmonics vary independently of one another. Furthermore, the way in which the
 			amplitude of a particular order of harmonic varies is dependent on the characteristic curve of the
 			nonlinearity. These characteristics cause clippers to have vastly different perceived effects
 			depending on input amplitude. Clipping functions can be defined which give more uniform changes in
@@ -360,9 +358,9 @@
 			clipping stage, as shown in Figure~\ref{fig:HomogeneousClipping}. The first gain stage scales the
 			signal such that the clipping stage will always clip the same proportion of the signal. To achieve
 			this, the amplitude of the input signal must be tracked in order to adjust the gain correctly. The
-			second gain stage then scales the signal back to the original input amplitude. In an analogous
-			manner, the characteristic curve of the clipper can be scaled so it always clips the same
-			proportion of the signal, as suggested by \citet{deman2014adaptive}.
+			second gain stage then scales the signal back to the original input amplitude. Analogously, the
+			characteristic curve of the clipper can be scaled so it always clips the same proportion of the
+			signal, as suggested by \citet{deman2014adaptive}.
 
 			\begin{figure}[h!]
 				\centering
@@ -415,7 +413,7 @@
 			Integration is a linear operation, meaning that it satisfies the homogeneity principle. The
 			implementation given in Equation~\ref{eq:Integrator}, however, only exhibits positive homogeneity
 			due to the rectification of the signal prior to integration. The sign of the gain applied to the
-			input signal also determines the points at which the output signal is reset to zero. The signal is
+			input signal also determines the points at which the output signal is reset to zero; the signal is
 			reset on positive zero crossings, but a negative gain applied before the input reverses the
 			direction of all zero crossings. Similarly to half wave rectification, this may have audible
 			effects depending on the nature of the input signal.
@@ -452,8 +450,8 @@
 				\label{eq:PolarSSBA}
 			\end{gather}
 
-			As the output's amplitude envelope is know in terms of the input's, the output can be normalised in
-			an attempt to make the system homogeneous. Multiplying the output of the $h$\super{th} order
+			As the output's amplitude envelope is known in terms of the input's, the output can be normalised
+			in an attempt to make the system homogeneous. Multiplying the output of the $h$\super{th} order
 			\acrshort{ssba} by $\abs{x_{a}[n]}^{1-h}$ is equivalent to applying $h$\super{th} order
 			\acrshort{iap}, as shown by Equation~\ref{eq:SSBAandIAP}. The homogeneity of this system is
 			discussed in the following section.
@@ -826,7 +824,7 @@
 			across the nearby frequencies. This can cause inharmonic partials to be generated for input signals
 			which are perfectly harmonic. Various different window functions have been proposed, each having
 			different effects in reducing the spectral leakage. The selection of a window function is
-			application specific, the performance and use of several different functions is discussed by
+			application specific, the performance and use of several window functions is discussed by
 			\citet{harris1978on}.
 			
 			Ignoring the effects of spectral leakage, the bandwidth of the output signal will be that of the
@@ -880,13 +878,13 @@
 			\end{figure}
 
 			The period of the output signal is equal to the least common multiple of the input signal's period
-			and the step size. If the period of the input signal is an integer multiple of the step size this
+			and the step size. If the period of the input signal is an integer multiple of the step size, this
 			means the period will remain unchanged by the processing. This is evidenced by the output spectrum
 			produced by use of a 1ms window, shown in Figure~\ref{fig:STTR1ms}. Only odd order harmonics are
 			generated, retaining the original period of the signal. When a signal's period is not an integer
 			multiple of the step size, it is increased by \acrshort{sttr}. The output spectrum for a 1.5ms
-			window (Figure~\ref{fig:STTR1p5ms}) shows this, the period of the signal being increased to 3ms.
-			The lowest frequency in this output is then approximately 333Hz.
+			window (Figure~\ref{fig:STTR1p5ms}) shows this, the period of the signal being increased to 3ms:
+			the lowest frequency in this output is then approximately 333Hz.
 
 			The exact frequencies of the partials in the output are discussed by \citet{kim2014shorttime}. In
 			effect, they are the intermodulation frequencies of the input frequency and the step frequency. The
@@ -983,10 +981,10 @@
 		\subsubsection*{\acrshort{ssba}}
 			\acrshort{ssba} has similar temporal effects to a multiplier. The signal undergoes dynamic
 			expansion, changing the shape of its attack and release envelopes as shown in
-			Figure~\ref{fig:SSBATemporalEffects}.  The restricted bandwidth of the \acrshort{ssba} technique's
-			output is also apparent from this graph. The input is a sinusoid with a simple amplitude envelope.
-			The output is a sinusoid with three times the frequency and an amplitude envelope which is equal to
-			the input's cubed. This is in contrast to the effect of the multiplier shown in
+			Figure~\ref{fig:SSBATemporalEffects}. The restricted bandwidth of the \acrshort{ssba} technique's
+			output is also apparent from this graph; the input is a sinusoid with a simple amplitude envelope,
+			while the output is a sinusoid with three times the frequency and an amplitude envelope which is
+			equal to the input's cubed. This is in contrast to the effect of the multiplier shown in
 			Figure~\ref{fig:MultiplierTemporalEffects}, where the output signal is no longer sinusoidal.
 
 			\begin{figure}[h!]
@@ -1017,7 +1015,7 @@
 			analytic signal by a unity amplitude complex sinusoid. This has the effect of multiplying a
 			signal's amplitude envelope by one, leaving it unaffected.
 			Figure~\ref{fig:SpectralReplicationTemporalEffects} illustrates this, showing the effects on a
-			signal's amplitude envelope caused by shifting it's frequency content upwards by 1.5Hz
+			signal's amplitude envelope caused by shifting its frequency content upwards by 1.5Hz
 
 			\begin{figure}[h!]
 				\centering
@@ -1091,7 +1089,7 @@
 		\subsubsection*{\acrshort{ssba}}
 			\acrshort{ssba} increases the flexibility of a multiplier further. As only the sum sideband of the
 			intermodulation is generated, the minimum frequency in the output signal is bounded as well as the
-			maximum. When the input is sinusoidal the output will be an individual harmonic. Building a
+			maximum. When the input is sinusoidal, the output will be an individual harmonic. Building a
 			harmonic mixer using \acrshort{ssba} provides full control over which harmonics are generated from
 			a sinusoidal input. Where fine control of the spectral output is desired, \acrshort{ssba} provides
 			a reasonably low complexity solution. One disadvantage of this method is its non-homogeneous

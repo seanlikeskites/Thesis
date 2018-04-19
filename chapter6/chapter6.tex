@@ -15,7 +15,7 @@
 	parameter setting and the feature value being linear) and independent (the effect only controlling one audio
 	feature, the rest remaining constant). This would allow for the most flexibility in applying timbral transforms,
 	every separate feature could be set individually and predictably. In reality, this is not achievable: providing
-	linear control requires in depth analysis of the input signal, which cannot be applied in real time. In addition,
+	linear control requires in depth analysis of the input signal, which cannot be applied in real time. Additionally,
 	independent control of features is not always possible as several features are closely related, such as spectral
 	flatness and spectral irregularity. In light of this, the techniques developed in this chapter will focus on
 	providing monotonic control over an audio feature: a given direction of change in a parameter setting will always
@@ -31,8 +31,8 @@
 
 \section{Harmonic Excitation Systems}
 \label{sec:FeatureControl-Systems}
-	In Section~\ref{sec:Excitation-Methods}, several different methods of introducing new frequency content to a signal
-	were introduced. In Section~\ref{sec:ExcitationEvaluation-Comparison}, these methods were discussed further and the
+	In Section~\ref{sec:Excitation-Methods}, several methods of introducing new frequency content to a signal were
+	introduced. In Section~\ref{sec:ExcitationEvaluation-Comparison}, these methods were discussed further and the
 	degree to which their effects can be controlled was evaluated. From that analysis, it was found that better control
 	over the output is gained through meeting certain input requirements; for instance, the \acrshort{ssba} and
 	\acrshort{iap} techniques will produce sinusoidal outputs for sinusoidal inputs. It is also noted that further
@@ -180,7 +180,7 @@
 			\label{fig:HarmonicGenerationSystem}
 		\end{figure}
 
-		A complex spectrum can be created by generating several different order harmonics in this manner and
+		A complex spectrum can be created by generating several harmonics of different orders in this manner, and
 		summing them together. \citet{bregman1994auditory} suggested that, when presented with an auditory scene,
 		the human hearing system separates out sources by grouping like harmonics together. Whether harmonics are
 		deemed to be similar depends on their frequency and amplitude envelopes. When applying harmonic excitation,
@@ -205,14 +205,14 @@
 
 		A spectral shaping system can be constructed in which a static nonlinearity and filter are used to excite a
 		large band of harmonics and finer control is provided using the individual harmonic generation method shown
-		in Figure~\ref{fig:HarmonicGenerationSystem}. This allows the majority of the harmonics to be excited in an
-		efficient manner, only using more complex processing where it is needed. \citet{howard2009acoustics} showed
-		that low order harmonics sit in separate critical bands, whereas high order harmonics are within one
-		critical bandwidth of one another. This means that lower order harmonics are resolved separately by the
-		human hearing system, while the high order harmonics are perceived as fused sounds. As the order of
-		harmonics increases, their individual amplitudes have less effect on the perceived timbre of the sound. For
-		this reason, a harmonic excitation system need only provide control over the individual amplitudes of low
-		order harmonics. 
+		in Figure~\ref{fig:HarmonicGenerationSystem}. This allows the majority of the harmonics to be excited
+		efficiently, only using more complex processing where it is needed. \citet{howard2009acoustics} showed that
+		low order harmonics sit in separate critical bands, whereas high order harmonics are within one critical
+		bandwidth of one another. This means that lower order harmonics are resolved separately by the human
+		hearing system, while the high order harmonics are perceived as fused sounds. As the order of harmonics
+		increases, their individual amplitudes have less effect on the perceived timbre of the sound. For this
+		reason, a harmonic excitation system need only provide control over the individual amplitudes of low order
+		harmonics. 
 
 		Using Equation~\ref{eq:ERB}, the minimum order for which harmonics lie within one critical bandwidth of one
 		another can be calculated. For a signal with a given $f_{0}$, this order, $n$, can be calculated using the
@@ -522,7 +522,7 @@
 		second harmonic one must apply a shift exactly equal to the $f_{0}$. This causes the system to rely on the
 		accuracy of the $f_{0}$ tracking algorithm used. A system which does not rely on accurate tracking of the
 		$f_{0}$ would be beneficial, allowing for more variability in the accuracy of the tracker caused by
-		processing different classes of input signal. Such a system is is shown in
+		processing different classes of input signal. Such a system is shown in
 		Figure~\ref{fig:InharmonicitySystem}.
 
 		\begin{figure}[h!]
@@ -700,7 +700,7 @@
 
 		For each of these features, spectral manipulations are identified which will allow the value of the feature
 		to be altered predictably. This manipulation is designed to have a single parameter, the features of the
-		output signal being dependant on the value of this parameter and the features of the input signal.
+		output signal being dependent on the value of this parameter and the features of the input signal.
 		Formulae are then derived, calculating the value of the feature in the output from the features of the
 		input and the parameter value. It is then discussed how this manipulation and parameterisation can be
 		implemented by specialising the generic systems developed in Section~\ref{sec:FeatureControl-Systems}.
@@ -716,7 +716,7 @@
 		testing, and thus the $f_{0}$ tracking elements of the systems can be eliminated.
 
 		The four test signals were selected to represent the best, average, and worst cases for the spectral
-		properties of the input signal. The cello and clarinet signals both represent typical recorded harmonic
+		properties of the input signal. Both the cello and clarinet signals represent typical recorded harmonic
 		sounds: both are composed of harmonic partials and noise. The fundamental difference between the two is
 		that the cello signal contains energy at all harmonics, while the clarinet signal has the majority of its
 		energy in the odd order harmonics. The synthesised sound has almost perfectly harmonic partials and zero
@@ -835,7 +835,7 @@
 			share any frequency components.  Figure~\ref{fig:TwoBandSpectralCentroidSystem} shows a system
 			which separately controls the gains of two such bands. The lower band is generated via a low pass
 			filter on the input signal, while the high band is created by applying a nonlinear device to the
-			isolated $f_{0}$, followed by high pass filtering. The bands are filtered with corresponding low
+			isolated $f_{0}$, followed by high pass filtering. These bands are filtered with corresponding low
 			and high pass filters to ensure that they share no frequency components. The spectral centroid of
 			the output can be moved between the centroids of these two bands by changing their relative
 			amplitudes according to Equation~\ref{eq:SpectralCentroidManipulation}.
@@ -1105,7 +1105,7 @@
 
 		As the measure of spectral flatness (Equation~\ref{eq:Flatness}) is the ratio of the geometric and
 		arithmetic means of the power spectrum, monotonic control can be achieved over it by altering one of the
-		means while the other remains constant. The method discussed here changes the arithmetic mean while
+		means while the other remains constant. The method discussed here changes the arithmetic mean, while
 		preserving the geometric mean. Consider two disjoint sets, $L$ and $H$, which are each composed of the
 		indices of $k$ spectral components of the signal, such that the total energy in the spectral components
 		denoted by $L$ is less than that of the spectral components denoted by $H$. A gain, $m$, is applied to the
@@ -1489,12 +1489,12 @@
 	\label{sec:FeatureControl-Parameterisation-Inharmonicity}
 		While it is reasonably simple to introduce inharmonicity in harmonic excitation systems, controlling the
 		inharmonicity of a signal is a more complicated problem. The system shown in
-		Figure~\ref{fig:InharmonicitySystem} can be use to apply multiple approaches to this problem. 
+		Figure~\ref{fig:InharmonicitySystem} can be used to apply multiple approaches to this problem. 
 
 		A simple two band approach leaves the lower partials of the system unaltered and generates a high band
 		using a static nonlinearity and filtering. The inharmonicities in this high band will be amplified versions
 		of those in the original signal. This approach is not applicable in a number of situations, such as when
-		the input only contains perfectly harmonic partials, or when the desired result is is to reduce the
+		the input only contains perfectly harmonic partials, or when the desired result is to reduce the
 		inharmonicity in a signal.
 		
 		The opposite system, in which the high frequencies are left unaltered and the low frequency partials are

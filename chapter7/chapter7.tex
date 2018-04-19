@@ -519,10 +519,10 @@
 		However, examining the $R_{\mathrm{nonlin}}$ measures, it is seen that the \acrshort{iap} reconstructions
 		of this signal are objectively more similar to the original signal than those reconstructed with the
 		synthesis method. This is possibly explained by the fact that the synthesised signal is the easiest to
-		reconstruct: it is a purely harmonic signal, with no energy at inharmonic frequencies. This makes it easy
-		to isolate the $f_{0}$, as the transition band of the filter can occupy the entire frequency range between
-		the $f_{0}$ and second harmonic without affecting performance. This, in turn, reduces the number of
-		unwanted intermodulation components present in the generated harmonics. As all the reconstructions of the
+		reconstruct. It is a purely harmonic signal, with no energy at inharmonic frequencies, making it easy to
+		isolate the $f_{0}$ as the transition band of the filter can occupy the entire frequency range between the
+		$f_{0}$ and second harmonic without affecting performance. This, in turn, reduces the number of unwanted
+		intermodulation components present in the generated harmonics. As all the reconstructions of the
 		synthesised signal are similar to each other, it is more difficult for test participants to decide where to
 		grade them on the scale, as evidenced by the larger confidence intervals seen in
 		Figure~\ref{fig:SynthResults}. Where there is more variability between the stimuli, as for the acoustic
@@ -1116,12 +1116,12 @@
 			\end{equation}
 
 			where $x$ is a column vector containing the coordinates of the point in the timbre space, $\mu_{d}$
-			a is column vector containing the mean coordinates of all transforms in the timbre space labelled
+			is a column vector containing the mean coordinates of all transforms in the timbre space labelled
 			with descriptor $d$, and $\Sigma_{d}$ is the covariance matrix of those transforms' coordinates in
 			the timbre space. The number of coordinates used in the calculation of Mahalanobis distance is
 			determined in the same manner as in Section~\ref{sec:TimbreEvaluation-Analysis-Agreement}. Where
 			there are more than five transforms in the distribution, the coordinates in the first five
-			\acrshort{pc}s of the timbre space are used. Where the number of points in the distribution,
+			\acrshort{pc}s of the timbre space are used. If the number of points in the distribution,
 			$N_{d}$, is lower, only the first $N_{d} - 1$ coordinates can be used, in order to avoid
 			$\Sigma_{d}$ being singular. Where the descriptor, $d$, is represented by two distributions of
 			transforms, one from the distortion and one from the equaliser, the Mahalanobis distance from both
