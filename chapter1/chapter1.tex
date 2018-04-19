@@ -8,7 +8,7 @@
 	The process of music production can be split into four main stages (recording, editing, mixing and mastering) as
 	shown in Figure~\ref{fig:MusicProduction}. In the recording stage, acoustic and digital sound sources are captured,
 	resulting in a set of recorded audio signals (often called stems). These are then edited to correct any mistakes
-	made during the recording and to arrange them in time, forming the musical structure of the finished piece. The
+	made during the recording, and to arrange them in time, forming the musical structure of the finished piece. The
 	signals are then processed further and mixed together to produce the final product.
 
 	\begin{figure}[h!]
@@ -80,7 +80,7 @@
 	technical requirements of broadcast or recording. As such, these effects have control parameters which relate
 	directly to specific technical properties of an audio signal: a traditional equaliser has parameters for selecting
 	specific frequency regions, traditional dynamics processors (compressors and limiters) have parameters relating to
-	signal amplitudes. These parameters are effective when correcting technical issues with a signal but do not allow
+	signal amplitudes. These parameters are effective when correcting technical issues with a signal, but do not allow
 	for intuitive creative manipulation of timbre.
 
 	The application of audio effects for creative purposes is typically motivated by the perceived timbre of the audio.
@@ -101,20 +101,20 @@
 	More intuitive interfaces for control over timbre provide parameters which directly relate to perceived aspects of a
 	sound. These perform the translation between the language used to describe timbre and the technical parameters of
 	signal processing algorithms, allowing users to focus on the creative aspects of music production. Having timbral
-	properties controlled by continuous parameters increases the intuitiveness of the system as it is evident which
+	properties controlled by continuous parameters increases the intuitiveness of the system, as it is evident which
 	parameter to adjust to change a particular timbral property. The effect can also analyse the input signal and adjust
 	itself such that the parameter has similar timbral effects across a wide range of inputs. Developing this type of
 	semantically controlled effect requires study of how the mathematical properties of a signal contribute to its
 	perceived timbre. Effects can then be built which manipulate these signal properties according to the value of a
 	semantically labelled parameter. Making audio effects more intuitive in this manner aids both novice and experienced
 	music producers and audio engineers. Novices benefit from the reduced amount of knowledge needed to apply audio
-	effects; being able to select and adjust effects based on natural language descriptions of timbre rather than
-	requiring a technical knowledge of signal processing. For experienced users these effects can be used to accelerate
+	effects; being able to select and adjust effects based on natural language descriptions of timbre, rather than
+	requiring a technical knowledge of signal processing. For experienced users, these effects can be used to accelerate
 	the production process; reducing the work required to configure audio effect parameters, allowing users to focus on
 	creative decisions. 
 	
-	Commercial audio effects with semantically labelled parameters have been available for a number of years, for
-	example the OneKnob series of effects produced by \citet{wavesoneknob}. Being commercial products, the operation of
+	Commercial audio effects with semantically labelled parameters have been available for a number of years; for
+	example, the OneKnob series of effects produced by \citet{wavesoneknob}. Being commercial products, the operation of
 	these effects is not known, but it is assumed that they were developed alongside input from professional audio
 	engineers. In academic research, a number of studies have been undertaken in developing these types of control
 	systems for synthesis and audio processing applications (discussed in Section~\ref{sec:Timbre-Control}). This work
@@ -128,11 +128,11 @@
 
 	\begin{itemize}
 		\item What semantic terms are commonly used to describe the timbre of harmonic excitation effects? 
-		\item What properties of audio signals contribute to these timbral descriptions and what alterations are
+		\item What properties of audio signals contribute to these timbral descriptions, and what alterations are
 		      made to signals to produce a certain timbral result?
 		\item What properties of audio signals can be reliably controlled by harmonic excitation algorithms?
 		\item How can harmonic excitation systems be configured to control elements of timbre? Systems will be
-		      proposed which allow control over particular semantic features and the accuracy of these systems
+		      proposed which allow control over particular semantic features, and the accuracy of these systems
 		      assessed.
 		\item Can harmonic excitation be used to provide intuitive control of timbre? Do the proposed systems
 		      provide control over the aspects of timbre they are designed to?
@@ -143,8 +143,8 @@
 	The aim of this work is to develop harmonic excitation systems which provide intuitive control over timbre.
 	Firstly, a review of the existing work in timbral manipulation and nonlinear processing is given. Experiments are
 	then conducted to discover how spectral manipulations are used in music production. This information is used to aid
-	in the design of semantically controlled harmonic excitation effects which are subsequently evaluated in perceptual
-	listening tests. This is presented in seven chapters as follows:
+	in the design of semantically controlled harmonic excitation effects, which are subsequently evaluated in perceptual
+	listening tests. This is presented in seven chapters, as follows:
 
 	In {\bf{Chapter~\ref{chap:Timbre}}} the background of research into timbre is discussed. It begins with a discussion
 	of the low level features of audio signals. Popular experimental methodologies for uncovering the perceptual effects
@@ -157,8 +157,8 @@
 	literature, are described.
 
 	In {\bf{Chapter~\ref{chap:TimbreEvaluation}}} the collection of semantic audio data during the music production
-	process is discussed. This data is used to determine the language used for describing audio in a studio environment
-	and how audio effects are used to evoke certain timbral descriptors.
+	process is discussed. This data is analysed to determine the language used for describing audio in a studio
+	environment, and ascertain how audio effects are used to evoke certain timbral descriptors.
 
 	In {\bf{Chapter~\ref{chap:ExcitationEvaluation}}} a set of criteria for assessing the applicability of harmonic
 	excitation techniques to timbral control is proposed. The algorithms described in Chapter~\ref{chap:Excitation} are
@@ -167,7 +167,7 @@
 
 	In {\bf{Chapter~\ref{chap:FeatureControl}}} results from Chapter~\ref{chap:ExcitationEvaluation} are used to inform
 	the design of systems for controlling low level audio features using harmonic excitation techniques. Systems are
-	developed which can be used to provide monotonic control over a specific low level feature of the input signal. The
+	developed which can be used to provide monotonic control over a specific low level feature of an input signal. The
 	operation of these systems is evaluated using a number of test signals.
 
 	In {\bf{Chapter~\ref{chap:PerceptualExperiments}}} the systems proposed in Chapter~\ref{chap:FeatureControl} are
@@ -176,14 +176,14 @@
 	dataset gathered in Chapter~\ref{chap:TimbreEvaluation}; and subjectively, through a series of perceptual listening
 	tests.
 
-	The thesis is concluded in {\bf{Chapter~\ref{chap:Conclusion}}}, with a summary of findings across Chapters
+	The thesis is concluded in {\bf{Chapter~\ref{chap:Conclusion}}} with a summary of findings across Chapters
 	\ref{chap:TimbreEvaluation} to \ref{chap:PerceptualExperiments}, a critique of the methods used in this work, and
 	suggestions for further work in this area.
 
 \section{Contributions}
 \label{sec:Introduction-Contributions}
 	The primary contribution of this thesis is the proposal of methods by which harmonic excitation systems can be
-	configured to give intuitive control over timbral features. In achieving this a number of other contributions are
+	configured to give intuitive control over timbral features. In achieving this, a number of other contributions are
 	made, as follows:
 
 	\begin{itemize}
