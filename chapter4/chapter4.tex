@@ -72,7 +72,7 @@
 		performing many more tasks than just the application of audio effects (project management, audio editing
 		functionality etc.). A lot of effort would be expended in implementing these features before any timbral
 		data could be collected. Music producers also tend to have a preferred \acrshort{daw}, with which they
-		work most fluidly. Convincing producers to use a new \acrshort{daw}, for the purposes of research, would
+		work most fluidly. Convincing producers to use a new \acrshort{daw} for the purposes of research would
 		be a difficult task.
 
 		Third party developers can produce extensions to \acrshort{daw}s known as plug-ins. Plug-ins provide
@@ -369,7 +369,7 @@
 		words (e.g. `cp-1'). These transforms are removed from the dataset prior to further processing.
 
 		Of the remaining transforms, several have terms which are derived from the same root word, with the
-		addition of suffixes such as `y' or `er' (e.g. `crunch' and `crunchy' or `bright' and `brighter'). It is
+		addition of suffixes such as `y' or `er' (e.g. `crunch' and `crunchy', or `bright' and `brighter'). It is
 		assumed that the addition of such suffixes has no effect over how a term is used to describe timbre. As
 		such, a stemming algorithm \citep{porter1980an} is used in order to reduce all descriptors in the dataset
 		to their root words.  Additional processing is required after stemming, so that all descriptors with the
@@ -386,7 +386,7 @@
 		of each term indicates how many transforms it is used to describe. In some cases multiple descriptors are
 		used to describe a transform. The numbers of transforms which share certain combinations of descriptors are
 		shown in Tables \ref{tab:DistortionTermCombinations} and \ref{tab:EqualiserTermCombinations}. In total, 85
-		of the distortion transforms are described by the 8 most popular distortion terms and 947 equaliser
+		of the distortion transforms are described by the 8 most popular distortion terms, and 947 equaliser
 		transforms are described by the 12 most popular equaliser descriptors.
 
 		The majority of descriptors are only used to describe transforms applied using a specific effect,
@@ -398,10 +398,10 @@
 		\citep{geddes2003auditory, lukasik2005towards, zacharakis2011an}, that these terms are very commonly used
 		timbral descriptors. In light of this, a specific study was undertaken in which participants were asked to
 		use the \acrshort{safe} equaliser to make audio stimuli sound `warmer' and `brighter' \citep{stasis2015a}.
-		In this work the results of this study are combined with the data gathered by distributing the
+		In this work, the results of this study are combined with the data gathered by distributing the
 		\acrshort{safe} plug-ins online, leading to the terms `warm' and `bright' occurring with much greater
 		frequency in the dataset. The results of these studies can be combined as they both ask the same question
-		of participants; the only difference being that, in the `warm', `bright' study, participants were given a
+		of participants; the only difference being that, in the `warm' / `bright' study, participants were given a
 		specific term to work towards. It is assumed that, when using the \acrshort{safe} plug-ins outside of this
 		experiment, users have a timbral result in mind which they are working towards, meaning the two datasets
 		are both collected under the same conditions.
@@ -541,7 +541,7 @@
 		
 	\subsection{Term Clustering}
 	\label{sec:TimbreEvaluation-Analysis-TermClustering}
-		Each of the terms arrived at, after stemming, in Section~\ref{sec:TimbreEvaluation-Analysis-TermClustering}
+		Each of the terms arrived at, after stemming, in Section~\ref{sec:TimbreEvaluation-Analysis-Preprocessing}
 		can be described by their position in a multidimensional audio feature space. Each dimension of this space
 		corresponds to one of the audio features extracted by the \acrshort{safe} plug-ins. The position,
 		$\mu_{d,k}$, of a semantic term, $d$, in the $k$\super{th} dimension of the audio feature space, is
@@ -588,7 +588,7 @@
 		where $N_{a}$ and $\mu_{a}$ are the number of points in, and centroid of, cluster $a$ respectively.
 
 		\subsubsection*{Clustering of Distortion Terms}
-			Figure~\ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms for the
+			Figure~\ref{fig:DistortionClusters} shows dendrograms illustrating the clustering of terms in the
 			distortion features spaces. The clusters identified are similar for both the processed features
 			(Figure~\ref{fig:DistortionProcessedClusters}) and the feature differences
 			(Figure~\ref{fig:DistortionDifferenceClusters}): the cluster containing `harsh' and `bright' being
@@ -624,7 +624,7 @@
 			(Figure~\ref{fig:EqualiserDifferenceClusters}), suggesting that the difference between these terms
 			is better described by certain change in audio features rather than an absolute feature value.
 			
-			Within the equaliser's feature difference space, two main clusters are identified corresponding
+			Within the equaliser's feature difference space, two main clusters are identified, corresponding
 			with the `warmth' and `brightness' clusters from the distortion feature spaces. The `warmth'
 			cluster includes the terms `deep' and `full', while the `brightness' cluster includes the terms
 			`tin', `thin', `clear' and `air'. An additional `muddiness' cluster, containing `mud', `boom' and
@@ -679,8 +679,8 @@
 			the `brightness' groups remain separated into clusters composed mostly of descriptors from a
 			single plug-in, suggesting that the use of these terms may differ depending on the nature of the
 			audio transform.  Further evidence of this is found in the similarity of the terms `bright' and
-			`harsh'.  When used to describe distortion transforms these terms always sit adjacent to one
-			another in a cluster, whereas for equaliser transforms they are separated by a greater distance.
+			`harsh'.  When used to describe distortion transforms, these terms always sit adjacent to one
+			another in a cluster; whereas for equaliser transforms they are separated by a greater distance.
 			These terms are more likely to be synonymous when describing audio processed by a distortion then
 			they are for equalised audio. 
 
@@ -775,7 +775,7 @@
 			be decreased, but in the second the agreement score should not be affected. Because of this
 			ambiguity, it is preferable that features exhibiting high variances do not have an overly large
 			effect on the agreement score.  In this way, if a high variance does imply disagreement it does not
-			unduly increase the agreement score and if it does not imply disagreement it does to unduly
+			unduly increase the agreement score, and if it does not imply disagreement it does to unduly
 			decrease the agreement score.
 			
 			This can be implemented by changing Equation~\ref{eq:ReciprocalOfSumAgreement} to be a sum of
@@ -1085,9 +1085,10 @@
 			The first five \acrshort{pc}s of the timbre space describing the processed signals produced by the
 			distortion describe 71\% of the total variance. Preliminary investigation of these revealed no
 			noticeable patterns in \acrshort{pc}s 4 and 5. Accordingly, only the first three \acrshort{pc}s are
-			shown in Figure~\ref{fig:DistortionProcessedPCAs}. The corresponding agreement scores are shown in
-			Table~\ref{tab:DistortionProcessedAgreements}. The three terms with the highest agreement scores
-			(`warm', `fuzz' and `crunch') are of particular interest.
+			shown in Figures~\ref{fig:DistortionProcessedPCAs} and \ref{fig:DistortionProcessedCentroidsPCAs}.
+			The corresponding agreement scores are shown in Table~\ref{tab:DistortionProcessedAgreements}. The
+			three terms with the highest agreement scores (`warm', `fuzz' and `crunch') are of particular
+			interest.
 
 			\begin{figure}[h!]
 				\centering
@@ -1197,10 +1198,10 @@
 			The first five \acrshort{pc}s of the timbre space describing the feature manipulations applied by
 			the distortion describe 67\% of the total variance. Again, preliminary investigation showed no
 			patterns in \acrshort{pc}s 4 and 5, meaning only the first three \acrshort{pc}s are shown in
-			Figure~\ref{fig:DistortionDifferencePCAs}. The corresponding agreement scores are shown in
-			Table~\ref{tab:DistortionDifferenceAgreements}. This space is largely similar to that describing
-			the distortion's processed signals (Figure~\ref{fig:DistortionProcessedPCAs}) and similar
-			conclusions can be drawn.
+			Figures~\ref{fig:DistortionDifferencePCAs} and \ref{fig:DistortionDifferenceCentroidsPCAs}. The
+			corresponding agreement scores are shown in Table~\ref{tab:DistortionDifferenceAgreements}. This
+			space is largely similar to that describing the distortion's processed signals
+			(Figure~\ref{fig:DistortionProcessedPCAs}) and similar conclusions can be drawn.
 
 			\begin{figure}[h!]
 				\centering
@@ -1299,8 +1300,9 @@
 			The first five \acrshort{pc}s of the timbre space describing the processed signals produced by the
 			equaliser describe 67\% of the total variance. As with the distortion timbre spaces, no discernible
 			patterns were found in \acrshort{pc}s 4 and 5, leading to only the first three being plotted in
-			Figures \ref{fig:EqualiserBWProcessedPCAs} and \ref{fig:EqualiserProcessedPCAs}. The corresponding
-			agreement scores are shown in Table~\ref{tab:EqualiserProcessedAgreements}.
+			Figures \ref{fig:EqualiserBWProcessedPCAs}, \ref{fig:EqualiserProcessedPCAs} and
+			\ref{fig:EqualiserProcessedCentroidsPCAs}. The corresponding agreement scores are shown in
+			Table~\ref{tab:EqualiserProcessedAgreements}.
 
 			\begin{figure}[h!]
 				\centering
@@ -1412,9 +1414,10 @@
 			The first five \acrshort{pc}s of the timbre space describing the feature manipulations applied by
 			the equaliser describe 65\% of the total variance. Again, no noticeable patterns were found in
 			\acrshort{pc}s 4 and 5 so only the first three are shown in Figures
-			\ref{fig:EqualiserBWDifferencePCAs} and \ref{fig:EqualiserDifferencePCAs}. The corresponding
-			agreement scores are shown in Table~\ref{tab:EqualiserDifferenceAgreements}. This space shows more
-			definite patterns than that constructed from the processed feature values.
+			\ref{fig:EqualiserBWDifferencePCAs}, \ref{fig:EqualiserDifferencePCAs} and
+			\ref{fig:EqualiserDifferenceCentroidsPCAs}. The corresponding agreement scores are shown in
+			Table~\ref{tab:EqualiserDifferenceAgreements}. This space shows more definite patterns than that
+			constructed from the processed feature values.
 
 			\begin{figure}[h!]
 				\centering
@@ -1475,7 +1478,7 @@
 			a decrease in these features and positive values an increase. Signals can be made `warmer' by
 			reducing the spectral centroid and `brighter' by increasing it. This is most often done by
 			introducing more energy at low or high frequencies respectively, as seen in
-			Figure~\ref{fig:EqualiserDifferenceSpectra}. `harsh' and `tin' can be thought of as more
+			Figure~\ref{fig:EqualiserDifferenceSpectra}. `Harsh' and `tin' can be thought of as more
 			accentuated versions of `bright', and `mud' as a more accentuated version of `warm'.
 
 			\begin{datum}[h!]
