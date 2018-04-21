@@ -6,7 +6,7 @@
 	Nonlinear distortion is an inherent part of an analogue signal path. It alters the dynamic variation of signals and
 	introduces new spectral components. Its use as a creative effect is best known by guitar players due to the use of
 	valves in early guitar amplifiers imparting nonlinear transforms onto the audio signal
-	\citep{dutilleux2011nonlinear}. This distorted sound became desirable and several electronic circuits were
+	\citep{dutilleux2011nonlinear}. This distorted sound became desirable, and several electronic circuits were
 	developed with the purpose of inducing nonlinear distortion. More recently, research into modelling these
 	distortion circuits in the digital domain has been carried out, such as that done by \citet{pakarinen2009a}.
 	Several researchers have also worked on creating novel digital distortion techniques
@@ -132,7 +132,7 @@
 			effects; for example, \citet{vetter2013estimation} described a method for use with nonlinearities
 			which produce harmonics whose amplitudes decrease as their frequencies increase. They upsample
 			signals by a factor of 32 prior to applying nonlinear processing; this ensures that only the low
-			amplitude, high frequency partials are aliased. If the upsampling factor is sufficiently high,
+			amplitude high frequency partials are aliased. If the upsampling factor is sufficiently high,
 			these aliased partials will be rendered inaudible. After processing, the signal is downsampled to
 			the original sampling frequency. Upsampling increases the computational complexity of a system;
 			along with the extra overhead of upsampling and downsampling the signal, there is also a larger
@@ -595,10 +595,10 @@
 
 	\citet{marui2005predicting} suggest that one of the primary outcomes of nonlinear distortion is the moving of
 	spectral energy between low and high frequencies. They proposed that aspects of this effect correlate with the
-	descriptors: sharpness and brightness. In order to discover other timbral properties of nonlinear distortion, they
-	performed listening tests in which distorted guitar stimuli were assessed. The stimuli were each processed with
-	different nonlinear systems and then further processed so that they had matching Zwicker Sharpnesses (an objective
-	measure of sharpness \citep{fastl2007psychoacoustics} discussed in
+	descriptors: `sharpness' and `brightness'. In order to discover other timbral properties of nonlinear distortion,
+	they performed listening tests in which distorted guitar stimuli were assessed. The stimuli were each processed
+	with different nonlinear systems and then further processed so that they had matching Zwicker Sharpnesses (an
+	objective measure of sharpness \citep{fastl2007psychoacoustics} discussed in
 	Section~\ref{sec:Timbre-TimbralFeatures-Sharpness}). This sharpness matching was done so that the difference in
 	timbre not related to sharpness could be more easily observed. During the listening tests, subjects were asked to
 	rate the dissimilarity of stimuli presented in pairs. They were also asked to grade each individual stimulus on the
@@ -658,7 +658,7 @@
 	used to discriminate certain distortion effects from each other in their paper.
 	
 	In a second paper \citep{tsumoto2016the}, the same authors investigated the relationship between the `brightness'
-	and Zwicker sharpness of distorted guitar signals. They showed that for a given parameter setting on a distortion
+	and Zwicker sharpness of distorted guitar signals. They showed that, for a given parameter setting on a distortion
 	effect, the function describing the relationship between the perceived `brightness' and Zwicker sharpness of output
 	signals is monotonically increasing. As the parameter of the effect is changed, the number of distortion components
 	introduced to the signal is changed. Conversely to their predictions, it was shown that if the output signals are
@@ -686,7 +686,7 @@
 	to describe the timbre of signals which have undergone distortion, but does not allow for discrimination between
 	the timbres of two distorted signals. The other descriptors used in the literature are correlated with features of
 	a system's output signal rather than features of the nonlinearity itself. This warrants a need for harmonic
-	excitation systems which give control over specific features of the output rather than just the parameters of the
+	excitation systems which give control over specific features of the output, rather than just the parameters of the
 	underlying nonlinearity. 
 
 \section{Uses of Harmonic Excitation}
@@ -732,7 +732,7 @@
 		`blindly'. It is worth noting that when using these methods as creative audio effects, the objective is not
 		to try to replicate high frequency content which is missing, but to generate new high frequency content.
 		The accuracy lost through using `blind' bandwidth extension methods is not a great concern for creative
-		timbral manipulation work as the generation of new, high order, harmonics does not require the same degree
+		timbral manipulation work, as the generation of new, high order, harmonics does not require the same degree
 		of accuracy.
 
 	\subsection{Perceptual Low Frequency Reinforcement}
@@ -742,7 +742,7 @@
 		spectrum. Harmonic content is added to the signal in order to evoke the perception of lower pitched sounds.
 		
 		The pitch of a harmonically structured sound is the same as that of its $f_{0}$. No energy need be present
-		at this frequency for its pitch to be perceived; however, as long as a sufficient proportion of the
+		at this frequency for its pitch to be perceived however; as long as a sufficient proportion of the
 		harmonic structure remains, the original pitch can still be perceived. This phenomenon is commonly referred
 		to as the missing fundamental \citep{plack2005the}. The perception of a low frequency $f_{0}$ can then be
 		actualised by introducing a set of higher order harmonics. This technique is implemented in effects such as
@@ -784,7 +784,7 @@
 
 	\subsection{Static Nonlinearities}
 	\label{sec:Excitation-Methods-Statics}
-		As mentioned in Section~\ref{sec:Excitation-Analysis-Metrics}, static nonlinearities are simple mappings,
+		As mentioned in Section~\ref{sec:Excitation-Analysis-Metrics}, static nonlinearities are simple mappings
 		between input value and output values, described by a characteristic curve. A very simple class of static
 		nonlinearities is the peak clipper, known for its use as a guitar distortion effect. This class of effects
 		limits the magnitude of samples to being at or below a given clipping threshold value. A peak clipper's
@@ -931,7 +931,7 @@
 			\label{eq:OneSideband}
 		\end{equation}
 
-		With more thorough analysis it can be shown that the frequencies of intermodulation components produced
+		With more thorough analysis, it can be shown that the frequencies of intermodulation components produced
 		through single sideband modulation all take the form shown in Equation~\ref{eq:IntermodulationComponents},
 		with the further restriction that the scaling factors, $k_{n}$, are all positive integers.
 
@@ -997,7 +997,7 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter3/Images/SpectralFoldingSpectrum.pdf}
-			\caption{The spectral characteristics of spectral folding.}
+			\caption{The spectral effects of spectral folding.}
 			\label{fig:SpectralFolding}
 		\end{figure}
 
@@ -1016,7 +1016,7 @@
 		\begin{figure}[h!]
 			\centering
 			\includegraphics{chapter3/Images/SpectralStretchingSpectrum.pdf}
-			\caption{The spectral characteristics of spectral stretching.}
+			\caption{The spectral effects of spectral stretching.}
 			\label{fig:SpectralStretching}
 		\end{figure}
 
