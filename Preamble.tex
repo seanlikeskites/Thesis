@@ -4,11 +4,23 @@
 %\thispagestyle{plain}
 %\vspace*{\fill}
 %\begin{center}
-%	\includegraphics[width=0.8\textwidth]{Images/seanFace.jpg}
-%	\newline
-%	\newline
+%	\begin{tikzpicture}
+%		\node [inner sep=0pt] at (0, 0) 
+%		{
+%			\includegraphics[width=0.8\textwidth]{Images/seanFace.jpg}
+%		};
+%		\draw [white, rounded corners=0.4cm, line width=0.4cm]
+%			(current bounding box.north west) --
+%			(current bounding box.north east) --
+%			(current bounding box.south east) --
+%			(current bounding box.south west) -- cycle;
+%	\end{tikzpicture}
+%
 %	\Huge
-%	Welcome to my thesis, are your ready for some fun?
+%	\vspace{-0.5em}
+%	Welcome to my thesis.
+%
+%	Are your ready for some fun?
 %	\normalsize
 %\end{center}
 %\vspace*{\fill}
